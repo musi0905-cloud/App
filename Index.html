@@ -21,7 +21,7 @@
         <span class="nav-icon">🏠</span><span>홈</span>
       </button>
       <button class="sidenav-item" data-view="new">
-        <span class="nav-icon">➕</span><span>새 작업</span>
+        <span class="nav-icon">➕</span><span>새 협의</span>
       </button>
       <button class="sidenav-item" data-view="history">
         <span class="nav-icon">📋</span><span>기록</span>
@@ -41,26 +41,14 @@
         <div id="home-pending" class="card-list"></div>
       </section>
 
-      <!-- 새 작업 -->
+      <!-- 새 협의 -->
       <section id="view-new" class="view">
-        <h1 class="view-title">새 작업</h1>
+        <h1 class="view-title">새 협의</h1>
+        <p class="field-hint">주제 하나만 입력하면 GPT와 Claude가 5단계로 내부 협의를 마친 뒤 최종보고서만 보여드립니다.</p>
         <form id="new-command-form" class="form">
           <label class="field">
-            <span class="field-label">작업유형</span>
-            <select id="field-type" class="input" required>
-              <option value="">선택하세요</option>
-              <option value="기획">기획</option>
-              <option value="검토">검토</option>
-              <option value="개발">개발</option>
-              <option value="최종판단">최종판단</option>
-              <option value="상태조회">상태조회</option>
-            </select>
-          </label>
-          <p id="field-type-hint" class="field-hint"></p>
-
-          <label class="field">
-            <span class="field-label">요청내용</span>
-            <textarea id="field-request" class="input textarea" rows="6" placeholder="요청할 내용을 자세히 적어주세요." required></textarea>
+            <span class="field-label">주제</span>
+            <textarea id="field-topic" class="input textarea" rows="4" placeholder="예: 학생·부모 대상 학습 보상 미니앱 사업화" required></textarea>
           </label>
 
           <label class="field">
@@ -72,12 +60,12 @@
             </select>
           </label>
 
-          <label class="field field-checkbox">
-            <input type="checkbox" id="field-approval" checked>
-            <span>AI 결과에 대한 승인 절차 필요</span>
+          <label class="field">
+            <span class="field-label">프로젝트번호 (선택)</span>
+            <input type="text" id="field-project" class="input" placeholder="비워두면 기본 프로젝트로 등록됩니다.">
           </label>
 
-          <button type="submit" id="new-command-submit" class="btn btn-primary btn-block">작업 등록</button>
+          <button type="submit" id="new-command-submit" class="btn btn-primary btn-block">AI 협의 시작</button>
         </form>
       </section>
 
@@ -114,7 +102,7 @@
         <span class="nav-icon">🏠</span><span>홈</span>
       </button>
       <button class="bottomnav-item" data-view="new">
-        <span class="nav-icon">➕</span><span>새 작업</span>
+        <span class="nav-icon">➕</span><span>새 협의</span>
       </button>
       <button class="bottomnav-item" data-view="history">
         <span class="nav-icon">📋</span><span>기록</span>

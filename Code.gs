@@ -120,7 +120,7 @@ function configureKoreanUI() {
 
   const lastRow = Math.max(sheet.getLastRow(), 2);
   const typeRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['기획', '검토', '개발', '최종판단', '상태조회'], true)
+    .requireValueInList(['AI 협의', '기획', '검토', '개발', '최종판단', '상태조회'], true)
     .setAllowInvalid(false).build();
   const priorityRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(['높음', '보통', '낮음'], true)
@@ -188,7 +188,8 @@ function normalizeCommandType(value) {
     '검토': 'REVIEW', 'REVIEW': 'REVIEW',
     '개발': 'DEVELOP', 'DEVELOP': 'DEVELOP',
     '최종판단': 'DECISION', 'DECISION': 'DECISION',
-    '상태조회': 'STATUS', 'STATUS': 'STATUS'
+    '상태조회': 'STATUS', 'STATUS': 'STATUS',
+    'AI 협의': 'DISCUSSION', 'DISCUSSION': 'DISCUSSION'
   };
   return map[String(value || '').trim()] || map[v] || v;
 }
@@ -210,7 +211,7 @@ function normalizeStatus(value) {
 }
 
 function displayCommandType(value) {
-  return ({PLAN:'기획', REVIEW:'검토', DEVELOP:'개발', DECISION:'최종판단', STATUS:'상태조회'})[normalizeCommandType(value)] || value;
+  return ({PLAN:'기획', REVIEW:'검토', DEVELOP:'개발', DECISION:'최종판단', STATUS:'상태조회', DISCUSSION:'AI 협의'})[normalizeCommandType(value)] || value;
 }
 function displayStatus(value) {
   return ({READY:'실행 대기', PROCESSING:'처리 중', AWAITING_APPROVAL:'승인 대기', APPROVED:'승인 완료',
@@ -289,7 +290,7 @@ function processApprovals() {
 
     // 각 행을 처리한 결과(어떤 후속 작업이 새로 생성됐는지)를 반환한다.
     // processAutomationCycle()이나 메뉴 3번처럼 반환값을 쓰지 않는 기존 호출부는 그대로 동작하고,
-    // 웹앱의 submitApproval()은 이 배열에서 자신이 승인한 행의 결과만 찾아 후속 작업을 실행한다.
+    // 웹앱의 webApproveAndContinue()는 이 배열에서 자신이 승인한 행의 결과만 찾아 후속 작업을 실행한다.
     const results = [];
 
     for (const item of targets) {
@@ -362,6 +363,18 @@ const APPROVAL_CHAIN_STEPS_ = {
     buildRequest: (command, fullResult) =>
       `다음 최종 결정을 개발 가능한 요구사항으로 구체화해 개발 명세, 파일 구조, 구현 순서, 테스트 기준을 작성하라.\n\n` +
       `[원 요청]\n${command.request}\n\n[최종 결정]\n${fullResult}`
+  },
+  // AI 협의(5단계) 최종보고서를 승인하면 개발명세(개발 타입) 작업을 만들고 즉시 실행한다.
+  // DEVELOP(개발/개발명세)은 이 표에 다음 단계가 없으므로 승인해도 체인이 여기서 멈춘다 —
+  // "개발명세 승인 단계에서 반드시 멈춘다"는 요구사항은 이 표에 DEVELOP 항목을 추가하지 않는 것으로 지킨다.
+  DISCUSSION: {
+    nextType: '개발',
+    nextModel: '클로드',
+    idPrefix: 'CMD-DEVSPEC',
+    buildRequest: (command, fullResult) =>
+      `다음은 승인된 AI 협의 최종보고서다. 이 보고서를 바탕으로 실제 코딩 착수 직전의 개발명세를 작성하라. ` +
+      `이 단계에서는 개발명세만 작성하고 실제 제품 코드는 작성하지 마라.\n\n` +
+      `[원 주제]\n${command.request}\n\n[승인된 최종보고서]\n${fullResult}`
   }
 };
 
@@ -475,12 +488,61 @@ function processNextCommand() {
 // 시트 전체에서 우선순위가 가장 높은 실행 대기 행을 고르는 책임은 processNextCommand()에 남기고,
 // 이 함수는 이미 정해진 특정 행만 실행한다. processCommandById_()가 이 함수를 그대로 재사용해
 // "지금 막 생성된 이 작업만" 실행하도록 한다 (다른 프로젝트의 실행 대기 작업을 잘못 실행하지 않기 위함).
+// 개발(DEVELOP) 타입 실행 시 Claude에게 요구하는 개발명세 항목. 실제 제품 코드는 생성하지 않는다.
+const DEV_SPEC_INSTRUCTIONS_ = `
+
+이 결과물은 "개발명세"다. 실제 제품 코드는 작성하지 말고, 아래 항목을 모두 포함한 개발명세 문서만 작성하라.
+개발명세는 사용자 승인을 받는 마지막 단계이며, 승인 이후에도 이 시스템은 실제 코딩을 자동으로 시작하지 않는다.
+
+## 확정 MVP와 제외 범위
+## 사용자 역할
+## 사용자 흐름
+## 화면별 요구사항
+## 상태 정의
+## 데이터 모델
+## 개인정보 최소화 설계
+## 서버 함수/API 명세
+## 파일 구조
+## 구현 순서
+## 테스트 시나리오
+## 완료 기준
+## 보안·정책 체크
+## 예상 개발 단계
+## 실제 코딩 전 사용자 확인사항
+
+각 항목을 위 순서의 소제목(##)으로 나누어 작성하라.`;
+
+// AI 협의 5단계의 마지막 단계(GPT 최종 통합보고서)에 요구하는 구조.
+const FINAL_REPORT_INSTRUCTIONS_ = `
+
+이것은 5단계 AI 협의의 마지막 단계(GPT 최종 통합보고서)다.
+지금까지의 기획과 Claude의 반론·최종 게이트 판정을 종합해 아래 16개 항목을 각각 소제목(##)으로 나누어 작성하라.
+사용자는 이 보고서만 보고 승인·수정·폐기를 결정하므로 중간 협의 과정을 반복 설명하지 말고 결론 위주로 작성하라.
+
+## 한 줄 결론
+## 최종 판정
+## 해결할 문제
+## 목표 고객
+## 확정 MVP
+## 제외 기능
+## 수익 가능성
+## 가장 위험한 가설
+## 검증 실험
+## 성공 기준
+## 중단 기준
+## 예상 비용과 기간
+## 개발 전 필수 확인사항
+## AI 간 주요 이견
+## 다음 단계
+## 사용자 승인 요청`;
+
 function executeCommandRow_(sheet, headers, idx, sheetRow, command) {
   updateCommand(sheet, sheetRow, idx, { status: '처리 중', error: '' });
 
   let result = '';
   let modelsCalled = '';
   const started = new Date();
+  const runId = makeId('RUN');
 
   try {
     const projectId = command.project_id || getConfig('DEFAULT_PROJECT_ID') || 'PRJ-001';
@@ -495,12 +557,62 @@ function executeCommandRow_(sheet, headers, idx, sheetRow, command) {
       result = callClaude(context.claude, command.request);
     } else if (type === 'DEVELOP') {
       modelsCalled = 'CLAUDE';
-      result = callClaude(context.claude + '\n\n개발 명세, 파일 구조, 구현 순서, 테스트 기준을 포함하라.', command.request);
+      result = callClaude(context.claude + DEV_SPEC_INSTRUCTIONS_, command.request);
     } else if (type === 'DECISION') {
       modelsCalled = 'GPT→CLAUDE→GPT';
       const first = callOpenAI(context.gpt, command.request);
       const review = callClaude(context.claude, `다음 GPT 초기안을 비판적으로 검토하라.\n\n[요청]\n${command.request}\n\n[GPT 초기안]\n${first}`);
       result = callOpenAI(context.gpt, `최종 의사결정안을 작성하라.\n\n[원 요청]\n${command.request}\n\n[GPT 초기안]\n${first}\n\n[Claude 검토]\n${review}`);
+    } else if (type === 'DISCUSSION') {
+      // 5단계 AI 협의: GPT 1차 기획 → Claude 반론 → GPT 수정 기획 → Claude 최종 게이트 → GPT 최종 통합보고서.
+      // 사용자에게는 마지막 통합보고서(result)만 승인 화면에 보이고, 1~4단계는 AI_LOG에만 남는다.
+      modelsCalled = 'GPT→CLAUDE→GPT→CLAUDE→GPT';
+      const topic = command.request;
+
+      const step1 = callOpenAI(
+        context.gpt + '\n\n이것은 5단계 AI 협의의 1단계(GPT 1차 기획)다. 사업 아이템, 목표 고객, 핵심 가치, 수익 가능성을 중심으로 초안을 작성하라.',
+        topic
+      );
+      appendAiLog({
+        run_id: `${runId}-S1`, timestamp: started, slack_user: '', command: 'AI 협의 1단계 · GPT 1차 기획',
+        original_request: topic, models_called: 'GPT', result_summary: step1, token_or_cost: '',
+        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+      });
+
+      const step2 = callClaude(
+        context.claude + '\n\n이것은 5단계 AI 협의의 2단계(Claude 반론)다. GPT 1차 기획의 기술·UX·정책·보안·수익 관점 허점과 위험을 비판적으로 지적하라.',
+        `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}`
+      );
+      appendAiLog({
+        run_id: `${runId}-S2`, timestamp: started, slack_user: '', command: 'AI 협의 2단계 · Claude 반론',
+        original_request: topic, models_called: 'CLAUDE', result_summary: step2, token_or_cost: '',
+        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+      });
+
+      const step3 = callOpenAI(
+        context.gpt + '\n\n이것은 5단계 AI 협의의 3단계(GPT 수정 기획)다. Claude의 반론을 반영해 기획을 수정하라.',
+        `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}\n\n[Claude 반론]\n${step2}`
+      );
+      appendAiLog({
+        run_id: `${runId}-S3`, timestamp: started, slack_user: '', command: 'AI 협의 3단계 · GPT 수정 기획',
+        original_request: topic, models_called: 'GPT', result_summary: step3, token_or_cost: '',
+        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+      });
+
+      const step4 = callClaude(
+        context.claude + '\n\n이것은 5단계 AI 협의의 4단계(Claude 최종 게이트)다. 수정 기획이 개발 착수 가능한 수준인지 진행/수정/중단 중 하나로 판정하고 근거를 제시하라.',
+        `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}`
+      );
+      appendAiLog({
+        run_id: `${runId}-S4`, timestamp: started, slack_user: '', command: 'AI 협의 4단계 · Claude 최종 게이트',
+        original_request: topic, models_called: 'CLAUDE', result_summary: step4, token_or_cost: '',
+        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+      });
+
+      result = callOpenAI(
+        context.gpt + FINAL_REPORT_INSTRUCTIONS_,
+        `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}\n\n[Claude 최종 게이트 판정]\n${step4}`
+      );
     } else if (type === 'STATUS') {
       modelsCalled = 'NONE';
       result = buildStatusReport(projectId);
@@ -508,7 +620,6 @@ function executeCommandRow_(sheet, headers, idx, sheetRow, command) {
       throw new Error(`지원하지 않는 command_type: ${type}`);
     }
 
-    const runId = makeId('RUN');
     appendAiLog({
       run_id: runId,
       timestamp: started,
@@ -787,26 +898,32 @@ function truncate(value, max) {
 // ============================================================
 // 웹앱 전용 함수 (이 아래부터 신규 추가)
 //
-// 위쪽 자동화 섹션에서 아래 5곳만 "웹앱에서 승인 시 다음 단계까지 자동 실행" 요구사항을
+// 위쪽 자동화 섹션에서 아래 6곳만 "주제만 입력 → AI 협의 → 최종보고서/개발명세만 승인" 요구사항을
 // 위해 최소한으로 손을 댔고, 그 외 기존 함수는 그대로다:
-//   1) processApprovals()      — 이제 각 행 처리 결과(어떤 후속 작업이 생성됐는지) 배열을 반환한다.
+//   1) normalizeCommandType() / displayCommandType() — 'AI 협의'(DISCUSSION) 매핑을 추가했다.
+//                                 기존 기획/검토/개발/최종판단/상태조회 매핑은 그대로 남아 있어
+//                                 예전 방식으로 만들어진 행도 계속 정상 동작한다.
+//   2) configureKoreanUI()     — 작업유형 드롭다운 목록에 'AI 협의'를 추가했다 (기존 항목은 유지).
+//   3) executeCommandRow_()    — DISCUSSION 타입 처리 분기(5단계 AI 협의: GPT→Claude→GPT→Claude→GPT)를
+//                                 추가했고, DEVELOP 타입의 지시문을 개발명세 15개 항목 구조로 확장했다.
+//                                 기존 PLAN/REVIEW/DECISION/STATUS 분기는 그대로다.
+//   4) processApprovals()      — 각 행 처리 결과(어떤 후속 작업이 생성됐는지) 배열을 반환한다.
 //                                 기존 호출부(메뉴 3번, processAutomationCycle())는 반환값을 쓰지
 //                                 않으므로 동작 그대로다.
-//   2) handleApprovedCommand() — 기획→검토 1단계만 만들던 것을, 검토→최종판단→개발까지 이어지는
-//                                 체인으로 넓혔고, AUTO_CREATE_REVIEW_ON_APPROVAL 설정값 여부와
-//                                 무관하게 항상 다음 단계를 "생성"한다 (실행까지 하는 건 아니다 —
-//                                 실행은 여전히 메뉴 4번/자동 트리거/웹앱이 각자 담당).
-//   3) createRevisionCommand() — 새로 생성한 수정 작업의 command_id를 반환하도록만 추가했다.
-//   4) processNextCommand()    — 로직 변경 없이, "행 하나를 실행하는" 부분을 executeCommandRow_()로
-//                                 그대로 옮겼다 (동작 동일, 순수 추출 리팩터링).
-//   5) retryCommand()          — processNextCommand() 대신 processCommandById_()를 호출하도록
-//                                 바꿔, 재실행이 항상 그 작업 자신만 실행하게 했다 (원래는 시트에
-//                                 우선순위가 더 높은 다른 실행 대기 작업이 있으면 그 작업이 대신
-//                                 실행될 수 있는 버그가 있었다).
+//   5) handleApprovedCommand() — 기획→검토→최종판단→개발 체인에 DISCUSSION→개발(개발명세) 체인을
+//                                 추가했다. DEVELOP은 다음 단계가 없어 개발명세 승인에서 체인이 멈춘다.
+//   6) createRevisionCommand() / webRetryCommand() — 새로 생성한 작업의 command_id를 반환하고,
+//                                 processNextCommand() 대신 processCommandById_()를 호출하도록
+//                                 바꿔 "그 작업 자신만" 실행되도록 했다 (원래는 시트에 우선순위가
+//                                 더 높은 다른 실행 대기 작업이 있으면 그 작업이 대신 실행되는 버그가 있었다).
 //
 // 그 외 아래 함수들은 모두 위 함수(processApprovals, executeCommandRow_,
 // appendCommand, updateCommand, readTable, findOne, getConfig,
 // normalizeStatus, displayStatus 등)를 재사용만 한다.
+//
+// CLAUDE.md 9번 항목이 요구하는 함수명과 실제 이름이 다른 한 가지: processCommandById_ (밑줄 포함).
+// processCommandById()와 완전히 같은 역할이라 별도 함수로 중복 작성하지 않고 이름만 GAS의 "비공개
+// 헬퍼" 관례(끝에 밑줄)를 따랐다 — 밑줄이 있어도 다른 서버 함수에서 호출하는 데는 아무 제약이 없다.
 // ============================================================
 
 /**
@@ -860,44 +977,38 @@ function formatDateTime_(value) {
 }
 
 /**
- * 목록/카드용 요약 객체. 결과가 아무리 길어도 카드에는 미리보기만 보낸다.
+ * COMMANDS 행(canonical 객체)을 클라이언트로 보낼 안전한 객체로 변환한다.
+ * includeFull이 false(기본)면 카드 목록용 미리보기만, true면 상세 화면용 전문을 포함한다.
  */
-function commandToCard_(c) {
-  return {
+function toWebCommand(c, includeFull) {
+  const base = {
     commandId: c.command_id || '',
     commandType: displayCommandType(c.command_type),
     assignedModel: displayModel(c.assigned_model),
     status: displayStatus(c.status),
     priority: displayPriority(c.priority),
-    requestPreview: truncate(c.request, 160),
-    resultPreview: truncate(c.result_summary, 220),
     createdAt: formatDateTime_(c.created_at)
   };
-}
 
-/**
- * 상세 화면용 전체 객체. 결과 전문을 그대로 보낸다.
- */
-function commandToDetail_(c) {
-  return {
-    commandId: c.command_id || '',
-    commandType: displayCommandType(c.command_type),
-    assignedModel: displayModel(c.assigned_model),
-    status: displayStatus(c.status),
-    priority: displayPriority(c.priority),
-    request: String(c.request || ''),
-    result: String(c.result_summary || ''),
-    error: String(c.error || ''),
-    createdAt: formatDateTime_(c.created_at),
-    processedAt: formatDateTime_(c.processed_at),
-    approvalNote: String(c.approval_note || '')
-  };
+  if (!includeFull) {
+    base.requestPreview = truncate(c.request, 160);
+    base.resultPreview = truncate(c.result_summary, 220);
+    return base;
+  }
+
+  base.request = String(c.request || '');
+  base.result = String(c.result_summary || '');
+  base.error = String(c.error || '');
+  base.processedAt = formatDateTime_(c.processed_at);
+  base.approvalNote = String(c.approval_note || '');
+  base.resultRef = String(c.result_ref || '');
+  return base;
 }
 
 /**
  * 홈 화면: 상단 요약 카운트 + 지금 확인할 작업(승인 대기) 목록.
  */
-function getDashboardData() {
+function webGetDashboard() {
   try {
     const rows = readTable('COMMANDS');
     const summary = { awaitingApproval: 0, ready: 0, processing: 0, error: 0 };
@@ -914,7 +1025,7 @@ function getDashboardData() {
       .filter(r => normalizeStatus(r.status) === 'AWAITING_APPROVAL')
       .sort((a, b) => toTime_(b.created_at) - toTime_(a.created_at))
       .slice(0, 10)
-      .map(commandToCard_);
+      .map(r => toWebCommand(r, false));
 
     return { success: true, data: { summary, pendingApprovals } };
   } catch (err) {
@@ -923,32 +1034,49 @@ function getDashboardData() {
 }
 
 /**
- * 승인 대기 전체 목록 (홈에서 더보기, 또는 다른 화면에서 재사용).
- */
-function getPendingApprovals() {
-  try {
-    const rows = readTable('COMMANDS');
-    const pending = rows
-      .filter(r => normalizeStatus(r.status) === 'AWAITING_APPROVAL')
-      .sort((a, b) => toTime_(b.created_at) - toTime_(a.created_at))
-      .map(commandToCard_);
-    return { success: true, data: pending };
-  } catch (err) {
-    return { success: false, message: '승인 대기 목록을 불러오지 못했습니다.' };
-  }
-}
-
-/**
  * 작업 상세 조회. commandId 기준으로 서버에서 재조회한다.
  */
-function getCommandDetail(commandId) {
+function webGetCommand(commandId) {
   try {
     const found = findCommandRow_(commandId);
     if (!found) return { success: false, message: '작업을 찾을 수 없습니다.' };
     const obj = rowToObject(found.headers, found.row);
-    return { success: true, data: commandToDetail_(obj) };
+    return { success: true, data: toWebCommand(obj, true) };
   } catch (err) {
     return { success: false, message: '작업 정보를 불러오지 못했습니다.' };
+  }
+}
+
+/**
+ * 'AI 협의' 작업의 5단계 내부 협의 기록(1~4단계 + 최종보고서)을 순서대로 반환한다.
+ * result_ref에 저장된 세션 접두사(run_id 앞부분)로 AI_LOG를 찾는다.
+ */
+function getDiscussionLog(commandId) {
+  try {
+    const found = findCommandRow_(commandId);
+    if (!found) return { success: false, message: '작업을 찾을 수 없습니다.' };
+
+    const command = rowToObject(found.headers, found.row);
+    const sessionId = String(command.result_ref || '').trim();
+    if (!sessionId) return { success: true, data: [] };
+
+    const stepOrder = {};
+    stepOrder[sessionId] = 5;
+    stepOrder[`${sessionId}-S1`] = 1;
+    stepOrder[`${sessionId}-S2`] = 2;
+    stepOrder[`${sessionId}-S3`] = 3;
+    stepOrder[`${sessionId}-S4`] = 4;
+
+    const logs = readTable('AI_LOG')
+      .filter(r => Object.prototype.hasOwnProperty.call(stepOrder, String(r.run_id || '')))
+      .sort((a, b) => stepOrder[String(a.run_id)] - stepOrder[String(b.run_id)]);
+
+    return {
+      success: true,
+      data: logs.map(r => ({ label: String(r.command || ''), text: String(r.result_summary || '') }))
+    };
+  } catch (err) {
+    return { success: false, message: '협의 기록을 불러오지 못했습니다.' };
   }
 }
 
@@ -956,7 +1084,7 @@ function getCommandDetail(commandId) {
  * commandId로 지정된 딱 한 행만 지금 바로 실행한다. processNextCommand()처럼
  * 시트 전체에서 우선순위가 가장 높은 실행 대기 작업을 고르지 않는다 — 그렇게 하면
  * 다른 프로젝트의 실행 대기 작업이 먼저 실행되어 버릴 수 있기 때문이다.
- * 승인 체인(아래 submitApproval)이 "방금 새로 생성된 그 작업만" 실행하기 위한 함수.
+ * 승인 체인(아래 webApproveAndContinue)이 "방금 새로 생성된 그 작업만" 실행하기 위한 함수.
  */
 function processCommandById_(commandId) {
   const lock = LockService.getScriptLock();
@@ -987,7 +1115,7 @@ function processCommandById_(commandId) {
  *   승인 클릭 → 승인선택 저장 → processApprovals() → (생성됐다면) 그 작업만 즉시 실행 → 최신 상태 반환
  * 폐기는 다음 작업을 만들지 않으므로 이 체인이 발생하지 않는다.
  */
-function submitApproval(commandId, decisionKey, note) {
+function webApproveAndContinue(commandId, decisionKey, note) {
   try {
     const decisionMap = { approve: '승인', revise: '수정', reject: '폐기' };
     const normalizedKey = String(decisionKey || '').trim().toLowerCase();
@@ -1048,8 +1176,8 @@ function submitApproval(commandId, decisionKey, note) {
       reject: '작업이 폐기되었습니다.'
     };
 
-    const currentResult = getCommandDetail(commandId);
-    const nextResult = nextCommandId ? getCommandDetail(nextCommandId) : null;
+    const currentResult = webGetCommand(commandId);
+    const nextResult = nextCommandId ? webGetCommand(nextCommandId) : null;
 
     return {
       success: true,
@@ -1063,46 +1191,38 @@ function submitApproval(commandId, decisionKey, note) {
 }
 
 /**
- * 새 작업 등록. COMMANDS에 실행 대기 상태로 행을 추가한다.
+ * 새 AI 협의 시작. 주제만 입력받아 'AI 협의' 작업을 등록하고, 그 자리에서 바로
+ * 5단계 협의(executeCommandRow_의 DISCUSSION 분기)를 실행한 뒤 최종보고서를 반환한다.
+ * 이 호출 하나가 GPT/Claude를 5번 순서대로 호출하므로 응답까지 시간이 걸릴 수 있다.
  */
-function createNewCommand(payload) {
+function webStartDiscussion(payload) {
   try {
     payload = payload || {};
-    const typeLabel = String(payload.commandType || '').trim();
-    const request = String(payload.request || '').trim();
+    const topic = String(payload.topic || '').trim();
     const priorityLabel = String(payload.priority || '보통').trim();
-    const approvalRequired = payload.approvalRequired !== false;
-
-    const validTypes = ['기획', '검토', '개발', '최종판단', '상태조회'];
     const validPriorities = ['높음', '보통', '낮음'];
 
-    if (validTypes.indexOf(typeLabel) === -1) {
-      return { success: false, message: '작업유형을 선택해주세요.' };
-    }
-    if (!request) {
-      return { success: false, message: '요청내용을 입력해주세요.' };
+    if (!topic) {
+      return { success: false, message: '주제를 입력해주세요.' };
     }
     if (validPriorities.indexOf(priorityLabel) === -1) {
       return { success: false, message: '우선순위를 선택해주세요.' };
     }
 
-    const modelMap = { '기획': 'GPT', '검토': '클로드', '개발': '클로드', '최종판단': 'GPT', '상태조회': '없음' };
-    const assignedModel = modelMap[typeLabel];
-
     const ss = SpreadsheetApp.openById(SHEET_ID);
-    const projectId = getConfig('DEFAULT_PROJECT_ID') || 'PRJ-001';
-    const commandId = makeId('CMD');
+    const projectId = String(payload.projectId || '').trim() || getConfig('DEFAULT_PROJECT_ID') || 'PRJ-001';
+    const commandId = makeId('CMD-DISCUSSION');
 
     appendCommand(ss, {
       command_id: commandId,
       created_at: new Date(),
       project_id: projectId,
-      command_type: typeLabel,
-      request: request,
+      command_type: 'AI 협의',
+      request: topic,
       priority: priorityLabel,
       status: '실행 대기',
-      assigned_model: assignedModel,
-      approval_required: approvalRequired ? '예' : '아니오',
+      assigned_model: 'GPT',
+      approval_required: '예',
       result_summary: '',
       result_ref: '',
       processed_at: '',
@@ -1112,9 +1232,17 @@ function createNewCommand(payload) {
       approval_processed_at: ''
     });
 
-    return getCommandDetail(commandId);
+    try {
+      // 등록 직후 바로 5단계 협의를 실행한다 (다른 실행 대기 작업과 무관하게 이 작업만).
+      processCommandById_(commandId);
+    } catch (execErr) {
+      // 실패해도 오류 내용은 executeCommandRow_ 내부에서 이미 기록되어 있으므로
+      // 아래에서 webGetCommand()로 최신 상태(오류 상태 포함)를 그대로 반환한다.
+    }
+
+    return webGetCommand(commandId);
   } catch (err) {
-    return { success: false, message: '작업 등록 중 오류가 발생했습니다.' };
+    return { success: false, message: 'AI 협의 시작 중 오류가 발생했습니다.' };
   }
 }
 
@@ -1125,13 +1253,13 @@ function createNewCommand(payload) {
 function runCommandNow(commandId) {
   try {
     processCommandById_(commandId);
-    return getCommandDetail(commandId);
+    return webGetCommand(commandId);
   } catch (err) {
     const found = findCommandRow_(commandId);
     const status = found ? normalizeStatus(found.row[found.idx.status]) : '';
     if (status === 'ERROR') {
       // 실행은 시도됐고 실패 내용은 이미 해당 행에 기록되어 있으므로 최신 상태를 그대로 반환한다.
-      return getCommandDetail(commandId);
+      return webGetCommand(commandId);
     }
     return { success: false, message: err.message || '작업 실행 중 오류가 발생했습니다.' };
   }
@@ -1140,7 +1268,7 @@ function runCommandNow(commandId) {
 /**
  * 작업 기록 조회 (필터 + 검색).
  */
-function getCommandHistory(filter) {
+function webGetHistory(filter) {
   try {
     filter = filter || {};
     const statusFilter = filter.status ? normalizeStatus(filter.status) : '';
@@ -1169,7 +1297,7 @@ function getCommandHistory(filter) {
 
     rows.sort((a, b) => toTime_(b.created_at) - toTime_(a.created_at));
 
-    return { success: true, data: rows.slice(0, 200).map(commandToCard_) };
+    return { success: true, data: rows.slice(0, 200).map(r => toWebCommand(r, false)) };
   } catch (err) {
     return { success: false, message: '작업 기록을 불러오지 못했습니다.' };
   }
@@ -1178,7 +1306,7 @@ function getCommandHistory(filter) {
 /**
  * 오류 작업 재실행. 상태를 실행 대기로 되돌린 뒤 그 작업만 processCommandById_()로 실행한다.
  */
-function retryCommand(commandId) {
+function webRetryCommand(commandId) {
   try {
     const found = findCommandRow_(commandId);
     if (!found) return { success: false, message: '작업을 찾을 수 없습니다.' };
@@ -1207,7 +1335,7 @@ function retryCommand(commandId) {
       // 실패해도 오류 내용은 executeCommandRow_ 내부에서 이미 시트에 기록됨
     }
 
-    return getCommandDetail(commandId);
+    return webGetCommand(commandId);
   } catch (err) {
     return { success: false, message: '재실행 중 오류가 발생했습니다.' };
   }

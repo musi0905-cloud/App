@@ -188,18 +188,12 @@
   }
 
   function roleBadgeText(commandType, assignedModel) {
+    // AI 협의는 GPT/Claude가 함께 5단계로 협의한 결과이므로 단일 모델 이름을 앞에 붙이지 않는다.
+    if (commandType === 'AI 협의') return 'AI 협의 (GPT + Claude)';
     const m = { 'GPT': 'GPT', '클로드': 'Claude', '없음': '' }[assignedModel];
     const label = m === undefined ? assignedModel : m;
     return label ? (label + ' ' + commandType) : commandType;
   }
-
-  const TYPE_FLOW_HINT = {
-    '기획': '담당 AI: GPT',
-    '검토': '담당 AI: Claude',
-    '개발': '담당 AI: Claude',
-    '최종판단': '담당 AI: GPT → Claude → GPT',
-    '상태조회': '담당 AI: 없음 (AI를 호출하지 않고 현재 상태만 조회합니다)'
-  };
 
   // ============================================================
   // 앱 상태 / 라우팅
@@ -287,7 +281,7 @@
     setLoading(summaryEl, 1);
     setLoading(pendingEl, 3);
 
-    callServer('getDashboardData').then(function (res) {
+    callServer('webGetDashboard').then(function (res) {
       if (!res || !res.success) {
         setErrorState(summaryEl, '데이터를 불러오지 못했습니다.', function () { loadHome(); });
         pendingEl.innerHTML = '';
@@ -323,7 +317,7 @@
       triggerBtn.disabled = true;
       triggerBtn.textContent = busyText[decisionKey] || '처리 중...';
     }
-    return callServer('submitApproval', commandId, decisionKey, note || '').then(function (res) {
+    return callServer('webApproveAndContinue', commandId, decisionKey, note || '').then(function (res) {
       if (triggerBtn) {
         triggerBtn.disabled = false;
         triggerBtn.textContent = originalText;
@@ -407,7 +401,7 @@
       const id = retryBtn.getAttribute('data-command-id');
       retryBtn.disabled = true;
       retryBtn.textContent = '재실행 중...';
-      callServer('retryCommand', id).then(function (res) {
+      callServer('webRetryCommand', id).then(function (res) {
         if (!res || !res.success) {
           toast((res && res.message) || '재실행 중 오류가 발생했습니다.', true);
           retryBtn.disabled = false;
@@ -437,51 +431,84 @@
       });
       return;
     }
+
+    const discussionToggle = e.target.closest('.act-discussion-log-toggle');
+    if (discussionToggle) {
+      const id = discussionToggle.getAttribute('data-command-id');
+      const box = document.querySelector('[data-discussion-log="' + CSS.escape(id) + '"]');
+      if (!box) return;
+
+      if (!box.classList.contains('hidden')) {
+        box.classList.add('hidden');
+        return;
+      }
+
+      box.classList.remove('hidden');
+      if (box.dataset.loaded === 'true') return;
+
+      setLoading(box, 2);
+      callServer('getDiscussionLog', id).then(function (res) {
+        if (!res || !res.success) {
+          setErrorState(box, '협의 기록을 불러오지 못했습니다.', function () {
+            box.dataset.loaded = '';
+            discussionToggle.click();
+            discussionToggle.click();
+          });
+          return;
+        }
+        const steps = res.data || [];
+        if (!steps.length) {
+          setEmpty(box, '협의 기록이 없습니다', '');
+        } else {
+          box.innerHTML = steps.map(function (s) {
+            return '<div class="discussion-step">' +
+              '<div class="detail-section-title">' + escapeHtml(s.label) + '</div>' +
+              '<div class="detail-body">' + (formatResultText(s.text) || '<p>내용 없음</p>') + '</div>' +
+              '</div>';
+          }).join('');
+        }
+        box.dataset.loaded = 'true';
+      });
+      return;
+    }
   });
 
   // ============================================================
   // 새 작업
   // ============================================================
 
+  // AI 5단계 협의는 GPT/Claude를 순서대로 5번 호출하므로 응답까지 1~2분 정도 걸릴 수 있다.
+  // 그 동안 버튼을 계속 잠가 중복 클릭을 막고, 진행 중임을 명확히 알린다.
   function initNewCommandForm() {
-    const typeSelect = document.getElementById('field-type');
-    const hint = document.getElementById('field-type-hint');
-    typeSelect.addEventListener('change', function () {
-      hint.textContent = TYPE_FLOW_HINT[typeSelect.value] || '';
-    });
-
     const form = document.getElementById('new-command-form');
     const submitBtn = document.getElementById('new-command-submit');
+    const originalSubmitText = submitBtn.textContent;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const commandType = typeSelect.value;
-      const request = document.getElementById('field-request').value.trim();
+      const topic = document.getElementById('field-topic').value.trim();
       const priority = document.getElementById('field-priority').value;
-      const approvalRequired = document.getElementById('field-approval').checked;
+      const projectId = document.getElementById('field-project').value.trim();
 
-      if (!commandType) { toast('작업유형을 선택해주세요.', true); return; }
-      if (!request) { toast('요청내용을 입력해주세요.', true); return; }
+      if (!topic) { toast('주제를 입력해주세요.', true); return; }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = '등록 중...';
+      submitBtn.textContent = 'AI 협의 진행 중... (1~2분 소요)';
 
-      callServer('createNewCommand', { commandType: commandType, request: request, priority: priority, approvalRequired: approvalRequired })
+      callServer('webStartDiscussion', { topic: topic, priority: priority, projectId: projectId })
         .then(function (res) {
           submitBtn.disabled = false;
-          submitBtn.textContent = '작업 등록';
+          submitBtn.textContent = originalSubmitText;
 
           if (!res || !res.success) {
-            toast((res && res.message) || '작업 등록 중 오류가 발생했습니다.', true);
+            toast((res && res.message) || 'AI 협의 시작 중 오류가 발생했습니다.', true);
             return;
           }
 
-          toast('작업이 등록되었습니다.');
+          toast('AI 협의가 끝났습니다. 최종보고서를 확인해주세요.');
           form.reset();
           document.getElementById('field-priority').value = '보통';
-          document.getElementById('field-approval').checked = true;
-          hint.textContent = '';
 
           openDetail(res.data.commandId, 'new');
         });
@@ -496,10 +523,8 @@
   const EXTRA_FILTERS = [
     { key: 'model', value: 'GPT', label: 'GPT' },
     { key: 'model', value: '클로드', label: 'Claude' },
-    { key: 'type', value: '기획', label: '기획' },
-    { key: 'type', value: '검토', label: '검토' },
-    { key: 'type', value: '개발', label: '개발' },
-    { key: 'type', value: '최종판단', label: '최종판단' }
+    { key: 'type', value: 'AI 협의', label: 'AI 협의' },
+    { key: 'type', value: '개발', label: '개발' }
   ];
 
   function initHistoryFilters() {
@@ -561,7 +586,7 @@
   function loadHistory() {
     const listEl = document.getElementById('history-list');
     setLoading(listEl, 4);
-    callServer('getCommandHistory', {
+    callServer('webGetHistory', {
       status: state.history.status,
       type: state.history.type,
       model: state.history.model,
@@ -656,7 +681,7 @@
       bar.innerHTML =
         '<button class="btn btn-outline act-reject" data-command-id="' + escapeHtml(detail.commandId) + '">폐기</button>' +
         '<button class="btn btn-outline act-revise-toggle" data-command-id="' + escapeHtml(detail.commandId) + '">수정 요청</button>' +
-        '<button class="btn btn-primary act-approve" data-command-id="' + escapeHtml(detail.commandId) + '">승인</button>';
+        '<button class="btn btn-primary act-approve" data-command-id="' + escapeHtml(detail.commandId) + '">승인하고 다음 단계 실행</button>';
     } else if (detail.status === '오류') {
       bar.classList.remove('hidden');
       bar.innerHTML = '<button class="btn btn-primary btn-block act-retry" data-command-id="' + escapeHtml(detail.commandId) + '">다시 실행</button>';
@@ -674,7 +699,7 @@
     setLoading(el, 2);
     document.getElementById('detail-actionbar').classList.add('hidden');
 
-    callServer('getCommandDetail', commandId).then(function (res) {
+    callServer('webGetCommand', commandId).then(function (res) {
       if (!res || !res.success) {
         setErrorState(el, '데이터를 불러오지 못했습니다.', function () { loadDetail(commandId); });
         return;
@@ -699,9 +724,16 @@
       html += '</div>';
 
       html += '<div class="detail-block">';
-      html += '<div class="detail-section-title">전체 결과</div>';
+      html += '<div class="detail-section-title">' + (d.commandType === 'AI 협의' ? '최종보고서' : '전체 결과') + '</div>';
       html += '<div class="detail-body">' + (formatResultText(d.result) || '<p>아직 결과가 없습니다.</p>') + '</div>';
       html += '</div>';
+
+      if (d.commandType === 'AI 협의') {
+        html += '<div class="detail-block">';
+        html += '<button class="btn btn-outline btn-block act-discussion-log-toggle" data-command-id="' + escapeHtml(d.commandId) + '">협의 기록 보기 (1~4단계)</button>';
+        html += '<div class="discussion-log hidden" data-discussion-log="' + escapeHtml(d.commandId) + '"></div>';
+        html += '</div>';
+      }
 
       if (d.error) {
         html += '<div class="detail-block">';
