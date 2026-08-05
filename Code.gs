@@ -1,6 +1,12 @@
 const SHEET_ID = '1A86zHegF2MRKS0EiqToKvBR7LKiOSMBOcXGsC8tcpvg';
 const CONTEXT_VERSION = '2.0';
 
+// AI 사업 자동개발 파이프라인이 쓰는 별도 스프레드시트/Drive 루트 폴더.
+// 기존 COMMANDS 자동화(SHEET_ID)와는 다른 스프레드시트이며, "AI 사업 자동개발 통합 관리대장"의
+// 설정 탭에 기록된 값과 동일하다.
+const LEDGER_SHEET_ID = '102OeiqLnUXkSdXBEvj49t1_v_-ziVv9YBAZzZKUf_ac';
+const PIPELINE_ROOT_FOLDER_ID = '1BObGd5voJSf8B7sabJyrpgG4aLccHWjX';
+
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('AI 사업 운영')
     .addItem('1. 한글 화면 적용', 'configureKoreanUI')
@@ -536,6 +542,45 @@ const FINAL_REPORT_INSTRUCTIONS_ = `
 ## 다음 단계
 ## 사용자 승인 요청`;
 
+// 5단계 AI 협의(GPT 1차 기획 → Claude 반론 → GPT 수정 기획 → Claude 최종 게이트 → GPT 최종 통합보고서).
+// executeCommandRow_()의 DISCUSSION 분기와 사업 자동개발 파이프라인의 runAiDiscussion()이 함께 재사용한다.
+// onStep(n, label, model, text)는 각 단계가 끝날 때마다 호출되는 선택적 콜백으로, 로그 기록에 쓴다.
+function runFiveStepDiscussion_(topic, context, onStep) {
+  const log = onStep || function () {};
+
+  const step1 = callOpenAI(
+    context.gpt + '\n\n이것은 5단계 AI 협의의 1단계(GPT 1차 기획)다. 사업 아이템, 목표 고객, 핵심 가치, 수익 가능성을 중심으로 초안을 작성하라.',
+    topic
+  );
+  log(1, 'GPT 1차 기획', 'GPT', step1);
+
+  const step2 = callClaude(
+    context.claude + '\n\n이것은 5단계 AI 협의의 2단계(Claude 반론)다. GPT 1차 기획의 기술·UX·정책·보안·수익 관점 허점과 위험을 비판적으로 지적하라.',
+    `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}`
+  );
+  log(2, 'Claude 반론', 'CLAUDE', step2);
+
+  const step3 = callOpenAI(
+    context.gpt + '\n\n이것은 5단계 AI 협의의 3단계(GPT 수정 기획)다. Claude의 반론을 반영해 기획을 수정하라.',
+    `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}\n\n[Claude 반론]\n${step2}`
+  );
+  log(3, 'GPT 수정 기획', 'GPT', step3);
+
+  const step4 = callClaude(
+    context.claude + '\n\n이것은 5단계 AI 협의의 4단계(Claude 최종 게이트)다. 수정 기획이 개발 착수 가능한 수준인지 진행/수정/중단 중 하나로 판정하고 근거를 제시하라.',
+    `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}`
+  );
+  log(4, 'Claude 최종 게이트', 'CLAUDE', step4);
+
+  const finalReport = callOpenAI(
+    context.gpt + FINAL_REPORT_INSTRUCTIONS_,
+    `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}\n\n[Claude 최종 게이트 판정]\n${step4}`
+  );
+  log(5, 'GPT 최종 통합보고서', 'GPT', finalReport);
+
+  return { step1, step2, step3, step4, finalReport };
+}
+
 function executeCommandRow_(sheet, headers, idx, sheetRow, command) {
   updateCommand(sheet, sheetRow, idx, { status: '처리 중', error: '' });
 
@@ -564,55 +609,18 @@ function executeCommandRow_(sheet, headers, idx, sheetRow, command) {
       const review = callClaude(context.claude, `다음 GPT 초기안을 비판적으로 검토하라.\n\n[요청]\n${command.request}\n\n[GPT 초기안]\n${first}`);
       result = callOpenAI(context.gpt, `최종 의사결정안을 작성하라.\n\n[원 요청]\n${command.request}\n\n[GPT 초기안]\n${first}\n\n[Claude 검토]\n${review}`);
     } else if (type === 'DISCUSSION') {
-      // 5단계 AI 협의: GPT 1차 기획 → Claude 반론 → GPT 수정 기획 → Claude 최종 게이트 → GPT 최종 통합보고서.
-      // 사용자에게는 마지막 통합보고서(result)만 승인 화면에 보이고, 1~4단계는 AI_LOG에만 남는다.
+      // 5단계 AI 협의 로직은 runFiveStepDiscussion_()으로 추출되어 있다 (사업 자동개발
+      // 파이프라인의 runAiDiscussion()도 동일한 함수를 재사용해 프롬프트를 중복시키지 않는다).
       modelsCalled = 'GPT→CLAUDE→GPT→CLAUDE→GPT';
       const topic = command.request;
-
-      const step1 = callOpenAI(
-        context.gpt + '\n\n이것은 5단계 AI 협의의 1단계(GPT 1차 기획)다. 사업 아이템, 목표 고객, 핵심 가치, 수익 가능성을 중심으로 초안을 작성하라.',
-        topic
-      );
-      appendAiLog({
-        run_id: `${runId}-S1`, timestamp: started, slack_user: '', command: 'AI 협의 1단계 · GPT 1차 기획',
-        original_request: topic, models_called: 'GPT', result_summary: step1, token_or_cost: '',
-        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+      const steps = runFiveStepDiscussion_(topic, context, function (n, label, model, text) {
+        appendAiLog({
+          run_id: `${runId}-S${n}`, timestamp: started, slack_user: '', command: `AI 협의 ${n}단계 · ${label}`,
+          original_request: topic, models_called: model, result_summary: text, token_or_cost: '',
+          execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
+        });
       });
-
-      const step2 = callClaude(
-        context.claude + '\n\n이것은 5단계 AI 협의의 2단계(Claude 반론)다. GPT 1차 기획의 기술·UX·정책·보안·수익 관점 허점과 위험을 비판적으로 지적하라.',
-        `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}`
-      );
-      appendAiLog({
-        run_id: `${runId}-S2`, timestamp: started, slack_user: '', command: 'AI 협의 2단계 · Claude 반론',
-        original_request: topic, models_called: 'CLAUDE', result_summary: step2, token_or_cost: '',
-        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
-      });
-
-      const step3 = callOpenAI(
-        context.gpt + '\n\n이것은 5단계 AI 협의의 3단계(GPT 수정 기획)다. Claude의 반론을 반영해 기획을 수정하라.',
-        `[주제]\n${topic}\n\n[GPT 1차 기획]\n${step1}\n\n[Claude 반론]\n${step2}`
-      );
-      appendAiLog({
-        run_id: `${runId}-S3`, timestamp: started, slack_user: '', command: 'AI 협의 3단계 · GPT 수정 기획',
-        original_request: topic, models_called: 'GPT', result_summary: step3, token_or_cost: '',
-        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
-      });
-
-      const step4 = callClaude(
-        context.claude + '\n\n이것은 5단계 AI 협의의 4단계(Claude 최종 게이트)다. 수정 기획이 개발 착수 가능한 수준인지 진행/수정/중단 중 하나로 판정하고 근거를 제시하라.',
-        `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}`
-      );
-      appendAiLog({
-        run_id: `${runId}-S4`, timestamp: started, slack_user: '', command: 'AI 협의 4단계 · Claude 최종 게이트',
-        original_request: topic, models_called: 'CLAUDE', result_summary: step4, token_or_cost: '',
-        execution_status: 'SUCCESS', error: '', context_version: CONTEXT_VERSION
-      });
-
-      result = callOpenAI(
-        context.gpt + FINAL_REPORT_INSTRUCTIONS_,
-        `[주제]\n${topic}\n\n[GPT 수정 기획]\n${step3}\n\n[Claude 최종 게이트 판정]\n${step4}`
-      );
+      result = steps.finalReport;
     } else if (type === 'STATUS') {
       modelsCalled = 'NONE';
       result = buildStatusReport(projectId);
@@ -852,8 +860,10 @@ function appendAiLog(record) {
   sheet.appendRow(headers.map(h => record[canonicalHeader(String(h).trim())] ?? ''));
 }
 
-function readTable(sheetName) {
-  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(sheetName);
+// ssId 생략 시 기존과 동일하게 SHEET_ID(COMMANDS 스프레드시트)를 읽는다.
+// 사업 자동개발 파이프라인은 ssId에 LEDGER_SHEET_ID를 넘겨 같은 함수로 다른 스프레드시트를 읽는다.
+function readTable(sheetName, ssId) {
+  const sheet = SpreadsheetApp.openById(ssId || SHEET_ID).getSheetByName(sheetName);
   if (!sheet) throw new Error(`시트를 찾을 수 없습니다: ${sheetName}`);
   const values = sheet.getDataRange().getValues();
   if (values.length < 2) return [];
@@ -861,7 +871,7 @@ function readTable(sheetName) {
   return values.slice(1).filter(row => row.some(v => v !== '')).map(row => rowToObject(headers, row));
 }
 
-function findOne(sheetName, predicate) { return readTable(sheetName).find(predicate); }
+function findOne(sheetName, predicate, ssId) { return readTable(sheetName, ssId).find(predicate); }
 function getConfig(key) {
   const row = findOne('CONFIG', r => r.config_key === key && truthy(r.active));
   return row ? String(row.config_value) : '';
@@ -1397,5 +1407,1004 @@ function getAppConfigForClient() {
     };
   } catch (err) {
     return { success: false, message: '설정 정보를 불러오지 못했습니다.' };
+  }
+}
+
+// ============================================================
+// AI 사업 자동개발 파이프라인 (통합 관리대장 연동, 이 아래부터 신규 추가)
+//
+// 위 COMMANDS 기반 자동화(SHEET_ID)와는 완전히 별개인 "AI 사업 자동개발 통합 관리대장"
+// (LEDGER_SHEET_ID) 스프레드시트와 Drive 폴더(PIPELINE_ROOT_FOLDER_ID)를 다룬다.
+// GPT/Claude 호출 자체는 위에서 이미 만든 callOpenAI/callClaude/runFiveStepDiscussion_/
+// DEV_SPEC_INSTRUCTIONS_를 그대로 재사용하고, 시트 입출력은 readTable/findOne/updateCommand/
+// rowToObject/indexMap/makeId/truncate/formatDateTime_/toTime_ 등 기존 범용 함수를 그대로 쓴다
+// (readTable/findOne은 이번에 두 번째 인자로 스프레드시트 ID를 받도록만 확장했다 — 인자를
+// 생략하면 기존과 동일하게 SHEET_ID를 읽으므로 기존 호출부는 전혀 영향받지 않는다).
+//
+// ⚠️ 헤더 이름 충돌 주의: canonicalHeader()가 COMMANDS 시트용으로 담당AI→assigned_model,
+// 오류내용→error, 진행상태→status, 승인선택→approval_decision, 수정의견→approval_note,
+// 처리일시→processed_at을 매핑해 두고 있고, 이 함수는 시트를 가리지 않고 모든 readTable/
+// indexMap 호출에 적용된다. 관리대장의 프로젝트관리(담당AI/오류내용), 승인대기(담당AI/
+// 승인선택/수정의견/처리일시), 개발로그(진행상태/오류내용) 탭에 같은 이름의 헤더가 있어서,
+// 아래 코드에서는 이 6개 필드만 한글 키 대신 위 영문 canonical 키로 읽고 쓴다. 그 외 필드는
+// canonicalHeader 매핑표에 없는 이름이라 헤더 텍스트 그대로 키가 된다.
+// ============================================================
+
+function getPipelineFolder_(subfolderName) {
+  const root = DriveApp.getFolderById(PIPELINE_ROOT_FOLDER_ID);
+  const existing = root.getFoldersByName(subfolderName);
+  if (existing.hasNext()) return existing.next();
+  return root.createFolder(subfolderName);
+}
+
+// COMMANDS 전용인 appendCommand()와 달리 어떤 시트에도 쓸 수 있는 범용 버전.
+// canonicalHeader()를 거치지 않고 시트 헤더 텍스트를 그대로 record의 키로 사용한다.
+function appendRowToSheet_(sheet, record) {
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  sheet.appendRow(headers.map(h => record[String(h).trim()] ?? ''));
+}
+
+function getLedgerSetting_(key) {
+  const row = findOne('설정', r => r['설정키'] === key, LEDGER_SHEET_ID);
+  return row ? String(row['설정값'] || '') : '';
+}
+
+function findLedgerProjectRow_(projectId) {
+  const ss = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+  const sheet = ss.getSheetByName('프로젝트관리');
+  const values = sheet.getDataRange().getValues();
+  if (values.length < 2) return null;
+  const headers = values[0];
+  const idx = indexMap(headers);
+  if (idx.project_id === undefined) return null;
+  for (let i = 1; i < values.length; i++) {
+    if (String(values[i][idx.project_id] || '').trim() === String(projectId || '').trim()) {
+      return { sheet, headers, idx, rowNumber: i + 1, row: values[i] };
+    }
+  }
+  return null;
+}
+
+function updateLedgerProject_(found, patch) {
+  updateCommand(found.sheet, found.rowNumber, found.idx, patch);
+}
+
+function findPendingApprovalGate_(projectId, gateLabel) {
+  const ss = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+  const sheet = ss.getSheetByName('승인대기');
+  const values = sheet.getDataRange().getValues();
+  if (values.length < 2) return null;
+  const headers = values[0];
+  const idx = indexMap(headers);
+  for (let i = values.length - 1; i >= 1; i--) {
+    const row = values[i];
+    if (String(row[idx.project_id] || '').trim() === String(projectId).trim() &&
+        String(row[idx['승인단계']] || '').trim() === gateLabel &&
+        String(row[idx['처리상태']] || '').trim() === '대기') {
+      return { sheet, headers, idx, rowNumber: i + 1, row };
+    }
+  }
+  return null;
+}
+
+function createApprovalGate_(projectId, gateLabel, summary, actor, resultLink) {
+  const ss = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+  const sheet = ss.getSheetByName('승인대기');
+  const approvalId = makeId('APR');
+  appendRowToSheet_(sheet, {
+    '승인번호': approvalId,
+    '프로젝트번호': projectId,
+    '승인단계': gateLabel,
+    '요약': truncate(summary, 500),
+    '담당AI': actor,
+    '요청일시': new Date(),
+    '승인선택': '',
+    '수정의견': '',
+    '처리상태': '대기',
+    '결과링크': resultLink || '',
+    '처리일시': '',
+    '비고': ''
+  });
+  return approvalId;
+}
+
+function resolveApprovalGate_(gate, decisionText, note) {
+  updateCommand(gate.sheet, gate.rowNumber, gate.idx, {
+    approval_decision: decisionText,
+    approval_note: note || '',
+    '처리상태': '처리완료',
+    processed_at: new Date()
+  });
+}
+
+function appendDevLog_(projectId, stage, actor, work, status, generatedFiles, resultLink, testResult, errorText, nextAction) {
+  const ss = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+  const sheet = ss.getSheetByName('개발로그');
+  appendRowToSheet_(sheet, {
+    '로그번호': makeId('LOG'),
+    '프로젝트번호': projectId,
+    '일시': new Date(),
+    '단계': stage,
+    '수행주체': actor,
+    '작업내용': work,
+    '진행상태': status,
+    '생성파일': generatedFiles || '',
+    '결과링크': resultLink || '',
+    '테스트결과': testResult || '',
+    '오류내용': errorText || '',
+    '다음작업': nextAction || ''
+  });
+}
+
+// projectId를 찾지 못한 예외적인 경우가 아니라면, 각 파이프라인 함수의 catch 블록에서
+// 공통으로 사용하는 오류 기록 헬퍼. (담당AI/오류내용 필드 이름 충돌에 안전하게 대응한다.)
+function markProjectError_(projectId, stage, message) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (found) {
+      updateLedgerProject_(found, {
+        '현재단계': '오류',
+        '전체상태': stage + ' 실패',
+        error: truncate(message, 2000),
+        '최신업데이트': new Date()
+      });
+    }
+    appendDevLog_(projectId, stage, 'Claude', stage + ' 실행 실패', '오류', '', '', '', truncate(message, 2000), '');
+  } catch (e2) {
+    // 오류 기록 자체가 실패해도 원래 오류 메시지는 호출부에서 그대로 사용자에게 반환된다.
+  }
+}
+
+function extractDriveIdFromUrl_(url) {
+  const s = String(url || '');
+  const m = s.match(/\/d\/([a-zA-Z0-9_-]+)/) || s.match(/folders\/([a-zA-Z0-9_-]+)/) || s.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  return m ? m[1] : '';
+}
+
+function fetchDocTextFromUrl_(url) {
+  const id = extractDriveIdFromUrl_(url);
+  if (!id) return '';
+  try {
+    return DocumentApp.openById(id).getBody().getText();
+  } catch (e) {
+    return '';
+  }
+}
+
+function fetchFolderFilesSummary_(folderUrl) {
+  const folderId = extractDriveIdFromUrl_(folderUrl);
+  if (!folderId) return '(생성된 파일을 찾을 수 없습니다)';
+  let folder;
+  try {
+    folder = DriveApp.getFolderById(folderId);
+  } catch (e) {
+    return '(생성된 파일을 찾을 수 없습니다)';
+  }
+  const files = folder.getFiles();
+  let summary = '';
+  let count = 0;
+  while (files.hasNext() && count < 20) {
+    const file = files.next();
+    if (file.getName() === 'source.zip') continue;
+    let content = '';
+    try {
+      content = file.getBlob().getDataAsString();
+    } catch (e) {
+      continue;
+    }
+    summary += `\n\n----- ${file.getName()} -----\n${truncate(content, 1500)}`;
+    count++;
+  }
+  return summary || '(요약할 파일이 없습니다)';
+}
+
+function saveTextAsDoc_(folder, title, text) {
+  const doc = DocumentApp.create(title);
+  doc.getBody().setText(text);
+  doc.saveAndClose();
+  const file = DriveApp.getFileById(doc.getId());
+  const parents = file.getParents();
+  while (parents.hasNext()) {
+    const p = parents.next();
+    if (p.getId() !== folder.getId()) p.removeFile(file);
+  }
+  folder.addFile(file);
+  return file.getUrl();
+}
+
+function nextVersion_(current) {
+  const m = String(current || '').match(/v(\d+)\.(\d+)/i);
+  if (!m) return 'v0.1';
+  const major = parseInt(m[1], 10);
+  const minor = parseInt(m[2], 10) + 1;
+  return `v${major}.${minor}`;
+}
+
+// Claude 코드 생성 응답을 "===== FILE: 경로 =====\n(내용)\n===== END FILE =====" 형식에서 파싱한다.
+function parseGeneratedFiles_(text) {
+  const files = [];
+  const re = /=====\s*FILE:\s*(.+?)\s*=====([\s\S]*?)=====\s*END FILE\s*=====/g;
+  let m;
+  while ((m = re.exec(String(text || ''))) !== null) {
+    const path = m[1].trim();
+    const content = m[2].replace(/^\n/, '').replace(/\n$/, '');
+    if (path) files.push({ path, content });
+  }
+  return files;
+}
+
+function saveGeneratedFiles_(folder, files) {
+  files.forEach(f => {
+    folder.createFile(Utilities.newBlob(f.content, 'text/plain', f.path));
+  });
+  const blobs = files.map(f => Utilities.newBlob(f.content, 'text/plain', f.path));
+  const zipBlob = Utilities.zip(blobs, 'source.zip');
+  folder.createFile(zipBlob);
+  return folder.getUrl();
+}
+
+// Apps Script API 배포용으로 폴더 안 .gs/.html/appsscript.json 파일을 읽어온다.
+// appsscript.json이 없으면 "나만 접근 가능"을 기본값으로 하는 매니페스트를 자동으로 채워 넣는다.
+function readAppsScriptFilesFromFolder_(folder) {
+  const files = folder.getFiles();
+  const result = [];
+  let hasManifest = false;
+
+  while (files.hasNext()) {
+    const file = files.next();
+    const name = file.getName();
+    if (name === 'source.zip') continue;
+
+    if (/\.gs$/i.test(name)) {
+      result.push({ name: name.replace(/\.gs$/i, ''), type: 'SERVER_JS', source: file.getBlob().getDataAsString() });
+    } else if (/\.html$/i.test(name)) {
+      result.push({ name: name.replace(/\.html$/i, ''), type: 'HTML', source: file.getBlob().getDataAsString() });
+    } else if (/^appsscript\.json$/i.test(name)) {
+      result.push({ name: 'appsscript', type: 'JSON', source: file.getBlob().getDataAsString() });
+      hasManifest = true;
+    }
+  }
+
+  if (!hasManifest) {
+    result.push({
+      name: 'appsscript',
+      type: 'JSON',
+      source: JSON.stringify({
+        timeZone: 'Asia/Seoul',
+        dependencies: {},
+        exceptionLogging: 'STACKDRIVER',
+        runtimeVersion: 'V8',
+        webapp: { executeAs: 'USER_DEPLOYING', access: 'MYSELF' }
+      })
+    });
+  }
+
+  return result;
+}
+
+const PIPELINE_GPT_ROLE_ = `[GPT 역할]
+- 사업성, 시장성, 고객문제, 수익모델, 우선순위를 판단한다.
+- Claude 검토를 반영한 최종 의사결정안을 작성한다.
+- 실제개발 결과의 제품 적합성과 요구사항 충족 여부를 검토한다.
+- 확인되지 않은 사실을 단정하지 말고, 사용자 승인 없이 결정을 확정하지 않는다.`;
+
+const PIPELINE_CLAUDE_ROLE_ = `[Claude 역할]
+- 기술, UX, 보안, 정책, 개인정보, 구현 가능성을 검토한다.
+- 개발명세를 작성하고, 승인 후 실제 코드와 파일을 생성한다.
+- 정적검토, 테스트, 오류수정, 배포 준비를 담당한다.
+- 막연한 비판이나 불필요한 기능 확장, 승인되지 않은 정식배포를 하지 않는다.`;
+
+function buildPipelineContext_(businessName, businessContent) {
+  const base = `[사업 정보]\n- 사업명: ${businessName}\n- 사업내용: ${businessContent}`;
+  return {
+    gpt: `${base}\n\n${PIPELINE_GPT_ROLE_}`,
+    claude: `${base}\n\n${PIPELINE_CLAUDE_ROLE_}`
+  };
+}
+
+const CODE_GEN_INSTRUCTIONS_ = `
+
+당신은 지금부터 승인된 개발명세를 바탕으로 실제 실행 가능한 코드를 생성한다.
+이 코드는 Google Apps Script API를 통해 그대로 새 프로젝트에 업로드되어 테스트 배포된다.
+반드시 아래 조건을 지켜라.
+
+- Google Apps Script + HTML Service로 동작하는 웹앱만 생성한다 (React/Vue/Next.js, npm 빌드, 외부 서버, 외부 데이터베이스 금지).
+- Code.gs 파일에는 반드시 doGet() 함수가 있어야 하고, HtmlService.createTemplateFromFile('Index')를 evaluate()해서 반환해야 한다.
+- HTML 파일에서 다른 HTML 파일을 포함할 때는 <?!= include('파일명'); ?> 형식을 쓰고, Code.gs에 include(filename) 함수도 포함하라.
+- API 키, 비밀번호, 개인정보 등 민감정보를 코드에 절대 하드코딩하지 않는다.
+- 모든 사용자 화면 문구는 한글로 작성한다.
+- 각 파일은 아래 형식으로 정확히 구분해서 출력하고, 이 형식 밖에는 어떤 설명도 쓰지 마라.
+
+===== FILE: Code.gs =====
+(코드 전체)
+===== END FILE =====
+
+===== FILE: Index.html =====
+(코드 전체)
+===== END FILE =====
+
+개발명세에서 필요하다고 판단되는 다른 파일(Styles.html, Scripts.html 등)도 같은 형식으로 이어서 작성하라.`;
+
+const PRODUCT_REVIEW_INSTRUCTIONS_ = `
+
+이것은 실제개발 완료 후 GPT의 제품 검토 단계다.
+생성된 코드가 개발명세와 승인된 최종보고서의 요구사항을 충족하는지 검토하라.
+
+## 요구사항 충족 여부
+## 누락되거나 미흡한 부분
+## 제품 관점 위험
+## 권고 조치
+## 종합 판정 (진행 / 수정 필요 / 중단)`;
+
+const TEST_REPORT_INSTRUCTIONS_ = `
+
+이것은 Claude의 정적검토 및 테스트 단계다. 실제 코드를 실행하지 못하는 환경이므로,
+코드를 직접 읽고 정적으로 분석해 아래 항목을 작성하라. 항목마다 통과/실패/확인 필요 중 하나를 표시하라.
+
+## 정적검토 결과
+## 핵심 사용자 흐름별 테스트 시나리오와 예상 결과
+## 발견된 오류 및 수정 내역
+## 알려진 제한사항
+## 전체 결과 요약 (전체 통과 / 부분 통과 / 실패)
+
+주의: 이 테스트는 AI가 코드를 읽고 정적으로 분석한 결과이며, 실제 브라우저 실행 테스트를 대체하지 않는다.
+실제 배포 전 사용자가 테스트 URL에서 직접 확인해야 한다는 점을 마지막 줄에 명시하라.`;
+
+function toWebProject_(p) {
+  return {
+    projectId: p.project_id || '',
+    businessName: String(p['사업명'] || ''),
+    businessContentPreview: truncate(p['사업내용'], 160),
+    currentStage: String(p['현재단계'] || ''),
+    overallStatus: String(p['전체상태'] || ''),
+    finalVerdict: String(p['최종판정'] || ''),
+    assignedModel: String(p.assigned_model || ''),
+    approvalStatus: String(p['승인상태'] || ''),
+    version: String(p['버전'] || ''),
+    updatedAt: formatDateTime_(p['최신업데이트'] || p['등록일시'])
+  };
+}
+
+// ---------- 12번 항목이 요구하는 자동화 함수 ----------
+
+function createBusinessProject(payload) {
+  try {
+    payload = payload || {};
+    const businessName = String(payload.businessName || '').trim();
+    const businessContent = String(payload.businessContent || '').trim();
+    if (!businessName) return { success: false, message: '사업명을 입력해주세요.' };
+    if (!businessContent) return { success: false, message: '사업내용을 입력해주세요.' };
+
+    const ss = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+    const sheet = ss.getSheetByName('프로젝트관리');
+    const projectId = makeId('PRJ');
+    const now = new Date();
+
+    appendRowToSheet_(sheet, {
+      '프로젝트번호': projectId,
+      '등록일시': now,
+      '사업명': businessName,
+      '사업내용': businessContent,
+      '현재단계': '아이디어 접수',
+      '전체상태': '등록 완료',
+      '최종판정': '',
+      '담당AI': '',
+      '승인상태': '',
+      '최종보고서링크': '', '개발명세링크': '', '개발결과물링크': '', '테스트보고서링크': '',
+      '테스트웹앱링크': '', '정식배포링크': '', '소스프로젝트링크': '',
+      '버전': '', '테스트결과': '', '오류내용': '',
+      '최신업데이트': now, '비고': ''
+    });
+
+    saveTextAsDoc_(getPipelineFolder_('01_사업입력'), `${projectId}_${businessName}_사업입력`,
+      `프로젝트번호: ${projectId}\n등록일시: ${formatDateTime_(now)}\n\n[사업명]\n${businessName}\n\n[사업내용]\n${businessContent}`);
+
+    appendDevLog_(projectId, '아이디어 접수', '사용자', '사업내용 등록', '완료', '', '', '', '', 'AI 협의 시작');
+
+    try {
+      runAiDiscussion(projectId);
+    } catch (discussionErr) {
+      // 실패해도 프로젝트 자체는 등록됐고, 오류는 runAiDiscussion 내부에서 이미 기록된다.
+    }
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '사업 등록 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function runAiDiscussion(projectId, topicOverride) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+    const topic = topicOverride || project['사업내용'];
+
+    updateLedgerProject_(found, { '현재단계': 'AI 협의 중', '전체상태': 'GPT·Claude 5단계 협의 진행 중', '최신업데이트': new Date() });
+
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+    const steps = runFiveStepDiscussion_(topic, context, function (n, label, model) {
+      appendDevLog_(projectId, 'AI 협의', model === 'GPT' ? 'GPT' : 'Claude', `${n}단계 · ${label}`, '완료', '', '', '', '', '');
+    });
+
+    const folder = getPipelineFolder_('02_AI협의결과');
+    const reportUrl = saveTextAsDoc_(folder, `${projectId}_최종보고서`, steps.finalReport);
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '최종보고서 승인 대기',
+      '전체상태': 'AI 협의 완료, 사용자 승인 대기',
+      assigned_model: 'GPT·클로드',
+      '최종보고서링크': reportUrl,
+      '최신업데이트': new Date()
+    });
+
+    createApprovalGate_(projectId, '최종보고서', truncate(steps.finalReport, 500), 'GPT·클로드', reportUrl);
+    appendDevLog_(projectId, 'AI 협의', 'GPT·Claude', '5단계 협의 완료, 최종보고서 생성', '완료', '', reportUrl, '', '', '사용자 승인 대기');
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, 'AI 협의', message);
+    return { success: false, message: 'AI 협의 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function approveFinalReport(projectId, decision, note) {
+  try {
+    const decisionMap = { approve: '승인', revise: '수정', reject: '폐기' };
+    const decisionText = decisionMap[String(decision || '').trim().toLowerCase()];
+    if (!decisionText) return { success: false, message: '올바르지 않은 처리 유형입니다.' };
+    if (decisionText === '수정' && !String(note || '').trim()) return { success: false, message: '수정 의견을 입력해주세요.' };
+
+    const gate = findPendingApprovalGate_(projectId, '최종보고서');
+    if (!gate) return { success: false, message: '승인 대기 중인 최종보고서를 찾을 수 없습니다.' };
+    resolveApprovalGate_(gate, decisionText, note);
+
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    if (decisionText === '승인') {
+      updateLedgerProject_(found, { '승인상태': '최종보고서 승인 완료', '전체상태': '개발명세 작성 준비', '최신업데이트': new Date() });
+      appendDevLog_(projectId, 'AI 협의', '사용자', '최종보고서 승인', '완료', '', '', '', '', '개발명세 작성');
+      return generateDevelopmentSpec(projectId);
+    }
+
+    if (decisionText === '수정') {
+      updateLedgerProject_(found, { '현재단계': 'AI 협의 중', '전체상태': '수정 요청 반영 재협의', '승인상태': '수정 요청', '최신업데이트': new Date() });
+      appendDevLog_(projectId, 'AI 협의', '사용자', '최종보고서 수정 요청: ' + note, '진행', '', '', '', '', 'AI 협의 재실행');
+      const revisedTopic = `${project['사업내용']}\n\n[사용자 수정 요청]\n${note}`;
+      return runAiDiscussion(projectId, revisedTopic);
+    }
+
+    // 폐기
+    updateLedgerProject_(found, { '현재단계': '폐기', '전체상태': '사용자 폐기', '승인상태': '폐기', '최신업데이트': new Date() });
+    appendDevLog_(projectId, 'AI 협의', '사용자', '최종보고서 폐기', '완료', '', '', '', '', '프로젝트 종료');
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '승인 처리 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function generateDevelopmentSpec(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const reportText = fetchDocTextFromUrl_(project['최종보고서링크']);
+    if (!reportText) return { success: false, message: '승인된 최종보고서를 찾을 수 없습니다.' };
+
+    updateLedgerProject_(found, { '현재단계': '개발명세 작성 중', '전체상태': 'Claude 개발명세 작성 중', '최신업데이트': new Date() });
+
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+    const specText = callClaude(context.claude + DEV_SPEC_INSTRUCTIONS_,
+      `[사업명]\n${project['사업명']}\n\n[승인된 최종보고서]\n${reportText}`);
+
+    const specUrl = saveTextAsDoc_(getPipelineFolder_('03_개발명세'), `${projectId}_개발명세`, specText);
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '개발명세 승인 대기',
+      '전체상태': '개발명세 작성 완료, 사용자 승인 대기',
+      '개발명세링크': specUrl,
+      '최신업데이트': new Date()
+    });
+
+    createApprovalGate_(projectId, '개발명세', truncate(specText, 500), '클로드', specUrl);
+    appendDevLog_(projectId, '개발명세', 'Claude', '개발명세 작성 완료', '완료', '', specUrl, '', '', '사용자 승인 대기');
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '개발명세 작성', message);
+    return { success: false, message: '개발명세 작성 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function regenerateDevelopmentSpec_(projectId, note) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const reportText = fetchDocTextFromUrl_(project['최종보고서링크']);
+    const prevSpecText = fetchDocTextFromUrl_(project['개발명세링크']);
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+
+    const specText = callClaude(context.claude + DEV_SPEC_INSTRUCTIONS_,
+      `[사업명]\n${project['사업명']}\n\n[승인된 최종보고서]\n${reportText}\n\n[기존 개발명세]\n${prevSpecText}\n\n[사용자 수정 요청]\n${note}`);
+
+    const specUrl = saveTextAsDoc_(getPipelineFolder_('03_개발명세'), `${projectId}_개발명세_수정`, specText);
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '개발명세 승인 대기',
+      '전체상태': '개발명세 수정 완료, 사용자 승인 대기',
+      '개발명세링크': specUrl,
+      '최신업데이트': new Date()
+    });
+
+    createApprovalGate_(projectId, '개발명세', truncate(specText, 500), '클로드', specUrl);
+    appendDevLog_(projectId, '개발명세', 'Claude', '개발명세 수정 완료', '완료', '', specUrl, '', '', '사용자 승인 대기');
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '개발명세 수정', message);
+    return { success: false, message: '개발명세 수정 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function approveDevelopmentSpec(projectId, decision, note) {
+  try {
+    const decisionMap = { approve: '승인', revise: '수정', reject: '폐기' };
+    const decisionText = decisionMap[String(decision || '').trim().toLowerCase()];
+    if (!decisionText) return { success: false, message: '올바르지 않은 처리 유형입니다.' };
+    if (decisionText === '수정' && !String(note || '').trim()) return { success: false, message: '수정 의견을 입력해주세요.' };
+
+    const gate = findPendingApprovalGate_(projectId, '개발명세');
+    if (!gate) return { success: false, message: '승인 대기 중인 개발명세를 찾을 수 없습니다.' };
+    resolveApprovalGate_(gate, decisionText, note);
+
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+
+    if (decisionText === '승인') {
+      updateLedgerProject_(found, { '승인상태': '개발명세 승인 완료', '전체상태': '실제개발 착수 준비', '최신업데이트': new Date() });
+      appendDevLog_(projectId, '개발명세', '사용자', '개발명세 승인', '완료', '', '', '', '', '실제개발 시작');
+      return runActualDevelopment(projectId);
+    }
+
+    if (decisionText === '수정') {
+      updateLedgerProject_(found, { '현재단계': '개발명세 작성 중', '전체상태': '수정 요청 반영 재작성', '승인상태': '수정 요청', '최신업데이트': new Date() });
+      appendDevLog_(projectId, '개발명세', '사용자', '개발명세 수정 요청: ' + note, '진행', '', '', '', '', '개발명세 재작성');
+      return regenerateDevelopmentSpec_(projectId, note);
+    }
+
+    updateLedgerProject_(found, { '현재단계': '폐기', '전체상태': '개발 중단', '승인상태': '폐기', '최신업데이트': new Date() });
+    appendDevLog_(projectId, '개발명세', '사용자', '개발명세 폐기, 개발 중단', '완료', '', '', '', '', '프로젝트 종료');
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '승인 처리 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function runActualDevelopment(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const specText = fetchDocTextFromUrl_(project['개발명세링크']);
+    if (!specText) return { success: false, message: '승인된 개발명세를 찾을 수 없습니다.' };
+
+    updateLedgerProject_(found, { '현재단계': '개발 중', '전체상태': 'Claude 실제개발 진행 중', '최신업데이트': new Date() });
+    appendDevLog_(projectId, '실제개발', 'Claude', '개발명세 기반 코드 생성 시작', '진행', '', '', '', '', '');
+
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+    const generated = callClaude(context.claude + CODE_GEN_INSTRUCTIONS_, `[개발명세]\n${specText}`);
+    const files = parseGeneratedFiles_(generated);
+
+    if (!files.length) {
+      markProjectError_(projectId, '실제개발', '생성된 코드에서 파일 구분자(===== FILE: ... =====)를 찾지 못했습니다.');
+      return { success: false, message: '코드 생성 결과를 해석하지 못했습니다.' };
+    }
+
+    const version = nextVersion_(project['버전']);
+    const versionFolder = getPipelineFolder_('04_개발결과물').createFolder(`${projectId}_${version}`);
+    saveGeneratedFiles_(versionFolder, files);
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '코드 검토 중',
+      '전체상태': '실제개발 완료, GPT 검토 준비',
+      '개발결과물링크': versionFolder.getUrl(),
+      '버전': version,
+      '최신업데이트': new Date()
+    });
+    appendDevLog_(projectId, '실제개발', 'Claude', `${files.length}개 파일 생성 완료 (${version})`,
+      '완료', files.map(f => f.path).join(', '), versionFolder.getUrl(), '', '', 'GPT 코드·제품 검토');
+
+    try {
+      reviewGeneratedProduct(projectId);
+    } catch (chainErr) {
+      // 이후 단계 실패는 각 함수 내부에서 자체적으로 상태/오류를 기록하므로 여기서는 무시한다.
+    }
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '실제개발', message);
+    return { success: false, message: '실제개발 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function reviewGeneratedProduct(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    updateLedgerProject_(found, { '현재단계': '코드 검토 중', '전체상태': 'GPT 제품 적합성 검토 중', '최신업데이트': new Date() });
+
+    const specText = fetchDocTextFromUrl_(project['개발명세링크']);
+    const codeSummary = fetchFolderFilesSummary_(project['개발결과물링크']);
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+
+    callOpenAI(context.gpt + PRODUCT_REVIEW_INSTRUCTIONS_, `[승인된 개발명세]\n${specText}\n\n[생성된 코드 요약]\n${codeSummary}`);
+
+    appendDevLog_(projectId, '코드 검토', 'GPT', '제품 적합성 검토 완료', '완료', '', '', '', '', 'Claude 수정 및 테스트');
+
+    try {
+      runProductTests(projectId);
+    } catch (chainErr) {
+      // 이후 단계 실패는 각 함수 내부에서 자체적으로 상태/오류를 기록하므로 여기서는 무시한다.
+    }
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '코드 검토', message);
+    return { success: false, message: '코드 검토 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function runProductTests(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    updateLedgerProject_(found, { '현재단계': '테스트 중', '전체상태': 'Claude 정적검토 및 테스트 시나리오 작성 중', '최신업데이트': new Date() });
+
+    const specText = fetchDocTextFromUrl_(project['개발명세링크']);
+    const codeSummary = fetchFolderFilesSummary_(project['개발결과물링크']);
+    const context = buildPipelineContext_(project['사업명'], project['사업내용']);
+
+    const testReportText = callClaude(context.claude + TEST_REPORT_INSTRUCTIONS_,
+      `[승인된 개발명세]\n${specText}\n\n[생성된 코드 요약]\n${codeSummary}`);
+
+    const reportUrl = saveTextAsDoc_(getPipelineFolder_('05_테스트보고서'), `${projectId}_${project['버전'] || 'v0.1'}_테스트보고서`, testReportText);
+    const testResultLine = /전체\s*통과/.test(testReportText) ? '전체 통과' : (/부분\s*통과/.test(testReportText) ? '부분 통과' : '확인 필요');
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '테스트 배포 중',
+      '전체상태': '테스트 완료, 테스트 배포 준비',
+      '테스트보고서링크': reportUrl,
+      '테스트결과': testResultLine,
+      '최신업데이트': new Date()
+    });
+    appendDevLog_(projectId, '테스트', 'Claude', '정적검토 및 테스트 시나리오 작성 완료', '완료', '', reportUrl, testResultLine, '', '테스트 배포');
+
+    try {
+      saveReleaseArtifacts(projectId);
+    } catch (chainErr) {
+      // 이후 단계 실패는 각 함수 내부에서 자체적으로 상태/오류를 기록하므로 여기서는 무시한다.
+    }
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '테스트', message);
+    return { success: false, message: '테스트 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+function saveReleaseArtifacts(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const readmeText =
+      `# ${project['사업명']}\n\n` +
+      `버전: ${project['버전'] || 'v0.1'}\n` +
+      `프로젝트번호: ${projectId}\n\n` +
+      `## 사업내용\n${project['사업내용']}\n\n` +
+      `## 개발명세\n${project['개발명세링크']}\n\n` +
+      `## 테스트보고서\n${project['테스트보고서링크']}\n\n` +
+      `## 알려진 제한사항\nAI가 생성한 코드이며 실제 실행 테스트를 거치지 않았습니다. 정식배포 전 반드시 직접 검토·테스트하세요.`;
+
+    const versionFolderId = extractDriveIdFromUrl_(project['개발결과물링크']);
+    let readmeUrl = '';
+    if (versionFolderId) {
+      const versionFolder = DriveApp.getFolderById(versionFolderId);
+      const readmeFile = versionFolder.createFile('README.md', readmeText, MimeType.PLAIN_TEXT);
+      readmeUrl = readmeFile.getUrl();
+    }
+
+    const ledgerSs = SpreadsheetApp.openById(LEDGER_SHEET_ID);
+    appendRowToSheet_(ledgerSs.getSheetByName('결과물링크'), {
+      '프로젝트번호': projectId,
+      '사업명': project['사업명'],
+      '버전': project['버전'] || 'v0.1',
+      '최종보고서': project['최종보고서링크'],
+      '개발명세': project['개발명세링크'],
+      '소스코드 ZIP': project['개발결과물링크'],
+      '소스프로젝트': project['소스프로젝트링크'] || '',
+      'README': readmeUrl,
+      '테스트보고서': project['테스트보고서링크'],
+      '테스트웹앱': project['테스트웹앱링크'] || '',
+      '정식배포': project['정식배포링크'] || '',
+      '스크린샷/영상': '',
+      '등록일시': new Date(),
+      '비고': ''
+    });
+
+    appendDevLog_(projectId, '결과물 정리', 'Claude', 'README 작성 및 결과물 링크 등록', '완료', 'README.md', readmeUrl, '', '', '테스트 배포');
+
+    try {
+      deployTestVersion(projectId);
+    } catch (chainErr) {
+      // 이후 단계 실패는 각 함수 내부에서 자체적으로 상태/오류를 기록하므로 여기서는 무시한다.
+    }
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '결과물 저장 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function deployTestVersion(projectId) {
+  try {
+    if (getLedgerSetting_('ACTUAL_DEVELOPMENT_MODE') !== 'TEST_DEPLOYMENT') {
+      return { success: false, message: '통합 관리대장 설정 탭의 ACTUAL_DEVELOPMENT_MODE가 TEST_DEPLOYMENT가 아니어서 테스트 배포를 건너뛰었습니다.' };
+    }
+
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const versionFolderId = extractDriveIdFromUrl_(project['개발결과물링크']);
+    if (!versionFolderId) return { success: false, message: '배포할 개발결과물을 찾을 수 없습니다.' };
+
+    updateLedgerProject_(found, { '현재단계': '테스트 배포 중', '전체상태': '테스트 웹앱 배포 진행 중', '최신업데이트': new Date() });
+
+    const folder = DriveApp.getFolderById(versionFolderId);
+    const files = readAppsScriptFilesFromFolder_(folder);
+    if (!files.length) {
+      throw new Error('폴더에서 배포 가능한 Apps Script 파일(Code.gs, Index.html 등)을 찾지 못했습니다.');
+    }
+
+    const token = ScriptApp.getOAuthToken();
+    const projectTitle = `TEST-${projectId}-${project['버전'] || 'v0.1'}`;
+
+    const createRes = UrlFetchApp.fetch('https://script.googleapis.com/v1/projects', {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { Authorization: 'Bearer ' + token },
+      payload: JSON.stringify({ title: projectTitle }),
+      muteHttpExceptions: true
+    });
+    const createBody = JSON.parse(createRes.getContentText() || '{}');
+    if (createRes.getResponseCode() >= 300) {
+      throw new Error(`Apps Script 프로젝트 생성 실패 (${createRes.getResponseCode()}): ${(createBody.error && createBody.error.message) || createRes.getContentText()}`);
+    }
+    const scriptId = createBody.scriptId;
+
+    const contentRes = UrlFetchApp.fetch(`https://script.googleapis.com/v1/projects/${scriptId}/content`, {
+      method: 'put',
+      contentType: 'application/json',
+      headers: { Authorization: 'Bearer ' + token },
+      payload: JSON.stringify({ files }),
+      muteHttpExceptions: true
+    });
+    if (contentRes.getResponseCode() >= 300) {
+      const contentBody = JSON.parse(contentRes.getContentText() || '{}');
+      throw new Error(`코드 업로드 실패 (${contentRes.getResponseCode()}): ${(contentBody.error && contentBody.error.message) || contentRes.getContentText()}`);
+    }
+
+    const versionRes = UrlFetchApp.fetch(`https://script.googleapis.com/v1/projects/${scriptId}/versions`, {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { Authorization: 'Bearer ' + token },
+      payload: JSON.stringify({ description: `테스트 배포 ${projectTitle}` }),
+      muteHttpExceptions: true
+    });
+    const versionBody = JSON.parse(versionRes.getContentText() || '{}');
+    if (versionRes.getResponseCode() >= 300) {
+      throw new Error(`버전 생성 실패 (${versionRes.getResponseCode()}): ${(versionBody.error && versionBody.error.message) || versionRes.getContentText()}`);
+    }
+    const versionNumber = versionBody.versionNumber;
+
+    const deployRes = UrlFetchApp.fetch(`https://script.googleapis.com/v1/projects/${scriptId}/deployments`, {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { Authorization: 'Bearer ' + token },
+      payload: JSON.stringify({
+        versionNumber,
+        manifestFileName: 'appsscript',
+        description: `테스트 배포 ${projectTitle}`
+      }),
+      muteHttpExceptions: true
+    });
+    const deployBody = JSON.parse(deployRes.getContentText() || '{}');
+    if (deployRes.getResponseCode() >= 300) {
+      throw new Error(`배포 실패 (${deployRes.getResponseCode()}): ${(deployBody.error && deployBody.error.message) || deployRes.getContentText()}`);
+    }
+
+    const entryPoints = deployBody.entryPoints || [];
+    const webAppEntry = entryPoints.find(e => e.entryPointType === 'WEB_APP');
+    const testUrl = webAppEntry && webAppEntry.webApp ? webAppEntry.webApp.url : '';
+    const scriptProjectUrl = `https://script.google.com/d/${scriptId}/edit`;
+
+    if (!testUrl) {
+      throw new Error('배포는 완료됐지만 웹앱 URL을 찾지 못했습니다. 생성된 appsscript.json의 webapp 설정을 확인하세요.');
+    }
+
+    saveTextAsDoc_(getPipelineFolder_('06_배포링크'), `${projectId}_${project['버전'] || 'v0.1'}_배포링크`,
+      `테스트 웹앱 URL: ${testUrl}\n소스 프로젝트: ${scriptProjectUrl}\n배포일시: ${formatDateTime_(new Date())}\n\n` +
+      `주의: 이 테스트 웹앱은 "나만 접근 가능"으로 배포되어 있어, 배포한 이 계정으로 로그인한 상태에서만 열립니다.`);
+
+    const found2 = findLedgerProjectRow_(projectId);
+    updateLedgerProject_(found2, {
+      '현재단계': '개발 완료',
+      '전체상태': '테스트 배포 완료, 사용자 확인 대기',
+      '테스트웹앱링크': testUrl,
+      '소스프로젝트링크': scriptProjectUrl,
+      '최신업데이트': new Date()
+    });
+
+    createApprovalGate_(projectId, '개발완료결과', `테스트 배포 완료: ${testUrl}`, 'Claude', testUrl);
+    appendDevLog_(projectId, '테스트 배포', 'Claude', '테스트 웹앱 배포 완료', '완료', '', testUrl, '', '', '사용자 최종 확인');
+
+    return getProjectDetail(projectId);
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    markProjectError_(projectId, '테스트 배포', message);
+    return { success: false, message: '테스트 배포 중 오류가 발생했습니다: ' + message };
+  }
+}
+
+// 문서의 필수 함수 목록에는 없지만, 5번 항목의 "게이트 C: 개발완료 결과 승인"을 처리하려면
+// 반드시 있어야 하는 함수. 정식배포 함수는 필수 함수 목록에도 없으므로 만들지 않았고,
+// 이 함수는 승인해도 정식배포를 트리거하지 않는다 (운영 규칙 9번: 정식배포는 별도 승인).
+function approveDevelopmentResult(projectId, decision, note) {
+  try {
+    const decisionMap = { approve: '승인', revise: '수정', reject: '폐기' };
+    const decisionText = decisionMap[String(decision || '').trim().toLowerCase()];
+    if (!decisionText) return { success: false, message: '올바르지 않은 처리 유형입니다.' };
+
+    const gate = findPendingApprovalGate_(projectId, '개발완료결과');
+    if (!gate) return { success: false, message: '승인 대기 중인 개발완료 결과를 찾을 수 없습니다.' };
+    resolveApprovalGate_(gate, decisionText, note);
+
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+
+    if (decisionText === '승인') {
+      updateLedgerProject_(found, { '전체상태': '개발 완료, 정식배포는 별도 승인 필요', '승인상태': '개발완료 승인', '최신업데이트': new Date() });
+      appendDevLog_(projectId, '개발완료', '사용자', '개발완료 결과 승인 (정식배포는 자동 진행하지 않음)', '완료', '', '', '', '', '정식배포는 사용자가 직접 진행');
+      return getProjectDetail(projectId);
+    }
+
+    if (decisionText === '수정') {
+      updateLedgerProject_(found, { '현재단계': '수정 요청', '전체상태': '수정개발 준비', '승인상태': '수정 요청', '최신업데이트': new Date() });
+      appendDevLog_(projectId, '개발완료', '사용자', '수정 요청: ' + note, '진행', '', '', '', '', '개발명세 재작성 후 재개발');
+      return regenerateDevelopmentSpec_(projectId, note);
+    }
+
+    updateLedgerProject_(found, { '전체상태': '폐기 (테스트 배포 유지 여부는 별도 확인 필요)', '승인상태': '폐기', '최신업데이트': new Date() });
+    appendDevLog_(projectId, '개발완료', '사용자', '개발완료 결과 폐기', '완료', '', '', '', '', '테스트 배포 유지/제거는 사용자가 직접 확인');
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '승인 처리 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function registerResultLinks(projectId, links) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    links = links || {};
+
+    const fieldMap = {
+      finalReportUrl: '최종보고서링크', devSpecUrl: '개발명세링크', outputUrl: '개발결과물링크',
+      testReportUrl: '테스트보고서링크', testAppUrl: '테스트웹앱링크', prodUrl: '정식배포링크',
+      sourceProjectUrl: '소스프로젝트링크', version: '버전'
+    };
+    const patch = { '최신업데이트': new Date() };
+    Object.keys(links).forEach(key => {
+      if (fieldMap[key]) patch[fieldMap[key]] = String(links[key] || '');
+    });
+
+    updateLedgerProject_(found, patch);
+    return getProjectDetail(projectId);
+  } catch (err) {
+    return { success: false, message: '결과 링크 등록 중 오류가 발생했습니다: ' + (err.message || err) };
+  }
+}
+
+function getProjectDashboard() {
+  try {
+    const projects = readTable('프로젝트관리', LEDGER_SHEET_ID);
+    const gates = readTable('승인대기', LEDGER_SHEET_ID).filter(g => g['처리상태'] === '대기');
+
+    const summary = { total: projects.length, awaitingApproval: gates.length, inProgress: 0, error: 0, done: 0 };
+    projects.forEach(p => {
+      const stage = String(p['현재단계'] || '');
+      if (stage === '오류') summary.error++;
+      else if (stage === '개발 완료' || stage === '정식 배포 완료') summary.done++;
+      else if (stage && stage !== '폐기') summary.inProgress++;
+    });
+
+    const projectCards = projects
+      .sort((a, b) => toTime_(b['최신업데이트'] || b['등록일시']) - toTime_(a['최신업데이트'] || a['등록일시']))
+      .map(toWebProject_);
+
+    return { success: true, data: { summary, projects: projectCards } };
+  } catch (err) {
+    return { success: false, message: '대시보드를 불러오지 못했습니다.' };
+  }
+}
+
+function getProjectDetail(projectId) {
+  try {
+    const found = findLedgerProjectRow_(projectId);
+    if (!found) return { success: false, message: '프로젝트를 찾을 수 없습니다.' };
+    const project = rowToObject(found.headers, found.row);
+
+    const detail = toWebProject_(project);
+    detail.businessContent = String(project['사업내용'] || '');
+    detail.errorText = String(project.error || '');
+    detail.testResult = String(project['테스트결과'] || '');
+    detail.links = {
+      finalReportUrl: String(project['최종보고서링크'] || ''),
+      devSpecUrl: String(project['개발명세링크'] || ''),
+      outputUrl: String(project['개발결과물링크'] || ''),
+      testReportUrl: String(project['테스트보고서링크'] || ''),
+      testAppUrl: String(project['테스트웹앱링크'] || ''),
+      prodUrl: String(project['정식배포링크'] || ''),
+      sourceProjectUrl: String(project['소스프로젝트링크'] || '')
+    };
+
+    const gates = readTable('승인대기', LEDGER_SHEET_ID)
+      .filter(g => String(g.project_id) === String(projectId) && g['처리상태'] === '대기')
+      .sort((a, b) => toTime_(b['요청일시']) - toTime_(a['요청일시']));
+    detail.pendingGate = gates.length ? {
+      approvalId: gates[0]['승인번호'],
+      gateLabel: gates[0]['승인단계'],
+      summary: gates[0]['요약']
+    } : null;
+
+    detail.logs = readTable('개발로그', LEDGER_SHEET_ID)
+      .filter(l => String(l.project_id) === String(projectId))
+      .sort((a, b) => toTime_(a['일시']) - toTime_(b['일시']))
+      .map(l => ({
+        stage: String(l['단계'] || ''),
+        actor: String(l['수행주체'] || ''),
+        work: String(l['작업내용'] || ''),
+        status: String(l.status || ''),
+        resultLink: String(l['결과링크'] || ''),
+        errorText: String(l.error || ''),
+        at: formatDateTime_(l['일시'])
+      }));
+
+    return { success: true, data: detail };
+  } catch (err) {
+    return { success: false, message: '프로젝트 상세를 불러오지 못했습니다.' };
   }
 }

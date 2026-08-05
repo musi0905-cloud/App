@@ -203,6 +203,7 @@
     view: 'home',
     detailId: null,
     detailOrigin: 'home',
+    pipelineDetailId: null,
     history: { status: '', type: '', model: '', search: '' }
   };
 
@@ -219,11 +220,27 @@
       document.getElementById('detail-actionbar').classList.add('hidden');
       document.getElementById('detail-actionbar').innerHTML = '';
     }
+    if (view !== 'pipeline-detail') {
+      document.getElementById('pipeline-detail-actionbar').classList.add('hidden');
+      document.getElementById('pipeline-detail-actionbar').innerHTML = '';
+    }
 
     if (view === 'home') loadHome();
     else if (view === 'history') loadHistory();
     else if (view === 'settings') loadSettings();
+    else if (view === 'pipeline') loadPipelineDashboard();
 
+    window.scrollTo(0, 0);
+  }
+
+  function openPipelineDetail(projectId) {
+    state.pipelineDetailId = projectId;
+    state.view = 'pipeline-detail';
+    document.querySelectorAll('.view').forEach(function (el) { el.classList.remove('active'); });
+    document.getElementById('view-pipeline-detail').classList.add('active');
+    document.querySelectorAll('.bottomnav-item, .sidenav-item').forEach(function (el) { el.classList.remove('active'); });
+    document.getElementById('detail-actionbar').classList.add('hidden');
+    loadPipelineDetail(projectId);
     window.scrollTo(0, 0);
   }
 
@@ -772,6 +789,317 @@
   // 별도 리스너를 달지 않는 이유: 버블링으로 두 리스너가 동시에 실행되면 승인 요청이 중복 전송된다.
 
   // ============================================================
+  // 사업개발 파이프라인 (통합 관리대장 연동)
+  // ============================================================
+
+  const PIPELINE_STAGE_TONE = {
+    '아이디어 접수': 'st-neutral',
+    'AI 협의 중': 'st-processing',
+    '최종보고서 승인 대기': 'st-pending',
+    '개발명세 작성 중': 'st-processing',
+    '개발명세 승인 대기': 'st-pending',
+    '개발 중': 'st-processing',
+    '코드 검토 중': 'st-processing',
+    '테스트 중': 'st-processing',
+    '테스트 배포 중': 'st-processing',
+    '개발 완료': 'st-approved',
+    '수정 요청': 'st-neutral',
+    '보류': 'st-neutral',
+    '폐기': 'st-neutral',
+    '오류': 'st-error',
+    '정식 배포 완료': 'st-approved'
+  };
+  const PIPELINE_STAGE_ICON = {
+    '아이디어 접수': '💡',
+    'AI 협의 중': '🔄',
+    '최종보고서 승인 대기': '⏳',
+    '개발명세 작성 중': '🔄',
+    '개발명세 승인 대기': '⏳',
+    '개발 중': '🛠️',
+    '코드 검토 중': '🔍',
+    '테스트 중': '🧪',
+    '테스트 배포 중': '🚀',
+    '개발 완료': '✅',
+    '수정 요청': '✏️',
+    '보류': '⏸️',
+    '폐기': '🗑️',
+    '오류': '⚠️',
+    '정식 배포 완료': '✅'
+  };
+
+  function pipelineStageBadgeHtml(stage) {
+    const tone = PIPELINE_STAGE_TONE[stage] || 'st-neutral';
+    const icon = PIPELINE_STAGE_ICON[stage] || '';
+    return '<span class="status-badge ' + tone + '">' + icon + ' ' + escapeHtml(stage || '-') + '</span>';
+  }
+
+  function pipelineCardHtml(p) {
+    return (
+      '<div class="card pipeline-card" data-project-id="' + escapeHtml(p.projectId) + '">' +
+      '<div class="card-top">' +
+      '<span class="role-badge">' + escapeHtml(p.businessName) + '</span>' +
+      pipelineStageBadgeHtml(p.currentStage) +
+      '</div>' +
+      '<div class="card-id">' + escapeHtml(p.projectId) + ' · ' + escapeHtml(p.updatedAt) + '</div>' +
+      '<div class="card-result">' + escapeHtml(p.businessContentPreview || p.overallStatus || '') + '</div>' +
+      '<div class="card-meta">' + escapeHtml(p.overallStatus || '') + (p.version ? ' · ' + escapeHtml(p.version) : '') + '</div>' +
+      '</div>'
+    );
+  }
+
+  function loadPipelineDashboard() {
+    const summaryEl = document.getElementById('pipeline-summary');
+    const listEl = document.getElementById('pipeline-list');
+    setLoading(summaryEl, 1);
+    setLoading(listEl, 3);
+
+    callServer('getProjectDashboard').then(function (res) {
+      if (!res || !res.success) {
+        setErrorState(summaryEl, '대시보드를 불러오지 못했습니다.', function () { loadPipelineDashboard(); });
+        listEl.innerHTML = '';
+        return;
+      }
+      const s = res.data.summary;
+      summaryEl.innerHTML =
+        summaryCardHtml('승인 대기', s.awaitingApproval, 'pending') +
+        summaryCardHtml('진행 중', s.inProgress, 'processing') +
+        summaryCardHtml('오류', s.error, 'error') +
+        summaryCardHtml('완료', s.done, '');
+
+      const projects = res.data.projects || [];
+      if (!projects.length) {
+        setEmpty(listEl, '등록된 사업이 없습니다', '위에서 사업내용을 입력해 첫 사업을 시작해보세요.');
+        return;
+      }
+      listEl.innerHTML = projects.map(pipelineCardHtml).join('');
+    });
+  }
+
+  function initPipelineForm() {
+    const form = document.getElementById('pipeline-new-form');
+    const submitBtn = document.getElementById('pipeline-new-submit');
+    const originalText = submitBtn.textContent;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const businessName = document.getElementById('pipeline-field-name').value.trim();
+      const businessContent = document.getElementById('pipeline-field-content').value.trim();
+      if (!businessName) { toast('사업명을 입력해주세요.', true); return; }
+      if (!businessContent) { toast('사업내용을 입력해주세요.', true); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'AI 협의 진행 중... (1~2분 소요)';
+
+      callServer('createBusinessProject', { businessName: businessName, businessContent: businessContent })
+        .then(function (res) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+
+          if (!res || !res.success) {
+            toast((res && res.message) || '사업 등록 중 오류가 발생했습니다.', true);
+            return;
+          }
+
+          toast('사업 등록과 AI 협의가 끝났습니다. 최종보고서를 확인해주세요.');
+          form.reset();
+          openPipelineDetail(res.data.projectId);
+        });
+    });
+  }
+
+  // 승인 대기 단계 이름 -> 처리할 서버 함수 이름.
+  const PIPELINE_GATE_FN = {
+    '최종보고서': 'approveFinalReport',
+    '개발명세': 'approveDevelopmentSpec',
+    '개발완료결과': 'approveDevelopmentResult'
+  };
+
+  function runPipelineApprovalAction(projectId, gateLabel, decisionKey, note, triggerBtn) {
+    const fnName = PIPELINE_GATE_FN[gateLabel];
+    if (!fnName) {
+      toast('처리할 수 없는 승인 단계입니다.', true);
+      return Promise.resolve(null);
+    }
+    const originalText = triggerBtn ? triggerBtn.textContent : '';
+    const busyText = {
+      approve: gateLabel === '개발명세' ? '실제개발·테스트·배포 진행 중... (수 분 소요)' : '승인 처리 중...',
+      revise: '수정 요청 처리 중...',
+      reject: '폐기 처리 중...'
+    };
+    if (triggerBtn) {
+      triggerBtn.disabled = true;
+      triggerBtn.textContent = busyText[decisionKey] || '처리 중...';
+    }
+    return callServer(fnName, projectId, decisionKey, note || '').then(function (res) {
+      if (triggerBtn) {
+        triggerBtn.disabled = false;
+        triggerBtn.textContent = originalText;
+      }
+      if (!res || !res.success) {
+        toast((res && res.message) || '처리 중 오류가 발생했습니다.', true);
+        return null;
+      }
+      toast('처리되었습니다.');
+      return res;
+    });
+  }
+
+  function renderPipelineActionBar(detail) {
+    const bar = document.getElementById('pipeline-detail-actionbar');
+    if (!detail.pendingGate) {
+      bar.classList.add('hidden');
+      bar.innerHTML = '';
+      return;
+    }
+    bar.classList.remove('hidden');
+    bar.innerHTML =
+      '<button class="btn btn-outline pl-act-reject" data-project-id="' + escapeHtml(detail.projectId) + '" data-gate="' + escapeHtml(detail.pendingGate.gateLabel) + '">폐기</button>' +
+      '<button class="btn btn-outline pl-act-revise-toggle" data-project-id="' + escapeHtml(detail.projectId) + '">수정 요청</button>' +
+      '<button class="btn btn-primary pl-act-approve" data-project-id="' + escapeHtml(detail.projectId) + '" data-gate="' + escapeHtml(detail.pendingGate.gateLabel) + '">승인하고 다음 단계 실행</button>';
+  }
+
+  function pipelineLinkRow(label, url) {
+    if (!url) return '';
+    return '<div class="settings-row"><span class="label">' + escapeHtml(label) + '</span>' +
+      '<a class="value" href="' + escapeHtml(url) + '" target="_blank" rel="noopener">열기 ↗</a></div>';
+  }
+
+  function loadPipelineDetail(projectId) {
+    const el = document.getElementById('pipeline-detail-content');
+    setLoading(el, 3);
+    document.getElementById('pipeline-detail-actionbar').classList.add('hidden');
+
+    callServer('getProjectDetail', projectId).then(function (res) {
+      if (!res || !res.success) {
+        setErrorState(el, '데이터를 불러오지 못했습니다.', function () { loadPipelineDetail(projectId); });
+        return;
+      }
+      const d = res.data;
+
+      let html = '';
+      html += '<div class="detail-block">';
+      html += '<div class="detail-meta-grid">';
+      html += '<div class="detail-meta-item"><div class="meta-label">프로젝트번호</div><div class="meta-value">' + escapeHtml(d.projectId) + '</div></div>';
+      html += '<div class="detail-meta-item"><div class="meta-label">현재단계</div><div class="meta-value">' + pipelineStageBadgeHtml(d.currentStage) + '</div></div>';
+      html += '<div class="detail-meta-item"><div class="meta-label">담당AI</div><div class="meta-value">' + escapeHtml(d.assignedModel || '-') + '</div></div>';
+      html += '<div class="detail-meta-item"><div class="meta-label">버전</div><div class="meta-value">' + escapeHtml(d.version || '-') + '</div></div>';
+      html += '<div class="detail-meta-item"><div class="meta-label">테스트결과</div><div class="meta-value">' + escapeHtml(d.testResult || '-') + '</div></div>';
+      html += '<div class="detail-meta-item"><div class="meta-label">최신업데이트</div><div class="meta-value">' + escapeHtml(d.updatedAt) + '</div></div>';
+      html += '</div></div>';
+
+      html += '<div class="detail-block">';
+      html += '<div class="detail-section-title">' + escapeHtml(d.businessName) + '</div>';
+      html += '<div class="detail-body">' + (formatResultText(d.businessContent) || '<p>내용 없음</p>') + '</div>';
+      html += '</div>';
+
+      if (d.pendingGate) {
+        html += '<div class="detail-block">';
+        html += '<div class="detail-section-title">승인 대기: ' + escapeHtml(d.pendingGate.gateLabel) + '</div>';
+        html += '<div class="detail-body">' + (formatResultText(d.pendingGate.summary) || '<p>내용 없음</p>') + '</div>';
+        html += '</div>';
+        html += '<div class="detail-block card-revise-box hidden" data-pipeline-revise-box="' + escapeHtml(d.projectId) + '">';
+        html += '<div class="revise-panel">';
+        html += '<div class="detail-section-title">수정의견</div>';
+        html += '<textarea class="input textarea" rows="4" placeholder="어떤 부분을 수정할지 적어주세요."></textarea>';
+        html += '<button class="btn btn-primary btn-block pl-act-revise-submit" data-project-id="' + escapeHtml(d.projectId) + '" data-gate="' + escapeHtml(d.pendingGate.gateLabel) + '">수정 요청 보내기</button>';
+        html += '</div></div>';
+      }
+
+      const links = d.links || {};
+      const linksHtml =
+        pipelineLinkRow('최종보고서', links.finalReportUrl) +
+        pipelineLinkRow('개발명세', links.devSpecUrl) +
+        pipelineLinkRow('개발결과물(소스코드)', links.outputUrl) +
+        pipelineLinkRow('테스트보고서', links.testReportUrl) +
+        pipelineLinkRow('테스트 웹앱', links.testAppUrl) +
+        pipelineLinkRow('소스 프로젝트', links.sourceProjectUrl) +
+        pipelineLinkRow('정식배포', links.prodUrl);
+      if (linksHtml) {
+        html += '<div class="detail-block"><div class="detail-section-title">결과물 링크</div><div class="settings-group">' + linksHtml + '</div></div>';
+      }
+
+      if (d.errorText) {
+        html += '<div class="detail-block">';
+        html += '<div class="detail-section-title">오류내용</div>';
+        html += '<div class="detail-error-box">' + escapeHtml(d.errorText) + '</div>';
+        html += '</div>';
+      }
+
+      if (d.logs && d.logs.length) {
+        html += '<div class="detail-block"><div class="detail-section-title">진행 기록</div><div class="discussion-log">';
+        html += d.logs.slice().reverse().map(function (l) {
+          return '<div class="discussion-step">' +
+            '<div class="detail-section-title">' + escapeHtml(l.stage) + ' · ' + escapeHtml(l.actor) + ' (' + escapeHtml(l.status) + ')</div>' +
+            '<div class="detail-body"><p>' + escapeHtml(l.work) + '</p></div>' +
+            '<div class="card-meta">' + escapeHtml(l.at) + '</div>' +
+            (l.errorText ? '<div class="detail-error-box">' + escapeHtml(l.errorText) + '</div>' : '') +
+            '</div>';
+        }).join('');
+        html += '</div></div>';
+      }
+
+      el.innerHTML = html;
+      renderPipelineActionBar(d);
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    const pipelineCard = e.target.closest('.pipeline-card');
+    if (pipelineCard) {
+      openPipelineDetail(pipelineCard.getAttribute('data-project-id'));
+      return;
+    }
+
+    const approveBtn = e.target.closest('.pl-act-approve');
+    if (approveBtn) {
+      const projectId = approveBtn.getAttribute('data-project-id');
+      const gate = approveBtn.getAttribute('data-gate');
+      runPipelineApprovalAction(projectId, gate, 'approve', '', approveBtn).then(function (res) {
+        if (res) loadPipelineDetail(projectId);
+      });
+      return;
+    }
+
+    const rejectBtn = e.target.closest('.pl-act-reject');
+    if (rejectBtn) {
+      const projectId = rejectBtn.getAttribute('data-project-id');
+      const gate = rejectBtn.getAttribute('data-gate');
+      runPipelineApprovalAction(projectId, gate, 'reject', '', rejectBtn).then(function (res) {
+        if (res) loadPipelineDetail(projectId);
+      });
+      return;
+    }
+
+    const reviseToggle = e.target.closest('.pl-act-revise-toggle');
+    if (reviseToggle) {
+      const projectId = reviseToggle.getAttribute('data-project-id');
+      const box = document.querySelector('[data-pipeline-revise-box="' + CSS.escape(projectId) + '"]');
+      if (box) box.classList.toggle('hidden');
+      return;
+    }
+
+    const reviseSubmit = e.target.closest('.pl-act-revise-submit');
+    if (reviseSubmit) {
+      const projectId = reviseSubmit.getAttribute('data-project-id');
+      const gate = reviseSubmit.getAttribute('data-gate');
+      const box = document.querySelector('[data-pipeline-revise-box="' + CSS.escape(projectId) + '"]');
+      const textarea = box ? box.querySelector('textarea') : null;
+      const note = textarea ? textarea.value.trim() : '';
+      if (!note) { toast('수정의견을 입력해주세요.', true); return; }
+      runPipelineApprovalAction(projectId, gate, 'revise', note, reviseSubmit).then(function (res) {
+        if (res) loadPipelineDetail(projectId);
+      });
+      return;
+    }
+  });
+
+  document.getElementById('pipeline-detail-back').addEventListener('click', function () {
+    navTo('pipeline');
+  });
+
+
+  // ============================================================
   // 초기화
   // ============================================================
 
@@ -787,6 +1115,7 @@
     initNav();
     initNewCommandForm();
     initHistoryFilters();
+    initPipelineForm();
     navTo('home');
   });
 })();
