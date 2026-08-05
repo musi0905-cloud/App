@@ -313,11 +313,15 @@
   // 승인 / 수정 / 폐기 공용 처리
   // ============================================================
 
+  // submitApproval()은 이제 승인/수정 시 서버에서 다음 단계까지 자동 생성 + 즉시 실행까지 마친 뒤
+  // { success, message, currentCommand, nextCommand } 형태로 결과를 돌려준다.
+  // 버튼은 이 요청 하나가 끝날 때까지(체인 전체가 끝날 때까지) 계속 잠겨 있는다.
   function runApprovalAction(commandId, decisionKey, note, triggerBtn) {
     const originalText = triggerBtn ? triggerBtn.textContent : '';
+    const busyText = { approve: '승인 처리 중...', revise: '수정 요청 처리 중...', reject: '폐기 처리 중...' };
     if (triggerBtn) {
       triggerBtn.disabled = true;
-      triggerBtn.textContent = '처리 중...';
+      triggerBtn.textContent = busyText[decisionKey] || '처리 중...';
     }
     return callServer('submitApproval', commandId, decisionKey, note || '').then(function (res) {
       if (triggerBtn) {
@@ -326,15 +330,21 @@
       }
       if (!res || !res.success) {
         toast((res && res.message) || '처리 중 오류가 발생했습니다.', true);
-        return false;
+        return null;
       }
-      const messages = { approve: '승인 처리가 완료되었습니다.', revise: '수정 요청이 등록되었습니다.', reject: '작업이 폐기되었습니다.' };
-      toast(messages[decisionKey] || '처리되었습니다.');
-      return true;
+      toast(res.message || '처리되었습니다.');
+      return res;
     });
   }
 
-  function refreshAfterApprovalAction(commandId) {
+  // 승인/수정으로 새 후속 작업이 즉시 생성·실행됐다면 그 작업 상세로 이동하고,
+  // 아니면(폐기이거나 후속 작업이 없으면) 현재 보고 있던 화면만 새로고침한다.
+  function handleApprovalOutcome(commandId, res) {
+    if (res.nextCommand) {
+      const origin = state.view === 'detail' ? state.detailOrigin : state.view;
+      openDetail(res.nextCommand.commandId, origin);
+      return;
+    }
     if (state.view === 'detail' && state.detailId === commandId) loadDetail(commandId);
     else if (state.view === 'home') loadHome();
     else if (state.view === 'history') loadHistory();
@@ -350,8 +360,8 @@
     const approveBtn = e.target.closest('.act-approve');
     if (approveBtn) {
       const id = approveBtn.getAttribute('data-command-id');
-      runApprovalAction(id, 'approve', '', approveBtn).then(function (ok) {
-        if (ok) refreshAfterApprovalAction(id);
+      runApprovalAction(id, 'approve', '', approveBtn).then(function (res) {
+        if (res) handleApprovalOutcome(id, res);
       });
       return;
     }
@@ -359,8 +369,8 @@
     const rejectBtn = e.target.closest('.act-reject');
     if (rejectBtn) {
       const id = rejectBtn.getAttribute('data-command-id');
-      runApprovalAction(id, 'reject', '', rejectBtn).then(function (ok) {
-        if (ok) refreshAfterApprovalAction(id);
+      runApprovalAction(id, 'reject', '', rejectBtn).then(function (res) {
+        if (res) handleApprovalOutcome(id, res);
       });
       return;
     }
@@ -380,8 +390,8 @@
       const textarea = box ? box.querySelector('textarea') : null;
       const note = textarea ? textarea.value.trim() : '';
       if (!note) { toast('수정의견을 입력해주세요.', true); return; }
-      runApprovalAction(id, 'revise', note, reviseSubmit).then(function (ok) {
-        if (ok) refreshAfterApprovalAction(id);
+      runApprovalAction(id, 'revise', note, reviseSubmit).then(function (res) {
+        if (res) handleApprovalOutcome(id, res);
       });
       return;
     }
@@ -415,7 +425,7 @@
       const id = runNowBtn.getAttribute('data-command-id');
       runNowBtn.disabled = true;
       runNowBtn.textContent = '실행 중...';
-      callServer('runNextReadyCommand').then(function (res) {
+      callServer('runCommandNow', id).then(function (res) {
         if (!res || !res.success) {
           toast((res && res.message) || '작업 실행 중 오류가 발생했습니다.', true);
           runNowBtn.disabled = false;
