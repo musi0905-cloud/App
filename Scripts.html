@@ -2,6 +2,29 @@
 (function () {
   'use strict';
 
+  // 화면이 아예 비어 보이는 문제를 진단하기 위한 안전장치. 초기화 중 어디서든 JS 오류가 나면
+  // 화면이 그냥 하얗게 비는 대신 오류 문구를 실제로 화면에 찍는다 (콘솔에 접근할 수 없는
+  // 모바일 브라우저에서도 캡처 한 장으로 원인을 바로 알 수 있게 하려는 목적).
+  function showFatalError_(context, err) {
+    try {
+      const message = (err && (err.stack || err.message)) || String(err);
+      const box = document.createElement('div');
+      box.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#fff;color:#c62828;' +
+        'padding:16px;font-family:monospace;font-size:13px;white-space:pre-wrap;overflow:auto;';
+      box.textContent = '화면을 그리는 중 오류가 발생했습니다.\n\n[' + context + ']\n' + message;
+      document.body.appendChild(box);
+    } catch (e2) {
+      // 오류 표시 자체가 실패하면 더 손쓸 방법이 없다.
+    }
+  }
+
+  window.addEventListener('error', function (e) {
+    showFatalError_('전역 오류', e.error || e.message);
+  });
+  window.addEventListener('unhandledrejection', function (e) {
+    showFatalError_('처리되지 않은 Promise 오류', e.reason);
+  });
+
   // ============================================================
   // 공통 유틸
   // ============================================================
@@ -780,9 +803,12 @@
     });
   }
 
-  document.getElementById('detail-back').addEventListener('click', function () {
-    navTo(state.detailOrigin === 'history' ? 'history' : 'home');
-  });
+  const detailBackBtn = document.getElementById('detail-back');
+  if (detailBackBtn) {
+    detailBackBtn.addEventListener('click', function () {
+      navTo(state.detailOrigin === 'history' ? 'history' : 'home');
+    });
+  }
 
   // 상세 화면 하단 고정 액션바의 승인/폐기/수정 버튼은 전역 클릭 위임 핸들러(document click)에서
   // 함께 처리된다 (act-approve / act-reject / act-revise-toggle / act-revise-submit 클래스 매칭).
@@ -1094,9 +1120,12 @@
     }
   });
 
-  document.getElementById('pipeline-detail-back').addEventListener('click', function () {
-    navTo('pipeline');
-  });
+  const pipelineDetailBackBtn = document.getElementById('pipeline-detail-back');
+  if (pipelineDetailBackBtn) {
+    pipelineDetailBackBtn.addEventListener('click', function () {
+      navTo('pipeline');
+    });
+  }
 
 
   // ============================================================
@@ -1112,11 +1141,15 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    initNav();
-    initNewCommandForm();
-    initHistoryFilters();
-    initPipelineForm();
-    navTo('home');
+    try {
+      initNav();
+      initNewCommandForm();
+      initHistoryFilters();
+      initPipelineForm();
+      navTo('home');
+    } catch (err) {
+      showFatalError_('초기화', err);
+    }
   });
 })();
 </script>
