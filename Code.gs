@@ -20,6 +20,16 @@ function onOpen() {
     .addSeparator()
     .addItem('7. 5분 자동 실행 설치', 'installFiveMinuteTrigger')
     .addItem('8. 자동 실행 제거', 'removeAutomationTriggers')
+    .addSeparator()
+    .addSubMenu(SpreadsheetApp.getUi().createMenu('워드프레스 블로그')
+      .addItem('워드프레스 연결 설정', 'wpSetupConnectionFromMenu')
+      .addItem('관리대장 만들기/열기', 'wpOpenLedgerFromMenu')
+      .addSeparator()
+      .addItem('애드센스 준비 상태 점검', 'wpCheckReadinessFromMenu')
+      .addItem('지금 한 편 자동 작성·발행', 'wpAutomationCycle')
+      .addSeparator()
+      .addItem('자동 발행 켜기 (6시간마다)', 'wpInstallAutoPublishTriggerFromMenu')
+      .addItem('자동 발행 끄기', 'wpRemoveAutoPublishTriggers'))
     .addToUi();
 }
 
