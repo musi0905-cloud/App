@@ -78,6 +78,7 @@ def check_required_files() -> None:
         "ios/Shim/Assets.xcassets/AppIcon.appiconset/Contents.json",
         "ios/Shim/Assets.xcassets/AccentColor.colorset/Contents.json",
         "ios/ShimTests/ShimSmokeTests.swift",
+        "scripts/mac_verify.sh",
     ]
     missing = [p for p in required if not os.path.exists(rel(p))]
     if missing:
@@ -115,6 +116,10 @@ def check_readme() -> None:
         "빌드 방법": "xcodebuild",
         "스킴 이름": "-scheme Shim",
         "환경 제약 명시": "Linux",
+        "Mac 검증 절차": "Mac 검증 절차",
+        "XcodeGen 재생성 명령": "xcodegen generate",
+        "검증 자동화 스크립트": "scripts/mac_verify.sh",
+        "Unit Test 검증": "xcodebuild test",
     }
     missing = [k for k, v in needed.items() if v not in text]
     if missing:

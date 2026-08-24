@@ -15,7 +15,7 @@
 
 | Sprint | 이름 | 상태 |
 |---|---|---|
-| 0 | 개발 환경 및 저장소 기초 | **BLOCKED (부분 완료)** — 문서/프로젝트 구성 완료, Xcode·Simulator 빌드 검증 불가 |
+| 0 | 개발 환경 및 저장소 기초 | **BLOCKED** — Mac에서 AC-1/AC-2/AC-6 검증 대기 + `shim-ios` 저장소 생성 대기 |
 | 1 | Foundation & RestPlan | TODO |
 | 2 | Timer Engine | TODO |
 | 3 | Audio PoC | TODO |
@@ -30,8 +30,8 @@
 | 12 | Context Awareness PoC | TODO |
 | 13 | Screen Time Shield Feasibility | TODO |
 
-> Sprint 0이 `DONE`이 되기 전에는 Sprint 1 코드를 구현하지 않는다.
-> Sprint 0 BLOCKED 사유와 해제 조건은 `docs/DECISIONS.md` D-001 참고.
+> Sprint 0이 `DONE`이 되기 전에는 Sprint 1 코드를 구현하지 않는다. (Product Owner 결정, 2026-08-24)
+> Sprint 0 BLOCKED 사유와 해제 조건은 `docs/DECISIONS.md` D-001 / D-002 / D-009 참고.
 
 ---
 
@@ -57,13 +57,34 @@ Claude Code가 실제 iOS 개발을 수행할 수 있는 환경과 프로젝트 
 - [ ] Simulator 빌드 확인 → **BLOCKED: macOS·Xcode 없음**
 
 ### Acceptance Criteria
+
+Product Owner 결정으로 **AC-6(Unit Test 성공)이 추가**되어 총 6개다 (D-009).
+
 | # | 기준 | 상태 |
 |---|---|---|
-| AC-1 | 프로젝트가 Xcode에서 열린다 | **미검증 (BLOCKED)** — 프로젝트 파일은 생성했으나 Xcode로 열어 확인할 수 없음 |
-| AC-2 | Simulator 대상 빌드가 성공한다 | **미검증 (BLOCKED)** — Xcode·Simulator 사용 불가 |
-| AC-3 | repository에 비밀정보가 없다 | **충족** — `scripts/verify_repo.py` 시크릿 스캔 통과 |
-| AC-4 | `CLAUDE.md`가 운영규칙을 포함한다 | **충족** |
-| AC-5 | 현재 프로젝트 구조와 빌드 방법이 README에 기록된다 | **충족** |
+| AC-1 | 프로젝트가 Xcode에서 열린다 | ⏳ **Mac 검증 대기** |
+| AC-2 | iOS Simulator 대상 build 성공 | ⏳ **Mac 검증 대기** |
+| AC-3 | repository에 비밀정보가 없다 | ✅ 충족 — `scripts/verify_repo.py` 시크릿 스캔 통과 |
+| AC-4 | `CLAUDE.md`가 운영규칙을 포함한다 | ✅ 충족 |
+| AC-5 | 현재 프로젝트 구조와 빌드 방법이 README에 기록된다 | ✅ 충족 |
+| AC-6 | **Unit Test 성공** (D-009 추가) | ⏳ **Mac 검증 대기** |
+
+### Sprint 0 DONE 조건
+
+Mac에서 아래를 실행해 3개 항목이 모두 통과해야 한다.
+
+```bash
+./scripts/mac_verify.sh
+```
+
+절차와 수동 대안은 `README.md`의 「Mac 검증 절차」 참고.
+XcodeGen이 있으면 `ios/project.yml` 기준으로 재생성한 프로젝트를 검증 대상으로 삼는다 (D-006).
+
+### 추가 미완 항목
+
+- **`musi0905-cloud/shim-ios` 저장소 생성 및 파일 이전** (D-002)
+  세션의 GitHub App 통합에 저장소 생성 권한이 없어 (`403 Resource not accessible by integration`)
+  Product Owner가 빈 저장소를 만들어야 진행된다. 절차는 `MIGRATION.md` 참고.
 
 ---
 
@@ -370,8 +391,9 @@ OpenAI Key를 앱에 넣지 않는 서버 구조를 만든다.
 
 ## Backlog 후보 (Sprint 범위 밖에서 발견된 항목)
 
-| ID | 내용 | 발견 Sprint | 비고 |
+| ID | 내용 | 발견 Sprint | 상태 |
 |---|---|---|---|
-| B-001 | 저장소 분리 — 현재 `musi0905-cloud/App`에 무관한 Google Apps Script 프로젝트가 함께 존재 | Sprint 0 | PO 결정 필요 (D-002) |
-| B-002 | macOS CI(GitHub Actions `macos-latest`) 도입으로 Simulator 빌드·테스트 자동 검증 | Sprint 0 | Sprint 0 AC-1/AC-2 해제 수단 (D-001) |
-| B-003 | App Icon 실제 에셋 제작 (현재 빈 AppIcon 슬롯) | Sprint 0 | 디자인 필요 |
+| B-001 | 저장소 분리 — 「쉼」 iOS를 `musi0905-cloud/shim-ios`로 분리 | Sprint 0 | ✅ **결정 완료** (D-002) — 저장소 생성 대기 중 |
+| B-002 | GitHub Actions macOS CI 도입 (Simulator 빌드·테스트 자동 검증) | Sprint 0 | 📌 **Backlog 유지** — MVP 초기 기능 안정화 이후 도입 (D-008) |
+| B-003 | App Icon 실제 에셋 제작 (현재 빈 AppIcon 슬롯) | Sprint 0 | 대기 — 디자인 필요 |
+| B-004 | 저장소 라이선스 결정 | Sprint 0 | 대기 — Product Owner 결정 필요 |

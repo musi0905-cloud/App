@@ -58,55 +58,84 @@
 - 장점: 실기기가 필요한 항목(Sprint 3·5)과 그 외를 깔끔히 분리할 수 있다.
 - 단점: 비용과 설정 부담이 가장 크다.
 
-> **어떤 안을 택하든 Sprint 0은 AC-1/AC-2가 확인되기 전까지 `DONE`이 아니다.**
+### 채택 (Product Owner 결정, 2026-08-24)
+
+**1안 — PO의 Mac 로컬 환경에서 검증.** 2안(macOS CI)은 Sprint 0의 필수 조건에서 제외하고
+Backlog(B-002)로 유지한다. 근거와 감수 리스크는 **D-008** 참고.
+
+검증 부담을 줄이기 위해 `scripts/mac_verify.sh`를 제공한다.
+Mac에서 한 줄로 AC-1 / AC-2 / AC-6을 순서대로 검증하고 로그를 남긴다.
+
+> **Sprint 0은 AC-1 / AC-2 / AC-6이 Mac에서 확인되기 전까지 `DONE`이 아니다.** (D-009)
 
 ---
 
-## D-002. 저장소 위치: 기존 `musi0905-cloud/App`의 `ios/` 하위에 배치
+## D-002. 저장소 분리: 「쉼」 iOS는 `musi0905-cloud/shim-ios`로 분리한다
 
 - **Sprint**: 0
-- **상태**: **제안 (PO 결정 필요)**
-- **문제 구분**: D — 제품 결정 필요
+- **상태**: **확정** (Product Owner 결정, 2026-08-24) / 이전 작업 **진행 중**
+- **문제 구분**: D — 제품 결정 필요 → 해결됨
 
 ### 배경
 
-작업 대상으로 지정된 저장소 `musi0905-cloud/App`에는 이미 「쉼」과 **무관한 Google Apps Script 프로젝트**가 있다.
+작업 대상으로 지정됐던 `musi0905-cloud/App`에는 「쉼」과 **무관한 Google Apps Script 프로젝트**가 있었다.
 
 ```
-Code.gs          (105 KB)
-Index.html
-Scripts.html
-Styles.html
-appsscript.json
+Code.gs (105 KB) / Index.html / Scripts.html / Styles.html / appsscript.json
 ```
 
-기본 브랜치는 `claude/ai-business-webapp-u1xuwo`이며, 커밋 이력도 전부 해당 웹앱 관련이다.
-이번 작업 브랜치 `claude/shim-ios-sprint-0-setup-aalbvo`는 그 위에서 분기되어 있다.
+기본 브랜치는 `claude/ai-business-webapp-u1xuwo`이고 커밋 이력도 전부 해당 웹앱 관련이다.
 
-### 결정 (잠정)
+### 결정 (Product Owner)
 
-- **기존 파일은 하나도 삭제·수정하지 않는다.**
-- 「쉼」 iOS 프로젝트는 `ios/` 디렉터리 아래에만 둔다.
-- 기준 문서(`CLAUDE.md`, `docs/`)는 운영규칙 §13이 지정한 대로 저장소 루트에 둔다.
-- `README.md`에 저장소가 서로 무관한 두 프로젝트를 담고 있음을 명시한다.
+1. 「쉼」 iOS 프로젝트는 기존 Apps Script 저장소와 **분리한다.**
+2. 새 저장소 이름: **`shim-ios`** (`musi0905-cloud/shim-ios`)
+3. 기존 Apps Script 파일은 **이동하거나 수정하지 않는다.**
+4. 「쉼」 관련 파일만 새 저장소로 이전한다.
 
-### PO 결정 필요
+### 이전 대상 파일
 
-「쉼」 iOS 프로젝트를 **별도 저장소**(예: `musi0905-cloud/shim-ios`)로 분리할지 여부.
+```
+CLAUDE.md  README.md  .gitignore
+docs/{PRODUCT,IOS_SPEC,SPRINTS,DECISIONS}.md
+scripts/{verify_repo.py,mac_verify.sh}
+ios/**                    (project.yml, Shim.xcodeproj, Shim/, ShimTests/)
+```
 
-- **분리 시 장점**: 이력·이슈·CI가 섞이지 않는다. iOS CI를 저장소 전체에 적용할 수 있다. `.gitignore`와 루트 문서가 한 프로젝트만 설명한다.
-- **분리 시 단점**: 새 저장소 생성 및 접근 권한 설정이 필요하다. 이미 만든 커밋을 옮겨야 한다.
-- **유지 시 장점**: 지금 바로 진행 가능하다.
-- **유지 시 단점**: 루트 `CLAUDE.md`·`.gitignore`가 무관한 Apps Script 프로젝트에도 적용되어 혼선이 생길 수 있다.
+**이전하지 않는 파일** (`musi0905-cloud/App`에 그대로 둔다):
+`Code.gs` `Index.html` `Scripts.html` `Styles.html` `appsscript.json`
 
-> Claude Code는 PO 승인 없이 새 저장소를 만들거나 기존 파일을 삭제하지 않는다. — **B-001**
+### 현재 진행 상태 — BLOCKED
 
----
+**`shim-ios` 저장소가 아직 생성되지 않았다.**
+
+Claude Code 세션의 GitHub App 통합은 저장소 생성 권한이 없다.
+
+```
+POST https://api.github.com/user/repos
+→ 403 Resource not accessible by integration
+```
+
+이 세션의 GitHub 접근 범위는 `musi0905-cloud/app` 하나로 한정돼 있고,
+`create_repository` 호출은 통합 권한 부족으로 거부된다. 우회 방법은 없다.
+
+**해제 조건**: Product Owner가 빈 저장소 `musi0905-cloud/shim-ios`를 생성한다.
+생성 후 세션에 알려주면 해당 저장소를 세션에 연결(`add_repo`)해 곧바로 push한다.
+
+`scripts/` 밖에 준비된 이전 절차는 `MIGRATION.md` 참고.
+
+### 이전 완료 전까지의 원칙
+
+- 「쉼」 파일은 `musi0905-cloud/App`의 `claude/shim-ios-sprint-0-setup-aalbvo` 브랜치에 임시로 유지한다.
+  이 브랜치는 기본 브랜치에 병합되지 않았으므로 App 저장소의 실제 내용에는 영향이 없다.
+- **새 저장소에 push가 확인된 뒤에만** 이 브랜치에서 「쉼」 파일을 제거한다.
+  (먼저 지우면 작업물이 어디에도 남지 않는다.)
+- 기존 Apps Script 파일은 어떤 경우에도 건드리지 않는다.
 
 ## D-003. iOS 배포 타깃: iOS 17.0
 
 - **Sprint**: 0
-- **상태**: **제안 (PO 확인 필요)**
+- **상태**: **확정** (Product Owner 결정, 2026-08-24 — "현재대로 iOS 17.0을 유지한다")
 - **문제 구분**: B — 플랫폼 제약
 
 ### 근거
@@ -116,11 +145,12 @@ appsscript.json
 - iOS 17.0은 이 프로젝트가 필요로 하는 API(`Observation`, SwiftUI `NavigationStack`, `AVAudioSession`, `UNUserNotificationCenter`, `UIScreen.brightness`)를 모두 포함한다.
 - 최신 최소버전으로 올리면 PO가 보유한 실기기가 대상에서 빠질 위험이 있다. iOS 17.0은 그 위험이 낮다.
 
-### 확인 필요
+### 확정
 
-PO가 실기기 검증에 사용할 iPhone의 실제 iOS 버전. 해당 버전이 17.0 미만이면 이 값을 낮춰야 한다.
+Product Owner가 iOS 17.0 유지를 결정했다. 변경하지 않는다.
 
-변경 지점: `ios/project.yml`의 `deploymentTarget`, `ios/Shim.xcodeproj/project.pbxproj`의 `IPHONEOS_DEPLOYMENT_TARGET`.
+향후 변경이 필요해지면 두 곳을 함께 고쳐야 한다 (`scripts/verify_repo.py`가 불일치를 검출한다):
+`ios/project.yml`의 `deploymentTarget` / `ios/Shim.xcodeproj/project.pbxproj`의 `IPHONEOS_DEPLOYMENT_TARGET`.
 
 ---
 
@@ -166,36 +196,54 @@ PO가 실기기 검증에 사용할 iPhone의 실제 iOS 버전. 해당 버전�
 
 ---
 
-## D-006. Xcode 프로젝트 파일 생성 방식: 수기 작성 + XcodeGen 스펙 병행
+## D-006. 프로젝트 정의의 기준은 `ios/project.yml` (XcodeGen)
 
 - **Sprint**: 0
-- **상태**: 확정
-- **문제 구분**: C
+- **상태**: **확정** (Product Owner 결정, 2026-08-24)
+- **문제 구분**: C — 개발 환경 제약
 
 ### 배경
 
-이 환경에는 Xcode가 없어 `.xcodeproj`를 Xcode로 생성할 수 없다.
+이 개발 세션에는 Xcode가 없어 `.xcodeproj`를 Xcode로 생성할 수 없다 (D-001).
+Sprint 0에서는 `project.pbxproj`를 수기로 작성했다.
 
-### 결정
+### 결정 (Product Owner)
 
-두 가지를 함께 커밋한다.
+> "`project.pbxproj` 수기 작성본보다 `ios/project.yml`을 기준으로 XcodeGen 재생성을 우선 검토한다.
+> Mac에서 XcodeGen 사용 가능 시 `xcodegen generate` 후 생성 프로젝트를 기준으로 검증한다.
+> 기존 수기 pbxproj에 문제가 있으면 억지로 유지하지 않는다."
 
-1. **`ios/Shim.xcodeproj/project.pbxproj`** — 수기로 작성한 Xcode 프로젝트 파일.
-   - `objectVersion = 77` (Xcode 16+ 포맷)
-   - `PBXFileSystemSynchronizedRootGroup` 사용 → 소스 파일을 개별 등록하지 않고 디렉터리 전체를 동기화.
-     **Sprint 1 이후 파일을 추가해도 `project.pbxproj`를 수정할 필요가 없다.**
-   - 공유 스킴 `Shim.xcscheme`를 `xcshareddata/`에 포함 → `xcodebuild -scheme Shim` 사용 가능.
-2. **`ios/project.yml`** — XcodeGen 스펙 (동일 구성의 선언적 정의).
-   - `.xcodeproj`가 손상되거나 Xcode 버전 문제로 열리지 않으면 `xcodegen generate`로 재생성한다.
+따라서:
 
-### 알려진 리스크
+1. **`ios/project.yml`이 프로젝트 정의의 기준(source of truth)이다.**
+2. Mac 검증 시 XcodeGen이 있으면 `cd ios && xcodegen generate`로 **재생성한 프로젝트를 기준으로 검증한다.**
+   `scripts/mac_verify.sh`가 이 순서를 자동으로 따른다.
+3. 커밋된 `ios/Shim.xcodeproj`는 **XcodeGen이 없는 환경을 위한 fallback**이다.
+4. 수기 pbxproj에 문제가 발견되면 유지하려 시도하지 않고, **생성된 프로젝트로 교체하고 커밋한다.**
 
-- **`PBXFileSystemSynchronizedRootGroup`은 Xcode 16 이상에서만 인식된다.** Xcode 15 이하에서는 열리지 않는다.
-  → 이 경우 `ios/project.yml` + XcodeGen으로 재생성하거나, Xcode에서 새 프로젝트를 만들고 `ios/Shim/` 소스를 드래그해 넣는다.
-- 수기 작성한 `project.pbxproj`는 **Xcode로 열어 확인하기 전까지 정상 동작을 보장할 수 없다.** (D-001)
-  → `scripts/verify_repo.py`가 구조·참조 정합성만 정적으로 검사한다. 이는 빌드 검증이 아니다.
+### 두 정의를 모두 커밋하는 이유
 
----
+`.xcodeproj`를 gitignore하면 XcodeGen 없이는 아무도 프로젝트를 열 수 없다.
+따라서 둘 다 커밋하되 **우선순위를 위와 같이 명시**한다.
+
+`scripts/verify_repo.py`가 두 정의의 핵심 설정(배포 타깃 / Swift 버전 / 번들 ID) 일치를 검사한다.
+
+### 재생성 시 주의 — 파일 추가 방식이 달라진다
+
+| | 수기 pbxproj (현재 커밋본) | XcodeGen 생성본 |
+|---|---|---|
+| 파일 참조 방식 | `PBXFileSystemSynchronizedRootGroup` — 디렉터리 전체 동기화 | 파일을 명시적으로 나열 |
+| 소스 추가 시 | 프로젝트 파일 수정 불필요 | **`xcodegen generate` 재실행 필요** |
+
+⚠️ **XcodeGen 경로로 전환한 뒤에는 `ios/Shim/`에 파일을 추가할 때마다 `cd ios && xcodegen generate`를 다시 실행해야 한다.**
+Sprint 1부터 파일이 늘어나므로 이 점을 `README.md`에 명시했다.
+
+### 알려진 제약
+
+- 수기 pbxproj는 `objectVersion = 77`이라 **Xcode 16 이상에서만 열린다.**
+  Xcode 15 이하라면 XcodeGen 재생성이 사실상 필수다.
+- 수기 pbxproj는 **Xcode로 열어 확인하기 전까지 정상 동작을 보장할 수 없다** (D-001).
+  `scripts/verify_repo.py`는 구조·참조 정합성만 정적 검사하며 빌드 검증이 아니다.
 
 ## D-007. 테스트 프레임워크: XCTest
 
@@ -210,3 +258,58 @@ PO가 실기기 검증에 사용할 iPhone의 실제 iOS 버전. 해당 버전�
 - Swift Testing(`import Testing`)은 Xcode 16+ 전용이다. XCTest는 모든 Xcode 버전과 CI에서 동작한다.
 - D-006의 Xcode 15 이하 fallback 경로에서도 테스트 타깃이 그대로 동작해야 한다.
 - Swift Testing 전환은 Xcode 버전이 확정된 뒤 별도로 검토한다.
+
+---
+
+## D-008. GitHub Actions macOS CI는 Sprint 0의 필수 조건이 아니다
+
+- **Sprint**: 0
+- **상태**: **확정** (Product Owner 결정, 2026-08-24)
+- **문제 구분**: C — 개발 환경 제약
+
+### 결정 (Product Owner)
+
+> "GitHub Actions macOS CI는 현재 Sprint 0 완료의 필수 조건으로 만들지 않는다.
+> MVP 초기 기능이 안정화된 이후 도입할 Backlog로 유지한다."
+
+### 결과
+
+- D-001의 대응 옵션 중 **1안(PO의 Mac 로컬 검증)** 을 채택한다.
+- 2안(macOS CI)은 폐기하지 않고 **B-002로 Backlog에 유지**한다. 도입 시점은 MVP 초기 기능 안정화 이후.
+- Sprint 0의 AC-1 / AC-2 / AC-6은 **Product Owner의 Mac 환경에서 수동 검증**으로 충족한다.
+- 검증 부담을 줄이기 위해 `scripts/mac_verify.sh`를 제공한다. Mac에서 한 줄로 3개 항목을 검증하고 로그를 남긴다.
+
+### 감수하는 리스크
+
+CI가 없으므로 **회귀를 자동으로 잡지 못한다.** Sprint가 진행될수록 "Linux에서 작성 → Mac에서 검증" 왕복 비용이 커진다.
+Sprint 2~3쯤 이 비용이 체감되면 B-002 도입 시점을 다시 논의한다.
+
+---
+
+## D-009. Sprint 0 Acceptance Criteria에 Unit Test 성공(AC-6)을 추가한다
+
+- **Sprint**: 0
+- **상태**: **확정** (Product Owner 결정, 2026-08-24)
+- **문제 구분**: D — 제품 결정 필요
+
+### 배경
+
+원본 `04_쉼 Sprint Backlog v0.1`의 Sprint 0 Acceptance Criteria는 5개였고 Unit Test 항목이 없었다.
+
+### 결정 (Product Owner)
+
+> "Mac/Xcode 환경에서 다음 검증이 완료된 이후 Sprint 0을 DONE 처리한다.
+> Xcode에서 프로젝트 열기 / iOS Simulator 대상 build 성공 / **Unit Test 성공**"
+
+### 결과
+
+Sprint 0의 Acceptance Criteria에 **AC-6 — Unit Test 성공**을 추가한다. 총 6개가 된다.
+
+`ios/ShimTests/ShimSmokeTests.swift`의 스모크 테스트 2개가 통과해야 한다.
+이 테스트는 제품 로직을 검증하지 않고, **테스트 타깃이 앱을 host로 로드하고 실행되는지**만 확인한다.
+실제 Domain 테스트(RestPlan decoding 등)는 Sprint 1부터 추가한다.
+
+`docs/SPRINTS.md`의 Sprint 0 AC 표에 반영했다.
+
+> Google Drive 원본 문서가 최상위 기준이므로, `04_쉼 Sprint Backlog v0.1`의 Sprint 0 항목에도
+> 이 변경을 반영하는 것이 좋다. (운영규칙 §13 — 제품 결정이 바뀌면 구현보다 문서를 먼저 갱신한다)

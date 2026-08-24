@@ -16,6 +16,8 @@ GoogleService-Info.plist
 
 # ---------- Xcode ----------
 build/
+# scripts/mac_verify.sh 로그
+build-logs/
 DerivedData/
 *.xcuserstate
 *.xcuserdatad/

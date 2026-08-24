@@ -196,7 +196,16 @@ Screen Time Shield / Focus 강제 제어 / 커뮤니티 / SNS / 긴 AI 상담 �
 
 ---
 
-## 15. 개발 환경 현황 (Sprint 0 기준, 2026-08-24)
+## 15. 개발 환경 현황 및 Sprint 0 상태 (2026-08-24)
+
+### 저장소
+
+- 「쉼」 iOS의 정식 저장소는 **`musi0905-cloud/shim-ios`** 다. (`docs/DECISIONS.md` D-002)
+- 저장소 생성 전까지는 `musi0905-cloud/App`의 `claude/shim-ios-sprint-0-setup-aalbvo` 브랜치에 임시 보관한다.
+  이 브랜치는 기본 브랜치에 병합되지 않았다. 이전 절차는 `MIGRATION.md` 참고.
+- **`App` 저장소의 Google Apps Script 파일(`Code.gs` 외 4개)은 어떤 경우에도 이동·수정하지 않는다.**
+
+### 개발 환경
 
 | 항목 | 상태 |
 |---|---|
@@ -206,7 +215,28 @@ Screen Time Shield / Focus 강제 제어 / 커뮤니티 / SNS / 긴 AI 상담 �
 | iOS Simulator | **사용 불가** |
 | 실기기(iPhone) | **연결 불가** |
 
-**따라서 이 환경에서는 Xcode 빌드·Simulator 빌드·실기기 검증을 수행할 수 없다.**
+**이 환경에서는 Xcode 빌드·Simulator 빌드·실기기 검증을 수행할 수 없다.**
 Swift 코드와 Xcode 프로젝트는 작성 가능하지만, **"빌드 성공"이라고 보고해서는 안 된다.**
-빌드·테스트 검증은 macOS + Xcode 환경에서 Product Owner 또는 별도 CI가 수행해야 한다.
-자세한 내용과 대응 옵션은 `docs/DECISIONS.md` D-001을 참고한다.
+빌드·테스트 검증은 Product Owner의 macOS + Xcode 환경에서 수행한다. (D-001, D-008)
+
+### Sprint 0 상태 — BLOCKED
+
+Sprint 0은 아래 3개가 Mac에서 확인되기 전까지 **DONE이 아니다.** (D-009)
+
+| AC | 항목 |
+|---|---|
+| AC-1 | Xcode에서 프로젝트 열기 |
+| AC-2 | iOS Simulator 대상 build 성공 |
+| AC-6 | Unit Test 성공 |
+
+검증 방법: Mac에서 `./scripts/mac_verify.sh` (절차는 `README.md` 「Mac 검증 절차」)
+
+**Sprint 1은 위 3개가 성공하기 전까지 시작하지 않는다.** (Product Owner 결정, 2026-08-24)
+
+### 프로젝트 정의의 기준
+
+- **`ios/project.yml` (XcodeGen)이 기준이다.** (D-006)
+- Mac에 XcodeGen이 있으면 `cd ios && xcodegen generate`로 재생성한 프로젝트를 검증 대상으로 삼는다.
+- 커밋된 `ios/Shim.xcodeproj`는 XcodeGen이 없는 환경을 위한 fallback이다.
+- 수기 pbxproj에 문제가 있으면 억지로 유지하지 않고 생성본으로 교체한다.
+- ⚠️ XcodeGen 생성본은 파일을 명시적으로 나열하므로, **소스를 추가하면 `xcodegen generate`를 다시 실행해야 한다.**

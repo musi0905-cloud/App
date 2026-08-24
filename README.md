@@ -5,20 +5,10 @@
 >
 > 「쉼」은 **추천 앱이 아니라 실행 앱**이다. 사용자를 앱에 오래 붙잡지 않는다.
 
-현재 상태: **Sprint 0 — 개발 환경 및 저장소 기초 (부분 완료 / BLOCKED)**
+**현재 상태: Sprint 0 — 개발 환경 및 저장소 기초 (BLOCKED, Mac 검증 대기)**
 
----
-
-## ⚠️ 이 저장소에 대한 중요한 참고사항
-
-이 저장소(`musi0905-cloud/App`)에는 **서로 무관한 두 개의 프로젝트**가 함께 들어 있다.
-
-| 위치 | 프로젝트 | 관계 |
-|---|---|---|
-| 저장소 루트 (`Code.gs`, `Index.html`, `Scripts.html`, `Styles.html`, `appsscript.json`) | 기존 Google Apps Script 웹앱 | 「쉼」과 **무관**. 건드리지 않는다. |
-| `ios/`, `docs/`, `CLAUDE.md` | **「쉼」 iOS 프로젝트** | 이 README가 설명하는 대상 |
-
-저장소 분리 여부는 Product Owner 결정 대기 중이다 — `docs/DECISIONS.md` **D-002** 참고.
+Sprint 0은 아래 [Mac 검증 절차](#mac-검증-절차-sprint-0-종료-조건)가 **3개 모두 성공한 뒤에만** DONE 처리된다.
+Sprint 1은 그 전까지 시작하지 않는다.
 
 ---
 
@@ -32,7 +22,7 @@ Google Drive 문서가 **최상위 제품 기준**이고, 이 저장소의 문�
 | [`docs/IOS_SPEC.md`](docs/IOS_SPEC.md) | 02_쉼 iOS 개발 명세서 v0.1 | 아키텍처, RestPlan, Service 명세 |
 | [`CLAUDE.md`](CLAUDE.md) | 03_쉼 Claude Code 운영규칙 v0.1 | 개발 운영규칙 |
 | [`docs/SPRINTS.md`](docs/SPRINTS.md) | 04_쉼 Sprint Backlog v0.1 | Sprint 0~13 계획 및 상태 |
-| [`docs/DECISIONS.md`](docs/DECISIONS.md) | — | 확정된 기술 결정 기록 |
+| [`docs/DECISIONS.md`](docs/DECISIONS.md) | — | 확정된 기술 결정 기록 (D-001~D-009) |
 
 **문서 간 충돌 시 우선순위**: 제품 기준서 > iOS 개발 명세서 > 운영규칙 > Sprint Backlog
 
@@ -50,28 +40,28 @@ Google Drive 문서가 **최상위 제품 기준**이고, 이 저장소의 문�
 │   ├── PRODUCT.md                 # 제품 기획 기준서
 │   ├── IOS_SPEC.md                # iOS 개발 명세서
 │   ├── SPRINTS.md                 # Sprint Backlog + 현재 상태
-│   └── DECISIONS.md               # 기술 결정 기록 (D-001 ~ D-007)
+│   └── DECISIONS.md               # 기술 결정 기록
 │
 ├── scripts/
-│   └── verify_repo.py             # 저장소 정적 검증 (Linux에서도 실행 가능)
+│   ├── verify_repo.py             # 저장소 정적 검증 (Linux/Mac 모두 실행 가능)
+│   └── mac_verify.sh              # Mac 전용 Sprint 0 검증 자동화 (아래 참고)
 │
-├── ios/
-│   ├── project.yml                # XcodeGen 스펙 (프로젝트 재생성용)
-│   ├── Shim.xcodeproj/
-│   │   ├── project.pbxproj        # Xcode 프로젝트 (수기 작성, objectVersion 77)
-│   │   └── xcshareddata/xcschemes/
-│   │       └── Shim.xcscheme      # 공유 스킴 (xcodebuild -scheme Shim)
-│   │
-│   ├── Shim/                      # 앱 타깃 소스 (디렉터리 전체가 자동 동기화됨)
-│   │   ├── ShimApp.swift          # @main 진입점
-│   │   ├── RootView.swift         # Sprint 0 플레이스홀더 화면
-│   │   └── Assets.xcassets/       # AppIcon / AccentColor
-│   │
-│   └── ShimTests/                 # 유닛 테스트 타깃
-│       └── ShimSmokeTests.swift   # 스모크 테스트
-│
-└── (Code.gs, Index.html, ...)     # 기존 Apps Script 프로젝트 — 「쉼」과 무관
+└── ios/
+    ├── project.yml                # XcodeGen 스펙 — 프로젝트 정의의 기준 (D-006)
+    ├── Shim.xcodeproj/            # 생성된 Xcode 프로젝트 (fallback 용도로 커밋됨)
+    │   ├── project.pbxproj
+    │   └── xcshareddata/xcschemes/Shim.xcscheme
+    │
+    ├── Shim/                      # 앱 타깃 소스
+    │   ├── ShimApp.swift          # @main 진입점
+    │   ├── RootView.swift         # Sprint 0 플레이스홀더 화면
+    │   └── Assets.xcassets/       # AppIcon / AccentColor
+    │
+    └── ShimTests/                 # 유닛 테스트 타깃
+        └── ShimSmokeTests.swift   # 스모크 테스트
 ```
+
+> `ios/` 하위에 둔 이유: Sprint 8에서 `backend/`가 추가된다 (`docs/SPRINTS.md`). 플랫폼별 최상위 분리를 미리 확보한다.
 
 ### Sprint 1 이후 추가될 디렉터리
 
@@ -87,72 +77,135 @@ ios/Shim/
 └── Resources/
 ```
 
-> `Shim.xcodeproj`는 `PBXFileSystemSynchronizedRootGroup`을 사용한다.
-> **`ios/Shim/` 아래에 파일을 추가할 때 `project.pbxproj`를 수정할 필요가 없다.** 디렉터리가 그대로 타깃에 동기화된다.
+⚠️ **소스 파일을 추가한 뒤에는 반드시 `cd ios && xcodegen generate`를 다시 실행한다.**
+XcodeGen이 생성한 프로젝트는 파일을 명시적으로 나열하므로, 재생성하지 않으면 새 파일이 빌드에 포함되지 않는다.
 
 ---
 
-## 빌드 방법
-
-### 요구 환경
+## 요구 환경
 
 | 항목 | 요구사항 |
 |---|---|
 | OS | **macOS** |
-| Xcode | **16.0 이상** (`objectVersion = 77` 포맷 — `docs/DECISIONS.md` D-006) |
-| 배포 타깃 | iOS 17.0 (D-003) |
+| Xcode | **16.0 이상** |
+| XcodeGen | `brew install xcodegen` — **권장 경로** (D-006) |
+| 배포 타깃 | **iOS 17.0** (D-003, Product Owner 확정) |
 | Swift | 5.0 언어 모드 (D-005) |
-| Apple Developer 계정 | Simulator 빌드에는 **불필요**. 실기기 설치부터 필요 (D-004) |
-
-### Xcode에서 열기
-
-```bash
-open ios/Shim.xcodeproj
-```
-
-스킴 `Shim`을 선택하고 Simulator(예: iPhone 15) 대상으로 ⌘R.
-
-### 명령줄 빌드
-
-```bash
-# Simulator 대상 빌드
-xcodebuild build \
-  -project ios/Shim.xcodeproj \
-  -scheme Shim \
-  -destination 'platform=iOS Simulator,name=iPhone 15'
-
-# 유닛 테스트 실행
-xcodebuild test \
-  -project ios/Shim.xcodeproj \
-  -scheme Shim \
-  -destination 'platform=iOS Simulator,name=iPhone 15'
-
-# 사용 가능한 Simulator 목록 확인
-xcrun simctl list devices available
-```
-
-### 프로젝트 파일이 열리지 않는 경우
-
-`project.pbxproj`는 Xcode 없이 수기로 작성했다 (D-006). Xcode 15 이하이거나 파일이 손상된 경우 XcodeGen으로 재생성한다.
-
-```bash
-brew install xcodegen
-cd ios && xcodegen generate
-```
-
-`ios/project.yml`은 `Shim.xcodeproj`와 동일한 구성의 선언적 정의다. **한쪽을 바꾸면 다른 쪽도 갱신해야 한다.**
-
-### 실기기 배포 준비
-
-1. Xcode에서 `Shim` 타깃 → Signing & Capabilities
-2. Team을 본인 Apple ID 팀으로 선택
-3. **Team ID가 `project.pbxproj`에 기록되므로 커밋 전 `git diff`로 확인한다** (D-004)
+| 테스트 | XCTest (D-007) |
+| Apple Developer 계정 | Simulator 빌드·테스트에는 **불필요**. 실기기 설치부터 필요 (D-004) |
 
 ---
 
-## 저장소 검증
+## Mac 검증 절차 (Sprint 0 종료 조건)
 
-Xcode가 없는 환경에서도 실행 가능한 정적 검증 스크립트를 제공한다.
+Product Owner 결정에 따라 **다음 3개가 모두 성공해야 Sprint 0을 DONE 처리한다.**
+
+| # | 검증 | Acceptance Criteria |
+|---|---|---|
+| 1 | Xcode에서 프로젝트가 열린다 | AC-1 |
+| 2 | iOS Simulator 대상 build 성공 | AC-2 |
+| 3 | Unit Test 성공 | AC-6 |
+
+### 방법 A — 자동화 스크립트 (권장)
+
+Mac에서 아래 한 줄이면 위 3개를 순서대로 검증하고 로그를 남긴다.
+
+```bash
+./scripts/mac_verify.sh
+```
+
+- XcodeGen이 설치돼 있으면 **`ios/project.yml` 기준으로 프로젝트를 재생성한 뒤** 검증한다 (D-006).
+- XcodeGen이 없으면 커밋된 `ios/Shim.xcodeproj`로 fallback하고, 그 사실을 로그에 남긴다.
+- 사용 가능한 iPhone Simulator를 자동 탐지한다.
+- 전체 로그가 `build-logs/mac_verify_<타임스탬프>.log`에 저장된다. (이 디렉터리는 `.gitignore` 처리됨)
+
+실패하면 스크립트가 **어느 단계에서 실패했는지와 로그 경로**를 출력한다. 그 로그를 그대로 전달하면 된다.
+
+옵션:
+
+```bash
+./scripts/mac_verify.sh --simulator "iPhone 16 Pro"   # Simulator 지정
+./scripts/mac_verify.sh --no-xcodegen                 # XcodeGen 건너뛰고 커밋된 프로젝트로 검증
+./scripts/mac_verify.sh --open                        # 검증 성공 후 Xcode로 열기
+```
+
+### 방법 B — 수동 절차
+
+자동화 스크립트가 동작하지 않을 때 아래를 순서대로 실행한다.
+
+```bash
+# ── 0. 사전 확인 ────────────────────────────────────────────
+xcodebuild -version              # Xcode 16.0 이상인지 확인
+xcode-select -p                  # Command Line Tools 경로 확인
+brew install xcodegen            # 미설치 시
+xcodegen --version
+
+# ── 1. XcodeGen으로 프로젝트 재생성 (우선 경로, D-006) ──────
+cd ios
+xcodegen generate
+# 기대 출력: "Created project at .../ios/Shim.xcodeproj"
+
+# ── 2. Xcode에서 열기  → AC-1 ──────────────────────────────
+open Shim.xcodeproj
+# 확인: 좌측 네비게이터에 Shim / ShimTests 두 타깃이 보이고,
+#       상단 스킴 선택기에 "Shim" 스킴이 있는지
+
+# ── 3. 사용 가능한 Simulator 확인 ──────────────────────────
+xcrun simctl list devices available | grep iPhone
+# 아래 명령의 name= 값을 여기서 나온 실제 이름으로 바꿔 사용한다
+
+# ── 4. Simulator 대상 빌드  → AC-2 ─────────────────────────
+xcodebuild build \
+  -project Shim.xcodeproj \
+  -scheme Shim \
+  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  | tail -30
+# 기대: ** BUILD SUCCEEDED **
+
+# ── 5. Unit Test 실행  → AC-6 ──────────────────────────────
+xcodebuild test \
+  -project Shim.xcodeproj \
+  -scheme Shim \
+  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  | tail -40
+# 기대: ** TEST SUCCEEDED **  (ShimSmokeTests 2개 통과)
+```
+
+### 검증 후 할 일
+
+**성공한 경우** — 아래를 알려주면 Sprint 0을 DONE 처리하고 Sprint 1 계획을 제시한다.
+
+1. `xcodebuild -version` 출력
+2. `** BUILD SUCCEEDED **` / `** TEST SUCCEEDED **` 확인 여부
+3. XcodeGen을 사용했는지 여부
+4. `xcodegen generate` 후 `git status`에 `ios/Shim.xcodeproj/project.pbxproj` 변경이 잡혔다면 그 사실
+   → 생성된 프로젝트가 기준이 되므로 **그 변경을 커밋한다** (D-006)
+
+**실패한 경우** — 아래를 그대로 전달하면 원인을 분석해 수정한다.
+
+1. 실패한 단계 번호 (1~5) 또는 `mac_verify.sh` 로그 파일
+2. 오류 메시지 전문 (`xcodebuild` 출력의 `error:` 줄 포함)
+3. `xcodebuild -version` 출력
+
+> `ios/Shim.xcodeproj/project.pbxproj`는 Xcode 없이 수기로 작성됐다.
+> **문제가 있으면 억지로 유지하지 않고 `ios/project.yml` 기준으로 재생성한 결과로 교체한다** (D-006, Product Owner 결정).
+
+---
+
+## 실기기 배포 준비
+
+Sprint 0에는 실기기 검증 항목이 없다. Sprint 3(Audio PoC)부터 필요하다.
+
+1. Xcode에서 `Shim` 타깃 → Signing & Capabilities
+2. Team을 본인 Apple ID 팀으로 선택
+3. ⚠️ **Team ID가 프로젝트 파일에 기록되므로 커밋 전 `git diff`로 확인한다** (D-004)
+   - XcodeGen 경로를 쓴다면 `ios/project.yml`의 `DEVELOPMENT_TEAM`은 빈 값으로 유지하고, 로컬에서만 설정한다
+
+---
+
+## 저장소 정적 검증
+
+Xcode가 없는 환경(Linux 개발 세션 포함)에서도 실행 가능하다.
 
 ```bash
 python3 scripts/verify_repo.py
@@ -163,23 +216,24 @@ python3 scripts/verify_repo.py
 - `project.pbxproj` 구조 정합성 (오브젝트 ID 참조, 괄호 균형, 필수 섹션)
 - 동기화 그룹이 가리키는 디렉터리 실존 여부
 - 공유 스킴이 실제 타깃을 참조하는지
-- `project.yml` ↔ `project.pbxproj` 설정 일치
-- **시크릿 스캔** (API Key, 토큰, 개인키 등)
+- `project.yml` ↔ `project.pbxproj` 설정 일치 (배포 타깃 / Swift 버전 / 번들 ID)
+- **시크릿 스캔** (API Key, 토큰, 개인키 등 9종 패턴)
 - `DEVELOPMENT_TEAM`이 커밋되지 않았는지
 
 **검증하지 않는 것 — 중요**
 - Swift 컴파일 여부
-- Xcode가 프로젝트를 여는지
-- Simulator 빌드 성공 여부
-- 유닛 테스트 통과 여부
+- Xcode가 프로젝트를 여는지 (AC-1)
+- Simulator 빌드 성공 여부 (AC-2)
+- 유닛 테스트 통과 여부 (AC-6)
 
-> **이 스크립트의 PASS는 "빌드 성공"이 아니다.** 위 네 항목은 macOS + Xcode에서만 확인 가능하다.
+> **이 스크립트의 PASS는 "빌드 성공"이 아니다.** 위 세 AC는 macOS + Xcode에서만 확인 가능하다.
+> 그래서 `scripts/mac_verify.sh`가 따로 있다.
 
 ---
 
-## 현재 개발 환경 제약 (중요)
+## 현재 개발 환경 제약
 
-이 프로젝트의 Claude Code 세션은 **Linux(Ubuntu 24.04)** 에서 실행되고 있다.
+이 프로젝트의 Claude Code 세션은 **Linux(Ubuntu 24.04)** 에서 실행된다.
 
 | 항목 | 상태 |
 |---|---|
@@ -192,11 +246,10 @@ python3 scripts/verify_repo.py
 Xcode와 iOS Simulator는 macOS 전용이며 Linux에서 우회할 방법이 없다.
 SwiftUI·UIKit·AVFoundation 등은 Apple 플랫폼 전용이라 Linux Swift 툴체인으로도 컴파일 검증이 불가능하다.
 
-**따라서 Sprint 0의 Acceptance Criteria 중 다음 두 항목은 이 환경에서 충족할 수 없다.**
-- AC-1: 프로젝트가 Xcode에서 열린다
-- AC-2: Simulator 대상 빌드가 성공한다
+따라서 **AC-1 / AC-2 / AC-6은 Product Owner의 Mac 환경에서만 확인 가능하다.** → `docs/DECISIONS.md` **D-001**
 
-해제 방법(1안 로컬 Mac / 2안 GitHub Actions macOS 러너 / 3안 병행)은 `docs/DECISIONS.md` **D-001** 참고.
+GitHub Actions macOS CI는 Product Owner 결정에 따라 **Sprint 0 완료의 필수 조건이 아니다.**
+MVP 초기 기능 안정화 이후 도입할 Backlog 항목으로 유지한다 (B-002, D-008).
 
 > `CLAUDE.md` §5에 따라, 검증되지 않은 항목을 "완료"라고 보고하지 않는다.
 
