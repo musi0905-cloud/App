@@ -1,0 +1,101 @@
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+
+    width: var(--layout-sidebar-width);
+    flex: none;
+    height: 100dvh;
+    padding: var(--space-7) var(--space-4);
+
+    border-right: 1px solid var(--border);
+    background: var(--background);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0 var(--space-3);
+}
+
+.brandName {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-section-title);
+  letter-spacing: -0.01em;
+}
+
+.brandNote {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--text-secondary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--space-3);
+
+  background: none;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+  text-align: left;
+  cursor: pointer;
+
+  transition: background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard);
+}
+
+.link:hover {
+  background: var(--overlay-press);
+  color: var(--text-primary);
+}
+
+.active,
+.active:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 색 외의 단서: 왼쪽 표시선 */
+.marker {
+  width: 3px;
+  height: 18px;
+  margin-left: auto;
+  border-radius: var(--radius-pill);
+  background: transparent;
+}
+
+.active .marker {
+  background: var(--primary);
+}
+
+.footer {
+  margin-top: auto;
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--text-secondary);
+}

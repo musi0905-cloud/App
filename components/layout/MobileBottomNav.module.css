@@ -1,0 +1,65 @@
+.nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 20;
+
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  /* iOS 홈 인디케이터만큼 아래를 더 확보해 잘리지 않게 한다. */
+  padding-bottom: var(--safe-bottom);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.item {
+  display: flex;
+}
+
+.link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+
+  min-height: var(--bottom-nav-height);
+  min-width: var(--touch-target-min);
+  padding: var(--space-2) var(--space-1);
+
+  background: none;
+  border: 0;
+  border-top: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  transition: color var(--duration-fast) var(--easing-standard);
+}
+
+.label {
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.active {
+  color: var(--primary);
+  /* 색 외의 단서 */
+  border-top-color: var(--primary);
+}
+
+.active .label {
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: none;
+  }
+}

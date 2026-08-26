@@ -1,0 +1,81 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 68px; /* touch target(44px) + 여유 */
+  padding: var(--space-4) var(--space-5);
+
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+
+  transition: background var(--duration-base) var(--easing-standard),
+    border-color var(--duration-base) var(--easing-standard);
+}
+
+.card:hover {
+  background: var(--overlay-press);
+  border-color: var(--border-strong);
+}
+
+.selected,
+.selected:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  /* 색 외의 단서: 왼쪽 굵은 선 + 체크 아이콘 */
+  box-shadow: inset 3px 0 0 0 var(--primary);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  flex: 1;
+}
+
+.label {
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-section-title);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.selected .label {
+  font-weight: var(--font-weight-section-title);
+}
+
+.hint {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--text-secondary);
+}
+
+.check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  color: transparent;
+  transition: border-color var(--duration-base) var(--easing-standard),
+    background var(--duration-base) var(--easing-standard);
+}
+
+.selected .check {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--surface);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--space-5) var(--space-6);
+  }
+}

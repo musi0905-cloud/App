@@ -1,0 +1,17 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.soft {
+  background: var(--surface-soft);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.paddingNone { padding: 0; }
+.paddingSnug { padding: var(--space-4); }
+.paddingComfortable { padding: var(--space-5); }
+.paddingRoomy { padding: var(--space-6); }

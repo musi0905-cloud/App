@@ -1,0 +1,23 @@
+{
+  "name": "shim-community",
+  "version": "0.1.0",
+  "private": true,
+  "description": "쉼 Community — 잠시 멈추고 자기 자신에게 돌아가도록 돕는 Responsive Web / PWA",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,50 @@
+.shell {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.contentArea {
+  flex: 1;
+  min-width: 0; /* flex 자식 overflow 방지 */
+  display: flex;
+  justify-content: center;
+  gap: var(--space-7);
+  padding: var(--space-5) var(--layout-gutter);
+  /* Bottom Nav 뒤로 내용이 숨지 않도록 */
+  padding-bottom: calc(
+    var(--bottom-nav-height) + var(--safe-bottom) + var(--space-7)
+  );
+}
+
+.main {
+  width: 100%;
+  max-width: var(--layout-main-max);
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .contentArea {
+    padding-inline: var(--space-7);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentArea {
+    /* 데스크톱에는 Bottom Nav 가 없다. */
+    padding: var(--space-8) var(--space-7);
+  }
+}
+
+@media (min-width: 1280px) {
+  .contentArea {
+    justify-content: center;
+    padding-inline: var(--space-8);
+  }
+}
+
+/* 설치형 PWA: 브라우저 UI가 없으므로 상단 여백을 보강한다. */
+.shell[data-standalone] .contentArea {
+  padding-top: calc(var(--space-7) + env(safe-area-inset-top, 0px));
+}
