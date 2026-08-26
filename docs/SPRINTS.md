@@ -18,12 +18,28 @@
 Service Worker, Geolocation 권한 요청, 지도/장소 API, Premium/결제, 관리자 페이지,
 실제 Post 저장.
 
+## Sprint 0.1 — Repository & Source-of-Truth Correction ✅
+
+- [x] 쉼 Community를 `musi0905-cloud/App`(Apps Script)과 분리된 독립 project root로 이전
+- [x] 기존 Apps Script 5개 파일 무변경 확인 (blob hash 동일)
+- [x] `prototype.html` → `prototype.sprint0-reference.html` 로 이름 변경 + 비공식 표기
+- [x] `docs/SOURCE-OF-TRUTH.md` 신설, `docs/PRODUCT.md` 동기화
+- [x] Bottom Navigation label 11px → 12px (padding/gap 조정으로 375px 수용)
+- [x] `env(safe-area-inset-bottom)` 실제 반영 검증
+
+미해결 (Product Owner 결정 필요) — `docs/SOURCE-OF-TRUTH.md` 참고:
+웹 Community와 iOS 앱의 관계, `docs/PRODUCT.md` §15와 Community 범위의 충돌,
+AI Rest 응답 형식(자연어 3단 구조 vs Rest Plan JSON)의 정합성.
+
 ## Sprint 1 — Routing & 쉼 Flow
 
 - 5개 라우트 실제 연결 (`/`, `/write`, `/shared-day`, `/my-rest`, `/short-rest`)
 - Bottom Nav / Sidebar를 `<Link>` + `usePathname()`으로 교체
 - 상태 선택 → 다음 화면으로 이어지는 흐름 (mock 데이터)
 - 글쓰기 화면 기본 UI
+
+> ⚠️ Sprint 1 착수 전에 `docs/SOURCE-OF-TRUTH.md`의 미해결 항목을 먼저 확정해야 한다.
+> 공식 UX 정의 없이 Home/Write/AI Rest/Feed/My Rest를 재설계하지 않는다.
 
 ## Sprint 2 — Auth & 익명성
 

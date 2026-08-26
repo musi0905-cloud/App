@@ -3,6 +3,12 @@
 힘든 순간, 잠시 현실에서 거리를 두고 자기 자신에게 돌아가도록 돕는
 Responsive Web / PWA 서비스.
 
+> **저장소 기준**: 이 프로젝트는 `musi0905-cloud/App`(무관한 Google Apps Script 프로젝트)과
+> 분리된 독립 저장소다. 근거는 `musi0905-cloud/shim-ios` `docs/DECISIONS.md` D-002.
+>
+> **제품 기준**: `docs/SOURCE-OF-TRUTH.md`를 먼저 읽어라.
+> `prototype.sprint0-reference.html`은 공식 UX Reference가 **아니다.**
+
 ## 제품 원칙
 
 이 서비스는 **사용자를 오래 붙잡지 않는다.** 아래는 의도적으로 만들지 않는다.
@@ -41,8 +47,8 @@ components/
   home/       MoodStateSelector
 lib/          platform.ts, constants.ts, types.ts
 public/       manifest.webmanifest, icons/
-docs/         ARCHITECTURE.md, SPRINTS.md
-prototype.html  UX / Flow reference (구현 기준)
+docs/         SOURCE-OF-TRUTH.md, PRODUCT.md, ARCHITECTURE.md, SPRINTS.md
+prototype.sprint0-reference.html   Sprint 0 생성 기록 (공식 기준 아님)
 ```
 
 ## 디자인 방향
@@ -61,6 +67,15 @@ Soft Green / Warm Beige / Off White. 넓은 여백, 낮은 정보 밀도, 최소
 - Desktop(≥1024px): 얇은 Left Sidebar + Main(최대 720px)
 - ≥1280px: 선택적 Right Context Panel
 
+## Mobile Bottom Navigation
+
+라벨은 `--font-size-nav-label`(12px)이 하한이다. 375px에서 5탭이 들어가지 않으면
+글자 크기를 줄이지 말고 좌우 padding과 gap을 먼저 조정한다.
+
+`env(safe-area-inset-bottom)`은 `--safe-bottom` 토큰을 통해 Bottom Navigation의
+`padding-bottom`과 본문 하단 여백에 함께 반영된다. `viewport-fit=cover`가 전제다.
+
 ## 현재 상태
 
-Sprint 0 (Foundation) 완료. 상세는 `docs/SPRINTS.md` 참고.
+Sprint 0 (Foundation) 완료, Sprint 0.1 (Repository & Source-of-Truth Correction) 완료.
+상세는 `docs/SPRINTS.md` 참고.

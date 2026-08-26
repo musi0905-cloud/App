@@ -1,5 +1,7 @@
 # Architecture
 
+> 제품 기준은 `docs/SOURCE-OF-TRUTH.md`를 따른다. 이 문서는 기술 구조만 다룬다.
+
 ## 스택
 
 | 영역 | 선택 | 이유 |
@@ -44,6 +46,7 @@ lib/            도메인 타입 / 상수 / 플랫폼 감지 (React 비의존)
 - Typography: page title / section title / body / caption / button label
 - Layout: `--layout-main-max`, `--layout-sidebar-width`,
   `--layout-context-width`, `--bottom-nav-height`, `--touch-target-min`
+- Nav: `--font-size-nav-label` (12px 하한), `--safe-bottom`
 
 색 조합은 모두 WCAG AA(4.5:1) 이상을 만족하도록 골랐다.
 
