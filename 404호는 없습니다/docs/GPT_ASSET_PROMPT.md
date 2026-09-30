@@ -140,7 +140,7 @@ GPT(이미지 생성)에 그대로 붙여 넣어 쓰는 프롬프트입니다.
 ## [묶음 C] 새 방문객 외형 — 우선순위 3
 
 지금은 100명의 방문객이 4가지 외형을 돌려 씁니다. 역할이 분명한 방문객(배송 기사, 수리 기사 등)을 위한 외형이 있으면 사건이 더 잘 구분됩니다.
-각 인물마다 **[서 있는 정면 1장] → [B-1 같은 걷기 8장면] → [B-3 같은 동작 모음]** 순서로 요청하세요.
+각 인물마다 **[서 있는 정면 1장 `visitor-0N-stand.png`] → [B-1 같은 걷기 `visitor-0N-walk-toward.png`] → [B-3 같은 동작 `visitor-0N-gestures.png`]** 순서로 요청하세요. 저장 위치: `이미지_v3/visitor-05/` ~ `visitor-08/`
 
 ```
 새 방문객 인물을 그려 줘. 첨부한 기존 방문객 그림과 같은 화풍, 같은 조명, 같은 키 비율(성인 기준)이야.
@@ -210,3 +210,14 @@ GPT(이미지 생성)에 그대로 붙여 넣어 쓰는 프롬프트입니다.
 받은 파일을 Drive의 `404호는 없습니다_게임 개발` 폴더 안에 새 폴더 `이미지_v3`를 만들어 올리고 알려 주세요.
 - 배경은 `backgrounds/`, 인물은 `visitor-0N/`(번호별), 소품은 `props/`, 화면용은 `screens/`에 넣어 주시면 됩니다.
 - 파일 이름은 위 표의 이름을 그대로 쓰면 제가 바로 연결할 수 있습니다.
+
+## 저장 위치 요약
+
+Drive `404호는 없습니다_게임 개발/이미지_v3/` 아래:
+- `backgrounds/` : hall-side.png, elevator-lobby.png, stairs-up.png, parking-side.png, door-far.png, lobby-top.png
+- `visitor-01/` ~ `visitor-04/` : visitor-0N-walk-toward.png, visitor-0N-walk-away.png, visitor-0N-gestures.png
+- `visitor-05/` ~ `visitor-08/` : visitor-0N-stand.png, visitor-0N-walk-toward.png, visitor-0N-gestures.png
+- `props/` : prop-card.png, prop-paper.png, prop-keys.png, prop-bag.png, prop-flowers.png, prop-toolbox.png, prop-medicine.png, prop-cap-reflective.png
+- `screens/` : guard-monitors.png, lobby-door-inside.png, ending-404.png
+
+같은 내용이 Drive 프로젝트 폴더에 `404호는_없습니다_이미지_v3_GPT_프롬프트.md`로도 올라가 있습니다.
