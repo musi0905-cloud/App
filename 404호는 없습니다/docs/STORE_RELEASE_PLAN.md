@@ -35,7 +35,7 @@ dist/ (게임 코드 하나)
 6. 결과 PNG 공유는 `@capacitor/share`, `@capacitor/filesystem`으로 바꿉니다. 웹의 `navigator.share`는 Android 웹뷰에서 동작하지 않을 수 있습니다.
 7. Android 뒤로가기 버튼을 처리합니다(`@capacitor/app`의 `backButton` 이벤트). 조사 화면이면 게임 화면으로, 홈이면 종료 확인을 띄웁니다.
 8. 아이콘과 시작 화면은 `@capacitor/assets`로 두 플랫폼용을 한 번에 생성합니다.
-9. 앱 ID는 `com.room404.nightwatch`를 그대로 쓸지 정합니다. **한 번 출시하면 바꿀 수 없습니다.**
+9. 앱 ID는 `com.musi0905.room404`로 확정했습니다(기존 초안의 `com.room404.nightwatch`에서 변경). **한 번 출시하면 바꿀 수 없습니다.**
 
 ## 3. 스토어별 요건
 
@@ -71,7 +71,8 @@ dist/ (게임 코드 하나)
 | 계정 | 아직 없음. 처음부터 만듭니다 |
 | Mac | 없음 → iOS는 클라우드 빌드(Codemagic 무료 macOS 월 500분)로 빌드·업로드 |
 | 가격 | 3,300원 유료 앱. 인앱 결제는 없음 |
-| 앱 ID | 미정 (아래 6장) |
+| 앱 ID | `com.musi0905.room404` 확정 |
+| 출시 범위 | Google Play 먼저. 절차는 `GOOGLE_PLAY_GUIDE.md` |
 
 ### 비용과 판매 경로
 

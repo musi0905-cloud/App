@@ -10,13 +10,14 @@
 | 최신 작업본 | v0.6.0 — Drive ZIP에만 있고 이 폴더에는 아직 올라오지 않음 |
 | iOS 앱 | Capacitor 8.5.2 Xcode 프로젝트 초안 (v0.2 기준, 최신 코드와 동기화 필요) |
 | Android 앱 | 아직 없음 |
-| 스토어 등록 | 아직 안 함 |
+| 스토어 등록 | 아직 안 함. Google Play 먼저 진행 (앱 ID `com.musi0905.room404`, 3,300원) |
 
 ## 문서
 
 | 문서 | 내용 |
 |---|---|
 | [docs/CODE_GUIDE.md](docs/CODE_GUIDE.md) | 코드 구조를 섹션별로 정리한 문서. 코드가 바뀔 때마다 함께 갱신 |
+| [docs/GOOGLE_PLAY_GUIDE.md](docs/GOOGLE_PLAY_GUIDE.md) | Google Play 출시 단계별 안내 |
 | [docs/STORE_RELEASE_PLAN.md](docs/STORE_RELEASE_PLAN.md) | 같은 코드로 App Store와 Google Play에 함께 출시하는 방법 |
 | [docs/WORKLOG.md](docs/WORKLOG.md) | 작업 기록과 남은 일 |
 
