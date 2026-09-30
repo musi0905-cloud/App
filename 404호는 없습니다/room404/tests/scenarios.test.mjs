@@ -21,3 +21,12 @@ test('figures follow perspective: farther is smaller and higher, and a walk towa
  const stairs=actorPlacement({location:'stairs',action:'descend',mode:'normal',prop:'none'},.5,1);assert.equal(stairs.facing,-1);
  const stand=actorPlacement({location:'hall',action:'wait',mode:'normal',prop:'none'},.5,1);assert.equal(stand.walking,false);assert.equal(stand.h,290);
 });
+
+test('every place has a real second camera and sprite cells are placed for every action',async()=>{const {SIDE_VIEW,viewFor,GESTURE}=await import('../dist/replay.js');
+ for(const loc of Object.keys(LOCATIONS)){assert.ok(SIDE_VIEW[loc],loc);assert.notEqual(viewFor(loc,'side'),loc,loc)}
+ assert.equal(viewFor('lobby','top'),'lobbyTop');assert.equal(viewFor('hall','top'),'hall');
+ const p=(action,loc='lobby',phase=.5)=>actorPlacement({location:loc,action,mode:'normal',prop:'umbrella'},phase,1);
+ assert.equal(p('enter').sheet,'toward');assert.equal(p('enter','hallSide').sheet,'away');assert.ok(p('enter','hallSide',.9).y<p('enter','hallSide',.1).y,'walks away from the opposite camera');
+ assert.equal(p('cross').sheet,'side');assert.equal(p('descend','stairs').facing,-1);assert.equal(p('descend','stairsUp').sheet,'toward');
+ assert.ok(GESTURE.wave.includes(p('wave').cell));assert.ok(GESTURE.knock.includes(p('knock').cell));assert.equal(p('phone').cell,GESTURE.phone[1]);assert.equal(p('turn').cell,GESTURE.look);assert.equal(p('wait').cell,GESTURE.stand);
+});
