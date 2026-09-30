@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.7.0 (2026-09-30)
+- 기준 버전: v0.8.0 (2026-09-30)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -22,7 +22,7 @@ room404/
 │  ├─ sw.js               오프라인 캐시 (서비스워커)
 │  ├─ manifest.webmanifest PWA 설정
 │  ├─ data/               게임 데이터 (JSON)
-│  ├─ assets/             그림 (스프라이트 시트)
+│  ├─ assets/             그림. v2/ = 이미지·모션 v2 (WebP, motion/*.mp4, previews/)
 │  └─ icons/              앱 아이콘
 ├─ tests/                 자동 검사
 ├─ scripts/               v0.6 문구 변환 기록 (다시 실행 금지)
@@ -95,9 +95,21 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - 소리 켜기/끄기는 `localStorage['404_sound']`에 저장합니다.
 - 나중에 녹음 파일로 바꾸려면 `speakLine()`만 오디오 재생으로 바꾸면 됩니다. 대본 구조는 그대로 씁니다.
 
+## 4-2. 화면 사진·영상 (game.js `activateMedia`)
+
+- `class="scene-media"` 상자에 `data-poster`(사진 이름)와 `data-video`(영상 이름)를 적으면 됩니다. 사진은 배경으로 깔리고, 영상은 그 화면이 보일 때만 불러와 재생합니다. 화면을 떠나거나 앱이 가려지면 멈춥니다.
+- 동작 줄이기 설정에서는 영상을 쓰지 않습니다.
+- 쓰는 곳: 시작(`.door`), 경비실 방문객 카드(`.visitor`), 판단 결과, 근무 결과, 기록부 표지(`mediaHTML`), 통화(`call-media`), 처음 안내의 예시 영상(`#clipGallery`, 펼칠 때만 불러옴)
+
 ## 5. CCTV 재현 (replay.js)
 
-- 사건마다 장면 3개, 장면당 6초로 총 18초입니다. 실제 영상이 아니라 그림을 canvas 위에서 움직인 것입니다.
+- 사건마다 장면 3개, 장면당 6초로 총 18초입니다.
+- **두 층**으로 되어 있습니다. 아래는 장소별 영상(`<video class="replay-video">`), 위는 투명한 canvas입니다. 영상이 없거나 열리지 않으면 canvas가 배경 사진을 직접 그립니다. 글자(카메라 이름, 시각, 상태)는 그 위의 HTML(`.replay-hud`)입니다.
+- `sceneVideo(scene, look, camera)`가 장면에 맞는 영상을 고릅니다. 순서: 신호 끊김(loading) → 문 비교/열린 문 → (기본 카메라일 때) 인물·장소·이상 종류가 모두 맞는 이상 영상 → 공동현관 걷기 영상(소품 없음, normal) → 장소별 모니터 영상.
+- 사람이 들어 있는 영상(걷기, 이상 영상)을 쓸 때는 canvas에 사람을 그리지 않습니다.
+- 영상 시간은 `setVideo()`가 재생 위치(장면 안에서 0~6초)에 맞춥니다. 재생 중에는 0.3초 이상 어긋날 때만 맞춥니다.
+- `actorPlacement()`: 장소별 바닥 높이와 크기(`LAYOUT`)와 동작(enter/cross/descend/turn/repeat)에 따른 위치. 가까이 보기 카메라의 확대 중심으로도 씁니다.
+- 카메라(`CAMERAS`): ① 기본 ② 다른 방향(공동현관↔현관 옆은 실제 다른 그림, 나머지는 좌우 반전) ③ 가까이 보기(2.2배). `.replay-stage`에 CSS transform으로 적용하므로 영상과 canvas가 같이 움직입니다.
 - `mountReplay(host, {pack, visitor, time, date})`가 화면을 만들고, 정리 함수를 돌려줍니다. 다른 화면으로 가면 `game.js`의 `clearReplay()`가 정리합니다.
 - `cursor`(초)가 모든 상태의 기준입니다. 재생, 슬라이더, 장면 버튼이 모두 `cursor`만 바꾸고 `draw()`를 부릅니다. 같은 `cursor`에서는 항상 같은 그림이 나옵니다.
 - 장면 데이터의 의미:
@@ -106,15 +118,14 @@ home ──시작──▶ game ◀──돌아가기── investigation
   - `mode`: 이상 징후 연출 41종 (`MODES`). 예: `double`(두 사람), `clock7`(시계 7분 차이), `absent`(사람 없음)
   - `prop`: 소품. `hat`, `umbrella`, `mask`, `phone`, `parcel`, `glove`
   - `offset`: 도착 시각 기준 몇 분 전·후인지
-- 검사용 표시: canvas의 `data-mode`, `data-time`, `data-location`, `data-count`, `data-walk-frame` 속성을 테스트가 읽습니다.
+- 검사용 표시: canvas의 `data-mode`, `data-time`, `data-location`, `data-count`, `data-walk-frame`, `data-view`(카메라), `data-video`(재생 중인 영상) 속성을 테스트가 읽습니다.
 
-### 5-1. V001 걷기 모션 (v0.6.1)
+### 5-1. 걷기 그림 (v0.8)
 
-- `WALK` 설정: `assets/visitor-v001-walk-8f.png`(4×2, 프레임 384×512, 8fps). 대상은 방문객 `V001`, 동작은 `enter`, `cross`, `descend`입니다.
-- `walkFrame(cursor) = floor(cursor×8) mod 8`
-- `WALK.anchors`에는 프레임별 `[몸통 중심 x, 발 y, 머리 y]`가 들어 있습니다. 불투명 픽셀(alpha>128)을 측정한 값입니다. `actor()`가 이 값으로 기존 서 있는 그림(`STAND`)과 키, 발 위치, 몸통 중심을 맞춥니다.
-- `descend`에서는 좌우 반전합니다. 그림이 오른쪽을 보고 있기 때문입니다.
-- **다른 방문객에게 넓히려면**: 새 시트를 만든 뒤 `anchors`를 다시 측정하고 `WALK.visitors`에 추가합니다. 방문객마다 시트가 다르면 `WALK`를 방문객별 목록으로 바꿔야 합니다.
+- 4명 모두 `assets/v2/visitor-0N-walk.webp`(4×2, 칸 384×512, 발 위치 192,496, 8fps)를 씁니다. 방문객 번호 `(번호-1) % 4 + 1`이 외형 번호입니다.
+- `walkFrame(cursor) = floor(cursor×8) mod 8`. 내려오는 장면(descend)은 좌우 반전합니다.
+- 서 있는 장면은 `assets/visitors.png`(기존 서 있는 그림)를 씁니다. 두 그림은 인물 키를 맞춰 그립니다(`WALK.figure`, `STAND`).
+- v0.6.1의 V001 전용 걷기 그림(`character-motion-v1`)은 v2 걷기 그림으로 바뀌었습니다.
 
 ## 6. 데이터 (dist/data)
 
@@ -130,23 +141,29 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - **화면 문구를 고칠 때는 `docs/WRITING_GUIDE.md`를 따릅니다.** 해요체, 짧은 문장, 어려운 말 금지, 조사 전 정답 노출 금지가 핵심입니다. `call.reply`, `plain.confirmed`, `verificationDetail`은 항상 같은 문장이어야 합니다(테스트가 검사).
 - 화면에 보이지 않는 칸: `clue`, `verification`(원래 단서), `question`(이전 버전의 질문), `plain.decision`(현재 미사용)
 
-## 7. 그림 (dist/assets)
+## 7. 그림과 영상 (dist/assets)
 
-| 파일 | 배치 | 쓰는 곳 |
-|---|---|---|
-| `visitors.png` | 1536×1024, 가로 4명 | 초상, CCTV 인물 |
-| `visitors-before-haircut.png` | 같은 배치 | `hairOld` 모드의 예전 사진 |
-| `visitor-v001-walk-8f.png` | 4×2 프레임 | V001 걷기 (v0.6.1) |
-| `cctv-lobby.png` | 1장 | 공동현관 배경 |
-| `apartment-scenes.png` | 가로 3칸 | 승강기, 복도, 계단 |
-| `detail-scenes.png` | 가로 3칸 | 주차장, 문 열림, 문 닫힘 |
-| `mystery-props.png` | 3×2 | 모자, 우산, 마스크, 휴대폰, 택배, 장갑 |
+| 파일 | 쓰는 곳 |
+|---|---|
+| `visitors.png` | 초상, CCTV의 서 있는 사람, 얼굴 확대 |
+| `visitors-before-haircut.png` | `hairOld` 모드의 예전 사진 |
+| `v2/cctv-*.webp` (6장) | CCTV 장소별 배경 |
+| `v2/door-closed.webp`, `door-open.webp` | 집 현관문 |
+| `v2/title-night`, `guard-office`, `intercom-desk`, `ledger-desk`, `ending-dawn` | 화면 사진 |
+| `v2/visitor-01~04-walk.webp` | 걷기 8장면 |
+| `v2/prop-*.webp` (6개) | 모자, 우산, 마스크, 휴대폰, 택배, 장갑 |
+| `v2/motion/*.mp4` (23개) | 화면·CCTV 영상 (960×640, 6초, 무음) |
+| `v2/previews/*.webp` | 예시 영상의 미리보기 |
+
+- 원본(PNG, 검수 자료, 제작 코드)은 저장소의 `visual-motion-v2/`에 있습니다. 게임용은 WebP로 줄인 것입니다.
+- 새 그림을 넣을 때: `visual-motion-v2`처럼 원본을 보관하고, WebP로 바꿔 `dist/assets/v2/`에 넣은 뒤 `sw.js`의 목록과 캐시 이름을 바꿉니다.
 
 ## 8. 오프라인 (sw.js)
 
 - 설치할 때 `FILES` 목록 전체를 캐시합니다. 이후에는 캐시를 먼저 쓰고, 없으면 네트워크를 씁니다.
-- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.7.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
-- 앱(Capacitor) 안에서는 서비스워커를 쓰지 않습니다.
+- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.8.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
+- 영상(.mp4)은 미리 저장하지 않고 서비스워커도 가로채지 않습니다(용량, 구간 요청). 인터넷이 없으면 사진이 보입니다.
+- 앱(Capacitor) 안에서는 서비스워커를 쓰지 않습니다. 모든 파일이 앱 안에 들어 있습니다.
 
 ## 9. 테스트 (tests)
 
@@ -162,7 +179,9 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - 두 브라우저 검사는 `test-artifacts/`의 결과 JSON과 스크린샷을 덮어씁니다.
 - 스크린샷의 한글이 네모로 보이면 한국어 글꼴을 설치합니다(예: `fonts-noto-cjk`).
 - 브라우저 검사는 `speechSynthesis`를 가짜로 바꿔 끼워 통화 음성을 검사합니다(읽은 줄 수, ko-KR, 사람마다 다른 높이, 소리 끄기).
-- 마지막 결과(2026-09-30, v0.7.0): 11/11, 9/9, 100/100 모두 통과
+- 테스트용 서버는 `tests/static-server.mjs`입니다. 영상 탐색에 필요한 Range 요청을 지원합니다.
+- 이 환경의 브라우저는 GPU가 없어 스크린샷에 영상이 검게 나옵니다. 영상 확인은 `data-video`와 `currentTime`으로 합니다.
+- 마지막 결과(2026-09-30, v0.8.0): 12/12, 9/9, 100/100 모두 통과
 
 ## 10. 주의사항
 
@@ -179,12 +198,13 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 | 높음 | 결과 이미지 저장을 앱 방식으로 | Android 웹뷰에서는 파일 공유와 blob 다운로드가 동작하지 않을 수 있습니다. Capacitor Share/Filesystem을 씁니다. |
 | 중간 | 저장을 Capacitor Preferences로 이중화 | 웹뷰의 localStorage는 OS가 정리할 때 지워질 수 있습니다. |
 | 높음 | Android 앱에 TextToSpeech 플러그인 설치 | 없으면 앱에서 전화 목소리가 나오지 않습니다. |
-| 높음 | CCTV 여러 각도 보기 | 사용자가 배경 그림을 만드는 중입니다. 규격은 `docs/CCTV_ANGLE_IMAGE_SPEC.md` |
-| 중간 | 걷기 모션을 다른 방문객으로 확대 | 지금은 V001만 적용되어 있습니다. |
+| 중간 | 장소별 두 번째 방향 배경 | 지금 ‘다른 방향’은 공동현관만 실제 그림이고 나머지는 좌우 반전입니다. 규격: `docs/CCTV_ANGLE_IMAGE_SPEC.md` |
 | 중간 | 녹음 목소리로 교체 | 지금은 기기 내장 음성입니다. 대본 구조는 그대로 두고 오디오 파일로 바꿀 수 있습니다. |
 | 낮음 | 결말 24개 추가 구현 | `endings.json` 30개 중 6개만 구현되어 있습니다. |
 
 ### 완료한 개선
+
+- v0.8.0: 이미지·모션 v2를 전 화면에 적용했고, 4명 모두 걷기 그림을 씁니다. CCTV 카메라 바꾸기(다른 방향, 가까이)를 추가했습니다.
 
 - v0.7.0: 모든 대사를 쉬운 말로 다시 썼고, 전화 목소리와 넘기는 기록부를 추가했습니다. 경비실 첫 안내 말투도 통일했습니다.
 

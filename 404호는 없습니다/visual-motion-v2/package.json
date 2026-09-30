@@ -1,0 +1,12 @@
+{
+  "name": "room404-visual-assets-v2",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "render": "node runtime/render-movies.cjs",
+    "verify": "python3 runtime/verify-media.py"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  }
+}

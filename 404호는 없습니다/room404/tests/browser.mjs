@@ -4,12 +4,10 @@ import {readFile,mkdir,writeFile,stat} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
 import {tmpdir} from 'node:os';
 import {brotliDecompressSync} from 'node:zlib';
-import assert from 'node:assert/strict';
+import assert from 'node:assert/strict';import {startServer} from './static-server.mjs';
 const root=resolve('dist'),art=resolve('test-artifacts');await mkdir(art,{recursive:true});
-const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.webmanifest':'application/manifest+json'};
 let networkDisabled=false;
-const server=createServer(async(req,res)=>{if(networkDisabled){req.socket.destroy();return}try{const url=new URL(req.url,'http://localhost'),file=resolve(root,'.'+(url.pathname==='/'?'/index.html':url.pathname));if(!file.startsWith(root+'/'))throw Error();res.setHeader('Content-Type',types[extname(file)]||'application/octet-stream');res.end(await readFile(file))}catch{res.statusCode=404;res.end('Not found')}});
-await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;
+const {server,origin}=await startServer(root,{blocked:()=>networkDisabled});
 const results=[];let failed=false;
 async function check(name,fn){try{await fn();results.push({test:name,status:'PASS'});console.log('PASS',name)}catch(e){failed=true;results.push({test:name,status:'FAIL',error:e.message});console.error('FAIL',name,e.message)}}
 async function suite(browser,label){

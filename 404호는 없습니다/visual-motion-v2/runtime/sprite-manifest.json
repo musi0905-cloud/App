@@ -1,0 +1,476 @@
+{
+  "version": 2,
+  "columns": 4,
+  "rows": 2,
+  "frameWidth": 384,
+  "frameHeight": 512,
+  "fps": 8,
+  "cycleSeconds": 1,
+  "anchor": [
+    0.5,
+    0.96875
+  ],
+  "frames": {
+    "01": [
+      {
+        "path": "images/visitor-01/walk-01.png",
+        "sourceCell": 0,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          84,
+          28,
+          336,
+          493
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-02.png",
+        "sourceCell": 1,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          87,
+          25,
+          301,
+          491
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-03.png",
+        "sourceCell": 2,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          63,
+          27,
+          333,
+          492
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-04.png",
+        "sourceCell": 3,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          75,
+          25,
+          326,
+          489
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-05.png",
+        "sourceCell": 4,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          87,
+          19,
+          352,
+          480
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-06.png",
+        "sourceCell": 5,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          87,
+          18,
+          307,
+          479
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-07.png",
+        "sourceCell": 6,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          71,
+          19,
+          334,
+          480
+        ]
+      },
+      {
+        "path": "images/visitor-01/walk-08.png",
+        "sourceCell": 7,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          76,
+          18,
+          324,
+          479
+        ]
+      }
+    ],
+    "02": [
+      {
+        "path": "images/visitor-02/walk-01.png",
+        "sourceCell": 0,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          83,
+          14,
+          352,
+          506
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-02.png",
+        "sourceCell": 1,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          84,
+          15,
+          319,
+          506
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-03.png",
+        "sourceCell": 2,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          39,
+          16,
+          312,
+          506
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-04.png",
+        "sourceCell": 3,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          45,
+          14,
+          301,
+          506
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-05.png",
+        "sourceCell": 4,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          78,
+          12,
+          360,
+          486
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-06.png",
+        "sourceCell": 5,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          93,
+          12,
+          319,
+          484
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-07.png",
+        "sourceCell": 6,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          55,
+          12,
+          327,
+          486
+        ]
+      },
+      {
+        "path": "images/visitor-02/walk-08.png",
+        "sourceCell": 7,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          59,
+          12,
+          310,
+          484
+        ]
+      }
+    ],
+    "03": [
+      {
+        "path": "images/visitor-03/walk-01.png",
+        "sourceCell": 0,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          126,
+          21,
+          374,
+          498
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-02.png",
+        "sourceCell": 1,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          108,
+          21,
+          309,
+          499
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-03.png",
+        "sourceCell": 2,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          85,
+          22,
+          323,
+          499
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-04.png",
+        "sourceCell": 3,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          43,
+          21,
+          277,
+          496
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-05.png",
+        "sourceCell": 4,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          124,
+          9,
+          376,
+          478
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-06.png",
+        "sourceCell": 5,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          111,
+          10,
+          319,
+          478
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-07.png",
+        "sourceCell": 6,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          66,
+          10,
+          332,
+          477
+        ]
+      },
+      {
+        "path": "images/visitor-03/walk-08.png",
+        "sourceCell": 7,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          48,
+          10,
+          277,
+          476
+        ]
+      }
+    ],
+    "04": [
+      {
+        "path": "images/visitor-04/walk-01.png",
+        "sourceCell": 0,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          98,
+          23,
+          339,
+          494
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-02.png",
+        "sourceCell": 1,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          75,
+          24,
+          313,
+          494
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-03.png",
+        "sourceCell": 2,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          86,
+          23,
+          258,
+          494
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-04.png",
+        "sourceCell": 3,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          62,
+          23,
+          321,
+          492
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-05.png",
+        "sourceCell": 4,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          92,
+          12,
+          348,
+          476
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-06.png",
+        "sourceCell": 5,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          78,
+          12,
+          341,
+          474
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-07.png",
+        "sourceCell": 6,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          85,
+          12,
+          300,
+          478
+        ]
+      },
+      {
+        "path": "images/visitor-04/walk-08.png",
+        "sourceCell": 7,
+        "anchor": [
+          0.5,
+          0.96875
+        ],
+        "contentBounds": [
+          85,
+          12,
+          334,
+          473
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "AI generated frame animation, not motion capture.",
+    "Four visual archetypes match existing modulo-4 assignment; not 100 distinct people.",
+    "Frames aligned by alpha silhouette to common height and foot baseline."
+  ]
+}

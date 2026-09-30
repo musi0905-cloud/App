@@ -20,13 +20,13 @@
     <p id="storageNotice" class="notice" role="status" hidden>진행 상황을 저장하지 못했어요. 앱을 닫으면 기록이 사라질 수 있어요.</p>
     <section id="home" class="panel">
       <div class="camera">CAM 01 <span>● REC</span></div>
-      <div class="door"><div class="number">404</div><div class="shadow"></div></div>
+      <div class="door scene-media" data-poster="title-night" data-video="02-title-rain"><div class="number">404</div><div class="shadow"></div></div>
       <p class="eyebrow">야간 경비실 · 00:00—06:00</p>
       <h1>404호는<br>없습니다.</h1>
       <p>당신은 야간 경비원이에요. 찾아온 사람이 누구인지 확인하고, 문을 열어 줄지 결정하세요.</p>
       <button id="resume" class="primary full" hidden>이어서 근무</button>
       <div class="actions"><button id="startStory" class="primary" disabled>첫 근무 시작</button><button id="startDaily" disabled>오늘의 근무</button></div>
-      <p class="small">한 번 근무에 방문객 8명 · ‘오늘의 근무’는 날마다 사람이 바뀌어요 · 광고와 추가 결제 없음</p><details class="how-to"><summary>처음이라면? 이렇게 하면 돼요</summary><ol><li>CCTV 영상을 봐요. 언제 왔는지, 몇 명인지 봐요.</li><li>관리실 기록부를 한 장씩 넘겨요. 이름과 호수가 같은지 봐요.</li><li>그 집에 전화를 걸어요. 목소리를 듣고 들어와도 되는지 물어봐요.</li><li>이상한 점이 있으면 한 번 더 확인해요.</li></ol><p>다 봤으면 ‘들여보내기’나 ‘문 열지 않기’를 고르세요.</p></details>
+      <p class="small">한 번 근무에 방문객 8명 · ‘오늘의 근무’는 날마다 사람이 바뀌어요 · 광고와 추가 결제 없음</p><details class="how-to"><summary>처음이라면? 이렇게 하면 돼요</summary><ol><li>CCTV 영상을 봐요. 언제 왔는지, 몇 명인지 봐요.</li><li>관리실 기록부를 한 장씩 넘겨요. 이름과 호수가 같은지 봐요.</li><li>그 집에 전화를 걸어요. 목소리를 듣고 들어와도 되는지 물어봐요.</li><li>이상한 점이 있으면 한 번 더 확인해요.</li></ol><p>다 봤으면 ‘들여보내기’나 ‘문 열지 않기’를 고르세요.</p></details><details class="how-to" id="clipGallery"><summary>이런 장면은 한 번 더 의심해 보세요</summary><div class="clip-grid"><figure data-clip="18-duplicate-visitors"><figcaption>같은 사람이 두 번 보여요</figcaption></figure><figure data-clip="17-delayed-shadow"><figcaption>사람은 갔는데 그림자가 남아 있어요</figcaption></figure><figure data-clip="19-reflection-lag"><figcaption>거울 속 모습이 늦게 따라와요</figcaption></figure><figure data-clip="20-signal-loss"><figcaption>화면이 끊겼다가 다시 나와요</figcaption></figure><figure data-clip="21-infrared-view"><figcaption>밤 카메라라서 색이 없어요</figcaption></figure><figure data-clip="22-rain-double-image"><figcaption>빗물 때문에 겹쳐 보여요</figcaption></figure></div><p class="small">이상해 보여도 괜찮은 경우가 있어요. 꼭 기록과 전화로 한 번 더 확인하세요.</p></details>
       <p id="record" class="small"></p>
       <button id="retry" hidden>다시 불러오기</button>
       <button id="install" hidden>앱 설치</button>
@@ -36,7 +36,7 @@
     <section id="game" hidden>
       <div class="status"><span id="shiftLabel">첫 근무</span><span id="progress">01 / 08</span><span id="mistakes">틀린 판단 0</span></div>
       <div class="camera">현관 인터폰 <span>● LIVE</span></div>
-      <div class="visitor"><div id="portrait" class="portrait">◐</div><div><p id="identity" class="eyebrow"></p><h2 id="claim"></h2></div></div>
+      <div class="visitor scene-media" data-poster="guard-office" data-video="01-office-ambient"><div id="portrait" class="portrait">◐</div><div><p id="identity" class="eyebrow"></p><h2 id="claim"></h2></div></div>
       <p id="routine" class="routine" aria-live="polite"></p><button id="guidedAction" class="primary full"></button><div class="tools"><button data-tool="CCTV">① CCTV 보기</button><button data-tool="명부">② 주민·방문 기록</button><button data-tool="통화">③ 집에 전화하기</button><button id="verify">④ 한 번 더 확인</button></div>
       <div id="evidence" class="evidence" aria-live="polite"><strong>조사 기록</strong><p>위 버튼을 차례로 눌러 확인해 보세요. 얼굴만 보고 정하면 안 돼요.</p></div>
       <div class="decision"><button id="deny">문 열지 않기</button><button id="allow" class="primary">들여보내기</button></div>
@@ -51,8 +51,8 @@
       <button id="toolAction" class="primary full"></button>
       <div class="workspace-nav"><button id="nextTool">다음 자료 확인</button><button id="finishInspect">돌아가서 결정하기</button></div>
     </section>
-    <section id="feedback" class="panel" hidden><p class="eyebrow">내 선택의 결과</p><h2 id="feedbackTitle"></h2><p id="feedbackText"></p><p id="reason"></p><button id="next" class="primary">다음 방문객</button></section>
-    <section id="result" class="panel" hidden><p class="eyebrow">06:00 · 근무 종료</p><h1 id="ending"></h1><p id="summary"></p><div id="stats"></div><p class="small">기록은 이 기기에 저장돼요.</p><div class="actions"><button id="share" class="primary">결과 이미지 저장</button><button id="again">다시 근무</button></div><button id="resultHome">처음으로</button><p id="shareStatus" role="status"></p><div id="sharePreview" hidden><img id="shareImage" alt="내 야간근무 결과 카드"><p class="small">이미지를 길게 눌러 저장하거나 아래 링크를 누르세요.</p><a id="shareDownload" download="404-근무기록.png">이미지 다운로드</a><button id="shareClose">닫기</button></div></section>
+    <section id="feedback" class="panel" hidden><div class="scene-media banner" data-poster="guard-office"></div><p class="eyebrow">내 선택의 결과</p><h2 id="feedbackTitle"></h2><p id="feedbackText"></p><p id="reason"></p><button id="next" class="primary">다음 방문객</button></section>
+    <section id="result" class="panel" hidden><div class="scene-media banner" data-poster="ending-dawn" data-video="12-ending-dawn"></div><p class="eyebrow">06:00 · 근무 종료</p><h1 id="ending"></h1><p id="summary"></p><div id="stats"></div><p class="small">기록은 이 기기에 저장돼요.</p><div class="actions"><button id="share" class="primary">결과 이미지 저장</button><button id="again">다시 근무</button></div><button id="resultHome">처음으로</button><p id="shareStatus" role="status"></p><div id="sharePreview" hidden><img id="shareImage" alt="내 야간근무 결과 카드"><p class="small">이미지를 길게 눌러 저장하거나 아래 링크를 누르세요.</p><a id="shareDownload" download="404-근무기록.png">이미지 다운로드</a><button id="shareClose">닫기</button></div></section>
   </main>
   <footer>픽션입니다. 실제 출입 통제와 응급 대응 절차를 대신하지 않습니다.</footer>
 </body>

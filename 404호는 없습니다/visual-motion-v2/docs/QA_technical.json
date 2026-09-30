@@ -1,0 +1,822 @@
+{
+  "images": [
+    {
+      "file": "images/cctv-elevator.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2503276
+    },
+    {
+      "file": "images/cctv-hall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2417989
+    },
+    {
+      "file": "images/cctv-lobby-side.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2800319
+    },
+    {
+      "file": "images/cctv-lobby.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2739493
+    },
+    {
+      "file": "images/cctv-parking.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 3122473
+    },
+    {
+      "file": "images/cctv-stairs.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2715597
+    },
+    {
+      "file": "images/door-closed.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2403378
+    },
+    {
+      "file": "images/door-open.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2329184
+    },
+    {
+      "file": "images/ending-dawn.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2777650
+    },
+    {
+      "file": "images/guard-office.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2154870
+    },
+    {
+      "file": "images/intercom-desk.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2059257
+    },
+    {
+      "file": "images/ledger-desk.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2493606
+    },
+    {
+      "file": "images/props/glove.png",
+      "width": 400,
+      "height": 495,
+      "mode": "RGBA",
+      "bytes": 368052
+    },
+    {
+      "file": "images/props/hat.png",
+      "width": 530,
+      "height": 455,
+      "mode": "RGBA",
+      "bytes": 364910
+    },
+    {
+      "file": "images/props/mask.png",
+      "width": 580,
+      "height": 370,
+      "mode": "RGBA",
+      "bytes": 331334
+    },
+    {
+      "file": "images/props/parcel.png",
+      "width": 490,
+      "height": 405,
+      "mode": "RGBA",
+      "bytes": 369449
+    },
+    {
+      "file": "images/props/phone.png",
+      "width": 320,
+      "height": 465,
+      "mode": "RGBA",
+      "bytes": 181680
+    },
+    {
+      "file": "images/props/umbrella.png",
+      "width": 270,
+      "height": 546,
+      "mode": "RGBA",
+      "bytes": 188477
+    },
+    {
+      "file": "images/props-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1919298
+    },
+    {
+      "file": "images/title-night.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2494081
+    },
+    {
+      "file": "images/visitor-01/walk-01.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 172621
+    },
+    {
+      "file": "images/visitor-01/walk-02.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 168141
+    },
+    {
+      "file": "images/visitor-01/walk-03.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 169928
+    },
+    {
+      "file": "images/visitor-01/walk-04.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 176056
+    },
+    {
+      "file": "images/visitor-01/walk-05.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 178423
+    },
+    {
+      "file": "images/visitor-01/walk-06.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 170584
+    },
+    {
+      "file": "images/visitor-01/walk-07.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 177682
+    },
+    {
+      "file": "images/visitor-01/walk-08.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 173273
+    },
+    {
+      "file": "images/visitor-01-walk-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2021212
+    },
+    {
+      "file": "images/visitor-02/walk-01.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 164653
+    },
+    {
+      "file": "images/visitor-02/walk-02.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 145321
+    },
+    {
+      "file": "images/visitor-02/walk-03.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 162362
+    },
+    {
+      "file": "images/visitor-02/walk-04.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 159743
+    },
+    {
+      "file": "images/visitor-02/walk-05.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 170033
+    },
+    {
+      "file": "images/visitor-02/walk-06.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 154790
+    },
+    {
+      "file": "images/visitor-02/walk-07.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 167383
+    },
+    {
+      "file": "images/visitor-02/walk-08.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 159880
+    },
+    {
+      "file": "images/visitor-02-walk-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1964438
+    },
+    {
+      "file": "images/visitor-03/walk-01.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 163169
+    },
+    {
+      "file": "images/visitor-03/walk-02.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 156276
+    },
+    {
+      "file": "images/visitor-03/walk-03.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 162472
+    },
+    {
+      "file": "images/visitor-03/walk-04.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 160269
+    },
+    {
+      "file": "images/visitor-03/walk-05.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 176709
+    },
+    {
+      "file": "images/visitor-03/walk-06.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 155007
+    },
+    {
+      "file": "images/visitor-03/walk-07.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 164076
+    },
+    {
+      "file": "images/visitor-03/walk-08.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 159451
+    },
+    {
+      "file": "images/visitor-03-walk-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1975566
+    },
+    {
+      "file": "images/visitor-04/walk-01.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 155481
+    },
+    {
+      "file": "images/visitor-04/walk-02.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 153153
+    },
+    {
+      "file": "images/visitor-04/walk-03.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 137558
+    },
+    {
+      "file": "images/visitor-04/walk-04.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 159396
+    },
+    {
+      "file": "images/visitor-04/walk-05.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 153935
+    },
+    {
+      "file": "images/visitor-04/walk-06.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 151455
+    },
+    {
+      "file": "images/visitor-04/walk-07.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 132951
+    },
+    {
+      "file": "images/visitor-04/walk-08.png",
+      "width": 384,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 151519
+    },
+    {
+      "file": "images/visitor-04-walk-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1832355
+    }
+  ],
+  "movies": [
+    {
+      "file": "motion/01-office-ambient.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 271546
+    },
+    {
+      "file": "motion/02-title-rain.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 658738
+    },
+    {
+      "file": "motion/03-lobby-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 296617
+    },
+    {
+      "file": "motion/04-lobby-side-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 300423
+    },
+    {
+      "file": "motion/05-hall-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 247635
+    },
+    {
+      "file": "motion/06-elevator-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 219454
+    },
+    {
+      "file": "motion/07-stairs-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 256820
+    },
+    {
+      "file": "motion/08-parking-monitor.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 307679
+    },
+    {
+      "file": "motion/09-door-comparison.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 530225
+    },
+    {
+      "file": "motion/10-ledger-inspection.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 264456
+    },
+    {
+      "file": "motion/11-intercom-ring.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 233743
+    },
+    {
+      "file": "motion/12-ending-dawn.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 314480
+    },
+    {
+      "file": "motion/13-visitor-01-walk.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 558314
+    },
+    {
+      "file": "motion/14-visitor-02-walk.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 566890
+    },
+    {
+      "file": "motion/15-visitor-03-walk.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 561482
+    },
+    {
+      "file": "motion/16-visitor-04-walk.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 531589
+    },
+    {
+      "file": "motion/17-delayed-shadow.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 486096
+    },
+    {
+      "file": "motion/18-duplicate-visitors.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 375763
+    },
+    {
+      "file": "motion/19-reflection-lag.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 270810
+    },
+    {
+      "file": "motion/20-signal-loss.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 478522
+    },
+    {
+      "file": "motion/21-infrared-view.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 353113
+    },
+    {
+      "file": "motion/22-rain-double-image.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 778448
+    },
+    {
+      "file": "motion/23-door-open-ambient.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "24/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "6.000000"
+      },
+      "bytes": 233019
+    }
+  ],
+  "limitations": [
+    "Browser preview and iPhone physical device not tested in this environment.",
+    "Visual review is sampled; not a 100-case gameplay regression test."
+  ],
+  "summary": {
+    "png_count": 56,
+    "mp4_count": 23,
+    "movie_checks": "23/23 fully decoded: H.264, 960x640, 24fps, 144 frames, 6 seconds, no audio",
+    "images_bytes": 49691694
+  }
+}

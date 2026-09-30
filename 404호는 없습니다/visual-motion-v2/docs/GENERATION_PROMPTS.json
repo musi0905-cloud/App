@@ -1,0 +1,39 @@
+{
+  "tool": "image_gen built-in",
+  "generationDate": "2026-09-30",
+  "prompts": [
+    {
+      "name": "visitor-02-walk-sheet",
+      "prompt": "Animation spritesheet on TRANSPARENT alpha. Reference identity is ONLY the SECOND person from LEFT: young adult Korean man with wavy short black hair, sage green bomber jacket over dark charcoal t-shirt, olive cargo pants and grey sneakers. Exactly EIGHT full-body poses of the SAME man, 4 columns by 2 rows, one person centred each equal cell, feet same baseline, same body size, generous cell padding. Natural WALK IN PLACE toward screen RIGHT in three-quarter side view: left contact, down, passing, up, right contact, down, passing, up. Clear DIFFERENT alternating leg positions and reciprocal arm swing, hands out of pockets, subtle jacket movement, stable face. Consistent front-side view not turning. Photorealistic cutouts, neutral lighting, not anime or illustrated. No other people, no background, no floor, no cast shadows, no grid lines, no labels, no text, no overlapping bodies, no clipped feet or heads. Wide 3:2 sheet."
+    },
+    {
+      "name": "visitor-03-walk-sheet",
+      "prompt": "Create a game WALK CYCLE production spritesheet, actual transparent alpha background. Reference ONLY the third person from left: adult Korean woman with long black hair, sage-grey knit cardigan over ivory top, charcoal jeans and white sneakers. SAME character exactly EIGHT poses arranged 4 columns x 2 rows, generous margins, no overlap. Each complete head-to-toe person at identical scale and foot baseline within cell. Walking in place toward right, gentle 3/4 side view, neutral face: 1 left foot forward/right back; 2 weight down; 3 right foot passing left; 4 right knee lifted; 5 right foot forward/left back; 6 weight down; 7 left passing right; 8 left knee lifted. Natural reciprocal arm swing, restrained hair motion; anatomical leg phases clearly different, maintain face and outfit. Realistic softly lit 3D-like photographic cutouts, not cartoons. Hands no longer clasped. No background, floor, contact shadow, labels, dividers, text or extra people. 3:2 landscape canvas."
+    },
+    {
+      "name": "visitor-04-walk-sheet",
+      "prompt": "Production eight-phase walking spritesheet on transparent alpha background, 4 columns 2 rows, equal cells. Use ONLY fourth person at far right of supplied reference: middle-aged Korean man, short salt and pepper hair, charcoal long coat over dark green sweater, dark trousers, black leather shoes. EXACT same man, consistent body height, face and clothing in all eight full-body cutouts. Walk IN PLACE towards screen RIGHT in 3/4 side view, ordinary restrained slow walking, realistic reciprocal arm swing and alternating feet, hands out of pockets. Clear 8 successive phases: left contact, recoil, passing, rising, right contact, recoil, passing, rising. Do NOT lift knees higher than normal walking, do not march. Heads and feet fully within each cell, equal baseline, wide padding. No other characters, no floor, no cast shadows, no background, no gridlines, no lettering or numbers. Realistic neutral soft photographic lighting, clean silhouette ready for game compositing. 3:2 landscape sheet."
+    },
+    {
+      "name": "props-sheet",
+      "prompt": "Production game prop atlas on genuine TRANSPARENT alpha. Exactly SIX isolated photorealistic objects in strict 3 columns x 2 rows with generous transparent margins and equal cells, one object per cell. Top row left: plain charcoal baseball cap seen slight 3/4 front. Top middle: CLOSED folded black umbrella with curved handle, full length visible. Top right: plain white disposable face mask front view with loops. Bottom left: black unbranded smartphone held upright orientation, screen blank dark with soft green reflection. Bottom middle: small sealed kraft cardboard parcel box front 3/4 view, plain blank label with no writing. Bottom right: one plain dark work glove with all five fingers extended, palm facing camera. Cohesive realistic worn everyday Korean apartment visitor objects, neutral studio lighting, no people or hands outside glove, no text, logos or numerals, no shadows on ground, no decorative effects. All objects complete and separated, no overlap. 3:2 landscape canvas."
+    }
+  ],
+  "notes": "Exact retained prompts are included for the last four generations. Earlier image requests are represented below as reconstructed production briefs, not verbatim API logs.",
+  "earlier_production_briefs": {
+    "guard-office": "Seated guard POV inside modest old Korean apartment security office; worn sage desk, two CCTV monitors left, beige corded intercom right, ledger centre, window overlooking rainy vestibule, teal fluorescent plus amber lamp. No people, readable text or timestamp. 3:2.",
+    "cctv-lobby": "High fixed corner CCTV view of cream-tile entrance lobby, glass door left, mailboxes right, open foreground floor; no people or baked overlays. 3:2.",
+    "cctv-lobby-side": "Same lobby material family from secondary corner, service window and door viewed laterally, empty walkable floor. 3:2.",
+    "cctv-hall": "High camera view down long apartment corridor, closed unnumbered doors, cream tiles, sage paint, fluorescent light and extinguisher; empty. 3:2.",
+    "cctv-elevator": "Inside ordinary empty apartment elevator, rear upper corner camera towards closed steel door, rails and dark blank indicator, realistic narrow cabin. 3:2.",
+    "cctv-stairs": "High diagonal view of apartment stairwell landing, connected descending and ascending flights, cream/sage walls and rails, empty. 3:2.",
+    "cctv-parking": "High fixed camera in underground parking, concrete columns, green epoxy, exposed pipes, cars at edges and open central lane. 3:2.",
+    "door-closed": "Complete front view of single closed steel apartment door with blank nameplate, peephole, digital lock and intercom, cream tile wall. 3:2.",
+    "door-open": "Edit same door background into inward-open state with empty warmly lit entry vestibule; preserve outer wall, framing and lighting.",
+    "ledger-desk": "Near-overhead view of blank open ledger on worn sage desk, pen/key/stamp at edges, warm lamp and cool fill, blank pages for runtime data. 3:2.",
+    "intercom-desk": "Close view of aged beige guard station handset/keypad/speaker, dark blank display reserved for runtime text, same desk and lights. 3:2.",
+    "title-night": "Rain-wet courtyard outside the same apartment entrance and lit guard office, no people, dark negative space upper left for runtime title. 3:2.",
+    "ending-dawn": "Edit title-night to quiet post-rain dawn, preserve building composition, soft blue sky and restrained warm light, no people.",
+    "visitor-01-walk-sheet": "Reference first visitor: short-bob adult Korean woman, grey coat/cream knit/charcoal trousers/white shoes. Eight full-body rightward walk phases, 4x2 equal cells, alpha background, consistent size/foot baseline, no labels."
+  }
+}
