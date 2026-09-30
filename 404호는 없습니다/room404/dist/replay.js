@@ -15,14 +15,15 @@ export const VIEW_NAMES={hallSide:'복도 반대편',elevatorLobby:'엘리베이
 const OPPOSITE=new Set(['hallSide','parkingSide','elevatorLobby','doorFar']);
 export function viewFor(location,camera){return camera==='side'?SIDE_VIEW[location]||location:camera==='top'?TOP_VIEW[location]||location:location}
 const AMBIENT={lobby:'03-lobby-monitor',lobbySide:'04-lobby-side-monitor',hall:'05-hall-monitor',elevator:'06-elevator-monitor',stairs:'07-stairs-monitor',parking:'08-parking-monitor'};
-// Anomaly clips already contain one specific visitor look, so they are used only when place, mode and look all match.
-const ANOMALY_CLIPS=[['17-delayed-shadow','hall','shadowHold',1],['18-duplicate-visitors','lobby','double',2],['19-reflection-lag','elevator','reflection',3],['21-infrared-view','parking','ir',4],['22-rain-double-image','lobby','rainDouble',1]];
+// The walk and anomaly clips (13-22) carry a baked-in figure at a fixed size, so CCTV draws every person on the canvas
+// instead; those clips are shown only as examples on the home screen.
 // Floor line and frame height per place, matched to the v2 backgrounds (canvas 960x640).
 // Perspective per place (canvas 960x640). y/h: foot line and figure height at the reference (near) spot.
 // horizon: the line where a figure's height would shrink to zero; far/farX: where someone appears at the back of the shot.
 // A figure's height always follows its foot line, so anyone walking toward the camera grows the way a real CCTV image does.
-const LAYOUT={lobby:{y:585,h:285,horizon:-20,far:330,farX:240},lobbySide:{y:585,h:285,horizon:-20,far:350,farX:300},hall:{y:587,h:290,horizon:250,far:430,farX:470},elevator:{y:568,h:340,horizon:-150,far:450,farX:500},stairs:{y:590,h:290,horizon:-40,far:380,farX:620},parking:{y:570,h:260,horizon:230,far:390,farX:330},door:{y:600,h:300,horizon:-300,far:560,farX:480},
- hallSide:{y:587,h:290,horizon:250,far:430,farX:480},elevatorLobby:{y:590,h:300,horizon:-100,far:470,farX:480},stairsUp:{y:600,h:300,horizon:-60,far:330,farX:640},parkingSide:{y:580,h:270,horizon:200,far:400,farX:480},doorFar:{y:440,h:190,horizon:-120,far:440,farX:470},lobbyTop:{y:600,h:280,horizon:-300,far:300,farX:200}};
+// Calibrated against the doors and cars in each photo: a standing adult is about 80% of a door (2.1 m) at the same depth.
+const LAYOUT={lobby:{y:585,h:363,horizon:-20,far:330,farX:240},lobbySide:{y:585,h:363,horizon:-20,far:350,farX:300},hall:{y:500,h:357,horizon:250,far:300,farX:470},elevator:{y:520,h:430,horizon:108,far:310,farX:500},stairs:{y:590,h:362,horizon:-40,far:345,farX:620},parking:{y:570,h:325,horizon:230,far:390,farX:330},door:{y:620,h:450,horizon:-300,far:560,farX:480},
+ hallSide:{y:520,h:316,horizon:250,far:300,farX:480},elevatorLobby:{y:590,h:353,horizon:-100,far:400,farX:480},stairsUp:{y:600,h:362,horizon:100,far:300,farX:640},parkingSide:{y:580,h:300,horizon:250,far:400,farX:480},doorFar:{y:410,h:232,horizon:-120,far:410,farX:470},lobbyTop:{y:600,h:315,horizon:-300,far:300,farX:200}};
 export function heightAt(location,footY){const b=LAYOUT[location]||LAYOUT.lobby;return b.h*(footY-b.horizon)/(b.y-b.horizon)}
 // Uniform motion toward or away from the camera is not linear on screen: the foot line follows 1/depth.
 export function perspectiveY(horizon,y0,y1,phase){const a=y0-horizon,b=y1-horizon;return horizon+a*b/(b-phase*(b-a))}
@@ -43,7 +44,6 @@ function reduceMotion(){return typeof matchMedia==='function'&&matchMedia('(pref
 export const GESTURE={wave:[0,1],knock:[2,3],phone:[4,5],look:6,stand:7};
 export function actorPlacement(s,phase,look=1){
  const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,walking=false,facing=1,sheet='gest',cell=GESTURE.stand;
- if(videoWalk(s,look))return {x:-90+phase*1140,y:582,h:285,walking:true,video:true,facing:1,sheet:'side',cell:-1};
  // A straight walk on the floor: the foot line follows perspective, x follows the foot line so the path stays straight on screen.
  const path=(x0,y0,x1,y1,q=phase)=>{y=perspectiveY(base.horizon,y0,y1,q);x=x0+(x1-x0)*(y-y0)/(y1-y0);walking=true};
  const opposite=OPPOSITE.has(s.location);
@@ -57,7 +57,6 @@ export function actorPlacement(s,phase,look=1){
  const h=heightAt(s.location,y)*(s.mode==='distort'?1.15:1);
  return {x,y,h,walking,facing,sheet,cell};
 }
-function videoWalk(s,look){return s.location==='lobby'&&['enter','cross'].includes(s.action)&&s.mode==='normal'&&(!s.prop||s.prop==='none')&&look>=1&&look<=4}
 export function sceneVideo(s,look,camera='main'){
  if(camera==='side'){const v=SIDE_VIEW[s.location];return v&&AMBIENT[v]||null}
  if(camera==='top')return null;
@@ -65,7 +64,6 @@ export function sceneVideo(s,look,camera='main'){
  if(s.mode==='doorCompare')return '09-door-comparison';
  if(s.mode==='doorOpen')return '23-door-open-ambient';
  if(s.location==='door')return null;
- if(camera==='main'){const clip=ANOMALY_CLIPS.find(([,loc,mode,l])=>loc===s.location&&mode===s.mode&&l===look);if(clip)return clip[0];if(videoWalk(s,look))return `${12+look}-visitor-0${look}-walk`}
  return AMBIENT[s.location]||null;
 }
 export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scenes}){
@@ -112,14 +110,14 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  video.addEventListener('loadeddata',()=>{videoOk=true;draw()});
  video.addEventListener('error',()=>{if(videoSrc){failed.add(videoSrc);videoSrc=null;videoOk=false;video.hidden=true;draw()}});
  function cameraTransform(s,pos){
-  if(camera==='close'){const cx=pos.x/960*100,cy=Math.max(5,(pos.y-pos.h*.62)/640*100);stage.style.transformOrigin=`${cx}% ${cy}%`;stage.style.transform='scale(2.2)'}
+  if(camera==='close'){const cx=pos.x/960*100,cy=Math.max(5,(pos.y-pos.h*.62)/640*100);stage.style.transformOrigin=`${cx}% ${cy}%`;stage.style.transform='scale(1.8)'}
   else{stage.style.transform='';stage.style.transformOrigin=''}
  }
  function draw(){if(disposed||!images)return;const index=Math.min(scenes.length-1,Math.floor(cursor/6)),s=scenes[index],local=cursor-index*6,phase=local/6,mode=s.mode;
   const place=viewFor(s.location,camera);host.querySelector('[data-camera=top]').hidden=!TOP_VIEW[s.location];
   const view={...s,location:place},pos=actorPlacement(view,phase,look);
   setVideo(sceneVideo(s,look,camera),local);
-  const clipHasActor=videoOk&&videoSrc&&(/visitor-0\d-walk|delayed|duplicate|reflection-lag|infrared|rain-double/.test(videoSrc));
+  const clipHasActor=false;
   ctx.clearRect(0,0,960,640);
   if(!(videoOk&&videoSrc)){
    const key=place==='door'?(mode==='doorOpen'||(mode==='doorCompare'&&phase>.4&&phase<.8)?'doorOpen':'door'):place;

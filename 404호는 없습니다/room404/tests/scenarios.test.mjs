@@ -9,7 +9,7 @@ test('every visual asset the game references exists',async()=>{const {existsSync
  const code=['replay.js','game.js','index.html','sw.js'].map(f=>readFileSync(new URL(f,root),'utf8')).join('\n');
  const names=[...code.matchAll(/(?:cctv-[a-z-]+|door-(?:open|closed)|title-night|guard-office|intercom-desk|ledger-desk|ending-dawn|visitor-0\d-walk|prop-[a-z]+)(?=\.webp|')/g)].map(m=>m[0]);
  for(const n of new Set(names.filter(n=>!n.startsWith('prop-')||existsSync(new URL('assets/v2/'+n+'.webp',root)))))if(!n.includes('lobby-monitor'))assert.ok(existsSync(new URL('assets/v2/'+n+'.webp',root)),n);
- const clips=[...code.matchAll(/'(\d\d-[a-z0-9-]+)'/g)].map(m=>m[1]);assert.ok(clips.length>=15);for(const c of new Set(clips))assert.ok(existsSync(new URL('assets/v2/motion/'+c+'.mp4',root)),c);
+ const clips=[...code.matchAll(/'(\d\d-[a-z0-9-]+)'/g)].map(m=>m[1]);assert.ok(clips.length>=10);for(const c of new Set(clips))assert.ok(existsSync(new URL('assets/v2/motion/'+c+'.mp4',root)),c);
  const html=readFileSync(new URL('index.html',root),'utf8');for(const m of html.matchAll(/data-(?:clip|video)="([^"]+)"/g))assert.ok(existsSync(new URL('assets/v2/motion/'+m[1]+'.mp4',root)),m[1]);});
 
 test('figures follow perspective: farther is smaller and higher, and a walk toward the camera speeds up on screen',()=>{
@@ -17,9 +17,9 @@ test('figures follow perspective: farther is smaller and higher, and a walk towa
  const enter=[0,.25,.5,.75,1].map(p=>actorPlacement({location:'lobby',action:'enter',mode:'normal',prop:'umbrella'},p,2));
  for(let i=1;i<enter.length;i++){assert.ok(enter[i].y>enter[i-1].y,'foot line comes down');assert.ok(enter[i].h>enter[i-1].h,'figure grows')}
  assert.ok(enter[4].y-enter[3].y>enter[1].y-enter[0].y,'screen speed increases when approaching');
- assert.ok(Math.abs(enter[4].h-285)<1);assert.equal(perspectiveY(-20,330,585,0),330);assert.equal(perspectiveY(-20,330,585,1),585);
+ assert.ok(Math.abs(enter[4].h-363)<1);assert.equal(perspectiveY(-20,330,585,0),330);assert.equal(perspectiveY(-20,330,585,1),585);
  const stairs=actorPlacement({location:'stairs',action:'descend',mode:'normal',prop:'none'},.5,1);assert.equal(stairs.facing,-1);
- const stand=actorPlacement({location:'hall',action:'wait',mode:'normal',prop:'none'},.5,1);assert.equal(stand.walking,false);assert.equal(stand.h,290);
+ const stand=actorPlacement({location:'hall',action:'wait',mode:'normal',prop:'none'},.5,1);assert.equal(stand.walking,false);assert.equal(stand.h,357);
 });
 
 test('every place has a real second camera and sprite cells are placed for every action',async()=>{const {SIDE_VIEW,viewFor,GESTURE}=await import('../dist/replay.js');
