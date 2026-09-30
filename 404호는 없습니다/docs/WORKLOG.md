@@ -16,3 +16,7 @@
 2. 테스트를 실행합니다(`npm test` → `test:ui` → `test:all-cases`).
 3. 코드를 읽고 `CODE_GUIDE.md`를 실제 내용으로 채우고, 개선 사항을 적용합니다.
 4. Capacitor Android 플랫폼을 추가합니다.
+
+### 결정 사항 (사용자 답변)
+- 스토어 계정 없음, Mac 없음, 가격 3,300원. `STORE_RELEASE_PLAN.md` 5~6장에 반영했습니다.
+- 앱 ID는 아직 정하지 않았습니다.
