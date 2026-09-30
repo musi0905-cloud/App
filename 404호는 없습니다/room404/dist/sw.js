@@ -1,5 +1,5 @@
-const CACHE='room404-v0.6.1';
-const FILES=['./','./index.html','./style.css','./game.js','./engine.js','./manifest.webmanifest','./data/visitors.json','./data/anomalies.json','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png','./assets/cctv-lobby.png','./assets/visitors.png','./assets/apartment-scenes.png','./assets/mystery-props.png','./assets/detail-scenes.png','./assets/visitors-before-haircut.png','./assets/visitor-v001-walk-8f.png','./replay.js','./data/scenarios.json'];
+const CACHE='room404-v0.7.0';
+const FILES=['./','./index.html','./style.css','./game.js','./engine.js','./manifest.webmanifest','./data/visitors.json','./data/anomalies.json','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png','./assets/cctv-lobby.png','./assets/visitors.png','./assets/apartment-scenes.png','./assets/mystery-props.png','./assets/detail-scenes.png','./assets/visitors-before-haircut.png','./assets/visitor-v001-walk-8f.png','./replay.js','./voice.js','./data/scenarios.json'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(FILES);await self.skipWaiting()})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('room404-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
 self.addEventListener('fetch',event=>{

@@ -1,5 +1,5 @@
 // Deterministic, seekable in-game reconstruction. Each segment is a distinct source/time.
-export const LOCATIONS={lobby:'공동현관',lobbySide:'현관 보조 카메라',hall:'안쪽 복도',elevator:'승강기',stairs:'계단실',parking:'주차장',door:'현관 문'};
+export const LOCATIONS={lobby:'공동현관',lobbySide:'현관 옆 카메라',hall:'안쪽 복도',elevator:'엘리베이터',stairs:'계단',parking:'주차장',door:'집 현관문'};
 export const MODES=['normal','compare','badge','double','shadow','shadowHold','faceLock','absent','yesterday','doorClosed','doorOpen','doorCompare','preMove','footprints','voiceEarly','voiceLate','clock7','repeat','reflection','recorded','live','dateOnly','ir','reboot','loading','delay3','rainDouble','rain','removeProp','idMatch','card','fingerprint','darkCoat','hairOld','distort','faceShadow','blurCard','document','phone','ring','echo'];
 const media={};
 // V001 walk cycle: 4x2 sheet of 384x512 frames, 8 fps. Per frame: torso centre x, foot line y, head top y (opaque pixels),
@@ -9,14 +9,14 @@ const WALK={src:'assets/visitor-v001-walk-8f.png',fps:8,w:384,h:512,visitors:['V
 // Existing visitors.png cell (1024px tall): figure spans y 76-967, torso centre x 201 of 384.
 const STAND={top:76,foot:967,centre:201,cellW:384,cellH:1024};
 export function walkFrame(cursor){return Math.floor(cursor*WALK.fps)%8}
-function load(src){return media[src]??=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('장면 이미지를 불러오지 못했습니다.'));im.src=src})}
+function load(src){return media[src]??=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('장면 그림을 불러오지 못했어요.'));im.src=src})}
 export function shiftedTime(time,offset){const [h,m]=time.split(':').map(Number),n=(h*60+m+offset+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
 export function sceneTime(frame,time){return shiftedTime(time,frame.offset+(frame.mode==='clock7'?-7:0))}
 function previousDate(date){const d=new Date(date+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10)}
 export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scenes,compact=false}){
  let disposed=false,raf=0,playing=false,cursor=0,previous=0;
  const duration=scenes.length*6;
- host.innerHTML=`<div class="replay-heading"><strong>당시 상황 다시 보기 · ${scenes.length}개 장면</strong><span>장면을 애니메이션으로 보여줘요</span></div><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">숫자 버튼을 누르면 그때의 장면으로 이동해요. 화면의 시간도 함께 보세요.</p>`;
+ host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>그림으로 다시 만든 장면이에요</span></div><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 화면 위쪽의 시간도 함께 보세요.</p>`;
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  let images;
  const ready=Promise.all(['assets/cctv-lobby.png','assets/apartment-scenes.png','assets/visitors.png','assets/mystery-props.png','assets/detail-scenes.png','assets/visitors-before-haircut.png'].map(load));

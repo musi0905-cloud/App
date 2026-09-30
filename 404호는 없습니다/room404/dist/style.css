@@ -12,3 +12,25 @@
 .replay-heading{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;background:#14271e;padding:12px;font-size:14px}.replay-heading span{font-size:12px;color:#a9b7a9}.replay-canvas{display:block;width:100%;height:auto;background:#09110d;border:1px solid #6a7e6b}.replay-caption{font-size:16px;min-height:52px;margin:0;padding:12px;background:#18281e}.replay-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 0}.replay-controls label{font-size:14px;flex:1;min-width:100px}.replay-controls input{display:block;width:100%;min-height:40px;accent-color:#d7bf7b}.replay-position{font-size:13px;white-space:nowrap}.replay-chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.replay-chapters button{font-size:14px;padding:9px 5px}.replay-chapters small{display:block;margin-top:5px}.replay-chapters [aria-pressed=true]{border-color:#e4c974;background:#354331}.shot-list{padding-left:22px}.shot-list li{margin:16px 0}.shot-list strong{font-size:14px;color:#d9c28c}.shot-list p{font-size:16px;margin:6px 0}.replay-locked{border:1px solid #526e5b;padding:24px;background:#14241b}.record-pair{display:grid;gap:12px;margin:16px 0}.record-pair section{border:1px solid #9aa595;padding:14px;background:#eff0e4}.record-pair h3{font-size:14px;margin:0 0 12px}.record-pair .record-field{font-size:13px;color:#516147}.record-pair p{font-size:16px;margin:8px 0}.call-record{background:#16281f;border:1px solid #5c7262;padding:12px}.call-record .camera{font-size:13px;letter-spacing:0;flex-wrap:wrap}.transcript{list-style:none;padding:0}.transcript li{padding:12px;border-bottom:1px solid #3a5143}.transcript small{font-size:13px;color:#d5bd86}.transcript p{font-size:16px;margin:8px 0;white-space:pre-wrap}.verification-source{padding:15px;background:#21342b;margin-bottom:16px}.verification-source p{margin:8px 0}#app{max-width:680px}footer{max-width:680px}@media(max-width:360px){.replay-controls button{padding:10px}.replay-chapters button{font-size:13px}}
 
 .plain-brief{border-left:3px solid #d7bf7b;background:#223529;padding:16px 18px;margin-bottom:20px}.plain-brief h3{font-size:14px;color:#e3cb8a;margin:0 0 8px}.plain-brief h3:not(:first-child){margin-top:20px}.plain-brief p{font-size:17px;line-height:1.75;color:#f0f0df;margin:0}.how-to{margin:20px 0;border:1px solid #596d5d;padding:14px}.how-to summary{min-height:34px;font-size:16px;cursor:pointer}.how-to li{margin:10px 0;line-height:1.7}
+
+/* Register book (v0.7) */
+.book .book-page{perspective:1200px;min-height:230px}
+.book-sheet{background:#e9e4d3;color:#1d2420;padding:16px 16px 18px;border-radius:2px 8px 8px 2px;box-shadow:inset 10px 0 12px -10px #0006,0 6px 18px #0008;transform-origin:left center}
+.book-sheet .record-field{color:#5b4a1d}.book-sheet .small{color:#4b534c}.book-title{margin:0 0 12px;font-size:16px;border-bottom:1px solid #b9ae8c;padding-bottom:8px}
+.book-big{font-size:18px;line-height:1.6;margin:8px 0 0}
+.book-log{width:100%;border-collapse:collapse;font-size:13px}.book-log th,.book-log td{border-bottom:1px solid #cbc3a8;padding:6px 4px;text-align:left;word-break:keep-all}
+.book-log .book-current td{background:#f3dc9a;font-weight:700}
+.book-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}.book-count{font-variant-numeric:tabular-nums;color:#d4c190}
+.turn-next{animation:turnNext .38s ease-out}.turn-prev{animation:turnPrev .38s ease-out}
+@keyframes turnNext{from{transform:rotateY(-70deg);opacity:.2}to{transform:none;opacity:1}}
+@keyframes turnPrev{from{transform:rotateY(70deg);opacity:.2;transform-origin:right center}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion: reduce){.turn-next,.turn-prev{animation:none}}
+.book:focus-visible{outline:2px solid #d7bf7b;outline-offset:4px}
+
+/* Phone call voice (v0.7) */
+.call-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.transcript li.speaking{background:#2f4634;border-left:3px solid #e3cb8a}
+.transcript li small{color:#d4c190;font-weight:700}
+.register.book{background:transparent;padding:0;box-shadow:none;border-top:0}.register.book p{color:inherit}.book-sheet p{color:#293b34}
+.register .book-log{font-size:13px;margin-top:0}.register .book-log th,.register .book-log td{width:auto;padding:7px 4px;font-size:13px;border:0;border-bottom:1px solid #cbc3a8;background:none}.register .book-log th{font-weight:700}
+.book-controls button:disabled{opacity:.4}.book-hint{color:#a8b5a8!important}
