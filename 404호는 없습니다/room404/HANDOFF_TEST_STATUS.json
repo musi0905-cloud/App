@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-09-30T01:54:11.119208+00:00",
+  "engine_data": {
+    "command": "npm test",
+    "passed": 11,
+    "failed": 0,
+    "executed_this_session": true
+  },
+  "browser": {
+    "timestamp": "2026-09-30T01:51:32.201Z",
+    "passed_groups": 9,
+    "failed": 0
+  },
+  "all_cases": {
+    "timestamp": "2026-09-30T01:53:31.257Z",
+    "passed_cases": 100,
+    "scene_segments": 300,
+    "js_errors": []
+  },
+  "initial_infrastructure_failure": "all-cases first launch failed: /tmp/room404-chromium absent; resolved by running test:ui before test:all-cases",
+  "visual_review": "Current screenshot Korean glyphs render as boxes in this Linux environment. Visual Korean typography review remains pending after installing fonts. Automated DOM checks passed.",
+  "iphone_native": "Not tested; no signed native build or App Store submission"
+}

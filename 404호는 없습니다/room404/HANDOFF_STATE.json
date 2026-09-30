@@ -1,0 +1,23 @@
+{
+  "created_at_utc": "2026-09-30T01:54:11.119208+00:00",
+  "project": "404호는 없습니다",
+  "snapshot_version": "0.6.0",
+  "live_game_version": "0.5.0",
+  "snapshot_committed": false,
+  "snapshot_pushed": false,
+  "snapshot_deployed": false,
+  "base_commit": "7a610ce407cae5f8d0f4217d05910819f40948bd",
+  "site_project_id": "appgprj_6abb2ee827248191b32ab5ba1c1b588b",
+  "live_url": "https://room404-nightwatch.musi0905.chatgpt.site",
+  "access": "owner-private; preserve current audience",
+  "credit_threshold_percent": 80,
+  "credit_usage_observable": false,
+  "stop_reason": "Proactive handoff checkpoint; NOT an observed 80 percent threshold",
+  "next_task": "Install Korean font for screenshots, review v0.6 copy and mobile layout, then commit/push/deploy through existing Sites access",
+  "archive_exclusions": [
+    ".git",
+    "node_modules",
+    "credentials",
+    "old separate 404-game scaffold"
+  ]
+}

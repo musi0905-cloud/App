@@ -1,0 +1,23 @@
+{
+  "asset": "visitor-v001-walk-8f.png",
+  "subject": "Existing V001 / first visitor portrait costume reference, gray long coat",
+  "format": "RGBA PNG, transparent alpha",
+  "sheet_px": [
+    1536,
+    1024
+  ],
+  "grid": [
+    4,
+    2
+  ],
+  "frame_px": [
+    384,
+    512
+  ],
+  "frame_order": "left-to-right, top row then bottom row",
+  "frames": 8,
+  "suggested_fps": 8,
+  "loop": true,
+  "suggested_use": "CCTV playback only when visitor.id is V001 and scene action is enter, cross, or descend; tie frame index to replay cursor for deterministic seeking.",
+  "limitations": "New generated face is visually similar in costume but is not pixel-identical to the existing V001 portrait. Validate continuity in game before mapping it beyond V001. Generated images may have small per-frame face/coat variation."
+}

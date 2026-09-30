@@ -1,0 +1,212 @@
+[
+  {
+    "id": "E01",
+    "title": "퇴근",
+    "type": "일반",
+    "condition": "오늘의 근무 8건 처리·우선 엔딩 미충족",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E02",
+    "title": "신중한 경비원",
+    "type": "일반",
+    "condition": "8건 정답·모든 사건 핵심 단서 조사 및 독립 재확인",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E03",
+    "title": "오판",
+    "type": "배드",
+    "condition": "위험 방문객 2명 이상 허용",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E04",
+    "title": "무고한 거부",
+    "type": "배드",
+    "condition": "정상 방문객 3명 이상 거부",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E05",
+    "title": "404호",
+    "type": "배드",
+    "condition": "404 발신 방문객을 허용",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E06",
+    "title": "첫 근무의 기록",
+    "type": "일반",
+    "condition": "첫 근무 완료·우선 엔딩 미충족",
+    "implemented_in_prototype": true
+  },
+  {
+    "id": "E07",
+    "title": "교대자",
+    "type": "배드",
+    "condition": "교대근무자 신원 오류를 방치",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E08",
+    "title": "비상벨",
+    "type": "일반",
+    "condition": "정당한 신고를 해결",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E09",
+    "title": "검은 우산",
+    "type": "배드",
+    "condition": "우산 패턴을 세 번 잘못 판단",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E10",
+    "title": "13층",
+    "type": "비밀",
+    "condition": "없는 층 영상 보존",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E11",
+    "title": "관리소장",
+    "type": "비밀",
+    "condition": "사망자의 근무 기록 발견",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E12",
+    "title": "분실 명부",
+    "type": "일반",
+    "condition": "위조 명부를 보관",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E13",
+    "title": "두 번째 얼굴",
+    "type": "배드",
+    "condition": "자기 복제자를 허용",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E14",
+    "title": "원본 영상",
+    "type": "비밀",
+    "condition": "조작 전 CCTV 복원",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E15",
+    "title": "주소 없는 편지",
+    "type": "일반",
+    "condition": "발신인 없는 우편 수집",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E16",
+    "title": "새벽의 소방차",
+    "type": "일반",
+    "condition": "실제 긴급 출동 구별",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E17",
+    "title": "잠긴 계단",
+    "type": "배드",
+    "condition": "폐쇄 계단으로 진입",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E18",
+    "title": "안내 방송",
+    "type": "비밀",
+    "condition": "방송 원본 음성 해독",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E19",
+    "title": "거짓 규칙",
+    "type": "비밀",
+    "condition": "바뀐 규칙의 필체 비교",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E20",
+    "title": "유리문",
+    "type": "배드",
+    "condition": "반사 인물에게 문 개방",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E21",
+    "title": "방문 예약",
+    "type": "일반",
+    "condition": "승인 기록 오탈자 해결",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E22",
+    "title": "실종 신고",
+    "type": "일반",
+    "condition": "실종 주민의 동선 추적",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E23",
+    "title": "2004년 화재",
+    "type": "비밀",
+    "condition": "화재 자료 세 조각 수집",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E24",
+    "title": "빈 호수",
+    "type": "비밀",
+    "condition": "폐쇄 층의 호수 복원",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E25",
+    "title": "원장의 전화",
+    "type": "배드",
+    "condition": "가짜 관리소 전화를 신뢰",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E26",
+    "title": "아침의 이름",
+    "type": "일반",
+    "condition": "생존자 전원의 신원 확인",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E27",
+    "title": "1997",
+    "type": "비밀",
+    "condition": "준공 기록의 삭제된 장 발견",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E28",
+    "title": "관리실 열쇠",
+    "type": "비밀",
+    "condition": "교대 기록과 열쇠 일치",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E29",
+    "title": "퇴사서",
+    "type": "일반",
+    "condition": "안전하게 사직서를 제출",
+    "implemented_in_prototype": false
+  },
+  {
+    "id": "E30",
+    "title": "404호는 없습니다",
+    "type": "진엔딩",
+    "condition": "원본·규칙·실종 기록을 연결",
+    "implemented_in_prototype": false
+  }
+]

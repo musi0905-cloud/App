@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "A001",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "같은 옷차림의 사람이 이미 10분 전에 안으로 들어갔다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A002",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "방문객과 같은 얼굴이 엘리베이터 안에 서 있다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A003",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "한 사람은 안쪽 복도에, 한 사람은 현관 앞에 동시에 있다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A004",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "앞선 출입 영상의 사람이 지금과 똑같은 젖은 우산을 들었다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A005",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "동일 인물의 입장 시각이 현재 시각보다 30분 빠르다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A006",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "안쪽 사람이 현관 카메라를 향해 손을 흔든다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A007",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "같은 얼굴의 사람이 계단을 내려오는 중이다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A008",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "문 앞의 사람과 같은 인물이 경비실 뒤를 지나간다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A009",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "이름표까지 같은 사람이 다른 층 CCTV에 있다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A010",
+    "category": "중복 출입",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "방문객이 발신한 통화 중인데 같은 사람이 복도에서 전화를 받는다.",
+    "verification": "등록 세대는 같은 이름의 방문객이 이미 안에 있고 추가 방문을 승인하지 않았다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A011",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "제시한 호수는 명부에서 폐쇄된 공실이다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A012",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "그 이름의 입주민은 지난달 전출 처리됐다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A013",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "사진은 맞지만 명부의 비상 연락처가 전혀 다르다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A014",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "입주민 번호가 명부에 없는 0000으로 끝난다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A015",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "제시한 출입증은 존재하지 않는 관리소 서식이다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A016",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "호수와 이름이 각각 다른 두 명의 기록을 합친 형태다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A017",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "제시한 4층 호수는 건축 도면에 없다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A018",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "신분증의 주소가 이 아파트와 다른 동이다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A019",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "명부에는 해당 세대가 공사로 출입 제한이라고 적혔다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A020",
+    "category": "명부 위조",
+    "safe": false,
+    "channel": "명부",
+    "clue": "방문객 이름 옆에 분명한 분실 출입증 경고가 있다.",
+    "verification": "명부에 등록된 세대 번호로 확인했지만 방문 예약은 없다고 답했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A021",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "등록된 세대 전화에서 낯선 목소리가 대신 받는다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A022",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "세대 전화가 연결되자 현관에서도 같은 벨소리가 난다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A023",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "확인 통화 속 목소리가 방문객의 말을 한 박자 늦게 따라 한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A024",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "세대가 통화 중인데 방문객이 자신의 전화라고 말한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A025",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "등록된 전화가 분실 신고 안내로 연결된다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A026",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "세대 통화에서 방문객을 모른다고 분명히 말한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A027",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "통화 속 사람은 오늘 방문 예약을 취소했다고 말한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A028",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "세대가 지금 외출 중이며 아무도 들이지 말라고 답한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A029",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "방문객이 말한 확인 암호와 등록된 암호가 다르다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A030",
+    "category": "전화 탈취",
+    "safe": false,
+    "channel": "통화",
+    "clue": "관리소 등록 번호가 아닌 방문객이 불러준 번호로만 통화를 강요한다.",
+    "verification": "독립된 등록 연락처로 다시 확인하니 출입 승인을 받지 못했다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A031",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "현관에는 한 사람인데 영상에는 두 사람이 서 있다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A032",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "방문객은 움직이는데 영상 속 그림자는 제자리에 있다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A033",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "카메라를 돌려도 방문객의 얼굴만 같은 위치에 남는다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A034",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "복도 카메라에는 문 앞 사람이 보이지 않는다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A035",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "모든 영상의 시계는 정상인데 방문객 화면만 어제 날짜다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A036",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "방문객 뒤에 있는 문이 영상에는 열려 있다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A037",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "정지 화면을 다시 재생하면 방문객이 먼저 고개를 돌린다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A038",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "영상에 보이는 발자국이 방문객에게 이어지지 않는다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A039",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "카메라에는 방문객이 문을 두드리기 전에 이미 들어오는 모습이 있다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A040",
+    "category": "영상 불일치",
+    "safe": false,
+    "channel": "CCTV",
+    "clue": "현관 화면의 손짓과 실제 인터폰 음성이 서로 맞지 않는다.",
+    "verification": "다른 카메라와 현장 기록을 대조해도 불일치가 해소되지 않았다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A041",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "방문 목적지가 존재하지 않는 404호로 바뀐다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A042",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "방문 확인서의 발신 주소가 404호다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A043",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "명부의 404호 칸에 방금 쓴 듯한 이름이 있다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A044",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "인터폰 화면에 목적지 대신 404가 세 번 나타난다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A045",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "택배 송장 수령인이 404호 관리소장으로 표시된다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A046",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "건축 도면에 없는 층의 호출 기록이 생긴다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A047",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "방문객이 404호에 사람이 기다린다고 주장한다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A048",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "엘리베이터 표시가 3층과 5층 사이에서 4에 멈춘다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A049",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "닫힌 4층 계단문에서 방문객 이름을 부른다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A050",
+    "category": "404 발신",
+    "safe": false,
+    "channel": "명부",
+    "clue": "관리소 공지 날짜가 내일인데 404호 출입을 허용하라고 쓰였다.",
+    "verification": "당일 인쇄된 정식 호수 목록과 관리실 원본에도 404호는 없다.",
+    "decision": "거부",
+    "reason": "증거 충돌 또는 승인 부재"
+  },
+  {
+    "id": "A051",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "명부의 성이 다르지만 변경 신청 번호가 남아 있다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A052",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "전입 처리 전이지만 세대주의 사전 승인 기록이 있다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A053",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "동명이인 경고가 뜨지만 등록 사진과 연락처가 일치한다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A054",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "방문 예정 시간이 20분 지났지만 승인 유효 시간이 남았다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A055",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "임시 출입증은 낡았지만 재발급 번호가 연결된다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A056",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "기존 연락처가 삭제됐지만 새로운 등록 번호로 연결된다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A057",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "차량 번호는 바뀌었지만 입주민 승인 기록이 있다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A058",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "명부의 층 표기가 옛 주소지만 동과 세대가 일치한다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A059",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "예약자 이름에 오탈자가 있지만 예약번호와 세대 연락처가 맞다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A060",
+    "category": "명부 지연",
+    "safe": true,
+    "channel": "명부",
+    "clue": "관리소 직원 성명이 바뀌었지만 근무 교대표 원본과 일치한다.",
+    "verification": "등록 세대 번호로 재확인하니 방문객을 승인하고 변경 이력도 설명했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A061",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "CCTV 시각이 7분 늦어 중복 출입처럼 보인다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A062",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "영상 버퍼가 멈춰 방문객이 두 번 나타난다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A063",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "카메라 반사 때문에 문 앞 인원이 두 명처럼 보인다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A064",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "녹화 영상과 실시간 영상 탭이 뒤바뀌어 있다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A065",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "복도 영상의 날짜만 자정 이전으로 표시된다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A066",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "야간 적외선 반사로 얼굴에 흰 얼룩이 생겼다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A067",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "유리문에 비친 그림자가 사람처럼 찍혔다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A068",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "카메라가 재부팅돼 일시적으로 과거 프레임을 보여준다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A069",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "엘리베이터 화면은 3분 지연 송출되고 있다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A070",
+    "category": "영상 지연",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "비에 젖은 렌즈가 뒤편 형상을 두 배로 만든다.",
+    "verification": "실시간 타임스탬프와 두 번째 카메라로 재확인해 같은 사람임을 확인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A071",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "모자를 벗자 등록 사진과 얼굴이 일치한다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A072",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "마스크를 내리고 신분증을 보여 준다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A073",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "비 때문에 얼굴이 가려졌지만 출입 카드 번호가 맞다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A074",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "장갑 때문에 지문 인식이 안 됐지만 세대가 승인한다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A075",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "어두운 현관에서 옷 색이 달라 보였지만 두 번째 조명에서 맞다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A076",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "이발 후 사진과 달라 보였지만 등록 연락처가 맞다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A077",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "카메라 왜곡으로 키가 달라 보였지만 출입 이력이 일치한다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A078",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "우산 그림자 때문에 얼굴이 둘로 보였지만 각도가 바뀌면 사라진다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A079",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "차량 유리 반사로 사람이 하나 더 보였지만 두 번째 영상에는 없다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A080",
+    "category": "식별 방해",
+    "safe": true,
+    "channel": "CCTV",
+    "clue": "신분증 글씨가 번졌지만 세대의 사전 등록 코드가 맞다.",
+    "verification": "추가 식별 정보와 등록 세대 확인이 서로 일치했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A081",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "세대 전화가 꺼졌지만 사전 등록된 대체 번호가 승인한다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A082",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "인터폰 고장 신고가 접수돼 등록 휴대전화로 승인받는다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A083",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "통화가 끊겼지만 재통화에서 세대주가 확인해 준다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A084",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "착신 전환 안내가 남았고 원래 번호가 다시 연결된다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A085",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "통화 중 소음이 심하지만 확인 암호와 방문 예약이 일치한다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A086",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "등록 전화가 기기 교체 중이나 관리소 사전 승인 장부가 있다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A087",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "문자 답장이 늦었지만 세대주가 직접 인터폰으로 확인한다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A088",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "전화번호 마지막 자리만 변경됐고 변경 신청서를 확인했다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A089",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "통화가 두 번 실패했지만 등록 보호자가 예약번호를 확인한다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A090",
+    "category": "연락 우회",
+    "safe": true,
+    "channel": "통화",
+    "clue": "공동 현관 통신이 끊겼지만 세대의 영상 호출이 연결된다.",
+    "verification": "등록된 독립 연락 수단으로 세대주가 출입을 명시적으로 승인했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A091",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "긴급 보수 예약이 오늘로 변경된 기록이 있다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A092",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "새 출입 규정은 관리소 원본의 결재와 시간이 확인된다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A093",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "돌봄 담당자가 교체됐지만 승인된 교대표에 있다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A094",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "택배 반송 처리 후 재배송 번호가 발급됐다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A095",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "신고 출동팀의 사건 번호가 세대 신고와 일치한다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A096",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "아파트 명칭이 바뀌었지만 동일 주소로 등재됐다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A097",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "가족 방문 예약은 성이 달라도 세대주 서명이 있다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A098",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "차량 방문권이 재발급돼 옛 번호가 취소됐다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A099",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "계단 폐쇄 중이라 우회 출입 안내가 공지됐다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  },
+  {
+    "id": "A100",
+    "category": "정상 예외",
+    "safe": true,
+    "channel": "명부",
+    "clue": "외부 업체 직원이 교체됐지만 계약 관리 번호가 일치한다.",
+    "verification": "관리소 원본 기록과 독립된 세대 확인이 모두 출입을 뒷받침했다.",
+    "decision": "허용",
+    "reason": "독립 확인 후 정상 예외로 판명"
+  }
+]

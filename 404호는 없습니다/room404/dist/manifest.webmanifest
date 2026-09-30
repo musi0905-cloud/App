@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "404호는 없습니다",
+  "short_name": "404호",
+  "lang": "ko",
+  "description": "증거를 확인하고 방문객의 출입을 판단하는 야간 경비 추리 게임",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1011",
+  "theme_color": "#101a1b",
+  "icons": [
+    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

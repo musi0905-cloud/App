@@ -1,0 +1,20 @@
+ M README.md
+ M SCENARIO_COVERAGE.json
+ M dist/data/scenarios.json
+ M dist/game.js
+ M dist/index.html
+ M dist/replay.js
+ M dist/style.css
+ M dist/sw.js
+ M tests/browser.mjs
+ M tests/scenarios.test.mjs
+?? CHANGELOG-0.6.0.md
+?? CLAUDE.md
+?? CLAUDE_HANDOFF.md
+?? HANDOFF_STATE.json
+?? HANDOFF_TEST_STATUS.json
+?? REFERENCE_REVIEW-0.6.0.md
+?? changes-from-v0.5.patch
+?? scripts/
+
+Patch contains tracked changes only; new files are included in the complete ZIP. Do not apply this patch over the supplied ZIP.

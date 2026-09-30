@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-09-30T01:51:32.201Z",
+  "results": [
+    {
+      "test": "chromium: launch and responsive layouts",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: evidence saved across reload",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: investigation screens, read action, sequential flow and reopen",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: eight cases, feedback resume, no duplicate decisions",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: PNG result export",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: offline cold reload and continued gameplay",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: corrupt save recovery",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: zero uncaught JavaScript errors",
+      "status": "PASS"
+    },
+    {
+      "test": "chromium: data failure and retry",
+      "status": "PASS"
+    }
+  ]
+}
