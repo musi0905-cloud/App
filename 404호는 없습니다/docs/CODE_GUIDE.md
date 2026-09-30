@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.8.0 (2026-09-30)
+- 기준 버전: v0.9.0 (2026-09-30)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -19,6 +19,7 @@ room404/
 │  ├─ engine.js           규칙: 사건 선택·판정·결말·저장 검증
 │  ├─ replay.js           CCTV 재현 (canvas 애니메이션)
 │  ├─ voice.js            전화 목소리 (기기 내장 한국어 음성)
+│  ├─ sfx.js              합성 효과음 (벨 소리, 문 소리)
 │  ├─ sw.js               오프라인 캐시 (서비스워커)
 │  ├─ manifest.webmanifest PWA 설정
 │  ├─ data/               게임 데이터 (JSON)
@@ -95,11 +96,18 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - 소리 켜기/끄기는 `localStorage['404_sound']`에 저장합니다.
 - 나중에 녹음 파일로 바꾸려면 `speakLine()`만 오디오 재생으로 바꾸면 됩니다. 대본 구조는 그대로 씁니다.
 
+## 4-1-1. 효과음 (sfx.js)
+
+- 파일 없이 WebAudio로 만드는 짧은 소리입니다. `ring()`(인터폰 벨, 1.1초 뒤 resolve), `doorOpen()`, `doorShut()`. `voice.js`의 소리 설정을 같이 따릅니다.
+- 첫 자동 재생 통화 앞에만 벨이 울립니다(`playCall`의 `start(true)`). ‘다시 듣기’에는 울리지 않습니다.
+
 ## 4-2. 화면 사진·영상 (game.js `activateMedia`)
 
 - `class="scene-media"` 상자에 `data-poster`(사진 이름)와 `data-video`(영상 이름)를 적으면 됩니다. 사진은 배경으로 깔리고, 영상은 그 화면이 보일 때만 불러와 재생합니다. 화면을 떠나거나 앱이 가려지면 멈춥니다.
 - 동작 줄이기 설정에서는 영상을 쓰지 않습니다.
-- 쓰는 곳: 시작(`.door`), 경비실 방문객 카드(`.visitor`), 판단 결과, 근무 결과, 기록부 표지(`mediaHTML`), 통화(`call-media`), 처음 안내의 예시 영상(`#clipGallery`, 펼칠 때만 불러옴)
+- 쓰는 곳: 시작(`.door`), 경비실 방문객 카드(`.visitor`), 판단 결과(열린 문/닫힌 문, `setPoster`로 바꿈), 근무 결과, 기록부 표지(`mediaHTML`), 통화(`call-media`), 처음 안내의 예시 영상(`#clipGallery`, 펼칠 때만 불러옴)
+- `setPoster(box, poster, video)`: 이미 만들어진 상자의 사진·영상을 바꿉니다.
+- 판단 연출 `doorTransition(allow)`: `#doorTransition`(화면 전체, `pointer-events:none`)에 문 사진/영상과 한 줄 문구를 1초 보여 주고 0.4초에 걸쳐 사라집니다. 동작 줄이기에서는 소리만 납니다.
 
 ## 5. CCTV 재현 (replay.js)
 
@@ -108,7 +116,11 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - `sceneVideo(scene, look, camera)`가 장면에 맞는 영상을 고릅니다. 순서: 신호 끊김(loading) → 문 비교/열린 문 → (기본 카메라일 때) 인물·장소·이상 종류가 모두 맞는 이상 영상 → 공동현관 걷기 영상(소품 없음, normal) → 장소별 모니터 영상.
 - 사람이 들어 있는 영상(걷기, 이상 영상)을 쓸 때는 canvas에 사람을 그리지 않습니다.
 - 영상 시간은 `setVideo()`가 재생 위치(장면 안에서 0~6초)에 맞춥니다. 재생 중에는 0.3초 이상 어긋날 때만 맞춥니다.
-- `actorPlacement()`: 장소별 바닥 높이와 크기(`LAYOUT`)와 동작(enter/cross/descend/turn/repeat)에 따른 위치. 가까이 보기 카메라의 확대 중심으로도 씁니다.
+- **원근법**: `LAYOUT[장소]`에 기준 발 위치 `y`와 그때의 키 `h`, 지평선 `horizon`, 뒤쪽 출발점 `far`/`farX`가 있습니다. `heightAt(장소, 발 y)`가 발 위치로 키를 정합니다. 걸어오는 경로는 `perspectiveY()`로 1/거리 원근을 따르고, x는 발 위치에 비례해 화면에서 직선이 됩니다.
+- `actorPlacement()`: 위 원근법으로 동작(enter/cross/descend/turn/repeat)별 위치·키·방향(`facing`)을 냅니다. 가까이 보기 카메라의 확대 중심으로도 씁니다. 배경 사진을 바꾸면 `LAYOUT`의 값을 그 사진에 맞게 다시 잽니다.
+- 걸음 프레임: `cross`는 이동 거리(보폭 = 키의 0.8배 = 8프레임)로 정해 발이 미끄러지지 않고, 깊이 방향 걷기는 `walkFrame(cursor)`(8fps)입니다.
+- `contactShadow()`: 발밑 그림자. 서 있는 인물은 `breath`로 3초 주기 미세한 숨쉬기.
+- 장면 전환 연출: `cutUntil`(0.32초 테이프 끊김). 재생 중 장면이 바뀌거나 장면 버튼을 누르면 켜집니다. 동작 줄이기에서는 버튼 전환 시 꺼집니다.
 - 카메라(`CAMERAS`): ① 기본 ② 다른 방향(공동현관↔현관 옆은 실제 다른 그림, 나머지는 좌우 반전) ③ 가까이 보기(2.2배). `.replay-stage`에 CSS transform으로 적용하므로 영상과 canvas가 같이 움직입니다.
 - `mountReplay(host, {pack, visitor, time, date})`가 화면을 만들고, 정리 함수를 돌려줍니다. 다른 화면으로 가면 `game.js`의 `clearReplay()`가 정리합니다.
 - `cursor`(초)가 모든 상태의 기준입니다. 재생, 슬라이더, 장면 버튼이 모두 `cursor`만 바꾸고 `draw()`를 부릅니다. 같은 `cursor`에서는 항상 같은 그림이 나옵니다.
@@ -139,7 +151,8 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - `scenarios.json`의 `safe`, `channel`, `clue`, `verification`은 `anomalies.json`과 같아야 합니다. 테스트(`scenarios.test.mjs`)가 검사합니다.
 - 문구의 `{name}`, `{unit}`은 `fillDeep()`이 방문객 정보로 바꿉니다.
 - **화면 문구를 고칠 때는 `docs/WRITING_GUIDE.md`를 따릅니다.** 해요체, 짧은 문장, 어려운 말 금지, 조사 전 정답 노출 금지가 핵심입니다. `call.reply`, `plain.confirmed`, `verificationDetail`은 항상 같은 문장이어야 합니다(테스트가 검사).
-- 화면에 보이지 않는 칸: `clue`, `verification`(원래 단서), `question`(이전 버전의 질문), `plain.decision`(현재 미사용)
+- 화면에 보이지 않는 칸: `clue`, `verification`(원래 단서), `question`(이전 버전의 질문), `plain.decision`(현재 미사용). `plain.check`는 틀렸을 때 “다음에는 이렇게 해 보세요” 안내로도 씁니다.
+- 결말 설명은 `game.js`의 `ENDING_NOTES`에 있습니다. 결말 종류에 따라 `#result[data-ending]`이 `best`/`bad`/`lost`/`plain`으로 바뀝니다.
 
 ## 7. 그림과 영상 (dist/assets)
 
@@ -161,7 +174,7 @@ home ──시작──▶ game ◀──돌아가기── investigation
 ## 8. 오프라인 (sw.js)
 
 - 설치할 때 `FILES` 목록 전체를 캐시합니다. 이후에는 캐시를 먼저 쓰고, 없으면 네트워크를 씁니다.
-- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.8.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
+- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.9.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
 - 영상(.mp4)은 미리 저장하지 않고 서비스워커도 가로채지 않습니다(용량, 구간 요청). 인터넷이 없으면 사진이 보입니다.
 - 앱(Capacitor) 안에서는 서비스워커를 쓰지 않습니다. 모든 파일이 앱 안에 들어 있습니다.
 
@@ -181,7 +194,7 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - 브라우저 검사는 `speechSynthesis`를 가짜로 바꿔 끼워 통화 음성을 검사합니다(읽은 줄 수, ko-KR, 사람마다 다른 높이, 소리 끄기).
 - 테스트용 서버는 `tests/static-server.mjs`입니다. 영상 탐색에 필요한 Range 요청을 지원합니다.
 - 이 환경의 브라우저는 GPU가 없어 스크린샷에 영상이 검게 나옵니다. 영상 확인은 `data-video`와 `currentTime`으로 합니다.
-- 마지막 결과(2026-09-30, v0.8.0): 12/12, 9/9, 100/100 모두 통과
+- 마지막 결과(2026-09-30, v0.9.0): 13/13, 9/9, 100/100 모두 통과
 
 ## 10. 주의사항
 
@@ -200,9 +213,12 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 | 높음 | Android 앱에 TextToSpeech 플러그인 설치 | 없으면 앱에서 전화 목소리가 나오지 않습니다. |
 | 중간 | 장소별 두 번째 방향 배경 | 지금 ‘다른 방향’은 공동현관만 실제 그림이고 나머지는 좌우 반전입니다. 규격: `docs/CCTV_ANGLE_IMAGE_SPEC.md` |
 | 중간 | 녹음 목소리로 교체 | 지금은 기기 내장 음성입니다. 대본 구조는 그대로 두고 오디오 파일로 바꿀 수 있습니다. |
+| 중간 | 비스듬히 걷는 인물 그림 | 지금은 정면·옆면 두 가지라 대각선으로 다가오는 장면도 옆면을 씁니다. 3/4 방향 걷기 8장면이 있으면 더 자연스럽습니다. |
 | 낮음 | 결말 24개 추가 구현 | `endings.json` 30개 중 6개만 구현되어 있습니다. |
 
 ### 완료한 개선
+
+- v0.9.0: 장소별 원근법(발 위치로 키 결정, 1/거리 접근), 접지 그림자, 숨쉬기, 보폭 기반 걸음, 테이프 끊김, 문 열림/닫힘 판단 연출, 효과음, 결말 설명과 색, 틀렸을 때 안내.
 
 - v0.8.0: 이미지·모션 v2를 전 화면에 적용했고, 4명 모두 걷기 그림을 씁니다. CCTV 카메라 바꾸기(다른 방향, 가까이)를 추가했습니다.
 

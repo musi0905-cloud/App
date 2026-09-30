@@ -59,3 +59,22 @@
 .replay-cameras button{font-size:13px;padding:9px 4px}.replay-cameras [aria-pressed=true]{border-color:#e4c974;background:#354331}
 .clip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.clip-grid figure{margin:0}.clip-grid video{width:100%;aspect-ratio:3/2;object-fit:cover;background:#09110d;display:block}.clip-grid figcaption{font-size:13px;padding:4px 0}
 .register .book-log td:nth-child(-n+3),.register .book-log th{white-space:nowrap}
+
+/* Staging (v0.9) */
+.hud-rec{top:8px;right:8px;margin-top:26px;color:#e07a6c;animation:recBlink 1.2s steps(1) infinite}
+@keyframes recBlink{50%{opacity:.15}}
+.hud-state{animation:statePulse 2.4s ease-in-out infinite}
+@keyframes statePulse{50%{background:#3a2c1ccc}}
+@media (prefers-reduced-motion: reduce){.hud-rec,.hud-state{animation:none}}
+.door-transition{position:fixed;inset:0;z-index:50;pointer-events:none;background:#0b1011;display:grid;place-items:center;animation:doorIn .25s ease-out}
+.door-transition .scene-media{position:absolute;inset:0;opacity:.9}
+.door-transition p{position:relative;z-index:1;font-size:26px;font-weight:700;color:#e7eadc;text-shadow:0 2px 18px #000;background:#07130ecc;padding:12px 22px;margin:0}
+.door-transition.out{animation:doorOut .4s ease-in forwards}
+@keyframes doorIn{from{opacity:0}to{opacity:1}}@keyframes doorOut{to{opacity:0}}
+#feedback.correct #feedbackTitle{color:#cfe3b4}#feedback.wrong #feedbackTitle{color:#e6a294}
+#feedback .scene-media.banner{aspect-ratio:2/1}
+.hint{border-left:3px solid #d7bf7b;padding:10px 14px;background:#223529;font-size:15px}
+#result[data-ending=best] #ending{color:#e3cb8a}#result[data-ending=bad] #ending{color:#e6a294}
+#result[data-ending=lost] #ending{color:#e26b5c;letter-spacing:.08em;animation:lostFlicker 3s steps(2) infinite}
+@keyframes lostFlicker{0%,92%,100%{opacity:1}94%{opacity:.35}96%{opacity:.9}98%{opacity:.5}}
+@media (prefers-reduced-motion: reduce){#result[data-ending=lost] #ending{animation:none}}

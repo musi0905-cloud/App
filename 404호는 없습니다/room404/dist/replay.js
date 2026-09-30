@@ -10,7 +10,13 @@ const AMBIENT={lobby:'03-lobby-monitor',lobbySide:'04-lobby-side-monitor',hall:'
 // Anomaly clips already contain one specific visitor look, so they are used only when place, mode and look all match.
 const ANOMALY_CLIPS=[['17-delayed-shadow','hall','shadowHold',1],['18-duplicate-visitors','lobby','double',2],['19-reflection-lag','elevator','reflection',3],['21-infrared-view','parking','ir',4],['22-rain-double-image','lobby','rainDouble',1]];
 // Floor line and frame height per place, matched to the v2 backgrounds (canvas 960x640).
-const LAYOUT={lobby:{y:585,h:285},lobbySide:{y:585,h:285},hall:{y:587,h:290},elevator:{y:568,h:340},stairs:{y:590,h:290},parking:{y:570,h:260},door:{y:600,h:300}};
+// Perspective per place (canvas 960x640). y/h: foot line and figure height at the reference (near) spot.
+// horizon: the line where a figure's height would shrink to zero; far/farX: where someone appears at the back of the shot.
+// A figure's height always follows its foot line, so anyone walking toward the camera grows the way a real CCTV image does.
+const LAYOUT={lobby:{y:585,h:285,horizon:-20,far:330,farX:240},lobbySide:{y:585,h:285,horizon:-20,far:350,farX:300},hall:{y:587,h:290,horizon:250,far:430,farX:470},elevator:{y:568,h:340,horizon:-150,far:450,farX:500},stairs:{y:590,h:290,horizon:-40,far:380,farX:620},parking:{y:570,h:260,horizon:230,far:390,farX:330},door:{y:600,h:300,horizon:-300,far:560,farX:480}};
+export function heightAt(location,footY){const b=LAYOUT[location]||LAYOUT.lobby;return b.h*(footY-b.horizon)/(b.y-b.horizon)}
+// Uniform motion toward or away from the camera is not linear on screen: the foot line follows 1/depth.
+export function perspectiveY(horizon,y0,y1,phase){const a=y0-horizon,b=y1-horizon;return horizon+a*b/(b-phase*(b-a))}
 // Walk frames (visitor-0N-walk.webp): 4x2 cells of 384x512, feet at (192,496), figure about 466px tall.
 // Standing sheet (visitors.png): 4 cells of 384x1024, figure from y 76 to 967.
 const WALK={fps:8,w:384,h:512,footX:192,footY:496,figure:466},STAND={top:76,foot:967,cellW:384,cellH:1024};
@@ -24,15 +30,17 @@ function previousDate(date){const d=new Date(date+'T12:00:00Z');d.setUTCDate(d.g
 function reduceMotion(){return typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches}
 // Where the visitor stands at this phase of the scene. Shared by drawing and the close-up camera.
 export function actorPlacement(s,phase,look=1){
- const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,h=base.h,walking=false;
- if(videoWalk(s,look)){return {x:-90+phase*1140,y:582,h:285,walking:true,video:true}}
- if(s.action==='enter'){x=160+phase*420;y=base.y-55+phase*55;h=base.h*(.82+phase*.18);walking=true}
- if(s.action==='cross'){x=110+phase*740;walking=true}
- if(s.action==='descend'){x=700-phase*260;y=base.y-150+phase*150;h=base.h*(.75+phase*.25);walking=true}
- if(s.action==='turn')x=480+Math.sin(phase*Math.PI)*28;
- if(s.mode==='repeat'){const q=(phase*2)%1;x=160+q*420;y=base.y-55+q*55;h=base.h*(.82+q*.18);walking=true}
- if(s.mode==='distort')h*=1.15;
- return {x,y,h,walking};
+ const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,walking=false,facing=1;
+ if(videoWalk(s,look))return {x:-90+phase*1140,y:582,h:285,walking:true,video:true,facing:1};
+ // A straight walk on the floor: the foot line follows perspective, x follows the foot line so the path stays straight on screen.
+ const path=(x0,y0,x1,y1,q=phase)=>{y=perspectiveY(base.horizon,y0,y1,q);x=x0+(x1-x0)*(y-y0)/(y1-y0);walking=true};
+ if(s.action==='enter')path(base.farX,base.far,520,base.y);
+ if(s.action==='descend'){path(base.farX,base.far,420,base.y);facing=-1}
+ if(s.action==='cross'){y=base.y-.08*(base.y-base.horizon);x=120+phase*720;walking=true}
+ if(s.action==='turn'){x=480+Math.sin(phase*Math.PI)*28;facing=phase>.5?-1:1}
+ if(s.mode==='repeat')path(base.farX,base.far,520,base.y,(phase*2)%1);
+ const h=heightAt(s.location,y)*(s.mode==='distort'?1.15:1);
+ return {x,y,h,walking,facing};
 }
 function videoWalk(s,look){return s.location==='lobby'&&['enter','cross'].includes(s.action)&&s.mode==='normal'&&(!s.prop||s.prop==='none')&&look>=1&&look<=4}
 export function sceneVideo(s,look,camera='main'){
@@ -46,9 +54,9 @@ export function sceneVideo(s,look,camera='main'){
  return AMBIENT[s.location]||null;
 }
 export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scenes}){
- let disposed=false,raf=0,playing=false,cursor=0,previous=0,camera='main';
+ let disposed=false,raf=0,playing=false,cursor=0,previous=0,camera='main',cutUntil=0,lastIndex=-1;const CUT_MS=320;
  const duration=scenes.length*6,reduced=reduceMotion();
- host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>그림과 영상으로 다시 만든 장면이에요</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
+ host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>그림과 영상으로 다시 만든 장면이에요</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-rec" aria-hidden="true">● REC</span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),stage=host.querySelector('.replay-stage'),video=host.querySelector('video'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
  const look=(Number(visitor.id.slice(1))-1)%4+1,sprite=look-1;
@@ -64,8 +72,11 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  // Props are placed relative to the figure's frame height h (walk-frame scale) and its foot point.
  function drawProp(kind,x,y,h,mode,phase){const im=props[kind];if(!im)return;const ph={hat:h*.13,umbrella:h*.58,mask:h*.06,phone:h*.16,parcel:h*.22,glove:h*.10}[kind],pw=ph*im.width/im.height,[dx,dy]={hat:[-.02,-.92],mask:[.09,-.80],umbrella:[.2,-.51],phone:[.15,-.60],parcel:[.05,-.55],glove:[.14,-.53]}[kind];
   const gone=mode==='removeProp'&&['hat','mask','umbrella'].includes(kind);prop(kind,x+dx*h-pw/2+(gone?phase*60:0),y+dy*h+(gone?phase*110:0),pw,ph,gone?1-phase:1)}
- function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1}={}){
+ function contactShadow(x,bottom,height,alpha){const rx=height*.17,ry=height*.045;ctx.save();ctx.globalAlpha=alpha;const g=ctx.createRadialGradient(x,bottom,0,x,bottom,rx);g.addColorStop(0,'rgba(0,4,2,.55)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,bottom,rx,ry,0,0,Math.PI*2);ctx.fill();ctx.restore()}
+ function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,shadow=true,breath=0}={}){
+  if(shadow&&!shadowOnly)contactShadow(x,bottom,height,alpha);
   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
+  if(breath)ctx.scale(1,1+breath);
   const figure=height*WALK.figure/WALK.h;
   if(walk>=0&&walkSheet){const k=height/WALK.h;ctx.drawImage(walkSheet,walk%4*WALK.w,Math.floor(walk/4)*WALK.h,WALK.w,WALK.h,-WALK.footX*k,-WALK.footY*k,WALK.w*k,WALK.h*k)}
   else{const im=images.stand[0],k=figure/(STAND.foot-STAND.top);ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,-STAND.cellW/2*k,-STAND.foot*k,STAND.cellW*k,STAND.cellH*k)}
@@ -99,14 +110,18 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
    ctx.drawImage(background(key),0,0,960,640);
   }
   cameraTransform(view,pos);
-  let {x,y,h}=pos;const walk=pos.walking&&walkSheet?walkFrame(cursor):-1,walkFlip=walk>=0&&s.action==='descend';
+  let {x,y,h}=pos;
+  // Walking across the frame paces the stride by distance travelled so the feet never slide; depth walks use the clock.
+  const stride=.8*h*WALK.figure/WALK.h,walk=!(pos.walking&&walkSheet)?-1:s.action==='cross'?Math.floor((x-120)/stride*8)%8:walkFrame(cursor),walkFlip=walk>=0&&pos.facing<0;
+  // Standing figures breathe very slightly (period 3 s), so a paused frame still reads as a living person.
+  const breath=walk<0?Math.sin(cursor*Math.PI*2/3)*.006:0;
   const filter=mode==='darkCoat'?'brightness(.35)':mode==='ir'?'grayscale(1) contrast(1.9) brightness(2)':mode==='blurCard'?'blur(.6px) saturate(.75)':'saturate(.75) brightness(.92)';
   if(!clipHasActor){
    if(['shadow','shadowHold','faceShadow'].includes(mode)){ctx.save();ctx.translate(mode==='shadow'?x:280,y-10);ctx.transform(1,.15,-.6,.25,0,0);actor(0,0,h,{shadowOnly:true,walk,flip:walkFlip});ctx.restore()}
    if(mode==='footprints'){ctx.save();ctx.globalAlpha=.5;ctx.fillStyle='#1b2420';for(let j=0;j<6;j++){ctx.beginPath();ctx.ellipse(150+j*42,y+10-j*22,11,5,-.3,0,Math.PI*2);ctx.fill()}ctx.restore()}
    if(mode!=='absent'&&mode!=='loading'){
-    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip})}
-    else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:walkFlip||s.action==='turn'&&phase>.5,walk});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?(Math.abs(960-2*x)<160?x+200:960-x):x+40,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk})}
+    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip,breath});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk:walk<0?-1:(walk+4)%8,flip:walkFlip,breath:-breath})}
+    else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:walkFlip||pos.facing<0,walk,breath});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?(Math.abs(960-2*x)<160?x+200:960-x):x+40,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk,shadow:false,breath})}
    }
    if(s.action==='wave'||s.action==='knock')prop('glove',x+h*.14+Math.sin(phase*Math.PI*4)*18,y-h*.8,h*.18,h*.22);
    if(mode==='faceLock'){headCrop(450,140,85,120);ctx.strokeStyle='#e9c46f';ctx.strokeRect(450,140,85,120)}
@@ -123,15 +138,17 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   if(!(videoOk&&videoSrc)||mode!=='loading'){ctx.fillStyle='#07100a16';for(let yLine=0;yLine<640;yLine+=5)ctx.fillRect(0,yLine,960,1)}
   const states={doorClosed:'직접 확인: 문이 닫혀 있어요',doorOpen:'영상에서는 문이 열려 있어요',doorCompare:'같은 시간인데 문 상태가 달라요',recorded:'지금 영상 버튼에 옛 영상이 나와요',live:'녹화 버튼에 지금 영상이 나와요',reboot:'카메라를 껐다 켠 뒤 옛 화면',loading:'지금 화면을 불러오는 중…',dateOnly:'날짜가 아직 안 바뀌었어요',delay3:'3분 늦게 보이는 화면',clock7:'카메라 표시 시계',repeat:'같은 장면이 반복돼요',fingerprint:'장갑 때문에 지문이 안 읽혀요',ring:'문 앞 휴대전화도 같이 울려요',echo:'같은 말을 조금 늦게 따라 해요',voiceEarly:'음성: 손을 들었어요',voiceLate:'뒤늦게 영상의 손이 올라옴',preMove:'재생하기 전에 고개를 돌려요',compare:'같은 시간, 다른 장소',hairOld:'예전 사진과 지금 모습'};
   hudState.hidden=!states[mode];hudState.textContent=states[mode]||'';
-  hudCam.textContent=`${LOCATIONS[place]} · ${index+1}/${scenes.length}${camera==='main'?'':' · '+CAMERAS[camera].slice(2)}`;
+  const cut=cutUntil-performance.now();
+  if(cut>0){const k=Math.min(1,cut/CUT_MS);ctx.fillStyle=`rgba(3,8,6,${k*.95})`;ctx.fillRect(0,0,960,640);ctx.fillStyle=`rgba(200,220,200,${k*.5})`;ctx.fillRect(0,320-k*4,960,k*8)}
+  hudCam.textContent=`CAM ${String(Object.keys(BACKGROUNDS).indexOf(place)+1).padStart(2,'0')} ${LOCATIONS[place]} · ${index+1}/${scenes.length}${camera==='main'?'':' · '+CAMERAS[camera].slice(2)}`;
   const recordedDate=mode==='yesterday'?previousDate(date):date;hudTime.textContent=`${recordedDate} ${sceneTime(s,time)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
   canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time);canvas.dataset.location=s.location;canvas.dataset.view=camera;canvas.dataset.video=videoSrc&&videoOk?videoSrc:'';canvas.dataset.walkFrame=String(walk);canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
   caption.textContent=`장면 ${index+1} · ${s.note}`;seek.value=String(cursor);host.querySelector('output').textContent=`${cursor.toFixed(1)} / ${duration}초`;host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.setAttribute('aria-pressed',String(index===i)));
  }
- function loop(now){if(disposed)return;if(playing){cursor+=previous?(now-previous)/1000:0;if(cursor>=duration-.01){cursor=duration-.01;playing=false;play.textContent='처음부터 재생'}draw()}previous=now;raf=requestAnimationFrame(loop)}
+ function loop(now){if(disposed)return;if(playing){cursor+=previous?(now-previous)/1000:0;if(cursor>=duration-.01){cursor=duration-.01;playing=false;play.textContent='처음부터 재생'}const index=Math.min(scenes.length-1,Math.floor(cursor/6));if(lastIndex>=0&&index!==lastIndex)cutUntil=now+CUT_MS;lastIndex=index}if(playing||cutUntil>now)draw();previous=now;raf=requestAnimationFrame(loop)}
  play.onclick=()=>{if(cursor>=duration-.02)cursor=0;playing=!playing;previous=0;play.textContent=playing?'일시정지':'재생';draw()};
  seek.oninput=()=>{cursor=Number(seek.value);playing=false;play.textContent='재생';draw()};
- host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{cursor=i*6;playing=false;play.textContent='재생';draw()});
+ host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{if(i!==Math.floor(cursor/6)&&!reduced)cutUntil=performance.now()+CUT_MS;cursor=i*6;lastIndex=i;playing=false;play.textContent='재생';draw()});
  host.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{camera=b.dataset.camera;host.querySelectorAll('[data-camera]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()});
  function visibility(){if(document.hidden){playing=false;play.textContent='재생';video.pause()}}document.addEventListener('visibilitychange',visibility);
  try{const [bg,stand,propList,walkIm]=await ready;images={bg,stand};props=Object.fromEntries(propList);walkSheet=walkIm;if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}

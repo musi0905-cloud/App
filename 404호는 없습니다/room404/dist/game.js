@@ -1,8 +1,10 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS} from './replay.js';
 import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash} from './engine.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable} from './voice.js';
+import {ring,doorOpen,doorShut} from './sfx.js';
 const TOOL_NAMES={CCTV:'CCTV 보기',명부:'주민·방문 기록',통화:'집에 전화하기',재확인:'한 번 더 확인'};
 const $=id=>document.getElementById(id),ACTIVE='404_active_v2',LAST='404_last_run';
+const ENDING_NOTES={'404호':'없는 집으로 사람을 들여보냈어요. 이 밤은 여기서 끝나요.','오판':'위험한 사람을 두 번 넘게 들여보냈어요. 다음에는 한 번 더 확인해요.','무고한 거부':'괜찮은 사람을 세 번 넘게 돌려보냈어요. 기록과 전화를 믿어 봐요.','신중한 경비원':'모든 방문객을 꼼꼼히 확인하고 한 번 더 확인까지 했어요.','첫 근무의 기록':'첫 밤을 무사히 마쳤어요. 오늘 밤의 선택이 기록으로 남았어요.','퇴근':'오늘 밤의 선택이 기록으로 남았어요. 내일 밤에 다시 만나요.'};
 let scenarios=[],visitors=[],anomalies=[],run=null,ready=false,deferredInstall=null,activeTool=null,toolOrigin=null,cameraPast=false,replayCleanup=null,replayGeneration=0; 
 function clearReplay(){replayGeneration++;if(replayCleanup){replayCleanup();replayCleanup=null}}
 function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}['home','game','investigation','feedback','result'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
@@ -13,6 +15,8 @@ function activateMedia(){document.querySelectorAll('.scene-media').forEach(box=>
  const v=box.querySelector('video.ambient');if(!v)return;const visible=!box.closest('[hidden]')&&!document.hidden&&!reducedMotion();
  if(visible){if(!v.getAttribute('src'))v.src=MEDIA+'motion/'+box.dataset.video+'.mp4';v.play().catch(()=>{})}else if(!v.paused)v.pause();
 })}
+// Change a backdrop after it was set up (e.g. the door photo that matches the decision).
+function setPoster(box,poster,video=null){if(box.dataset.poster===poster&&(box.dataset.video||null)===video)return;box.dataset.poster=poster;if(video)box.dataset.video=video;else delete box.dataset.video;box.querySelector('video.ambient')?.remove();delete box.dataset.ready;activateMedia()}
 function mediaHTML(poster,video,cls=''){return `<div class="scene-media ${cls}" data-poster="${poster}"${video?` data-video="${video}"`:''}></div>`}
 function mountClips(){document.querySelectorAll('#clipGallery figure').forEach(f=>{if(f.querySelector('video'))return;const v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.preload='none';v.poster=`${MEDIA}previews/${f.dataset.clip}.webp`;v.dataset.src=MEDIA+'motion/'+f.dataset.clip+'.mp4';f.prepend(v)})}
 function storageGet(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
@@ -46,10 +50,15 @@ function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?
   const {v}=current(),t=totals(run);$('clock').textContent=TIMES[run.index];$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
   $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);$('portrait').innerHTML=person(v);$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
  }else if(run.screen==='feedback'){
-  const {v,a}=current(),h=run.history.at(-1);$('clock').textContent=TIMES[run.index];$('feedbackTitle').textContent=h.correct?'잘 판단했어요. 맞았어요':'아쉬워요. 틀렸어요';
-  $('feedbackText').textContent=`${v.name} 님(${v.unit}호)은 ${a.safe?'들여보내도 되는 사람이었어요.':'문을 열어 주면 안 되는 사람이었어요.'} ${guide().clue}`;$('reason').textContent=guide().verify;$('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';
+  const {v,a}=current(),h=run.history.at(-1),g=guide();$('clock').textContent=TIMES[run.index];
+  $('feedback').classList.toggle('correct',h.correct);$('feedback').classList.toggle('wrong',!h.correct);
+  setPoster($('feedback').querySelector('.scene-media'),h.allow?'door-open':'door-closed');
+  $('feedbackTitle').textContent=h.correct?'잘 판단했어요. 맞았어요':'아쉬워요. 틀렸어요';
+  $('feedbackText').textContent=`${v.name} 님(${v.unit}호)은 ${a.safe?'들여보내도 되는 사람이었어요.':'문을 열어 주면 안 되는 사람이었어요.'} ${g.clue}`;$('reason').textContent=g.verify;
+  $('hint').hidden=h.correct;$('hint').textContent=h.correct?'':`다음에는 이렇게 해 보세요: ${g.question}`;
+  $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';
  }else{
-  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';$('ending').textContent=end;$('summary').textContent=end==='신중한 경비원'?'모든 방문객을 꼼꼼히 확인하고 한 번 더 확인까지 했어요.':'오늘 밤의 선택이 기록으로 남았어요.';
+  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';$('ending').textContent=end;$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
   $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번`;
   try{localStorage.setItem(LAST,JSON.stringify({date:run.date,mode:run.mode,ending:end,correct:t.correct,history:run.history}))}catch{$('storageNotice').hidden=false}
  }show(run.screen);
@@ -98,11 +107,11 @@ function transcript(v,pack,done,independent=false){const c=pack.call,e=escapeHTM
 }
 function playCall(autoplay){const rec=$('toolBody').querySelector('.call-record');if(!rec||!rec.querySelector('.transcript'))return;const {v,pack}=current(),lines=callLines(v,pack,activeTool==='재확인'),items=[...rec.querySelectorAll('.transcript li')];
  const mark=i=>items.forEach((li,j)=>li.classList.toggle('speaking',i===j));
- const start=()=>{rec.dataset.playing='true';playDialogue(lines,mark).then(()=>{rec.dataset.playing='false'})};
- rec.querySelector('.call-play')?.addEventListener('click',start);
+ const start=(first=false)=>{rec.dataset.playing='true';(first?ring():Promise.resolve()).then(()=>playDialogue(lines,mark)).then(()=>{rec.dataset.playing='false'})};
+ rec.querySelector('.call-play')?.addEventListener('click',()=>start(false));
  rec.querySelector('.call-stop')?.addEventListener('click',()=>{stopVoice();mark(-1);rec.dataset.playing='false'});
  rec.querySelector('.call-sound')?.addEventListener('click',e=>{const on=!soundOn();setSoundOn(on);e.currentTarget.textContent=on?'소리 켜짐':'소리 꺼짐';e.currentTarget.setAttribute('aria-pressed',String(on));if(!on){stopVoice();mark(-1)}});
- if(autoplay&&soundOn()&&voiceAvailable())start();
+ if(autoplay&&soundOn()&&voiceAvailable())start(true);
 }
 function renderTool(autoplay=false){
  clearReplay();stopVoice();const {v,a,pack}=current(),done=inspected(),e=escapeHTML;
@@ -128,13 +137,17 @@ function renderTool(autoplay=false){
  show('investigation');$('toolTitle').focus({preventScroll:true});
 }
 function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
-function decide(allow){if(run&&decideRun(run,allow,anomalies)){save();render()}}
+function decide(allow){if(run&&decideRun(run,allow,anomalies)){save();render();doorTransition(allow)}}
+// Short staging after a decision: the door opens (video) or stays shut (photo) over the feedback screen. Never blocks input.
+function doorTransition(allow){const box=$('doorTransition');allow?doorOpen():doorShut();if(reducedMotion())return;
+ setPoster(box.querySelector('.scene-media'),allow?'door-open':'door-closed',allow?'23-door-open-ambient':null);box.querySelector('p').textContent=allow?'문을 열었어요.':'문을 열지 않았어요.';
+ box.hidden=false;box.classList.remove('out');clearTimeout(box.timer);box.timer=setTimeout(()=>{box.classList.add('out');box.timer=setTimeout(()=>{box.hidden=true;activateMedia()},400)},1000)}
 function next(){if(run&&advance(run)){save();render()}}
 async function share(){if(!run||run.screen!=='result')return;$('share').disabled=true;
  try{
   const c=document.createElement('canvas');c.width=1080;c.height=1350;const ctx=c.getContext('2d'),t=totals(run);ctx.fillStyle='#101a1b';ctx.fillRect(0,0,1080,1350);try{const bg=await new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=MEDIA+'ending-dawn.webp'});const sw=bg.height*1080/1350;ctx.globalAlpha=.35;ctx.drawImage(bg,(bg.width-sw)/2,0,sw,bg.height,0,0,1080,1350);ctx.globalAlpha=1;ctx.fillStyle='#101a1bb0';ctx.fillRect(0,0,1080,1350)}catch{}ctx.strokeStyle='#b8a475';ctx.lineWidth=4;ctx.strokeRect(70,70,940,1210);
   ctx.fillStyle='#d6bd79';ctx.font='38px sans-serif';ctx.fillText('404호는 없습니다',110,170);ctx.fillStyle='#e7eadc';ctx.font='bold 68px sans-serif';ctx.fillText(ending(run,anomalies),110,360,860);
-  ctx.font='36px sans-serif';['야간근무 기록 · '+run.date,`8명 중 ${t.correct}명 맞힘`,`위험한 사람을 들여보냄 ${t.threats}번`,`괜찮은 사람을 돌려보냄 ${t.denials}번`,'당신이라면 문을 열겠습니까?'].forEach((line,i)=>ctx.fillText(line,110,525+i*120,860));
+  ctx.font='36px sans-serif';['야간근무 기록 · '+run.date,`8명 중 ${t.correct}명 맞힘`,`위험한 사람을 들여보냄 ${t.threats}번`,`괜찮은 사람을 돌려보냄 ${t.denials}번`,'당신이라면 문을 열어 줄 건가요?'].forEach((line,i)=>ctx.fillText(line,110,525+i*120,860));
   const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw Error('이미지를 만들 수 없어요.');const file=new File([blob],'404-근무기록.png',{type:'image/png'});
   if(navigator.canShare?.({files:[file]})){try{await navigator.share({files:[file],title:'404호는 없습니다'});return}catch(e){if(e.name==='AbortError')return}}
   const url=URL.createObjectURL(blob);$('shareImage').src=url;$('shareDownload').href=url;$('sharePreview').hidden=false;$('shareClose').onclick=()=>{$('sharePreview').hidden=true;$('shareImage').removeAttribute('src');URL.revokeObjectURL(url)};$('sharePreview').scrollIntoView({behavior:'smooth'});
@@ -158,4 +171,4 @@ $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>decide(true);$('deny').onclick=()=>decide(false);$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.8.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.9.0';boot();

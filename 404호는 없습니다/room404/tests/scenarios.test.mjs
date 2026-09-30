@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {MODES,LOCATIONS,sceneTime,shiftedTime} from '../dist/replay.js';
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {MODES,LOCATIONS,sceneTime,shiftedTime,heightAt,actorPlacement,perspectiveY} from '../dist/replay.js';
 const read=n=>JSON.parse(readFileSync(new URL('../dist/data/'+n+'.json',import.meta.url))),cases=read('scenarios'),anomalies=read('anomalies');
 test('all 100 canonical events have matching evidence packs and decisions',()=>{assert.equal(cases.length,100);assert.equal(new Set(cases.map(c=>c.id)).size,100);for(const a of anomalies){const c=cases.find(c=>c.id===a.id);assert.equal(c.safe,a.safe,a.id);assert.equal(c.channel,a.channel,a.id);assert.equal(c.clue,a.clue,a.id);assert.equal(c.verification,a.verification);assert.ok(c.plain.what.length>10);assert.ok(c.plain.check.length>10);assert.equal(c.verificationDetail,c.plain.confirmed)}});
 test('300 scenes have supported rendering and real record details',()=>{for(const c of cases){assert.equal(c.scenes.length,3,c.id);assert.ok(c.document.left!==c.document.right,c.id);for(const key of ['source','field','left','right'])assert.ok(c.document[key]?.length>0,`${c.id} ${key}`);for(const key of ['source','state','line','detail','verifySource','reply'])assert.ok(c.call[key]?.length>0,`${c.id} ${key}`);for(const s of c.scenes){assert.ok(LOCATIONS[s.location],c.id);assert.ok(MODES.includes(s.mode),`${c.id}: ${s.mode}`);assert.ok(['enter','wait','wave','descend','cross','phone','pan','turn','knock'].includes(s.action));assert.ok(Number.isInteger(s.offset));assert.ok(s.note.length>5)}}});
@@ -11,3 +11,13 @@ test('every visual asset the game references exists',async()=>{const {existsSync
  for(const n of new Set(names.filter(n=>!n.startsWith('prop-')||existsSync(new URL('assets/v2/'+n+'.webp',root)))))if(!n.includes('lobby-monitor'))assert.ok(existsSync(new URL('assets/v2/'+n+'.webp',root)),n);
  const clips=[...code.matchAll(/'(\d\d-[a-z0-9-]+)'/g)].map(m=>m[1]);assert.ok(clips.length>=15);for(const c of new Set(clips))assert.ok(existsSync(new URL('assets/v2/motion/'+c+'.mp4',root)),c);
  const html=readFileSync(new URL('index.html',root),'utf8');for(const m of html.matchAll(/data-(?:clip|video)="([^"]+)"/g))assert.ok(existsSync(new URL('assets/v2/motion/'+m[1]+'.mp4',root)),m[1]);});
+
+test('figures follow perspective: farther is smaller and higher, and a walk toward the camera speeds up on screen',()=>{
+ for(const loc of Object.keys(LOCATIONS)){assert.ok(heightAt(loc,400)<heightAt(loc,580),loc);assert.ok(heightAt(loc,300)>0,loc)}
+ const enter=[0,.25,.5,.75,1].map(p=>actorPlacement({location:'lobby',action:'enter',mode:'normal',prop:'umbrella'},p,2));
+ for(let i=1;i<enter.length;i++){assert.ok(enter[i].y>enter[i-1].y,'foot line comes down');assert.ok(enter[i].h>enter[i-1].h,'figure grows')}
+ assert.ok(enter[4].y-enter[3].y>enter[1].y-enter[0].y,'screen speed increases when approaching');
+ assert.ok(Math.abs(enter[4].h-285)<1);assert.equal(perspectiveY(-20,330,585,0),330);assert.equal(perspectiveY(-20,330,585,1),585);
+ const stairs=actorPlacement({location:'stairs',action:'descend',mode:'normal',prop:'none'},.5,1);assert.equal(stairs.facing,-1);
+ const stand=actorPlacement({location:'hall',action:'wait',mode:'normal',prop:'none'},.5,1);assert.equal(stand.walking,false);assert.equal(stand.h,290);
+});
