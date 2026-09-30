@@ -30,6 +30,7 @@
 | [docs/STORE_RELEASE_PLAN.md](docs/STORE_RELEASE_PLAN.md) | 같은 코드로 App Store와 Google Play에 함께 출시하는 방법 |
 | [docs/WRITING_GUIDE.md](docs/WRITING_GUIDE.md) | 게임 문구·대사 작성 기준 (쉬운 말) |
 | [docs/CCTV_ANGLE_IMAGE_SPEC.md](docs/CCTV_ANGLE_IMAGE_SPEC.md) | CCTV 여러 각도용 그림 규격 |
+| [docs/GPT_ASSET_PROMPT.md](docs/GPT_ASSET_PROMPT.md) | GPT에 그림(배경·인물·사물)을 요청하는 복사용 프롬프트 |
 | [docs/WORKLOG.md](docs/WORKLOG.md) | 작업 기록과 남은 일 |
 
 ## 원본 자료 위치
