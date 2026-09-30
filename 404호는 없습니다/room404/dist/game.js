@@ -8,7 +8,9 @@ function clearReplay(){replayGeneration++;if(replayCleanup){replayCleanup();repl
 function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}['home','game','investigation','feedback','result'].forEach(id=>$(id).hidden=id!==screen);window.scrollTo(0,0)}
 function storageGet(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
 function save(){try{localStorage.setItem(ACTIVE,JSON.stringify(run))}catch{$('storageNotice').hidden=false}}
-function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),pack=scenarios.find(s=>s.id===a.id);const v={...original,unit:pack.unitOverride||original.unit,role:pack.role};v.claim=fill(pack.claim,v);return {v,a,pack}}
+// Returns the case with every {name}/{unit} placeholder filled, so no text field can show a raw placeholder.
+function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;return {v,a,pack}}
+function fillDeep(x,v){return typeof x==='string'?fill(x,v):Array.isArray(x)?x.map(y=>fillDeep(y,v)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,y])=>[k,fillDeep(y,v)])):x}
 function fill(s,v){return String(s).replaceAll('{name}',v.name).replaceAll('{unit}',v.unit)}
 function sourceTime(minutes=0){return shiftedTime(TIMES[run.index],minutes)}
 function log(title,text){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=title+' — ';p.append(b,document.createTextNode(text));$('evidence').append(p)}

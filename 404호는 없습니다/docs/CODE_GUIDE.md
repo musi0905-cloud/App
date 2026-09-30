@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.6.1 (2026-09-30)
+- 기준 버전: v0.7.0 (2026-09-30)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -18,6 +18,7 @@ room404/
 │  ├─ game.js             화면 제어·조사 도구·저장·결과 카드
 │  ├─ engine.js           규칙: 사건 선택·판정·결말·저장 검증
 │  ├─ replay.js           CCTV 재현 (canvas 애니메이션)
+│  ├─ voice.js            전화 목소리 (기기 내장 한국어 음성)
 │  ├─ sw.js               오프라인 캐시 (서비스워커)
 │  ├─ manifest.webmanifest PWA 설정
 │  ├─ data/               게임 데이터 (JSON)
@@ -72,11 +73,12 @@ home ──시작──▶ game ◀──돌아가기── investigation
 | 부분 | 설명 |
 |---|---|
 | `boot()` | JSON 3개를 불러와 개수(각 100개)를 검증하고, 저장된 근무를 복원합니다. 실패하면 "다시 불러오기" 버튼을 보여 줍니다. |
-| `current()` | 지금 사건의 방문객(`v`), 이상 징후(`a`), 시나리오(`pack`)를 합칩니다. `pack.unitOverride`가 있으면 방문 호수를 덮어씁니다. |
+| `current()` | 지금 사건의 방문객(`v`), 이상 징후(`a`), 시나리오(`pack`)를 합칩니다. `pack.unitOverride`가 있으면 방문 호수를 덮어씁니다. `fillDeep()`이 사건 전체의 `{name}`, `{unit}`을 한 번에 채웁니다. |
 | `render()` | `run.screen`에 따라 화면을 그립니다. |
 | `evidence()`, `timeline()` | 경비실 화면의 "다음 할 일"과 사건 타임라인 |
 | `inspect(tool)`, `verify()`, `renderTool()` | 조사 화면을 엽니다. **열기만 해서는 확인 처리되지 않습니다.** `readTool()`(아래쪽 주 버튼)을 눌러야 `run.seen`에 기록됩니다. |
-| `documentView()`, `transcript()` | 기록 비교 화면과 통화 기록 화면 |
+| `documentView()`, `mountBooks()` | 관리실 기록부. 펼치기 전에는 표지를 보여 주고, 펼치면 4장을 넘겨 봅니다: ① 오늘 밤 방문 기록(`bookEntries()`가 날짜와 사건으로 앞서 온 3명을 고정 생성) ② 이 사람이 말한 것 ③ 관리실 기록 ④ 나란히 비교. 버튼, 밀기(40px 이상), 좌우 화살표로 넘깁니다. |
+| `transcript()`, `callLines()`, `playCall()` | 통화 화면. `call.dialogue`(첫 통화)나 `call.verifyDialogue`(한 번 더 확인)를 대본으로 보여 주고, 버튼을 누르면 `voice.js`로 읽습니다. 지금 읽는 줄에 `.speaking`이 붙습니다. |
 | `clueFor(tool)` | 도구별로 알게 된 내용. 사건의 핵심 채널(`a.channel`)이면 `plain.what`을 보여 줍니다. |
 | `share()` | 1080×1350 결과 카드를 canvas로 만듭니다. 공유가 되면 OS 공유 창을, 안 되면 다운로드 링크를 띄웁니다. |
 | `offline()` | 서비스워커를 등록합니다. Capacitor 앱 안에서는 건너뜁니다(이미 대응됨). |
@@ -84,6 +86,14 @@ home ──시작──▶ game ◀──돌아가기── investigation
 - **저장 키**: `404_active_v2`는 진행 중인 근무, `404_last_run`은 마지막 결과입니다. 저장에 실패하면 경고 문구를 띄웁니다.
 - **도구 이름**: 내부 키 `CCTV`, `명부`, `통화`, `재확인`은 유지하고, 화면 이름만 `TOOL_NAMES`로 바꿉니다.
 - **초상**: `person(v)`는 `assets/visitors.png`(4명이 가로로 배치된 시트)에서 `(번호-1) % 4`번째 인물을 잘라 씁니다. 방문객 100명이 4가지 그림을 돌려 씁니다.
+
+## 4-1. 전화 목소리 (voice.js)
+
+- `playDialogue(lines, onLine)`: `[{who, text}]`를 차례로 읽습니다. 줄 사이에 0.25초 쉽니다. `stopVoice()`로 멈춥니다. 조사 화면을 떠나면 `show()`가 자동으로 멈춥니다.
+- 음성 엔진: 웹은 `speechSynthesis`(ko-KR 음성 우선), 앱은 Capacitor `TextToSpeech` 플러그인(`@capacitor-community/text-to-speech`)입니다. Android 웹뷰에는 speechSynthesis가 없으므로 **앱으로 만들 때 이 플러그인을 꼭 설치**해야 합니다.
+- `SPEAKERS`: 말하는 사람별 목소리 높이(pitch)와 빠르기(rate)입니다. 경비원, 주민, 관리실, 방문객, 가족, 회사 직원, 자동 응답, 모르는 사람이 있습니다. 대본의 `who`는 이 목록 안에서만 씁니다.
+- 소리 켜기/끄기는 `localStorage['404_sound']`에 저장합니다.
+- 나중에 녹음 파일로 바꾸려면 `speakLine()`만 오디오 재생으로 바꾸면 됩니다. 대본 구조는 그대로 씁니다.
 
 ## 5. CCTV 재현 (replay.js)
 
@@ -112,11 +122,13 @@ home ──시작──▶ game ◀──돌아가기── investigation
 |---|---|---|
 | `visitors.json` | 100 | `id`(V001~), `name`, `unit`(호수), `role`, `claim` |
 | `anomalies.json` | 100 | **정답의 기준**. `safe`(들여보내도 되는지), `channel`(핵심 단서가 있는 도구), `category` |
-| `scenarios.json` | 100 | 사건별 장면 3개, 서류(`document`), 통화(`call`), 쉬운 설명(`plain.what/check/confirmed/decision`), `recordCode` |
+| `scenarios.json` | 100 | 사건별 장면 3개, 서류(`document`), 통화(`call` — `dialogue`, `verifyDialogue` 대본 포함), 쉬운 설명(`plain.what/check/confirmed/decision`), `recordCode` |
 | `endings.json` | 30 | 결말 설계 목록. 실제 구현은 6개 (`implemented_in_prototype`) |
 
 - `scenarios.json`의 `safe`, `channel`, `clue`, `verification`은 `anomalies.json`과 같아야 합니다. 테스트(`scenarios.test.mjs`)가 검사합니다.
-- 문구의 `{name}`, `{unit}`은 `fill()`이 방문객 정보로 바꿉니다.
+- 문구의 `{name}`, `{unit}`은 `fillDeep()`이 방문객 정보로 바꿉니다.
+- **화면 문구를 고칠 때는 `docs/WRITING_GUIDE.md`를 따릅니다.** 해요체, 짧은 문장, 어려운 말 금지, 조사 전 정답 노출 금지가 핵심입니다. `call.reply`, `plain.confirmed`, `verificationDetail`은 항상 같은 문장이어야 합니다(테스트가 검사).
+- 화면에 보이지 않는 칸: `clue`, `verification`(원래 단서), `question`(이전 버전의 질문), `plain.decision`(현재 미사용)
 
 ## 7. 그림 (dist/assets)
 
@@ -133,7 +145,7 @@ home ──시작──▶ game ◀──돌아가기── investigation
 ## 8. 오프라인 (sw.js)
 
 - 설치할 때 `FILES` 목록 전체를 캐시합니다. 이후에는 캐시를 먼저 쓰고, 없으면 네트워크를 씁니다.
-- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.6.1`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
+- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.7.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
 - 앱(Capacitor) 안에서는 서비스워커를 쓰지 않습니다.
 
 ## 9. 테스트 (tests)
@@ -149,7 +161,8 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - `test:ui`를 먼저 실행해야 합니다. `@sparticuz/chromium`에서 브라우저를 `/tmp/room404-chromium`으로 풀기 때문입니다. 다른 OS에서는 `CHROMIUM_EXECUTABLE`을 지정합니다.
 - 두 브라우저 검사는 `test-artifacts/`의 결과 JSON과 스크린샷을 덮어씁니다.
 - 스크린샷의 한글이 네모로 보이면 한국어 글꼴을 설치합니다(예: `fonts-noto-cjk`).
-- 마지막 결과(2026-09-30): 11/11, 9/9, 100/100 모두 통과
+- 브라우저 검사는 `speechSynthesis`를 가짜로 바꿔 끼워 통화 음성을 검사합니다(읽은 줄 수, ko-KR, 사람마다 다른 높이, 소리 끄기).
+- 마지막 결과(2026-09-30, v0.7.0): 11/11, 9/9, 100/100 모두 통과
 
 ## 10. 주의사항
 
@@ -165,11 +178,15 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 | 높음 | Android 뒤로가기 처리 | 앱에서 뒤로가기를 누르면 바로 종료됩니다. 조사 화면에서는 경비실로 돌아가야 합니다. |
 | 높음 | 결과 이미지 저장을 앱 방식으로 | Android 웹뷰에서는 파일 공유와 blob 다운로드가 동작하지 않을 수 있습니다. Capacitor Share/Filesystem을 씁니다. |
 | 중간 | 저장을 Capacitor Preferences로 이중화 | 웹뷰의 localStorage는 OS가 정리할 때 지워질 수 있습니다. |
+| 높음 | Android 앱에 TextToSpeech 플러그인 설치 | 없으면 앱에서 전화 목소리가 나오지 않습니다. |
+| 높음 | CCTV 여러 각도 보기 | 사용자가 배경 그림을 만드는 중입니다. 규격은 `docs/CCTV_ANGLE_IMAGE_SPEC.md` |
 | 중간 | 걷기 모션을 다른 방문객으로 확대 | 지금은 V001만 적용되어 있습니다. |
-| 낮음 | 경비실 첫 안내 문구 말투 통일 | "확인하십시오"만 딱딱한 말투로 남아 있습니다. |
+| 중간 | 녹음 목소리로 교체 | 지금은 기기 내장 음성입니다. 대본 구조는 그대로 두고 오디오 파일로 바꿀 수 있습니다. |
 | 낮음 | 결말 24개 추가 구현 | `endings.json` 30개 중 6개만 구현되어 있습니다. |
 
 ### 완료한 개선
+
+- v0.7.0: 모든 대사를 쉬운 말로 다시 썼고, 전화 목소리와 넘기는 기록부를 추가했습니다. 경비실 첫 안내 말투도 통일했습니다.
 
 - v0.6.1: 조사 도구 버튼의 스크린리더 이름을 화면 이름과 일치시켰습니다.
 - v0.6.1: `all-cases` 테스트의 브라우저 경로 하드코딩을 제거했습니다.
