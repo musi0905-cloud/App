@@ -8,6 +8,8 @@ function tone(freq,start,dur,{type='sine',gain=.08,to=null}={}){
  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(gain,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
  o.connect(g).connect(c.destination);o.start(t);o.stop(t+dur+.05);
 }
+// Create/resume the AudioContext inside a tap so later sounds are allowed.
+export function primeSound(){const c=audio();if(c&&c.state==='suspended')c.resume().catch(()=>{})}
 // One intercom ring (two short bursts); resolves when the other side would pick up.
 export function ring(){if(!soundOn())return Promise.resolve();for(const t of [0,.5]){tone(440,t,.4,{gain:.045});tone(480,t,.4,{gain:.045})}return new Promise(r=>setTimeout(r,1100))}
 export function doorOpen(){if(!soundOn())return;tone(1800,0,.05,{type:'square',gain:.025});tone(220,.08,.5,{gain:.06,to:120})}

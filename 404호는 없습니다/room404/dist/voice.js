@@ -20,6 +20,9 @@ function webTTS(){return typeof window.speechSynthesis==='object'&&typeof window
 export function soundOn(){try{return localStorage.getItem(SOUND_KEY)!=='off'}catch{return true}}
 export function setSoundOn(on){try{localStorage.setItem(SOUND_KEY,on?'on':'off')}catch{}}
 export function voiceAvailable(){return Boolean(nativeTTS()||webTTS())}
+// iOS only speaks if the first utterance starts inside a user gesture: say nothing, right now, to unlock later speech.
+let primed=false;
+export function primeVoice(){if(primed)return;const synth=webTTS();if(!synth)return;try{synth.getVoices();const u=new SpeechSynthesisUtterance(' ');u.volume=0;u.lang='ko-KR';synth.speak(u);primed=true}catch{}}
 
 function koreanVoice(synth){const voices=synth.getVoices();return voices.find(v=>/^ko(-|_|$)/i.test(v.lang))||null}
 

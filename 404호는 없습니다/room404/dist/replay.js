@@ -29,9 +29,11 @@ export function heightAt(location,footY){const b=LAYOUT[location]||LAYOUT.lobby;
 export function perspectiveY(horizon,y0,y1,phase){const a=y0-horizon,b=y1-horizon;return horizon+a*b/(b-phase*(b-a))}
 // Walk frames (visitor-0N-walk.webp): 4x2 cells of 384x512, feet at (192,496), figure about 466px tall.
 // Standing sheet (visitors.png): 4 cells of 384x1024, figure from y 76 to 967.
-const WALK={fps:8,w:384,h:512,footX:192,footY:496,figure:466},STAND={top:76,foot:967,cellW:384,cellH:1024};
+const WALK={fps:12,w:384,h:512,footX:192,footY:496,figure:466},STAND={top:76,foot:967,cellW:384,cellH:1024};
 const WALK_ACTIONS=['enter','cross','descend'];
 export function walkFrame(cursor){return Math.floor(cursor*WALK.fps)%8}
+// Continuous position in the 8-frame cycle (0..8), used for the body bob between frames.
+export function walkPhase(cursor){return (cursor*WALK.fps)%8}
 const media={};
 function load(src){return media[src]??=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('장면 그림을 불러오지 못했어요.'));im.src=src})}
 export function shiftedTime(time,offset){const [h,m]=time.split(':').map(Number),n=(h*60+m+offset+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
@@ -45,7 +47,8 @@ export const GESTURE={wave:[0,1],knock:[2,3],phone:[4,5],look:6,stand:7};
 export function actorPlacement(s,phase,look=1){
  const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,walking=false,facing=1,sheet='gest',cell=GESTURE.stand;
  // A straight walk on the floor: the foot line follows perspective, x follows the foot line so the path stays straight on screen.
- const path=(x0,y0,x1,y1,q=phase)=>{y=perspectiveY(base.horizon,y0,y1,q);x=x0+(x1-x0)*(y-y0)/(y1-y0);walking=true};
+ // Pure 1/depth motion barely moves for the first half of a 6 s clip, so it is blended half-and-half with a linear walk: still faster as the figure nears, but visibly moving from the first second.
+ const path=(x0,y0,x1,y1,q=phase)=>{y=(perspectiveY(base.horizon,y0,y1,q)+y0+(y1-y0)*q)/2;x=x0+(x1-x0)*(y-y0)/(y1-y0);walking=true};
  const opposite=OPPOSITE.has(s.location);
  if(s.action==='enter'||s.mode==='repeat'){const q=s.mode==='repeat'?(phase*2)%1:phase;if(opposite){path(520,base.y,base.farX,base.far,q);sheet='away'}else{path(base.farX,base.far,520,base.y,q);sheet='toward'}}
  if(s.action==='descend'){path(base.farX,base.far,420,base.y);if(s.location==='stairsUp')sheet='toward';else{sheet='side';facing=-1}}
@@ -73,7 +76,17 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),stage=host.querySelector('.replay-stage'),video=host.querySelector('video'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
  const look=(Number(visitor.id.slice(1))-1)%4+1,sprite=look-1;
- let images,props,sheets={},videoSrc=null,videoOk=false;const failed=new Set();
+ let images,props,sheets={},centers={},order={},videoSrc=null,videoOk=false;const failed=new Set();
+ // Generated frames wobble a few pixels left/right and are not drawn in walking order. Measure each cell once:
+ // the torso centre keeps every frame on the same axis, and the leg spread (width of the foot rows) sorts the
+ // walk sheets into a smooth cycle: legs together → mid stride → widest → mid → together (cycleOrder).
+ function measureCenters(name,im){try{const c=document.createElement('canvas');c.width=WALK.w;c.height=WALK.h;const g=c.getContext('2d',{willReadFrequently:true});const out=[],spread=[];
+  for(let cell=0;cell<8;cell++){g.clearRect(0,0,WALK.w,WALK.h);g.drawImage(im,cell%4*WALK.w,Math.floor(cell/4)*WALK.h,WALK.w,WALK.h,0,0,WALK.w,WALK.h);const d=g.getImageData(0,0,WALK.w,WALK.h).data;let sum=0,n=0,l=WALK.w,r=0;
+   for(let y=Math.round(WALK.h*.2);y<Math.round(WALK.h*.45);y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){sum+=x;n++}
+   for(let y=Math.round(WALK.h*.86);y<WALK.footY;y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){if(x<l)l=x;if(x>r)r=x}
+   out.push(n?sum/n:WALK.footX);spread.push(r>l?r-l:0)}
+  centers[name]=out;order[name]=name==='gest'?null:cycleOrder(spread)}catch{centers[name]=null;order[name]=null}}
+ function cycleOrder(spread){const s=spread.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]).map(p=>p[1]);return [s[0],s[2],s[4],s[6],s[7],s[5],s[3],s[1]]}
  const ready=Promise.all([
   Promise.all(Object.values(BACKGROUNDS).map(n=>load(V2+n+'.webp'))),
   Promise.all(['assets/visitors.png','assets/visitors-before-haircut.png'].map(load)),
@@ -86,13 +99,15 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  function drawProp(kind,x,y,h,mode,phase){const im=props[kind];if(!im)return;const ph={hat:h*.13,umbrella:h*.58,mask:h*.06,phone:h*.16,parcel:h*.22,glove:h*.10}[kind],pw=ph*im.width/im.height,[dx,dy]={hat:[-.02,-.92],mask:[.09,-.80],umbrella:[.2,-.51],phone:[.15,-.60],parcel:[.05,-.55],glove:[.14,-.53]}[kind];
   const gone=mode==='removeProp'&&['hat','mask','umbrella'].includes(kind);prop(kind,x+dx*h-pw/2+(gone?phase*60:0),y+dy*h+(gone?phase*110:0),pw,ph,gone?1-phase:1)}
  function contactShadow(x,bottom,height,alpha){const rx=height*.17,ry=height*.045;ctx.save();ctx.globalAlpha=alpha;const g=ctx.createRadialGradient(x,bottom,0,x,bottom,rx);g.addColorStop(0,'rgba(0,4,2,.55)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,bottom,rx,ry,0,0,Math.PI*2);ctx.fill();ctx.restore()}
- function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,sheet='gest',cell=GESTURE.stand,shadow=true,breath=0}={}){
+ function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,bob=0,sheet='gest',cell=GESTURE.stand,shadow=true,breath=0}={}){
   if(shadow&&!shadowOnly)contactShadow(x,bottom,height,alpha);
   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
   if(breath)ctx.scale(1,1+breath);
+  // A walking body rises a little as it passes over the standing leg (bob = 0..1 across the stride, 1 = legs together).
+  if(walk>=0&&bob)ctx.translate(0,-height*.014*bob);
   const figure=height*WALK.figure/WALK.h;
-  const useCell=walk>=0?walk:cell,im2=sheets[walk>=0?sheet:'gest'];
-  if(im2&&useCell>=0){const k=height/WALK.h;ctx.drawImage(im2,useCell%4*WALK.w,Math.floor(useCell/4)*WALK.h,WALK.w,WALK.h,-WALK.footX*k,-WALK.footY*k,WALK.w*k,WALK.h*k)}
+  const useCell=walk>=0?(order[sheet]?.[walk]??walk):cell,im2=sheets[walk>=0?sheet:'gest'];
+  if(im2&&useCell>=0){const k=height/WALK.h,cx=centers[walk>=0?sheet:'gest']?.[useCell]??WALK.footX;ctx.drawImage(im2,useCell%4*WALK.w,Math.floor(useCell/4)*WALK.h,WALK.w,WALK.h,-cx*k,-WALK.footY*k,WALK.w*k,WALK.h*k)}
   else{const im=images.stand[0],k=figure/(STAND.foot-STAND.top);ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,-STAND.cellW/2*k,-STAND.foot*k,STAND.cellW*k,STAND.cellH*k)}
   ctx.restore();
   const shownByGesture=walk<0&&sheets.gest&&propName==='phone'&&GESTURE.phone.includes(cell);
@@ -126,17 +141,17 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   cameraTransform(view,pos);
   let {x,y,h}=pos;
   // Walking across the frame paces the stride by distance travelled so the feet never slide; depth walks use the clock.
-  const stride=.8*h*WALK.figure/WALK.h,walk=!(pos.walking&&sheets[pos.sheet])?-1:s.action==='cross'?Math.floor((x-120)/stride*8)%8:walkFrame(cursor),walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell};
+  const stride=.8*h*WALK.figure/WALK.h,wp=!(pos.walking&&sheets[pos.sheet])?-1:s.action==='cross'?((x-120)/stride*8)%8:walkPhase(cursor),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
   // Standing figures breathe very slightly (period 3 s), so a paused frame still reads as a living person.
   const breath=walk<0?Math.sin(cursor*Math.PI*2/3)*.006:0;
-  const filter=mode==='darkCoat'?'brightness(.35)':mode==='ir'?'grayscale(1) contrast(1.9) brightness(2)':mode==='blurCard'?'blur(.6px) saturate(.75)':'saturate(.75) brightness(.92)';
+  const filter=mode==='darkCoat'?'brightness(.35)':mode==='ir'?'grayscale(1) contrast(1.9) brightness(2)':mode==='blurCard'?'blur(.6px) saturate(.6) brightness(.8)':'saturate(.6) brightness(.8)';
   // The hallway camera cannot see inside the elevator: it only shows someone walking in, never someone standing inside.
   const hiddenByView=place==='elevatorLobby'&&s.action!=='enter';
   if(!clipHasActor&&!hiddenByView){
    if(['shadow','shadowHold','faceShadow'].includes(mode)){ctx.save();ctx.translate(mode==='shadow'?x:280,y-10);ctx.transform(1,.15,-.6,.25,0,0);actor(0,0,h,{shadowOnly:true,walk,flip:walkFlip,...sp});ctx.restore()}
    if(mode==='footprints'){ctx.save();ctx.globalAlpha=.5;ctx.fillStyle='#1b2420';for(let j=0;j<6;j++){ctx.beginPath();ctx.ellipse(150+j*42,y+10-j*22,11,5,-.3,0,Math.PI*2);ctx.fill()}ctx.restore()}
    if(mode!=='absent'&&mode!=='loading'){
-    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip,breath,...sp});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk:walk<0?-1:(walk+4)%8,flip:walkFlip,breath:-breath,...sp})}
+    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip,breath,...sp});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk:walk<0?-1:(walk+4)%8,flip:walkFlip,breath:-breath,...sp,bob:1-bob})}
     else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:walkFlip||(pos.facing<0&&pos.sheet==='side'),walk,breath,...sp});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?(Math.abs(960-2*x)<160?x+200:960-x):x+40,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk,shadow:false,breath,...sp})}
    }
    if((s.action==='wave'||s.action==='knock')&&!sheets.gest)prop('glove',x+h*.14+Math.sin(phase*Math.PI*4)*18,y-h*.8,h*.18,h*.22);
@@ -167,6 +182,6 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{if(i!==Math.floor(cursor/6)&&!reduced)cutUntil=performance.now()+CUT_MS;cursor=i*6;lastIndex=i;playing=false;play.textContent='재생';draw()});
  host.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{camera=b.dataset.camera;if(camera==='top'&&!TOP_VIEW[scenes[Math.min(scenes.length-1,Math.floor(cursor/6))].location])camera='main';host.querySelectorAll('[data-camera]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()});
  function visibility(){if(document.hidden){playing=false;play.textContent='재생';video.pause()}}document.addEventListener('visibilitychange',visibility);
- try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
+ try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);for(const [k,im] of sheetList)if(im)measureCenters(k,im);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
  return ()=>{disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);video.pause();video.removeAttribute('src');video.load()};
 }

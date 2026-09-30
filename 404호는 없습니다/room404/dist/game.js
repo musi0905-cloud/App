@@ -1,7 +1,9 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS} from './replay.js';
 import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash} from './engine.js';
-import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable} from './voice.js';
-import {ring,doorOpen,doorShut} from './sfx.js';
+import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
+import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
+// Phones only allow sound and speech that start inside a tap: wake both up in the tap itself, then play later.
+function primeAudio(){try{primeSound();primeVoice()}catch{}}
 const TOOL_NAMES={CCTV:'CCTV 보기',명부:'주민·방문 기록',통화:'집에 전화하기',재확인:'한 번 더 확인'};
 const $=id=>document.getElementById(id),ACTIVE='404_active_v2',LAST='404_last_run';
 const ENDING_NOTES={'404호':'없는 집으로 사람을 들여보냈어요. 이 밤은 여기서 끝나요.','오판':'위험한 사람을 두 번 넘게 들여보냈어요. 다음에는 한 번 더 확인해요.','무고한 거부':'괜찮은 사람을 세 번 넘게 돌려보냈어요. 기록과 전화를 믿어 봐요.','신중한 경비원':'모든 방문객을 꼼꼼히 확인하고 한 번 더 확인까지 했어요.','첫 근무의 기록':'첫 밤을 무사히 마쳤어요. 오늘 밤의 선택이 기록으로 남았어요.','퇴근':'오늘 밤의 선택이 기록으로 남았어요. 내일 밤에 다시 만나요.'};
@@ -94,7 +96,10 @@ function mountBooks(root){root.querySelectorAll('[data-book]').forEach(book=>{
  function go(to){if(to<0||to>=sheets.length||to===page)return;const dir=to>page?'next':'prev';sheets[page].hidden=true;page=to;const sheet=sheets[page];sheet.hidden=false;if(!reduce){sheet.classList.remove('turn-next','turn-prev');void sheet.offsetWidth;sheet.classList.add('turn-'+dir)}update()}
  function update(){count.textContent=`${page+1} / ${sheets.length}`;prev.disabled=page===0;next.disabled=page===sheets.length-1;book.dataset.page=String(page)}
  prev.onclick=()=>go(page-1);next.onclick=()=>go(page+1);
- book.addEventListener('pointerdown',e=>{startX=e.clientX});book.addEventListener('pointerup',e=>{if(startX===null)return;const dx=e.clientX-startX;startX=null;if(Math.abs(dx)>40)go(page+(dx<0?1:-1))});
+ // Swipe: pointer events for mouse/pen, touch events for phones (a scroll gesture cancels pointerup). One turn per gesture.
+ let lastTurn=0;const swipe=(x0,x1)=>{const dx=x1-x0;if(Math.abs(dx)>40&&performance.now()-lastTurn>350){lastTurn=performance.now();go(page+(dx<0?1:-1))}};
+ book.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')startX=e.clientX});book.addEventListener('pointerup',e=>{if(e.pointerType==='touch'||startX===null)return;swipe(startX,e.clientX);startX=null});
+ book.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{if(startX===null)return;swipe(startX,e.changedTouches[0].clientX);startX=null},{passive:true});
  book.tabIndex=0;book.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(page+1);if(e.key==='ArrowLeft')go(page-1)});update();
 })}
 function callLines(v,pack,independent){const c=pack.call,lines=independent?c.verifyDialogue:c.dialogue;
@@ -136,7 +141,7 @@ function renderTool(autoplay=false){
  const next=({CCTV:'명부','명부':'통화','통화':'재확인','재확인':null})[activeTool];$('nextTool').hidden=!next;$('nextTool').textContent=next?TOOL_NAMES[next]:'';$('nextTool').onclick=()=>next==='재확인'?verify():inspect(next);$('nextTool').disabled=!done;
  show('investigation');$('toolTitle').focus({preventScroll:true});
 }
-function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
+function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='통화'||activeTool==='재확인')primeAudio();if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
 function decide(allow){if(run&&decideRun(run,allow,anomalies)){save();render();doorTransition(allow)}}
 // Short staging after a decision: the door opens (video) or stays shut (photo) over the feedback screen. Never blocks input.
 function doorTransition(allow){const box=$('doorTransition');allow?doorOpen():doorShut();if(reducedMotion())return;
@@ -169,6 +174,6 @@ async function boot(){
 $('clipGallery').addEventListener('toggle',e=>{mountClips();e.currentTarget.querySelectorAll('video').forEach(v=>{if(e.currentTarget.open&&!reducedMotion()){if(!v.getAttribute('src'))v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()})});
 $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction').onclick=readTool;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('investigation').hidden)backDesk()});
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
-document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>decide(true);$('deny').onclick=()=>decide(false);$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>{primeAudio();decide(true)};$('deny').onclick=()=>{primeAudio();decide(false)};$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.10.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.10.2';boot();
