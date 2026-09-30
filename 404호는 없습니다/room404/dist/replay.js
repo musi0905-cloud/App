@@ -2,6 +2,13 @@
 export const LOCATIONS={lobby:'공동현관',lobbySide:'현관 보조 카메라',hall:'안쪽 복도',elevator:'승강기',stairs:'계단실',parking:'주차장',door:'현관 문'};
 export const MODES=['normal','compare','badge','double','shadow','shadowHold','faceLock','absent','yesterday','doorClosed','doorOpen','doorCompare','preMove','footprints','voiceEarly','voiceLate','clock7','repeat','reflection','recorded','live','dateOnly','ir','reboot','loading','delay3','rainDouble','rain','removeProp','idMatch','card','fingerprint','darkCoat','hairOld','distort','faceShadow','blurCard','document','phone','ring','echo'];
 const media={};
+// V001 walk cycle: 4x2 sheet of 384x512 frames, 8 fps. Per frame: torso centre x, foot line y, head top y (opaque pixels),
+// so every frame is drawn at the same foot line and body centre instead of the raw frame box.
+const WALK={src:'assets/visitor-v001-walk-8f.png',fps:8,w:384,h:512,visitors:['V001'],actions:['enter','cross','descend'],
+ anchors:[[240,507,29],[196,506,27],[179,508,29],[168,507,28],[229,481,11],[199,483,12],[190,485,15],[174,480,13]]};
+// Existing visitors.png cell (1024px tall): figure spans y 76-967, torso centre x 201 of 384.
+const STAND={top:76,foot:967,centre:201,cellW:384,cellH:1024};
+export function walkFrame(cursor){return Math.floor(cursor*WALK.fps)%8}
 function load(src){return media[src]??=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('장면 이미지를 불러오지 못했습니다.'));im.src=src})}
 export function shiftedTime(time,offset){const [h,m]=time.split(':').map(Number),n=(h*60+m+offset+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
 export function sceneTime(frame,time){return shiftedTime(time,frame.offset+(frame.mode==='clock7'?-7:0))}
@@ -13,13 +20,19 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  let images;
  const ready=Promise.all(['assets/cctv-lobby.png','assets/apartment-scenes.png','assets/visitors.png','assets/mystery-props.png','assets/detail-scenes.png','assets/visitors-before-haircut.png'].map(load));
- const sprite=(Number(visitor.id.slice(1))-1)%4;
+ const sprite=(Number(visitor.id.slice(1))-1)%4,walker=WALK.visitors.includes(visitor.id);
+ let walkSheet=null;
  function badge(text,x,y,w=400){ctx.fillStyle='#07130eef';ctx.fillRect(x,y,w,38);ctx.fillStyle='#e7edcb';ctx.font='21px sans-serif';ctx.fillText(text,x+12,y+26,w-24)}
  function prop(kind,x,y,w,h,opacity=1){const index={hat:0,umbrella:1,mask:2,phone:3,parcel:4,glove:5}[kind];if(index===undefined)return;ctx.save();ctx.globalAlpha=opacity;const im=images[3],cw=im.width/3,ch=im.height/2;ctx.drawImage(im,index%3*cw,Math.floor(index/3)*ch,cw,ch,x,y,w,h);ctx.restore()}
- function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false}={}){
+ function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1}={}){
   const im=images[2],cw=im.width/4,width=height*cw/im.height;
   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
-  ctx.drawImage(im,sprite*cw,0,cw,im.height,-width/2,-height,width,height);ctx.restore();
+  if(walk>=0&&walkSheet){
+   // Match the standing sprite's figure height, foot line and torso centre, then place this frame's own anchors there.
+   const [cx,foot,top]=WALK.anchors[walk],unit=height/STAND.cellH,k=(STAND.foot-STAND.top)*unit/(foot-top);
+   ctx.drawImage(walkSheet,walk%4*WALK.w,Math.floor(walk/4)*WALK.h,WALK.w,WALK.h,(STAND.centre-STAND.cellW/2)*unit-cx*k,-(STAND.cellH-STAND.foot)*unit-foot*k,WALK.w*k,WALK.h*k);
+  }else ctx.drawImage(im,sprite*cw,0,cw,im.height,-width/2,-height,width,height);
+  ctx.restore();
   if(shadowOnly)return;
   let removal=mode==='removeProp'?1-phase:1;
   if(propName==='hat')prop('hat',x-width*.39+phase*(mode==='removeProp'?65:0),bottom-height*.94+phase*(mode==='removeProp'?130:0),width*.78,height*.18,removal);
@@ -39,12 +52,13 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   if(s.action==='turn'){x=480+Math.sin(phase*Math.PI)*28}
   if(mode==='repeat'){const q=(phase*2)%1;x=200+q*340;h=490-q*185;y=605-q*70}
   if(mode==='distort')h=540;
+  const walk=walker&&walkSheet&&WALK.actions.includes(s.action)?walkFrame(cursor):-1,walkFlip=walk>=0&&s.action==='descend';
   const filter=mode==='darkCoat'?'brightness(.35)':mode==='ir'?'grayscale(1) contrast(1.9) brightness(2)':mode==='blurCard'?'blur(.6px)':'grayscale(.5) brightness(.9)';
-  if(['shadow','shadowHold','faceShadow'].includes(mode)){ctx.save();ctx.translate(mode==='shadow'?x:280,570);ctx.transform(1,.15,-.6,.25,0,0);actor(0,0,470,{shadowOnly:true});ctx.restore()}
+  if(['shadow','shadowHold','faceShadow'].includes(mode)){ctx.save();ctx.translate(mode==='shadow'?x:280,570);ctx.transform(1,.15,-.6,.25,0,0);actor(0,0,470,{shadowOnly:true,walk,flip:walkFlip});ctx.restore()}
   if(mode==='footprints'){ctx.save();ctx.globalAlpha=.5;const im=images[2],cw=im.width/4;for(let j=0;j<6;j++)ctx.drawImage(im,sprite*cw+cw*.35,im.height*.88,cw*.3,im.height*.12,150+j*42,595-j*25,25,14);ctx.restore()}
   if(mode!=='absent'&&mode!=='loading'){
-   if(mode==='double'){actor(335,y,h,{filter,propName:s.prop,mode,phase});actor(650,y,h,{filter,propName:s.prop,mode,phase})}
-   else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:s.action==='turn'&&phase>.5});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?960-x:x+50,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection',filter:mode==='rainDouble'?'blur(5px)':filter})}
+   if(mode==='double'){actor(335,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip});actor(650,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip})}
+   else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:walkFlip||s.action==='turn'&&phase>.5,walk});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?960-x:x+50,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk})}
   }
   if(s.action==='wave'||s.action==='knock'){prop('glove',x+55+Math.sin(phase*Math.PI*4)*25,y-h*.77,90,120)}
   if(mode==='faceLock'){const im=images[2],cw=im.width/4;ctx.drawImage(im,sprite*cw+cw*.27,im.height*.06,cw*.48,im.height*.2,450,140,85,120);ctx.strokeStyle='#e9c46f';ctx.strokeRect(450,140,85,120)}
@@ -62,7 +76,7 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   ctx.fillStyle='#07100a16';for(let yLine=0;yLine<640;yLine+=5)ctx.fillRect(0,yLine,960,1);
   badge(`${LOCATIONS[s.location]} · ${index+1}/${scenes.length}`,16,14,430);
   let recordedDate=mode==='yesterday'?previousDate(date):date;badge(`${recordedDate} ${sceneTime(s,time)}:${String(Math.floor(phase*6)).padStart(2,'0')}`,470,14,474);
-  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time);canvas.dataset.location=s.location;canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
+  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time);canvas.dataset.location=s.location;canvas.dataset.walkFrame=String(walk);canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
   caption.textContent=`장면 ${index+1} · ${s.note}`;seek.value=String(cursor);host.querySelector('output').textContent=`${cursor.toFixed(1)} / ${duration}초`;host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.setAttribute('aria-pressed',String(index===i)));
  }
  function loop(now){if(disposed)return;if(playing){cursor+=previous?(now-previous)/1000:0;if(cursor>=duration-.01){cursor=duration-.01;playing=false;play.textContent='처음부터 재생'}draw()}previous=now;raf=requestAnimationFrame(loop)}
@@ -70,6 +84,6 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  seek.oninput=()=>{cursor=Number(seek.value);playing=false;play.textContent='재생';draw()};
  host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{cursor=i*6;playing=false;play.textContent='재생';draw()});
  function visibility(){if(document.hidden){playing=false;play.textContent='재생'}}document.addEventListener('visibilitychange',visibility);
- try{images=await ready;if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
+ try{images=await ready;if(walker)walkSheet=await load(WALK.src).catch(()=>null);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
  return ()=>{disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility)};
 }

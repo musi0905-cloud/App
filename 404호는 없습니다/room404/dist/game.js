@@ -27,7 +27,7 @@ function evidence(){
  $('routine').textContent=next?`다음 할 일: ${TOOL_NAMES[next]}` : !run.verified?'다음 할 일: 한 번 더 확인':'확인을 마쳤어요. 이 사람을 들여보낼지 결정하세요.';
  $('guidedAction').textContent=next?TOOL_NAMES[next]:!run.verified?'한 번 더 확인하기':'확인한 내용 다시 보기';
  $('guidedAction').onclick=()=>next?inspect(next):!run.verified?verify():$('evidence').scrollIntoView({behavior:'smooth'});
- document.querySelectorAll('[data-tool]').forEach(b=>{b.disabled=false;b.classList.toggle('seen',run.seen.includes(b.dataset.tool));b.setAttribute('aria-label',b.dataset.tool+(run.seen.includes(b.dataset.tool)?' · 다시 보기':''))});$('verify').disabled=!run.seen.length;
+ document.querySelectorAll('[data-tool]').forEach(b=>{b.disabled=false;b.classList.toggle('seen',run.seen.includes(b.dataset.tool));b.setAttribute('aria-label',TOOL_NAMES[b.dataset.tool]+(run.seen.includes(b.dataset.tool)?' · 다시 보기':''))});$('verify').disabled=!run.seen.length;
 }
 function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:'첫 근무';
  if(run.screen==='game'){
@@ -110,4 +110,4 @@ $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>decide(true);$('deny').onclick=()=>decide(false);$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save()});$('version').textContent='v0.6.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save()});$('version').textContent='v0.6.1';boot();
