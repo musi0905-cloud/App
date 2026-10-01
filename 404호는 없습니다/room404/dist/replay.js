@@ -134,10 +134,11 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   setVideo(sceneVideo(s,look,camera),local);
   const clipHasActor=false;
   ctx.clearRect(0,0,960,640);
-  if(!(videoOk&&videoSrc)){
-   const key=place==='door'?(mode==='doorOpen'||(mode==='doorCompare'&&phase>.4&&phase<.8)?'doorOpen':'door'):place;
-   ctx.drawImage(background(key),0,0,960,640);
-  }
+  // The still background is always drawn first; the ambient clip is painted over it from the <video> element when a frame is
+  // ready. iPhones often leave a covered or seeking <video> blank, so this way a photo is always on screen (v0.10.3).
+  const key=place==='door'?(mode==='doorOpen'||(mode==='doorCompare'&&phase>.4&&phase<.8)?'doorOpen':'door'):place;
+  ctx.drawImage(background(key),0,0,960,640);
+  if(videoOk&&videoSrc&&video.readyState>=2&&!video.seeking){try{ctx.drawImage(video,0,0,960,640)}catch{}}
   cameraTransform(view,pos);
   let {x,y,h}=pos;
   // Walking across the frame paces the stride by distance travelled so the feet never slide; depth walks use the clock.
@@ -169,6 +170,9 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   if(!(videoOk&&videoSrc)||mode!=='loading'){ctx.fillStyle='#07100a16';for(let yLine=0;yLine<640;yLine+=5)ctx.fillRect(0,yLine,960,1)}
   const states={doorClosed:'직접 확인: 문이 닫혀 있어요',doorOpen:'영상에서는 문이 열려 있어요',doorCompare:'같은 시간인데 문 상태가 달라요',recorded:'지금 영상 버튼에 옛 영상이 나와요',live:'녹화 버튼에 지금 영상이 나와요',reboot:'카메라를 껐다 켠 뒤 옛 화면',loading:'지금 화면을 불러오는 중…',dateOnly:'날짜가 아직 안 바뀌었어요',delay3:'3분 늦게 보이는 화면',clock7:'카메라 표시 시계',repeat:'같은 장면이 반복돼요',fingerprint:'장갑 때문에 지문이 안 읽혀요',ring:'문 앞 휴대전화도 같이 울려요',echo:'같은 말을 조금 늦게 따라 해요',voiceEarly:'음성: 손을 들었어요',voiceLate:'뒤늦게 영상의 손이 올라옴',preMove:'재생하기 전에 고개를 돌려요',compare:'같은 시간, 다른 장소',hairOld:'예전 사진과 지금 모습'};
   hudState.hidden=!states[mode];hudState.textContent=states[mode]||'';
+  // Camera's own on-screen clock, burned into the picture like a real recorder. Bigger when the trick is about the time.
+  {const big=['clock7','delay3','dateOnly','yesterday','recorded','live','reboot'].includes(mode),osd=`${(mode==='yesterday'?previousDate(date):date)} ${sceneTime(s,time)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
+   ctx.save();ctx.font=`${big?34:24}px ui-monospace,monospace`;const w=ctx.measureText(osd).width+28,hh=big?50:36;ctx.fillStyle=big?'#07130ee6':'#07130ebb';ctx.fillRect(960-w-16,640-hh-16,w,hh);ctx.fillStyle=big?'#f3e6a8':'#dfe7c9';ctx.textBaseline='middle';ctx.fillText(osd,960-w-2,640-16-hh/2);ctx.restore()}
   const cut=cutUntil-performance.now();
   if(cut>0){const k=Math.min(1,cut/CUT_MS);ctx.fillStyle=`rgba(3,8,6,${k*.95})`;ctx.fillRect(0,0,960,640);ctx.fillStyle=`rgba(200,220,200,${k*.5})`;ctx.fillRect(0,320-k*4,960,k*8)}
   hudCam.textContent=`CAM ${String(Object.keys(BACKGROUNDS).indexOf(place)+1).padStart(2,'0')} ${LOCATIONS[place]||VIEW_NAMES[place]} · ${index+1}/${scenes.length}${camera==='main'?'':' · '+CAMERAS[camera].slice(2)}`;
