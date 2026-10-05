@@ -1,4 +1,4 @@
-import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor} from './replay.js';
+import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor,LIVE_MODES} from './replay.js';
 import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash} from './engine.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
@@ -28,6 +28,8 @@ function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id==
 function fillDeep(x,v){return typeof x==='string'?fill(x,v):Array.isArray(x)?x.map(y=>fillDeep(y,v)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,y])=>[k,fillDeep(y,v)])):x}
 function fill(s,v){return String(s).replaceAll('{name}',v.name).replaceAll('{unit}',v.unit)}
 function sourceTime(minutes=0){return shiftedTime(TIMES[run.index],minutes)}
+// The guard's clock: the visitor arrived at TIMES[index]; each check takes about a minute, so the clock moves on while investigating (v0.11.1).
+function nowTime(){return sourceTime(1+Math.min(4,run.seen.length))}
 function log(title,text){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=title+' — ';p.append(b,document.createTextNode(text));$('evidence').append(p)}
 function person(v,extra=''){return `<span role="img" aria-label="${escapeHTML(v.name)}의 방문객 캐릭터" class="person-sprite ${extra}" style="background-image:url(${MEDIA}visitor-0${lookFor(v)}-stand.webp)"></span>`}
 function clockBefore(minutes){const [h,m]=TIMES[run.index].split(':').map(Number),n=(h*60+m-minutes+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
@@ -49,10 +51,10 @@ function evidence(){
 }
 function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:'첫 근무';
  if(run.screen==='game'){
-  const {v}=current(),t=totals(run);$('clock').textContent=TIMES[run.index];$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
+  const {v}=current(),t=totals(run);$('clock').textContent=nowTime();$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
   $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);$('portrait').innerHTML=person(v);$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
  }else if(run.screen==='feedback'){
-  const {v,a}=current(),h=run.history.at(-1),g=guide();$('clock').textContent=TIMES[run.index];
+  const {v,a}=current(),h=run.history.at(-1),g=guide();$('clock').textContent=nowTime();
   $('feedback').classList.toggle('correct',h.correct);$('feedback').classList.toggle('wrong',!h.correct);
   setPoster($('feedback').querySelector('.scene-media'),h.allow?'door-open':'door-closed');
   $('feedbackTitle').textContent=h.correct?'잘 판단했어요. 맞았어요':'아쉬워요. 틀렸어요';
@@ -125,7 +127,7 @@ function renderTool(autoplay=false){
  let body='';
  if(activeTool==='CCTV'){
  body=done?'<div id="caseReplay"></div>':`<div class="replay-locked"><strong>저장된 영상 ${pack.recordCode}</strong><p>이 사람이 오기 전 모습과 지금 모습을 볼 수 있어요.</p><p>아래 '영상 보기'를 눌러 주세요.</p></div>`;
- if(done)body+=`<ol class="shot-list">${pack.scenes.map((s,i)=>`<li><strong>장면 ${i+1} · ${LOCATIONS[s.location]} · 실제 시각 ${sourceTime(s.offset)}${sceneTime(s,TIMES[run.index])!==sourceTime(s.offset)?" (화면 시계 "+sceneTime(s,TIMES[run.index])+")":""}</strong><p>${e(s.note)}</p></li>`).join('')}</ol>`;
+ if(done)body+=`<ol class="shot-list">${pack.scenes.map((s,i)=>`<li><strong>장면 ${i+1} · ${LOCATIONS[s.location]} · 실제 시각 ${LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset)}${sceneTime(s,TIMES[run.index],nowTime())!==(LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset))?" (화면 시계 "+sceneTime(s,TIMES[run.index],nowTime())+")":""}</strong><p>${e(s.note)}</p></li>`).join('')}</ol>`;
  }else if(activeTool==='명부')body=documentView(v,pack,done);
  else if(activeTool==='통화')body=transcript(v,pack,done);
  else{
@@ -135,7 +137,7 @@ function renderTool(autoplay=false){
  }
  if(done){const summary=activeTool==='재확인'?pack.plain.confirmed:clueFor(activeTool);const question=activeTool===a.channel?pack.plain.check:({CCTV:'이 사람이 언제 왔는지 먼저 보세요.',명부:'말한 이름·호수와 적힌 내용이 같은지 보세요.',통화:'그 집 주민이 누구인지, 들어와도 된다고 했는지 확인하세요.'})[activeTool];body=`<aside class="plain-brief"><h3>${activeTool==='재확인'?'다시 알아보니':'지금 알게 된 것'}</h3><p>${e(summary)}</p>${question?`<h3>다음에는 이것을 확인하세요</h3><p>${e(question)}</p>`:''}</aside>`+body;}
  $('toolBody').innerHTML=body;mountBooks($('toolBody'));activateMedia();if(done&&(activeTool==='통화'||activeTool==='재확인'))playCall(autoplay);
- if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,time:TIMES[run.index],date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
+ if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,time:TIMES[run.index],now:nowTime(),date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
  $('toolHint').textContent=done?'알게 된 내용은 경비실 메모에 적어 두었어요.':'아래 버튼을 눌러 확인하세요.';
  $('toolAction').textContent=done?'확인 완료':({CCTV:'영상 보기','명부':'기록부 펼치기','통화':'전화 걸기','재확인':'한 번 더 확인하기'})[activeTool];$('toolAction').disabled=done;
  const next=({CCTV:'명부','명부':'통화','통화':'재확인','재확인':null})[activeTool];$('nextTool').hidden=!next;$('nextTool').textContent=next?TOOL_NAMES[next]:'';$('nextTool').onclick=()=>next==='재확인'?verify():inspect(next);$('nextTool').disabled=!done;
@@ -176,4 +178,4 @@ $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>{primeAudio();decide(true)};$('deny').onclick=()=>{primeAudio();decide(false)};$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.11.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.11.1';boot();
