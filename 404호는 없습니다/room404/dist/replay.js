@@ -28,8 +28,16 @@ export function heightAt(location,footY){const b=LAYOUT[location]||LAYOUT.lobby;
 // Uniform motion toward or away from the camera is not linear on screen: the foot line follows 1/depth.
 export function perspectiveY(horizon,y0,y1,phase){const a=y0-horizon,b=y1-horizon;return horizon+a*b/(b-phase*(b-a))}
 // Walk frames (visitor-0N-walk.webp): 4x2 cells of 384x512, feet at (192,496), figure about 466px tall.
-// Standing sheet (visitors.png): 4 cells of 384x1024, figure from y 76 to 967.
-const WALK={fps:12,w:384,h:512,footX:192,footY:496,figure:466},STAND={top:76,foot:967,cellW:384,cellH:1024};
+// Standing picture per look (visitor-0N-stand.webp): one 384x512 cell, head at y 26, feet at y 496 (same grid as the sheets).
+// Looks: 1-4 from the v2 reference visitors, 5 택배 기사, 6 시설 점검, 7 돌봄 방문(노년 여성), 8 지인(젊은 여성). Roles pick the
+// look that fits them; every other visitor keeps the old id-based rotation through 1-4 (v0.11.0).
+export const ROLE_LOOK={'택배 기사':5,'시설 점검':6,'돌봄 방문':7,'지인':8};
+export const LOOKS=8;
+// The scenario may relabel the role the visitor claims (v.role); the picture follows the real record (v.baseRole).
+export function lookFor(v){return ROLE_LOOK[v.baseRole||v.role]||(Number(v.id.slice(1))-1)%4+1}
+// Something each role usually carries; drawn only when the scene itself gives no prop (so clue props stay the only ones that matter).
+export const ROLE_PROP={'음식 배달':'bag','시설 점검':'toolbox','돌봄 방문':'medicine','지인':'flowers','공공 업무':'paper','귀가 주민':'keys','차량 동승':'card'};
+const WALK={fps:12,w:384,h:512,footX:192,footY:496,figure:466},STAND={top:26,foot:496,cellW:384,cellH:512};
 const WALK_ACTIONS=['enter','cross','descend'];
 export function walkFrame(cursor){return Math.floor(cursor*WALK.fps)%8}
 // Continuous position in the 8-frame cycle (0..8), used for the body bob between frames.
@@ -75,7 +83,7 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>그림과 영상으로 다시 만든 장면이에요</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-rec" aria-hidden="true">● REC</span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),stage=host.querySelector('.replay-stage'),video=host.querySelector('video'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
- const look=(Number(visitor.id.slice(1))-1)%4+1,sprite=look-1;
+ const look=lookFor(visitor),sprite=0,roleProp=ROLE_PROP[visitor.baseRole||visitor.role]||'none';
  let images,props,sheets={},centers={},order={},videoSrc=null,videoOk=false;const failed=new Set();
  // Generated frames wobble a few pixels left/right and are not drawn in walking order. Measure each cell once:
  // the torso centre keeps every frame on the same axis, and the leg spread (width of the foot rows) sorts the
@@ -89,14 +97,14 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  function cycleOrder(spread){const s=spread.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]).map(p=>p[1]);return [s[0],s[2],s[4],s[6],s[7],s[5],s[3],s[1]]}
  const ready=Promise.all([
   Promise.all(Object.values(BACKGROUNDS).map(n=>load(V2+n+'.webp'))),
-  Promise.all(['assets/visitors.png','assets/visitors-before-haircut.png'].map(load)),
-  Promise.all(['hat','umbrella','mask','phone','parcel','glove'].map(n=>load(V2+'prop-'+n+'.webp').then(im=>[n,im]))),
+  Promise.all([V2+`visitor-0${look}-stand.webp`].map(load)),
+  Promise.all(['hat','umbrella','mask','phone','parcel','glove','bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'].map(n=>load(V2+'prop-'+n+'.webp').then(im=>[n,im],()=>[n,null]))),
   Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>load(V2+`visitor-0${look}-${n}.webp`).then(im=>[k,im],()=>[k,null])))
  ]);
  function background(key){return images.bg[Object.keys(BACKGROUNDS).indexOf(key)]}
  function prop(kind,x,y,w,h,opacity=1){const im=props[kind];if(!im)return;ctx.save();ctx.globalAlpha=opacity;ctx.drawImage(im,x,y,w,h);ctx.restore()}
  // Props are placed relative to the figure's frame height h (walk-frame scale) and its foot point.
- function drawProp(kind,x,y,h,mode,phase){const im=props[kind];if(!im)return;const ph={hat:h*.13,umbrella:h*.58,mask:h*.06,phone:h*.16,parcel:h*.22,glove:h*.10}[kind],pw=ph*im.width/im.height,[dx,dy]={hat:[-.02,-.92],mask:[.09,-.80],umbrella:[.2,-.51],phone:[.15,-.60],parcel:[.05,-.55],glove:[.14,-.53]}[kind];
+ function drawProp(kind,x,y,h,mode,phase){const im=props[kind];if(!im)return;const ph={hat:h*.13,umbrella:h*.58,mask:h*.06,phone:h*.16,parcel:h*.22,glove:h*.10,bag:h*.26,'cap-reflective':h*.12,card:h*.14,flowers:h*.26,keys:h*.10,medicine:h*.09,paper:h*.16,toolbox:h*.13}[kind],pw=ph*im.width/im.height,[dx,dy]={hat:[-.02,-.92],mask:[.09,-.80],umbrella:[.2,-.51],phone:[.15,-.60],parcel:[.05,-.55],glove:[.14,-.53],bag:[.2,-.5],'cap-reflective':[-.02,-.92],card:[.17,-.6],flowers:[.17,-.62],keys:[.18,-.52],medicine:[.18,-.5],paper:[.16,-.58],toolbox:[.2,-.46]}[kind];
   const gone=mode==='removeProp'&&['hat','mask','umbrella'].includes(kind);prop(kind,x+dx*h-pw/2+(gone?phase*60:0),y+dy*h+(gone?phase*110:0),pw,ph,gone?1-phase:1)}
  function contactShadow(x,bottom,height,alpha){const rx=height*.17,ry=height*.045;ctx.save();ctx.globalAlpha=alpha;const g=ctx.createRadialGradient(x,bottom,0,x,bottom,rx);g.addColorStop(0,'rgba(0,4,2,.55)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,bottom,rx,ry,0,0,Math.PI*2);ctx.fill();ctx.restore()}
  function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,bob=0,sheet='gest',cell=GESTURE.stand,shadow=true,breath=0}={}){
@@ -111,7 +119,8 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   else{const im=images.stand[0],k=figure/(STAND.foot-STAND.top);ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,-STAND.cellW/2*k,-STAND.foot*k,STAND.cellW*k,STAND.cellH*k)}
   ctx.restore();
   const shownByGesture=walk<0&&sheets.gest&&propName==='phone'&&GESTURE.phone.includes(cell);
-  if(!shadowOnly&&propName&&propName!=='none'&&!shownByGesture)drawProp(propName,x,bottom,height,mode,phase);
+  const shown=propName&&propName!=='none'?propName:(walk>=0||cell===GESTURE.stand)?roleProp:'none';
+  if(!shadowOnly&&shown!=='none'&&!shownByGesture)drawProp(shown,x,bottom,height,mode,phase);
  }
  function headCrop(x,y,w,h){const im=images.stand[0];ctx.drawImage(im,sprite*STAND.cellW+STAND.cellW*.27,STAND.top,STAND.cellW*.46,STAND.cellH*.2,x,y,w,h)}
  function setVideo(name,local){
@@ -164,7 +173,7 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
   if(mode==='rain'||mode==='rainDouble'){ctx.save();ctx.strokeStyle='#becbc955';for(let i=0;i<20;i++){const xx=i*51;ctx.beginPath();ctx.moveTo(xx,(phase*640+i*67)%640);ctx.lineTo(xx-15,(phase*640+i*67)%640+70);ctx.stroke()}ctx.restore()}
   if(['card','idMatch','blurCard','hairOld','badge','fingerprint','document'].includes(mode)){
    const boxX=640;ctx.fillStyle='#d8dfd0';ctx.fillRect(boxX,300,300,210);ctx.fillStyle='#14251b';ctx.font='22px sans-serif';ctx.fillText(mode==='document'?'가져온 종이':mode==='fingerprint'?'지문 확인기':'기록과 비교',boxX+15,332,270);
-   if(mode==='idMatch'||mode==='hairOld'){const im=images.stand[mode==='hairOld'?1:0];ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,boxX+15,344,50,145);ctx.fillText(visitor.name,boxX+80,385,205);ctx.fillText('등록 사진',boxX+80,425,205)}
+   if(mode==='idMatch'||mode==='hairOld'){const im=images.stand[0];ctx.save();if(mode==='hairOld')ctx.filter='sepia(.7) contrast(1.15)';ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,boxX+15,344,50,145);ctx.restore();if(mode==='hairOld'){ctx.fillStyle='#14251b';ctx.fillRect(boxX+22,344,36,14)}ctx.fillText(visitor.name,boxX+80,385,205);ctx.fillText('등록 사진',boxX+80,425,205)}
    else {ctx.save();if(mode==='blurCard')ctx.filter='blur(5px)';ctx.fillText(mode==='fingerprint'?'지문을 읽지 못했어요':mode==='document'?pack.document.field:'출입 카드',boxX+15,380,270);ctx.fillText(visitor.name,boxX+15,425,270);ctx.restore()}
   }
   if(!(videoOk&&videoSrc)||mode!=='loading'){ctx.fillStyle='#07100a16';for(let yLine=0;yLine<640;yLine+=5)ctx.fillRect(0,yLine,960,1)}
@@ -186,6 +195,6 @@ export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scene
  host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{if(i!==Math.floor(cursor/6)&&!reduced)cutUntil=performance.now()+CUT_MS;cursor=i*6;lastIndex=i;playing=false;play.textContent='재생';draw()});
  host.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{camera=b.dataset.camera;if(camera==='top'&&!TOP_VIEW[scenes[Math.min(scenes.length-1,Math.floor(cursor/6))].location])camera='main';host.querySelectorAll('[data-camera]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()});
  function visibility(){if(document.hidden){playing=false;play.textContent='재생';video.pause()}}document.addEventListener('visibilitychange',visibility);
- try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);for(const [k,im] of sheetList)if(im)measureCenters(k,im);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
+ try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);sheets.side??=sheets.toward;sheets.away??=sheets.toward;for(const k of ['side','toward','away','gest'])if(sheets[k])measureCenters(k,sheets[k]);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
  return ()=>{disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);video.pause();video.removeAttribute('src');video.load()};
 }

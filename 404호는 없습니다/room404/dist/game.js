@@ -1,4 +1,4 @@
-import {mountReplay,shiftedTime,sceneTime,LOCATIONS} from './replay.js';
+import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor} from './replay.js';
 import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash} from './engine.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
@@ -24,12 +24,12 @@ function mountClips(){document.querySelectorAll('#clipGallery figure').forEach(f
 function storageGet(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
 function save(){try{localStorage.setItem(ACTIVE,JSON.stringify(run))}catch{$('storageNotice').hidden=false}}
 // Returns the case with every {name}/{unit} placeholder filled, so no text field can show a raw placeholder.
-function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;return {v,a,pack}}
+function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,baseRole:original.role,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;return {v,a,pack}}
 function fillDeep(x,v){return typeof x==='string'?fill(x,v):Array.isArray(x)?x.map(y=>fillDeep(y,v)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,y])=>[k,fillDeep(y,v)])):x}
 function fill(s,v){return String(s).replaceAll('{name}',v.name).replaceAll('{unit}',v.unit)}
 function sourceTime(minutes=0){return shiftedTime(TIMES[run.index],minutes)}
 function log(title,text){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=title+' — ';p.append(b,document.createTextNode(text));$('evidence').append(p)}
-function person(v,extra=''){const index=(Number(v.id.slice(1))-1)%4;return `<span role="img" aria-label="${escapeHTML(v.name)}의 방문객 캐릭터" class="person-sprite ${extra}" style="background-position:${index*100/3}% 50%"></span>`}
+function person(v,extra=''){return `<span role="img" aria-label="${escapeHTML(v.name)}의 방문객 캐릭터" class="person-sprite ${extra}" style="background-image:url(${MEDIA}visitor-0${lookFor(v)}-stand.webp)"></span>`}
 function clockBefore(minutes){const [h,m]=TIMES[run.index].split(':').map(Number),n=(h*60+m-minutes+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
 function guide(){const {v,a,pack}=current();const older=pack.scenes.find(s=>s.offset<0);return {clue:pack.plain.what,verify:pack.plain.confirmed,question:pack.plain.check,...(older&&a.channel==='CCTV'?{past:`${sourceTime(older.offset)} · ${older.note}`}:{})}}
 function timeline(){const {v,a}=current(),g=guide(),items=[];
@@ -60,7 +60,7 @@ function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?
   $('hint').hidden=h.correct;$('hint').textContent=h.correct?'':`다음에는 이렇게 해 보세요: ${g.question}`;
   $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';
  }else{
-  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';$('ending').textContent=end;$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
+  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';$('ending').textContent=end;$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';setPoster($('result').querySelector('.scene-media'),end==='404호'?'ending-404':'ending-dawn',end==='404호'?null:'12-ending-dawn');$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
   $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번`;
   try{localStorage.setItem(LAST,JSON.stringify({date:run.date,mode:run.mode,ending:end,correct:t.correct,history:run.history}))}catch{$('storageNotice').hidden=false}
  }show(run.screen);
@@ -176,4 +176,4 @@ $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>{primeAudio();decide(true)};$('deny').onclick=()=>{primeAudio();decide(false)};$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.10.3';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.11.0';boot();

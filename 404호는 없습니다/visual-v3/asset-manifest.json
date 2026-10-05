@@ -1,0 +1,1678 @@
+{
+  "checked_on": "2026-10-05",
+  "requested_png_count": 41,
+  "all_drive_names_and_sizes_match": true,
+  "assets": [
+    {
+      "path": "backgrounds/door-far.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2849309,
+      "sha256": "593cc3666cb23374dadb63981e0a73c5f614ca0fd4916e1fda88a5448e4a8959",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1KvOOR-0zqe_gK4_7dsARzwdIev6YXpKy/view?usp=drivesdk"
+    },
+    {
+      "path": "backgrounds/elevator-lobby.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2667767,
+      "sha256": "be70415dbb8cca0178dad71878ad2e0fa29801f0b09099a4728b6cc5adb818ca",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1faRJi54J466HFpV_nA2wKUViOHSBasxJ/view?usp=drivesdk"
+    },
+    {
+      "path": "backgrounds/hall-side.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2446182,
+      "sha256": "10d9148e1c56272f2edcf8ae45524f1467709ba0b2bb27708d66c82924143e60",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1wAElp9yEMU-uQBiFsRLN0YDeIK_jN2CA/view?usp=drivesdk"
+    },
+    {
+      "path": "backgrounds/lobby-top.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2659822,
+      "sha256": "09b9da8fe0818b9c14f7828a5b510a807f37728d9ce3de0982db9eb7f4ea5f8d",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1H1kfzT5mSXK0rJiEPvXa09LgdWRvE08m/view?usp=drivesdk"
+    },
+    {
+      "path": "backgrounds/parking-side.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2724865,
+      "sha256": "f62af045a10c52580ec192447b679aead998832c0fa5f382eaf9ea39912bccf5",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1fJX8tl4wb30wd83oFVTTdfA0WX97cRQO/view?usp=drivesdk"
+    },
+    {
+      "path": "backgrounds/stairs-up.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2453880,
+      "sha256": "2609e8a9513984f1e16d8379b21362904189f4b1eb7d0fc79d2225314f0c3209",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1bpCDHIguQt2pNvwtmPiEYydnkcxeDLlh/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-bag.png",
+      "width": 438,
+      "height": 600,
+      "bytes": 419399,
+      "sha256": "8de1c8683548946ca384acfddeadb42949de3e017f8b56ab54f8e31ef39a4dae",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1whRIx7gu1DD4WOq3IO23nDIO_XbJDkMr/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-cap-reflective.png",
+      "width": 600,
+      "height": 431,
+      "bytes": 368494,
+      "sha256": "645e0149a50736feb6738807c949c25635a6f0b68357bbcef861041b556b879e",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1ZKK_BO40d3wzoLFEzAYGBoI-X_-wwwoV/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-card.png",
+      "width": 350,
+      "height": 600,
+      "bytes": 182880,
+      "sha256": "d7c22e021be12e7afc40a63e81804666bd51b80845b8c4cb0f3ac11225a36026",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1g5uiz2bNzsisaY1CfhGUEpjSS06o0HnH/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-flowers.png",
+      "width": 478,
+      "height": 600,
+      "bytes": 439567,
+      "sha256": "31461750eefb6a5b9db1f7026affe2d105f6e8f19e462905d9130c3321e12622",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1Yg60vDTlOgTH6k1fBI_7yMWsIWsNCUBv/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-keys.png",
+      "width": 560,
+      "height": 600,
+      "bytes": 370641,
+      "sha256": "6221c104b1658c246433297451491c29d839dc66680fbccc5e7ffa6066f3eeb8",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1K-I6SI15Fklw2nHXa1QpomSFd5R9x0ws/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-medicine.png",
+      "width": 600,
+      "height": 408,
+      "bytes": 284724,
+      "sha256": "671072c437ff726f75786b668385965ff13a1071fdcc31732e68376655d6f5e9",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1s9dHlxwHixWl6PjP2B7oDus2bW5mvG2M/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-paper.png",
+      "width": 447,
+      "height": 600,
+      "bytes": 351885,
+      "sha256": "e3632d21e7b9df3b90c426dbae55f2d1070ff7128fb6961649d0e22fe30a0733",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/12TRSh-_YBURjfHEXS-MQoUt68i8EPdOv/view?usp=drivesdk"
+    },
+    {
+      "path": "props/prop-toolbox.png",
+      "width": 600,
+      "height": 401,
+      "bytes": 434100,
+      "sha256": "f8df25bae412731fa721ca6faeb621fdf81b4be3f276bf0ecbefbf65c2ed2f50",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1kN-PDdkCjacoW28FJ4cOCteaId0OqQ8C/view?usp=drivesdk"
+    },
+    {
+      "path": "screens/ending-404.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2280224,
+      "sha256": "ff35e8ced1236e434e696ba5cafbc3ca8d9737aa4a977f19275222f8b3ccb428",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1C0QfXXl78jENCiIAIRr8PTO6hKfTwJ6O/view?usp=drivesdk"
+    },
+    {
+      "path": "screens/guard-monitors.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2008410,
+      "sha256": "e9a84285b95817adafcb35bdea59653ea044e5efd7ea8e1bd14f66aef3f25fed",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1sO3GoPkuCvlCXiyUaVRfNA7qGNRV7cM3/view?usp=drivesdk"
+    },
+    {
+      "path": "screens/lobby-door-inside.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2473030,
+      "sha256": "487db2a278bdf9d21398ed11578d792ffdbb636b724459e1927744bdf02968bd",
+      "dimensions_ok": true,
+      "transparent_background_ok": null,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1OQMmA8qe_oe90iYLnSSJKvT7UYFFkrR8/view?usp=drivesdk"
+    },
+    {
+      "path": "visitor-01/visitor-01-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1234843,
+      "sha256": "3d9334ba337d584b46c9c909c212f15a8138e80599c062e72a7929ce45810ee8",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/13tIONH_TZhc_Zix3T19e9CPMesmu4xd4/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          104,
+          26,
+          279,
+          496
+        ],
+        [
+          93,
+          26,
+          290,
+          496
+        ],
+        [
+          103,
+          26,
+          280,
+          496
+        ],
+        [
+          105,
+          26,
+          279,
+          496
+        ],
+        [
+          113,
+          26,
+          270,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          496
+        ],
+        [
+          107,
+          26,
+          277,
+          496
+        ],
+        [
+          111,
+          26,
+          273,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-01/visitor-01-walk-away.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1183616,
+      "sha256": "3583259e24554b271ad97370f56b40363af254fdfd2db3a4ebf4cf56b463fca9",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1Lt34sWCXS6TdZJTGokEr1K2e2oTf_bFp/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          83,
+          26,
+          301,
+          496
+        ],
+        [
+          98,
+          26,
+          285,
+          496
+        ],
+        [
+          86,
+          26,
+          297,
+          496
+        ],
+        [
+          90,
+          26,
+          293,
+          496
+        ],
+        [
+          83,
+          26,
+          301,
+          496
+        ],
+        [
+          92,
+          27,
+          292,
+          496
+        ],
+        [
+          93,
+          26,
+          290,
+          496
+        ],
+        [
+          94,
+          26,
+          290,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-01/visitor-01-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1276814,
+      "sha256": "80c7837331acca740e8d84485ea94417c920769a78a80f626473e67f5bb1a308",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/153oCLINojfBlfl3kZXJDUAgDUC0a8VlY/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          93,
+          26,
+          291,
+          496
+        ],
+        [
+          86,
+          26,
+          297,
+          496
+        ],
+        [
+          95,
+          26,
+          288,
+          496
+        ],
+        [
+          93,
+          26,
+          291,
+          496
+        ],
+        [
+          90,
+          26,
+          293,
+          496
+        ],
+        [
+          87,
+          26,
+          296,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-02/visitor-02-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1533077,
+      "sha256": "38f159684166ac86084fc5a7311a0665f76ab7abb7e1dd53895093fe601e9014",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1m8x4Rup_Zsxg30j-Em0FliXVs2r13CGd/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          88,
+          26,
+          296,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          64,
+          26,
+          319,
+          496
+        ],
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          94,
+          26,
+          290,
+          496
+        ],
+        [
+          101,
+          26,
+          283,
+          496
+        ],
+        [
+          110,
+          26,
+          274,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-02/visitor-02-walk-away.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1033364,
+      "sha256": "76529aded9810ebd43fe67b7871e40d3c06314483fefc0d081c5dab5af4f929a",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1OkEwxk5Bh1jPbA0MJvKC3jF4zCQaDdAX/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          93,
+          26,
+          291,
+          496
+        ],
+        [
+          92,
+          26,
+          292,
+          496
+        ],
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          91,
+          26,
+          292,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          94,
+          26,
+          289,
+          496
+        ],
+        [
+          96,
+          26,
+          287,
+          496
+        ],
+        [
+          88,
+          26,
+          295,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-02/visitor-02-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1029602,
+      "sha256": "f57d0ef11837fbf34f573ec976abda5e6d7ece600e0c8943d8601670dcc91802",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1rdYcK3_oqD-6UIHg4ey88f0bYrbTyhrA/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          102,
+          26,
+          282,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          496
+        ],
+        [
+          115,
+          26,
+          269,
+          496
+        ],
+        [
+          95,
+          26,
+          288,
+          496
+        ],
+        [
+          98,
+          26,
+          286,
+          496
+        ],
+        [
+          100,
+          26,
+          283,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-03/visitor-03-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1364463,
+      "sha256": "99c668a0cb97c47b058171e0da31a7d4c891e98dcbeeb4c660751a0ca9d0d32e",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1o7-vDWvRRE7EF8GXgKvHeaP4lKq92D2H/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          110,
+          26,
+          274,
+          496
+        ],
+        [
+          90,
+          26,
+          293,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          496
+        ],
+        [
+          83,
+          26,
+          301,
+          496
+        ],
+        [
+          114,
+          26,
+          269,
+          496
+        ],
+        [
+          116,
+          26,
+          267,
+          496
+        ],
+        [
+          112,
+          26,
+          272,
+          496
+        ],
+        [
+          128,
+          26,
+          255,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-03/visitor-03-walk-away.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1140101,
+      "sha256": "b77b317e694a73fd689cb5da5759c1eaf2040b1ae03da61829755646c5f1fcd9",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1nN4Mp3v_LS3auYeFvtTaA85LEfNDmvuT/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          81,
+          26,
+          302,
+          496
+        ],
+        [
+          84,
+          26,
+          299,
+          496
+        ],
+        [
+          107,
+          26,
+          277,
+          496
+        ],
+        [
+          88,
+          26,
+          296,
+          496
+        ],
+        [
+          76,
+          26,
+          307,
+          496
+        ],
+        [
+          86,
+          26,
+          298,
+          496
+        ],
+        [
+          119,
+          26,
+          265,
+          496
+        ],
+        [
+          103,
+          26,
+          281,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-03/visitor-03-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1176261,
+      "sha256": "a312280f7c50234160b270908e1e27e7475c97517f24d195749bae9686fc8e51",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1Mh-IxrX1LLpDGHtQTiKEBpKDelGSFWPK/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          98,
+          26,
+          285,
+          496
+        ],
+        [
+          112,
+          26,
+          272,
+          496
+        ],
+        [
+          115,
+          26,
+          268,
+          496
+        ],
+        [
+          86,
+          26,
+          297,
+          496
+        ],
+        [
+          74,
+          26,
+          309,
+          496
+        ],
+        [
+          111,
+          26,
+          273,
+          496
+        ],
+        [
+          117,
+          26,
+          266,
+          496
+        ],
+        [
+          89,
+          26,
+          295,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-04/visitor-04-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1059407,
+      "sha256": "6ab3f3f0558646743fa9769772882a619f92964127c9fd9ee051fd1f1f97e149",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1-lovZsS4ogULDVQ790M5_YH3ellh6gNz/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          103,
+          26,
+          281,
+          496
+        ],
+        [
+          90,
+          26,
+          293,
+          496
+        ],
+        [
+          97,
+          26,
+          286,
+          496
+        ],
+        [
+          89,
+          26,
+          295,
+          496
+        ],
+        [
+          109,
+          26,
+          275,
+          496
+        ],
+        [
+          106,
+          26,
+          277,
+          496
+        ],
+        [
+          108,
+          26,
+          275,
+          496
+        ],
+        [
+          112,
+          26,
+          272,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-04/visitor-04-walk-away.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1077593,
+      "sha256": "87285f5dc2c8d0e774cc90fe2862e52042a613c755ab7f2ae7e92023d0095708",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1VRriS0Y95WbhX-fFMc5s_-jvfUsBpWRp/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          82,
+          26,
+          302,
+          496
+        ],
+        [
+          83,
+          26,
+          300,
+          496
+        ],
+        [
+          83,
+          26,
+          301,
+          496
+        ],
+        [
+          85,
+          26,
+          299,
+          496
+        ],
+        [
+          81,
+          26,
+          302,
+          496
+        ],
+        [
+          86,
+          26,
+          298,
+          496
+        ],
+        [
+          93,
+          26,
+          291,
+          496
+        ],
+        [
+          109,
+          26,
+          274,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-04/visitor-04-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1098701,
+      "sha256": "0a6b130aa1bb79d28cbbda73a5a052517e68c719f096c2c3d1ed268598fe526e",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1vjRhtO8Us3vTzOTU-3MuqKaJ9ebUC3ai/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          95,
+          26,
+          289,
+          496
+        ],
+        [
+          97,
+          26,
+          286,
+          496
+        ],
+        [
+          96,
+          26,
+          287,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          90,
+          26,
+          293,
+          496
+        ],
+        [
+          95,
+          26,
+          288,
+          496
+        ],
+        [
+          92,
+          26,
+          292,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-05/visitor-05-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1037563,
+      "sha256": "d32f570fba3e14e40408ed27750545c8c7c58d49422081cecdfb6f4a17010f71",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1GT6QDgncM-7yjqAOflW2GfYMNp8A1Kb8/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          102,
+          26,
+          281,
+          496
+        ],
+        [
+          87,
+          26,
+          296,
+          496
+        ],
+        [
+          96,
+          26,
+          288,
+          496
+        ],
+        [
+          103,
+          26,
+          281,
+          496
+        ],
+        [
+          111,
+          26,
+          273,
+          496
+        ],
+        [
+          103,
+          26,
+          280,
+          496
+        ],
+        [
+          106,
+          26,
+          278,
+          496
+        ],
+        [
+          115,
+          26,
+          268,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-05/visitor-05-stand.png",
+      "width": 384,
+      "height": 512,
+      "bytes": 125987,
+      "sha256": "7422e07c5e2973c2300c73da689c40af4fa03f86e4253044596387cbf0623720",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1Kh098hH2Sqxw_qdkBlYEUOasiU7D74U-/view?usp=drivesdk"
+    },
+    {
+      "path": "visitor-05/visitor-05-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1030617,
+      "sha256": "639c47c834aa7abfef4e32367d64f311383d3ea16d72edb3f136726a2038ea50",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1MC4Fg3hL71K_ax6Em4Az5bcsYNTvcjs7/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          91,
+          26,
+          292,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          89,
+          26,
+          294,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          92,
+          26,
+          291,
+          496
+        ],
+        [
+          89,
+          26,
+          294,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-06/visitor-06-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1194107,
+      "sha256": "c5302022fc983b15a1118d23bfd28a10ae2f1bf259abbcf8a835b261bf9a6c1f",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1D6NyxRsSJwoa-TxprG7NDuS0CVSGLR0q/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          96,
+          26,
+          288,
+          496
+        ],
+        [
+          85,
+          26,
+          299,
+          496
+        ],
+        [
+          89,
+          26,
+          294,
+          496
+        ],
+        [
+          107,
+          26,
+          276,
+          496
+        ],
+        [
+          101,
+          26,
+          283,
+          496
+        ],
+        [
+          100,
+          26,
+          284,
+          496
+        ],
+        [
+          99,
+          26,
+          284,
+          496
+        ],
+        [
+          106,
+          26,
+          277,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-06/visitor-06-stand.png",
+      "width": 384,
+      "height": 512,
+      "bytes": 142224,
+      "sha256": "672cb28b262f0e2f0b4030b4db902b6cc0f0d5cdae7ef6b01ce5200abdc602bb",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1C5odh2ZgNbHLVgpVGVTm0lHxt599PjIo/view?usp=drivesdk"
+    },
+    {
+      "path": "visitor-06/visitor-06-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1160497,
+      "sha256": "70d0f53cbd50628aef222b94f34d1434fb38ca343f98cd4bf1bb569f5c9f7635",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1lDal5R_4X_iqUaiThz0pYhQWb2LZ_oLd/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          86,
+          26,
+          298,
+          496
+        ],
+        [
+          87,
+          26,
+          297,
+          495
+        ],
+        [
+          86,
+          26,
+          298,
+          496
+        ],
+        [
+          86,
+          26,
+          297,
+          496
+        ],
+        [
+          83,
+          26,
+          300,
+          496
+        ],
+        [
+          89,
+          26,
+          294,
+          496
+        ],
+        [
+          104,
+          26,
+          279,
+          496
+        ],
+        [
+          102,
+          26,
+          281,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        495,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-07/visitor-07-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1124350,
+      "sha256": "4f025a8d31082d3473a8586e544eaa2c336ae50c97f9bff627b7566b202c6797",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1_Ddi3mpsXZdzbCGLQ1SElXD-r-L6lh7w/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          99,
+          26,
+          285,
+          496
+        ],
+        [
+          91,
+          26,
+          293,
+          496
+        ],
+        [
+          93,
+          26,
+          290,
+          496
+        ],
+        [
+          97,
+          26,
+          287,
+          496
+        ],
+        [
+          104,
+          26,
+          279,
+          496
+        ],
+        [
+          104,
+          26,
+          279,
+          496
+        ],
+        [
+          102,
+          26,
+          282,
+          496
+        ],
+        [
+          108,
+          26,
+          275,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-07/visitor-07-stand.png",
+      "width": 384,
+      "height": 512,
+      "bytes": 128288,
+      "sha256": "2b5624d3d5605092187abbfe5a3acb3181177693dee3198553751e634ec297aa",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1MoQp6FZzOh7K9cVJBAeNp68hUdiTQtvA/view?usp=drivesdk"
+    },
+    {
+      "path": "visitor-07/visitor-07-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1029750,
+      "sha256": "073781d51bfec7d5ec25e428db94f2f4c40293045aae8a2e5b601d5188cee241",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1gJ_4DyZ36wb99CLrN0DSzwnlNT6V-Cmb/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          111,
+          26,
+          272,
+          496
+        ],
+        [
+          109,
+          26,
+          275,
+          496
+        ],
+        [
+          106,
+          26,
+          277,
+          496
+        ],
+        [
+          111,
+          26,
+          272,
+          496
+        ],
+        [
+          106,
+          26,
+          277,
+          496
+        ],
+        [
+          102,
+          26,
+          281,
+          496
+        ],
+        [
+          108,
+          26,
+          276,
+          496
+        ],
+        [
+          105,
+          26,
+          278,
+          495
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        495
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    },
+    {
+      "path": "visitor-08/visitor-08-gestures.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1129784,
+      "sha256": "fc4e4594f339b6f0974ae9269a2625e71676ba699348ee42c190909d1ff81690",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1VbUJZu8kxWfXLL_hK694-2Cn51oPxCat/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          111,
+          26,
+          272,
+          496
+        ],
+        [
+          98,
+          26,
+          286,
+          496
+        ],
+        [
+          99,
+          26,
+          285,
+          496
+        ],
+        [
+          104,
+          26,
+          279,
+          496
+        ],
+        [
+          114,
+          26,
+          270,
+          496
+        ],
+        [
+          118,
+          26,
+          266,
+          496
+        ],
+        [
+          113,
+          26,
+          270,
+          496
+        ],
+        [
+          127,
+          26,
+          256,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "gesture_pose_sheet_temporal_transition_unverified"
+    },
+    {
+      "path": "visitor-08/visitor-08-stand.png",
+      "width": 384,
+      "height": 512,
+      "bytes": 133025,
+      "sha256": "c751ad19df806e48dc2634d2e1588e75fdbc8f2b12eda4e4cb6682a9558a10d4",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1k2tnvUORxaAErZloNtr1lCB6P3HaInYW/view?usp=drivesdk"
+    },
+    {
+      "path": "visitor-08/visitor-08-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1169920,
+      "sha256": "6d025d6d654610c3b437fcb542f6d7e0ffe8044ae55adf8562f76c34c130b332",
+      "dimensions_ok": true,
+      "transparent_background_ok": true,
+      "drive_size_matches": true,
+      "drive_url": "https://drive.google.com/file/d/1sqUjqEy-v0e0cTxsMrwG2ZANmb6Vz1sm/view?usp=drivesdk",
+      "cell_alpha_bounds_gt100": [
+        [
+          92,
+          26,
+          292,
+          496
+        ],
+        [
+          98,
+          26,
+          285,
+          496
+        ],
+        [
+          115,
+          26,
+          268,
+          496
+        ],
+        [
+          111,
+          26,
+          272,
+          496
+        ],
+        [
+          108,
+          26,
+          276,
+          496
+        ],
+        [
+          114,
+          26,
+          270,
+          496
+        ],
+        [
+          115,
+          26,
+          269,
+          496
+        ],
+        [
+          118,
+          26,
+          266,
+          496
+        ]
+      ],
+      "sole_baseline_y_exclusive": [
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496,
+        496
+      ],
+      "motion_status": "review_draft_gait_correction_needed"
+    }
+  ]
+}

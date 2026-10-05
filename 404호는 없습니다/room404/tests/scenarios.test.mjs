@@ -30,3 +30,14 @@ test('every place has a real second camera and sprite cells are placed for every
  assert.equal(p('cross').sheet,'side');assert.equal(p('descend','stairs').facing,-1);assert.equal(p('descend','stairsUp').sheet,'toward');
  assert.ok(GESTURE.wave.includes(p('wave').cell));assert.ok(GESTURE.knock.includes(p('knock').cell));assert.equal(p('phone').cell,GESTURE.phone[1]);assert.equal(p('turn').cell,GESTURE.look);assert.equal(p('wait').cell,GESTURE.stand);
 });
+
+test('eight looks: roles map to the new visitors and every look has stand, toward and gesture sheets', async()=>{
+ const {lookFor,ROLE_LOOK,LOOKS}=await import('../dist/replay.js');const {existsSync}=await import('node:fs');const root=new URL('../dist/',import.meta.url);
+ const visitors=read('visitors');
+ assert.equal(LOOKS,8);
+ for(const v of visitors){const l=lookFor(v);assert.ok(l>=1&&l<=8,v.id);if(ROLE_LOOK[v.role])assert.equal(l,ROLE_LOOK[v.role])}
+ assert.equal(new Set(visitors.map(lookFor)).size,8,'all eight looks are used');
+ for(let n=1;n<=8;n++)for(const k of ['stand','walk-toward','gestures'])assert.ok(existsSync(new URL(`assets/v2/visitor-0${n}-${k}.webp`,root)),`visitor-0${n}-${k}`);
+ for(const p of ['bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'])assert.ok(existsSync(new URL(`assets/v2/prop-${p}.webp`,root)),p);
+ for(const s of ['lobby-door-inside','guard-monitors','ending-404'])assert.ok(existsSync(new URL(`assets/v2/${s}.webp`,root)),s);
+});
