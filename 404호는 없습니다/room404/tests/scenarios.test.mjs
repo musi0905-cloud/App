@@ -41,3 +41,23 @@ test('eight looks: roles map to the new visitors and every look has stand, towar
  for(const p of ['bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'])assert.ok(existsSync(new URL(`assets/v2/prop-${p}.webp`,root)),p);
  for(const s of ['lobby-door-inside','guard-monitors','ending-404'])assert.ok(existsSync(new URL(`assets/v2/${s}.webp`,root)),s);
 });
+
+test('character v4: distance-based walk cycle is finite, deterministic and defined for every look, place and action',async()=>{
+ const {travelPhase,actorFilter,LOCATIONS}=await import('../dist/replay.js');
+ const places=['lobby','lobbySide','hall','elevator','stairs','parking','door','hallSide','elevatorLobby','stairsUp','parkingSide','doorFar','lobbyTop'];
+ let checks=0;
+ for(let look=1;look<=8;look++)for(const location of places)for(const action of ['enter','cross','descend','wait','turn','wave','knock','phone'])for(const mode of ['normal','repeat','distort','ir','blurCard'])for(const phase of [0,.01,.25,.5,.75,.99,1]){
+  const scene={location,action,mode},p=actorPlacement(scene,phase,look);
+  assert.ok([p.x,p.y,p.h].every(Number.isFinite)&&p.h>0,JSON.stringify(scene));
+  const frame=travelPhase(scene,phase,look);
+  assert.ok(Number.isFinite(frame)&&frame>=-1&&frame<8,JSON.stringify(scene));
+  assert.equal(frame,travelPhase(scene,phase,look),'seeking must be deterministic');
+  assert.ok(actorFilter(location,mode).length>0);checks++;
+ }
+ assert.ok(checks>20000);
+ assert.equal(actorPlacement({location:'doorFar',action:'enter',mode:'normal'},.5).x,495,'doorFar path has no division by zero');
+ assert.equal(travelPhase({location:'lobby',action:'wait',mode:'normal'},.5),-1,'standing figures have no walk frame');
+ assert.ok(travelPhase({location:'lobby',action:'enter',mode:'normal'},1)>0,'a full entrance walks several cycles');
+ const {existsSync}=await import('node:fs');const root=new URL('../dist/',import.meta.url);
+ for(let n=1;n<=8;n++)assert.ok(existsSync(new URL(`assets/v2/visitor-0${n}-walk-toward.webp`,root)));
+});

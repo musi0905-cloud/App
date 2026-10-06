@@ -5,6 +5,7 @@ export const LOCATIONS={lobby:'공동현관',lobbySide:'현관 옆 카메라',ha
 export const MODES=['normal','compare','badge','double','shadow','shadowHold','faceLock','absent','yesterday','doorClosed','doorOpen','doorCompare','preMove','footprints','voiceEarly','voiceLate','clock7','repeat','reflection','recorded','live','dateOnly','ir','reboot','loading','delay3','rainDouble','rain','removeProp','idMatch','card','fingerprint','darkCoat','hairOld','distort','faceShadow','blurCard','document','phone','ring','echo'];
 export const CAMERAS={main:'① 기본 카메라',side:'② 다른 방향',top:'③ 위에서',close:'④ 가까이 보기'};
 const V2='assets/v2/';
+const V4='assets/characters-v4/';
 const BACKGROUNDS={lobby:'cctv-lobby',lobbySide:'cctv-lobby-side',hall:'cctv-hall',elevator:'cctv-elevator',stairs:'cctv-stairs',parking:'cctv-parking',door:'door-closed',doorOpen:'door-open',
  hallSide:'cctv-hall-side',elevatorLobby:'cctv-elevator-lobby',stairsUp:'cctv-stairs-up',parkingSide:'cctv-parking-side',doorFar:'door-far',lobbyTop:'cctv-lobby-top'};
 // v3: every place has a real second camera, and the lobby also has a top-down one.
@@ -45,10 +46,7 @@ export function walkPhase(cursor){return (cursor*WALK.fps)%8}
 const media={};
 function load(src){return media[src]??=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('장면 그림을 불러오지 못했어요.'));im.src=src})}
 export function shiftedTime(time,offset){const [h,m]=time.split(':').map(Number),n=(h*60+m+offset+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
-// `time` is when the visitor arrived at the intercom (the recording ends there); `now` is the guard's clock while
-// investigating, a few minutes later. Only a live feed (live/loading) shows `now`; everything else is a recording.
-export const LIVE_MODES=new Set(['live','loading']);
-export function sceneTime(frame,time,now=time){return shiftedTime(LIVE_MODES.has(frame.mode)?now:time,frame.offset+(frame.mode==='clock7'?-7:0))}
+export function sceneTime(frame,time){return shiftedTime(time,frame.offset+(frame.mode==='clock7'?-7:0))}
 function previousDate(date){const d=new Date(date+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10)}
 function reduceMotion(){return typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches}
 // Where the visitor stands at this phase of the scene. Shared by drawing and the close-up camera.
@@ -72,23 +70,23 @@ export function actorPlacement(s,phase,look=1){
  return {x,y,h,walking,facing,sheet,cell};
 }
 
-// Walk cycle driven by distance travelled on screen (in body heights), so pausing or seeking always shows the same
-// frame for the same moment and the feet never slide (character v4). Returns 0..8 or -1 when not walking.
+// Deterministic distance-based cycle. Seeking and pausing never advance feet independently.
 export function travelPhase(scene,phase,look=1){
  const p=Math.max(0,Math.min(1,phase)),q=scene.mode==='repeat'?(p*2)%1:p;
  const s=scene.mode==='repeat'?{...scene,mode:'normal',action:'enter'}:scene;
  if(!actorPlacement(s,q,look).walking)return -1;
- let previous=actorPlacement(s,0,look),distance=0;const steps=64;
- for(let i=1;i<=steps;i++){const current=actorPlacement(s,q*i/steps,look);distance+=Math.hypot(current.x-previous.x,current.y-previous.y)/Math.max(1,(current.h+previous.h)/2);previous=current}
+ let previous=actorPlacement(s,0,look),distance=0;
+ const steps=64;
+ for(let i=1;i<=steps;i++){const current=actorPlacement(s,q*i/steps,look);distance+=Math.hypot(current.x-previous.x,current.y-previous.y)/Math.max(1,(current.h+previous.h)/2);previous=current;}
  return distance/(s.action==='cross'?.72:.22)*8%8;
 }
-// Figures are lit to match each place's photo (cool fluorescent lobby, darker car park); special modes keep their own look.
 export function actorFilter(place,mode='normal'){
  if(mode==='ir')return 'grayscale(1) contrast(1.9) brightness(2)';
  if(mode==='darkCoat')return 'brightness(.28)';
  const light={lobby:.64,lobbySide:.64,hall:.68,hallSide:.68,elevator:.70,elevatorLobby:.70,stairs:.63,stairsUp:.63,parking:.60,parkingSide:.60,door:.68,doorFar:.68,lobbyTop:.64}[place]||.64;
  return `saturate(.5) brightness(${light}) contrast(.94) blur(${mode==='blurCard'?.6:.18}px)`;
 }
+
 export function sceneVideo(s,look,camera='main'){
  if(camera==='side'){const v=SIDE_VIEW[s.location];return v&&AMBIENT[v]||null}
  if(camera==='top')return null;
@@ -98,30 +96,28 @@ export function sceneVideo(s,look,camera='main'){
  if(s.location==='door')return null;
  return AMBIENT[s.location]||null;
 }
-export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=pack.scenes}){
+export async function mountReplay(host,{pack,visitor,time,date,scenes=pack.scenes}){
  let disposed=false,raf=0,playing=false,cursor=0,previous=0,camera='main',cutUntil=0,lastIndex=-1;const CUT_MS=320;
  const duration=scenes.length*6,reduced=reduceMotion();
- host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>${time} 도착 전까지의 녹화 · 지금은 ${now}</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-rec" aria-hidden="true">● REC</span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time,now)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
+ host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>그림과 영상으로 다시 만든 장면이에요</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-rec" aria-hidden="true">● REC</span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),stage=host.querySelector('.replay-stage'),video=host.querySelector('video'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
  const look=lookFor(visitor),sprite=0,roleProp=ROLE_PROP[visitor.baseRole||visitor.role]||'none';
  let images,props,sheets={},centers={},order={},videoSrc=null,videoOk=false;const failed=new Set();
- // Generated frames wobble a few pixels left/right, and the v3 side/away sheets are not drawn in walking order (the v4
- // toward sheets are, so they keep their authored order). Measure each cell once:
- // the torso centre keeps every frame on the same axis, and the leg spread (width of the foot rows) sorts the
- // walk sheets into a smooth cycle: legs together → mid stride → widest → mid → together (cycleOrder).
+ // Measure torso centering, preserving authored chronological frame order.
  function measureCenters(name,im){try{const c=document.createElement('canvas');c.width=WALK.w;c.height=WALK.h;const g=c.getContext('2d',{willReadFrequently:true});const out=[],spread=[];
   for(let cell=0;cell<8;cell++){g.clearRect(0,0,WALK.w,WALK.h);g.drawImage(im,cell%4*WALK.w,Math.floor(cell/4)*WALK.h,WALK.w,WALK.h,0,0,WALK.w,WALK.h);const d=g.getImageData(0,0,WALK.w,WALK.h).data;let sum=0,n=0,l=WALK.w,r=0;
    for(let y=Math.round(WALK.h*.2);y<Math.round(WALK.h*.45);y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){sum+=x;n++}
    for(let y=Math.round(WALK.h*.86);y<WALK.footY;y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){if(x<l)l=x;if(x>r)r=x}
    out.push(n?sum/n:WALK.footX);spread.push(r>l?r-l:0)}
-  centers[name]=out;order[name]=(name==='gest'||name==='toward')?null:cycleOrder(spread)}catch{centers[name]=null;order[name]=null}}
- function cycleOrder(spread){const s=spread.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]).map(p=>p[1]);return [s[0],s[2],s[4],s[6],s[7],s[5],s[3],s[1]]}
+  centers[name]=out;order[name]=null}catch{centers[name]=null;order[name]=null}}
+
+ const character=n=>load(V4+`visitor-0${look}/visitor-0${look}-${n}.png`).catch(()=>load(V2+`visitor-0${look}-${n}.webp`));
  const ready=Promise.all([
   Promise.all(Object.values(BACKGROUNDS).map(n=>load(V2+n+'.webp'))),
-  Promise.all([V2+`visitor-0${look}-stand.webp`].map(load)),
+  Promise.all([character('stand')]),
   Promise.all(['hat','umbrella','mask','phone','parcel','glove','bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'].map(n=>load(V2+'prop-'+n+'.webp').then(im=>[n,im],()=>[n,null]))),
-  Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>load(V2+`visitor-0${look}-${n}.webp`).then(im=>[k,im],()=>[k,null])))
+  Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>(k==='toward'||k==='gest'?character(n):load(V2+`visitor-0${look}-${n}.webp`)).then(im=>[k,im],()=>[k,null])))
  ]);
  function background(key){return images.bg[Object.keys(BACKGROUNDS).indexOf(key)]}
  function prop(kind,x,y,w,h,opacity=1){const im=props[kind];if(!im)return;ctx.save();ctx.globalAlpha=opacity;ctx.drawImage(im,x,y,w,h);ctx.restore()}
@@ -134,9 +130,9 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
   if(breath)ctx.scale(1,1+breath);
   // A walking body rises a little as it passes over the standing leg (bob = 0..1 across the stride, 1 = legs together).
-  if(walk>=0&&bob&&order[sheet])ctx.translate(0,-height*.014*bob);
+  // Feet stay anchored; vertical weight shift is drawn in the sprite.
   const figure=height*WALK.figure/WALK.h;
-  const useCell=walk>=0?(order[sheet]?.[walk]??walk):cell,im2=sheets[walk>=0?sheet:'gest'];
+  const useCell=walk>=0?walk:cell,im2=sheets[walk>=0?sheet:'gest'];
   if(im2&&useCell>=0){const k=height/WALK.h,cx=centers[walk>=0?sheet:'gest']?.[useCell]??WALK.footX;ctx.drawImage(im2,useCell%4*WALK.w,Math.floor(useCell/4)*WALK.h,WALK.w,WALK.h,-cx*k,-WALK.footY*k,WALK.w*k,WALK.h*k)}
   else{const im=images.stand[0],k=figure/(STAND.foot-STAND.top);ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,-STAND.cellW/2*k,-STAND.foot*k,STAND.cellW*k,STAND.cellH*k)}
   ctx.restore();
@@ -172,8 +168,8 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   if(videoOk&&videoSrc&&video.readyState>=2&&!video.seeking){try{ctx.drawImage(video,0,0,960,640)}catch{}}
   cameraTransform(view,pos);
   let {x,y,h}=pos;
-  // Every walk paces its stride by the distance travelled on screen (travelPhase), so feet never slide and seeking is exact.
-  const wp=!(pos.walking&&sheets[pos.sheet])?-1:travelPhase(view,phase,look),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
+  // All walk directions use projected travel distance; authored poses still determine contact quality.
+  const stride=.8*h*WALK.figure/WALK.h,wp=!(pos.walking&&sheets[pos.sheet])?-1:travelPhase(view,phase,look),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
   // Standing figures breathe very slightly (period 3 s), so a paused frame still reads as a living person.
   const breath=walk<0?Math.sin(cursor*Math.PI*2/3)*.006:0;
   const filter=actorFilter(place,mode);
@@ -202,13 +198,13 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   const states={doorClosed:'직접 확인: 문이 닫혀 있어요',doorOpen:'영상에서는 문이 열려 있어요',doorCompare:'같은 시간인데 문 상태가 달라요',recorded:'지금 영상 버튼에 옛 영상이 나와요',live:'녹화 버튼에 지금 영상이 나와요',reboot:'카메라를 껐다 켠 뒤 옛 화면',loading:'지금 화면을 불러오는 중…',dateOnly:'날짜가 아직 안 바뀌었어요',delay3:'3분 늦게 보이는 화면',clock7:'카메라 표시 시계',repeat:'같은 장면이 반복돼요',fingerprint:'장갑 때문에 지문이 안 읽혀요',ring:'문 앞 휴대전화도 같이 울려요',echo:'같은 말을 조금 늦게 따라 해요',voiceEarly:'음성: 손을 들었어요',voiceLate:'뒤늦게 영상의 손이 올라옴',preMove:'재생하기 전에 고개를 돌려요',compare:'같은 시간, 다른 장소',hairOld:'예전 사진과 지금 모습'};
   hudState.hidden=!states[mode];hudState.textContent=states[mode]||'';
   // Camera's own on-screen clock, burned into the picture like a real recorder. Bigger when the trick is about the time.
-  {const big=['clock7','delay3','dateOnly','yesterday','recorded','live','reboot'].includes(mode),osd=`${(mode==='yesterday'?previousDate(date):date)} ${sceneTime(s,time,now)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
+  {const big=['clock7','delay3','dateOnly','yesterday','recorded','live','reboot'].includes(mode),osd=`${(mode==='yesterday'?previousDate(date):date)} ${sceneTime(s,time)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
    ctx.save();ctx.font=`${big?34:24}px ui-monospace,monospace`;const w=ctx.measureText(osd).width+28,hh=big?50:36;ctx.fillStyle=big?'#07130ee6':'#07130ebb';ctx.fillRect(960-w-16,640-hh-16,w,hh);ctx.fillStyle=big?'#f3e6a8':'#dfe7c9';ctx.textBaseline='middle';ctx.fillText(osd,960-w-2,640-16-hh/2);ctx.restore()}
   const cut=cutUntil-performance.now();
   if(cut>0){const k=Math.min(1,cut/CUT_MS);ctx.fillStyle=`rgba(3,8,6,${k*.95})`;ctx.fillRect(0,0,960,640);ctx.fillStyle=`rgba(200,220,200,${k*.5})`;ctx.fillRect(0,320-k*4,960,k*8)}
   hudCam.textContent=`CAM ${String(Object.keys(BACKGROUNDS).indexOf(place)+1).padStart(2,'0')} ${LOCATIONS[place]||VIEW_NAMES[place]} · ${index+1}/${scenes.length}${camera==='main'?'':' · '+CAMERAS[camera].slice(2)}`;
-  const recordedDate=mode==='yesterday'?previousDate(date):date;hudTime.textContent=`${recordedDate} ${sceneTime(s,time,now)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
-  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time,now);canvas.dataset.location=s.location;canvas.dataset.view=camera;canvas.dataset.video=videoSrc&&videoOk?videoSrc:'';canvas.dataset.walkFrame=String(walk);canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
+  const recordedDate=mode==='yesterday'?previousDate(date):date;hudTime.textContent=`${recordedDate} ${sceneTime(s,time)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
+  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time);canvas.dataset.location=s.location;canvas.dataset.view=camera;canvas.dataset.video=videoSrc&&videoOk?videoSrc:'';canvas.dataset.walkFrame=String(walk);canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
   caption.textContent=`장면 ${index+1} · ${s.note}`;seek.value=String(cursor);host.querySelector('output').textContent=`${cursor.toFixed(1)} / ${duration}초`;host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.setAttribute('aria-pressed',String(index===i)));
  }
  function loop(now){if(disposed)return;if(playing){cursor+=previous?(now-previous)/1000:0;if(cursor>=duration-.01){cursor=duration-.01;playing=false;play.textContent='처음부터 재생'}const index=Math.min(scenes.length-1,Math.floor(cursor/6));if(lastIndex>=0&&index!==lastIndex)cutUntil=now+CUT_MS;lastIndex=index}if(playing||cutUntil>now)draw();previous=now;raf=requestAnimationFrame(loop)}
@@ -220,3 +216,4 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
  try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);sheets.side??=sheets.toward;sheets.away??=sheets.toward;for(const k of ['side','toward','away','gest'])if(sheets[k])measureCenters(k,sheets[k]);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
  return ()=>{disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);video.pause();video.removeAttribute('src');video.load()};
 }
+

@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "name": "visitor-01/visitor-01-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1121760,
+      "nearOpaquePixels": 397194,
+      "bytes": 1156925,
+      "sha256": "c12d632bdc3c05689be05cabead46ec642696c46cf3692b5e88d70e22c732ca5"
+    },
+    {
+      "name": "visitor-02/visitor-02-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1135684,
+      "nearOpaquePixels": 383260,
+      "bytes": 1081289,
+      "sha256": "f53d43cd1bafc63eb894850309f05c87f1fc863cb2e46825caf7a9855201725a"
+    },
+    {
+      "name": "visitor-03/visitor-03-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1158758,
+      "nearOpaquePixels": 362431,
+      "bytes": 1116735,
+      "sha256": "4a37f5d04eb54766cb2d4a352377fe69e91c24b1526f0b5e5bd6daede054bcd1"
+    },
+    {
+      "name": "visitor-04/visitor-04-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1139234,
+      "nearOpaquePixels": 391438,
+      "bytes": 1064583,
+      "sha256": "22e410a7720dc32eefeb0b83d3d043d2d5d1a606ea1cff52d7385dc9d24bdbd0"
+    },
+    {
+      "name": "visitor-05/visitor-05-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1175427,
+      "nearOpaquePixels": 352737,
+      "bytes": 991445,
+      "sha256": "b21cfa7340991d91d6bd7e8c86464e296dabd4cd27a83159ff4f88121576acf3"
+    },
+    {
+      "name": "visitor-06/visitor-06-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1151488,
+      "nearOpaquePixels": 366737,
+      "bytes": 1117963,
+      "sha256": "dd9804173b5a549953a15cde9e8bd25665ab0c5dbd081d9c079b91bc565a284c"
+    },
+    {
+      "name": "visitor-07/visitor-07-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1113103,
+      "nearOpaquePixels": 403232,
+      "bytes": 1313084,
+      "sha256": "d428302688d73eb65b83f50813d779f19a78d300a78c01cdf486f1969fa7193e"
+    },
+    {
+      "name": "visitor-08/visitor-08-walk-toward.png",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "transparentPixels": 1163027,
+      "nearOpaquePixels": 361418,
+      "bytes": 1127579,
+      "sha256": "2e773f0bd494e4eeff3707b14422b03aa3a374cd50062521dff7dde17acd26da"
+    }
+  ]
+}

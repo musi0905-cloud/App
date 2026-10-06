@@ -1,0 +1,112 @@
+--- a/dist/replay.js
++++ b/dist/replay.js
+@@ -5,6 +5,7 @@
+ export const MODES=['normal','compare','badge','double','shadow','shadowHold','faceLock','absent','yesterday','doorClosed','doorOpen','doorCompare','preMove','footprints','voiceEarly','voiceLate','clock7','repeat','reflection','recorded','live','dateOnly','ir','reboot','loading','delay3','rainDouble','rain','removeProp','idMatch','card','fingerprint','darkCoat','hairOld','distort','faceShadow','blurCard','document','phone','ring','echo'];
+ export const CAMERAS={main:'① 기본 카메라',side:'② 다른 방향',top:'③ 위에서',close:'④ 가까이 보기'};
+ const V2='assets/v2/';
++const V4='assets/characters-v4/';
+ const BACKGROUNDS={lobby:'cctv-lobby',lobbySide:'cctv-lobby-side',hall:'cctv-hall',elevator:'cctv-elevator',stairs:'cctv-stairs',parking:'cctv-parking',door:'door-closed',doorOpen:'door-open',
+  hallSide:'cctv-hall-side',elevatorLobby:'cctv-elevator-lobby',stairsUp:'cctv-stairs-up',parkingSide:'cctv-parking-side',doorFar:'door-far',lobbyTop:'cctv-lobby-top'};
+ // v3: every place has a real second camera, and the lobby also has a top-down one.
+@@ -56,7 +57,7 @@
+  const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,walking=false,facing=1,sheet='gest',cell=GESTURE.stand;
+  // A straight walk on the floor: the foot line follows perspective, x follows the foot line so the path stays straight on screen.
+  // Pure 1/depth motion barely moves for the first half of a 6 s clip, so it is blended half-and-half with a linear walk: still faster as the figure nears, but visibly moving from the first second.
+- const path=(x0,y0,x1,y1,q=phase)=>{y=(perspectiveY(base.horizon,y0,y1,q)+y0+(y1-y0)*q)/2;x=x0+(x1-x0)*(y-y0)/(y1-y0);walking=true};
++ const path=(x0,y0,x1,y1,q=phase)=>{y=(perspectiveY(base.horizon,y0,y1,q)+y0+(y1-y0)*q)/2;x=x0+(x1-x0)*(Math.abs(y1-y0)<1e-8?q:(y-y0)/(y1-y0));walking=true};
+  const opposite=OPPOSITE.has(s.location);
+  if(s.action==='enter'||s.mode==='repeat'){const q=s.mode==='repeat'?(phase*2)%1:phase;if(opposite){path(520,base.y,base.farX,base.far,q);sheet='away'}else{path(base.farX,base.far,520,base.y,q);sheet='toward'}}
+  if(s.action==='descend'){path(base.farX,base.far,420,base.y);if(s.location==='stairsUp')sheet='toward';else{sheet='side';facing=-1}}
+@@ -68,6 +69,24 @@
+  const h=heightAt(s.location,y)*(s.mode==='distort'?1.15:1);
+  return {x,y,h,walking,facing,sheet,cell};
+ }
++
++// Deterministic distance-based cycle. Seeking and pausing never advance feet independently.
++export function travelPhase(scene,phase,look=1){
++ const p=Math.max(0,Math.min(1,phase)),q=scene.mode==='repeat'?(p*2)%1:p;
++ const s=scene.mode==='repeat'?{...scene,mode:'normal',action:'enter'}:scene;
++ if(!actorPlacement(s,q,look).walking)return -1;
++ let previous=actorPlacement(s,0,look),distance=0;
++ const steps=64;
++ for(let i=1;i<=steps;i++){const current=actorPlacement(s,q*i/steps,look);distance+=Math.hypot(current.x-previous.x,current.y-previous.y)/Math.max(1,(current.h+previous.h)/2);previous=current;}
++ return distance/(s.action==='cross'?.72:.22)*8%8;
++}
++export function actorFilter(place,mode='normal'){
++ if(mode==='ir')return 'grayscale(1) contrast(1.9) brightness(2)';
++ if(mode==='darkCoat')return 'brightness(.28)';
++ const light={lobby:.64,lobbySide:.64,hall:.68,hallSide:.68,elevator:.70,elevatorLobby:.70,stairs:.63,stairsUp:.63,parking:.60,parkingSide:.60,door:.68,doorFar:.68,lobbyTop:.64}[place]||.64;
++ return `saturate(.5) brightness(${light}) contrast(.94) blur(${mode==='blurCard'?.6:.18}px)`;
++}
++
+ export function sceneVideo(s,look,camera='main'){
+  if(camera==='side'){const v=SIDE_VIEW[s.location];return v&&AMBIENT[v]||null}
+  if(camera==='top')return null;
+@@ -85,42 +104,41 @@
+  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
+  const look=lookFor(visitor),sprite=0,roleProp=ROLE_PROP[visitor.baseRole||visitor.role]||'none';
+  let images,props,sheets={},centers={},order={},videoSrc=null,videoOk=false;const failed=new Set();
+- // Generated frames wobble a few pixels left/right and are not drawn in walking order. Measure each cell once:
+- // the torso centre keeps every frame on the same axis, and the leg spread (width of the foot rows) sorts the
+- // walk sheets into a smooth cycle: legs together → mid stride → widest → mid → together (cycleOrder).
++ // Measure torso centering, preserving authored chronological frame order.
+  function measureCenters(name,im){try{const c=document.createElement('canvas');c.width=WALK.w;c.height=WALK.h;const g=c.getContext('2d',{willReadFrequently:true});const out=[],spread=[];
+   for(let cell=0;cell<8;cell++){g.clearRect(0,0,WALK.w,WALK.h);g.drawImage(im,cell%4*WALK.w,Math.floor(cell/4)*WALK.h,WALK.w,WALK.h,0,0,WALK.w,WALK.h);const d=g.getImageData(0,0,WALK.w,WALK.h).data;let sum=0,n=0,l=WALK.w,r=0;
+    for(let y=Math.round(WALK.h*.2);y<Math.round(WALK.h*.45);y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){sum+=x;n++}
+    for(let y=Math.round(WALK.h*.86);y<WALK.footY;y+=2)for(let x=0;x<WALK.w;x+=2)if(d[(y*WALK.w+x)*4+3]>128){if(x<l)l=x;if(x>r)r=x}
+    out.push(n?sum/n:WALK.footX);spread.push(r>l?r-l:0)}
+-  centers[name]=out;order[name]=name==='gest'?null:cycleOrder(spread)}catch{centers[name]=null;order[name]=null}}
+- function cycleOrder(spread){const s=spread.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]).map(p=>p[1]);return [s[0],s[2],s[4],s[6],s[7],s[5],s[3],s[1]]}
++  centers[name]=out;order[name]=null}catch{centers[name]=null;order[name]=null}}
++
++ const character=n=>load(V4+`visitor-0${look}/visitor-0${look}-${n}.png`).catch(()=>load(V2+`visitor-0${look}-${n}.webp`));
+  const ready=Promise.all([
+   Promise.all(Object.values(BACKGROUNDS).map(n=>load(V2+n+'.webp'))),
+-  Promise.all([V2+`visitor-0${look}-stand.webp`].map(load)),
++  Promise.all([character('stand')]),
+   Promise.all(['hat','umbrella','mask','phone','parcel','glove','bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'].map(n=>load(V2+'prop-'+n+'.webp').then(im=>[n,im],()=>[n,null]))),
+-  Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>load(V2+`visitor-0${look}-${n}.webp`).then(im=>[k,im],()=>[k,null])))
++  Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>(k==='toward'||k==='gest'?character(n):load(V2+`visitor-0${look}-${n}.webp`)).then(im=>[k,im],()=>[k,null])))
+  ]);
+  function background(key){return images.bg[Object.keys(BACKGROUNDS).indexOf(key)]}
+  function prop(kind,x,y,w,h,opacity=1){const im=props[kind];if(!im)return;ctx.save();ctx.globalAlpha=opacity;ctx.drawImage(im,x,y,w,h);ctx.restore()}
+  // Props are placed relative to the figure's frame height h (walk-frame scale) and its foot point.
+  function drawProp(kind,x,y,h,mode,phase){const im=props[kind];if(!im)return;const ph={hat:h*.13,umbrella:h*.58,mask:h*.06,phone:h*.16,parcel:h*.22,glove:h*.10,bag:h*.26,'cap-reflective':h*.12,card:h*.14,flowers:h*.26,keys:h*.10,medicine:h*.09,paper:h*.16,toolbox:h*.13}[kind],pw=ph*im.width/im.height,[dx,dy]={hat:[-.02,-.92],mask:[.09,-.80],umbrella:[.2,-.51],phone:[.15,-.60],parcel:[.05,-.55],glove:[.14,-.53],bag:[.2,-.5],'cap-reflective':[-.02,-.92],card:[.17,-.6],flowers:[.17,-.62],keys:[.18,-.52],medicine:[.18,-.5],paper:[.16,-.58],toolbox:[.2,-.46]}[kind];
+   const gone=mode==='removeProp'&&['hat','mask','umbrella'].includes(kind);prop(kind,x+dx*h-pw/2+(gone?phase*60:0),y+dy*h+(gone?phase*110:0),pw,ph,gone?1-phase:1)}
+- function contactShadow(x,bottom,height,alpha){const rx=height*.17,ry=height*.045;ctx.save();ctx.globalAlpha=alpha;const g=ctx.createRadialGradient(x,bottom,0,x,bottom,rx);g.addColorStop(0,'rgba(0,4,2,.55)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,bottom,rx,ry,0,0,Math.PI*2);ctx.fill();ctx.restore()}
++ function contactShadow(x,bottom,height,alpha){ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,bottom);ctx.scale(height*.15,height*.032);const g=ctx.createRadialGradient(0,0,0,0,0,1);g.addColorStop(0,'rgba(0,4,2,.5)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.fillRect(-1,-1,2,2);ctx.restore()}
+  function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,bob=0,sheet='gest',cell=GESTURE.stand,shadow=true,breath=0}={}){
+   if(shadow&&!shadowOnly)contactShadow(x,bottom,height,alpha);
+   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
+   if(breath)ctx.scale(1,1+breath);
+   // A walking body rises a little as it passes over the standing leg (bob = 0..1 across the stride, 1 = legs together).
+-  if(walk>=0&&bob)ctx.translate(0,-height*.014*bob);
++  // Feet stay anchored; vertical weight shift is drawn in the sprite.
+   const figure=height*WALK.figure/WALK.h;
+-  const useCell=walk>=0?(order[sheet]?.[walk]??walk):cell,im2=sheets[walk>=0?sheet:'gest'];
++  const useCell=walk>=0?walk:cell,im2=sheets[walk>=0?sheet:'gest'];
+   if(im2&&useCell>=0){const k=height/WALK.h,cx=centers[walk>=0?sheet:'gest']?.[useCell]??WALK.footX;ctx.drawImage(im2,useCell%4*WALK.w,Math.floor(useCell/4)*WALK.h,WALK.w,WALK.h,-cx*k,-WALK.footY*k,WALK.w*k,WALK.h*k)}
+   else{const im=images.stand[0],k=figure/(STAND.foot-STAND.top);ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,-STAND.cellW/2*k,-STAND.foot*k,STAND.cellW*k,STAND.cellH*k)}
+   ctx.restore();
+   const shownByGesture=walk<0&&sheets.gest&&propName==='phone'&&GESTURE.phone.includes(cell);
+   const shown=propName&&propName!=='none'?propName:(walk>=0||cell===GESTURE.stand)?roleProp:'none';
+-  if(!shadowOnly&&shown!=='none'&&!shownByGesture)drawProp(shown,x,bottom,height,mode,phase);
++  if(!shadowOnly&&shown!=='none'&&!shownByGesture){ctx.save();ctx.filter=filter;drawProp(shown,x,bottom,height,mode,phase);ctx.restore()}
+  }
+  function headCrop(x,y,w,h){const im=images.stand[0];ctx.drawImage(im,sprite*STAND.cellW+STAND.cellW*.27,STAND.top,STAND.cellW*.46,STAND.cellH*.2,x,y,w,h)}
+  function setVideo(name,local){
+@@ -150,11 +168,11 @@
+   if(videoOk&&videoSrc&&video.readyState>=2&&!video.seeking){try{ctx.drawImage(video,0,0,960,640)}catch{}}
+   cameraTransform(view,pos);
+   let {x,y,h}=pos;
+-  // Walking across the frame paces the stride by distance travelled so the feet never slide; depth walks use the clock.
+-  const stride=.8*h*WALK.figure/WALK.h,wp=!(pos.walking&&sheets[pos.sheet])?-1:s.action==='cross'?((x-120)/stride*8)%8:walkPhase(cursor),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
++  // All walk directions use projected travel distance; authored poses still determine contact quality.
++  const stride=.8*h*WALK.figure/WALK.h,wp=!(pos.walking&&sheets[pos.sheet])?-1:travelPhase(view,phase,look),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
+   // Standing figures breathe very slightly (period 3 s), so a paused frame still reads as a living person.
+   const breath=walk<0?Math.sin(cursor*Math.PI*2/3)*.006:0;
+-  const filter=mode==='darkCoat'?'brightness(.35)':mode==='ir'?'grayscale(1) contrast(1.9) brightness(2)':mode==='blurCard'?'blur(.6px) saturate(.6) brightness(.8)':'saturate(.6) brightness(.8)';
++  const filter=actorFilter(place,mode);
+   // The hallway camera cannot see inside the elevator: it only shows someone walking in, never someone standing inside.
+   const hiddenByView=place==='elevatorLobby'&&s.action!=='enter';
+   if(!clipHasActor&&!hiddenByView){
