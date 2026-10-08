@@ -1,5 +1,5 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor,LIVE_MODES} from './replay.js';
-import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash} from './engine.js';
+import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS} from './engine.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
 // Phones only allow sound and speech that start inside a tap: wake both up in the tap itself, then play later.
@@ -9,7 +9,23 @@ const $=id=>document.getElementById(id),ACTIVE='404_active_v2',LAST='404_last_ru
 const ENDING_NOTES={'404호':'없는 집으로 사람을 들여보냈어요. 이 밤은 여기서 끝나요.','오판':'위험한 사람을 두 번 넘게 들여보냈어요. 다음에는 한 번 더 확인해요.','무고한 거부':'괜찮은 사람을 세 번 넘게 돌려보냈어요. 기록과 전화를 믿어 봐요.','신중한 경비원':'모든 방문객을 꼼꼼히 확인하고 한 번 더 확인까지 했어요.','첫 근무의 기록':'첫 밤을 무사히 마쳤어요. 오늘 밤의 선택이 기록으로 남았어요.','퇴근':'오늘 밤의 선택이 기록으로 남았어요. 내일 밤에 다시 만나요.'};
 let scenarios=[],visitors=[],anomalies=[],run=null,ready=false,deferredInstall=null,activeTool=null,toolOrigin=null,cameraPast=false,replayCleanup=null,replayGeneration=0; 
 function clearReplay(){replayGeneration++;if(replayCleanup){replayCleanup();replayCleanup=null}}
-function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}['home','game','investigation','feedback','result'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
+// Story v1.1 data (docs/STORY_IMPORT_REPORT.md): per-visitor pinned anomaly and reaction lines, the 40 authored night
+// scenes (only night 1 is playable now), and the 30 ending cutscenes (only E01-E06 are reachable).
+let storyVisitors=[],storyScenes=[],storyEndings=[];
+const pairsOf=()=>Object.fromEntries(storyVisitors.map(v=>[v.id,v.anomaly_id]));
+function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
+function endingTitle(end){return storyEndings.find(e=>e.id===ENDING_IDS[end])?.title||end}
+// Ending cutscene: the four authored shots as captions over the matching backdrop, then the three spoken lines.
+const SHOT_POSTER={'경비실':'guard-monitors','증거보드':'ledger-desk','현관 CCTV':'cctv-lobby','새벽의 외관':'ending-dawn'};
+let cutTimer=0;
+function clearCutscene(){clearTimeout(cutTimer);cutTimer=0}
+function mountCutscene(se,end){clearCutscene();const box=$('result').querySelector('.scene-media'),cap=$('cutCaption'),dots=$('cutDots'),lines=$('cutLines');
+ if(!se){cap.textContent='';dots.innerHTML='';lines.innerHTML='';setPoster(box,end==='404호'?'ending-404':'ending-dawn',end==='404호'?null:'12-ending-dawn');box.onclick=null;return}
+ const shots=se.cutscene,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let i=-1;
+ lines.innerHTML=se.dialogue.map(d=>`<li><b>${escapeHTML(d.speaker)}</b>${escapeHTML(d.text)}</li>`).join('');
+ const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&end==='404호'?'ending-404':SHOT_POSTER[sh.setting]||'ending-dawn';setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
+ box.onclick=()=>show(i+1);cap.onclick=()=>show(i+1);show(0)}
+function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();['home','game','investigation','feedback','result'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
 // Photo backdrops with an optional looping video. Videos get a src only while their screen is visible, and never with reduced motion.
 const MEDIA='assets/v2/',reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function activateMedia(){document.querySelectorAll('.scene-media').forEach(box=>{
@@ -24,7 +40,7 @@ function mountClips(){document.querySelectorAll('#clipGallery figure').forEach(f
 function storageGet(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
 function save(){try{localStorage.setItem(ACTIVE,JSON.stringify(run))}catch{$('storageNotice').hidden=false}}
 // Returns the case with every {name}/{unit} placeholder filled, so no text field can show a raw placeholder.
-function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,baseRole:original.role,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;return {v,a,pack}}
+function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,baseRole:original.role,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;const st=storyFor(p);if(st.scene?.dialogue?.arrival)v.claim=st.scene.dialogue.arrival;v.story=st.sv;return {v,a,pack}}
 function fillDeep(x,v){return typeof x==='string'?fill(x,v):Array.isArray(x)?x.map(y=>fillDeep(y,v)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,y])=>[k,fillDeep(y,v)])):x}
 function fill(s,v){return String(s).replaceAll('{name}',v.name).replaceAll('{unit}',v.unit)}
 function sourceTime(minutes=0){return shiftedTime(TIMES[run.index],minutes)}
@@ -59,16 +75,17 @@ function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?
   setPoster($('feedback').querySelector('.scene-media'),h.allow?'door-open':'door-closed');
   $('feedbackTitle').textContent=h.correct?'잘 판단했어요. 맞았어요':'아쉬워요. 틀렸어요';
   $('feedbackText').textContent=`${v.name} 님(${v.unit}호)은 ${a.safe?'들여보내도 되는 사람이었어요.':'문을 열어 주면 안 되는 사람이었어요.'} ${g.clue}`;$('reason').textContent=g.verify;
+  const react=v.story?.dialogue?.[h.allow?'on_allow':'on_deny'];$('reaction').hidden=!react;$('reaction').textContent=react?`${v.name}: “${react}”`:'';
   $('hint').hidden=h.correct;$('hint').textContent=h.correct?'':`다음에는 이렇게 해 보세요: ${g.question}`;
   $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';
  }else{
-  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';$('ending').textContent=end;$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';setPoster($('result').querySelector('.scene-media'),end==='404호'?'ending-404':'ending-dawn',end==='404호'?null:'12-ending-dawn');$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
+  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';const se=storyEndings.find(e=>e.id===ENDING_IDS[end]);$('ending').textContent=endingTitle(end);$('ending').dataset.endingId=se?.id||'';$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';mountCutscene(se,end);$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
   $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번`;
   try{localStorage.setItem(LAST,JSON.stringify({date:run.date,mode:run.mode,ending:end,correct:t.correct,history:run.history}))}catch{$('storageNotice').hidden=false}
  }show(run.screen);
 }
-function home(){show('home');$('clock').textContent='00:00';$('resume').hidden=!run;$('resume').textContent=run?.screen==='result'?'지난 결과 보기':'이어서 근무';const prev=storageGet(LAST);$('record').textContent=prev&&typeof prev.ending==='string'?`지난 근무: ${prev.ending} · ${prev.correct}/8`:''}
-function start(mode){if(!ready)return;run=newRun(mode,visitors,anomalies);save();render()}
+function home(){show('home');$('clock').textContent='00:00';$('resume').hidden=!run;$('resume').textContent=run?.screen==='result'?'지난 결과 보기':'이어서 근무';const prev=storageGet(LAST);$('record').textContent=prev&&typeof prev.ending==='string'?`지난 근무: ${endingTitle(prev.ending)} · ${prev.correct}/8`:''}
+function start(mode){if(!ready)return;run=newRun(mode,visitors,anomalies,undefined,pairsOf());save();render()}
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function clueFor(tool){const {v,a,pack}=current();if(tool===a.channel)return pack.plain.what;if(tool==='명부')return `관리실 기록에서 ${v.name} 님의 ${v.unit}호 방문을 찾았어요. 들어와도 되는지는 그 집에 한 번 더 물어봐야 해요.`;if(tool==='통화')return `${fill(pack.call.line,v)} ${pack.call.detail}`;return `${sourceTime(-1)}에 현관으로 왔고, ${TIMES[run.index]}에 문을 열어 달라고 했어요. ${a.channel==='명부'?'가져온 종이와 관리실 기록':'그 집에 전화한 내용'}도 확인하세요.`}
 function inspected(){return activeTool==='재확인'?run.verified:run.seen.includes(activeTool)}
@@ -153,7 +170,7 @@ function next(){if(run&&advance(run)){save();render()}}
 async function share(){if(!run||run.screen!=='result')return;$('share').disabled=true;
  try{
   const c=document.createElement('canvas');c.width=1080;c.height=1350;const ctx=c.getContext('2d'),t=totals(run);ctx.fillStyle='#101a1b';ctx.fillRect(0,0,1080,1350);try{const bg=await new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=MEDIA+'ending-dawn.webp'});const sw=bg.height*1080/1350;ctx.globalAlpha=.35;ctx.drawImage(bg,(bg.width-sw)/2,0,sw,bg.height,0,0,1080,1350);ctx.globalAlpha=1;ctx.fillStyle='#101a1bb0';ctx.fillRect(0,0,1080,1350)}catch{}ctx.strokeStyle='#b8a475';ctx.lineWidth=4;ctx.strokeRect(70,70,940,1210);
-  ctx.fillStyle='#d6bd79';ctx.font='38px sans-serif';ctx.fillText('404호는 없습니다',110,170);ctx.fillStyle='#e7eadc';ctx.font='bold 68px sans-serif';ctx.fillText(ending(run,anomalies),110,360,860);
+  ctx.fillStyle='#d6bd79';ctx.font='38px sans-serif';ctx.fillText('404호는 없습니다',110,170);ctx.fillStyle='#e7eadc';ctx.font='bold 68px sans-serif';ctx.fillText(endingTitle(ending(run,anomalies)),110,360,860);
   ctx.font='36px sans-serif';['야간근무 기록 · '+run.date,`8명 중 ${t.correct}명 맞힘`,`위험한 사람을 들여보냄 ${t.threats}번`,`괜찮은 사람을 돌려보냄 ${t.denials}번`,'당신이라면 문을 열어 줄 건가요?'].forEach((line,i)=>ctx.fillText(line,110,525+i*120,860));
   const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw Error('이미지를 만들 수 없어요.');const file=new File([blob],'404-근무기록.png',{type:'image/png'});
   if(navigator.canShare?.({files:[file]})){try{await navigator.share({files:[file],title:'404호는 없습니다'});return}catch(e){if(e.name==='AbortError')return}}
@@ -168,7 +185,7 @@ async function offline(){
 async function boot(){
  $('startStory').disabled=$('startDaily').disabled=true;$('retry').hidden=true;$('record').textContent='게임 자료를 불러오는 중이에요…';
  try{
-  const response=await Promise.all(['visitors','anomalies','scenarios'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');[visitors,anomalies,scenarios]=await Promise.all(response.map(r=>r.json()));if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id)))throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
+  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings]=await Promise.all(response.map(r=>r.json()));if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
   ready=true;const stored=storageGet(ACTIVE);run=validRun(stored,visitors,anomalies)?stored:null;if(stored&&!run){$('storageNotice').textContent='지난 기록을 읽지 못해서 새로 시작해요.';$('storageNotice').hidden=false}
   $('startStory').disabled=$('startDaily').disabled=false;home();offline();
  }catch(e){$('record').textContent=e.message;$('retry').hidden=false}
@@ -178,4 +195,4 @@ $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction
 $('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>{primeAudio();decide(true)};$('deny').onclick=()=>{primeAudio();decide(false)};$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.12.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.13.0';boot();

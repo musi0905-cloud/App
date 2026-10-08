@@ -2,12 +2,12 @@
 
 아파트 야간 경비원이 방문객을 들여보낼지 판단하는 한국어 공포 게임입니다. 한 번 구매하면 계속 쓰고, 광고와 추가 결제는 없습니다.
 
-## 현재 상태 (2026-10-06)
+## 현재 상태 (2026-10-08)
 
 | 항목 | 상태 |
 |---|---|
 | 운영 사이트 | v0.5.0 (ChatGPT Sites, 소유자 전용) |
-| 최신 작업본 | v0.12.0 — `room404/` (운영 미배포). 쉬운 대사, 전화 목소리, 넘기는 기록부, 이미지 v2·v3, 장소별 2대 카메라, 원근법·연출·효과음, 휴대폰 지적 수정, 인터폰 모니터+말풍선, 방문객 8명·소품 14종 |
+| 최신 작업본 | v0.13.0 — `room404/` (운영 미배포). 쉬운 대사, 전화 목소리, 넘기는 기록부, 이미지 v2·v3, 장소별 2대 카메라, 원근법·연출·효과음, 휴대폰 지적 수정, 인터폰 모니터+말풍선, 방문객 8명·소품 14종 |
 | 웹 테스트 링크 | https://claude.ai/artifact/5SGZeeX8wAE1mDyaYGG48B (최신 작업본을 그대로 올림. 결과 이미지 저장 버튼은 이 뷰어에서 동작하지 않음) |
 | iOS 앱 | Capacitor 8.5.2 Xcode 프로젝트 초안 (v0.2 기준, 최신 코드와 동기화 필요) |
 | Android 앱 | 아직 없음 |
@@ -22,6 +22,7 @@
 | `visual-motion-v2/` | 이미지·모션 v2 원본 117개 (배경, 걷기 프레임, 소품, 영상 23개, 제작 코드·문서). 게임에는 WebP로 줄여 적용 |
 | `character-v4/` | 캐릭터 v4 보행 수정 원본 (앞모습 걷기 시트 8장, 렌더러 수정안, 검수 문서). v0.12에서 적용 |
 | `visual-v3/` | 이미지 v3 원본 41개 + 검수 문서 (배경 6, 방문객 8명 그림, 소품 8, 화면 3). v0.10~v0.11에서 적용 |
+| `story-plan/v1.1/` | 스토리 개발기획 v1.1 패키지 원본(문서 20종, 데이터 JSON/CSV, 프로토타입 SVG). 점검·연결 상태는 `docs/STORY_IMPORT_REPORT.md` |
 | `docs/` | 정리 문서 |
 
 ## 문서
@@ -34,6 +35,7 @@
 | [docs/WRITING_GUIDE.md](docs/WRITING_GUIDE.md) | 게임 문구·대사 작성 기준 (쉬운 말) |
 | [docs/CCTV_ANGLE_IMAGE_SPEC.md](docs/CCTV_ANGLE_IMAGE_SPEC.md) | CCTV 여러 각도용 그림 규격 |
 | [docs/GPT_ASSET_PROMPT.md](docs/GPT_ASSET_PROMPT.md) | GPT에 그림(배경·인물·사물)을 요청하는 복사용 프롬프트 |
+| [docs/STORY_IMPORT_REPORT.md](docs/STORY_IMPORT_REPORT.md) | 스토리 v1.1 패키지 점검 결과, 연결한 것/안 한 것 |
 | [docs/WORKLOG.md](docs/WORKLOG.md) | 작업 기록과 남은 일 |
 
 ## 원본 자료 위치

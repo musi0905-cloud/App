@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/engine.test.mjs tests/scenarios.test.mjs",
+    "test": "node --test tests/engine.test.mjs tests/scenarios.test.mjs tests/story.test.mjs",
     "test:ui": "node tests/browser.mjs",
     "test:all-cases": "node tests/all-cases.mjs"
   },

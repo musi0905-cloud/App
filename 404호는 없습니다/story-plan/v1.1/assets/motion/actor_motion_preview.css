@@ -1,0 +1,6 @@
+/* Preview character state animations (blockout art only). Alternate left/right feet included in 4-frame sources. */
+.actor {width:min(30vw,240px);height:auto;transform-origin:50% 96%;animation:actor-bob .48s steps(2,end) infinite;}
+@keyframes actor-bob {0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.actor.is-idle{animation:actor-idle 2.7s ease-in-out infinite}
+@keyframes actor-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media (prefers-reduced-motion: reduce){.actor{animation:none!important}}

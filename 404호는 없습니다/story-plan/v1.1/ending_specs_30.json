@@ -1,0 +1,272 @@
+[
+  {
+    "id": "E01",
+    "title": "평범한 퇴근",
+    "type": "일반",
+    "gate": "N1 완주, 고우선 엔딩 조건 미충족",
+    "priority": 40,
+    "ending_text": "《평범한 퇴근》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E02",
+    "title": "신중한 경비원",
+    "type": "일반",
+    "gate": "N1 사건 8건 전부 적정 판정 및 핵심 조사 완료",
+    "priority": 40,
+    "ending_text": "《신중한 경비원》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E03",
+    "title": "위험한 출입",
+    "type": "위험·실수",
+    "gate": "동일 야간 승인 없는 위험 방문자 2회 이상 허용",
+    "priority": 40,
+    "ending_text": "《위험한 출입》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E04",
+    "title": "문 앞의 사람",
+    "type": "위험·실수",
+    "gate": "동일 야간 정상 방문자 3회 이상 거부",
+    "priority": 40,
+    "ending_text": "《문 앞의 사람》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E05",
+    "title": "404호",
+    "type": "위험·실수",
+    "gate": "N1_06 404 기록 조작자 출입 허용",
+    "priority": 40,
+    "ending_text": "《404호》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E06",
+    "title": "첫 기록",
+    "type": "일반",
+    "gate": "N1 완주 및 다음 야간 진입, 상위 엔딩 미충족",
+    "priority": 40,
+    "ending_text": "《첫 기록》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "detailed"
+  },
+  {
+    "id": "E07",
+    "title": "가짜 교대자",
+    "type": "위험·실수",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《가짜 교대자》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E08",
+    "title": "잘못 울린 벨",
+    "type": "일반",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《잘못 울린 벨》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E09",
+    "title": "우산을 든 사람",
+    "type": "위험·실수",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《우산을 든 사람》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E10",
+    "title": "13층의 화면",
+    "type": "증거·발견",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《13층의 화면》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E11",
+    "title": "관리소장",
+    "type": "증거·발견",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《관리소장》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E12",
+    "title": "분실 명부",
+    "type": "증거·발견",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《분실 명부》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E13",
+    "title": "두 번째 얼굴",
+    "type": "위험·실수",
+    "gate": "N2의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《두 번째 얼굴》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E14",
+    "title": "원본 영상",
+    "type": "증거·발견",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《원본 영상》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E15",
+    "title": "주소 없는 편지",
+    "type": "증거·발견",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《주소 없는 편지》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E16",
+    "title": "새벽의 소방차",
+    "type": "증거·발견",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《새벽의 소방차》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E17",
+    "title": "잠긴 계단",
+    "type": "위험·실수",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《잠긴 계단》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E18",
+    "title": "방송의 주인",
+    "type": "증거·발견",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《방송의 주인》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E19",
+    "title": "거짓 규칙",
+    "type": "증거·발견",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《거짓 규칙》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E20",
+    "title": "유리문",
+    "type": "위험·실수",
+    "gate": "N3의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《유리문》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E21",
+    "title": "방문 예약",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《방문 예약》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E22",
+    "title": "실종 신고",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《실종 신고》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E23",
+    "title": "화재 기록",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《화재 기록》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E24",
+    "title": "빈 호수",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《빈 호수》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E25",
+    "title": "후보의 전화",
+    "type": "위험·실수",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《후보의 전화》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E26",
+    "title": "아침의 이름",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《아침의 이름》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E27",
+    "title": "1997",
+    "type": "증거·발견",
+    "gate": "N4의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《1997》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E28",
+    "title": "관리실 열쇠",
+    "type": "증거·발견",
+    "gate": "N5의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《관리실 열쇠》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E29",
+    "title": "퇴사서",
+    "type": "증거·발견",
+    "gate": "N5의 관련 증거/장면 플래그 확인, 우선 엔딩 조건 미충족; 연출은 메인 결말로 수렴",
+    "priority": 20,
+    "ending_text": "《퇴사서》 — 경비실에 남은 기록은 당신의 판단만큼 불완전했다. 확인한 사실과 끝내 확인하지 못한 이름이 서로 다른 무게로 남는다.",
+    "implementation_state": "spec_conditional"
+  },
+  {
+    "id": "E30",
+    "title": "404호는 없습니다",
+    "type": "진엔딩",
+    "gate": "PZ01~PZ05 완료; EV01 EV06 EV09 EV10 EV13 EV15 EV16 EV17 검증; 피해자 신원 보존; 외부 원본 제출",
+    "priority": 100,
+    "ending_text": "404호는 없어진 적이 없었다. 누군가 그 이름을 지웠을 뿐이다. 김정우, 이수연, 김하은. 세 사람의 이름이 최초 신고 기록과 함께 남는다. 자료는 검증 가능한 경로로 전달되지만, 수사와 사회의 판단은 이제 시작이다.",
+    "implementation_state": "detailed"
+  }
+]
