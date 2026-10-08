@@ -1,0 +1,596 @@
+[
+  {
+    "id": "E01",
+    "title": "평범한 퇴근",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": false,
+    "requires": {
+      "legacy_engine_result": "E01"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E01"
+  },
+  {
+    "id": "E02",
+    "title": "신중한 경비원",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": false,
+    "requires": {
+      "legacy_engine_result": "E02"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E02"
+  },
+  {
+    "id": "E03",
+    "title": "위험한 출입",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": true,
+    "requires": {
+      "legacy_engine_result": "E03"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E03"
+  },
+  {
+    "id": "E04",
+    "title": "문 앞의 사람",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": true,
+    "requires": {
+      "legacy_engine_result": "E04"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E04"
+  },
+  {
+    "id": "E05",
+    "title": "404호",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": true,
+    "requires": {
+      "legacy_engine_result": "E05"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E05"
+  },
+  {
+    "id": "E06",
+    "title": "첫 기록",
+    "type": "legacy_night1",
+    "priority": 10,
+    "terminal": false,
+    "requires": {
+      "legacy_engine_result": "E06"
+    },
+    "narrative_causality": "원형 판정 조건은 엔진 유지; N1 통과 후 스토리 진행에는 적용 금지",
+    "cutscene_ref": "E06"
+  },
+  {
+    "id": "E07",
+    "title": "가짜 교대자",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_01",
+      "evidence_acquired": [
+        "EV02"
+      ],
+      "choice_equals": {
+        "N2_01": "accept_unverified_replacement"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_01"
+    },
+    "narrative_causality": "기록 대조 전 미확인 교대자를 신뢰하여 기록 접근을 허용한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E07"
+  },
+  {
+    "id": "E08",
+    "title": "잘못 울린 벨",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_02",
+      "evidence_acquired": [
+        "EV03"
+      ],
+      "choice_equals": {
+        "N2_02": "ignore_verified_emergency"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_02"
+    },
+    "narrative_causality": "독립적으로 확인한 안전 신고를 무시한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E08"
+  },
+  {
+    "id": "E09",
+    "title": "우산을 든 사람",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_03",
+      "evidence_acquired": [
+        "EV01"
+      ],
+      "choice_equals": {
+        "N2_03": "accuse_visitor_from_appearance"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_03"
+    },
+    "narrative_causality": "신원 확인보다 외양만 근거로 방문객을 위협자로 단정한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E09"
+  },
+  {
+    "id": "E10",
+    "title": "13층의 화면",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_04",
+      "evidence_acquired": [
+        "EV02"
+      ],
+      "choice_equals": {
+        "N2_04": "preserve_anomalous_video"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_04"
+    },
+    "narrative_causality": "원본 확인 전 이상한 층의 CCTV 프레임을 보존한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E10"
+  },
+  {
+    "id": "E11",
+    "title": "관리소장",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_05",
+      "evidence_acquired": [
+        "EV04"
+      ],
+      "choice_equals": {
+        "N2_05": "submit_records_to_manager"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_05"
+    },
+    "narrative_causality": "관리소장이 자료를 회수한다는 말을 검증 없이 받아들인다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E11"
+  },
+  {
+    "id": "E12",
+    "title": "분실 명부",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_06",
+      "evidence_acquired": [
+        "EV05"
+      ],
+      "choice_equals": {
+        "N2_06": "keep_original_registry"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_06"
+    },
+    "narrative_causality": "삭제된 옛 세대 기록을 보관한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E12"
+  },
+  {
+    "id": "E13",
+    "title": "두 번째 얼굴",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 2,
+      "scene_completed": "N2_07",
+      "evidence_acquired": [
+        "EV03"
+      ],
+      "choice_equals": {
+        "N2_07": "admit_unverified_duplicate"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N2_07"
+    },
+    "narrative_causality": "이미 입실한 인물과 일치하지 않는 방문객을 검증 없이 들인다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E13"
+  },
+  {
+    "id": "E14",
+    "title": "원본 영상",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_01",
+      "evidence_acquired": [
+        "EV05"
+      ],
+      "choice_equals": {
+        "N3_01": "restore_video_archive"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_01"
+    },
+    "narrative_causality": "기록이 삭제되기 전에 원본 영상을 별도 보관한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E14"
+  },
+  {
+    "id": "E15",
+    "title": "주소 없는 편지",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_02",
+      "evidence_acquired": [
+        "EV06"
+      ],
+      "choice_equals": {
+        "N3_02": "preserve_addressless_letter"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_02"
+    },
+    "narrative_causality": "발신인 미상 서신을 증거물로 봉인한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E15"
+  },
+  {
+    "id": "E16",
+    "title": "새벽의 소방차",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_03",
+      "evidence_acquired": [
+        "EV08"
+      ],
+      "choice_equals": {
+        "N3_03": "contact_emergency_services"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_03"
+    },
+    "narrative_causality": "화재 신고를 독립 경로로 재확인한 뒤 구조를 요청한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E16"
+  },
+  {
+    "id": "E17",
+    "title": "잠긴 계단",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_04",
+      "evidence_acquired": [
+        "EV16"
+      ],
+      "choice_equals": {
+        "N3_04": "enter_sealed_stairwell_alone"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_04"
+    },
+    "narrative_causality": "안전확인 없이 봉쇄 계단에 홀로 진입한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E17"
+  },
+  {
+    "id": "E18",
+    "title": "방송의 주인",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_05",
+      "evidence_acquired": [
+        "EV07"
+      ],
+      "choice_equals": {
+        "N3_05": "identify_archive_announcement"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_05"
+    },
+    "narrative_causality": "방송 녹음 원본의 제작 시점을 확인한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E18"
+  },
+  {
+    "id": "E19",
+    "title": "거짓 규칙",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_06",
+      "evidence_acquired": [
+        "EV05"
+      ],
+      "choice_equals": {
+        "N3_06": "reject_forged_rule"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_06"
+    },
+    "narrative_causality": "필체와 문서번호가 다른 출입 규칙을 거부한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E19"
+  },
+  {
+    "id": "E20",
+    "title": "유리문",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 3,
+      "scene_completed": "N3_07",
+      "evidence_acquired": [
+        "EV18"
+      ],
+      "choice_equals": {
+        "N3_07": "open_for_unverified_reflection"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N3_07"
+    },
+    "narrative_causality": "현장에 실재하지 않는 영상상의 인물을 위해 출입문을 연다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E20"
+  },
+  {
+    "id": "E21",
+    "title": "방문 예약",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_01",
+      "evidence_acquired": [
+        "EV09"
+      ],
+      "choice_equals": {
+        "N4_01": "correct_booking_error"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_01"
+    },
+    "narrative_causality": "독립 확인으로 방문 예약 오기를 해결한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E21"
+  },
+  {
+    "id": "E22",
+    "title": "실종 신고",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_02",
+      "evidence_acquired": [
+        "EV11"
+      ],
+      "choice_equals": {
+        "N4_02": "trace_missing_person_route"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_02"
+    },
+    "narrative_causality": "실종 신고자 행적과 당시 출입 기록을 연결한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E22"
+  },
+  {
+    "id": "E23",
+    "title": "화재 기록",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_03",
+      "evidence_acquired": [
+        "EV12"
+      ],
+      "choice_equals": {
+        "N4_03": "preserve_fire_history"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_03"
+    },
+    "narrative_causality": "상충되는 두 화재 문서를 모두 보존한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E23"
+  },
+  {
+    "id": "E24",
+    "title": "빈 호수",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_04",
+      "evidence_acquired": [
+        "EV15"
+      ],
+      "choice_equals": {
+        "N4_04": "reconstruct_hidden_room"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_04"
+    },
+    "narrative_causality": "404호 봉쇄 위치를 도면과 현장 표찰로 복원한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E24"
+  },
+  {
+    "id": "E25",
+    "title": "후보의 전화",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_05",
+      "evidence_acquired": [
+        "EV13"
+      ],
+      "choice_equals": {
+        "N4_05": "trust_campaign_phone"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_05"
+    },
+    "narrative_causality": "등록되지 않은 캠프 관계자의 지시를 공식 확인처럼 받아들인다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E25"
+  },
+  {
+    "id": "E26",
+    "title": "아침의 이름",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_06",
+      "evidence_acquired": [
+        "EV17"
+      ],
+      "choice_equals": {
+        "N4_06": "document_victim_names"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_06"
+    },
+    "narrative_causality": "가족 전원의 이름과 피해 사실을 분리하여 기록한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E26"
+  },
+  {
+    "id": "E27",
+    "title": "1997",
+    "type": "optional_archive_resolution",
+    "priority": 100,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 4,
+      "scene_completed": "N4_07",
+      "evidence_acquired": [
+        "EV16"
+      ],
+      "choice_equals": {
+        "N4_07": "recover_original_blueprint"
+      },
+      "explicit_confirm_ending": true,
+      "selected_archive_scene": "N4_07"
+    },
+    "narrative_causality": "1997년 원본 도면과 변경기록을 대조한다",
+    "missing_evidence_policy": "archive_recovery_before_finalization",
+    "cutscene_ref": "E27"
+  },
+  {
+    "id": "E28",
+    "title": "관리실 열쇠",
+    "type": "final_choice",
+    "priority": 200,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 5,
+      "scene_completed": "N5_01",
+      "final_choice": "seal_archive"
+    },
+    "narrative_causality": "5야간 최종 선택의 직접적인 결과",
+    "cutscene_ref": "E28"
+  },
+  {
+    "id": "E29",
+    "title": "퇴사서",
+    "type": "final_choice",
+    "priority": 200,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 5,
+      "scene_completed": "N5_02",
+      "final_choice": "resign"
+    },
+    "narrative_causality": "5야간 최종 선택의 직접적인 결과",
+    "cutscene_ref": "E29"
+  },
+  {
+    "id": "E30",
+    "title": "404호는 없습니다",
+    "type": "true_ending",
+    "priority": 300,
+    "terminal": true,
+    "requires": {
+      "min_night_completed": 5,
+      "puzzles_all": [
+        "PZ01",
+        "PZ02",
+        "PZ03",
+        "PZ04",
+        "PZ05"
+      ],
+      "verified_evidence_all": [
+        "EV01",
+        "EV06",
+        "EV09",
+        "EV10",
+        "EV13",
+        "EV15",
+        "EV16",
+        "EV17"
+      ],
+      "victim_names_preserved": true,
+      "external_submission": true,
+      "final_choice": "submit_verified_evidence"
+    },
+    "narrative_causality": "살인→방화→기록 조작을 독립 증거로 재구성하여 외부에 보존 제출",
+    "cutscene_ref": "E30"
+  }
+]

@@ -6,7 +6,8 @@ const {server,origin:url}=await startServer(root);
 const executablePath=process.env.CHROMIUM_EXECUTABLE||(process.platform==='linux'?resolve(tmpdir(),'room404-chromium'):undefined);
 const browser=await chromium.launch({headless:true,executablePath,args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']});const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});const page=await context.newPage();page.setDefaultTimeout(8000);const errors=[],results=[];page.on('pageerror',e=>errors.push(e.message));
 try{
- await page.addInitScript(()=>{if(window.name.startsWith('{'))localStorage.setItem('404_active_v2',window.name)});await page.goto(url);await page.waitForFunction(()=>!document.getElementById('startStory').disabled);
+ // v0.14.0: each injected first-shift save goes through the 404_active_v2 -> 404_story_v3 migration, so the story key is cleared first.
+ await page.addInitScript(()=>{if(window.name.startsWith('{')){localStorage.removeItem('404_story_v3');localStorage.setItem('404_active_v2',window.name)}});await page.goto(url);await page.waitForFunction(()=>!document.getElementById('startStory').disabled);
  for(let i=0;i<cases.length;i++){
  const c=cases[i];await page.evaluate(async({id,i})=>{const {newRun}=await import('/engine.js');const v=await(await fetch('/data/visitors.json')).json(),a=await(await fetch('/data/anomalies.json')).json();const run=newRun('story',v,a,'2026-09-30');run.cases[0]={visitor:v[i].id,anomaly:id};window.name=JSON.stringify(run)},{id:c.id,i});
  await page.reload();await page.locator('#resume').click();assert.ok(await page.locator('#portrait .person-sprite').isVisible());

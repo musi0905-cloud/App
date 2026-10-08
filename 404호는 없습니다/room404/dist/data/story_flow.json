@@ -1,0 +1,45 @@
+{
+ "source": "야간 제목: story-plan/v1.1/09_SCENE_SCRIPT_40.md, 도입문: 04_NARRATIVE_ACTS_AND_SCENES.md, 처리 선택: v1.3 ending_gates_30_simulated.json의 choice_equals 값과 narrative_causality를 화면 문장으로 옮긴 [DESIGN] 문안. 각 선택의 두 번째 값(대안)은 기획 문서에 없어 새로 정한 절차형 선택이며 어떤 결말 조건에도 쓰이지 않는다.",
+ "nights": {
+  "1": {"title": "첫 근무 — 이상한 주소", "intro": "교대 경비원이 말한다. ‘명부가 우선이에요. 404호는 없어요.’ 오늘 밤 여덟 명이 현관 앞에 선다."},
+  "2": {"title": "없는 주소 — 사라진 문", "intro": "관리소장은 404 관련 서류가 오기라고 했다. 오늘 밤에는 방문객과 별개로, 기록을 들고 온 사람들이 경비실 창구를 찾는다."},
+  "3": {"title": "화재는 없었다 — 침묵의 가격", "intro": "낡은 가족사진 뒷면에 404라는 숫자가 적혀 있다. ‘사건 없음’이라는 문구가 무엇을 지웠는지 확인할 밤이다."},
+  "4": {"title": "기록 교체 — 권력의 방문", "intro": "전 경비원 박영식의 수기 근무일지가 도착했다. 누가 언제 기록을 바꾸게 했는지, 자료를 회수하려는 사람들이 먼저 찾아온다."},
+  "5": {"title": "마지막 출입 — 세 사람의 이름", "intro": "기존 결론과 맞지 않는 시각 자료가 들어왔다. 오늘 밤이 지나면 어떤 원본을 남길지 정해야 한다."}
+ },
+ "contact_label": "기록을 들고 온 사람",
+ "choices": {
+  "N2_01": [{"value": "accept_unverified_replacement", "label": "명부를 대신 봐 주겠다는 교대자에게 확인 없이 명부를 넘긴다"}, {"value": "verify_replacement_first", "label": "교대자 신분을 관리실 근무표로 먼저 확인한다"}],
+  "N2_02": [{"value": "dispatch_emergency_check", "label": "확인된 비상벨 신고를 관리실과 함께 점검한다"}, {"value": "ignore_verified_emergency", "label": "확인된 비상벨 신고를 오작동으로 보고 넘긴다"}],
+  "N2_03": [{"value": "accuse_visitor_from_appearance", "label": "우산과 옷차림만 보고 이 사람을 위험인물로 적는다"}, {"value": "record_identity_check", "label": "신원 확인 결과만 근무일지에 적는다"}],
+  "N2_04": [{"value": "check_original_first", "label": "원본 녹화와 대조한 뒤에만 영상을 보존한다"}, {"value": "preserve_anomalous_video", "label": "원본 확인 전에 이상한 층이 찍힌 CCTV 장면을 따로 보존한다"}],
+  "N2_05": [{"value": "submit_records_to_manager", "label": "자료를 회수하겠다는 관리소장의 말대로 자료를 넘긴다"}, {"value": "keep_records_logged", "label": "자료를 넘기지 않고 인수인계 기록에 남긴다"}],
+  "N2_06": [{"value": "return_registry", "label": "옛 세대 기록을 관리실 서고에 돌려놓는다"}, {"value": "keep_original_registry", "label": "지워진 옛 세대 기록을 따로 보관한다"}],
+  "N2_07": [{"value": "admit_unverified_duplicate", "label": "이미 들어간 사람과 겹치는 방문객을 확인 없이 들인다"}, {"value": "hold_duplicate", "label": "겹치는 방문 기록부터 확인하고 기다리게 한다"}],
+  "N3_01": [{"value": "leave_video", "label": "영상은 정해진 보관 기간을 따른다"}, {"value": "restore_video_archive", "label": "지워지기 전에 원본 영상을 따로 백업한다"}],
+  "N3_02": [{"value": "preserve_addressless_letter", "label": "보낸 사람이 없는 편지를 증거물로 봉인해 둔다"}, {"value": "forward_letter", "label": "편지를 관리실 우편함에 넣는다"}],
+  "N3_03": [{"value": "log_only", "label": "신고 내용을 근무일지에만 적는다"}, {"value": "contact_emergency_services", "label": "화재 신고를 독립 경로로 다시 확인하고 소방에 연락한다"}],
+  "N3_04": [{"value": "enter_sealed_stairwell_alone", "label": "안전 확인 없이 봉쇄된 계단에 혼자 들어간다"}, {"value": "report_stairwell", "label": "봉쇄 계단은 관리실에 점검을 요청한다"}],
+  "N3_05": [{"value": "ignore_announcement", "label": "구내방송은 시설 안내로 보고 넘긴다"}, {"value": "identify_archive_announcement", "label": "구내방송 녹음 원본이 언제 만들어졌는지 확인한다"}],
+  "N3_06": [{"value": "reject_forged_rule", "label": "필체와 문서번호가 다른 출입 규칙은 따르지 않는다"}, {"value": "follow_posted_rule", "label": "게시된 출입 규칙을 그대로 따른다"}],
+  "N3_07": [{"value": "keep_door_closed", "label": "현장에 사람이 없으니 유리문을 열지 않는다"}, {"value": "open_for_unverified_reflection", "label": "현관에는 없고 화면에만 보이는 사람을 위해 문을 연다"}],
+  "N4_01": [{"value": "correct_booking_error", "label": "방문 예약 오기를 등록 연락처로 확인해 바로잡는다"}, {"value": "keep_booking", "label": "예약 기록은 그대로 둔다"}],
+  "N4_02": [{"value": "leave_to_police", "label": "실종 신고는 경찰 기록에 맡긴다"}, {"value": "trace_missing_person_route", "label": "실종 신고된 사람의 행적을 당시 출입 기록과 이어 본다"}],
+  "N4_03": [{"value": "preserve_fire_history", "label": "서로 다른 두 화재 문서를 둘 다 보존한다"}, {"value": "keep_official_only", "label": "공식 문서 하나만 남긴다"}],
+  "N4_04": [{"value": "skip_reconstruction", "label": "현장 구조는 기록하지 않는다"}, {"value": "reconstruct_hidden_room", "label": "도면과 현장 표찰로 막힌 404호 위치를 복원해 적는다"}],
+  "N4_05": [{"value": "trust_campaign_phone", "label": "등록되지 않은 캠프 관계자의 전화를 공식 확인처럼 받아들인다"}, {"value": "verify_campaign_call", "label": "등록된 연락처로 다시 걸어 확인한다"}],
+  "N4_06": [{"value": "defer_names", "label": "이름은 나중에 정리한다"}, {"value": "document_victim_names", "label": "가족 모두의 이름과 피해 사실을 나누어 기록한다"}],
+  "N4_07": [{"value": "recover_original_blueprint", "label": "1997년 원본 도면과 변경 기록을 대조한다"}, {"value": "use_current_blueprint", "label": "현재 운영 도면만 참고한다"}],
+  "N5_07": [{"value": "preserve_victim_names", "label": "세 사람의 이름을 지우지 않고 기록에 남긴다", "sets": "victimNamesPreserved"}, {"value": "withhold_names", "label": "이름은 가리고 사건만 기록한다"}],
+  "N5_08": [{"value": "keep_on_site", "label": "자료를 경비실에만 둔다"}, {"value": "open_submission_route", "label": "원본 보관 기관의 제출 경로를 확인하고 사본을 맡긴다", "sets": "externalSubmission"}]
+ },
+ "finals": [
+  {"value": "seal_archive", "label": "보관함을 잠그고 관리실 열쇠를 반납한다"},
+  {"value": "resign", "label": "퇴사서를 쓰고 기록을 두고 떠난다"},
+  {"value": "submit_verified_evidence", "label": "검증한 원본을 외부 기관에 제출한다"}
+ ],
+ "recovery": {
+  "victimNamesPreserved": "피해자 세 사람의 이름을 보존 기록에 남긴다",
+  "externalSubmission": "원본 보관 기관의 제출 경로를 확인한다"
+ }
+}

@@ -1,0 +1,31 @@
+﻿id,title,type,witness_pass,negative_checks
+E01,평범한 퇴근,legacy_night1,True,1
+E02,신중한 경비원,legacy_night1,True,1
+E03,위험한 출입,legacy_night1,True,1
+E04,문 앞의 사람,legacy_night1,True,1
+E05,404호,legacy_night1,True,1
+E06,첫 기록,legacy_night1,True,1
+E07,가짜 교대자,optional_archive_resolution,True,6
+E08,잘못 울린 벨,optional_archive_resolution,True,6
+E09,우산을 든 사람,optional_archive_resolution,True,6
+E10,13층의 화면,optional_archive_resolution,True,6
+E11,관리소장,optional_archive_resolution,True,6
+E12,분실 명부,optional_archive_resolution,True,6
+E13,두 번째 얼굴,optional_archive_resolution,True,6
+E14,원본 영상,optional_archive_resolution,True,6
+E15,주소 없는 편지,optional_archive_resolution,True,6
+E16,새벽의 소방차,optional_archive_resolution,True,6
+E17,잠긴 계단,optional_archive_resolution,True,6
+E18,방송의 주인,optional_archive_resolution,True,6
+E19,거짓 규칙,optional_archive_resolution,True,6
+E20,유리문,optional_archive_resolution,True,6
+E21,방문 예약,optional_archive_resolution,True,6
+E22,실종 신고,optional_archive_resolution,True,6
+E23,화재 기록,optional_archive_resolution,True,6
+E24,빈 호수,optional_archive_resolution,True,6
+E25,후보의 전화,optional_archive_resolution,True,6
+E26,아침의 이름,optional_archive_resolution,True,6
+E27,1997,optional_archive_resolution,True,6
+E28,관리실 열쇠,final_choice,True,3
+E29,퇴사서,final_choice,True,3
+E30,404호는 없습니다,true_ending,True,6

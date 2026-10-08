@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-10-08T07:19:51.794Z",
+  "results": [
+    {
+      "test": "five nights by real clicks: N1 -> N5, archive ending E07 on the way, E30 at the end, reload in between",
+      "status": "PASS",
+      "ms": 12944
+    },
+    {
+      "test": "final choices E28 and E29 from the saved final board (restart in between)",
+      "status": "PASS",
+      "ms": 546
+    },
+    {
+      "test": "blocked archive ending: missing evidence is named without spoilers, recovered from the archive, then allowed",
+      "status": "PASS",
+      "ms": 1179
+    },
+    {
+      "test": "all 30 endings: each one shows its own title, four shots and spoken lines in the page",
+      "status": "PASS",
+      "ms": 10453
+    },
+    {
+      "test": "old 404_active_v2 first-shift save becomes night 1 of the story; the original is kept",
+      "status": "PASS",
+      "ms": 177
+    },
+    {
+      "test": "narrow phone (320px): story screens do not scroll sideways",
+      "status": "PASS",
+      "ms": 561
+    },
+    {
+      "test": "120 restarts: every one of the 40 scenes is closed and reopened before, during and after its decision",
+      "status": "PASS",
+      "ms": 48115
+    },
+    {
+      "test": "zero uncaught JavaScript errors in the story run",
+      "status": "PASS",
+      "ms": 0
+    }
+  ]
+}

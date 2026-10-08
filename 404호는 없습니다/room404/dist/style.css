@@ -99,3 +99,30 @@
 .cut-dots{margin:0 4px 8px}.cut-dots span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4a5d51;margin:0 4px}.cut-dots span.on{background:#e3cb8a}
 .cut-lines{list-style:none;padding:0;margin:8px 0 14px;font-size:14px;color:#b9c3b3}.cut-lines li{margin:4px 0}.cut-lines b{color:#d4c190;font-weight:600;margin-right:6px}
 #result .scene-media.banner{cursor:pointer}
+
+/* Five-night story (v0.14.0) */
+.story-card{margin:18px 0;padding:14px 14px 16px;border:1px solid #5d6e60;background:#152019;border-radius:6px}
+.story-card .speech{margin:8px 0}.story-card h3{margin:0;font-size:18px;line-height:1.5}
+.story-card #contactRecheck{width:100%;margin:8px 0}
+.ev-got{list-style:none;padding:0;margin:8px 0}.ev-got li{margin:6px 0;line-height:1.5}
+.choice-list{display:grid;gap:8px;margin-top:12px}.choice-list .eyebrow{margin:0}
+.choice-list button{text-align:left;line-height:1.45;white-space:normal}
+.choice-list button[aria-pressed=true]{border-color:#d7bf7b;background:#2c3a2a;color:#f3e6b8;opacity:1}
+.choice-list button:disabled:not([aria-pressed=true]){opacity:.45}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 7px;border-radius:3px;border:1px solid #9d8a5c;color:#e2cf98;background:#2b2618}
+.badge.ok{border-color:#7fb08a;color:#c9f0cf;background:#18301f}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;margin:12px 0}
+.tabs button{font-size:14px;padding:8px}.tabs button[aria-selected=true]{background:#d7bf7b;color:#13221d;border-color:#d7bf7b;font-weight:800}
+.archive-status{min-height:1.4em;color:#d4c190;font-size:14px}
+.ev-list,.record-list{list-style:none;padding:0;margin:0}
+.ev-card,.puzzle,.record-detail{border-left:3px solid #6b7d6f;background:#17211d;padding:12px 14px;margin:10px 0}
+.ev-card p{margin:6px 0;font-size:15px;line-height:1.55}.ev-card button,.record-detail button,.puzzle button{width:100%;margin-top:8px}
+.ev-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.puzzle h3{margin:0 0 8px;font-size:16px}.order-pick{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:14px}
+.order-pick select{flex:1;min-height:44px;font:inherit;font-size:14px;color:#e5e9d9;background:#1c2925;border:1px solid #677d70;border-radius:5px;padding:6px;min-width:0}
+.record-list>li>button{width:100%;text-align:left;margin-top:8px}.record-list>li>button[aria-pressed=true]{border-color:#d7bf7b}
+.hint-list{color:#f0d9a0;font-size:14px;line-height:1.55;padding-left:18px}.hint-list p{margin:6px 0}
+.final-list{display:grid;gap:10px;margin:16px 0}.final-list button{white-space:normal;line-height:1.45}.final-list button:disabled{opacity:.45}
+.final-flags{display:grid;gap:8px;margin:12px 0}
+#nightIntro .scene-media.banner{height:180px}
+#nextNight,#archiveReturn{margin-top:12px}

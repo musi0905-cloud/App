@@ -1,0 +1,967 @@
+{
+ "source": "story-plan/v1.3/ending_gates_30_simulated.json",
+ "generated": "2026-10-08",
+ "gates": [
+  {
+   "id": "E01",
+   "title": "평범한 퇴근",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": false,
+   "cutscene": "E01",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E01"
+    }
+   ]
+  },
+  {
+   "id": "E02",
+   "title": "신중한 경비원",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": false,
+   "cutscene": "E02",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E02"
+    }
+   ]
+  },
+  {
+   "id": "E03",
+   "title": "위험한 출입",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": true,
+   "cutscene": "E03",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E03"
+    }
+   ]
+  },
+  {
+   "id": "E04",
+   "title": "문 앞의 사람",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": true,
+   "cutscene": "E04",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E04"
+    }
+   ]
+  },
+  {
+   "id": "E05",
+   "title": "404호",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": true,
+   "cutscene": "E05",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E05"
+    }
+   ]
+  },
+  {
+   "id": "E06",
+   "title": "첫 기록",
+   "type": "legacy_night1",
+   "priority": 10,
+   "terminal": false,
+   "cutscene": "E06",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "legacy",
+     "id": "E06"
+    }
+   ]
+  },
+  {
+   "id": "E07",
+   "title": "가짜 교대자",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E07",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_01"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV02"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_01",
+     "value": "accept_unverified_replacement"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_01"
+    }
+   ]
+  },
+  {
+   "id": "E08",
+   "title": "잘못 울린 벨",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E08",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_02"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV03"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_02",
+     "value": "ignore_verified_emergency"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_02"
+    }
+   ]
+  },
+  {
+   "id": "E09",
+   "title": "우산을 든 사람",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E09",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_03"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV01"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_03",
+     "value": "accuse_visitor_from_appearance"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_03"
+    }
+   ]
+  },
+  {
+   "id": "E10",
+   "title": "13층의 화면",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E10",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_04"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV02"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_04",
+     "value": "preserve_anomalous_video"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_04"
+    }
+   ]
+  },
+  {
+   "id": "E11",
+   "title": "관리소장",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E11",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_05"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV04"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_05",
+     "value": "submit_records_to_manager"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_05"
+    }
+   ]
+  },
+  {
+   "id": "E12",
+   "title": "분실 명부",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E12",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_06"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV05"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_06",
+     "value": "keep_original_registry"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_06"
+    }
+   ]
+  },
+  {
+   "id": "E13",
+   "title": "두 번째 얼굴",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E13",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 2
+    },
+    {
+     "op": "scene",
+     "id": "N2_07"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV03"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N2_07",
+     "value": "admit_unverified_duplicate"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N2_07"
+    }
+   ]
+  },
+  {
+   "id": "E14",
+   "title": "원본 영상",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E14",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_01"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV05"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_01",
+     "value": "restore_video_archive"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_01"
+    }
+   ]
+  },
+  {
+   "id": "E15",
+   "title": "주소 없는 편지",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E15",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_02"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV06"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_02",
+     "value": "preserve_addressless_letter"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_02"
+    }
+   ]
+  },
+  {
+   "id": "E16",
+   "title": "새벽의 소방차",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E16",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_03"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV08"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_03",
+     "value": "contact_emergency_services"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_03"
+    }
+   ]
+  },
+  {
+   "id": "E17",
+   "title": "잠긴 계단",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E17",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_04"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV16"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_04",
+     "value": "enter_sealed_stairwell_alone"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_04"
+    }
+   ]
+  },
+  {
+   "id": "E18",
+   "title": "방송의 주인",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E18",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_05"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV07"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_05",
+     "value": "identify_archive_announcement"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_05"
+    }
+   ]
+  },
+  {
+   "id": "E19",
+   "title": "거짓 규칙",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E19",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_06"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV05"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_06",
+     "value": "reject_forged_rule"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_06"
+    }
+   ]
+  },
+  {
+   "id": "E20",
+   "title": "유리문",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E20",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 3
+    },
+    {
+     "op": "scene",
+     "id": "N3_07"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV18"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N3_07",
+     "value": "open_for_unverified_reflection"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N3_07"
+    }
+   ]
+  },
+  {
+   "id": "E21",
+   "title": "방문 예약",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E21",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_01"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV09"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_01",
+     "value": "correct_booking_error"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_01"
+    }
+   ]
+  },
+  {
+   "id": "E22",
+   "title": "실종 신고",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E22",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_02"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV11"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_02",
+     "value": "trace_missing_person_route"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_02"
+    }
+   ]
+  },
+  {
+   "id": "E23",
+   "title": "화재 기록",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E23",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_03"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV12"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_03",
+     "value": "preserve_fire_history"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_03"
+    }
+   ]
+  },
+  {
+   "id": "E24",
+   "title": "빈 호수",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E24",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_04"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV15"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_04",
+     "value": "reconstruct_hidden_room"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_04"
+    }
+   ]
+  },
+  {
+   "id": "E25",
+   "title": "후보의 전화",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E25",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_05"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV13"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_05",
+     "value": "trust_campaign_phone"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_05"
+    }
+   ]
+  },
+  {
+   "id": "E26",
+   "title": "아침의 이름",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E26",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_06"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV17"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_06",
+     "value": "document_victim_names"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_06"
+    }
+   ]
+  },
+  {
+   "id": "E27",
+   "title": "1997",
+   "type": "optional_archive_resolution",
+   "priority": 100,
+   "terminal": true,
+   "cutscene": "E27",
+   "policy": "archive_recovery_before_finalization",
+   "conditions": [
+    {
+     "op": "night",
+     "min": 4
+    },
+    {
+     "op": "scene",
+     "id": "N4_07"
+    },
+    {
+     "op": "evidence",
+     "ids": [
+      "EV16"
+     ]
+    },
+    {
+     "op": "choice",
+     "scene": "N4_07",
+     "value": "recover_original_blueprint"
+    },
+    {
+     "op": "confirm"
+    },
+    {
+     "op": "archiveScene",
+     "id": "N4_07"
+    }
+   ]
+  },
+  {
+   "id": "E28",
+   "title": "관리실 열쇠",
+   "type": "final_choice",
+   "priority": 200,
+   "terminal": true,
+   "cutscene": "E28",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "night",
+     "min": 5
+    },
+    {
+     "op": "scene",
+     "id": "N5_01"
+    },
+    {
+     "op": "final",
+     "value": "seal_archive"
+    }
+   ]
+  },
+  {
+   "id": "E29",
+   "title": "퇴사서",
+   "type": "final_choice",
+   "priority": 200,
+   "terminal": true,
+   "cutscene": "E29",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "night",
+     "min": 5
+    },
+    {
+     "op": "scene",
+     "id": "N5_02"
+    },
+    {
+     "op": "final",
+     "value": "resign"
+    }
+   ]
+  },
+  {
+   "id": "E30",
+   "title": "404호는 없습니다",
+   "type": "true_ending",
+   "priority": 300,
+   "terminal": true,
+   "cutscene": "E30",
+   "policy": null,
+   "conditions": [
+    {
+     "op": "night",
+     "min": 5
+    },
+    {
+     "op": "verified",
+     "ids": [
+      "EV01",
+      "EV06",
+      "EV09",
+      "EV10",
+      "EV13",
+      "EV15",
+      "EV16",
+      "EV17"
+     ]
+    },
+    {
+     "op": "puzzles",
+     "ids": [
+      "PZ01",
+      "PZ02",
+      "PZ03",
+      "PZ04",
+      "PZ05"
+     ]
+    },
+    {
+     "op": "preserved"
+    },
+    {
+     "op": "submitted"
+    },
+    {
+     "op": "final",
+     "value": "submit_verified_evidence"
+    }
+   ]
+  }
+ ]
+}

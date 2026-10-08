@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.13.0 (2026-10-08)
+- 기준 버전: v0.14.0 (2026-10-08)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -17,6 +17,7 @@ room404/
 │  ├─ style.css           스타일 (모바일 우선, 최대 폭 540px)
 │  ├─ game.js             화면 제어·조사 도구·저장·결과 카드
 │  ├─ engine.js           규칙: 사건 선택·판정·결말·저장 검증
+│  ├─ story.js            5야간 이야기: 상태·증거·퍼즐·엔딩 E01~E30 조건·저장 이전
 │  ├─ replay.js           CCTV 재현 (canvas 애니메이션)
 │  ├─ voice.js            전화 목소리 (기기 내장 한국어 음성)
 │  ├─ sfx.js              합성 효과음 (벨 소리, 문 소리)
@@ -26,7 +27,7 @@ room404/
 │  ├─ assets/             그림. v2/ = 이미지·모션 v2 (WebP, motion/*.mp4, previews/)
 │  └─ icons/              앱 아이콘
 ├─ tests/                 자동 검사
-├─ scripts/               v0.6 문구 변환 기록 (다시 실행 금지)
+├─ scripts/               v0.6 문구 변환 기록 (다시 실행 금지), convert-gates-v13.py (엔딩 조건 변환, 다시 실행 가능)
 ├─ test-artifacts/        검사 결과와 화면 캡처
 └─ CLAUDE_HANDOFF.md 등   인수인계·변경 기록
 ```
@@ -85,7 +86,7 @@ home ──시작──▶ game ◀──돌아가기── investigation
 | `share()` | 1080×1350 결과 카드를 canvas로 만듭니다. 공유가 되면 OS 공유 창을, 안 되면 다운로드 링크를 띄웁니다. |
 | `offline()` | 서비스워커를 등록합니다. Capacitor 앱 안에서는 건너뜁니다(이미 대응됨). |
 
-- **저장 키**: `404_active_v2`는 진행 중인 근무, `404_last_run`은 마지막 결과입니다. 저장에 실패하면 경고 문구를 띄웁니다.
+- **저장 키**: `404_story_v3`는 첫 근무부터 이어지는 5야간 이야기(v0.14.0), `404_active_v2`는 오늘의 근무, `404_last_run`은 마지막 결과, `404_last_mode`는 마지막으로 한 모드입니다. 저장에 실패하면 경고 문구를 띄웁니다. 자세한 내용은 9-2.
 - **도구 이름**: 내부 키 `CCTV`, `명부`, `통화`, `재확인`은 유지하고, 화면 이름만 `TOOL_NAMES`로 바꿉니다.
 - **초상**: `person(v)`는 `assets/visitors.png`(4명이 가로로 배치된 시트)에서 `(번호-1) % 4`번째 인물을 잘라 씁니다. 방문객 100명이 4가지 그림을 돌려 씁니다.
 
@@ -203,8 +204,8 @@ home ──시작──▶ game ◀──돌아가기── investigation
 ```bash
 cd room404
 npm ci
-npm test                 # engine.test + scenarios.test (11개)
-npm run test:ui          # 브라우저 회귀 9그룹. Linux용 Chromium 준비를 겸함
+npm test                 # engine + scenarios + story + gates (32개)
+npm run test:ui          # 브라우저 회귀 10그룹 + 이야기 8그룹(story-ui.mjs). Linux용 Chromium 준비를 겸함
 npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 ```
 
@@ -214,7 +215,7 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - 브라우저 검사는 `speechSynthesis`를 가짜로 바꿔 끼워 통화 음성을 검사합니다(읽은 줄 수, ko-KR, 사람마다 다른 높이, 소리 끄기). `primeVoice()`의 빈 발화는 세지 않습니다.
 - 테스트용 서버는 `tests/static-server.mjs`입니다. 영상 탐색에 필요한 Range 요청을 지원합니다.
 - 이 환경의 브라우저는 GPU가 없어 스크린샷에 영상이 검게 나옵니다. 영상 확인은 `data-video`와 `currentTime`으로 합니다.
-- 마지막 결과(2026-10-08, v0.13.0): 20/20, 10/10, 100/100 모두 통과
+- 마지막 결과(2026-10-08, v0.14.0): 32/32, 10/10 + 8/8, 100/100 모두 통과
 
 ## 9-1. 스토리 v1.1 데이터 (v0.13.0)
 
@@ -225,11 +226,26 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - `newRun(mode, visitors, anomalies, date, pairs)`: `pairs`(방문객 id → 이상징후 id)가 있으면 오늘의 근무를 허용 조합만으로 뽑습니다(허용 4·거부 4). 첫 근무는 전처럼 고정 8건(= v1.1 1야간 고정).
 - 검사: `tests/story.test.mjs`.
 
+## 9-2. 5야간 이야기와 엔딩 30개 (v0.14.0, story.js)
+
+- 원본: `story-plan/v1.2/`(저장·야간 흐름, 40슬롯), `story-plan/v1.3/`(엔딩 조건, 증인 30개). 검증 보고서는 `docs/ENDING_VERIFICATION_REPORT.md`.
+- 데이터: `story_slots.json`(v1.2 `night_slots_40_explicit.json` 그대로), `story_gates.json`(`scripts/convert-gates-v13.py`가 v1.3 조건을 런타임 조건 목록으로 변환. 원본은 덮어쓰지 않음), `story_evidence.json`(EV01~EV20, PZ01~PZ05), `story_flow.json`(야간 제목·도입문, 장면 처리 선택, 최종 선택 문구).
+- 흐름: 첫 근무 = 1야간(기존 고정 8건, 결말 E01~E06은 `ending()` 그대로) → 결산 → `nextNight` → 야간 소개(`INTRO`) → `beginShift` → 8건(`SHIFT`) → 결산(`RECAP`) … 5야간 뒤 `openFinal` → 최종 증거보드(`FINAL`) → 엔딩(`ENDED`). `engine.nightRun(n)`이 2~5야간 8건과 시각(`run.times`)을 슬롯에서 만듭니다. 화면 시각은 `T()` = `timesOf(run)[index]`.
+- 판정 뒤 기록 카드(`renderStoryCard`): 2~5야간에만. 기록을 들고 온 사람(방문객과 다른 인물)의 말 → '독립 자료 대조하기'(`independentCheck`)로 자료 입수 → 처리 선택(`chooseScene`, 고르기 전에는 다음으로 못 감).
+- 증거: 입수와 확인은 다릅니다. 보관함 '교차 확인하기'(`verifyEvidence`)는 대조할 자료(`crosscheck`)를 하나 이상 입수해야 됩니다. 다른 장면에서 같은 자료를 다시 받으면 확인됩니다. 놓친 대조는 야간이 끝난 뒤 '자료 복구'.
+- 퍼즐: 입력 자료가 모두 확인되면 열리고, 작성 시각 순서로 놓으면 풀립니다(`solvePuzzle`). 틀려도 벌칙 없음.
+- 엔딩 판정: `resolveEnding(gates, state, types)`가 충족된 조건 중 우선순위가 가장 높은 것을 고릅니다. 판정 시점마다 종류를 나눕니다: 1야간 끝 = `legacy_night1`, 보관함 '이 기록으로 마무리'(`confirmArchive`) = `optional_archive_resolution`(확정 플래그는 판정 직후 false), 최종 선택(`chooseFinal`) = `final_choice`+`true_ending`. 기록 결말은 본 진행을 지우지 않습니다.
+- 힌트: `hintsFor`는 모자란 조건을 엔딩 이름·범인·미입수 자료 이름 없이 알려 줍니다. E30 제출 버튼은 `submitStatus`가 통과해야 켜집니다.
+- 저장: `validStory`가 구조와 일관성(야간·완료 장면·판정 수·자료 출처 등)을 검사합니다. 읽을 수 없으면 `404_story_v3_unreadable`에 원본을 두고 새로 시작합니다. `404_active_v2`의 옛 첫 근무 저장은 `migrateLegacy`로 1야간 이야기로 옮기고 원본은 `404_active_v2_backup`에 둡니다. 새 이야기를 시작하면 이전 이야기를 `404_story_v3_prev`에 둡니다.
+- 검사: `tests/gates.test.mjs`(증인 30개, 변형 203건, 임의 상태 20,000개, 실제 진행 경로, 저장 왕복, 이전), `tests/story-ui.mjs`(실제 클릭 5야간, 120회 재시작, 30개 엔딩 화면). 공용 도우미 `tests/story-helpers.mjs`.
+
 ## 10. 주의사항
 
 - `scripts/*-v6.py`는 **다시 실행하지 않습니다.** 반복 치환으로 문구가 손상됩니다.
 - `changes-from-v0.5.patch`는 참고 기록입니다. **다시 적용하지 않습니다.**
 - 조사하기 전에 결말이나 정답이 드러나면 안 됩니다. 테스트가 "버튼을 누르기 전에는 확인 결과가 보이지 않음"을 검사합니다.
+- 판정 화면에는 이야기 기록·증거 번호·엔딩을 보여 주지 않습니다(기록 카드는 판정 뒤). `story-ui.mjs`가 검사합니다.
+- v1.3 조건 파일이 바뀌면 `python3 scripts/convert-gates-v13.py`를 다시 실행하고 `npm test`로 대조합니다.
 - 운영 사이트(ChatGPT Sites, 소유자 전용)의 공개 범위는 바꾸지 않습니다.
 
 ## 11. 개선 후보

@@ -1,31 +1,35 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor,LIVE_MODES} from './replay.js';
-import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS} from './engine.js';
+import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS,timesOf,kstDate} from './engine.js';
+import * as ST from './story.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
 // Phones only allow sound and speech that start inside a tap: wake both up in the tap itself, then play later.
 function primeAudio(){try{primeSound();primeVoice()}catch{}}
 const TOOL_NAMES={CCTV:'CCTV 보기',명부:'주민·방문 기록',통화:'집에 전화하기',재확인:'한 번 더 확인'};
-const $=id=>document.getElementById(id),ACTIVE='404_active_v2',LAST='404_last_run';
+const $=id=>document.getElementById(id),ACTIVE='404_active_v2',LAST='404_last_run',LAST_MODE='404_last_mode';
 const ENDING_NOTES={'404호':'없는 집으로 사람을 들여보냈어요. 이 밤은 여기서 끝나요.','오판':'위험한 사람을 두 번 넘게 들여보냈어요. 다음에는 한 번 더 확인해요.','무고한 거부':'괜찮은 사람을 세 번 넘게 돌려보냈어요. 기록과 전화를 믿어 봐요.','신중한 경비원':'모든 방문객을 꼼꼼히 확인하고 한 번 더 확인까지 했어요.','첫 근무의 기록':'첫 밤을 무사히 마쳤어요. 오늘 밤의 선택이 기록으로 남았어요.','퇴근':'오늘 밤의 선택이 기록으로 남았어요. 내일 밤에 다시 만나요.'};
 let scenarios=[],visitors=[],anomalies=[],run=null,ready=false,deferredInstall=null,activeTool=null,toolOrigin=null,cameraPast=false,replayCleanup=null,replayGeneration=0; 
+// Clock of the current case: night 1 and daily use TIMES, story nights 2-5 their own slot times (game-local, not device time).
+const T=(i=run.index)=>timesOf(run)[i];
 function clearReplay(){replayGeneration++;if(replayCleanup){replayCleanup();replayCleanup=null}}
 // Story v1.1 data (docs/STORY_IMPORT_REPORT.md): per-visitor pinned anomaly and reaction lines, the 40 authored night
-// scenes (only night 1 is playable now), and the 30 ending cutscenes (only E01-E06 are reachable).
-let storyVisitors=[],storyScenes=[],storyEndings=[];
+// scenes, and the 30 ending cutscenes. v0.14.0 adds the five-night story (story.js): 40 slots, evidence, puzzles, 30 gates.
+let storyVisitors=[],storyScenes=[],storyEndings=[],storySlots=[],storyGates=[],storyEvidence=null,storyFlow=null,storyData=null;
+let story=null,daily=null,archiveTab='evidence',archiveHints=null,resultTitle='';
 const pairsOf=()=>Object.fromEntries(storyVisitors.map(v=>[v.id,v.anomaly_id]));
-function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
+function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&(run.night||1)===1&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
 function endingTitle(end){return storyEndings.find(e=>e.id===ENDING_IDS[end])?.title||end}
 // Ending cutscene: the four authored shots as captions over the matching backdrop, then the three spoken lines.
 const SHOT_POSTER={'경비실':'guard-monitors','증거보드':'ledger-desk','현관 CCTV':'cctv-lobby','새벽의 외관':'ending-dawn'};
 let cutTimer=0;
 function clearCutscene(){clearTimeout(cutTimer);cutTimer=0}
-function mountCutscene(se,end){clearCutscene();const box=$('result').querySelector('.scene-media'),cap=$('cutCaption'),dots=$('cutDots'),lines=$('cutLines');
- if(!se){cap.textContent='';dots.innerHTML='';lines.innerHTML='';setPoster(box,end==='404호'?'ending-404':'ending-dawn',end==='404호'?null:'12-ending-dawn');box.onclick=null;return}
+function mountCutscene(se,lost){clearCutscene();const box=$('result').querySelector('.scene-media'),cap=$('cutCaption'),dots=$('cutDots'),lines=$('cutLines');
+ if(!se){cap.textContent='';dots.innerHTML='';lines.innerHTML='';setPoster(box,lost?'ending-404':'ending-dawn',lost?null:'12-ending-dawn');box.onclick=null;return}
  const shots=se.cutscene,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let i=-1;
  lines.innerHTML=se.dialogue.map(d=>`<li><b>${escapeHTML(d.speaker)}</b>${escapeHTML(d.text)}</li>`).join('');
- const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&end==='404호'?'ending-404':SHOT_POSTER[sh.setting]||'ending-dawn';setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
+ const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&lost?'ending-404':SHOT_POSTER[sh.setting]||'ending-dawn';setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
  box.onclick=()=>show(i+1);cap.onclick=()=>show(i+1);show(0)}
-function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();['home','game','investigation','feedback','result'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
+function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();['home','game','investigation','feedback','result','nightIntro','archive'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
 // Photo backdrops with an optional looping video. Videos get a src only while their screen is visible, and never with reduced motion.
 const MEDIA='assets/v2/',reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function activateMedia(){document.querySelectorAll('.scene-media').forEach(box=>{
@@ -38,21 +42,23 @@ function setPoster(box,poster,video=null){if(box.dataset.poster===poster&&(box.d
 function mediaHTML(poster,video,cls=''){return `<div class="scene-media ${cls}" data-poster="${poster}"${video?` data-video="${video}"`:''}></div>`}
 function mountClips(){document.querySelectorAll('#clipGallery figure').forEach(f=>{if(f.querySelector('video'))return;const v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.preload='none';v.poster=`${MEDIA}previews/${f.dataset.clip}.webp`;v.dataset.src=MEDIA+'motion/'+f.dataset.clip+'.mp4';f.prepend(v)})}
 function storageGet(key){try{return JSON.parse(localStorage.getItem(key))}catch{return null}}
-function save(){try{localStorage.setItem(ACTIVE,JSON.stringify(run))}catch{$('storageNotice').hidden=false}}
+// Story progress lives in 404_story_v3 (v1.2 save spec); 404_active_v2 keeps the daily shift and is only read for old story saves.
+function save(){try{if(run?.mode==='story'&&story)localStorage.setItem(ST.STORY_KEY,JSON.stringify(story));else if(run)localStorage.setItem(ACTIVE,JSON.stringify(run));if(run)localStorage.setItem(LAST_MODE,JSON.stringify(run.mode))}catch{$('storageNotice').hidden=false}}
+function keep(key,value,overwrite=false){try{if(value!=null&&(overwrite||localStorage.getItem(key)===null))localStorage.setItem(key,value)}catch{}}
 // Returns the case with every {name}/{unit} placeholder filled, so no text field can show a raw placeholder.
 function current(){const p=run.cases[run.index],original=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=scenarios.find(s=>s.id===a.id);const v={...original,baseRole:original.role,unit:raw.unitOverride||original.unit,role:raw.role};const pack=fillDeep(raw,v);v.claim=pack.claim;const st=storyFor(p);if(st.scene?.dialogue?.arrival)v.claim=st.scene.dialogue.arrival;v.story=st.sv;return {v,a,pack}}
 function fillDeep(x,v){return typeof x==='string'?fill(x,v):Array.isArray(x)?x.map(y=>fillDeep(y,v)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,y])=>[k,fillDeep(y,v)])):x}
 function fill(s,v){return String(s).replaceAll('{name}',v.name).replaceAll('{unit}',v.unit)}
-function sourceTime(minutes=0){return shiftedTime(TIMES[run.index],minutes)}
+function sourceTime(minutes=0){return shiftedTime(T(),minutes)}
 // The guard's clock: the visitor arrived at TIMES[index]; each check takes about a minute, so the clock moves on while investigating (v0.11.1).
 function nowTime(){return sourceTime(1+Math.min(4,run.seen.length))}
 function log(title,text){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=title+' — ';p.append(b,document.createTextNode(text));$('evidence').append(p)}
 function person(v,extra=''){return `<span role="img" aria-label="${escapeHTML(v.name)}의 방문객 캐릭터" class="person-sprite ${extra}" style="background-image:url(${MEDIA}visitor-0${lookFor(v)}-stand.webp)"></span>`}
-function clockBefore(minutes){const [h,m]=TIMES[run.index].split(':').map(Number),n=(h*60+m-minutes+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
+function clockBefore(minutes){const [h,m]=T().split(':').map(Number),n=(h*60+m-minutes+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
 function guide(){const {v,a,pack}=current();const older=pack.scenes.find(s=>s.offset<0);return {clue:pack.plain.what,verify:pack.plain.confirmed,question:pack.plain.check,...(older&&a.channel==='CCTV'?{past:`${sourceTime(older.offset)} · ${older.note}`}:{})}}
 function timeline(){const {v,a}=current(),g=guide(),items=[];
  if(g.past&&run.seen.includes(a.channel))items.push(['이전 기록',g.past]);
- items.push([`${TIMES[run.index]} · 방문객 도착`,`${v.name}: “${v.claim}” (${v.unit}호에 간다고 해요)`]);
+ items.push([`${T()} · 방문객 도착`,`${v.name}: “${v.claim}” (${v.unit}호에 간다고 해요)`]);
  for(const [i,t] of ['CCTV','명부','통화'].entries())items.push([`확인 ${i+1} · ${TOOL_NAMES[t]}`,run.seen.includes(t)?clueFor(t):'아직 안 봤어요.']);
  items.push(['마지막 · 한 번 더 확인',run.verified?g.verify:'다른 카메라를 보거나, 관리실에 적힌 번호로 전화해 다시 물어봐요.']);
  return '<ol class="case-timeline">'+items.map(([t,s])=>`<li><strong>${escapeHTML(t)}</strong><p>${escapeHTML(s)}</p></li>`).join('')+'</ol>';
@@ -65,7 +71,9 @@ function evidence(){
  $('guidedAction').onclick=()=>next?inspect(next):!run.verified?verify():$('evidence').scrollIntoView({behavior:'smooth'});
  document.querySelectorAll('[data-tool]').forEach(b=>{b.disabled=false;b.classList.toggle('seen',run.seen.includes(b.dataset.tool));b.setAttribute('aria-label',TOOL_NAMES[b.dataset.tool]+(run.seen.includes(b.dataset.tool)?' · 다시 보기':''))});$('verify').disabled=!run.seen.length;
 }
-function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:'첫 근무';
+function render(){if(!run)return;const inStory=run.mode==='story'&&story&&story.run===run,night=run.night||1;
+ if(inStory&&story.phase==='INTRO')return renderIntro();if(inStory&&story.phase==='FINAL'){archiveTab='final';return renderArchive()}if(inStory&&story.phase==='ENDED')return renderEndingView(story.ending);
+ $('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:night===1?'첫 근무 · 1야간':`${night}야간 근무`;
  if(run.screen==='game'){
   const {v}=current(),t=totals(run);$('clock').textContent=nowTime();$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
   $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);$('portrait').innerHTML=person(v);$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
@@ -77,31 +85,38 @@ function render(){if(!run)return;$('shiftLabel').textContent=run.mode==='daily'?
   $('feedbackText').textContent=`${v.name} 님(${v.unit}호)은 ${a.safe?'들여보내도 되는 사람이었어요.':'문을 열어 주면 안 되는 사람이었어요.'} ${g.clue}`;$('reason').textContent=g.verify;
   const react=v.story?.dialogue?.[h.allow?'on_allow':'on_deny'];$('reaction').hidden=!react;$('reaction').textContent=react?`${v.name}: “${react}”`:'';
   $('hint').hidden=h.correct;$('hint').textContent=h.correct?'':`다음에는 이렇게 해 보세요: ${g.question}`;
-  $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';
+  $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';renderStoryCard();
+ }else if(inStory&&night>1){renderRecap();return
  }else{
-  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';const se=storyEndings.find(e=>e.id===ENDING_IDS[end]);$('ending').textContent=endingTitle(end);$('ending').dataset.endingId=se?.id||'';$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';mountCutscene(se,end);$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
+  const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';const se=storyEndings.find(e=>e.id===ENDING_IDS[end]);$('ending').textContent=resultTitle=endingTitle(end);$('ending').dataset.endingId=se?.id||'';$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';mountCutscene(se,end==='404호');resultButtons({next:inStory?'2야간 근무 시작':null,again:true,share:true});$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
   $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번`;
   try{localStorage.setItem(LAST,JSON.stringify({date:run.date,mode:run.mode,ending:end,correct:t.correct,history:run.history}))}catch{$('storageNotice').hidden=false}
  }show(run.screen);
 }
-function home(){show('home');$('clock').textContent='00:00';$('resume').hidden=!run;$('resume').textContent=run?.screen==='result'?'지난 결과 보기':'이어서 근무';const prev=storageGet(LAST);$('record').textContent=prev&&typeof prev.ending==='string'?`지난 근무: ${endingTitle(prev.ending)} · ${prev.correct}/8`:''}
-function start(mode){if(!ready)return;run=newRun(mode,visitors,anomalies,undefined,pairsOf());save();render()}
+function resumeLabel(mode){if(mode==='daily')return daily.screen==='result'?'오늘의 근무 결과 보기':'오늘의 근무 이어서';const n=story.night;return {INTRO:`${n}야간 근무 시작`,SHIFT:story.run.screen==='result'?`${n}야간 결과 보기`:`이어서 근무 · ${n}야간`,RECAP:`${n}야간 결과 보기`,FINAL:'최종 증거보드 열기',ENDED:'지난 결과 보기'}[story.phase]}
+function resumeModes(){const last=storageGet(LAST_MODE),have=[story&&'story',daily&&'daily'].filter(Boolean);return have.sort((a,b)=>(b===last)-(a===last))}
+function home(){if(run?.mode==='story'&&story)save();show('home');$('clock').textContent='00:00';const modes=resumeModes();
+ $('resume').hidden=!modes[0];$('resume').dataset.mode=modes[0]||'';if(modes[0])$('resume').textContent=resumeLabel(modes[0]);$('resumeOther').hidden=!modes[1];$('resumeOther').dataset.mode=modes[1]||'';if(modes[1])$('resumeOther').textContent=resumeLabel(modes[1]);
+ const prev=storageGet(LAST);$('record').textContent=[prev&&typeof prev.ending==='string'?`지난 근무: ${endingTitle(prev.ending)} · ${prev.correct}/8`:'',story?`이야기: ${story.nightCompleted}야간 완료 · ${progressLine()} · 본 결말 ${story.endingsUnlocked.length}개`:''].filter(Boolean).join(' · ')}
+function resume(mode){if(mode==='story'&&story)run=story.run;else if(mode==='daily'&&daily)run=daily;else return;render()}
+// Starting a new story keeps a copy of the previous one (never lost silently).
+function start(mode){if(!ready)return;if(mode==='story'){if(story&&(story.completedScenes.length||story.nightCompleted))keep(ST.STORY_PREV,JSON.stringify(story),true);story=ST.startStory(storyData,kstDate());run=story.run}else{daily=run=newRun(mode,visitors,anomalies,undefined,pairsOf())}save();render()}
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function clueFor(tool){const {v,a,pack}=current();if(tool===a.channel)return pack.plain.what;if(tool==='명부')return `관리실 기록에서 ${v.name} 님의 ${v.unit}호 방문을 찾았어요. 들어와도 되는지는 그 집에 한 번 더 물어봐야 해요.`;if(tool==='통화')return `${fill(pack.call.line,v)} ${pack.call.detail}`;return `${sourceTime(-1)}에 현관으로 왔고, ${TIMES[run.index]}에 문을 열어 달라고 했어요. ${a.channel==='명부'?'가져온 종이와 관리실 기록':'그 집에 전화한 내용'}도 확인하세요.`}
+function clueFor(tool){const {v,a,pack}=current();if(tool===a.channel)return pack.plain.what;if(tool==='명부')return `관리실 기록에서 ${v.name} 님의 ${v.unit}호 방문을 찾았어요. 들어와도 되는지는 그 집에 한 번 더 물어봐야 해요.`;if(tool==='통화')return `${fill(pack.call.line,v)} ${pack.call.detail}`;return `${sourceTime(-1)}에 현관으로 왔고, ${T()}에 문을 열어 달라고 했어요. ${a.channel==='명부'?'가져온 종이와 관리실 기록':'그 집에 전화한 내용'}도 확인하세요.`}
 function inspected(){return activeTool==='재확인'?run.verified:run.seen.includes(activeTool)}
 function inspect(tool){if(!run||run.screen!=='game'||!TOOLS.includes(tool))return;activeTool=tool;toolOrigin=tool;cameraPast=false;renderTool()}
 function verify(){if(!run||run.screen!=='game'||!run.seen.length)return;activeTool='재확인';toolOrigin='재확인';renderTool()}
 function backDesk(){activeTool=null;render();const b=toolOrigin==='재확인'?$('verify'):document.querySelector(`[data-tool="${toolOrigin}"]`);b?.focus()}
 // Register book: a closed cover until the guard opens it, then pages to flip through (buttons, swipe or arrow keys).
 function bookEntries(v,pack){
- const others=visitors.filter(x=>x.id!==v.id),seed=hash(pack.id+run.date),[h,m]=TIMES[run.index].split(':').map(Number),rows=[];
+ const others=visitors.filter(x=>x.id!==v.id),seed=hash(pack.id+run.date),[h,m]=T().split(':').map(Number),rows=[];
  for(let i=0;i<3;i++){const o=others[(seed>>>(i*5))%others.length],n=(h*60+m-[41,26,12][i]+1440)%1440;rows.push([`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`,o.name,o.unit+'호',o.role])}
  return rows;
 }
 function documentView(v,pack,done){const d=pack.document,e=escapeHTML;
- const cover=`<div class="paper-heading"><span>${pack.recordCode} · ${run.date}</span><strong>관리실 방문 기록부</strong><span>기록을 본 시간 ${sourceTime(1)}</span></div><table><caption>지금 온 사람 · ${TIMES[run.index]}</caption><tbody><tr><th>이름</th><td>${e(v.name)}</td></tr><tr><th>가려는 집</th><td>${e(v.unit)}호</td></tr><tr><th>어떤 사람</th><td>${e(v.role)}</td></tr></tbody></table>`;
+ const cover=`<div class="paper-heading"><span>${pack.recordCode} · ${run.date}</span><strong>관리실 방문 기록부</strong><span>기록을 본 시간 ${sourceTime(1)}</span></div><table><caption>지금 온 사람 · ${T()}</caption><tbody><tr><th>이름</th><td>${e(v.name)}</td></tr><tr><th>가려는 집</th><td>${e(v.unit)}호</td></tr><tr><th>어떤 사람</th><td>${e(v.role)}</td></tr></tbody></table>`;
  if(!done)return `${mediaHTML('ledger-desk','10-ledger-inspection','banner')}<article class="register">${cover}<p>아래 '기록부 펼치기'를 누르면 한 장씩 넘겨 볼 수 있어요.</p></article>`;
- const log=bookEntries(v,pack).map(r=>`<tr>${r.map(c=>`<td>${e(c)}</td>`).join('')}</tr>`).join('')+`<tr class="book-current"><td>${TIMES[run.index]}</td><td>${e(v.name)}</td><td>${e(v.unit)}호</td><td>${e(v.role)}</td></tr>`;
+ const log=bookEntries(v,pack).map(r=>`<tr>${r.map(c=>`<td>${e(c)}</td>`).join('')}</tr>`).join('')+`<tr class="book-current"><td>${T()}</td><td>${e(v.name)}</td><td>${e(v.unit)}호</td><td>${e(v.role)}</td></tr>`;
  const pages=[
   ['오늘 밤 방문 기록',`<table class="book-log"><thead><tr><th>시간</th><th>이름</th><th>집</th><th>어떤 사람</th></tr></thead><tbody>${log}</tbody></table><p class="small">노랗게 칠한 맨 아래 줄이 지금 온 사람이에요. 다음 장을 넘겨 보세요.</p>`],
   ['이 사람이 말하거나 보여 준 것',`<p class="record-field">${e(d.field)}</p><p class="book-big">${e(fill(d.left,v))}</p>${d.claim?`<p class="small">방문객이 한 말: “${e(fill(d.claim,v))}”</p>`:''}`],
@@ -140,11 +155,11 @@ function playCall(autoplay){const rec=$('toolBody').querySelector('.call-record'
 function renderTool(autoplay=false){
  clearReplay();stopVoice();const {v,a,pack}=current(),done=inspected(),e=escapeHTML;
  $('toolTitle').textContent=({CCTV:'CCTV 기록 재생','명부':'주민·방문 기록 보기','통화':'집에 전화한 내용','재확인':'한 번 더 확인한 결과'})[activeTool];
- $('toolCaption').textContent=`사건 ${run.index+1} / ${v.name} / 도착 ${TIMES[run.index]}`;$('toolStep').textContent=done?'확인했어요':'아래 버튼을 눌러 주세요';
+ $('toolCaption').textContent=`사건 ${run.index+1} / ${v.name} / 도착 ${T()}`;$('toolStep').textContent=done?'확인했어요':'아래 버튼을 눌러 주세요';
  let body='';
  if(activeTool==='CCTV'){
  body=done?'<div id="caseReplay"></div>':`<div class="replay-locked"><strong>저장된 영상 ${pack.recordCode}</strong><p>이 사람이 오기 전 모습과 지금 모습을 볼 수 있어요.</p><p>아래 '영상 보기'를 눌러 주세요.</p></div>`;
- if(done)body+=`<ol class="shot-list">${pack.scenes.map((s,i)=>`<li><strong>장면 ${i+1} · ${LOCATIONS[s.location]} · 실제 시각 ${LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset)}${sceneTime(s,TIMES[run.index],nowTime())!==(LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset))?" (화면 시계 "+sceneTime(s,TIMES[run.index],nowTime())+")":""}</strong><p>${e(s.note)}</p></li>`).join('')}</ol>`;
+ if(done)body+=`<ol class="shot-list">${pack.scenes.map((s,i)=>`<li><strong>장면 ${i+1} · ${LOCATIONS[s.location]} · 실제 시각 ${LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset)}${sceneTime(s,T(),nowTime())!==(LIVE_MODES.has(s.mode)?nowTime():sourceTime(s.offset))?" (화면 시계 "+sceneTime(s,T(),nowTime())+")":""}</strong><p>${e(s.note)}</p></li>`).join('')}</ol>`;
  }else if(activeTool==='명부')body=documentView(v,pack,done);
  else if(activeTool==='통화')body=transcript(v,pack,done);
  else{
@@ -154,24 +169,83 @@ function renderTool(autoplay=false){
  }
  if(done){const summary=activeTool==='재확인'?pack.plain.confirmed:clueFor(activeTool);const question=activeTool===a.channel?pack.plain.check:({CCTV:'이 사람이 언제 왔는지 먼저 보세요.',명부:'말한 이름·호수와 적힌 내용이 같은지 보세요.',통화:'그 집 주민이 누구인지, 들어와도 된다고 했는지 확인하세요.'})[activeTool];body=`<aside class="plain-brief"><h3>${activeTool==='재확인'?'다시 알아보니':'지금 알게 된 것'}</h3><p>${e(summary)}</p>${question?`<h3>다음에는 이것을 확인하세요</h3><p>${e(question)}</p>`:''}</aside>`+body;}
  $('toolBody').innerHTML=body;mountBooks($('toolBody'));activateMedia();if(done&&(activeTool==='통화'||activeTool==='재확인'))playCall(autoplay);
- if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,time:TIMES[run.index],now:nowTime(),date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
+ if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,time:T(),now:nowTime(),date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
  $('toolHint').textContent=done?'알게 된 내용은 경비실 메모에 적어 두었어요.':'아래 버튼을 눌러 확인하세요.';
  $('toolAction').textContent=done?'확인 완료':({CCTV:'영상 보기','명부':'기록부 펼치기','통화':'전화 걸기','재확인':'한 번 더 확인하기'})[activeTool];$('toolAction').disabled=done;
  const next=({CCTV:'명부','명부':'통화','통화':'재확인','재확인':null})[activeTool];$('nextTool').hidden=!next;$('nextTool').textContent=next?TOOL_NAMES[next]:'';$('nextTool').onclick=()=>next==='재확인'?verify():inspect(next);$('nextTool').disabled=!done;
  show('investigation');$('toolTitle').focus({preventScroll:true});
 }
 function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='통화'||activeTool==='재확인')primeAudio();if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
-function decide(allow){if(run&&decideRun(run,allow,anomalies)){save();render();doorTransition(allow)}}
+function decide(allow){if(run&&decideRun(run,allow,anomalies)){if(run.mode==='story'&&story)ST.recordDecision(story);save();render();doorTransition(allow)}}
 // Short staging after a decision: the door opens (video) or stays shut (photo) over the feedback screen. Never blocks input.
 function doorTransition(allow){const box=$('doorTransition');allow?doorOpen():doorShut();if(reducedMotion())return;
  setPoster(box.querySelector('.scene-media'),allow?'door-open':'door-closed',allow?'23-door-open-ambient':null);box.querySelector('p').textContent=allow?'문을 열었어요.':'문을 열지 않았어요.';
  box.hidden=false;box.classList.remove('out');clearTimeout(box.timer);box.timer=setTimeout(()=>{box.classList.add('out');box.timer=setTimeout(()=>{box.hidden=true;activateMedia()},400)},1000)}
-function next(){if(run&&advance(run)){save();render()}}
+function next(){if($('next').disabled)return;if(run&&advance(run)){if(run.mode==='story'&&story&&run.screen==='result')ST.finishNight(story,anomalies);save();render()}}
+// ---- story screens (v0.14.0) ---------------------------------------------------------------------------------------
+const evInfo=id=>storyEvidence.evidence.find(e=>e.id===id),evTitle=id=>evInfo(id)?.title||id,slotFor=id=>storySlots.find(s=>s.scene_id===id);
+const badge=ok=>ok?'<span class="badge ok">확인됨</span>':'<span class="badge">미검증</span>';
+const progressLine=()=>`자료 ${story.evidenceAcquired.length}건 · 확인됨 ${story.evidenceVerified.length}건 · 기록 대조 ${story.puzzlesSolved.length}개`;
+function resultButtons({next=null,again=false,share=false,archive=false,back=false}){$('nextNight').hidden=!next;if(next)$('nextNight').textContent=next;$('again').hidden=!again;$('share').hidden=!share;$('openArchive').hidden=!archive;$('archiveReturn').hidden=!back;$('cutCaption').hidden=$('cutDots').hidden=$('cutLines').hidden=false}
+// After the gate decision of nights 2-5: the story contact (a different person from the gate visitor, v1.2 rule 3) brings a record.
+// Evidence only comes from the independent re-check; the handling choice is separate from the door decision.
+function renderStoryCard(){const card=$('storyCard'),e=escapeHTML,night=run.night||1;
+ if(!(run.mode==='story'&&story&&night>1&&run.screen==='feedback')){card.hidden=true;$('choiceNeeded').hidden=true;$('next').disabled=false;return}
+ const scene=ST.currentScene(story),slot=slotFor(scene),checked=story.sceneChecks.includes(scene),opts=storyFlow.choices[scene]||null,chosen=story.sceneChoices[scene];
+ card.hidden=false;card.dataset.scene=scene;$('contactLabel').textContent=`${slot.time} · ${storyFlow.contact_label} · ${slot.story_contact}`;$('contactLine').textContent=`“${slot.story_contact_arrival}”`;
+ $('contactCheck').textContent=`경비원: “${checked?slot.story_contact_recheck:slot.story_contact_check}”`;$('contactRecheck').hidden=checked;
+ $('contactResult').innerHTML=checked?`<p><b>알게 된 것</b> ${e(slot.story_clue)}</p><ul class="ev-got">${slot.story_ev_candidates.map(id=>`<li>${badge(story.evidenceVerified.includes(id))} ${e(id)} ${e(evTitle(id))}${story.evidenceFrom[id]!==scene?' · 다른 기록과 같은 자료라 확인됐어요':''}</li>`).join('')}</ul>`:'<p class="small">독립 자료를 대조해야 자료를 받을 수 있어요. 그냥 넘어가도 근무가 끝난 뒤 기록 보관함에서 복구할 수 있어요.</p>';
+ $('contactChoices').innerHTML=opts?`<p class="eyebrow">이 기록을 어떻게 처리할까요?</p>${opts.map(o=>`<button type="button" data-choice="${e(o.value)}" aria-pressed="${chosen===o.value}"${chosen?' disabled':''}>${e(o.label)}</button>`).join('')}`:'';
+ $('next').disabled=!!opts&&!chosen;$('choiceNeeded').hidden=!(opts&&!chosen)}
+function renderIntro(){const n=story.night,f=storyFlow.nights[n];$('clock').textContent='00:00';$('introNight').textContent=`${n}야간 · 00:00—06:00`;$('introTitle').textContent=f.title;$('introText').textContent=f.intro;$('introStatus').textContent=`지금까지 ${progressLine()}`;$('introArchive').hidden=!ST.archiveOpen(story);show('nightIntro')}
+function renderRecap(){const n=run.night,t=totals(run),newEv=story.evidenceAcquired.filter(id=>Number(story.evidenceFrom[id]?.[1])===n);
+ $('clock').textContent='06:00';mountCutscene(null,false);$('ending').textContent=resultTitle=`${n}야간 근무 종료`;$('ending').dataset.endingId='';$('result').dataset.ending='plain';
+ $('summary').textContent=`${storyFlow.nights[n].title}. 오늘 밤 새로 받은 자료 ${newEv.length}건${newEv.length?' — '+newEv.map(evTitle).join(', '):''}.`;
+ $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 지금까지 ${progressLine()}`;
+ resultButtons({next:n<5?`${n+1}야간 근무 시작`:'최종 증거보드 열기',archive:true});$('cutCaption').hidden=$('cutDots').hidden=$('cutLines').hidden=true;show('result')}
+function renderEndingView(id,{archive=false}={}){const se=storyEndings.find(e=>e.id===id);$('clock').textContent='06:00';$('ending').textContent=resultTitle=se?.title||id;$('ending').dataset.endingId=id;$('summary').textContent=se?.ending_text||'';
+ mountCutscene(se,id==='E05');$('result').dataset.ending=id==='E30'?'best':se?.type==='위험·실수'?'bad':'plain';
+ $('stats').textContent=archive?`정리한 기록: ${story.selectedArchiveScene} · 근무 진행은 그대로 남아 있어요.`:`${story.nightCompleted}야간 근무 완료 · ${progressLine()}`;
+ resultButtons({share:true,back:archive});show('result')}
+function openArchive(tab){if(!story)return;if(tab)archiveTab=tab;archiveHints=null;renderArchive()}
+function renderArchive(msg=''){const final=story.phase==='FINAL';if(archiveTab==='final'&&!final)archiveTab='evidence';
+ $('archiveNight').textContent=`${story.nightCompleted}야간까지 근무 · ${progressLine()}`;$('archiveTitle').textContent=final?'최종 증거보드':'근무 기록 보관함';
+ document.querySelectorAll('#archiveTabs [data-tab]').forEach(b=>{b.setAttribute('aria-selected',String(b.dataset.tab===archiveTab));b.hidden=b.dataset.tab==='final'&&!final});
+ $('archiveBody').innerHTML={evidence:evidenceTab,puzzles:puzzlesTab,records:recordsTab,final:finalTab}[archiveTab]();$('archiveStatus').textContent=msg;$('archiveBack').textContent=final?'처음으로':'돌아가기';$('clock').textContent='06:00';show('archive')}
+function evidenceTab(){const e=escapeHTML,have=storyEvidence.evidence.filter(x=>story.evidenceAcquired.includes(x.id)),left=storyEvidence.evidence.length-have.length;
+ if(!have.length)return '<p>아직 입수한 자료가 없어요. 2야간부터 기록을 들고 오는 사람이 있어요.</p>';
+ return `<p class="small">찾은 자료와 확인한 자료는 달라요. 다른 자료와 교차 확인해야 ‘확인됨’이 돼요.</p><ul class="ev-list">${have.map(x=>{const ok=story.evidenceVerified.includes(x.id),can=ST.canVerify(story,storyData,x.id);
+  return `<li class="ev-card" data-ev="${x.id}"><div class="ev-head">${badge(ok)} <strong>${x.id} ${e(x.title)}</strong></div><p class="small">${e(x.era)} · ${e(x.source)} · ${e(story.evidenceFrom[x.id])}에서 입수</p><p><b>보여 주는 것</b> ${e(x.proves)}</p><p><b>보여 주지 못하는 것</b> ${e(x.not_proves)}</p>${ok?'':can?`<button type="button" data-verify="${x.id}">교차 확인하기</button>`:'<p class="small">대조할 다른 자료를 아직 입수하지 않았어요.</p>'}</li>`}).join('')}</ul>${left?`<p class="small">아직 입수하지 않은 자료 ${left}건</p>`:''}`}
+function puzzlesTab(){const e=escapeHTML,list=storyEvidence.puzzles.filter(p=>p.night<=Math.max(2,story.nightCompleted));
+ return list.map(p=>{const solved=story.puzzlesSolved.includes(p.id),ready=ST.puzzleReady(story,storyData,p.id);let inner;
+  if(solved)inner=`<p><span class="badge ok">풀림</span> 이 기록 대조에서 알게 된 것</p><ul>${p.outputs.map(o=>`<li>${e(o)}</li>`).join('')}</ul>`;
+  else if(ready){const opts=p.inputs.map(i=>`<option value="${i}">${i} ${e(evTitle(i))} · ${e(evInfo(i).era)}</option>`).join('');inner=`<p>${e(p.prompt)}</p>${[1,2,3].map(k=>`<label class="order-pick">${k}번째 <select data-order="${p.id}"><option value="">고르기</option>${opts}</select></label>`).join('')}<button type="button" class="primary" data-solve="${p.id}">이 순서로 맞춰 보기</button>`}
+  else{const need=p.inputs.filter(i=>!story.evidenceVerified.includes(i)).length,req=p.requires.filter(r=>!story.puzzlesSolved.includes(r)).length;inner=`<p class="small">필요한 자료 ${p.inputs.length}건 중 확인된 자료 ${p.inputs.length-need}건${req?` · 먼저 풀어야 할 기록 대조 ${req}개`:''}</p>`}
+  return `<section class="puzzle" data-puzzle="${p.id}"><h3>${p.id} ${e(p.title)}</h3>${inner}</section>`}).join('')||'<p>아직 열린 기록 대조가 없어요.</p>'}
+function recordsTab(){const e=escapeHTML,rows=storySlots.filter(s=>s.night>=2&&s.night<=story.nightCompleted);if(!rows.length)return '<p>2야간 근무를 마치면 이곳에서 기록을 정리할 수 있어요.</p>';const sel=story.selectedArchiveScene;
+ return `<p class="small">기록을 고르면 그 장면에서 한 일을 다시 볼 수 있어요. 근무는 정리와 상관없이 이어서 할 수 있어요.</p><ol class="record-list">${rows.map(s=>`<li><button type="button" data-select="${s.scene_id}" aria-pressed="${sel===s.scene_id}">${s.night}야간 ${s.time} · ${e(s.story_contact)}</button>${sel===s.scene_id?recordDetail(s):''}</li>`).join('')}</ol>`}
+function recordDetail(s){const e=escapeHTML,checked=story.sceneChecks.includes(s.scene_id),choice=story.sceneChoices[s.scene_id],opt=storyFlow.choices[s.scene_id]?.find(o=>o.value===choice),hints=archiveHints?.scene===s.scene_id?archiveHints.hints:[];
+ return `<div class="record-detail" data-record="${s.scene_id}"><p>“${e(s.story_contact_arrival)}”</p><p>${checked?`<b>알게 된 것</b> ${e(s.story_clue)}`:'독립 자료 대조를 하지 않은 기록이에요.'}</p>${opt?`<p><b>남긴 처리</b> ${e(opt.label)}</p>`:''}${checked?'':`<button type="button" data-recover="${s.scene_id}">자료 복구 · 독립 자료 다시 대조</button>`}<button type="button" class="primary" data-finish="${s.scene_id}">이 기록으로 마무리</button>${hints.length?`<ul class="hint-list" role="status">${hints.map(h=>`<li>${e(h)}</li>`).join('')}</ul>`:''}</div>`}
+function finalTab(){const e=escapeHTML,st=ST.submitStatus(story,storyGates);
+ return `<p>다섯 밤의 기록이 모였어요. 어떤 원본을 남길지 정하세요.</p><div class="final-flags">${['victimNamesPreserved','externalSubmission'].map(f=>story[f]?`<p class="small">✓ ${e(storyFlow.recovery[f])}</p>`:`<button type="button" data-flag="${f}">${e(storyFlow.recovery[f])}</button>`).join('')}</div>
+ <div class="final-list">${storyFlow.finals.map(o=>{const sub=o.value==='submit_verified_evidence',off=sub&&!st.ok;return `<button type="button" class="${sub?'primary':''}" data-final="${o.value}"${off?' disabled aria-disabled="true"':''}>${e(o.label)}</button>`}).join('')}</div>
+ ${st.ok?'':`<div class="hint-list" role="status"><p><b>제출하려면 아직 필요한 것</b></p><ul>${st.hints.map(h=>`<li>${e(h)}</li>`).join('')}</ul><div class="actions"><button type="button" data-goto="evidence">자료 확인하러 가기</button><button type="button" data-goto="puzzles">기록 대조 풀러 가기</button><button type="button" data-goto="records">놓친 자료 복구</button></div></div>`}`}
+function archiveClick(ev){const b=ev.target.closest('button');if(!b||!story)return;const d=b.dataset;let msg='';
+ if(d.verify){const x=evInfo(d.verify),pair=x.crosscheck.filter(c=>story.evidenceAcquired.includes(c));if(ST.verifyEvidence(story,storyData,d.verify))msg=`${d.verify} ${x.title}을(를) ${pair.join('·')}와 대조해 확인했어요.`}
+ else if(d.solve){const order=[...$('archiveBody').querySelectorAll(`[data-order="${d.solve}"]`)].map(x=>x.value),r=ST.solvePuzzle(story,storyData,d.solve,order);msg=r.ok?`${d.solve}를 풀었어요.`:r.reason==='order'?'순서가 맞지 않아요. 자료에 적힌 날짜를 다시 확인해 보세요.':'아직 풀 수 없어요.'}
+ else if(d.select){ST.selectArchiveScene(story,d.select);archiveHints=null}
+ else if(d.recover){const got=ST.independentCheck(story,storyData,d.recover,{recovery:true});if(got)msg=`자료를 복구했어요${got.acquired.length?' — '+got.acquired.map(evTitle).join(', '):''}${got.verified.length?' · 확인됨 '+got.verified.join(', '):''}.`}
+ else if(d.finish){ST.selectArchiveScene(story,d.finish);const r=ST.confirmArchive(story,storyGates);save();if(r.ending){renderEndingView(r.ending,{archive:true});return}archiveHints={scene:d.finish,hints:r.hints}}
+ else if(d.flag){if(ST.recoverFlag(story,d.flag))msg='기록에 남겼어요.'}
+ else if(d.final){const r=ST.chooseFinal(story,storyGates,d.final);save();if(r.ending){render();return}msg=r.hints.join(' ')}
+ else if(d.goto)archiveTab=d.goto;
+ else return;
+ save();renderArchive(msg)}
 async function share(){if(!run||run.screen!=='result')return;$('share').disabled=true;
  try{
   const c=document.createElement('canvas');c.width=1080;c.height=1350;const ctx=c.getContext('2d'),t=totals(run);ctx.fillStyle='#101a1b';ctx.fillRect(0,0,1080,1350);try{const bg=await new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=MEDIA+'ending-dawn.webp'});const sw=bg.height*1080/1350;ctx.globalAlpha=.35;ctx.drawImage(bg,(bg.width-sw)/2,0,sw,bg.height,0,0,1080,1350);ctx.globalAlpha=1;ctx.fillStyle='#101a1bb0';ctx.fillRect(0,0,1080,1350)}catch{}ctx.strokeStyle='#b8a475';ctx.lineWidth=4;ctx.strokeRect(70,70,940,1210);
-  ctx.fillStyle='#d6bd79';ctx.font='38px sans-serif';ctx.fillText('404호는 없습니다',110,170);ctx.fillStyle='#e7eadc';ctx.font='bold 68px sans-serif';ctx.fillText(endingTitle(ending(run,anomalies)),110,360,860);
-  ctx.font='36px sans-serif';['야간근무 기록 · '+run.date,`8명 중 ${t.correct}명 맞힘`,`위험한 사람을 들여보냄 ${t.threats}번`,`괜찮은 사람을 돌려보냄 ${t.denials}번`,'당신이라면 문을 열어 줄 건가요?'].forEach((line,i)=>ctx.fillText(line,110,525+i*120,860));
+  ctx.fillStyle='#d6bd79';ctx.font='38px sans-serif';ctx.fillText('404호는 없습니다',110,170);ctx.fillStyle='#e7eadc';ctx.font='bold 68px sans-serif';ctx.fillText(resultTitle||endingTitle(ending(run,anomalies)),110,360,860);
+  ctx.font='36px sans-serif';(run.mode==='story'&&story&&(run.night||1)>1?[`${story.nightCompleted}야간 근무 기록 · `+run.date,`입수한 자료 ${story.evidenceAcquired.length}건`,`확인한 자료 ${story.evidenceVerified.length}건`,`풀린 기록 대조 ${story.puzzlesSolved.length}개`,'당신이라면 어떤 원본을 남길 건가요?']:['야간근무 기록 · '+run.date,`8명 중 ${t.correct}명 맞힘`,`위험한 사람을 들여보냄 ${t.threats}번`,`괜찮은 사람을 돌려보냄 ${t.denials}번`,'당신이라면 문을 열어 줄 건가요?']).forEach((line,i)=>ctx.fillText(line,110,525+i*120,860));
   const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw Error('이미지를 만들 수 없어요.');const file=new File([blob],'404-근무기록.png',{type:'image/png'});
   if(navigator.canShare?.({files:[file]})){try{await navigator.share({files:[file],title:'404호는 없습니다'});return}catch(e){if(e.name==='AbortError')return}}
   const url=URL.createObjectURL(blob);$('shareImage').src=url;$('shareDownload').href=url;$('sharePreview').hidden=false;$('shareClose').onclick=()=>{$('sharePreview').hidden=true;$('shareImage').removeAttribute('src');URL.revokeObjectURL(url)};$('sharePreview').scrollIntoView({behavior:'smooth'});
@@ -182,17 +256,32 @@ async function offline(){
  if(!('serviceWorker' in navigator)){$('offlineStatus').textContent='이 브라우저에서는 인터넷 없이 할 수 없어요.';return}
  try{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;$('offlineStatus').textContent='인터넷 없이도 할 수 있어요'}catch{$('offlineStatus').textContent='인터넷 없이 하려면 인터넷이 될 때 한 번 더 열어 주세요.'}
 }
+// Saves: 404_story_v3 (story) is validated; an unreadable one is copied to 404_story_v3_unreadable before starting over.
+// An old first-shift save in 404_active_v2 becomes night 1 of a story (copy kept in 404_active_v2_backup); daily runs stay put.
+function loadSaves(){const notes=[];story=null;daily=null;run=null;let raw=null;try{raw=localStorage.getItem(ST.STORY_KEY)}catch{}
+ const s=storageGet(ST.STORY_KEY);if(raw!==null){if(ST.validStory(s,storyData)){story=s;if(story.phase==='SHIFT'&&story.run.screen==='result')ST.finishNight(story,anomalies)}else{keep(ST.STORY_BROKEN,raw,true);try{localStorage.removeItem(ST.STORY_KEY)}catch{}notes.push('지난 이야기 기록을 읽지 못했어요. 원본은 따로 보관했어요.')}}
+ const old=storageGet(ACTIVE);let oldRaw=null;try{oldRaw=localStorage.getItem(ACTIVE)}catch{}
+ if(oldRaw!==null){if(validRun(old,visitors,anomalies)){if(old.mode==='daily')daily=old;else if(!story){const m=ST.migrateLegacy(old,storyData);if(m){keep(ST.LEGACY_BACKUP,oldRaw);story=m;try{localStorage.setItem(ST.STORY_KEY,JSON.stringify(story))}catch{}}}}else notes.push('지난 기록을 읽지 못해서 새로 시작해요.')}
+ if(notes.length){$('storageNotice').textContent=notes.join(' ');$('storageNotice').hidden=false}
+ run=story?.run||daily||null}
 async function boot(){
  $('startStory').disabled=$('startDaily').disabled=true;$('retry').hidden=true;$('record').textContent='게임 자료를 불러오는 중이에요…';
  try{
-  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings]=await Promise.all(response.map(r=>r.json()));if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
-  ready=true;const stored=storageGet(ACTIVE);run=validRun(stored,visitors,anomalies)?stored:null;if(stored&&!run){$('storageNotice').textContent='지난 기록을 읽지 못해서 새로 시작해요.';$('storageNotice').hidden=false}
+  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
+  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
+  storyData={visitors,anomalies,slots:storySlots,evidence:storyEvidence,flow:storyFlow};ready=true;loadSaves();
   $('startStory').disabled=$('startDaily').disabled=false;home();offline();
  }catch(e){$('record').textContent=e.message;$('retry').hidden=false}
 }
 $('clipGallery').addEventListener('toggle',e=>{mountClips();e.currentTarget.querySelectorAll('video').forEach(v=>{if(e.currentTarget.open&&!reducedMotion()){if(!v.getAttribute('src'))v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()})});
 $('backDesk').onclick=backDesk;$('finishInspect').onclick=backDesk;$('toolAction').onclick=readTool;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('investigation').hidden)backDesk()});
-$('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=render;$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
+$('startStory').onclick=()=>start('story');$('startDaily').onclick=()=>start('daily');$('resume').onclick=()=>resume($('resume').dataset.mode);$('resumeOther').onclick=()=>resume($('resumeOther').dataset.mode);$('homeButton').onclick=home;$('again').onclick=()=>start(run.mode);$('resultHome').onclick=home;
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>inspect(b.dataset.tool));$('verify').onclick=verify;$('allow').onclick=()=>{primeAudio();decide(true)};$('deny').onclick=()=>{primeAudio();decide(false)};$('next').onclick=next;$('share').onclick=share;$('retry').onclick=boot;
+$('contactRecheck').onclick=()=>{const sc=$('storyCard').dataset.scene;if(story&&ST.independentCheck(story,storyData,sc)){save();renderStoryCard()}};
+$('contactChoices').onclick=e=>{const b=e.target.closest('[data-choice]');if(b&&story&&ST.chooseScene(story,storyData,$('storyCard').dataset.scene,b.dataset.choice)){save();renderStoryCard()}};
+$('nextNight').onclick=()=>{if(!story||story.run!==run)return;const ok=story.night<5?ST.nextNight(story,storyData):ST.openFinal(story);if(ok){run=story.run;save();render()}};
+$('beginShift').onclick=()=>{if(story&&ST.beginShift(story)){save();render()}};$('introArchive').onclick=()=>openArchive('records');$('introHome').onclick=home;
+$('openArchive').onclick=()=>openArchive('evidence');$('archiveReturn').onclick=()=>openArchive('records');$('archiveBody').addEventListener('click',archiveClick);
+$('archiveBack').onclick=()=>story?.phase==='FINAL'?home():render();document.querySelectorAll('#archiveTabs [data-tab]').forEach(b=>b.onclick=()=>{archiveTab=b.dataset.tab;archiveHints=null;renderArchive()});
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.13.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.14.0';boot();

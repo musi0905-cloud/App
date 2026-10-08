@@ -31,11 +31,11 @@ test('daily shift with the allowed-pair list: each visitor brings their own anom
  const legacy=newRun('daily',visitors,anomalies,'2026-10-08');assert.equal(legacy.cases.length,8,'without pairs the old random draw still works');
 });
 
-test('the six reachable endings have v1.1 ids, titles, four shots and spoken lines; E07-E30 stay unreachable',()=>{
+test('the six engine endings have v1.1 ids, titles, four shots and spoken lines; E07-E30 are decided by story_gates.json',()=>{
  assert.equal(endings.length,30);
  for(const [name,id] of Object.entries(ENDING_IDS)){const e=endings.find(x=>x.id===id);assert.ok(e,id);assert.ok(e.title.length>0);assert.equal(e.cutscene.length,4,id);assert.ok(e.dialogue.length>=3,id);assert.ok(e.cutscene.every(s=>s.caption&&s.duration_sec>0))}
  assert.equal(new Set(endings.map(e=>e.cutscene.map(s=>s.caption).join('|'))).size,30,'every ending has its own captions');
- const reachable=new Set(Object.values(ENDING_IDS));for(const e of endings)if(!reachable.has(e.id))assert.match(e.machine_gate.all[0].flag,/^ending_trigger_E\d\d$/,'placeholder gate, not implemented');
+ const gates=read('story_gates').gates,engineIds=new Set(Object.values(ENDING_IDS));for(const e of endings){const g=gates.find(x=>x.id===e.id);assert.ok(g,e.id);assert.equal(g.type==='legacy_night1',engineIds.has(e.id),e.id)}
  const r=newRun('story',visitors,anomalies);for(let i=0;i<8;i++){r.seen=[...TOOLS];r.verified=true;decideRun(r,anomalies.find(a=>a.id===r.cases[i].anomaly).safe,anomalies);r.index++;r.seen=[];r.verified=false;r.screen='game'}r.screen='result';
  assert.equal(ENDING_IDS[ending(r,anomalies)],'E02');
 });

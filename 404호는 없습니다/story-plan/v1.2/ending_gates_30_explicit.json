@@ -1,0 +1,435 @@
+[
+  {
+    "id": "E07",
+    "title": "가짜 교대자",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_01",
+      "journal_opened": true,
+      "archive_resolution_selected": "E07"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E07"
+  },
+  {
+    "id": "E08",
+    "title": "잘못 울린 벨",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_02",
+      "journal_opened": true,
+      "archive_resolution_selected": "E08"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E08"
+  },
+  {
+    "id": "E09",
+    "title": "우산을 든 사람",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_03",
+      "journal_opened": true,
+      "archive_resolution_selected": "E09"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E09"
+  },
+  {
+    "id": "E10",
+    "title": "13층의 화면",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_04",
+      "journal_opened": true,
+      "archive_resolution_selected": "E10"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E10"
+  },
+  {
+    "id": "E11",
+    "title": "관리소장",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_05",
+      "journal_opened": true,
+      "archive_resolution_selected": "E11"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E11"
+  },
+  {
+    "id": "E12",
+    "title": "분실 명부",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_06",
+      "journal_opened": true,
+      "archive_resolution_selected": "E12"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E12"
+  },
+  {
+    "id": "E13",
+    "title": "두 번째 얼굴",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 2,
+      "scene_completed": "N2_07",
+      "journal_opened": true,
+      "archive_resolution_selected": "E13"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E13"
+  },
+  {
+    "id": "E14",
+    "title": "원본 영상",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_01",
+      "journal_opened": true,
+      "archive_resolution_selected": "E14"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E14"
+  },
+  {
+    "id": "E15",
+    "title": "주소 없는 편지",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_02",
+      "journal_opened": true,
+      "archive_resolution_selected": "E15"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E15"
+  },
+  {
+    "id": "E16",
+    "title": "새벽의 소방차",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_03",
+      "journal_opened": true,
+      "archive_resolution_selected": "E16"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E16"
+  },
+  {
+    "id": "E17",
+    "title": "잠긴 계단",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_04",
+      "journal_opened": true,
+      "archive_resolution_selected": "E17"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E17"
+  },
+  {
+    "id": "E18",
+    "title": "방송의 주인",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_05",
+      "journal_opened": true,
+      "archive_resolution_selected": "E18"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E18"
+  },
+  {
+    "id": "E19",
+    "title": "거짓 규칙",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_06",
+      "journal_opened": true,
+      "archive_resolution_selected": "E19"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E19"
+  },
+  {
+    "id": "E20",
+    "title": "유리문",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 3,
+      "scene_completed": "N3_07",
+      "journal_opened": true,
+      "archive_resolution_selected": "E20"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E20"
+  },
+  {
+    "id": "E21",
+    "title": "방문 예약",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_01",
+      "journal_opened": true,
+      "archive_resolution_selected": "E21"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E21"
+  },
+  {
+    "id": "E22",
+    "title": "실종 신고",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_02",
+      "journal_opened": true,
+      "archive_resolution_selected": "E22"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E22"
+  },
+  {
+    "id": "E23",
+    "title": "화재 기록",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_03",
+      "journal_opened": true,
+      "archive_resolution_selected": "E23"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E23"
+  },
+  {
+    "id": "E24",
+    "title": "빈 호수",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_04",
+      "journal_opened": true,
+      "archive_resolution_selected": "E24"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E24"
+  },
+  {
+    "id": "E25",
+    "title": "후보의 전화",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_05",
+      "journal_opened": true,
+      "archive_resolution_selected": "E25"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E25"
+  },
+  {
+    "id": "E26",
+    "title": "아침의 이름",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_06",
+      "journal_opened": true,
+      "archive_resolution_selected": "E26"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E26"
+  },
+  {
+    "id": "E27",
+    "title": "1997",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 4,
+      "scene_completed": "N4_07",
+      "journal_opened": true,
+      "archive_resolution_selected": "E27"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E27"
+  },
+  {
+    "id": "E28",
+    "title": "관리실 열쇠",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 5,
+      "final_choice": "seal_archive",
+      "scene_completed": "N5_01"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E28"
+  },
+  {
+    "id": "E29",
+    "title": "퇴사서",
+    "trigger_type": "archive_choice",
+    "requires": {
+      "night_completed_at_least": 5,
+      "final_choice": "resign",
+      "scene_completed": "N5_02"
+    },
+    "terminal": true,
+    "priority": 60,
+    "rule": "선택한 기록 묶음의 국소 결말; 자유 진행 중 자동 종결하지 않음",
+    "cutscene_ref": "E29"
+  },
+  {
+    "id": "E30",
+    "title": "404호는 없습니다",
+    "trigger_type": "final_choice",
+    "requires": {
+      "night_completed_at_least": 5,
+      "puzzles_all": [
+        "PZ01",
+        "PZ02",
+        "PZ03",
+        "PZ04",
+        "PZ05"
+      ],
+      "verified_evidence_all": [
+        "EV01",
+        "EV06",
+        "EV09",
+        "EV10",
+        "EV13",
+        "EV15",
+        "EV16",
+        "EV17"
+      ],
+      "victim_names_preserved": true,
+      "external_submission": true
+    },
+    "priority": 100,
+    "terminal": true,
+    "cutscene_ref": "E30"
+  },
+  {
+    "id": "E01",
+    "title": "평범한 퇴근",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": false,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E01"
+  },
+  {
+    "id": "E02",
+    "title": "신중한 경비원",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": false,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E02"
+  },
+  {
+    "id": "E03",
+    "title": "위험한 출입",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": true,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E03"
+  },
+  {
+    "id": "E04",
+    "title": "문 앞의 사람",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": true,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E04"
+  },
+  {
+    "id": "E05",
+    "title": "404호",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": true,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E05"
+  },
+  {
+    "id": "E06",
+    "title": "첫 기록",
+    "trigger_type": "legacy_night1_result",
+    "legacy_engine_owned": true,
+    "terminal": false,
+    "priority": 10,
+    "rule": "현행 엔진 조건을 변경하지 않고 표시 계층만 연결; 단일 야간의 결과는 N2~N5 진행 잠금 금지",
+    "cutscene_ref": "E06"
+  }
+]
