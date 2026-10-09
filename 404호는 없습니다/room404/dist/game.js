@@ -16,6 +16,8 @@ function clearReplay(){replayGeneration++;if(replayCleanup){replayCleanup();repl
 // scenes, and the 30 ending cutscenes. v0.14.0 adds the five-night story (story.js): 40 slots, evidence, puzzles, 30 gates.
 let storyVisitors=[],storyScenes=[],storyEndings=[],storySlots=[],storyGates=[],storyEvidence=null,storyFlow=null,storyData=null;
 let story=null,daily=null,archiveTab='evidence',archiveHints=null,resultTitle='';
+// Approved character art (v0.15.0, data/character_assets.json): portraits for story contacts whose scene has an approved figure.
+let characterAssets={assets:{},contacts:{}};
 const pairsOf=()=>Object.fromEntries(storyVisitors.map(v=>[v.id,v.anomaly_id]));
 function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&(run.night||1)===1&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
 function endingTitle(end){return storyEndings.find(e=>e.id===ENDING_IDS[end])?.title||end}
@@ -192,7 +194,8 @@ function resultButtons({next=null,again=false,share=false,archive=false,back=fal
 function renderStoryCard(){const card=$('storyCard'),e=escapeHTML,night=run.night||1;
  if(!(run.mode==='story'&&story&&night>1&&run.screen==='feedback')){card.hidden=true;$('choiceNeeded').hidden=true;$('next').disabled=false;return}
  const scene=ST.currentScene(story),slot=slotFor(scene),checked=story.sceneChecks.includes(scene),opts=storyFlow.choices[scene]||null,chosen=story.sceneChoices[scene];
- card.hidden=false;card.dataset.scene=scene;$('contactLabel').textContent=`${slot.time} · ${storyFlow.contact_label} · ${slot.story_contact}`;$('contactLine').textContent=`“${slot.story_contact_arrival}”`;
+ card.hidden=false;card.dataset.scene=scene;const art=characterAssets.assets[characterAssets.contacts[scene]];$('contactScreen').hidden=!art;$('contactPortrait').innerHTML=art?`<span role="img" aria-label="${e(slot.story_contact)}이(가) 인터폰 화면에 보여요" class="person-sprite cropped" data-character="${e(characterAssets.contacts[scene])}" style="background-image:url(${e(art.file)})"></span>`:'';if(art)activateMedia();
+ $('contactLabel').textContent=`${slot.time} · ${storyFlow.contact_label} · ${slot.story_contact}`;$('contactLine').textContent=`“${slot.story_contact_arrival}”`;
  $('contactCheck').textContent=`경비원: “${checked?slot.story_contact_recheck:slot.story_contact_check}”`;$('contactRecheck').hidden=checked;
  $('contactResult').innerHTML=checked?`<p><b>알게 된 것</b> ${e(slot.story_clue)}</p><ul class="ev-got">${slot.story_ev_candidates.map(id=>`<li>${badge(story.evidenceVerified.includes(id))} ${e(id)} ${e(evTitle(id))}${story.evidenceFrom[id]!==scene?' · 다른 기록과 같은 자료라 확인됐어요':''}</li>`).join('')}</ul>`:'<p class="small">독립 자료를 대조해야 자료를 받을 수 있어요. 그냥 넘어가도 근무가 끝난 뒤 기록 보관함에서 복구할 수 있어요.</p>';
  $('contactChoices').innerHTML=opts?`<p class="eyebrow">이 기록을 어떻게 처리할까요?</p>${opts.map(o=>`<button type="button" data-choice="${e(o.value)}" aria-pressed="${chosen===o.value}"${chosen?' disabled':''}>${e(o.label)}</button>`).join('')}`:'';
@@ -267,8 +270,8 @@ function loadSaves(){const notes=[];story=null;daily=null;run=null;let raw=null;
 async function boot(){
  $('startStory').disabled=$('startDaily').disabled=true;$('retry').hidden=true;$('record').textContent='게임 자료를 불러오는 중이에요…';
  try{
-  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
-  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
+  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow','character_assets'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow,characterAssets]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
+  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices||!characterAssets?.assets||!characterAssets?.contacts)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
   storyData={visitors,anomalies,slots:storySlots,evidence:storyEvidence,flow:storyFlow};ready=true;loadSaves();
   $('startStory').disabled=$('startDaily').disabled=false;home();offline();
  }catch(e){$('record').textContent=e.message;$('retry').hidden=false}
@@ -284,4 +287,4 @@ $('beginShift').onclick=()=>{if(story&&ST.beginShift(story)){save();render()}};$
 $('openArchive').onclick=()=>openArchive('evidence');$('archiveReturn').onclick=()=>openArchive('records');$('archiveBody').addEventListener('click',archiveClick);
 $('archiveBack').onclick=()=>story?.phase==='FINAL'?home():render();document.querySelectorAll('#archiveTabs [data-tab]').forEach(b=>b.onclick=()=>{archiveTab=b.dataset.tab;archiveHints=null;renderArchive()});
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.14.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.15.0';boot();

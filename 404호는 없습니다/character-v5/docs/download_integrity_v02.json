@@ -1,0 +1,2271 @@
+{
+  "images": [
+    {
+      "path": "00_스타일가이드/QA_BG13_current_and_past_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1280,
+        2480
+      ],
+      "sha256": "92a4d771208e1995b6c55828cb06da93fc227a6befa59fb46f3e76061738efac"
+    },
+    {
+      "path": "00_스타일가이드/QA_NPC01_BG02_static_placement_v01.jpg",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "d346be4bfd0512a6b9a83239e06d546feff1b6cfaadaeaa79ee1576eb7c46ae6"
+    },
+    {
+      "path": "00_스타일가이드/QA_NPC_alpha_composites_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1500,
+        520
+      ],
+      "sha256": "75be108086e855f68b90a43dff5c979bdfcafb28eb8665598e58336b2580545b"
+    },
+    {
+      "path": "00_스타일가이드/QA_UI20_atlas_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        1800
+      ],
+      "sha256": "c99f1171167b8e9c5fa97dd2fdf70766a6740b9a3f06971b0d693080ddb2dcd4"
+    },
+    {
+      "path": "00_스타일가이드/QA_core_masters_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1280,
+        1240
+      ],
+      "sha256": "8e214c8dc54c765297598c99d44ccc638173b89f8fe3a5d7109135e6ca80da9c"
+    },
+    {
+      "path": "00_스타일가이드/QA_directions_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        2300
+      ],
+      "sha256": "a9b37f50b8164c1f4f501c01435ad35da3ff5ec41bcf42b1826cfa4cbb5a2e07"
+    },
+    {
+      "path": "00_스타일가이드/QA_evidence18_atlas_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1280,
+        2350
+      ],
+      "sha256": "413ec850f5b9493f5694071a8b85f0087b52e187178445d19a8a7f8c7748e8e7"
+    },
+    {
+      "path": "00_스타일가이드/REF08_style_comparison_v01.jpg",
+      "status": "PASS",
+      "size": [
+        1440,
+        1440
+      ],
+      "sha256": "3aaa483901793ffe0060af1268d2d0eb336f7cbc71b4b65acd95d19d74d02244"
+    },
+    {
+      "path": "01_캐릭터/game/CH01_ch01_2004_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8b8483b148672863c6f621e515531d1ce6222c36857b7d864c3662309da06f45"
+    },
+    {
+      "path": "01_캐릭터/game/CH01_ch01_2004_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "780c11b602efb9edf8995eb03316e401ac5aea83f026c5dc540eb183956bc764"
+    },
+    {
+      "path": "01_캐릭터/game/CH01_ch01_2004_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "566868610fd048d20c417a3d3eb6f23ace2b9b4b88e4715479b85b2d43670992"
+    },
+    {
+      "path": "01_캐릭터/game/CH01_ch01_2004_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "46be39c20a57207e3dd0611aa5c519f89d5cc24c0b02ac7a79ab2c53eb72ee5b"
+    },
+    {
+      "path": "01_캐릭터/game/CH01_kim_jeongwoo_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "856867b943dbedae90f11c33b5d7e4e6ed3b2f4360f86b24742cac7ecafd64b7"
+    },
+    {
+      "path": "01_캐릭터/game/CH02_lee_sooyeon_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "96d1d35ed6a93f4d69142a1ef8ce642514f072362095b5c619c4712b71315bd5"
+    },
+    {
+      "path": "01_캐릭터/game/CH03_kim_haeun_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "3564b101afc990b770f50d29ca828d8156c8539c8d842c319ca9eef3d0274e77"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_ch04_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a633cba90e4300bf2cee7daafbb40349fa837acedb42294fa3883bfc6c5fe4db"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_ch04_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "41e4edc2ad6883e9b666f93b667c7ffed9f9f611710f53b85ff0eb4111e7d226"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_ch04_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "9fbb8fec1797f42f3a4e917208b0493fe44f6951febc2e4fb4d658820eb1094a"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_ch04_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "14dfebfc20d49387c6b4c193d60d8217ff7fd390b44d9acdc6d925498ae3fa7d"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_kang_taejun_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "89aa3dae42bedb9e132269c0c28bb68c78805c5a64c6483e3ed24208eb537be6"
+    },
+    {
+      "path": "01_캐릭터/game/CH04_kang_taejun_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "4ca694b03f20fdadf494b04a954ac9d308f5c0951f21c6736606280eab5fcc6b"
+    },
+    {
+      "path": "01_캐릭터/game/CH05_oh_myeongcheol_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8589b2fb2e2d82d945e1dd40b32b93cc24ccf9621dfdd38775d5d0436f0d0c25"
+    },
+    {
+      "path": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476"
+    },
+    {
+      "path": "01_캐릭터/game/CH07_park_youngsik_2004_archive_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "7cbadcf281c293b20500f7023fcda6b97ba3042b4ba22a770254622491aa65dc"
+    },
+    {
+      "path": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6"
+    },
+    {
+      "path": "01_캐릭터/game/CH09_jeong_beomsu_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e"
+    },
+    {
+      "path": "01_캐릭터/game/CH10_yoon_dogyeong_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d"
+    },
+    {
+      "path": "01_캐릭터/game/NPC01_npc01_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "4e7e653b5376c7aa106e24ed8e14b93c56d13687b0fa0013dd080123fa14123d"
+    },
+    {
+      "path": "01_캐릭터/game/NPC01_npc01_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "310ac6d700ff4a29cbf939c5365758d1105346506685522b34905982fb2a36f5"
+    },
+    {
+      "path": "01_캐릭터/game/NPC01_npc01_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a75cf67d9fb608054e5d48a0a8ee743aa4a4180a167547e5c0785205dc7a9709"
+    },
+    {
+      "path": "01_캐릭터/game/NPC01_npc01_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "9260c6c363b86f6e09ed35f8b41b82555fb511a6002ddaf7d30e6eea92da48e2"
+    },
+    {
+      "path": "01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b"
+    },
+    {
+      "path": "01_캐릭터/game/NPC02_npc02_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "84429e8b7c14e0c3f0d53adc7f09c49e997c164704f4b5ead67f98a36b0a24af"
+    },
+    {
+      "path": "01_캐릭터/game/NPC02_npc02_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "6456436ad1daca025bc3113172d915fae578cafcbdf4e448fc875fb9e185eb44"
+    },
+    {
+      "path": "01_캐릭터/game/NPC02_npc02_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "51e320f075344ae4f6fcf96beb9059eb8713d71e83d0ca1b8dc90dd38e93e03f"
+    },
+    {
+      "path": "01_캐릭터/game/NPC02_npc02_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "c19b15e84fc7b63f83bdef1966ae0e34d3c9506869246f44db3f4581b6314994"
+    },
+    {
+      "path": "01_캐릭터/game/NPC02_visitor_female_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a27b97d7c480ad9eb36f68d8ff08759799ffc22d187ad585df5cd197da68aaa6"
+    },
+    {
+      "path": "01_캐릭터/game/NPC03_courier_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "013ec93332bc64e8d67280084dae075353aea0e62090214c9d59180614982636"
+    },
+    {
+      "path": "01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f"
+    },
+    {
+      "path": "01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11"
+    },
+    {
+      "path": "01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da"
+    },
+    {
+      "path": "01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585"
+    },
+    {
+      "path": "01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62"
+    },
+    {
+      "path": "01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744"
+    },
+    {
+      "path": "01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e"
+    },
+    {
+      "path": "01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3"
+    },
+    {
+      "path": "01_캐릭터/originals/CH01_ch01_2004_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "f628d4df9048b2b6b4baed6cb468a64b3e7903b483141d880a8e7ed9985a375e"
+    },
+    {
+      "path": "01_캐릭터/originals/CH01_ch01_2004_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "6888e8bfab4106caf4fce7b950363e2629dcbdd83d71dede44c028af48532b91"
+    },
+    {
+      "path": "01_캐릭터/originals/CH01_ch01_2004_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a6b46ebb95043f453347e2fd84a8fdf7a8cf7209b0872dddae11af132e5cac0d"
+    },
+    {
+      "path": "01_캐릭터/originals/CH01_ch01_2004_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "e835102331866366776da19085c07da04138e7c0dfe980ae61cdb77e0b1939ed"
+    },
+    {
+      "path": "01_캐릭터/originals/CH01_kim_jeongwoo_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "90c411198d0542d58c8d0f8f3c3700e03ef7b0866900ad61685c7d2604c2c9f8"
+    },
+    {
+      "path": "01_캐릭터/originals/CH02_lee_sooyeon_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "c5b5578f794344a9e04b3ab1973f6603fa44169261a7f59dfffca7dcff5dacfc"
+    },
+    {
+      "path": "01_캐릭터/originals/CH03_kim_haeun_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8528e0f9b81465944e2f3ebc5ba7c22db35032e1d4f6a43308656e074a8d6e62"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_ch04_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "7b9da9896df23f1d1a28c66125b998f5e88b306c231f97a0df2f337462a35715"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_ch04_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "75b2ab2fdb469c0925e16461c20082f1e13e4cb3ecd86be3ff356a972b46a739"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_ch04_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "14374706a124fa5f9189b44c20a4d233498be2ac4163613d2f5b40a2664589b8"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_ch04_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8f204ad153366d4649d5f4dd61945b574316eb8f9bea04e5755cdda3124faa5f"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_kang_taejun_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "bff9a3a285443bf788f5af13b1f82746f2b4f982e546a5bb638461157fe42f09"
+    },
+    {
+      "path": "01_캐릭터/originals/CH04_kang_taejun_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "2e106251dba2e962f1b84e150c8d8c8d2c3ad4ae2704ef829390423ce0eb1baa"
+    },
+    {
+      "path": "01_캐릭터/originals/CH05_oh_myeongcheol_2004_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "7183014edc7e0cfe57ce2e09fd62cba4e15c99cf53c8725a2d1d755c6eb9f137"
+    },
+    {
+      "path": "01_캐릭터/originals/CH06_jang_hyesook_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "4a869b809b085c90782aa1c9b4c605a71c90c75d721427e95e324a605d6886f6"
+    },
+    {
+      "path": "01_캐릭터/originals/CH07_park_youngsik_2004_archive_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "847be13fa36ad25aee80f1295945cc637a01e40a16a58503c9f07cb822803237"
+    },
+    {
+      "path": "01_캐릭터/originals/CH08_seo_mina_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "8472b59d8951c7fa1a4c72d98e9ce05ddaf21e19db04596ff6ff1492f5dc38b6"
+    },
+    {
+      "path": "01_캐릭터/originals/CH09_jeong_beomsu_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "88a891125843ca1c3841881f15f89f9bcb83779fe5e9b88ed1a6e83ffcb3228e"
+    },
+    {
+      "path": "01_캐릭터/originals/CH10_yoon_dogyeong_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "4b79cb6ef24e38d780864384f84d5450c9fb9c4b52be2006e9a5495a6939a337"
+    },
+    {
+      "path": "01_캐릭터/originals/MC01_2026_front_full_v01_DRAFT.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "b36fe40be170440021e2d95e29b387b6322d6dd7ab30513c3f77b2623757c19f"
+    },
+    {
+      "path": "01_캐릭터/originals/MC02_2026_front_full_v01_DRAFT.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "0b408b3ef49d83497581a6710cbf3a417402dd58626af92ef1892a5b5f0ce5b9"
+    },
+    {
+      "path": "01_캐릭터/originals/MC03_2026_front_full_v01_DRAFT.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "543e693e95030d3cb61fae6d187f52c99738ecc12d2281a2e13830c9a0d6430d"
+    },
+    {
+      "path": "01_캐릭터/originals/MC04_2026_front_full_v01_DRAFT.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "3e5cfe09273e93e0d6f6bf552ef65bd3f1b204a451ecce15269599ab769a4a57"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC01_npc01_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "0bed8e0c3db6610a9009455730b8e5e9af6312d225fdaa7f63420440cfaaf3ea"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC01_npc01_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "f6571069b0e24948d0bd8dfccdd49d8f54b9b9cb3bfba483cd77e5aecf59dbf0"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC01_npc01_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "0efb6a58fa8ef12e88f2786f2a7f016799b3ba76480121e3310c78c7c502ffea"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC01_npc01_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "ef358effcc0f3926f05547d7d99234f10138c1b5a352ac6311ae482806b17572"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC01_visitor_male_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "c6836c1c92156117e50bff89579e6851701a7573a33b6ca818f9f48df904eebb"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC02_npc02_2026_left45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "fd1b3920ae132924067030e2f07fefd07baae55cb07a1d034b1a16064614ab4f"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC02_npc02_2026_rear_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "af056070b37c944709f78f886730a59a956fc5ed1e7d856e9bb8a2665f7d0b06"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC02_npc02_2026_right45_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "9639f84733d6fe2f2908fd97c0d29ab5b48bee31c45426d6903a684a2e227a40"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC02_npc02_2026_side_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "9144e8d74ce6a0888557785db7b2e77da2e33c2f5c857e9d29241909be5a475e"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC02_visitor_female_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "088ee79a784d0d21c37e6eeb0f2bc784c8d9b23ea6c5313b8209b3fd44bedd73"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC03_courier_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "137e0e82d8b6bf577e68218a0fd0113bef53999a611afff1739789cf55ee9c5f"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC03_courier_2026_front_full_v02_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "19e8efc81927ec24a38e72bfc7ecef682e7342b94efdfdf9b8f5892acd2066ab"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC04_technician_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "551ea62f0d33171efa7eac0c0198ab4147fba41e9081962183b868f1270137b8"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC05_caregiver_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1f2ed5b1810ce90dd7fc74f48ff5cd1ccaacf4c118507b8978cba6662ccd74c9"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC06_elderly_neighbor_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "26801d98ff9fa5ba8f7996e1264f8783c3855e7d23ef8f7c0af07237b1a89451"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC07_food_delivery_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "57c5c2499f7008984b989de89fbae306aca2014744f050e0d80608bed48da4d9"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC08_vehicle_companion_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ac401f8a1d7188c111f80096ae19a02948c9bbf7fb22d81ced413e3ff1a40404"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC09_public_service_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "78a2f4a7fd55c192f64f53adba94c1a87c97ca22d36a54c11f4aa1cc94b4d188"
+    },
+    {
+      "path": "01_캐릭터/originals/NPC10_friend_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "48fd94f54439b543d2821d666ca38ac2cae56fc1a08219d3b5b3bd10027ab0c1"
+    },
+    {
+      "path": "02_배경/game/BG01_security_booth_night_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "ab8866d85c14f13579e23a8e8c0d5e9b112a2426ca535f2dfa69b4efc60aec20"
+    },
+    {
+      "path": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c"
+    },
+    {
+      "path": "02_배경/game/BG03_lobby_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "42c764a5b1d9eb2f024692d87db55850bdfe5815f30151a4490f893383929a9d"
+    },
+    {
+      "path": "02_배경/game/BG04_floor4_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "c65f11e95c4748fdbf68e190ee980205767a744f2f2a9e03001b8ae4732b1b17"
+    },
+    {
+      "path": "02_배경/game/BG05_floor4_2004_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "12ccb33814f1c1a2e311db75b752801dabe86bc2363ae5420c27766b03dfb03c"
+    },
+    {
+      "path": "02_배경/game/BG06_elevator_hall_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "fea2ed321d6f8453214d725f8de8a96fad1b9882af032671af7c7c95468bc0bc"
+    },
+    {
+      "path": "02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "73db049cb437a8c725e786d897f9ad4f2372d6ad9356a0c1d8ac527714c31648"
+    },
+    {
+      "path": "02_배경/game/BG07_garage_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "59c1218abe7eeb4b9bcd20f9d32d49b15bbdf5d5b7d29f5235d83329a7e1d224"
+    },
+    {
+      "path": "02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "d0c3c33cd2b43d447a54d17a2f16b471a56edd88a7ee0458cab15d342d70842e"
+    },
+    {
+      "path": "02_배경/game/BG08_management_office_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "251686d7b6c8ad72d01f56529dcc678d2cf3cb2e17a97c6977f57ef5782bcc21"
+    },
+    {
+      "path": "02_배경/game/BG09_maintenance_cover_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "c464d2b08773cd701b124d57a73de49058ef6b1e061d527996d29f89e6a2429c"
+    },
+    {
+      "path": "02_배경/game/BG10_room404_2004_before_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "f6e7c7d1cedc91df092b5d5469165a85fe358985fa042fb5b908272cfd1fc76f"
+    },
+    {
+      "path": "02_배경/game/BG11_room404_2004_after_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "dbaf17bb76472663c44b1a54229fe82d0ce98df90909c55ef5b0ebf2995d85e6"
+    },
+    {
+      "path": "02_배경/game/BG12_public_archive_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "1584bdb48077a3f78f1147b349ac43163c2a86f65415fa05febcad82637ca3be"
+    },
+    {
+      "path": "02_배경/game/BG13_2004_exterior_2004_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "1b7cb1ea74218c53dfaed975f50965d484f62f4aff2879d91e2896b0f7d13e9e"
+    },
+    {
+      "path": "02_배경/game/BG13_2026_exterior_2026_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "41a6005631806a883a06936acfdecb4199f5070b4e4666f7b72d95acee931121"
+    },
+    {
+      "path": "02_배경/originals/BG01_security_booth_night_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "5284e4e619d0e69efaf8f1c7dc65bf4495bf75abe26a8f18f38a9c838b94ab26"
+    },
+    {
+      "path": "02_배경/originals/BG02_shared_entrance_night_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "1ef21818f7986b29066bf54379cc96dc962b3f9075c8208f0f161b1c20b4ef2a"
+    },
+    {
+      "path": "02_배경/originals/BG03_lobby_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "6be6697e620cb880fe57877cdd6805ab2fe540b7d88829bb51c2f31e82a57500"
+    },
+    {
+      "path": "02_배경/originals/BG04_floor4_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a402fce964126081950ffe6c1d24725b1d5cf3271a3a9c78cf39f9868a2f4d98"
+    },
+    {
+      "path": "02_배경/originals/BG05_floor4_2004_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "9020689bf488c5c862b048c194a434c49c4f37f739b2fb23e3097353a1e6f71f"
+    },
+    {
+      "path": "02_배경/originals/BG06_elevator_hall_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "6f25cf4a902965c46d89a3097078f852207c7a5fc5e8e18d6950cc874689dcd8"
+    },
+    {
+      "path": "02_배경/originals/BG06_interior_elevator_2026_interior_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "f66094eefb8d9bd132351e73cde7420aa7a751c23d6d6c9a3e5806f35e665285"
+    },
+    {
+      "path": "02_배경/originals/BG07_garage_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a55306dc198e62b0fea41b4ed1cb3e87e4385f990105e8812883327ff8a507f3"
+    },
+    {
+      "path": "02_배경/originals/BG08_management_office_2026_base_v02_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "a6b250c782ed0b2d6e7f808509a8728e945c36816c95a00b1a817373cf972eb3"
+    },
+    {
+      "path": "02_배경/originals/BG08_management_office_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "089db9178483ddc423b10c70321c29b75f7da9df61c1f5e3cea79b507e16e18f"
+    },
+    {
+      "path": "02_배경/originals/BG09_maintenance_cover_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "ce9be99db2acdaf73d881cf91a377c68897e1cbe4ed24b3127f3c4f3a3a1a6f9"
+    },
+    {
+      "path": "02_배경/originals/BG10_room404_2004_before_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "947112c648747183f8b27c35c96fd358b5368b0ea7c6fb55fdb0afe5295f14cd"
+    },
+    {
+      "path": "02_배경/originals/BG11_room404_2004_after_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "ba04f6af01577c2d8d96f571dd20f63b4817e42f15c56fb571260afea9d2e2c6"
+    },
+    {
+      "path": "02_배경/originals/BG12_public_archive_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "d15ab25df7ed51425ed774458e5c5e2ab83ca00842c9104a999c4e1d74e22153"
+    },
+    {
+      "path": "02_배경/originals/BG13_2004_exterior_2004_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "837b9bc59ac75a2fc796930c91f87fd4c2007af4634e1fb9cf258735769c8301"
+    },
+    {
+      "path": "02_배경/originals/BG13_2026_exterior_2026_v01.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "84f974d6a97f5f14479e5c879171bcd2e0f793d5a03b68a7be06ed007b13525b"
+    },
+    {
+      "path": "03_사건장면/game/N2_04_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "8448f83697c3600e3b30fd576ba32dc5d0eb29384387496b85beaff85c977553"
+    },
+    {
+      "path": "03_사건장면/game/N2_06_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "111e004b8cee03cefb2b1bff5daa033558e77668710397d5c6475c96e76d9732"
+    },
+    {
+      "path": "03_사건장면/game/N3_04_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "9dbb47c14bf8e6ed6cf7d0acda8d8942c71faa54c36de8f4f5109f55e1282afd"
+    },
+    {
+      "path": "03_사건장면/game/N3_08_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "4111bdf39d25c8c53c244d217a9b69a21face492e789eccf4a2d27e5ff8bced8"
+    },
+    {
+      "path": "03_사건장면/game/N4_04_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "0120daf22bc373128dda4985ddb724a3adf98d77830539ae805d4f5512b3aa2c"
+    },
+    {
+      "path": "03_사건장면/game/N4_06_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "31c510b341e016055cdc7ac0a899c1fe331437f5021a7cb99967d810e6a35b65"
+    },
+    {
+      "path": "03_사건장면/game/N5_04_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "ad639cf07edb9e5b3d32818159b9da469b9d902f44c36b0e49c0c38564c76779"
+    },
+    {
+      "path": "03_사건장면/game/N5_05_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "545aeabd14c516f0dccb90aa7d7867305bfecd432dca2bdcf7fd61d0b0081459"
+    },
+    {
+      "path": "03_사건장면/game/N5_06_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "15016a233bb791bb586c758e36a87c1da8e1bb678c4b6a7798d36709726535b6"
+    },
+    {
+      "path": "03_사건장면/game/N5_07_entrance_dialogue_preview_v01.webp",
+      "status": "PASS",
+      "size": [
+        1080,
+        1920
+      ],
+      "sha256": "46b629b88b28e88bb4e74cc0be2b125afd35dc54188314e0c10cdc4346445c41"
+    },
+    {
+      "path": "04_증거소품/game/DOC00_document_blank_base_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "1a5e287738a1938ae205f7acdfa16019fbb590652d5fcd5af139eabb13d63821"
+    },
+    {
+      "path": "04_증거소품/game/EV01_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "a3a23c464c8044484581c0313fdce8d210742162fe617c80d98292c2085849ae"
+    },
+    {
+      "path": "04_증거소품/game/EV01_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "269b726d3ffc44da7f09108cbf58af7267ea24638cc7e8ed89c6ef039ffbb8e6"
+    },
+    {
+      "path": "04_증거소품/game/EV02_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "8f4094bce690136b31d7217fa3d57e3d3e21ad5007bb06e0bf0523c1c468378a"
+    },
+    {
+      "path": "04_증거소품/game/EV02_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "1b5462d8ee7b6fa947ea79404da7a990462b335c744ab80499daf4a0054dba57"
+    },
+    {
+      "path": "04_증거소품/game/EV03_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "32a0641dbaa87a2fc3b0b89f3ee1d7acecf1a0bce3798838850315930595af64"
+    },
+    {
+      "path": "04_증거소품/game/EV03_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "ec5f225de87e744c0c9609e6daa49c8e136893c0e39bffa074f3532bba221ac5"
+    },
+    {
+      "path": "04_증거소품/game/EV04_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "eab2a8ae92d7a26db27fcaea9a4a830a5374bd1eb5b1430cdd6ed3fe81aae4ba"
+    },
+    {
+      "path": "04_증거소품/game/EV05_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "8d33fcabbb9829cc8354bd40ad916204261a1cfbec2a13d4857bf8c0e224819b"
+    },
+    {
+      "path": "04_증거소품/game/EV05_family_photo_2004_before_v01.png",
+      "status": "PASS",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "7aa12ea677f3ed666d4e0fe9ed57cbe1033b353bf9bd6d739a64e9bb53b84934"
+    },
+    {
+      "path": "04_증거소품/game/EV06_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "e5e277a63c902605cf121c930da596188de77bc70f57bde36573a2006d1e3275"
+    },
+    {
+      "path": "04_증거소품/game/EV06_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "3b3a817a422383e79de5ba9f4834b63a3c4a58ad092b7971298016db7b41f499"
+    },
+    {
+      "path": "04_증거소품/game/EV07_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "d87f2cb5eb791886a928f8b96119fc89eae4e93277f7dc07c895ff02aec6ff00"
+    },
+    {
+      "path": "04_증거소품/game/EV07_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "dda0b84bf03b5e017a2aafa76ac779357adfc34ddbbee3976ed6fe4c47f604df"
+    },
+    {
+      "path": "04_증거소품/game/EV08_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "6bf31708a7ac8f1bac735d47fcd7e3cd2ef902d4dce64ac5bee929440be99c2a"
+    },
+    {
+      "path": "04_증거소품/game/EV08_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "5ad046a6cab943c30db254cfd4d163e711d5866993adb268dd07b8c41aa0e368"
+    },
+    {
+      "path": "04_증거소품/game/EV09_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "7a656e4b4a22689ec3a5e8bec5aa98acedd91ce0f90b892cfd49a99afa0583c8"
+    },
+    {
+      "path": "04_증거소품/game/EV09_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "29e494a386006fa2a7adf588db279585d5181a4719753c5181c1040cdb20cda7"
+    },
+    {
+      "path": "04_증거소품/game/EV10_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "88555af63abec7484a38782775327889cf97c2fe29533653ef89d1b71c5bee7b"
+    },
+    {
+      "path": "04_증거소품/game/EV10_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "1f2415eedd7cd08296169acb9bebd91592e112b0705367590e017b8d383ab0ae"
+    },
+    {
+      "path": "04_증거소품/game/EV11_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "8162301319c9ec21b9206d570c15e89d75fbe92cd7666750ac22619871a0b807"
+    },
+    {
+      "path": "04_증거소품/game/EV11_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "34a991bc026a3a2537bd43c145cb155cf539d2537ea053d05352e5e880992160"
+    },
+    {
+      "path": "04_증거소품/game/EV12_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "bf628ec83a9f4b0c66dcc350d366cdeac6f5df01ce2fc175ba7c2fde5d5839ce"
+    },
+    {
+      "path": "04_증거소품/game/EV12_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "b66a53a8a41ca702fb78b101e346de0ebdd441fc1cc5d71d80e193ff57829f7e"
+    },
+    {
+      "path": "04_증거소품/game/EV13_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "c1e319da3c1c30ed3595eedd48cce360ea7533903ab29cb3891d0d3e82614f03"
+    },
+    {
+      "path": "04_증거소품/game/EV13_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "e57317b985a6a24f926a07b6d85ab7a144dea87112edbe5492550e61090579ee"
+    },
+    {
+      "path": "04_증거소품/game/EV14_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "fb89320ceb3b266f8d23505f38105b510806270302dce2d7075d0d2eb46b7d79"
+    },
+    {
+      "path": "04_증거소품/game/EV14_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "c34db53166e38faa7ecf3cc5e37e63946e3c88eb8f04ee249600cd3ff548b0d8"
+    },
+    {
+      "path": "04_증거소품/game/EV15_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "f842d297f8d7a8a4c79c6e52d7f38e58be4a54a4eda5916ceab29a6e8ac8f23c"
+    },
+    {
+      "path": "04_증거소품/game/EV15_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "484576fb75f1f924b85327c4de2a0627213ccdfa1f4aac06229ae6d9c59726d5"
+    },
+    {
+      "path": "04_증거소품/game/EV16_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "29934cae493b7a66e2378e1bb99a875d809ef8575d923cd955d90b3aa2e49eee"
+    },
+    {
+      "path": "04_증거소품/game/EV16_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "cf6f1533d5ffbf90be1c8471806f8efff08fc61820a2c21db368529f23490652"
+    },
+    {
+      "path": "04_증거소품/game/EV17_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "767c61a87d86aa22c296927fad45f7b34ed719e160691599815d4a9b9f333ca6"
+    },
+    {
+      "path": "04_증거소품/game/EV17_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "6db8a4f207552ac52c573a8d187a0d321e2dab77e0ae1b649ae726219634994f"
+    },
+    {
+      "path": "04_증거소품/game/EV18_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "0fb2b76c41b93b81f60a7b023452185708e51f5dd018c23322f41de9da7d7c9f"
+    },
+    {
+      "path": "04_증거소품/game/EV18_drawing_ev18_drawing_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "0571727c7f0b9a71c7385ce74460aacbdb43919a568cbc53c7a55c4c5fd6b812"
+    },
+    {
+      "path": "04_증거소품/game/EV18_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "9c7ef0e75e5d9acc81272b5416d22cacbaf690c0cc0ce36777e9b8d273957cd8"
+    },
+    {
+      "path": "04_증거소품/game/EV19_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "f0fc70b4140453812c2dd1c212b6b976a8f552db0c58dea3dacfbe2897c12070"
+    },
+    {
+      "path": "04_증거소품/game/EV19_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "e55dde7343f8722133736fe4ca1dbd0be67036ff5c64258dc7578e00282a36f2"
+    },
+    {
+      "path": "04_증거소품/game/EV20_document_layout_TEMPLATE_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "2402a4e1719ae91f49b05c73871e13b8be9cc69ac29750e83f0b8d4fd80509c8"
+    },
+    {
+      "path": "04_증거소품/game/EV20_evidence_readable_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "ffc45d78960f8c02df60dab5885844f1b9aada527c738235b5aa1aa5ec8f9c12"
+    },
+    {
+      "path": "04_증거소품/game/PLAN_1997_floor4_compare_DESIGN_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "8d0d9800c8953478ad2625c9be1d8413cf25ce790338dbaec06baedd6f644183"
+    },
+    {
+      "path": "04_증거소품/game/PLAN_2026_floor4_compare_DESIGN_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        1440
+      ],
+      "sha256": "5653ca4f4f6f91bb8f10354408051d6a0fb066ebf7d6e0af041e9c75ba3cb23b"
+    },
+    {
+      "path": "04_증거소품/game/PX08_employee_portrait_px08_employee_portrait_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1145,
+        1374
+      ],
+      "sha256": "59491d5d3165a2c3cb282bbf29f02e775b4d9c1f8fb257ca5a039e9477581924"
+    },
+    {
+      "path": "04_증거소품/game/PX09_candidate_portrait_px09_candidate_portrait_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1150,
+        1368
+      ],
+      "sha256": "6a32082f6e2f5732ba3998dff7e0bae60362b5bc2842fb5ec5c074fce821dc73"
+    },
+    {
+      "path": "04_증거소품/sources/EV05_family_photo_2004_before_v01.png",
+      "status": "PASS",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "6d3d2bf8253f44f3f50b31bcba8af7bbfd94d4759a2550a8e8167f6565b3a7dd"
+    },
+    {
+      "path": "04_증거소품/sources/EV18_drawing_ev18_drawing_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1448,
+        1086
+      ],
+      "sha256": "da5f5ee9069e8520be010b44b99a97bb846bb6f263962896ec80e9c26b6ee51d"
+    },
+    {
+      "path": "04_증거소품/sources/PX08_employee_portrait_px08_employee_portrait_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1145,
+        1374
+      ],
+      "sha256": "5a1a3716827a6dba11156d038b301fa3c63bfa99cc4468874a77f9a005e1b5f3"
+    },
+    {
+      "path": "04_증거소품/sources/PX09_candidate_portrait_px09_candidate_portrait_insert_v01.png",
+      "status": "PASS",
+      "size": [
+        1150,
+        1368
+      ],
+      "sha256": "a4f42ec173eb4e2248c39e10c740314a33ec624602f6fb11d47afbeb8a8f7f63"
+    },
+    {
+      "path": "05_UI/game/UI01_ui_1_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI02_ui_2_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "d2f8b280491c09030e2f214b87110efdd3e50d28fdc2640ca7928cb143ff7f01"
+    },
+    {
+      "path": "05_UI/game/UI03_ui_3_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI04_ui_4_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI05_ui_5_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "9e6da4b60f08cc7b0edbe09e8215641be10adb3f58d5ebdf3ddd8b943717582d"
+    },
+    {
+      "path": "05_UI/game/UI06_ui_6_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI07_ui_7_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI08_ui_8_base_v01.png",
+      "status": "PASS",
+      "size": [
+        360,
+        640
+      ],
+      "sha256": "4f276430a8de79334510659485c4c5ed0790833b73cab8bd5812ea1a3dd2b14e"
+    },
+    {
+      "path": "05_UI/game/UI09_ui_9_base_v01.png",
+      "status": "PASS",
+      "size": [
+        256,
+        56
+      ],
+      "sha256": "e030aa255a75b8f1bc74db2b618fe31d0a9fe506c53a7ce3b52831b4f7c90036"
+    },
+    {
+      "path": "05_UI/game/UI10_ui_10_base_v01.png",
+      "status": "PASS",
+      "size": [
+        1080,
+        420
+      ],
+      "sha256": "e31a3ae96d8016b188bd406327f43162da5b9d0a9d67b77ad96c850fcd81c419"
+    },
+    {
+      "path": "05_UI/game/UI11_ui_11_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "5df12b5c29662df63956696c76db4759c043eb936f16824089756b95dcedf606"
+    },
+    {
+      "path": "05_UI/game/UI12_ui_12_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "fefa5bc2160c71f0300d2b79d89822dc7b33e13b4ccb96ebcc6efb11b1abf323"
+    },
+    {
+      "path": "05_UI/game/UI13_ui_13_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "fefa5bc2160c71f0300d2b79d89822dc7b33e13b4ccb96ebcc6efb11b1abf323"
+    },
+    {
+      "path": "05_UI/game/UI14_ui_14_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "65a0cdc23450b94b169ee12acbe68c6b2273efc5d882a8286a47f708b4cb3708"
+    },
+    {
+      "path": "05_UI/game/UI15_ui_15_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "65a0cdc23450b94b169ee12acbe68c6b2273efc5d882a8286a47f708b4cb3708"
+    },
+    {
+      "path": "05_UI/game/UI16_ui_16_base_v01.png",
+      "status": "PASS",
+      "size": [
+        320,
+        64
+      ],
+      "sha256": "65a0cdc23450b94b169ee12acbe68c6b2273efc5d882a8286a47f708b4cb3708"
+    },
+    {
+      "path": "05_UI/game/UI17_ui_17_base_v01.png",
+      "status": "PASS",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "4fea0df2c7ff638526615e81275c2fc79632ceaf3e80b56e008a5ea4df14e5de"
+    },
+    {
+      "path": "05_UI/game/UI18_ui_18_base_v01.png",
+      "status": "PASS",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "79c6e94e6d5c5fef1acf7910fde5bc3810d19f0bdf0c03c6ec3a3472514bac52"
+    },
+    {
+      "path": "05_UI/game/UI19_ui_19_base_v01.png",
+      "status": "PASS",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "f8027092433ddd816b085165f2215e1447747c97c38927ff67f89877132a89a8"
+    },
+    {
+      "path": "05_UI/game/UI20_ui_20_base_v01.png",
+      "status": "PASS",
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "1cde7d9ddbed871072784b2993aae1afbee6df1f991bcfd10047f9aa6a4e2b98"
+    },
+    {
+      "path": "08_수정필요/BG01_security_booth_night_REVISE_v00.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "48e1333353dbf193f3702448849894d61e6abd5b08f1f2cbabdff4eaae0de2b8"
+    },
+    {
+      "path": "08_수정필요/CH03_master_REVISE_v00.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "3acff73b9e8ee23e1c3c6c75761b016af1c01b1cd31d9b15cefa3aba57808961"
+    },
+    {
+      "path": "08_수정필요/CH06_master_REVISE_v00.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "c77fad007d132079e83c3bac70762808ef705b91fb818bdf7aea0364472d2852"
+    },
+    {
+      "path": "08_수정필요/CH08_master_REVISE_v00.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1672
+      ],
+      "sha256": "bf6546b7c4fb2a1ce60a02ff50978e34c2714b2fd264f9e3345beaf69b19fabe"
+    },
+    {
+      "path": "08_수정필요/NPC03_courier_2026_front_full_v01_REVISE.png",
+      "status": "PASS",
+      "size": [
+        941,
+        1671
+      ],
+      "sha256": "137e0e82d8b6bf577e68218a0fd0113bef53999a611afff1739789cf55ee9c5f"
+    },
+    {
+      "path": "08_수정필요/NPC04_technician_2026_front_full_v01_REVISE.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "551ea62f0d33171efa7eac0c0198ab4147fba41e9081962183b868f1270137b8"
+    },
+    {
+      "path": "08_수정필요/NPC05_caregiver_2026_front_full_v01_REVISE.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1f2ed5b1810ce90dd7fc74f48ff5cd1ccaacf4c118507b8978cba6662ccd74c9"
+    },
+    {
+      "path": "08_수정필요/NPC08_vehicle_companion_2026_front_full_v01_REVISE.png",
+      "status": "PASS",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ac401f8a1d7188c111f80096ae19a02948c9bbf7fb22d81ced413e3ff1a40404"
+    },
+    {
+      "path": "latest_mc/MC05_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "de44da69a6f7a8e0f33e69f335d6588eec8b4c2005c91f3230839f5b5a2829b6"
+    },
+    {
+      "path": "latest_mc/MC06_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "c5b43f0bc4dc17fcbe61ebba4fb7d552c8e01db5442e946e3d16a6064c1288db"
+    },
+    {
+      "path": "latest_mc/MC07_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "225da4f656d15f32a027b10410eec4d1b42620596413708817d00db2781e2318"
+    },
+    {
+      "path": "latest_mc/MC08_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "10733899b8bf39e2eec0dea2b213a3485af0dae73aded04852c55283ed6bff2e"
+    },
+    {
+      "path": "latest_mc/MC09_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "9e7818b13fa6cf79f51e9a5ee0b1e07efab37906f38cc0dbeff9385ffcb1c817"
+    },
+    {
+      "path": "latest_mc/MC10_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "98dfa682cb2514a10dbd192f345b1f3ca901c94b26234a7db5a06d0e2bb1f874"
+    },
+    {
+      "path": "latest_mc/MC11_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "4d4e4b94861c9043b563eed3fda120ac1cd746e1c3cb4bb07a8e802a7335f33f"
+    },
+    {
+      "path": "latest_mc/MC12_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "0374cbac6b53a62531d49b04793bc6cdb8eed59f5fed45612f96b7b404b32379"
+    },
+    {
+      "path": "latest_mc/MC13_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "bd65bfbcf2e4082b7dfa7d818c3377fd2b0606859e68da9ef3c0a058b9db9621"
+    },
+    {
+      "path": "latest_mc/MC14_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "55cecfb3ad15c57906adbf160dbc10366879ffa3a458bf50012ea2998f711ca9"
+    },
+    {
+      "path": "latest_mc/MC15_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "487fbb7b001dc02345d027564ca34c0e206b91942ba58fa14e13a8d113f46a5c"
+    },
+    {
+      "path": "latest_mc/MC16_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "8a7df6ffd1b7362160a58227bf28a98773025f168d203cf6eaeed43314b0fdd0"
+    },
+    {
+      "path": "latest_mc/MC17_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "0c945cc7d3de79a1c1cc86425ed6b0840413e1ad643dd4865a182caa958a8ed1"
+    },
+    {
+      "path": "latest_mc/MC18_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "7c96ab8f992c0a45500cbaaf6afcc9e1f0068b99a09f6e49d5b9e44bcc348687"
+    },
+    {
+      "path": "latest_mc/MC19_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        943,
+        1668
+      ],
+      "sha256": "2bf2ef8d6c9f10f7922c75c072c5a8056ab0084c01674d80d7be037bd8395a29"
+    },
+    {
+      "path": "latest_mc/MC20_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "02f5ff1319a564ff87d0e73119ff4a89838e82208c785d6456e9dd9607c9fd82"
+    },
+    {
+      "path": "latest_mc/MC21_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "7cf4a4cf6fa6a5922c50bc12764ba36c406929d632eb7e9b09aca6e56229fa8b"
+    },
+    {
+      "path": "latest_mc/MC21_retry.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "7cf4a4cf6fa6a5922c50bc12764ba36c406929d632eb7e9b09aca6e56229fa8b"
+    },
+    {
+      "path": "latest_mc/MC22_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "bbca5f1b5c3958b440ce01267bcf0fea17f62ee9c2b231a6b4b8c4fd1d6d493f"
+    },
+    {
+      "path": "latest_mc/MC23_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "e03a2b4fe65bf61d2a4dc3ec300a54edb6caf0e0dc4b25e8e228c9ad4846846c"
+    },
+    {
+      "path": "latest_mc/MC24_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "978cd287289bb678814a6022e44881297209f9374a7728970c8bc4b030fb7a77"
+    },
+    {
+      "path": "latest_mc/MC25_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "faca0761a8c0f0fe068bdfbce0535b2755879868ec49f24b6401933f6b9f6132"
+    },
+    {
+      "path": "latest_mc/MC26_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "898d07c785fee7f819c66f0f93fae4db6259906ccde1b2fb06af3f8f76f38221"
+    },
+    {
+      "path": "latest_mc/MC27_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "cc25edfdabb93c40c41054c0dbfa92bd5170e3e53d5b371fdc895bce46f8c610"
+    },
+    {
+      "path": "latest_mc/MC28_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "7e7da0d9965f896b09da51905eb9faff017b8c148858da11c62af58b391eb95e"
+    },
+    {
+      "path": "latest_mc/MC29_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1670
+      ],
+      "sha256": "16671da0bafb6c9fba1eb447abbe534e1285734b05bc43c7555fd27ada66c1aa"
+    },
+    {
+      "path": "latest_mc/MC30_2026_front_full_v01.png",
+      "status": "PASS",
+      "size": [
+        942,
+        1669
+      ],
+      "sha256": "2c90c22ea58a66a6c22d4112f72f70d8c1e0d87382377b13e78c0db38337dd79"
+    },
+    {
+      "path": "latest_mc/QA_contact_01.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        860
+      ],
+      "sha256": "b3a8d65366798cc43ebb72779b87bfad014741e84d79c6a9cc13b819c3ad8a69"
+    },
+    {
+      "path": "latest_mc/QA_contact_02.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        860
+      ],
+      "sha256": "5c32b10205750f8b8943eaf1c05526c239576896ba3895c0d039a9d155a6fb33"
+    },
+    {
+      "path": "latest_mc/QA_contact_03.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        430
+      ],
+      "sha256": "48e7798cefa6619ee2859f44c2c72521b007c0226ed0c4d569f69db4c9c6ac2d"
+    },
+    {
+      "path": "latest_mc/records/QA_contact_01.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        860
+      ],
+      "sha256": "b3a8d65366798cc43ebb72779b87bfad014741e84d79c6a9cc13b819c3ad8a69"
+    },
+    {
+      "path": "latest_mc/records/QA_contact_02.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        860
+      ],
+      "sha256": "5c32b10205750f8b8943eaf1c05526c239576896ba3895c0d039a9d155a6fb33"
+    },
+    {
+      "path": "latest_mc/records/QA_contact_03.jpg",
+      "status": "PASS",
+      "size": [
+        1200,
+        430
+      ],
+      "sha256": "48e7798cefa6619ee2859f44c2c72521b007c0226ed0c4d569f69db4c9c6ac2d"
+    }
+  ],
+  "mc_download_hashes": [
+    {
+      "id": "MC05",
+      "match": true
+    },
+    {
+      "id": "MC06",
+      "match": true
+    },
+    {
+      "id": "MC07",
+      "match": true
+    },
+    {
+      "id": "MC08",
+      "match": true
+    },
+    {
+      "id": "MC09",
+      "match": true
+    },
+    {
+      "id": "MC10",
+      "match": true
+    },
+    {
+      "id": "MC11",
+      "match": true
+    },
+    {
+      "id": "MC12",
+      "match": true
+    },
+    {
+      "id": "MC13",
+      "match": true
+    },
+    {
+      "id": "MC14",
+      "match": true
+    },
+    {
+      "id": "MC15",
+      "match": true
+    },
+    {
+      "id": "MC16",
+      "match": true
+    },
+    {
+      "id": "MC17",
+      "match": true
+    },
+    {
+      "id": "MC18",
+      "match": true
+    },
+    {
+      "id": "MC19",
+      "match": true
+    },
+    {
+      "id": "MC20",
+      "match": true
+    },
+    {
+      "id": "MC21",
+      "match": true
+    },
+    {
+      "id": "MC22",
+      "match": true
+    },
+    {
+      "id": "MC23",
+      "match": true
+    },
+    {
+      "id": "MC24",
+      "match": true
+    },
+    {
+      "id": "MC25",
+      "match": true
+    },
+    {
+      "id": "MC26",
+      "match": true
+    },
+    {
+      "id": "MC27",
+      "match": true
+    },
+    {
+      "id": "MC28",
+      "match": true
+    },
+    {
+      "id": "MC29",
+      "match": true
+    },
+    {
+      "id": "MC30",
+      "match": true
+    }
+  ],
+  "note": "File integrity only; does not imply visual approval. MC21 retry restored original matching bytes."
+}

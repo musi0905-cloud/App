@@ -126,3 +126,7 @@
 .final-flags{display:grid;gap:8px;margin:12px 0}
 #nightIntro .scene-media.banner{height:180px}
 #nextNight,#archiveReturn{margin-top:12px}
+
+/* Approved character art (v0.15.0): story contact on the intercom monitor */
+.contact-screen{margin:0 0 12px}
+.intercom-screen .bust .person-sprite.cropped{height:100%;background-size:100% 100%;background-position:center bottom}

@@ -1,0 +1,731 @@
+[
+  {
+    "id": "MC05",
+    "name": "한소희",
+    "file": "MC05_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      0,
+      23,
+      924,
+      1623
+    ],
+    "format_pass": true,
+    "sha256": "de44da69a6f7a8e0f33e69f335d6588eec8b4c2005c91f3230839f5b5a2829b6",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-4b7b80c0-16ff-47b9-a912-cef962807748.png",
+    "bytes": 966026,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC06",
+    "name": "문태윤",
+    "file": "MC06_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      58,
+      43,
+      906,
+      1619
+    ],
+    "format_pass": true,
+    "sha256": "c5b43f0bc4dc17fcbe61ebba4fb7d552c8e01db5442e946e3d16a6064c1288db",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-85a76866-3dce-4717-8a9e-5d67f23ce7d3.png",
+    "bytes": 980390,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC07",
+    "name": "이민재",
+    "file": "MC07_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      0,
+      17,
+      922,
+      1623
+    ],
+    "format_pass": true,
+    "sha256": "225da4f656d15f32a027b10410eec4d1b42620596413708817d00db2781e2318",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-61987399-e3e1-4b82-a35e-49b03a8e9429.png",
+    "bytes": 969667,
+    "exact_duplicate_of_recovered_originals": false,
+    "design_review_note": "기획의 후퇴한 짧은 헤어라인과 생성 결과의 풍성한 가르마 머리가 다름."
+  },
+  {
+    "id": "MC08",
+    "name": "배달 동승인",
+    "file": "MC08_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      40,
+      857,
+      1606
+    ],
+    "format_pass": true,
+    "sha256": "10733899b8bf39e2eec0dea2b213a3485af0dae73aded04852c55283ed6bff2e",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-d6770f33-a266-407f-a60e-5d5e582407a0.png",
+    "bytes": 973505,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC09",
+    "name": "최미경",
+    "file": "MC09_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      66,
+      40,
+      914,
+      1613
+    ],
+    "format_pass": true,
+    "sha256": "9e7818b13fa6cf79f51e9a5ee0b1e07efab37906f38cc0dbeff9385ffcb1c817",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-3c85e510-ff57-49da-adf8-f1375552e73f.png",
+    "bytes": 967628,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC10",
+    "name": "오세훈",
+    "file": "MC10_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      42,
+      39,
+      901,
+      1630
+    ],
+    "format_pass": true,
+    "sha256": "98dfa682cb2514a10dbd192f345b1f3ca901c94b26234a7db5a06d0e2bb1f874",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-e8263f02-1764-431a-a308-26805a1fa2c2.png",
+    "bytes": 1012154,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC11",
+    "name": "강민수",
+    "file": "MC11_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      39,
+      916,
+      1638
+    ],
+    "format_pass": true,
+    "sha256": "4d4e4b94861c9043b563eed3fda120ac1cd746e1c3cb4bb07a8e802a7335f33f",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-3c46de00-5810-4dfc-b7e3-b5764b84ba16.png",
+    "bytes": 917541,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC12",
+    "name": "박지은",
+    "file": "MC12_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      34,
+      912,
+      1601
+    ],
+    "format_pass": true,
+    "sha256": "0374cbac6b53a62531d49b04793bc6cdb8eed59f5fed45612f96b7b404b32379",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-47c92806-6817-4ce0-97cf-ea59aa92a09e.png",
+    "bytes": 932164,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC13",
+    "name": "정현수",
+    "file": "MC13_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      214,
+      47,
+      906,
+      1616
+    ],
+    "format_pass": true,
+    "sha256": "bd65bfbcf2e4082b7dfa7d818c3377fd2b0606859e68da9ef3c0a058b9db9621",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-04f77d27-2570-4309-ad3a-13bd5c61a8aa.png",
+    "bytes": 1004995,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC14",
+    "name": "정은경",
+    "file": "MC14_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      0,
+      47,
+      928,
+      1643
+    ],
+    "format_pass": true,
+    "sha256": "55cecfb3ad15c57906adbf160dbc10366879ffa3a458bf50012ea2998f711ca9",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-de7a02a9-7a59-4177-8f6c-95ac2b5a52f7.png",
+    "bytes": 918523,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC15",
+    "name": "이영자",
+    "file": "MC15_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      82,
+      39,
+      910,
+      1646
+    ],
+    "format_pass": true,
+    "sha256": "487fbb7b001dc02345d027564ca34c0e206b91942ba58fa14e13a8d113f46a5c",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-5262857d-38f2-4484-a210-7d403d050733.png",
+    "bytes": 945640,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC16",
+    "name": "홍세진",
+    "file": "MC16_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      27,
+      32,
+      912,
+      1608
+    ],
+    "format_pass": true,
+    "sha256": "8a7df6ffd1b7362160a58227bf28a98773025f168d203cf6eaeed43314b0fdd0",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-e3df186c-bea3-4df8-be0f-e8f3cab187b9.png",
+    "bytes": 957526,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC17",
+    "name": "외부 자료 전달인",
+    "file": "MC17_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      21,
+      26,
+      926,
+      1626
+    ],
+    "format_pass": true,
+    "sha256": "0c945cc7d3de79a1c1cc86425ed6b0840413e1ad643dd4865a182caa958a8ed1",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-d71a5c2f-607b-4e12-87b9-0ffea133512b.png",
+    "bytes": 1006541,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC18",
+    "name": "김정우 전 동료",
+    "file": "MC18_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      50,
+      47,
+      895,
+      1605
+    ],
+    "format_pass": true,
+    "sha256": "7c96ab8f992c0a45500cbaaf6afcc9e1f0068b99a09f6e49d5b9e44bcc348687",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-b8f18ed4-f5c7-4562-9240-372bdde0b176.png",
+    "bytes": 983498,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC19",
+    "name": "이수연 지인",
+    "file": "MC19_2026_front_full_v01.png",
+    "width": 943,
+    "height": 1668,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      0,
+      23,
+      929,
+      1622
+    ],
+    "format_pass": true,
+    "sha256": "2bf2ef8d6c9f10f7922c75c072c5a8056ab0084c01674d80d7be037bd8395a29",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-f98a9e68-a733-4e85-9353-46046b46631e.png",
+    "bytes": 900427,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC20",
+    "name": "김하은 담임",
+    "file": "MC20_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      27,
+      19,
+      914,
+      1607
+    ],
+    "format_pass": true,
+    "sha256": "02f5ff1319a564ff87d0e73119ff4a89838e82208c785d6456e9dd9607c9fd82",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-36537eef-fee0-4e62-b017-d61aae8a5cae.png",
+    "bytes": 928150,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC21",
+    "name": "박영식 가족",
+    "file": "MC21_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      33,
+      877,
+      1601
+    ],
+    "format_pass": true,
+    "sha256": "7cf4a4cf6fa6a5922c50bc12764ba36c406929d632eb7e9b09aca6e56229fa8b",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-658c9d27-d86e-4c38-9450-77d1bf3fb69e.png",
+    "bytes": 964936,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC22",
+    "name": "차량 관리 담당",
+    "file": "MC22_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      31,
+      31,
+      920,
+      1606
+    ],
+    "format_pass": true,
+    "sha256": "bbca5f1b5c3958b440ce01267bcf0fea17f62ee9c2b231a6b4b8c4fd1d6d493f",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-16a9b143-f1f2-4bb9-b8ba-e6caee2d001a.png",
+    "bytes": 995351,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC23",
+    "name": "강태준 전 비서",
+    "file": "MC23_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      41,
+      914,
+      1626
+    ],
+    "format_pass": true,
+    "sha256": "e03a2b4fe65bf61d2a4dc3ec300a54edb6caf0e0dc4b25e8e228c9ad4846846c",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-33324661-e0d0-46fb-af10-6ec70b48c227.png",
+    "bytes": 994393,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC24",
+    "name": "회계 자료 보관자",
+    "file": "MC24_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      36,
+      914,
+      1608
+    ],
+    "format_pass": true,
+    "sha256": "978cd287289bb678814a6022e44881297209f9374a7728970c8bc4b030fb7a77",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-09e60b79-8c30-4ef0-9611-ca271166b79e.png",
+    "bytes": 989636,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC25",
+    "name": "전직 대표회의 간사",
+    "file": "MC25_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      40,
+      46,
+      834,
+      1606
+    ],
+    "format_pass": true,
+    "sha256": "faca0761a8c0f0fe068bdfbce0535b2755879868ec49f24b6401933f6b9f6132",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-576fede8-2815-4e17-bb6d-9108527178d8.png",
+    "bytes": 917849,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC26",
+    "name": "익명 전화의 주인",
+    "file": "MC26_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      32,
+      920,
+      1598
+    ],
+    "format_pass": true,
+    "sha256": "898d07c785fee7f819c66f0f93fae4db6259906ccde1b2fb06af3f8f76f38221",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-6719b762-136f-4592-8e35-4759f6618aa8.png",
+    "bytes": 965717,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC27",
+    "name": "의료기록 보관자",
+    "file": "MC27_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      19,
+      928,
+      1609
+    ],
+    "format_pass": true,
+    "sha256": "cc25edfdabb93c40c41054c0dbfa92bd5170e3e53d5b371fdc895bce46f8c610",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-fef70297-8c12-42c5-b93f-b30d16071185.png",
+    "bytes": 908549,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC28",
+    "name": "김정우 동료",
+    "file": "MC28_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      0,
+      15,
+      928,
+      1640
+    ],
+    "format_pass": true,
+    "sha256": "7e7da0d9965f896b09da51905eb9faff017b8c148858da11c62af58b391eb95e",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-1d339da6-ec68-4e44-aa14-e6ac686a4949.png",
+    "bytes": 1112669,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC29",
+    "name": "옛 구조대 관계자",
+    "file": "MC29_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1670,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      42,
+      37,
+      912,
+      1630
+    ],
+    "format_pass": true,
+    "sha256": "16671da0bafb6c9fba1eb447abbe534e1285734b05bc43c7555fd27ada66c1aa",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-73ad5fbf-969f-4b71-a02c-50e7d2d50d5a.png",
+    "bytes": 1028522,
+    "exact_duplicate_of_recovered_originals": false
+  },
+  {
+    "id": "MC30",
+    "name": "원본 보관 기관 직원",
+    "file": "MC30_2026_front_full_v01.png",
+    "width": 942,
+    "height": 1669,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bbox": [
+      33,
+      40,
+      938,
+      1669
+    ],
+    "format_pass": true,
+    "sha256": "2c90c22ea58a66a6c22d4112f72f70d8c1e0d87382377b13e78c0db38337dd79",
+    "status": "DRAFT_STATIC",
+    "reason": "투명 PNG 및 전신 프레이밍 확인. 인물별 외형 차별화·연령 표현 최종 검수 전.",
+    "engine_applied": false,
+    "animation_ready": false,
+    "design_note": "성별·나이·키·외형은 대본에 미지정된 제작용 DESIGN. 실존 동명이인과 무관. MC ID는 V ID 또는 다른 MC ID와 자동 동일인 처리하지 않음.",
+    "source_generation": "/workspace/scratch/fe19befe3cc9/generated_images/exec-3f73f90b-4b02-4780-8ec5-ad6b931d8f44.png",
+    "bytes": 968538,
+    "exact_duplicate_of_recovered_originals": false
+  }
+]

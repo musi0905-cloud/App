@@ -1,0 +1,322 @@
+[
+  {
+    "path": "00_스타일가이드/build_revision_delivery.py",
+    "bytes": 6805,
+    "sha256": "b830bc7f35b63263cfec7bec1c3604a15bac33901ee3d371a94a5bee0d65ee78"
+  },
+  {
+    "path": "00_스타일가이드/character_revision_manifest_v02.json",
+    "bytes": 8248,
+    "sha256": "9150d5fec170a3c22c2417784722a841ce661cf2934d715c7079427c05c01f85"
+  },
+  {
+    "path": "00_스타일가이드/download_integrity_v02.json",
+    "bytes": 59238,
+    "sha256": "4cfde78b5404093faaa3488816f23740f5d55e03ddc8f5ab364d4b2fcd81b8fe"
+  },
+  {
+    "path": "00_스타일가이드/finalize_revision.py",
+    "bytes": 6680,
+    "sha256": "15f1af8034c35d8172693bef77b2ff20a1e4ef3f4befb94fd74acedc0a0b16f2"
+  },
+  {
+    "path": "00_스타일가이드/fonts/NotoSansKR.ttf",
+    "bytes": 10414588,
+    "sha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252"
+  },
+  {
+    "path": "00_스타일가이드/fonts/OFL.txt",
+    "bytes": 4388,
+    "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+  },
+  {
+    "path": "00_스타일가이드/작업보고_20261009_v02.md",
+    "bytes": 2358,
+    "sha256": "1a668dc28889dd187f7158534d5767468d3058e3938c0d339130538f0c3db06a"
+  },
+  {
+    "path": "01_캐릭터/game/MC15_2026_front_full_v02.png",
+    "bytes": 935226,
+    "sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237"
+  },
+  {
+    "path": "01_캐릭터/game/MC25_2026_front_full_v02.png",
+    "bytes": 898210,
+    "sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0"
+  },
+  {
+    "path": "01_캐릭터/game/NPC03_left45_2026_left45_v02.png",
+    "bytes": 1088868,
+    "sha256": "887cd002f8272dab78f07e59312bee9e03d37d10c522e22632530f0869810a54"
+  },
+  {
+    "path": "01_캐릭터/originals/MC07_2026_front_full_v02.png",
+    "bytes": 921906,
+    "sha256": "b67de70bf6a666a21ba35adaae82b7dabea487d567e0344f25f3df66c4234991"
+  },
+  {
+    "path": "01_캐릭터/originals/MC15_2026_front_full_v02.png",
+    "bytes": 935226,
+    "sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237"
+  },
+  {
+    "path": "01_캐릭터/originals/MC25_2026_front_full_v02.png",
+    "bytes": 898210,
+    "sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0"
+  },
+  {
+    "path": "01_캐릭터/originals/MC27_2026_front_full_v02.png",
+    "bytes": 873885,
+    "sha256": "d9edad0be54fc78b1bc968d7e6b9da851b6aa624a9c6545b33c0b299e0ebc6c2"
+  },
+  {
+    "path": "01_캐릭터/originals/MC30_2026_front_full_v02.png",
+    "bytes": 942270,
+    "sha256": "2055bdcceccf51f6884a8765c84b8580f4bf9ca97034d760bdf586cf71fa598e"
+  },
+  {
+    "path": "01_캐릭터/originals/NPC03_left45_2026_left45_v02.png",
+    "bytes": 1088868,
+    "sha256": "887cd002f8272dab78f07e59312bee9e03d37d10c522e22632530f0869810a54"
+  },
+  {
+    "path": "03_사건장면/main_scene_mapping_40_v03.json",
+    "bytes": 83295,
+    "sha256": "310dcc0cc6e266fec2e15eb6aa2d752db541700405282fe699c45253296786fa"
+  },
+  {
+    "path": "03_사건장면/visitor_mapping_100_v03.json",
+    "bytes": 332070,
+    "sha256": "c59fad73e6bc45674aca0ba22f4319e806e7ab93941949c7900463e1f6a5a538"
+  },
+  {
+    "path": "04_증거소품/evidence_readable_20_v03.json",
+    "bytes": 29409,
+    "sha256": "8ba5dd5b94320dbd1e2d791db91381b2e1bcb7771a98de81272d1e44eb2ea798"
+  },
+  {
+    "path": "04_증거소품/game/EV01_evidence_readable_v03.png",
+    "bytes": 53483,
+    "sha256": "6fa2b95f15984e6c1fafeae19ad4b57090fe5387decfa07fb8f8ba72ae6a8e69"
+  },
+  {
+    "path": "04_증거소품/game/EV02_evidence_readable_v03.png",
+    "bytes": 56429,
+    "sha256": "ff41e20a2940153f2f8dd4170b294a099dc7484ad3e84686e1a8a0863da7b8fe"
+  },
+  {
+    "path": "04_증거소품/game/EV03_evidence_readable_v03.png",
+    "bytes": 69009,
+    "sha256": "7c19cf020ef4c04c549be64c572f6d13dbc2aad33a13cc46c168d43ba8276293"
+  },
+  {
+    "path": "04_증거소품/game/EV06_evidence_readable_v03.png",
+    "bytes": 70165,
+    "sha256": "82e3bdd6365ab5b9627e3c3c2c9d8b16a031062ee1f13f68d7092a8c1896b4bc"
+  },
+  {
+    "path": "04_증거소품/game/EV07_evidence_readable_v03.png",
+    "bytes": 75346,
+    "sha256": "fe73579ba7cf698d0e52ffaa6d2a2cb0f63f3ec40a2c66f918a24f1716eabf99"
+  },
+  {
+    "path": "04_증거소품/game/EV08_evidence_readable_v03.png",
+    "bytes": 60039,
+    "sha256": "b2590cce7c1b9a8c8052961d3a057bbb675b57cc42171d530bd668546035b9e1"
+  },
+  {
+    "path": "04_증거소품/game/EV09_evidence_readable_v03.png",
+    "bytes": 57323,
+    "sha256": "b88cf1108bf3bf3c7d9a8dddd521166e16e3185503558db135769cbff46d277c"
+  },
+  {
+    "path": "04_증거소품/game/EV10_evidence_readable_v03.png",
+    "bytes": 50672,
+    "sha256": "a7172fd2ea7c57d6ba930bae1fa7b20f36a2928f8c31fad1a5aa0cac47e29521"
+  },
+  {
+    "path": "04_증거소품/game/EV11_evidence_readable_v03.png",
+    "bytes": 64471,
+    "sha256": "221b575c561ce05799eafd0f51b50f964be2ef5156607dc14ec27a782f539713"
+  },
+  {
+    "path": "04_증거소품/game/EV12_evidence_readable_v03.png",
+    "bytes": 64434,
+    "sha256": "46313a8541975083d8f5bdd5ed0274d294c2dfa87572c1f47551a0a8c8199466"
+  },
+  {
+    "path": "04_증거소품/game/EV13_evidence_readable_v03.png",
+    "bytes": 80089,
+    "sha256": "74dd9fb7016cb7707fbc5d8a12a98b15ac9862e84b537066d2fb30e76626d0a5"
+  },
+  {
+    "path": "04_증거소품/game/EV14_evidence_readable_v03.png",
+    "bytes": 87297,
+    "sha256": "cbbbcb1b4f67d102c1b8f8944784fc004f8b08aeec232eca026f5e431e1e177d"
+  },
+  {
+    "path": "04_증거소품/game/EV15_evidence_readable_v03.png",
+    "bytes": 89779,
+    "sha256": "fce211003c06c2afd4713743e6918204f68cfd3c5c5fa0b4cf4a9fffcde375f8"
+  },
+  {
+    "path": "04_증거소품/game/EV16_evidence_readable_v03.png",
+    "bytes": 68148,
+    "sha256": "fa5a0d97ef24d28ad9197eded45db91c44f93211754630345c8eb188a7df4e3a"
+  },
+  {
+    "path": "04_증거소품/game/EV17_evidence_readable_v03.png",
+    "bytes": 82326,
+    "sha256": "d72a03ded1af4ed4949725872d45da60038324d630ae068bee9e32b1a8fb2ae2"
+  },
+  {
+    "path": "04_증거소품/game/EV18_evidence_readable_v03.png",
+    "bytes": 72860,
+    "sha256": "baac65de7aa54483c12a30d88779ade4349f25e189d8bfae2c8330a4499e22d8"
+  },
+  {
+    "path": "04_증거소품/game/EV19_evidence_readable_v03.png",
+    "bytes": 78011,
+    "sha256": "61168c0a5bd2bf32ac97ed2781e7f165a3425598947a487c4c3f090a31bda6f1"
+  },
+  {
+    "path": "04_증거소품/game/EV20_evidence_readable_v03.png",
+    "bytes": 50225,
+    "sha256": "5aab485d18f805b6b784e57d5edd98816d441757165658e23c4b2a634eda1927"
+  },
+  {
+    "path": "04_증거소품/sources/EV01_evidence_readable_v03.svg",
+    "bytes": 1504,
+    "sha256": "aa32b1219cfe2cbff87117c006b8a25b96c35a28e006fa0341ce7a43222dc7b3"
+  },
+  {
+    "path": "04_증거소품/sources/EV02_evidence_readable_v03.svg",
+    "bytes": 1493,
+    "sha256": "f6087753e4a0239a1ae3916d0b635199814dab816ef82ad911f326e41df24905"
+  },
+  {
+    "path": "04_증거소품/sources/EV03_evidence_readable_v03.svg",
+    "bytes": 1681,
+    "sha256": "7bb8a6cfc48c6e66c89c0b3bf4524eb832d4284014d532b82d1ea575875d47fc"
+  },
+  {
+    "path": "04_증거소품/sources/EV06_evidence_readable_v03.svg",
+    "bytes": 1669,
+    "sha256": "d6aa5de6a3c9ed0ca22c7e7ba525502d4369171527d2d3783cf756a8515fd942"
+  },
+  {
+    "path": "04_증거소품/sources/EV07_evidence_readable_v03.svg",
+    "bytes": 1722,
+    "sha256": "a1e07b2164819806ddbe808e129953ccc6d20d6703147bc970a779c66b198b39"
+  },
+  {
+    "path": "04_증거소품/sources/EV08_evidence_readable_v03.svg",
+    "bytes": 1534,
+    "sha256": "3934cb7e63875c50f55cd94c8acd4803200518538cf189847f8cc607b92446e8"
+  },
+  {
+    "path": "04_증거소품/sources/EV09_evidence_readable_v03.svg",
+    "bytes": 1504,
+    "sha256": "572577f45c1a3447e8a1f99339ff2fa838569c3bcab27f72ae233331497f23a5"
+  },
+  {
+    "path": "04_증거소품/sources/EV10_evidence_readable_v03.svg",
+    "bytes": 1384,
+    "sha256": "54f8e8649e950b8c565a9f5a5557e036de3f486b7b5cc9880241625644bcd210"
+  },
+  {
+    "path": "04_증거소품/sources/EV11_evidence_readable_v03.svg",
+    "bytes": 1539,
+    "sha256": "6e54615bf562e389bc080a9655976685560f4470fdd8cb88a7795de1ead48a49"
+  },
+  {
+    "path": "04_증거소품/sources/EV12_evidence_readable_v03.svg",
+    "bytes": 1543,
+    "sha256": "6230c4dd11cc84fd88ca85db3f716dd0c0b8a5b69712bf8eddba35aeab39cfdc"
+  },
+  {
+    "path": "04_증거소품/sources/EV13_evidence_readable_v03.svg",
+    "bytes": 1723,
+    "sha256": "45e2d2221cd7c942d04ab72459f9762221306e557517e14b90e4e723bc08fb20"
+  },
+  {
+    "path": "04_증거소품/sources/EV14_evidence_readable_v03.svg",
+    "bytes": 1879,
+    "sha256": "dd00abf0369031f7c1757552c239ce5c6759a73f4cbdfa86cdb7c97aee3243ff"
+  },
+  {
+    "path": "04_증거소품/sources/EV15_evidence_readable_v03.svg",
+    "bytes": 1890,
+    "sha256": "d43765948518b5eae995fda09504aa397ab8ade4f828e9d672bdfd57293e8361"
+  },
+  {
+    "path": "04_증거소품/sources/EV16_evidence_readable_v03.svg",
+    "bytes": 1577,
+    "sha256": "189e28de5b21f53f550e67ebc4bad4017a4d6dfa053d79d94b7ed8c1e2111f76"
+  },
+  {
+    "path": "04_증거소품/sources/EV17_evidence_readable_v03.svg",
+    "bytes": 1747,
+    "sha256": "bcce68c2111cdb694466be9f7e03d9e252c6e34681451060441ed12abdaecc5a"
+  },
+  {
+    "path": "04_증거소품/sources/EV18_evidence_readable_v03.svg",
+    "bytes": 1692,
+    "sha256": "66c815f233362014ba1b324dce10b207161b3d62e21cef8d78330d39d3946f2b"
+  },
+  {
+    "path": "04_증거소품/sources/EV19_evidence_readable_v03.svg",
+    "bytes": 1851,
+    "sha256": "29ce9c66ede60b127ce66afcf7c7d774c80c4100ef70c9285c06e0f14f393cce"
+  },
+  {
+    "path": "04_증거소품/sources/EV20_evidence_readable_v03.svg",
+    "bytes": 1499,
+    "sha256": "14ff266ad5bb1b0e1ce21ecdd8a9cda0c805279c696e15aea637323042298f7e"
+  },
+  {
+    "path": "07_검수완료/approved_patch_assets_v02.json",
+    "bytes": 3296,
+    "sha256": "697f6ad858f1aed46016f91cc8264a9c5c5c8762095a166a93a6ba0c11d5a12e"
+  },
+  {
+    "path": "07_검수완료/evidence_contact_01_v03.jpg",
+    "bytes": 111809,
+    "sha256": "45f74177ef51b6abf193d3c6ddf7f20169f96edddd44aeec5f1933a31a24b339"
+  },
+  {
+    "path": "07_검수완료/evidence_contact_02_v03.jpg",
+    "bytes": 113348,
+    "sha256": "2118bfe7a8d0f5c6b5def2fb4f2ae3b676e9be5b76b0cd221fcdd4a27a284a3d"
+  },
+  {
+    "path": "07_검수완료/evidence_contact_03_v03.jpg",
+    "bytes": 121329,
+    "sha256": "cd819cff0be400079e66531e0440b955966279436be08aa8a34e68b075302724"
+  },
+  {
+    "path": "08_수정필요/MC07_2026_front_full_v02.png",
+    "bytes": 921906,
+    "sha256": "b67de70bf6a666a21ba35adaae82b7dabea487d567e0344f25f3df66c4234991"
+  },
+  {
+    "path": "08_수정필요/MC27_2026_front_full_v02.png",
+    "bytes": 873885,
+    "sha256": "d9edad0be54fc78b1bc968d7e6b9da851b6aa624a9c6545b33c0b299e0ebc6c2"
+  },
+  {
+    "path": "08_수정필요/MC30_2026_front_full_v02.png",
+    "bytes": 942270,
+    "sha256": "2055bdcceccf51f6884a8765c84b8580f4bf9ca97034d760bdf586cf71fa598e"
+  },
+  {
+    "path": "08_수정필요/revision_backlog_v02.json",
+    "bytes": 1304,
+    "sha256": "c21bd5ebb352af8ab6bfe9b8a0cdb27ea3f12f318ec3ca51902d7e330c136af2"
+  },
+  {
+    "path": "README_CLAUDE_CODE_v02.md",
+    "bytes": 1596,
+    "sha256": "3554091eb27db630bbbe6d32f0fb2788d1108257e792c22a31e9e706d08e5913"
+  }
+]

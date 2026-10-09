@@ -1,0 +1,128 @@
+[
+  {
+    "id": "MC15",
+    "path": "01_캐릭터/game/MC15_2026_front_full_v02.png",
+    "status": "PASS",
+    "scope": "static_sprite",
+    "engine_applied": false
+  },
+  {
+    "id": "MC25",
+    "path": "01_캐릭터/game/MC25_2026_front_full_v02.png",
+    "status": "PASS",
+    "scope": "static_sprite",
+    "engine_applied": false
+  },
+  {
+    "id": "NPC03_left45",
+    "path": "01_캐릭터/game/NPC03_left45_2026_left45_v02.png",
+    "status": "PASS",
+    "scope": "static_sprite",
+    "engine_applied": false
+  },
+  {
+    "id": "EV02",
+    "path": "04_증거소품/game/EV02_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV03",
+    "path": "04_증거소품/game/EV03_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV06",
+    "path": "04_증거소품/game/EV06_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV07",
+    "path": "04_증거소품/game/EV07_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV08",
+    "path": "04_증거소품/game/EV08_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV09",
+    "path": "04_증거소품/game/EV09_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV10",
+    "path": "04_증거소품/game/EV10_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV11",
+    "path": "04_증거소품/game/EV11_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV12",
+    "path": "04_증거소품/game/EV12_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV13",
+    "path": "04_증거소품/game/EV13_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV14",
+    "path": "04_증거소품/game/EV14_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV15",
+    "path": "04_증거소품/game/EV15_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV16",
+    "path": "04_증거소품/game/EV16_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV17",
+    "path": "04_증거소품/game/EV17_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  },
+  {
+    "id": "EV20",
+    "path": "04_증거소품/game/EV20_evidence_readable_v03.png",
+    "status": "PASS",
+    "scope": "readable_transcript_card",
+    "engine_applied": false
+  }
+]

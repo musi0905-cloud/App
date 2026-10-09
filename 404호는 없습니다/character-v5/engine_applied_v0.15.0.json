@@ -1,0 +1,117 @@
+{
+ "package": "Drive 404호는_없습니다_최종_게임에셋 (2026-10-09 v02 패치)",
+ "applied": [
+  {
+   "id": "CH09",
+   "engine_applied": true,
+   "version": "v0.15.0",
+   "where": "2~5야간 판정 뒤 기록 카드의 인터폰 화면(상반신)",
+   "scenes": [
+    "N4_04",
+    "N5_05"
+   ],
+   "checks": {
+    "source_hash": "PASS (패키지 SHA-256과 일치)",
+    "transparent_edges": "PASS — alpha 1~16 먼지 26607픽셀 제거 후 사용",
+    "foot_anchor": "해당 없음 — 상반신만 쓰며 발은 화면에 나오지 않음",
+    "lighting": "PASS — 방문객 인터폰과 같은 채도 0.75·밝기 0.9 필터, 어두운 반투명 가장자리(평균 RGB 46~63)가 야간 배경에 묻힘",
+    "click_area": "해당 없음 — 그림은 누르는 대상이 아님",
+    "resolution": "PASS — 578x540 WebP, 가장 넓은 화면(252 CSS px)·2배 밀도에서도 축소 표시",
+    "walking": "사용 안 함 — 걷기 프레임 없음, CCTV에는 넣지 않음"
+   },
+   "screenshot": "room404/test-artifacts/story-contact-portrait.png"
+  },
+  {
+   "id": "CH10",
+   "engine_applied": true,
+   "version": "v0.15.0",
+   "where": "2~5야간 판정 뒤 기록 카드의 인터폰 화면(상반신)",
+   "scenes": [
+    "N3_08",
+    "N4_06",
+    "N5_04"
+   ],
+   "checks": {
+    "source_hash": "PASS (패키지 SHA-256과 일치)",
+    "transparent_edges": "PASS — alpha 1~16 먼지 16101픽셀 제거 후 사용",
+    "foot_anchor": "해당 없음 — 상반신만 쓰며 발은 화면에 나오지 않음",
+    "lighting": "PASS — 방문객 인터폰과 같은 채도 0.75·밝기 0.9 필터, 어두운 반투명 가장자리(평균 RGB 46~63)가 야간 배경에 묻힘",
+    "click_area": "해당 없음 — 그림은 누르는 대상이 아님",
+    "resolution": "PASS — 578x540 WebP, 가장 넓은 화면(252 CSS px)·2배 밀도에서도 축소 표시",
+    "walking": "사용 안 함 — 걷기 프레임 없음, CCTV에는 넣지 않음"
+   },
+   "screenshot": "room404/test-artifacts/story-contact-portrait.png"
+  },
+  {
+   "id": "MC15",
+   "engine_applied": true,
+   "version": "v0.15.0",
+   "where": "2~5야간 판정 뒤 기록 카드의 인터폰 화면(상반신)",
+   "scenes": [
+    "N3_01"
+   ],
+   "checks": {
+    "source_hash": "PASS (패키지 SHA-256과 일치)",
+    "transparent_edges": "PASS — alpha 1~16 먼지 13066픽셀 제거 후 사용",
+    "foot_anchor": "해당 없음 — 상반신만 쓰며 발은 화면에 나오지 않음",
+    "lighting": "PASS — 방문객 인터폰과 같은 채도 0.75·밝기 0.9 필터, 어두운 반투명 가장자리(평균 RGB 46~63)가 야간 배경에 묻힘",
+    "click_area": "해당 없음 — 그림은 누르는 대상이 아님",
+    "resolution": "PASS — 578x540 WebP, 가장 넓은 화면(252 CSS px)·2배 밀도에서도 축소 표시",
+    "walking": "사용 안 함 — 걷기 프레임 없음, CCTV에는 넣지 않음"
+   },
+   "screenshot": "room404/test-artifacts/story-contact-portrait.png"
+  },
+  {
+   "id": "MC25",
+   "engine_applied": true,
+   "version": "v0.15.0",
+   "where": "2~5야간 판정 뒤 기록 카드의 인터폰 화면(상반신)",
+   "scenes": [
+    "N4_07"
+   ],
+   "checks": {
+    "source_hash": "PASS (패키지 SHA-256과 일치)",
+    "transparent_edges": "PASS — alpha 1~16 먼지 12327픽셀 제거 후 사용",
+    "foot_anchor": "해당 없음 — 상반신만 쓰며 발은 화면에 나오지 않음",
+    "lighting": "PASS — 방문객 인터폰과 같은 채도 0.75·밝기 0.9 필터, 어두운 반투명 가장자리(평균 RGB 46~63)가 야간 배경에 묻힘",
+    "click_area": "해당 없음 — 그림은 누르는 대상이 아님",
+    "resolution": "PASS — 578x540 WebP, 가장 넓은 화면(252 CSS px)·2배 밀도에서도 축소 표시",
+    "walking": "사용 안 함 — 걷기 프레임 없음, CCTV에는 넣지 않음"
+   },
+   "screenshot": "room404/test-artifacts/story-contact-portrait.png"
+  }
+ ],
+ "not_applied": [
+  {
+   "id": "NPC02",
+   "engine_applied": false,
+   "reason": "검증 완료. 방문객 역할 그림은 NPC01~NPC10을 한 번에 바꾸기로 해서 보류",
+   "preview": "character-v5/preview_gate_visitor_NPC02.jpg"
+  },
+  {
+   "id": "NPC01",
+   "engine_applied": false,
+   "reason": "Drive 낱개 파일(327,769바이트)이 잘려 있어 열리지 않음. 복구본은 ZIP part 안에만 있음"
+  },
+  {
+   "id": "NPC03 (front v02), NPC04~NPC10, CH06, CH08",
+   "engine_applied": false,
+   "reason": "낱개 파일이 없고 01_캐릭터_복구완료_v02_part01~05.zip(9.4~17.8MB) 안에만 있음. Drive 연결로 받을 수 있는 크기를 넘음"
+  },
+  {
+   "id": "MC07, MC27, MC30",
+   "engine_applied": false,
+   "reason": "REVISE (revision_backlog_v02.json)"
+  },
+  {
+   "id": "MC01~MC14, MC16~MC24, MC26, MC28, MC29",
+   "engine_applied": false,
+   "reason": "DRAFT_STATIC 또는 검수 전 — 장면 매핑 v03이 BLOCKED"
+  },
+  {
+   "id": "NPC03_left45",
+   "engine_applied": false,
+   "reason": "승인(PASS)됐지만 지금 게임에 왼쪽 45도 정지 그림을 쓸 화면이 없음"
+  }
+ ]
+}

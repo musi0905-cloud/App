@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.14.0 (2026-10-08)
+- 기준 버전: v0.15.0 (2026-10-09)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -238,6 +238,15 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - 힌트: `hintsFor`는 모자란 조건을 엔딩 이름·범인·미입수 자료 이름 없이 알려 줍니다. E30 제출 버튼은 `submitStatus`가 통과해야 켜집니다.
 - 저장: `validStory`가 구조와 일관성(야간·완료 장면·판정 수·자료 출처 등)을 검사합니다. 읽을 수 없으면 `404_story_v3_unreadable`에 원본을 두고 새로 시작합니다. `404_active_v2`의 옛 첫 근무 저장은 `migrateLegacy`로 1야간 이야기로 옮기고 원본은 `404_active_v2_backup`에 둡니다. 새 이야기를 시작하면 이전 이야기를 `404_story_v3_prev`에 둡니다.
 - 검사: `tests/gates.test.mjs`(증인 30개, 변형 203건, 임의 상태 20,000개, 실제 진행 경로, 저장 왕복, 이전), `tests/story-ui.mjs`(실제 클릭 5야간, 120회 재시작, 30개 엔딩 화면). 공용 도우미 `tests/story-helpers.mjs`.
+
+## 9-3. 새 캐릭터 그림 (v0.15.0)
+
+- 원본·승인 목록·매핑: `character-v5/` (Drive 최종 게임에셋 v02 패치). 무엇을 넣고 무엇을 안 넣었는지는 `character-v5/engine_applied_v0.15.0.json`.
+- `scripts/build-character-busts.py`가 승인된 PNG만 받아(원본 SHA-256 확인) 먼지 픽셀(alpha ≤ 16)을 지우고 상반신 WebP를 `dist/assets/v5/bust-<ID>.webp`로 만든다. 새 그림이 오면 `APPROVED`에 추가하고 다시 실행한다.
+- `dist/data/character_assets.json`: `assets`(ID→파일·승인 출처·해시), `contacts`(장면→ID, `main_scene_mapping_40_v03.json`과 일치해야 함), `contacts_waiting_for_files`, `visitor_roles`(역할→NPC), `visitor_roles_enabled`(false).
+- 화면: `renderStoryCard()`가 `contacts[scene]`이 있을 때만 `#contactScreen`(인터폰 화면, `lobby-door-inside` 배경)에 상반신을 보여 준다. CSS `.person-sprite.cropped`.
+- 쓰지 않는 것: REVISE(MC07·MC27·MC30), DRAFT MC 초안, CCTV(걷기 프레임 없음). 검사: `tests/characters.test.mjs`, `story-ui.mjs`.
+- 그림을 추가하면 `sw.js`의 캐시 목록(`bust-` 목록)도 같이 고친다. 테스트가 확인한다.
 
 ## 10. 주의사항
 

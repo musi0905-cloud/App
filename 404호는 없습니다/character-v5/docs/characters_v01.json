@@ -1,0 +1,383 @@
+{
+  "core": [
+    {
+      "id": "CH01",
+      "name": "김정우, 가장",
+      "era": "2004 당시 42세, 사망",
+      "knowledge": "비리 자료 원본 보유",
+      "role": "절제·원칙·두려움; 녹음과 사진에 등장, 2026 생존 등장 금지",
+      "source_assets": "사원증, 가족사진, 자료철, 옛 녹취",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": false
+    },
+    {
+      "id": "CH02",
+      "name": "이수연, 아내",
+      "era": "2004 당시 39세, 화재 사망",
+      "knowledge": "남편의 위험 일부만 인지",
+      "role": "생활의 흔적, 사건 전 메모",
+      "source_assets": "가족사진, 장보기 수첩, 편지",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": false
+    },
+    {
+      "id": "CH03",
+      "name": "김하은, 딸",
+      "era": "2004 당시 9세, 화재 사망",
+      "knowledge": "범죄 전모 모름",
+      "role": "가족 일상·호수·날짜 단서",
+      "source_assets": "일기, 아파트 4층 복도 그림, 학급 사진",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": false
+    },
+    {
+      "id": "CH04",
+      "name": "강태준",
+      "era": "2004 건설사 임원 → 2026 국회의원 후보",
+      "knowledge": "살인/방화/은폐 전모",
+      "role": "직접 설명 대신 문서·측근 압박을 통해 노출, 마지막에 실체 공개",
+      "source_assets": "2004 출입 이미지, 2026 선거 인쇄물, 녹음",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    },
+    {
+      "id": "CH05",
+      "name": "오명철, 당시 관리소장 [DESIGN]",
+      "era": "2004 관리 책임",
+      "knowledge": "기록 삭제 지시 인지, 살인은 부분 추정",
+      "role": "정확한 서류 표현으로 회피",
+      "source_assets": "교체 지시서, 전화 통화, 과거 신분 사진",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    },
+    {
+      "id": "CH06",
+      "name": "장혜숙, 2004 입주자대표 [DESIGN]",
+      "era": "2026에도 단지 내 거주",
+      "knowledge": "화재 존재 인지, 살인 모름",
+      "role": "집값·공동체 논리",
+      "source_assets": "회의록, 동의서, 주민 인터폰",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    },
+    {
+      "id": "CH07",
+      "name": "박영식, 전 경비원 [DESIGN]",
+      "era": "2019 사망",
+      "knowledge": "자료 불일치 일부 발견",
+      "role": "수기 기록에 의존; 사망 원인 별도 추리로 남김",
+      "source_assets": "근무일지, 사물함 열쇠",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": false
+    },
+    {
+      "id": "CH08",
+      "name": "서민아, 현재 입주민 [DESIGN]",
+      "era": "2026 주민",
+      "knowledge": "당시 소문 일부 + 새 자료",
+      "role": "합리적 의심, 플레이어에게 원본 사진 제공",
+      "source_assets": "전화, 공동현관 방문, 휴대전화 캡처",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    },
+    {
+      "id": "CH09",
+      "name": "정범수, 현 관리소장 [DESIGN]",
+      "era": "2026 관리자",
+      "knowledge": "운영 명부 조작 사실 정도",
+      "role": "규정 준수를 강조하되 고압적",
+      "source_assets": "무전 음성, 명부 교체 공지",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    },
+    {
+      "id": "CH10",
+      "name": "윤도경, 후보 캠프 실무자 [DESIGN]",
+      "era": "2026",
+      "knowledge": "재은폐 업무 인지, 원사건 전모 모름",
+      "role": "친절한 위압, 자료 회수 요청",
+      "source_assets": "방문증, 차량, 공문",
+      "design_origin": "외형은 기획서 미기재: 제작용 DESIGN으로 별도 기록",
+      "live_2026_allowed": true
+    }
+  ],
+  "roles": [
+    {
+      "id": "NPC01",
+      "role": "귀가 주민",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC02",
+      "role": "가족 방문",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC03",
+      "role": "택배 기사",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC04",
+      "role": "시설 점검",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC05",
+      "role": "돌봄 방문",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC06",
+      "role": "이웃",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC07",
+      "role": "음식 배달",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC08",
+      "role": "차량 동승",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC09",
+      "role": "공공 업무",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    },
+    {
+      "id": "NPC10",
+      "role": "지인",
+      "design_origin": "10개 역할군 배정 DESIGN, 성별/외형은 범죄 판정 단서 아님"
+    }
+  ],
+  "main_scene_contacts": [
+    {
+      "id": "MC01",
+      "name": "김서윤",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC02",
+      "name": "송기현",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC03",
+      "name": "최유진",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC04",
+      "name": "조성민",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC05",
+      "name": "한소희",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC06",
+      "name": "문태윤",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC07",
+      "name": "이민재",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC08",
+      "name": "배달 동승인",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC09",
+      "name": "최미경",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC10",
+      "name": "오세훈",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC11",
+      "name": "강민수",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC12",
+      "name": "박지은",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC13",
+      "name": "정현수",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC14",
+      "name": "정은경",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC15",
+      "name": "이영자",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC16",
+      "name": "홍세진",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC17",
+      "name": "외부 자료 전달인",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC18",
+      "name": "김정우 전 동료",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC19",
+      "name": "이수연 지인",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC20",
+      "name": "김하은 담임",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC21",
+      "name": "박영식 가족",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC22",
+      "name": "차량 관리 담당",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC23",
+      "name": "강태준 전 비서",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC24",
+      "name": "회계 자료 보관자",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC25",
+      "name": "전직 대표회의 간사",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC26",
+      "name": "익명 전화의 주인",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC27",
+      "name": "의료기록 보관자",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC28",
+      "name": "김정우 동료",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC29",
+      "name": "옛 구조대 관계자",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    },
+    {
+      "id": "MC30",
+      "name": "원본 보관 기관 직원",
+      "role": "메인 사건 접촉 인물",
+      "design_origin": "09 대본에서 추출; 외형 미지정",
+      "needs_identity_sheet": true
+    }
+  ],
+  "required_poses": [
+    "front_full",
+    "left45",
+    "right45",
+    "side",
+    "rear",
+    "expression_neutral",
+    "expression_anxious",
+    "expression_angry",
+    "expression_surprised",
+    "idle",
+    "request_entry",
+    "present_document",
+    "exit"
+  ]
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "MC07",
+    "status": "REVISE",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "헤어라인 후퇴와 짧은 측면 머리 표현이 기준보다 약함. 추가 수정 필요.",
+    "original_path": "01_캐릭터/originals/MC07_2026_front_full_v02.png",
+    "game_path": null,
+    "review_path": "08_수정필요/MC07_2026_front_full_v02.png",
+    "size": [
+      942,
+      1669
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      40,
+      25,
+      928,
+      1622
+    ],
+    "sha256": "b67de70bf6a666a21ba35adaae82b7dabea487d567e0344f25f3df66c4234991",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Change ONLY his hairstyle to visibly receding short black hair with high temples, closely trimmed sides and a short brushed-back top. Keep exactly the same face identity, age26, face proportions, body, pose, clothes, shoes, framing and painted brushwork. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  },
+  {
+    "id": "MC15",
+    "status": "PASS",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "연령 표현 보완. 얼굴 기본 구조, 안경·묶은 머리·의상과 전신 비율 유지.",
+    "original_path": "01_캐릭터/originals/MC15_2026_front_full_v02.png",
+    "game_path": "01_캐릭터/game/MC15_2026_front_full_v02.png",
+    "review_path": "01_캐릭터/game/MC15_2026_front_full_v02.png",
+    "size": [
+      942,
+      1670
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      66,
+      40,
+      822,
+      1594
+    ],
+    "sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Correct age to a visibly 71-year-old Korean woman: natural forehead and eye wrinkles, slight lower cheek sag, subtle neck age lines and aged hands. Preserve underlying facial identity, angular high forehead, same glasses, black low bun with a few grey roots, exact clothes, fullbody pose and proportions. No grotesque exaggeration. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  },
+  {
+    "id": "MC25",
+    "status": "PASS",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "연령 표현 보완. 단발·얼굴 기본 구조·의상과 전신 비율 유지.",
+    "original_path": "01_캐릭터/originals/MC25_2026_front_full_v02.png",
+    "game_path": "01_캐릭터/game/MC25_2026_front_full_v02.png",
+    "review_path": "01_캐릭터/game/MC25_2026_front_full_v02.png",
+    "size": [
+      942,
+      1669
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      66,
+      44,
+      879,
+      1607
+    ],
+    "sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Correct age to visibly 67-year-old Korean woman: natural mature facial contours, forehead and eye wrinkles, neck age lines and aged hands, a few grey strands in same bob. Preserve underlying identity, long oval face and broad nose, same exact clothes, fullbody pose, silhouette and brushwork. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  },
+  {
+    "id": "MC27",
+    "status": "REVISE",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "높은 이마·각진 턱의 차별화 부족. MC15와의 얼굴 구별 재검수 필요.",
+    "original_path": "01_캐릭터/originals/MC27_2026_front_full_v02.png",
+    "game_path": null,
+    "review_path": "08_수정필요/MC27_2026_front_full_v02.png",
+    "size": [
+      942,
+      1669
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      82,
+      19,
+      922,
+      1645
+    ],
+    "sha256": "d9edad0be54fc78b1bc968d7e6b9da851b6aa624a9c6545b33c0b299e0ebc6c2",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Correct her canonical DESIGN: distinct angular high-forehead face, visible mature age50, pronounced straight cheekbones and slightly broader jaw, hair pulled tightly into a low bun exposing forehead, no face-framing bob. Keep dark rectangular glasses, same brown rainjacket, shirt pants shoes, pose silhouette and painted style. This is a versioned master correction, not a new scene. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  },
+  {
+    "id": "MC30",
+    "status": "REVISE",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "직사각 얼굴·긴 코 디자인 반영 부족. 외형 차별화 수정 필요.",
+    "original_path": "01_캐릭터/originals/MC30_2026_front_full_v02.png",
+    "game_path": null,
+    "review_path": "08_수정필요/MC30_2026_front_full_v02.png",
+    "size": [
+      943,
+      1668
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      40,
+      40,
+      898,
+      1602
+    ],
+    "sha256": "2055bdcceccf51f6884a8765c84b8580f4bf9ca97034d760bdf586cf71fa598e",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Correct only facial DESIGN to clearly rectangular face with a long straight nose and strong jaw, age38, shoulderlength side-part black hair and dark rectangular glasses. Keep outfit and body exact, maroon rainjacket and grey trousers white sneakers. Distinguish from the small oval generic woman face while retaining painterly texture and ordinary expression. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  },
+  {
+    "id": "NPC03_left45",
+    "status": "PASS",
+    "qa_scope": "single static sprite; no scene/animation approval",
+    "reason": "화면 왼쪽 45도 정지 방향. 모자·의상·왼팔 소포 유지. 보행 프레임 아님.",
+    "original_path": "01_캐릭터/originals/NPC03_left45_2026_left45_v02.png",
+    "game_path": "01_캐릭터/game/NPC03_left45_2026_left45_v02.png",
+    "review_path": "01_캐릭터/game/NPC03_left45_2026_left45_v02.png",
+    "size": [
+      942,
+      1669
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      0,
+      19,
+      922,
+      1640
+    ],
+    "sha256": "887cd002f8272dab78f07e59312bee9e03d37d10c522e22632530f0869810a54",
+    "engine_applied": false,
+    "animation_ready": false,
+    "prompt": "Use case: identity-preserve. Edit target: provided character master. Rotate this exact same courier 45 degrees toward IMAGE LEFT. Nose, chest and toes MUST point diagonally toward left edge of image; left-facing three-quarter view. Keep parcel in his anatomical LEFT arm (far arm as he turns image-left), exact identity face age cap vest clothes bodyproportions. Right arm relaxed. A stationary directional turnaround, not walking. One fullbody person, head and both shoes fully visible, keep same low saturation cinematic painted 2D style and cool diffuse light. Actual transparent background, no floor, no shadow, no text, no logo. Preserve all unmentioned details."
+  }
+]

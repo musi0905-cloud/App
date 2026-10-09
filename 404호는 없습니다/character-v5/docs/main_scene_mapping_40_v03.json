@@ -1,0 +1,1335 @@
+[
+  {
+    "id": "N1_01",
+    "time": "00:13",
+    "display_name": "김서윤",
+    "original_name": "김서윤",
+    "character_id": "MC01",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“열쇠를 두고 왔어요. 카메라 시계가 맞는지 좀 봐주세요.”",
+      "조사 화면/사용 행동": "주민 원본 연락처와 CAM-B 시각 보정",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "카메라의 시각이 7분 늦었다",
+      "이후 변화": "내일부터 보조 카메라를 신뢰할 수 있다",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_01 — 00:13 김서윤\n- **첫 대사:** “열쇠를 두고 왔어요. 카메라 시계가 맞는지 좀 봐주세요.”\n- **조사 화면/사용 행동:** 주민 원본 연락처와 CAM-B 시각 보정\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 카메라의 시각이 7분 늦었다\n- **이후 변화:** 내일부터 보조 카메라를 신뢰할 수 있다\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“열쇠를 두고 왔어요. 카메라 시계가 맞는지 좀 봐주세요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_02",
+    "time": "00:47",
+    "display_name": "송기현",
+    "original_name": "송기현",
+    "character_id": "MC02",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“동생이 전화를 안 받아요. 지금 들어가야 해요.”",
+      "조사 화면/사용 행동": "중복 출입 표시와 사전 방문 승인 여부",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "같은 외관의 기존 출입과 새 요청 불일치",
+      "이후 변화": "반복 접근 경고 기록",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_02 — 00:47 송기현\n- **첫 대사:** “동생이 전화를 안 받아요. 지금 들어가야 해요.”\n- **조사 화면/사용 행동:** 중복 출입 표시와 사전 방문 승인 여부\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 같은 외관의 기존 출입과 새 요청 불일치\n- **이후 변화:** 반복 접근 경고 기록\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“동생이 전화를 안 받아요. 지금 들어가야 해요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_03",
+    "time": "01:32",
+    "display_name": "최유진",
+    "original_name": "최유진",
+    "character_id": "MC03",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“젖은 택배인데 늦으면 곤란해요.”",
+      "조사 화면/사용 행동": "배송번호와 세대 승인, 모자 벗고 신원 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "외형은 출입 증명이 아님",
+      "이후 변화": "정상 거부시 다음 근무 민원",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_03 — 01:32 최유진\n- **첫 대사:** “젖은 택배인데 늦으면 곤란해요.”\n- **조사 화면/사용 행동:** 배송번호와 세대 승인, 모자 벗고 신원 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 외형은 출입 증명이 아님\n- **이후 변화:** 정상 거부시 다음 근무 민원\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“젖은 택배인데 늦으면 곤란해요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_04",
+    "time": "02:17",
+    "display_name": "조성민",
+    "original_name": "조성민",
+    "character_id": "MC04",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“가스 경보 접수받고 왔습니다. 여기 적힌 번호로 거세요.”",
+      "조사 화면/사용 행동": "명부 등록 업체 연락처 재확인 및 별도 긴급 신고",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "방문객 번호는 승인되지 않음",
+      "이후 변화": "위험 허용 시 시스템 경보",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_04 — 02:17 조성민\n- **첫 대사:** “가스 경보 접수받고 왔습니다. 여기 적힌 번호로 거세요.”\n- **조사 화면/사용 행동:** 명부 등록 업체 연락처 재확인 및 별도 긴급 신고\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 방문객 번호는 승인되지 않음\n- **이후 변화:** 위험 허용 시 시스템 경보\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“가스 경보 접수받고 왔습니다. 여기 적힌 번호로 거세요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_05",
+    "time": "02:44",
+    "display_name": "한소희",
+    "original_name": "한소희",
+    "character_id": "MC05",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“재활 보조기구를 전달해야 해요.”",
+      "조사 화면/사용 행동": "사전 등록 대체 보호자 통화",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "대체 승인 적법",
+      "이후 변화": "도움 기록",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_05 — 02:44 한소희\n- **첫 대사:** “재활 보조기구를 전달해야 해요.”\n- **조사 화면/사용 행동:** 사전 등록 대체 보호자 통화\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 대체 승인 적법\n- **이후 변화:** 도움 기록\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“재활 보조기구를 전달해야 해요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_06",
+    "time": "03:00",
+    "display_name": "문태윤",
+    "original_name": "문태윤",
+    "character_id": "MC06",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“차량 라이트가 켜져 있다고 전해달라고 왔어요.”",
+      "조사 화면/사용 행동": "관리 시스템이 목적지를 804에서 404로 변경, 원본 승인 부재",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "운영 명부와 오래된 종이의 404 표기 충돌",
+      "이후 변화": "프린터 404 절취표 확보 가능",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_06 — 03:00 문태윤\n- **첫 대사:** “차량 라이트가 켜져 있다고 전해달라고 왔어요.”\n- **조사 화면/사용 행동:** 관리 시스템이 목적지를 804에서 404로 변경, 원본 승인 부재\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 운영 명부와 오래된 종이의 404 표기 충돌\n- **이후 변화:** 프린터 404 절취표 확보 가능\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“차량 라이트가 켜져 있다고 전해달라고 왔어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_07",
+    "time": "04:21",
+    "display_name": "이민재",
+    "original_name": "이민재",
+    "character_id": "MC07",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“아까 반송됐던 음식 다시 가져왔어요.”",
+      "조사 화면/사용 행동": "재배송 새 번호와 세대 확인",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "기록 수정은 정상일 수 있다",
+      "이후 변화": "민원 오판 계수",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_07 — 04:21 이민재\n- **첫 대사:** “아까 반송됐던 음식 다시 가져왔어요.”\n- **조사 화면/사용 행동:** 재배송 새 번호와 세대 확인\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 기록 수정은 정상일 수 있다\n- **이후 변화:** 민원 오판 계수\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“아까 반송됐던 음식 다시 가져왔어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N1_08",
+    "time": "05:50",
+    "display_name": "배달 동승인",
+    "original_name": "배달 동승인",
+    "character_id": "MC08",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“휴대전화만 두고 가겠습니다.”",
+      "조사 화면/사용 행동": "차량 카메라와 현관 카메라 사람 수 불일치 재확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "승인된 방문자가 특정되지 않음",
+      "이후 변화": "근무 마감 기록 저장",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N1_08 — 05:50 배달 동승인\n- **첫 대사:** “휴대전화만 두고 가겠습니다.”\n- **조사 화면/사용 행동:** 차량 카메라와 현관 카메라 사람 수 불일치 재확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 승인된 방문자가 특정되지 않음\n- **이후 변화:** 근무 마감 기록 저장\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n\n## N2 없는 주소—사라진 문\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“휴대전화만 두고 가겠습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_01",
+    "time": "00:09",
+    "display_name": "최미경",
+    "original_name": "최미경",
+    "character_id": "MC09",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“제 이름이 새 명부에서 빠졌어요.”",
+      "조사 화면/사용 행동": "실거주 대장과 주민 연락 검증",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "명부는 완전하지 않다",
+      "이후 변화": "관리소 신뢰 -1",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_01 — 00:09 최미경\n- **첫 대사:** “제 이름이 새 명부에서 빠졌어요.”\n- **조사 화면/사용 행동:** 실거주 대장과 주민 연락 검증\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 명부는 완전하지 않다\n- **이후 변화:** 관리소 신뢰 -1\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“제 이름이 새 명부에서 빠졌어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_02",
+    "time": "00:41",
+    "display_name": "오세훈",
+    "original_name": "오세훈",
+    "character_id": "MC10",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV03"
+    ],
+    "source_fields": {
+      "첫 대사": "“소방설비 점검 예약표가 있습니다.”",
+      "조사 화면/사용 행동": "승인된 업체 발주서와 ID 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "보수 발주서 하단에 구역 4-04",
+      "이후 변화": "EV03 사본 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_02 — 00:41 오세훈\n- **첫 대사:** “소방설비 점검 예약표가 있습니다.”\n- **조사 화면/사용 행동:** 승인된 업체 발주서와 ID 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 보수 발주서 하단에 구역 4-04\n- **이후 변화:** EV03 사본 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“소방설비 점검 예약표가 있습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_03",
+    "time": "01:13",
+    "display_name": "강민수",
+    "original_name": "강민수",
+    "character_id": "MC11",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV01",
+      "EV02"
+    ],
+    "source_fields": {
+      "첫 대사": "“도면에는 창고인데 여긴 세대문 흔적이 있습니다.”",
+      "조사 화면/사용 행동": "1997 도면과 2026 층별도면 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "EV01 과 EV02 모순",
+      "이후 변화": "EV01 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_03 — 01:13 강민수\n- **첫 대사:** “도면에는 창고인데 여긴 세대문 흔적이 있습니다.”\n- **조사 화면/사용 행동:** 1997 도면과 2026 층별도면 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** EV01 과 EV02 모순\n- **이후 변화:** EV01 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“도면에는 창고인데 여긴 세대문 흔적이 있습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_04",
+    "time": "01:52",
+    "display_name": "장혜숙",
+    "original_name": "장혜숙",
+    "character_id": "CH06",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“그곳은 원래부터 없었습니다.”",
+      "조사 화면/사용 행동": "구두 주장과 기록 독립 대조",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "증언은 문서와 충돌",
+      "이후 변화": "대표회의 인물 등장",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_04 — 01:52 장혜숙\n- **첫 대사:** “그곳은 원래부터 없었습니다.”\n- **조사 화면/사용 행동:** 구두 주장과 기록 독립 대조\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 증언은 문서와 충돌\n- **이후 변화:** 대표회의 인물 등장\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+      "dialogue": "“그곳은 원래부터 없었습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N2_04_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_05",
+    "time": "02:33",
+    "display_name": "박지은",
+    "original_name": "박지은",
+    "character_id": "MC12",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV04"
+    ],
+    "source_fields": {
+      "첫 대사": "“폐쇄층에 물이 새요.”",
+      "조사 화면/사용 행동": "유지보수 사진과 표찰 번호 확인",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "404 문틀이 보수재로 덮임",
+      "이후 변화": "EV04 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_05 — 02:33 박지은\n- **첫 대사:** “폐쇄층에 물이 새요.”\n- **조사 화면/사용 행동:** 유지보수 사진과 표찰 번호 확인\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 404 문틀이 보수재로 덮임\n- **이후 변화:** EV04 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“폐쇄층에 물이 새요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_06",
+    "time": "03:11",
+    "display_name": "서민아",
+    "original_name": "서민아",
+    "character_id": "CH08",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV05"
+    ],
+    "source_fields": {
+      "첫 대사": "“옛 사진에 404호가 있더라고요.”",
+      "조사 화면/사용 행동": "사진 날짜와 뒷면 주소 확인",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "2004 거주 흔적",
+      "이후 변화": "EV05 복제",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_06 — 03:11 서민아\n- **첫 대사:** “옛 사진에 404호가 있더라고요.”\n- **조사 화면/사용 행동:** 사진 날짜와 뒷면 주소 확인\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 2004 거주 흔적\n- **이후 변화:** EV05 복제\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+      "dialogue": "“옛 사진에 404호가 있더라고요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N2_06_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_07",
+    "time": "04:29",
+    "display_name": "정현수",
+    "original_name": "정현수",
+    "character_id": "MC13",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“인터폰 배선이 교체됐다네요.”",
+      "조사 화면/사용 행동": "통신 보수 기록 대조",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "허가 없는 배선 변경",
+      "이후 변화": "침입 위험 별도 처리",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_07 — 04:29 정현수\n- **첫 대사:** “인터폰 배선이 교체됐다네요.”\n- **조사 화면/사용 행동:** 통신 보수 기록 대조\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 허가 없는 배선 변경\n- **이후 변화:** 침입 위험 별도 처리\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“인터폰 배선이 교체됐다네요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N2_08",
+    "time": "05:43",
+    "display_name": "정은경",
+    "original_name": "정은경",
+    "character_id": "MC14",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“옛 주소를 찾고 있습니다.”",
+      "조사 화면/사용 행동": "독립 세대번호와 면담 기록 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "원본을 알아내려는 제3자",
+      "이후 변화": "N3 익명 제보 플래그",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N2_08 — 05:43 정은경\n- **첫 대사:** “옛 주소를 찾고 있습니다.”\n- **조사 화면/사용 행동:** 독립 세대번호와 면담 기록 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 원본을 알아내려는 제3자\n- **이후 변화:** N3 익명 제보 플래그\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n\n## N3 화재는 없었다—침묵의 가격\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“옛 주소를 찾고 있습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_01",
+    "time": "00:14",
+    "display_name": "이영자",
+    "original_name": "이영자",
+    "character_id": "MC15",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV05"
+    ],
+    "source_fields": {
+      "첫 대사": "“그 가족 사진은 우리 반상회에서 찍었어요.”",
+      "조사 화면/사용 행동": "인물 확인 및 사진 연도 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "세 가족 이름이 일치",
+      "이후 변화": "EV05 검증",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_01 — 00:14 이영자\n- **첫 대사:** “그 가족 사진은 우리 반상회에서 찍었어요.”\n- **조사 화면/사용 행동:** 인물 확인 및 사진 연도 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 세 가족 이름이 일치\n- **이후 변화:** EV05 검증\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“그 가족 사진은 우리 반상회에서 찍었어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_02",
+    "time": "00:46",
+    "display_name": "홍세진",
+    "original_name": "홍세진",
+    "character_id": "MC16",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV06"
+    ],
+    "source_fields": {
+      "첫 대사": "“접수번호를 확인해 달라고 부탁받았습니다.”",
+      "조사 화면/사용 행동": "접수 요약과 공식 발표의 시각 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "EV06 화재 신고 존재",
+      "이후 변화": "EV06 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_02 — 00:46 홍세진\n- **첫 대사:** “접수번호를 확인해 달라고 부탁받았습니다.”\n- **조사 화면/사용 행동:** 접수 요약과 공식 발표의 시각 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** EV06 화재 신고 존재\n- **이후 변화:** EV06 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“접수번호를 확인해 달라고 부탁받았습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_03",
+    "time": "01:30",
+    "display_name": "외부 자료 전달인",
+    "original_name": "외부 자료 전달인",
+    "character_id": "MC17",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV08"
+    ],
+    "source_fields": {
+      "첫 대사": "“이 문서는 관리소 복사본과 다릅니다.”",
+      "조사 화면/사용 행동": "서류 출처와 기관 ID 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "접수 시각 불일치",
+      "이후 변화": "EV08 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_03 — 01:30 외부 자료 전달인\n- **첫 대사:** “이 문서는 관리소 복사본과 다릅니다.”\n- **조사 화면/사용 행동:** 서류 출처와 기관 ID 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 접수 시각 불일치\n- **이후 변화:** EV08 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“이 문서는 관리소 복사본과 다릅니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_04",
+    "time": "02:02",
+    "display_name": "장혜숙",
+    "original_name": "장혜숙",
+    "character_id": "CH06",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV16"
+    ],
+    "source_fields": {
+      "첫 대사": "“그날 일은 부풀려졌어요.”",
+      "조사 화면/사용 행동": "회의록과 입주자대표 발언 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "경제적 이유로 비공개 논의",
+      "이후 변화": "EV16 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_04 — 02:02 장혜숙\n- **첫 대사:** “그날 일은 부풀려졌어요.”\n- **조사 화면/사용 행동:** 회의록과 입주자대표 발언 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 경제적 이유로 비공개 논의\n- **이후 변화:** EV16 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+      "dialogue": "“그날 일은 부풀려졌어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N3_04_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_05",
+    "time": "02:37",
+    "display_name": "김정우 전 동료",
+    "original_name": "김정우 전 동료",
+    "character_id": "MC18",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“누군가 동료 이름을 지웠습니다.”",
+      "조사 화면/사용 행동": "사원증·조직도 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "회사 기록에도 삭제 흔적",
+      "이후 변화": "동료 신뢰 플래그",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_05 — 02:37 김정우 전 동료\n- **첫 대사:** “누군가 동료 이름을 지웠습니다.”\n- **조사 화면/사용 행동:** 사원증·조직도 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 회사 기록에도 삭제 흔적\n- **이후 변화:** 동료 신뢰 플래그\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“누군가 동료 이름을 지웠습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_06",
+    "time": "03:19",
+    "display_name": "이수연 지인",
+    "original_name": "이수연 지인",
+    "character_id": "MC19",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“수연 씨는 그날 통화가 끊겼어요.”",
+      "조사 화면/사용 행동": "옛 통신 내역과 화재 시각 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "화재 당시 가족 재실",
+      "이후 변화": "사망 원인은 아직 미결",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_06 — 03:19 이수연 지인\n- **첫 대사:** “수연 씨는 그날 통화가 끊겼어요.”\n- **조사 화면/사용 행동:** 옛 통신 내역과 화재 시각 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 화재 당시 가족 재실\n- **이후 변화:** 사망 원인은 아직 미결\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“수연 씨는 그날 통화가 끊겼어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_07",
+    "time": "04:15",
+    "display_name": "김하은 담임",
+    "original_name": "김하은 담임",
+    "character_id": "MC20",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV18"
+    ],
+    "source_fields": {
+      "첫 대사": "“하은이가 그린 복도 그림입니다.”",
+      "조사 화면/사용 행동": "학급일지와 그림 날짜 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "404 표시가 남아 있음",
+      "이후 변화": "EV18 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_07 — 04:15 김하은 담임\n- **첫 대사:** “하은이가 그린 복도 그림입니다.”\n- **조사 화면/사용 행동:** 학급일지와 그림 날짜 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 404 표시가 남아 있음\n- **이후 변화:** EV18 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“하은이가 그린 복도 그림입니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N3_08",
+    "time": "05:48",
+    "display_name": "기록 회수 요청자",
+    "original_name": "기록 회수 요청자",
+    "character_id": "CH10",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“옛 문서들은 오해를 부릅니다.”",
+      "조사 화면/사용 행동": "공식 권한 서류 여부 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "외부 자료 회수 시도",
+      "이후 변화": "증거 보관 선택",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N3_08 — 05:48 기록 회수 요청자\n- **첫 대사:** “옛 문서들은 오해를 부릅니다.”\n- **조사 화면/사용 행동:** 공식 권한 서류 여부 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 외부 자료 회수 시도\n- **이후 변화:** 증거 보관 선택\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n\n## N4 기록 교체—권력의 방문\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH10_yoon_dogyeong_2026_front_full_v01.png",
+      "dialogue": "“옛 문서들은 오해를 부릅니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N3_08_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_01",
+    "time": "00:21",
+    "display_name": "박영식 가족",
+    "original_name": "박영식 가족",
+    "character_id": "MC21",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV09"
+    ],
+    "source_fields": {
+      "첫 대사": "“아버지의 수첩을 전하러 왔어요.”",
+      "조사 화면/사용 행동": "수기 연도와 서명 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "사건 당일 차량 입차",
+      "이후 변화": "EV09 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_01 — 00:21 박영식 가족\n- **첫 대사:** “아버지의 수첩을 전하러 왔어요.”\n- **조사 화면/사용 행동:** 수기 연도와 서명 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 사건 당일 차량 입차\n- **이후 변화:** EV09 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“아버지의 수첩을 전하러 왔어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_02",
+    "time": "00:58",
+    "display_name": "차량 관리 담당",
+    "original_name": "차량 관리 담당",
+    "character_id": "MC22",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV11"
+    ],
+    "source_fields": {
+      "첫 대사": "“이 번호판은 회사 차량이었습니다.”",
+      "조사 화면/사용 행동": "차량 등록원장과 출입시간 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "회사 소속 차량",
+      "이후 변화": "EV11 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_02 — 00:58 차량 관리 담당\n- **첫 대사:** “이 번호판은 회사 차량이었습니다.”\n- **조사 화면/사용 행동:** 차량 등록원장과 출입시간 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 회사 소속 차량\n- **이후 변화:** EV11 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“이 번호판은 회사 차량이었습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_03",
+    "time": "01:26",
+    "display_name": "강태준 전 비서",
+    "original_name": "강태준 전 비서",
+    "character_id": "MC23",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV12"
+    ],
+    "source_fields": {
+      "첫 대사": "“그날 일정을 보관했습니다.”",
+      "조사 화면/사용 행동": "회의 일정표와 다른 증인의 시각 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "면담 일정 관련",
+      "이후 변화": "EV12 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_03 — 01:26 강태준 전 비서\n- **첫 대사:** “그날 일정을 보관했습니다.”\n- **조사 화면/사용 행동:** 회의 일정표와 다른 증인의 시각 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 면담 일정 관련\n- **이후 변화:** EV12 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“그날 일정을 보관했습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_04",
+    "time": "02:07",
+    "display_name": "정범수 관리소장",
+    "original_name": "정대식 관리소장",
+    "character_id": "CH09",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV15"
+    ],
+    "source_fields": {
+      "첫 대사": "“새로운 기록 정책입니다.”",
+      "조사 화면/사용 행동": "결재 원본과 발행 시각·권한 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "기록 교체 지시의 진위 의심",
+      "이후 변화": "EV15 확보",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_04 — 02:07 정대식 관리소장\n- **첫 대사:** “새로운 기록 정책입니다.”\n- **조사 화면/사용 행동:** 결재 원본과 발행 시각·권한 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 기록 교체 지시의 진위 의심\n- **이후 변화:** EV15 확보\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH09_jeong_beomsu_2026_front_full_v01.png",
+      "dialogue": "“새로운 기록 정책입니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N4_04_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_05",
+    "time": "02:43",
+    "display_name": "회계 자료 보관자",
+    "original_name": "회계 자료 보관자",
+    "character_id": "MC24",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV13"
+    ],
+    "source_fields": {
+      "첫 대사": "“정우 씨가 저에게 사본을 맡겼습니다.”",
+      "조사 화면/사용 행동": "사본 해시/문서 결재선과 거래 금액 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "허위 비용 의혹",
+      "이후 변화": "EV13 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_05 — 02:43 회계 자료 보관자\n- **첫 대사:** “정우 씨가 저에게 사본을 맡겼습니다.”\n- **조사 화면/사용 행동:** 사본 해시/문서 결재선과 거래 금액 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 허위 비용 의혹\n- **이후 변화:** EV13 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“정우 씨가 저에게 사본을 맡겼습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_06",
+    "time": "03:21",
+    "display_name": "선거 캠프 직원",
+    "original_name": "선거 캠프 직원",
+    "character_id": "CH10",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV17"
+    ],
+    "source_fields": {
+      "첫 대사": "“자료 확인 차 방문했습니다.”",
+      "조사 화면/사용 행동": "현직 출입 권한과 요청 문서 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "현재 자료 회수 시도",
+      "이후 변화": "EV17 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_06 — 03:21 선거 캠프 직원\n- **첫 대사:** “자료 확인 차 방문했습니다.”\n- **조사 화면/사용 행동:** 현직 출입 권한과 요청 문서 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 현재 자료 회수 시도\n- **이후 변화:** EV17 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH10_yoon_dogyeong_2026_front_full_v01.png",
+      "dialogue": "“자료 확인 차 방문했습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N4_06_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_07",
+    "time": "04:16",
+    "display_name": "전직 대표회의 간사",
+    "original_name": "전직 대표회의 간사",
+    "character_id": "MC25",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV16"
+    ],
+    "source_fields": {
+      "첫 대사": "“회의록을 남겨두었습니다.”",
+      "조사 화면/사용 행동": "날짜·참석·의결문 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "자산가치 이유 침묵",
+      "이후 변화": "EV16 검증",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_07 — 04:16 전직 대표회의 간사\n- **첫 대사:** “회의록을 남겨두었습니다.”\n- **조사 화면/사용 행동:** 날짜·참석·의결문 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 자산가치 이유 침묵\n- **이후 변화:** EV16 검증\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“회의록을 남겨두었습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N4_08",
+    "time": "05:31",
+    "display_name": "익명 전화의 주인",
+    "original_name": "익명 전화의 주인",
+    "character_id": "MC26",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“그 문서를 불태우면 끝날까요?”",
+      "조사 화면/사용 행동": "발신자 요청을 단독 근거로 삼지 않음",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "증거 폐기 압박",
+      "이후 변화": "야간 종료 후 백업 선택",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N4_08 — 05:31 익명 전화의 주인\n- **첫 대사:** “그 문서를 불태우면 끝날까요?”\n- **조사 화면/사용 행동:** 발신자 요청을 단독 근거로 삼지 않음\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 증거 폐기 압박\n- **이후 변화:** 야간 종료 후 백업 선택\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n\n## N5 마지막 출입—세 사람의 이름\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“그 문서를 불태우면 끝날까요?”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_01",
+    "time": "00:19",
+    "display_name": "의료기록 보관자",
+    "original_name": "의료기록 보관자",
+    "character_id": "MC27",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV10"
+    ],
+    "source_fields": {
+      "첫 대사": "“사망 확인의 시간대가 다릅니다.”",
+      "조사 화면/사용 행동": "원본발급 이력과 화재 신고시간 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "가장 사망이 화재 전",
+      "이후 변화": "EV10 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_01 — 00:19 의료기록 보관자\n- **첫 대사:** “사망 확인의 시간대가 다릅니다.”\n- **조사 화면/사용 행동:** 원본발급 이력과 화재 신고시간 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 가장 사망이 화재 전\n- **이후 변화:** EV10 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“사망 확인의 시간대가 다릅니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_02",
+    "time": "00:54",
+    "display_name": "김정우 동료",
+    "original_name": "김정우 동료",
+    "character_id": "MC28",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV14"
+    ],
+    "source_fields": {
+      "첫 대사": "“제보 초안을 이제 열어봅니다.”",
+      "조사 화면/사용 행동": "장부 번호와 초안의 거래번호 검증",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "범죄 폭로 의도",
+      "이후 변화": "EV14 획득",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_02 — 00:54 김정우 동료\n- **첫 대사:** “제보 초안을 이제 열어봅니다.”\n- **조사 화면/사용 행동:** 장부 번호와 초안의 거래번호 검증\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 범죄 폭로 의도\n- **이후 변화:** EV14 획득\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“제보 초안을 이제 열어봅니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_03",
+    "time": "01:33",
+    "display_name": "옛 구조대 관계자",
+    "original_name": "옛 구조대 관계자",
+    "character_id": "MC29",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV08"
+    ],
+    "source_fields": {
+      "첫 대사": "“당시 현장 메모가 남았습니다.”",
+      "조사 화면/사용 행동": "출동 메모의 시각·현장 구획 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "공식 발표와 최초 현장 차이",
+      "이후 변화": "EV08 검증",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_03 — 01:33 옛 구조대 관계자\n- **첫 대사:** “당시 현장 메모가 남았습니다.”\n- **조사 화면/사용 행동:** 출동 메모의 시각·현장 구획 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 공식 발표와 최초 현장 차이\n- **이후 변화:** EV08 검증\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“당시 현장 메모가 남았습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_04",
+    "time": "02:16",
+    "display_name": "강태준 측 대리인",
+    "original_name": "강태준 측 대리인",
+    "character_id": "CH10",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV17"
+    ],
+    "source_fields": {
+      "첫 대사": "“자료를 넘기면 책임을 묻겠습니다.”",
+      "조사 화면/사용 행동": "요청서 접수번호/법적 범위 확인",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "현대의 침묵 강요",
+      "이후 변화": "EV17 검증",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_04 — 02:16 강태준 측 대리인\n- **첫 대사:** “자료를 넘기면 책임을 묻겠습니다.”\n- **조사 화면/사용 행동:** 요청서 접수번호/법적 범위 확인\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 현대의 침묵 강요\n- **이후 변화:** EV17 검증\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH10_yoon_dogyeong_2026_front_full_v01.png",
+      "dialogue": "“자료를 넘기면 책임을 묻겠습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N5_04_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_05",
+    "time": "02:57",
+    "display_name": "정범수 관리소장",
+    "original_name": "정대식 관리소장",
+    "character_id": "CH09",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [
+      "EV15"
+    ],
+    "source_fields": {
+      "첫 대사": "“실수로 자료가 섞였습니다.”",
+      "조사 화면/사용 행동": "교체 지시 서명·관리 기록 연쇄 검증",
+      "기본 출입 판정": "거부; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "기록변조 은폐 연결",
+      "이후 변화": "EV15 검증",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_05 — 02:57 정대식 관리소장\n- **첫 대사:** “실수로 자료가 섞였습니다.”\n- **조사 화면/사용 행동:** 교체 지시 서명·관리 기록 연쇄 검증\n- **기본 출입 판정:** 거부; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 기록변조 은폐 연결\n- **이후 변화:** EV15 검증\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH09_jeong_beomsu_2026_front_full_v01.png",
+      "dialogue": "“실수로 자료가 섞였습니다.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N5_05_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_06",
+    "time": "03:33",
+    "display_name": "장혜숙",
+    "original_name": "장혜숙",
+    "character_id": "CH06",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“당시엔 집값이 떨어질까 무서웠어요.”",
+      "조사 화면/사용 행동": "회의록과 증언 비교",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "일부 주민 동조 이유",
+      "이후 변화": "진술 녹취 선택",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_06 — 03:33 장혜숙\n- **첫 대사:** “당시엔 집값이 떨어질까 무서웠어요.”\n- **조사 화면/사용 행동:** 회의록과 증언 비교\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 일부 주민 동조 이유\n- **이후 변화:** 진술 녹취 선택\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+      "dialogue": "“당시엔 집값이 떨어질까 무서웠어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N5_06_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_07",
+    "time": "04:24",
+    "display_name": "서민아",
+    "original_name": "서민아",
+    "character_id": "CH08",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“가족 이름까지 지울 수는 없어요.”",
+      "조사 화면/사용 행동": "사진과 학교기록 대조",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "피해자 3인 신원 복원",
+      "이후 변화": "가족 기록 보존",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_07 — 04:24 서민아\n- **첫 대사:** “가족 이름까지 지울 수는 없어요.”\n- **조사 화면/사용 행동:** 사진과 학교기록 대조\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** 피해자 3인 신원 복원\n- **이후 변화:** 가족 기록 보존\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n",
+    "composition_status": "REVISE",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+      "dialogue": "“가족 이름까지 지울 수는 없어요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "레이어 참조 설계만 존재. 실제 합성 화면의 인물/원근/그림자/클릭 영역 검수 및 엔진 실행 전.",
+    "preview_path": "03_사건장면/game/N5_07_entrance_dialogue_preview_v01.webp",
+    "previous_composition_status": "PASS",
+    "engine_applied": false
+  },
+  {
+    "id": "N5_08",
+    "time": "05:44",
+    "display_name": "원본 보관 기관 직원",
+    "original_name": "원본 보관 기관 직원",
+    "character_id": "MC30",
+    "background_ids": [
+      "BG01",
+      "BG02"
+    ],
+    "evidence_ids": [],
+    "source_fields": {
+      "첫 대사": "“증거 전달 방법을 선택하세요.”",
+      "조사 화면/사용 행동": "교차 검증된 원본 및 안전한 제출 경로 확인",
+      "기본 출입 판정": "허용; 이 결정은 증거 확보 선택과 분리한다.",
+      "플레이어가 발견하는 사실": "PZ01~05 최종 증거보드",
+      "이후 변화": "E30 또는 불완전 엔딩",
+      "공통 응답": "조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’"
+    },
+    "source_script": "### N5_08 — 05:44 원본 보관 기관 직원\n- **첫 대사:** “증거 전달 방법을 선택하세요.”\n- **조사 화면/사용 행동:** 교차 검증된 원본 및 안전한 제출 경로 확인\n- **기본 출입 판정:** 허용; 이 결정은 증거 확보 선택과 분리한다.\n- **플레이어가 발견하는 사실:** PZ01~05 최종 증거보드\n- **이후 변화:** E30 또는 불완전 엔딩\n- **공통 응답:** 조사 전 ‘방문 목적과 등록 기록을 확인하겠습니다.’ / 재확인 시 ‘독립된 자료를 한 번 더 대조하겠습니다.’\n\n",
+    "composition_status": "BLOCKED",
+    "reuse_policy": "공동현관/CCTV/문서/UI 레이어 재사용. 별도 사건 PNG를 중복 생성하지 않음.",
+    "layers": {
+      "background": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+      "character": null,
+      "dialogue": "“증거 전달 방법을 선택하세요.”",
+      "ui": "05_UI/game/UI10_ui_10_base_v01.png"
+    },
+    "composition_reason": "승인된 인물 레이어 없음. 추가 MC 마스터는 미검수 초안이므로 자동 연결하지 않음.",
+    "previous_composition_status": "BLOCKED",
+    "engine_applied": false
+  }
+]

@@ -1,0 +1,64 @@
+{
+ "source": "Drive 404호는_없습니다_최종_게임에셋: 03_사건장면/main_scene_mapping_40_v03.json (장면→인물), 07_검수완료/approved_static_assets_v01.json + approved_patch_assets_v02.json (승인 목록). 원본·검증은 character-v5/, 변환은 scripts/build-character-busts.py",
+ "rules": "승인(PASS) 정지 이미지만 사용. REVISE/DRAFT(MC07·MC27·MC30, MC01~MC14·MC16~MC24·MC26~MC30 초안)는 연결하지 않음. 걷기 프레임이 없으므로 CCTV에는 쓰지 않음.",
+ "assets": {
+  "CH09": {
+   "file": "assets/v5/bust-CH09.webp",
+   "name": "정범수, 현 관리소장 [DESIGN]",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "CH09_jeong_beomsu_2026_front_full_v01.png",
+   "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e"
+  },
+  "CH10": {
+   "file": "assets/v5/bust-CH10.webp",
+   "name": "윤도경, 후보 캠프 실무자 [DESIGN]",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "CH10_yoon_dogyeong_2026_front_full_v01.png",
+   "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d"
+  },
+  "MC15": {
+   "file": "assets/v5/bust-MC15.webp",
+   "name": "이영자",
+   "approval": "07_검수완료/approved_patch_assets_v02.json",
+   "source": "MC15_2026_front_full_v02.png",
+   "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237"
+  },
+  "MC25": {
+   "file": "assets/v5/bust-MC25.webp",
+   "name": "전직 대표회의 간사",
+   "approval": "07_검수완료/approved_patch_assets_v02.json",
+   "source": "MC25_2026_front_full_v02.png",
+   "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0"
+  }
+ },
+ "contacts": {
+  "N3_01": "MC15",
+  "N3_08": "CH10",
+  "N4_04": "CH09",
+  "N4_06": "CH10",
+  "N4_07": "MC25",
+  "N5_04": "CH10",
+  "N5_05": "CH09"
+ },
+ "contacts_waiting_for_files": {
+  "N2_04": "CH06",
+  "N2_06": "CH08",
+  "N3_04": "CH06",
+  "N5_06": "CH06",
+  "N5_07": "CH08"
+ },
+ "visitor_roles": {
+  "귀가 주민": "NPC01",
+  "가족 방문": "NPC02",
+  "택배 기사": "NPC03",
+  "시설 점검": "NPC04",
+  "돌봄 방문": "NPC05",
+  "이웃": "NPC06",
+  "음식 배달": "NPC07",
+  "차량 동승": "NPC08",
+  "공공 업무": "NPC09",
+  "지인": "NPC10"
+ },
+ "visitor_roles_enabled": false,
+ "visitor_roles_note": "방문객 100명의 역할별 그림 NPC01~NPC10은 10장이 모두 낱개 파일로 확인된 뒤 한 번에 켭니다. CCTV 걷기 그림은 새 그림에 없어 기존 그림이 남습니다."
+}

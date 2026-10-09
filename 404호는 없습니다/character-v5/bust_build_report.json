@@ -1,0 +1,82 @@
+{
+ "CH09": {
+  "file": "assets/v5/bust-CH09.webp",
+  "source": "CH09_jeong_beomsu_2026_front_full_v01.png",
+  "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e",
+  "approval": "07_검수완료/approved_static_assets_v01.json",
+  "figure_bbox": [
+   172,
+   8,
+   776,
+   1640
+  ],
+  "crop": [
+   146,
+   0,
+   774,
+   587
+  ],
+  "dust_pixels_cleared": 26607,
+  "bytes": 52282
+ },
+ "CH10": {
+  "file": "assets/v5/bust-CH10.webp",
+  "source": "CH10_yoon_dogyeong_2026_front_full_v01.png",
+  "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d",
+  "approval": "07_검수완료/approved_static_assets_v01.json",
+  "figure_bbox": [
+   218,
+   20,
+   723,
+   1643
+  ],
+  "crop": [
+   155,
+   0,
+   779,
+   584
+  ],
+  "dust_pixels_cleared": 16101,
+  "bytes": 37686
+ },
+ "MC15": {
+  "file": "assets/v5/bust-MC15.webp",
+  "source": "MC15_2026_front_full_v02.png",
+  "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237",
+  "approval": "07_검수완료/approved_patch_assets_v02.json",
+  "figure_bbox": [
+   234,
+   42,
+   713,
+   1591
+  ],
+  "crop": [
+   173,
+   12,
+   768,
+   569
+  ],
+  "dust_pixels_cleared": 13066,
+  "bytes": 30230
+ },
+ "MC25": {
+  "file": "assets/v5/bust-MC25.webp",
+  "source": "MC25_2026_front_full_v02.png",
+  "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0",
+  "approval": "07_검수완료/approved_patch_assets_v02.json",
+  "figure_bbox": [
+   248,
+   46,
+   699,
+   1603
+  ],
+  "crop": [
+   166,
+   15,
+   765,
+   575
+  ],
+  "dust_pixels_cleared": 12327,
+  "bytes": 30026
+ }
+}

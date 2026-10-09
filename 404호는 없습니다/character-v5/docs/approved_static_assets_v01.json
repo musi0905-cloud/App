@@ -1,0 +1,1928 @@
+[
+  {
+    "id": "BG01",
+    "asset_key": "BG01_night",
+    "name": "security_booth",
+    "state": "night",
+    "source_path": "02_배경/originals/BG01_security_booth_night_v01.png",
+    "game_path": "02_배경/game/BG01_security_booth_night_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "export_note": "배경 원본941×1672;1080×1920은 약1.15배 확대 패키징이며 원본 디테일 증가 아님",
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "sha256": "5284e4e619d0e69efaf8f1c7dc65bf4495bf75abe26a8f18f38a9c838b94ab26",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "N/A",
+      "space": "PASS",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "N/A",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG02",
+    "asset_key": "BG02_night",
+    "name": "shared_entrance",
+    "state": "night",
+    "source_path": "02_배경/originals/BG02_shared_entrance_night_v01.png",
+    "game_path": "02_배경/game/BG02_shared_entrance_night_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "export_note": "배경 원본941×1672;1080×1920은 약1.15배 확대 패키징이며 원본 디테일 증가 아님",
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "sha256": "1ef21818f7986b29066bf54379cc96dc962b3f9075c8208f0f161b1c20b4ef2a",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "N/A",
+      "space": "PASS",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "N/A",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG04",
+    "asset_key": "BG04_2026",
+    "name": "floor4",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG04_floor4_2026_v01.png",
+    "game_path": "02_배경/game/BG04_floor4_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "export_note": "배경 원본941×1672;1080×1920은 약1.15배 확대 패키징이며 원본 디테일 증가 아님",
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "sha256": "a402fce964126081950ffe6c1d24725b1d5cf3271a3a9c78cf39f9868a2f4d98",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "N/A",
+      "space": "PASS",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "N/A",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG10",
+    "asset_key": "BG10_2004_before",
+    "name": "room404",
+    "state": "2004_before",
+    "source_path": "02_배경/originals/BG10_room404_2004_before_v01.png",
+    "game_path": "02_배경/game/BG10_room404_2004_before_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "export_note": "배경 원본941×1672;1080×1920은 약1.15배 확대 패키징이며 원본 디테일 증가 아님",
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "sha256": "947112c648747183f8b27c35c96fd358b5368b0ea7c6fb55fdb0afe5295f14cd",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "N/A",
+      "space": "PASS",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "N/A",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "CH01",
+    "asset_key": "CH01_2004_front_full",
+    "name": "kim_jeongwoo",
+    "state": "2004_front_full",
+    "source_path": "01_캐릭터/originals/CH01_kim_jeongwoo_2004_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH01_kim_jeongwoo_2004_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "export_note": "원본 실제 투명PNG 유지",
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "sha256": "90c411198d0542d58c8d0f8f3c3700e03ef7b0866900ad61685c7d2604c2c9f8",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "MASTER",
+      "space": "N/A",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "PASS",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      9,
+      927,
+      1672
+    ],
+    "feet_pivot_normalized": [
+      0.49256110520722635,
+      1.0
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2026_front_full",
+    "name": "kang_taejun",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/CH04_kang_taejun_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH04_kang_taejun_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "export_note": "원본 실제 투명PNG 유지",
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "sha256": "2e106251dba2e962f1b84e150c8d8c8d2c3ad4ae2704ef829390423ce0eb1baa",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "MASTER",
+      "space": "N/A",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "PASS",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      84,
+      22,
+      854,
+      1655
+    ],
+    "feet_pivot_normalized": [
+      0.49840595111583424,
+      0.9898325358851675
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC01",
+    "asset_key": "NPC01_2026_front_full",
+    "name": "visitor_male",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC01_visitor_male_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "export_note": "원본 실제 투명PNG 유지",
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "sha256": "c6836c1c92156117e50bff89579e6851701a7573a33b6ca818f9f48df904eebb",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "MASTER",
+      "space": "N/A",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "PASS",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      33,
+      25,
+      940,
+      1640
+    ],
+    "feet_pivot_normalized": [
+      0.5170031880977684,
+      0.9808612440191388
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC02",
+    "asset_key": "NPC02_2026_front_full",
+    "name": "visitor_female",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC02_visitor_female_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC02_visitor_female_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "export_note": "원본 실제 투명PNG 유지",
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "sha256": "088ee79a784d0d21c37e6eeb0f2bc784c8d9b23ea6c5313b8209b3fd44bedd73",
+    "generation": "built-in image_gen, reference anchored",
+    "status": "PASS",
+    "pass_scope": "단일 정지 이미지·스타일 기준. 보행/게임 엔진 적용 합격 아님",
+    "qa": {
+      "story": "PASS",
+      "style": "PASS",
+      "identity": "MASTER",
+      "space": "N/A",
+      "era": "PASS",
+      "perspective": "PASS",
+      "lighting": "PASS",
+      "hands_feet": "PASS",
+      "format": "PASS",
+      "composition": "PENDING_CONTACT_SHEET"
+    },
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      925,
+      1672
+    ],
+    "feet_pivot_normalized": [
+      0.4914984059511158,
+      1.0
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "BG03",
+    "asset_key": "BG03_2026",
+    "name": "lobby",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG03_lobby_2026_v01.png",
+    "game_path": "02_배경/game/BG03_lobby_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "6be6697e620cb880fe57877cdd6805ab2fe540b7d88829bb51c2f31e82a57500",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG05",
+    "asset_key": "BG05_2004",
+    "name": "floor4",
+    "state": "2004",
+    "source_path": "02_배경/originals/BG05_floor4_2004_v01.png",
+    "game_path": "02_배경/game/BG05_floor4_2004_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "9020689bf488c5c862b048c194a434c49c4f37f739b2fb23e3097353a1e6f71f",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG06",
+    "asset_key": "BG06_2026",
+    "name": "elevator_hall",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG06_elevator_hall_2026_v01.png",
+    "game_path": "02_배경/game/BG06_elevator_hall_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "6f25cf4a902965c46d89a3097078f852207c7a5fc5e8e18d6950cc874689dcd8",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG07",
+    "asset_key": "BG07_2026",
+    "name": "garage",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG07_garage_2026_v01.png",
+    "game_path": "02_배경/game/BG07_garage_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "a55306dc198e62b0fea41b4ed1cb3e87e4385f990105e8812883327ff8a507f3",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG09",
+    "asset_key": "BG09_2026",
+    "name": "maintenance_cover",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG09_maintenance_cover_2026_v01.png",
+    "game_path": "02_배경/game/BG09_maintenance_cover_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "ce9be99db2acdaf73d881cf91a377c68897e1cbe4ed24b3127f3c4f3a3a1a6f9",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG11",
+    "asset_key": "BG11_2004_after",
+    "name": "room404",
+    "state": "2004_after",
+    "source_path": "02_배경/originals/BG11_room404_2004_after_v01.png",
+    "game_path": "02_배경/game/BG11_room404_2004_after_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "ba04f6af01577c2d8d96f571dd20f63b4817e42f15c56fb571260afea9d2e2c6",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG12",
+    "asset_key": "BG12_2026",
+    "name": "public_archive",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG12_public_archive_2026_v01.png",
+    "game_path": "02_배경/game/BG12_public_archive_2026_v01.webp",
+    "native_size": [
+      941,
+      1671
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "d15ab25df7ed51425ed774458e5c5e2ab83ca00842c9104a999c4e1d74e22153",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG13_2026",
+    "asset_key": "BG13_2026_2026",
+    "name": "exterior",
+    "state": "2026",
+    "source_path": "02_배경/originals/BG13_2026_exterior_2026_v01.png",
+    "game_path": "02_배경/game/BG13_2026_exterior_2026_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "84f974d6a97f5f14479e5c879171bcd2e0f793d5a03b68a7be06ed007b13525b",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "CH02",
+    "asset_key": "CH02_2004_front_full",
+    "name": "lee_sooyeon",
+    "state": "2004_front_full",
+    "source_path": "01_캐릭터/originals/CH02_lee_sooyeon_2004_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH02_lee_sooyeon_2004_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "c5b5578f794344a9e04b3ab1973f6603fa44169261a7f59dfffca7dcff5dacfc",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      905,
+      1662
+    ],
+    "feet_pivot_normalized": [
+      0.4808714133900106,
+      0.9940191387559809
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH05",
+    "asset_key": "CH05_2004_front_full",
+    "name": "oh_myeongcheol",
+    "state": "2004_front_full",
+    "source_path": "01_캐릭터/originals/CH05_oh_myeongcheol_2004_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH05_oh_myeongcheol_2004_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "7183014edc7e0cfe57ce2e09fd62cba4e15c99cf53c8725a2d1d755c6eb9f137",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      50,
+      2,
+      921,
+      1658
+    ],
+    "feet_pivot_normalized": [
+      0.5159404888416578,
+      0.9916267942583732
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH07",
+    "asset_key": "CH07_2004_archive_front_full",
+    "name": "park_youngsik",
+    "state": "2004_archive_front_full",
+    "source_path": "01_캐릭터/originals/CH07_park_youngsik_2004_archive_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH07_park_youngsik_2004_archive_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "847be13fa36ad25aee80f1295945cc637a01e40a16a58503c9f07cb822803237",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      32,
+      903,
+      1641
+    ],
+    "feet_pivot_normalized": [
+      0.4798087141339001,
+      0.9814593301435407
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH09",
+    "asset_key": "CH09_2026_front_full",
+    "name": "jeong_beomsu",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/CH09_jeong_beomsu_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH09_jeong_beomsu_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "88a891125843ca1c3841881f15f89f9bcb83779fe5e9b88ed1a6e83ffcb3228e",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      921,
+      1644
+    ],
+    "feet_pivot_normalized": [
+      0.4893730074388948,
+      0.9832535885167464
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH10",
+    "asset_key": "CH10_2026_front_full",
+    "name": "yoon_dogyeong",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/CH10_yoon_dogyeong_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH10_yoon_dogyeong_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1671
+    ],
+    "export_size": [
+      941,
+      1671
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "export_note": "원본941×1672;배경1080×1920확대출력은 추가 원본 디테일이 아님",
+    "status": "PASS",
+    "pass_scope": "정지 미술. 원근/그림자 배치·모션·엔진 적용은 별도",
+    "sha256": "4b79cb6ef24e38d780864384f84d5450c9fb9c4b52be2006e9a5495a6939a337",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      25,
+      17,
+      870,
+      1652
+    ],
+    "feet_pivot_normalized": [
+      0.47555791710945805,
+      0.9886295631358468
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "BG13_2004",
+    "asset_key": "BG13_2004_2004",
+    "name": "exterior",
+    "state": "2004",
+    "source_path": "02_배경/originals/BG13_2004_exterior_2004_v01.png",
+    "game_path": "02_배경/game/BG13_2004_exterior_2004_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "status": "PASS",
+    "pass_scope": "정지 미술 범위 검수. 엔진 배치 및 모션 별도",
+    "sha256": "837b9bc59ac75a2fc796930c91f87fd4c2007af4634e1fb9cf258735769c8301",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2004_front_full",
+    "name": "kang_taejun",
+    "state": "2004_front_full",
+    "source_path": "01_캐릭터/originals/CH04_kang_taejun_2004_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH04_kang_taejun_2004_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정지 미술 범위 검수. 엔진 배치 및 모션 별도",
+    "sha256": "bff9a3a285443bf788f5af13b1f82746f2b4f982e546a5bb638461157fe42f09",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      114,
+      21,
+      864,
+      1654
+    ],
+    "feet_pivot_normalized": [
+      0.5196599362380446,
+      0.9892344497607656
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH03",
+    "asset_key": "CH03_2004_front_full",
+    "name": "kim_haeun",
+    "state": "2004_front_full",
+    "source_path": "01_캐릭터/originals/CH03_kim_haeun_2004_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH03_kim_haeun_2004_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정지 미술 범위 검수. 엔진 배치 및 모션 별도",
+    "sha256": "8528e0f9b81465944e2f3ebc5ba7c22db35032e1d4f6a43308656e074a8d6e62",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      27,
+      917,
+      1650
+    ],
+    "feet_pivot_normalized": [
+      0.48724760892667374,
+      0.9868421052631579
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH08",
+    "asset_key": "CH08_2026_front_full",
+    "name": "seo_mina",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/CH08_seo_mina_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정지 미술 범위 검수. 엔진 배치 및 모션 별도",
+    "sha256": "8472b59d8951c7fa1a4c72d98e9ce05ddaf21e19db04596ff6ff1492f5dc38b6",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      105,
+      18,
+      894,
+      1654
+    ],
+    "feet_pivot_normalized": [
+      0.5308182784272051,
+      0.9892344497607656
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH06",
+    "asset_key": "CH06_2026_front_full",
+    "name": "jang_hyesook",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/CH06_jang_hyesook_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1671
+    ],
+    "export_size": [
+      941,
+      1671
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정지 미술 범위 검수. 엔진 배치 및 모션 별도",
+    "sha256": "4a869b809b085c90782aa1c9b4c605a71c90c75d721427e95e324a605d6886f6",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      28,
+      921,
+      1663
+    ],
+    "feet_pivot_normalized": [
+      0.4893730074388948,
+      0.995212447636146
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC04",
+    "asset_key": "NPC04_2026_front_full",
+    "name": "technician",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC04_technician_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
+    "native_size": [
+      1024,
+      1536
+    ],
+    "export_size": [
+      1024,
+      1536
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "PASS",
+    "pass_scope": "실제 회색 배경 합성으로 투명도 재검수 PASS. 생성 미리보기의 검은 RGB 잔상은 투명 픽셀에만 존재.",
+    "sha256": "551ea62f0d33171efa7eac0c0198ab4147fba41e9081962183b868f1270137b8",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      25,
+      7,
+      1004,
+      1522
+    ],
+    "feet_pivot_normalized": [
+      0.50244140625,
+      0.9908854166666666
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC05",
+    "asset_key": "NPC05_2026_front_full",
+    "name": "caregiver",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC05_caregiver_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
+    "native_size": [
+      1024,
+      1536
+    ],
+    "export_size": [
+      1024,
+      1536
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "PASS",
+    "pass_scope": "실제 회색 배경 합성으로 투명도 재검수 PASS. 생성 미리보기의 검은 RGB 잔상은 투명 픽셀에만 존재.",
+    "sha256": "1f2ed5b1810ce90dd7fc74f48ff5cd1ccaacf4c118507b8978cba6662ccd74c9",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      1010,
+      1516
+    ],
+    "feet_pivot_normalized": [
+      0.4931640625,
+      0.9869791666666666
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC06",
+    "asset_key": "NPC06_2026_front_full",
+    "name": "elderly_neighbor",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC06_elderly_neighbor_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정면 정지 미술 검수. 전체 상태 세트 미완성",
+    "sha256": "26801d98ff9fa5ba8f7996e1264f8783c3855e7d23ef8f7c0af07237b1a89451",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      903,
+      1643
+    ],
+    "feet_pivot_normalized": [
+      0.4798087141339001,
+      0.9826555023923444
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC07",
+    "asset_key": "NPC07_2026_front_full",
+    "name": "food_delivery",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC07_food_delivery_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정면 정지 미술 검수. 전체 상태 세트 미완성",
+    "sha256": "57c5c2499f7008984b989de89fbae306aca2014744f050e0d80608bed48da4d9",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      11,
+      940,
+      1672
+    ],
+    "feet_pivot_normalized": [
+      0.49946865037194477,
+      1.0
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC08",
+    "asset_key": "NPC08_2026_front_full",
+    "name": "vehicle_companion",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC08_vehicle_companion_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
+    "native_size": [
+      1024,
+      1536
+    ],
+    "export_size": [
+      1024,
+      1536
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "PASS",
+    "pass_scope": "실제 회색 배경 합성으로 투명도 재검수 PASS. 생성 미리보기의 검은 RGB 잔상은 투명 픽셀에만 존재.",
+    "sha256": "ac401f8a1d7188c111f80096ae19a02948c9bbf7fb22d81ced413e3ff1a40404",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      9,
+      956,
+      1516
+    ],
+    "feet_pivot_normalized": [
+      0.466796875,
+      0.9869791666666666
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC09",
+    "asset_key": "NPC09_2026_front_full",
+    "name": "public_service",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC09_public_service_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정면 정지 미술 검수. 전체 상태 세트 미완성",
+    "sha256": "78a2f4a7fd55c192f64f53adba94c1a87c97ca22d36a54c11f4aa1cc94b4d188",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      82,
+      9,
+      921,
+      1672
+    ],
+    "feet_pivot_normalized": [
+      0.5329436769394261,
+      1.0
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC10",
+    "asset_key": "NPC10_2026_front_full",
+    "name": "friend",
+    "state": "2026_front_full",
+    "source_path": "01_캐릭터/originals/NPC10_friend_2026_front_full_v01.png",
+    "game_path": "01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "정면 정지 미술 검수. 전체 상태 세트 미완성",
+    "sha256": "48fd94f54439b543d2821d666ca38ac2cae56fc1a08219d3b5b3bd10027ab0c1",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      37,
+      9,
+      929,
+      1672
+    ],
+    "feet_pivot_normalized": [
+      0.5132837407013815,
+      1.0
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH01",
+    "asset_key": "CH01_2004_left45",
+    "name": "ch01",
+    "state": "2004_left45",
+    "source_path": "01_캐릭터/originals/CH01_ch01_2004_left45_v01.png",
+    "game_path": "01_캐릭터/game/CH01_ch01_2004_left45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "f628d4df9048b2b6b4baed6cb468a64b3e7903b483141d880a8e7ed9985a375e",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      12,
+      917,
+      1656
+    ],
+    "feet_pivot_normalized": [
+      0.48724760892667374,
+      0.9904306220095693
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH01",
+    "asset_key": "CH01_2004_right45",
+    "name": "ch01",
+    "state": "2004_right45",
+    "source_path": "01_캐릭터/originals/CH01_ch01_2004_right45_v01.png",
+    "game_path": "01_캐릭터/game/CH01_ch01_2004_right45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "a6b46ebb95043f453347e2fd84a8fdf7a8cf7209b0872dddae11af132e5cac0d",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      14,
+      917,
+      1632
+    ],
+    "feet_pivot_normalized": [
+      0.48724760892667374,
+      0.9760765550239234
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH01",
+    "asset_key": "CH01_2004_side",
+    "name": "ch01",
+    "state": "2004_side",
+    "source_path": "01_캐릭터/originals/CH01_ch01_2004_side_v01.png",
+    "game_path": "01_캐릭터/game/CH01_ch01_2004_side_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "e835102331866366776da19085c07da04138e7c0dfe980ae61cdb77e0b1939ed",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      25,
+      14,
+      921,
+      1648
+    ],
+    "feet_pivot_normalized": [
+      0.5026567481402763,
+      0.9856459330143541
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH01",
+    "asset_key": "CH01_2004_rear",
+    "name": "ch01",
+    "state": "2004_rear",
+    "source_path": "01_캐릭터/originals/CH01_ch01_2004_rear_v01.png",
+    "game_path": "01_캐릭터/game/CH01_ch01_2004_rear_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "6888e8bfab4106caf4fce7b950363e2629dcbdd83d71dede44c028af48532b91",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      6,
+      927,
+      1648
+    ],
+    "feet_pivot_normalized": [
+      0.49256110520722635,
+      0.9856459330143541
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2026_left45",
+    "name": "ch04",
+    "state": "2026_left45",
+    "source_path": "01_캐릭터/originals/CH04_ch04_2026_left45_v01.png",
+    "game_path": "01_캐릭터/game/CH04_ch04_2026_left45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "7b9da9896df23f1d1a28c66125b998f5e88b306c231f97a0df2f337462a35715",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      33,
+      24,
+      807,
+      1626
+    ],
+    "feet_pivot_normalized": [
+      0.4463336875664187,
+      0.972488038277512
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2026_right45",
+    "name": "ch04",
+    "state": "2026_right45",
+    "source_path": "01_캐릭터/originals/CH04_ch04_2026_right45_v01.png",
+    "game_path": "01_캐릭터/game/CH04_ch04_2026_right45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "14374706a124fa5f9189b44c20a4d233498be2ac4163613d2f5b40a2664589b8",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      22,
+      913,
+      1642
+    ],
+    "feet_pivot_normalized": [
+      0.4851222104144527,
+      0.9820574162679426
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2026_side",
+    "name": "ch04",
+    "state": "2026_side",
+    "source_path": "01_캐릭터/originals/CH04_ch04_2026_side_v01.png",
+    "game_path": "01_캐릭터/game/CH04_ch04_2026_side_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "8f204ad153366d4649d5f4dd61945b574316eb8f9bea04e5755cdda3124faa5f",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      17,
+      894,
+      1640
+    ],
+    "feet_pivot_normalized": [
+      0.47502656748140276,
+      0.9808612440191388
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "CH04",
+    "asset_key": "CH04_2026_rear",
+    "name": "ch04",
+    "state": "2026_rear",
+    "source_path": "01_캐릭터/originals/CH04_ch04_2026_rear_v01.png",
+    "game_path": "01_캐릭터/game/CH04_ch04_2026_rear_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "75b2ab2fdb469c0925e16461c20082f1e13e4cb3ecd86be3ff356a972b46a739",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      80,
+      15,
+      880,
+      1644
+    ],
+    "feet_pivot_normalized": [
+      0.51009564293305,
+      0.9832535885167464
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC01",
+    "asset_key": "NPC01_2026_left45",
+    "name": "npc01",
+    "state": "2026_left45",
+    "source_path": "01_캐릭터/originals/NPC01_npc01_2026_left45_v01.png",
+    "game_path": "01_캐릭터/game/NPC01_npc01_2026_left45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "0bed8e0c3db6610a9009455730b8e5e9af6312d225fdaa7f63420440cfaaf3ea",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      141,
+      23,
+      873,
+      1638
+    ],
+    "feet_pivot_normalized": [
+      0.538788522848034,
+      0.9796650717703349
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC01",
+    "asset_key": "NPC01_2026_right45",
+    "name": "npc01",
+    "state": "2026_right45",
+    "source_path": "01_캐릭터/originals/NPC01_npc01_2026_right45_v01.png",
+    "game_path": "01_캐릭터/game/NPC01_npc01_2026_right45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "0efb6a58fa8ef12e88f2786f2a7f016799b3ba76480121e3310c78c7c502ffea",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      16,
+      846,
+      1638
+    ],
+    "feet_pivot_normalized": [
+      0.4495217853347503,
+      0.9796650717703349
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC01",
+    "asset_key": "NPC01_2026_side",
+    "name": "npc01",
+    "state": "2026_side",
+    "source_path": "01_캐릭터/originals/NPC01_npc01_2026_side_v01.png",
+    "game_path": "01_캐릭터/game/NPC01_npc01_2026_side_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "ef358effcc0f3926f05547d7d99234f10138c1b5a352ac6311ae482806b17572",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      0,
+      903,
+      1647
+    ],
+    "feet_pivot_normalized": [
+      0.4798087141339001,
+      0.9850478468899522
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC01",
+    "asset_key": "NPC01_2026_rear",
+    "name": "npc01",
+    "state": "2026_rear",
+    "source_path": "01_캐릭터/originals/NPC01_npc01_2026_rear_v01.png",
+    "game_path": "01_캐릭터/game/NPC01_npc01_2026_rear_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "f6571069b0e24948d0bd8dfccdd49d8f54b9b9cb3bfba483cd77e5aecf59dbf0",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      25,
+      23,
+      892,
+      1622
+    ],
+    "feet_pivot_normalized": [
+      0.48724760892667374,
+      0.9700956937799043
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC02",
+    "asset_key": "NPC02_2026_left45",
+    "name": "npc02",
+    "state": "2026_left45",
+    "source_path": "01_캐릭터/originals/NPC02_npc02_2026_left45_v01.png",
+    "game_path": "01_캐릭터/game/NPC02_npc02_2026_left45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "fd1b3920ae132924067030e2f07fefd07baae55cb07a1d034b1a16064614ab4f",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      50,
+      5,
+      921,
+      1648
+    ],
+    "feet_pivot_normalized": [
+      0.5159404888416578,
+      0.9856459330143541
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC02",
+    "asset_key": "NPC02_2026_right45",
+    "name": "npc02",
+    "state": "2026_right45",
+    "source_path": "01_캐릭터/originals/NPC02_npc02_2026_right45_v01.png",
+    "game_path": "01_캐릭터/game/NPC02_npc02_2026_right45_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "9639f84733d6fe2f2908fd97c0d29ab5b48bee31c45426d6903a684a2e227a40",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      50,
+      11,
+      927,
+      1656
+    ],
+    "feet_pivot_normalized": [
+      0.5191285866099894,
+      0.9904306220095693
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC02",
+    "asset_key": "NPC02_2026_side",
+    "name": "npc02",
+    "state": "2026_side",
+    "source_path": "01_캐릭터/originals/NPC02_npc02_2026_side_v01.png",
+    "game_path": "01_캐릭터/game/NPC02_npc02_2026_side_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "9144e8d74ce6a0888557785db7b2e77da2e33c2f5c857e9d29241909be5a475e",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      15,
+      921,
+      1648
+    ],
+    "feet_pivot_normalized": [
+      0.4893730074388948,
+      0.9856459330143541
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "NPC02",
+    "asset_key": "NPC02_2026_rear",
+    "name": "npc02",
+    "state": "2026_rear",
+    "source_path": "01_캐릭터/originals/NPC02_npc02_2026_rear_v01.png",
+    "game_path": "01_캐릭터/game/NPC02_npc02_2026_rear_v01.png",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      941,
+      1672
+    ],
+    "alpha_required": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "원본 인물 대비 얼굴·헤어·의상·방향 정지 검수. 보행 프레임 아님",
+    "sha256": "af056070b37c944709f78f886730a59a956fc5ed1e7d856e9bb8a2665f7d0b06",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      0,
+      7,
+      941,
+      1642
+    ],
+    "feet_pivot_normalized": [
+      0.5,
+      0.9820574162679426
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "EV18_drawing",
+    "asset_key": "EV18_drawing_insert",
+    "name": "ev18_drawing",
+    "state": "insert",
+    "source_path": "04_증거소품/sources/EV18_drawing_ev18_drawing_insert_v01.png",
+    "game_path": "04_증거소품/game/EV18_drawing_ev18_drawing_insert_v01.png",
+    "native_size": [
+      1448,
+      1086
+    ],
+    "export_size": [
+      1448,
+      1086
+    ],
+    "alpha_required": false,
+    "alpha_extrema": null,
+    "status": "PASS",
+    "pass_scope": "삽입 이미지 단일 정지 미술. 문서 번호·텍스트는 별도 레이어",
+    "sha256": "da5f5ee9069e8520be010b44b99a97bb846bb6f263962896ec80e9c26b6ee51d",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "PX08_employee_portrait",
+    "asset_key": "PX08_employee_portrait_insert",
+    "name": "px08_employee_portrait",
+    "state": "insert",
+    "source_path": "04_증거소품/sources/PX08_employee_portrait_px08_employee_portrait_insert_v01.png",
+    "game_path": "04_증거소품/game/PX08_employee_portrait_px08_employee_portrait_insert_v01.png",
+    "native_size": [
+      1145,
+      1374
+    ],
+    "export_size": [
+      1145,
+      1374
+    ],
+    "alpha_required": false,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "삽입 이미지 단일 정지 미술. 문서 번호·텍스트는 별도 레이어",
+    "sha256": "5a1a3716827a6dba11156d038b301fa3c63bfa99cc4468874a77f9a005e1b5f3",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "PX09_candidate_portrait",
+    "asset_key": "PX09_candidate_portrait_insert",
+    "name": "px09_candidate_portrait",
+    "state": "insert",
+    "source_path": "04_증거소품/sources/PX09_candidate_portrait_px09_candidate_portrait_insert_v01.png",
+    "game_path": "04_증거소품/game/PX09_candidate_portrait_px09_candidate_portrait_insert_v01.png",
+    "native_size": [
+      1150,
+      1368
+    ],
+    "export_size": [
+      1150,
+      1368
+    ],
+    "alpha_required": false,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "status": "PASS",
+    "pass_scope": "삽입 이미지 단일 정지 미술. 문서 번호·텍스트는 별도 레이어",
+    "sha256": "a4f42ec173eb4e2248c39e10c740314a33ec624602f6fb11d47afbeb8a8f7f63",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG08",
+    "asset_key": "BG08_2026_base_v02",
+    "name": "management_office",
+    "state": "2026_base_v02",
+    "source_path": "02_배경/originals/BG08_management_office_2026_base_v02_v01.png",
+    "game_path": "02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "status": "PASS",
+    "pass_scope": "정지 미술·동일성·투명 합성 검수. 엔진 미적용",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "BG06_interior",
+    "asset_key": "BG06_interior_2026_interior",
+    "name": "elevator",
+    "state": "2026_interior",
+    "source_path": "02_배경/originals/BG06_interior_elevator_2026_interior_v01.png",
+    "game_path": "02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+    "native_size": [
+      941,
+      1672
+    ],
+    "export_size": [
+      1080,
+      1920
+    ],
+    "alpha_required": false,
+    "status": "PASS",
+    "pass_scope": "정지 미술·동일성·투명 합성 검수. 엔진 미적용",
+    "engine_applied": false,
+    "animation_ready": false
+  },
+  {
+    "id": "NPC03",
+    "asset_key": "NPC03_2026_front_full_v02",
+    "name": "courier",
+    "state": "2026_front_full_v02",
+    "source_path": "01_캐릭터/originals/NPC03_courier_2026_front_full_v02_v01.png",
+    "game_path": "01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
+    "native_size": [
+      942,
+      1670
+    ],
+    "export_size": [
+      942,
+      1670
+    ],
+    "alpha_required": true,
+    "status": "PASS",
+    "pass_scope": "정지 미술·동일성·투명 합성 검수. 엔진 미적용",
+    "engine_applied": false,
+    "animation_ready": false,
+    "sprite_bbox": [
+      123,
+      18,
+      826,
+      1625
+    ],
+    "feet_pivot_normalized": [
+      0.5037154989384289,
+      0.9730538922155688
+    ],
+    "qa_scope": "단일 정지 이미지와 기준 인물 대조. 보행·엔진 적용은 별도"
+  },
+  {
+    "id": "EV05",
+    "asset_key": "EV05_2004_before",
+    "name": "family_photo",
+    "state": "2004_before",
+    "source_path": "04_증거소품/sources/EV05_family_photo_2004_before_v01.png",
+    "game_path": "04_증거소품/game/EV05_family_photo_2004_before_v01.png",
+    "native_size": [
+      1448,
+      1086
+    ],
+    "export_size": [
+      1448,
+      1086
+    ],
+    "alpha_required": false,
+    "status": "PASS",
+    "pass_scope": "정지 미술·동일성·투명 합성 검수. 엔진 미적용",
+    "engine_applied": false,
+    "animation_ready": false
+  }
+]
