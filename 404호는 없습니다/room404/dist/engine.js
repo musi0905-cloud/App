@@ -29,6 +29,10 @@ export function nightRun(night,slots,visitors,anomalies,date=kstDate()){
  return {version:VERSION,mode:'story',night,date,index:0,screen:'game',seen:[],verified:false,history:[],cases:rows.map(s=>({visitor:s.gate_visitor_id,anomaly:s.anomaly_id})),times:rows.map(s=>s.time)};
 }
 export function decideRun(run,allow,anomalies){if(run.screen!=='game'||run.index>=8||run.history.length!==run.index)return false;const pair=run.cases[run.index],a=anomalies.find(x=>x.id===pair.anomaly);run.history.push({...pair,allow,correct:allow===a.safe,seen:[...run.seen],verified:run.verified});run.screen='feedback';return true}
+// Emergency report (v0.16.0): a separate action, never part of the door decision. It is only recorded (run.reports holds
+// the case indexes); totals() and ending() do not read it, so reporting can neither earn nor cost an ending.
+export function reportRun(run){if(!run||run.screen!=='game'||run.index>=8)return false;if(!Array.isArray(run.reports))run.reports=[];if(run.reports.includes(run.index))return false;run.reports.push(run.index);return true}
+export const reportedAt=(run,i=run.index)=>Array.isArray(run?.reports)&&run.reports.includes(i);
 export function advance(run){if(run.screen!=='feedback')return false;run.index++;run.seen=[];run.verified=false;run.screen=run.index===8?'result':'game';return true}
 export function totals(run){return {correct:run.history.filter(h=>h.correct).length,threats:run.history.filter(h=>!h.correct&&h.allow).length,denials:run.history.filter(h=>!h.correct&&!h.allow).length,investigations:run.history.reduce((n,h)=>n+h.seen.length,0)}}
 export function ending(run,anomalies){const t=totals(run);if(run.history.some(h=>h.allow&&anomalies.find(a=>a.id===h.anomaly)?.category==='404 발신'))return '404호';if(t.threats>=2)return '오판';if(t.denials>=3)return '무고한 거부';if(t.correct===8&&run.history.every(h=>h.verified&&h.seen.includes(anomalies.find(a=>a.id===h.anomaly).channel)))return '신중한 경비원';return run.mode==='story'?'첫 근무의 기록':'퇴근'}
@@ -37,6 +41,7 @@ export function validRun(run,visitors,anomalies){try{
  if(run.night!==undefined&&(run.mode!=='story'||!Number.isInteger(run.night)||run.night<1||run.night>5))return false;
  if(run.times!==undefined&&(!Array.isArray(run.times)||run.times.length!==8||run.times.some(t=>!/^\d{2}:\d{2}$/.test(t))))return false;
  if(!Number.isInteger(run.index)||run.index<0||run.index>8||!Array.isArray(run.cases)||run.cases.length!==8)return false;
+ if(run.reports!==undefined&&(!Array.isArray(run.reports)||new Set(run.reports).size!==run.reports.length||run.reports.some(i=>!Number.isInteger(i)||i<0||i>Math.min(7,run.index))))return false;
  if(!Array.isArray(run.seen)||run.seen.some(t=>!TOOLS.includes(t))||new Set(run.seen).size!==run.seen.length||typeof run.verified!=='boolean'||(run.verified&&!run.seen.length))return false;
  if(run.cases.some(p=>!visitors.some(v=>v.id===p.visitor)||!anomalies.some(a=>a.id===p.anomaly)))return false;
  const length=run.screen==='feedback'?run.index+1:run.index;if(!Array.isArray(run.history)||run.history.length!==length||(run.screen==='result')!==(run.index===8))return false;

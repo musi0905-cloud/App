@@ -1,5 +1,6 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor,LIVE_MODES} from './replay.js';
-import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS,timesOf,kstDate} from './engine.js';
+import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS,timesOf,kstDate,reportRun,reportedAt} from './engine.js';
+import {mountStage} from './stage.js';
 import * as ST from './story.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
@@ -18,24 +19,29 @@ let storyVisitors=[],storyScenes=[],storyEndings=[],storySlots=[],storyGates=[],
 let story=null,daily=null,archiveTab='evidence',archiveHints=null,resultTitle='';
 // Approved character art (v0.15.0, data/character_assets.json): portraits for story contacts whose scene has an approved figure.
 let characterAssets={assets:{},contacts:{}};
+// Scene layout (v0.16.0, data/scene_layout.json): background ids -> files, cameras, stand points, click areas, occluders.
+let sceneLayout=null;
 const pairsOf=()=>Object.fromEntries(storyVisitors.map(v=>[v.id,v.anomaly_id]));
 function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&(run.night||1)===1&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
 function endingTitle(end){return storyEndings.find(e=>e.id===ENDING_IDS[end])?.title||end}
 // Ending cutscene: the four authored shots as captions over the matching backdrop, then the three spoken lines.
 const SHOT_POSTER={'경비실':'guard-monitors','증거보드':'ledger-desk','현관 CCTV':'cctv-lobby','새벽의 외관':'ending-dawn'};
+// v0.16.0: a setting with an approved background in scene_layout.usage.cutscene_setting uses it ('경비실' -> BG01).
+const shotPoster=setting=>{const bg=sceneLayout?.usage?.cutscene_setting?.[setting];return bg?'bg:'+bg:SHOT_POSTER[setting]||'ending-dawn'};
 let cutTimer=0;
 function clearCutscene(){clearTimeout(cutTimer);cutTimer=0}
 function mountCutscene(se,lost){clearCutscene();const box=$('result').querySelector('.scene-media'),cap=$('cutCaption'),dots=$('cutDots'),lines=$('cutLines');
  if(!se){cap.textContent='';dots.innerHTML='';lines.innerHTML='';setPoster(box,lost?'ending-404':'ending-dawn',lost?null:'12-ending-dawn');box.onclick=null;return}
  const shots=se.cutscene,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let i=-1;
  lines.innerHTML=se.dialogue.map(d=>`<li><b>${escapeHTML(d.speaker)}</b>${escapeHTML(d.text)}</li>`).join('');
- const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&lost?'ending-404':SHOT_POSTER[sh.setting]||'ending-dawn';setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
+ const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&lost?'ending-404':shotPoster(sh.setting);setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
  box.onclick=()=>show(i+1);cap.onclick=()=>show(i+1);show(0)}
-function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();['home','game','investigation','feedback','result','nightIntro','archive'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
+function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();if(screen!=='archive')closeDoc();['home','game','investigation','feedback','result','nightIntro','archive'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
 // Photo backdrops with an optional looping video. Videos get a src only while their screen is visible, and never with reduced motion.
 const MEDIA='assets/v2/',reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const posterURL=p=>p.startsWith('bg:')?`assets/bg/${p.slice(3)}.webp`:`${MEDIA}${p}.webp`;
 function activateMedia(){document.querySelectorAll('.scene-media').forEach(box=>{
- if(!box.dataset.ready){box.dataset.ready='1';box.style.backgroundImage=`url(${MEDIA}${box.dataset.poster}.webp)`;if(box.dataset.video){const v=document.createElement('video');v.className='ambient';v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('aria-hidden','true');v.preload='none';box.prepend(v)}}
+ if(!box.dataset.ready){box.dataset.ready='1';box.style.backgroundImage=`url(${posterURL(box.dataset.poster)})`;if(box.dataset.video){const v=document.createElement('video');v.className='ambient';v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('aria-hidden','true');v.preload='none';box.prepend(v)}}
  const v=box.querySelector('video.ambient');if(!v)return;const visible=!box.closest('[hidden]')&&!document.hidden&&!reducedMotion();
  if(visible){if(!v.getAttribute('src'))v.src=MEDIA+'motion/'+box.dataset.video+'.mp4';v.play().catch(()=>{})}else if(!v.paused)v.pause();
 })}
@@ -55,7 +61,17 @@ function sourceTime(minutes=0){return shiftedTime(T(),minutes)}
 // The guard's clock: the visitor arrived at TIMES[index]; each check takes about a minute, so the clock moves on while investigating (v0.11.1).
 function nowTime(){return sourceTime(1+Math.min(4,run.seen.length))}
 function log(title,text){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=title+' — ';p.append(b,document.createTextNode(text));$('evidence').append(p)}
-function person(v,extra=''){return `<span role="img" aria-label="${escapeHTML(v.name)}의 방문객 캐릭터" class="person-sprite ${extra}" style="background-image:url(${MEDIA}visitor-0${lookFor(v)}-stand.webp)"></span>`}
+// Layered stage (v0.16.0, stage.js): the gate visitor and the story contact stand on BG02 at the stand point of the PASS
+// placement reference; the guard's desk (BG01) has click areas for the three tools. No walk clip is PASS yet, so figures
+// wait in place (enter/leave by opacity only, never slid or scaled).
+const stages={};
+function stillActor(f,id){return f?{kind:'still',id,src:f.file,size:f.size,foot:f.foot,height_px:f.height_px,height_m:f.height_m}:null}
+const visitorActor=v=>stillActor(characterAssets.legacy?.figures?.[`visitor-0${lookFor(v)}`],`visitor-0${lookFor(v)}`);
+const contactActor=cid=>stillActor(characterAssets.assets[cid]?.figure,cid);
+function sceneOn(slot,host,key,{usage='intercom',...opts}){const cur=stages[slot];if(cur?.key===key){cur.ctl.redraw();return cur.ctl}
+ cur?.ctl.destroy();const u=sceneLayout.usage[usage];const ctl=mountStage(host,{layout:sceneLayout,background:u.background,camera:u.camera,stand:u.stand_point,reduced:reducedMotion(),...opts});stages[slot]={key,ctl};ctl.enter();return ctl}
+function deskOn(){if(stages.desk)return stages.desk.ctl.redraw();const areas=sceneLayout.backgrounds.BG01.click_areas.filter(a=>a.action?.startsWith('tool:')).map(a=>{const tool=a.action.slice(5);return {id:a.id,rect:a.rect,label:`${a.label} — ${TOOL_NAMES[tool]}`,onClick:()=>inspect(tool)}});
+ sceneOn('desk',$('desk'),'desk',{usage:'desk',label:'경비실 책상: CCTV 모니터, 방문 기록부, 전화기',areas})}
 function clockBefore(minutes){const [h,m]=T().split(':').map(Number),n=(h*60+m-minutes+1440)%1440;return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
 function guide(){const {v,a,pack}=current();const older=pack.scenes.find(s=>s.offset<0);return {clue:pack.plain.what,verify:pack.plain.confirmed,question:pack.plain.check,...(older&&a.channel==='CCTV'?{past:`${sourceTime(older.offset)} · ${older.note}`}:{})}}
 function timeline(){const {v,a}=current(),g=guide(),items=[];
@@ -78,7 +94,8 @@ function render(){if(!run)return;const inStory=run.mode==='story'&&story&&story.
  $('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:night===1?'첫 근무 · 1야간':`${night}야간 근무`;
  if(run.screen==='game'){
   const {v}=current(),t=totals(run);$('clock').textContent=nowTime();$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
-  $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);$('portrait').innerHTML=person(v);$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
+  $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);sceneOn('intercom',$('portrait'),`${run.mode}:${run.date}:${run.night||1}:${run.index}`,{actor:visitorActor(v),label:`${v.name} 님이 공동현관 카메라에 보여요`,areas:[{id:'visitor',rect:'figure',label:`${v.name} 님 CCTV로 자세히 보기`,onClick:()=>inspect('CCTV')}]});deskOn();
+  $('report').disabled=reportedAt(run);$('report').textContent=reportedAt(run)?'긴급 신고 접수됨':'긴급 신고';$('reportStatus').textContent=reportedAt(run)?'긴급 신고를 접수했어요. 문을 열지 말지는 따로 정하세요.':'긴급 신고는 문을 열지 말지와 따로 기록돼요.';$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
  }else if(run.screen==='feedback'){
   const {v,a}=current(),h=run.history.at(-1),g=guide();$('clock').textContent=nowTime();
   $('feedback').classList.toggle('correct',h.correct);$('feedback').classList.toggle('wrong',!h.correct);
@@ -87,11 +104,12 @@ function render(){if(!run)return;const inStory=run.mode==='story'&&story&&story.
   $('feedbackText').textContent=`${v.name} 님(${v.unit}호)은 ${a.safe?'들여보내도 되는 사람이었어요.':'문을 열어 주면 안 되는 사람이었어요.'} ${g.clue}`;$('reason').textContent=g.verify;
   const react=v.story?.dialogue?.[h.allow?'on_allow':'on_deny'];$('reaction').hidden=!react;$('reaction').textContent=react?`${v.name}: “${react}”`:'';
   $('hint').hidden=h.correct;$('hint').textContent=h.correct?'':`다음에는 이렇게 해 보세요: ${g.question}`;
+  const reported=reportedAt(run),canReport=!!v.story?.resolution?.emergency_contact_available;$('reportNote').hidden=!reported&&!canReport;$('reportNote').textContent=reported?'긴급 신고는 따로 접수했어요. 문을 열지 말지의 판단과는 별개로 기록돼요.':canReport?'이런 상황은 문을 열지 않더라도, 관리실에 적힌 번호로 긴급 신고를 따로 할 수 있어요.':'';
   $('next').textContent=run.index===7?'근무 결과 보기':'다음 방문객';renderStoryCard();
  }else if(inStory&&night>1){renderRecap();return
  }else{
   const t=totals(run),end=ending(run,anomalies);$('clock').textContent='06:00';const se=storyEndings.find(e=>e.id===ENDING_IDS[end]);$('ending').textContent=resultTitle=endingTitle(end);$('ending').dataset.endingId=se?.id||'';$('summary').textContent=ENDING_NOTES[end]||'오늘 밤의 선택이 기록으로 남았어요.';mountCutscene(se,end==='404호');resultButtons({next:inStory?'2야간 근무 시작':null,again:true,share:true});$('result').dataset.ending=end==='404호'?'lost':end==='신중한 경비원'?'best':end==='오판'||end==='무고한 거부'?'bad':'plain';
-  $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번`;
+  $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 확인한 횟수 ${t.investigations}번 · 긴급 신고 ${(run.reports||[]).length}번`;
   try{localStorage.setItem(LAST,JSON.stringify({date:run.date,mode:run.mode,ending:end,correct:t.correct,history:run.history}))}catch{$('storageNotice').hidden=false}
  }show(run.screen);
 }
@@ -178,7 +196,7 @@ function renderTool(autoplay=false){
  show('investigation');$('toolTitle').focus({preventScroll:true});
 }
 function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='통화'||activeTool==='재확인')primeAudio();if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
-function decide(allow){if(run&&decideRun(run,allow,anomalies)){if(run.mode==='story'&&story)ST.recordDecision(story);save();render();doorTransition(allow)}}
+function decide(allow){if(run&&decideRun(run,allow,anomalies)){stages.intercom?.ctl.leave();if(run.mode==='story'&&story)ST.recordDecision(story);save();render();doorTransition(allow)}}
 // Short staging after a decision: the door opens (video) or stays shut (photo) over the feedback screen. Never blocks input.
 function doorTransition(allow){const box=$('doorTransition');allow?doorOpen():doorShut();if(reducedMotion())return;
  setPoster(box.querySelector('.scene-media'),allow?'door-open':'door-closed',allow?'23-door-open-ambient':null);box.querySelector('p').textContent=allow?'문을 열었어요.':'문을 열지 않았어요.';
@@ -194,17 +212,18 @@ function resultButtons({next=null,again=false,share=false,archive=false,back=fal
 function renderStoryCard(){const card=$('storyCard'),e=escapeHTML,night=run.night||1;
  if(!(run.mode==='story'&&story&&night>1&&run.screen==='feedback')){card.hidden=true;$('choiceNeeded').hidden=true;$('next').disabled=false;return}
  const scene=ST.currentScene(story),slot=slotFor(scene),checked=story.sceneChecks.includes(scene),opts=storyFlow.choices[scene]||null,chosen=story.sceneChoices[scene];
- card.hidden=false;card.dataset.scene=scene;const art=characterAssets.assets[characterAssets.contacts[scene]];$('contactScreen').hidden=!art;$('contactPortrait').innerHTML=art?`<span role="img" aria-label="${e(slot.story_contact)}이(가) 인터폰 화면에 보여요" class="person-sprite cropped" data-character="${e(characterAssets.contacts[scene])}" style="background-image:url(${e(art.file)})"></span>`:'';if(art)activateMedia();
+ card.hidden=false;card.dataset.scene=scene;const actor=contactActor(characterAssets.contacts[scene]);$('contactScreen').hidden=!actor;if(actor)sceneOn('contact',$('contactScreen'),scene,{actor,label:`${slot.story_contact}이(가) 공동현관 카메라에 보여요`});
  $('contactLabel').textContent=`${slot.time} · ${storyFlow.contact_label} · ${slot.story_contact}`;$('contactLine').textContent=`“${slot.story_contact_arrival}”`;
  $('contactCheck').textContent=`경비원: “${checked?slot.story_contact_recheck:slot.story_contact_check}”`;$('contactRecheck').hidden=checked;
  $('contactResult').innerHTML=checked?`<p><b>알게 된 것</b> ${e(slot.story_clue)}</p><ul class="ev-got">${slot.story_ev_candidates.map(id=>`<li>${badge(story.evidenceVerified.includes(id))} ${e(id)} ${e(evTitle(id))}${story.evidenceFrom[id]!==scene?' · 다른 기록과 같은 자료라 확인됐어요':''}</li>`).join('')}</ul>`:'<p class="small">독립 자료를 대조해야 자료를 받을 수 있어요. 그냥 넘어가도 근무가 끝난 뒤 기록 보관함에서 복구할 수 있어요.</p>';
  $('contactChoices').innerHTML=opts?`<p class="eyebrow">이 기록을 어떻게 처리할까요?</p>${opts.map(o=>`<button type="button" data-choice="${e(o.value)}" aria-pressed="${chosen===o.value}"${chosen?' disabled':''}>${e(o.label)}</button>`).join('')}`:'';
  $('next').disabled=!!opts&&!chosen;$('choiceNeeded').hidden=!(opts&&!chosen)}
-function renderIntro(){const n=story.night,f=storyFlow.nights[n];$('clock').textContent='00:00';$('introNight').textContent=`${n}야간 · 00:00—06:00`;$('introTitle').textContent=f.title;$('introText').textContent=f.intro;$('introStatus').textContent=`지금까지 ${progressLine()}`;$('introArchive').hidden=!ST.archiveOpen(story);show('nightIntro')}
+function renderIntro(){const n=story.night,f=storyFlow.nights[n];$('clock').textContent='00:00';$('introNight').textContent=`${n}야간 · 00:00—06:00`;$('introTitle').textContent=f.title;$('introText').textContent=f.intro;$('introStatus').textContent=`지금까지 ${progressLine()}`;setPoster($('nightIntro').querySelector('.scene-media'),'bg:'+sceneLayout.usage.night_intro[n]);$('introArchive').hidden=!ST.archiveOpen(story);show('nightIntro')}
 function renderRecap(){const n=run.night,t=totals(run),newEv=story.evidenceAcquired.filter(id=>Number(story.evidenceFrom[id]?.[1])===n);
  $('clock').textContent='06:00';mountCutscene(null,false);$('ending').textContent=resultTitle=`${n}야간 근무 종료`;$('ending').dataset.endingId='';$('result').dataset.ending='plain';
  $('summary').textContent=`${storyFlow.nights[n].title}. 오늘 밤 새로 받은 자료 ${newEv.length}건${newEv.length?' — '+newEv.map(evTitle).join(', '):''}.`;
- $('stats').textContent=`8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 지금까지 ${progressLine()}`;
+ const all=story.accessHistory.reduce((a,h)=>({nights:a.nights+1,correct:a.correct+h.correct,threats:a.threats+h.threats,denials:a.denials+h.denials,reports:a.reports+(h.reports||0)}),{nights:0,correct:0,threats:0,denials:0,reports:0});
+ $('stats').textContent=`오늘 밤: 8명 중 ${t.correct}명 맞힘 · 위험한 사람을 들여보냄 ${t.threats}번 · 괜찮은 사람을 돌려보냄 ${t.denials}번 · 긴급 신고 ${(run.reports||[]).length}번 / ${all.nights}밤 누적: ${all.nights*8}명 중 ${all.correct}명 맞힘 · 위험 ${all.threats}번 · 돌려보냄 ${all.denials}번 · 긴급 신고 ${all.reports}번 · 지금까지 ${progressLine()}`;
  resultButtons({next:n<5?`${n+1}야간 근무 시작`:'최종 증거보드 열기',archive:true});$('cutCaption').hidden=$('cutDots').hidden=$('cutLines').hidden=true;show('result')}
 function renderEndingView(id,{archive=false}={}){const se=storyEndings.find(e=>e.id===id);$('clock').textContent='06:00';$('ending').textContent=resultTitle=se?.title||id;$('ending').dataset.endingId=id;$('summary').textContent=se?.ending_text||'';
  mountCutscene(se,id==='E05');$('result').dataset.ending=id==='E30'?'best':se?.type==='위험·실수'?'bad':'plain';
@@ -218,7 +237,7 @@ function renderArchive(msg=''){const final=story.phase==='FINAL';if(archiveTab==
 function evidenceTab(){const e=escapeHTML,have=storyEvidence.evidence.filter(x=>story.evidenceAcquired.includes(x.id)),left=storyEvidence.evidence.length-have.length;
  if(!have.length)return '<p>아직 입수한 자료가 없어요. 2야간부터 기록을 들고 오는 사람이 있어요.</p>';
  return `<p class="small">찾은 자료와 확인한 자료는 달라요. 다른 자료와 교차 확인해야 ‘확인됨’이 돼요.</p><ul class="ev-list">${have.map(x=>{const ok=story.evidenceVerified.includes(x.id),can=ST.canVerify(story,storyData,x.id);
-  return `<li class="ev-card" data-ev="${x.id}"><div class="ev-head">${badge(ok)} <strong>${x.id} ${e(x.title)}</strong></div><p class="small">${e(x.era)} · ${e(x.source)} · ${e(story.evidenceFrom[x.id])}에서 입수</p><p><b>보여 주는 것</b> ${e(x.proves)}</p><p><b>보여 주지 못하는 것</b> ${e(x.not_proves)}</p>${ok?'':can?`<button type="button" data-verify="${x.id}">교차 확인하기</button>`:'<p class="small">대조할 다른 자료를 아직 입수하지 않았어요.</p>'}</li>`}).join('')}</ul>${left?`<p class="small">아직 입수하지 않은 자료 ${left}건</p>`:''}`}
+  return `<li class="ev-card" data-ev="${x.id}"><div class="ev-head">${badge(ok)} <strong>${x.id} ${e(x.title)}</strong></div><p class="small">${e(x.era)} · ${e(x.source)} · ${e(story.evidenceFrom[x.id])}에서 입수</p><p><b>보여 주는 것</b> ${e(x.proves)}</p><p><b>보여 주지 못하는 것</b> ${e(x.not_proves)}</p><button type="button" data-read="${x.id}">자료 펼쳐 읽기</button>${ok?'':can?`<button type="button" data-verify="${x.id}">교차 확인하기</button>`:'<p class="small">대조할 다른 자료를 아직 입수하지 않았어요.</p>'}</li>`}).join('')}</ul>${left?`<p class="small">아직 입수하지 않은 자료 ${left}건</p>`:''}`}
 function puzzlesTab(){const e=escapeHTML,list=storyEvidence.puzzles.filter(p=>p.night<=Math.max(2,story.nightCompleted));
  return list.map(p=>{const solved=story.puzzlesSolved.includes(p.id),ready=ST.puzzleReady(story,storyData,p.id);let inner;
   if(solved)inner=`<p><span class="badge ok">풀림</span> 이 기록 대조에서 알게 된 것</p><ul>${p.outputs.map(o=>`<li>${e(o)}</li>`).join('')}</ul>`;
@@ -242,8 +261,20 @@ function archiveClick(ev){const b=ev.target.closest('button');if(!b||!story)retu
  else if(d.flag){if(ST.recoverFlag(story,d.flag))msg='기록에 남겼어요.'}
  else if(d.final){const r=ST.chooseFinal(story,storyGates,d.final);save();if(r.ending){render();return}msg=r.hints.join(' ')}
  else if(d.goto)archiveTab=d.goto;
+ else if(d.read){openDoc(d.read,b);return}
  else return;
  save();renderArchive(msg)}
+// Evidence text viewer (v0.16.0): the transcribed body of evidence_readable_20_v03 (a JSON text layer, never baked into
+// an image), zoomable with buttons, + / - / 0 keys and a two-finger pinch. Opening a document does not verify it.
+let docScale=1,docOpener=null,pinch=null;
+function openDoc(id,opener){const x=evInfo(id);if(!x||!story?.evidenceAcquired.includes(id))return;const e=escapeHTML,ok=story.evidenceVerified.includes(id),bg=sceneLayout.usage.evidence_backdrop?.[id],info=bg&&sceneLayout.backgrounds[bg];
+ $('docTitle').textContent=`${x.id} ${x.title}`;$('docMeta').textContent=`${x.era} · ${x.source_doc||x.source} · 옮겨 적은 본문이에요(원본 문서 사진이 아니에요)`;
+ $('docBody').innerHTML=x.body?.length?x.body.map(l=>`<p>${e(l)}</p>`).join(''):'<p class="doc-missing">이 자료는 사진이에요. 사진 원본이 아직 들어오지 않아 글로 옮긴 본문이 없어요.</p>';
+ $('docState').innerHTML=`${badge(ok)} ${ok?'다른 자료와 대조해 확인한 자료예요.':'찾았지만 아직 다른 자료와 대조하지 않았어요.'}`;
+ const back=$('docViewer').querySelector('.doc-backdrop');back.style.backgroundImage=info?`url(${info.file})`:'';$('docEra').hidden=!info;$('docEra').textContent=info?`${info.era}년 기록 · ${info.name}`:'';
+ $('docViewer').dataset.ev=id;docOpener=opener||null;setDocScale(1);$('docViewer').hidden=false;$('docPaper').scrollTop=0;$('docClose').focus()}
+function closeDoc(){if($('docViewer').hidden)return;$('docViewer').hidden=true;docOpener?.focus();docOpener=null}
+function setDocScale(v){docScale=Math.round(Math.min(2,Math.max(.8,v))*10)/10;$('docPaper').style.setProperty('--doc-scale',docScale);$('docScale').textContent=Math.round(docScale*100)+'%';const lost=document.activeElement;$('docOut').disabled=docScale<=.8;$('docIn').disabled=docScale>=2;if(lost?.disabled)$('docPaper').focus()}
 async function share(){if(!run||run.screen!=='result')return;$('share').disabled=true;
  try{
   const c=document.createElement('canvas');c.width=1080;c.height=1350;const ctx=c.getContext('2d'),t=totals(run);ctx.fillStyle='#101a1b';ctx.fillRect(0,0,1080,1350);try{const bg=await new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=MEDIA+'ending-dawn.webp'});const sw=bg.height*1080/1350;ctx.globalAlpha=.35;ctx.drawImage(bg,(bg.width-sw)/2,0,sw,bg.height,0,0,1080,1350);ctx.globalAlpha=1;ctx.fillStyle='#101a1bb0';ctx.fillRect(0,0,1080,1350)}catch{}ctx.strokeStyle='#b8a475';ctx.lineWidth=4;ctx.strokeRect(70,70,940,1210);
@@ -270,8 +301,8 @@ function loadSaves(){const notes=[];story=null;daily=null;run=null;let raw=null;
 async function boot(){
  $('startStory').disabled=$('startDaily').disabled=true;$('retry').hidden=true;$('record').textContent='게임 자료를 불러오는 중이에요…';
  try{
-  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow','character_assets'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow,characterAssets]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
-  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices||!characterAssets?.assets||!characterAssets?.contacts)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
+  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow','character_assets','scene_layout'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow,characterAssets,sceneLayout]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
+  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices||!characterAssets?.assets||!characterAssets?.contacts||!characterAssets?.legacy?.figures||!sceneLayout?.backgrounds?.BG02||!sceneLayout?.usage?.intercom)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
   storyData={visitors,anomalies,slots:storySlots,evidence:storyEvidence,flow:storyFlow};ready=true;loadSaves();
   $('startStory').disabled=$('startDaily').disabled=false;home();offline();
  }catch(e){$('record').textContent=e.message;$('retry').hidden=false}
@@ -287,4 +318,14 @@ $('beginShift').onclick=()=>{if(story&&ST.beginShift(story)){save();render()}};$
 $('openArchive').onclick=()=>openArchive('evidence');$('archiveReturn').onclick=()=>openArchive('records');$('archiveBody').addEventListener('click',archiveClick);
 $('archiveBack').onclick=()=>story?.phase==='FINAL'?home():render();document.querySelectorAll('#archiveTabs [data-tab]').forEach(b=>b.onclick=()=>{archiveTab=b.dataset.tab;archiveHints=null;renderArchive()});
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('install').hidden=false});$('install').onclick=async()=>{if(deferredInstall){await deferredInstall.prompt();deferredInstall=null;$('install').hidden=true}};window.addEventListener('appinstalled',()=>{$('install').hidden=true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.15.0';boot();
+$('report').onclick=()=>{if(run&&reportRun(run)){save();render();$('reportStatus').focus?.()}};
+$('docClose').onclick=closeDoc;$('docIn').onclick=()=>setDocScale(docScale+.2);$('docOut').onclick=()=>setDocScale(docScale-.2);$('docReset').onclick=()=>setDocScale(1);
+// Keys work while the viewer is open wherever focus is (a zoom button that reaches its limit is disabled and drops focus);
+// Tab stays inside the dialog.
+document.addEventListener('keydown',e=>{if($('docViewer').hidden)return;if(e.key==='Escape'){e.preventDefault();closeDoc()}else if(e.key==='+'||e.key==='=')setDocScale(docScale+.2);else if(e.key==='-')setDocScale(docScale-.2);else if(e.key==='0')setDocScale(1);
+ else if(e.key==='Tab'){const f=[...$('docViewer').querySelectorAll('button:not(:disabled),[tabindex="0"]')];const i=f.indexOf(document.activeElement);if(i<0||(!e.shiftKey&&i===f.length-1)||(e.shiftKey&&i===0)){e.preventDefault();(e.shiftKey?f.at(-1):f[0]).focus()}}});
+$('docViewer').querySelector('.doc-backdrop').onclick=closeDoc;
+$('docPaper').addEventListener('touchstart',e=>{if(e.touches.length===2){const [a,b]=e.touches;pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),s:docScale}}},{passive:true});
+$('docPaper').addEventListener('touchmove',e=>{if(pinch&&e.touches.length===2){const [a,b]=e.touches;setDocScale(pinch.s*Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)/pinch.d)}},{passive:true});
+$('docPaper').addEventListener('touchend',()=>{pinch=null},{passive:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.16.0';boot();

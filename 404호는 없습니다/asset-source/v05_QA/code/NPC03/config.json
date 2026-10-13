@@ -1,0 +1,9 @@
+{
+  "id": "NPC03",
+  "height_m": 1.74,
+  "prop": "parcel",
+  "status": "REVISE",
+  "engine_applied": false,
+  "revision": "v05",
+  "arm_wrist_fraction": 0.78
+}

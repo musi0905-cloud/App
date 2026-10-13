@@ -2,13 +2,13 @@
 
 아파트 야간 경비원이 방문객을 들여보낼지 판단하는 한국어 공포 게임입니다. 한 번 구매하면 계속 쓰고, 광고와 추가 결제는 없습니다.
 
-## 현재 상태 (2026-10-08)
+## 현재 상태 (2026-10-13)
 
 | 항목 | 상태 |
 |---|---|
 | 운영 사이트 | v0.5.0 (ChatGPT Sites, 소유자 전용) |
-| 최신 작업본 | v0.15.0 — `room404/` (운영 미배포). 새 캐릭터 그림 1차(기록 인물 7장면, v0.15). 5야간 이야기·증거·퍼즐·엔딩 30개 조건 연결(v0.14). 쉬운 대사, 전화 목소리, 넘기는 기록부, 이미지 v2·v3, 장소별 2대 카메라, 원근법·연출·효과음, 휴대폰 지적 수정, 인터폰 모니터+말풍선, 방문객 8명·소품 14종 |
-| 웹 테스트 링크 | https://claude.ai/artifact/5SGZeeX8wAE1mDyaYGG48B (최신 작업본을 그대로 올림. 결과 이미지 저장 버튼은 이 뷰어에서 동작하지 않음) |
+| 최신 작업본 | v0.16.0 — `room404/` (운영 미배포). 승인 배경 BG01~BG13 연결과 레이어 무대(인터폰 BG02 전신 정지 대기, 책상 BG01 클릭 영역), 긴급 신고(판정과 분리), 증거 본문 확대 뷰어, 야간·누적 집계, 에셋 레지스트리, v05 걷기 바인딩과 내부 QA 뷰어(v0.16, 상태는 `docs/implementation_status.md`). 새 캐릭터 그림 1차(기록 인물 7장면, v0.15). 5야간 이야기·증거·퍼즐·엔딩 30개 조건 연결(v0.14). 쉬운 대사, 전화 목소리, 넘기는 기록부, 이미지 v2·v3, 장소별 2대 카메라, 원근법·연출·효과음, 휴대폰 지적 수정, 인터폰 모니터+말풍선, 방문객 8명·소품 14종 |
+| 웹 테스트 링크 | https://claude.ai/artifact/5SGZeeX8wAE1mDyaYGG48B (v0.15.0 이전에 올린 판. v0.16.0은 올리지 않음. 결과 이미지 저장 버튼은 이 뷰어에서 동작하지 않음) |
 | iOS 앱 | Capacitor 8.5.2 Xcode 프로젝트 초안 (v0.2 기준, 최신 코드와 동기화 필요) |
 | Android 앱 | 아직 없음 |
 | 스토어 등록 | 아직 안 함. Google Play 먼저 진행 (앱 ID `com.musi0905.room404`, 3,300원) |
@@ -26,6 +26,9 @@
 | `story-plan/v1.2/` | S2~S5 기획결정 v1.2 원본(저장·야간 흐름, 40슬롯, 엔딩 조건 초안) + ZIP |
 | `character-v5/` | 최종 게임에셋 v02 패치의 캐릭터 원본 5장·승인 목록·매핑·적용 기록. 아직 받지 못한 그림 목록 포함 |
 | `story-plan/v1.3/` | 엔딩 시뮬레이션 v1.3 원본(구현 지시, 조건 30개, 증인 30개, 시뮬레이션 보고서) |
+| `asset-source/` | v0.16 반입 원본: 배경 13장, 증거 본문 JSON, UI 패키지, v05 걷기 재현 코드·QA·검토 영상, 정지 배치 기준. 게임판은 `room404/scripts`로 만듦 |
+| `asset_registry.json` | 저장소 안 에셋 237개의 해시·크기·알파·QA 상태·사용처와 빠진 파일 255줄 |
+| `room404/qa/` | 내부 QA 뷰어(배포 밖). `npm run qa` |
 | `docs/` | 정리 문서 |
 
 ## 문서
@@ -40,6 +43,11 @@
 | [docs/GPT_ASSET_PROMPT.md](docs/GPT_ASSET_PROMPT.md) | GPT에 그림(배경·인물·사물)을 요청하는 복사용 프롬프트 |
 | [docs/STORY_IMPORT_REPORT.md](docs/STORY_IMPORT_REPORT.md) | 스토리 v1.1 패키지 점검 결과, 연결한 것/안 한 것 |
 | [docs/ENDING_VERIFICATION_REPORT.md](docs/ENDING_VERIFICATION_REPORT.md) | 엔딩 E01~E30 조건 구현과 검증 결과(PASS/FAIL/SKIP), 해결되지 않은 기획 모순 |
+| [docs/implementation_status.md](docs/implementation_status.md) | v0.16 구현 상태(파일 확보·데이터 연결·게임 적용·형식·시각·저장 검증 구분), 테스트 결과, 실행 방법 |
+| [docs/asset_import_report.md](docs/asset_import_report.md) | 에셋 반입 경로·해시 대조·압축 해제 결과·게임판 생성 |
+| [docs/missing_assets.md](docs/missing_assets.md) | 받지 못한 에셋과 남은 제작 과제(수량·경로) |
+| [docs/animation_qa.md](docs/animation_qa.md) | v05 걷기·장면 합성 검수, QA 뷰어 사용법 |
+| [docs/planning_conflicts.md](docs/planning_conflicts.md) | 기획 v1.0~v1.3·에셋 문서 사이 충돌과 처리 |
 | [docs/WORKLOG.md](docs/WORKLOG.md) | 작업 기록과 남은 일 |
 
 ## 원본 자료 위치

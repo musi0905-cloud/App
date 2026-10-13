@@ -1,0 +1,302 @@
+{
+ "backgrounds": {
+  "BG01": {
+   "file": "assets/bg/BG01.webp",
+   "source": "asset-source/02_배경/game/BG01_security_booth_night_v01.webp",
+   "source_sha256": "ab8866d85c14f13579e23a8e8c0d5e9b112a2426ca535f2dfa69b4efc60aec20",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 95566
+  },
+  "BG02": {
+   "file": "assets/bg/BG02.webp",
+   "source": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "source_sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 127774
+  },
+  "BG03": {
+   "file": "assets/bg/BG03.webp",
+   "source": "asset-source/02_배경/game/BG03_lobby_2026_v01.webp",
+   "source_sha256": "42c764a5b1d9eb2f024692d87db55850bdfe5815f30151a4490f893383929a9d",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 85646
+  },
+  "BG04": {
+   "file": "assets/bg/BG04.webp",
+   "source": "asset-source/02_배경/game/BG04_floor4_2026_v01.png",
+   "source_sha256": "a402fce964126081950ffe6c1d24725b1d5cf3271a3a9c78cf39f9868a2f4d98",
+   "source_size": [
+    941,
+    1672
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 106322
+  },
+  "BG05": {
+   "file": "assets/bg/BG05.webp",
+   "source": "asset-source/02_배경/game/BG05_floor4_2004_v01.png",
+   "source_sha256": "9020689bf488c5c862b048c194a434c49c4f37f739b2fb23e3097353a1e6f71f",
+   "source_size": [
+    941,
+    1672
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 88938
+  },
+  "BG06": {
+   "file": "assets/bg/BG06.webp",
+   "source": "asset-source/02_배경/game/BG06_elevator_hall_2026_v01.webp",
+   "source_sha256": "fea2ed321d6f8453214d725f8de8a96fad1b9882af032671af7c7c95468bc0bc",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 85816
+  },
+  "BG07": {
+   "file": "assets/bg/BG07.webp",
+   "source": "asset-source/02_배경/game/BG07_garage_2026_v01.webp",
+   "source_sha256": "59c1218abe7eeb4b9bcd20f9d32d49b15bbdf5d5b7d29f5235d83329a7e1d224",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 119548
+  },
+  "BG09": {
+   "file": "assets/bg/BG09.webp",
+   "source": "asset-source/02_배경/game/BG09_maintenance_cover_2026_v01.webp",
+   "source_sha256": "c464d2b08773cd701b124d57a73de49058ef6b1e061d527996d29f89e6a2429c",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 90758
+  },
+  "BG10": {
+   "file": "assets/bg/BG10.webp",
+   "source": "asset-source/02_배경/game/BG10_room404_2004_before_v01.webp",
+   "source_sha256": "f6e7c7d1cedc91df092b5d5469165a85fe358985fa042fb5b908272cfd1fc76f",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 97592
+  },
+  "BG11": {
+   "file": "assets/bg/BG11.webp",
+   "source": "asset-source/02_배경/game/BG11_room404_2004_after_v01.webp",
+   "source_sha256": "dbaf17bb76472663c44b1a54229fe82d0ce98df90909c55ef5b0ebf2995d85e6",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 141760
+  },
+  "BG12": {
+   "file": "assets/bg/BG12.webp",
+   "source": "asset-source/02_배경/game/BG12_public_archive_2026_v01.webp",
+   "source_sha256": "1584bdb48077a3f78f1147b349ac43163c2a86f65415fa05febcad82637ca3be",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 85890
+  },
+  "BG13_2026": {
+   "file": "assets/bg/BG13_2026.webp",
+   "source": "asset-source/02_배경/game/BG13_2026_exterior_2026_v01.webp",
+   "source_sha256": "41a6005631806a883a06936acfdecb4199f5070b4e4666f7b72d95acee931121",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 154594
+  }
+ },
+ "figures": {
+  "CH09": {
+   "file": "assets/v5/figure-CH09.webp",
+   "size": [
+    452,
+    1200
+   ],
+   "foot": [
+    229.5,
+    1194
+   ],
+   "feet": [
+    [
+     132.5,
+     1194
+    ],
+    [
+     337.0,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e",
+   "crop": [
+    164,
+    0,
+    785,
+    1649
+   ],
+   "bytes": 112558
+  },
+  "CH10": {
+   "file": "assets/v5/figure-CH10.webp",
+   "size": [
+    382,
+    1200
+   ],
+   "foot": [
+    215.0,
+    1194
+   ],
+   "feet": [
+    [
+     123.5,
+     1194
+    ],
+    [
+     306.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d",
+   "crop": [
+    210,
+    12,
+    732,
+    1652
+   ],
+   "bytes": 83290
+  },
+  "MC15": {
+   "file": "assets/v5/figure-MC15.webp",
+   "size": [
+    380,
+    1200
+   ],
+   "foot": [
+    202.5,
+    1193
+   ],
+   "feet": [
+    [
+     120.5,
+     1193
+    ],
+    [
+     278.5,
+     1193
+    ]
+   ],
+   "height_px": 1185,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237",
+   "crop": [
+    226,
+    34,
+    722,
+    1600
+   ],
+   "bytes": 69136
+  },
+  "MC25": {
+   "file": "assets/v5/figure-MC25.webp",
+   "size": [
+    357,
+    1200
+   ],
+   "foot": [
+    195.0,
+    1193
+   ],
+   "feet": [
+    [
+     101.5,
+     1193
+    ],
+    [
+     280.5,
+     1193
+    ]
+   ],
+   "height_px": 1186,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0",
+   "crop": [
+    240,
+    38,
+    708,
+    1612
+   ],
+   "bytes": 62446
+  }
+ }
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "id": "UI01",
+    "name": "판단 화면 프레임",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI01_ui_1_base_v01.svg",
+    "game_path": "05_UI/game/UI01_ui_1_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI02",
+    "name": "CCTV 재생 패널",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI02_ui_2_base_v01.svg",
+    "game_path": "05_UI/game/UI02_ui_2_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI03",
+    "name": "명부·문서 뷰어",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI03_ui_3_base_v01.svg",
+    "game_path": "05_UI/game/UI03_ui_3_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI04",
+    "name": "통화 패널",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI04_ui_4_base_v01.svg",
+    "game_path": "05_UI/game/UI04_ui_4_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI05",
+    "name": "증거보드",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI05_ui_5_base_v01.svg",
+    "game_path": "05_UI/game/UI05_ui_5_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI06",
+    "name": "메인 메뉴",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI06_ui_6_base_v01.svg",
+    "game_path": "05_UI/game/UI06_ui_6_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI07",
+    "name": "접근성·설정",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI07_ui_7_base_v01.svg",
+    "game_path": "05_UI/game/UI07_ui_7_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI08",
+    "name": "엔딩·사건 도감",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI08_ui_8_base_v01.svg",
+    "game_path": "05_UI/game/UI08_ui_8_base_v01.png",
+    "raster_size": [
+      360,
+      640
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI09",
+    "name": "검증 상태 배지",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI09_ui_9_base_v01.svg",
+    "game_path": "05_UI/game/UI09_ui_9_base_v01.png",
+    "raster_size": [
+      256,
+      56
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI10",
+    "name": "대화 프레임",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI10_ui_10_base_v01.svg",
+    "game_path": "05_UI/game/UI10_ui_10_base_v01.png",
+    "raster_size": [
+      1080,
+      420
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI11",
+    "name": "출입 허용 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI11_ui_11_base_v01.svg",
+    "game_path": "05_UI/game/UI11_ui_11_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI12",
+    "name": "출입 거부 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI12_ui_12_base_v01.svg",
+    "game_path": "05_UI/game/UI12_ui_12_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI13",
+    "name": "긴급 신고 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI13_ui_13_base_v01.svg",
+    "game_path": "05_UI/game/UI13_ui_13_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI14",
+    "name": "재확인 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI14_ui_14_base_v01.svg",
+    "game_path": "05_UI/game/UI14_ui_14_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI15",
+    "name": "문서 비교 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI15_ui_15_base_v01.svg",
+    "game_path": "05_UI/game/UI15_ui_15_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI16",
+    "name": "증거 보존 버튼",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI16_ui_16_base_v01.svg",
+    "game_path": "05_UI/game/UI16_ui_16_base_v01.png",
+    "raster_size": [
+      320,
+      64
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI17",
+    "name": "CCTV 아이콘",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI17_ui_17_base_v01.svg",
+    "game_path": "05_UI/game/UI17_ui_17_base_v01.png",
+    "raster_size": [
+      96,
+      96
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI18",
+    "name": "전화 아이콘",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI18_ui_18_base_v01.svg",
+    "game_path": "05_UI/game/UI18_ui_18_base_v01.png",
+    "raster_size": [
+      96,
+      96
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI19",
+    "name": "서류 아이콘",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI19_ui_19_base_v01.svg",
+    "game_path": "05_UI/game/UI19_ui_19_base_v01.png",
+    "raster_size": [
+      96,
+      96
+    ],
+    "text_baked": false
+  },
+  {
+    "id": "UI20",
+    "name": "잠금 아이콘",
+    "category": "ui",
+    "status": "PASS",
+    "reason": "결정론적 벡터/PNG 형식·육안 검수 대상; 엔진 연결은 별도",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상",
+    "source_path": "05_UI/sources/UI20_ui_20_base_v01.svg",
+    "game_path": "05_UI/game/UI20_ui_20_base_v01.png",
+    "raster_size": [
+      96,
+      96
+    ],
+    "text_baked": false
+  }
+]

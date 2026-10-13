@@ -1,34 +1,130 @@
 {
- "source": "Drive 404호는_없습니다_최종_게임에셋: 03_사건장면/main_scene_mapping_40_v03.json (장면→인물), 07_검수완료/approved_static_assets_v01.json + approved_patch_assets_v02.json (승인 목록). 원본·검증은 character-v5/, 변환은 scripts/build-character-busts.py",
- "rules": "승인(PASS) 정지 이미지만 사용. REVISE/DRAFT(MC07·MC27·MC30, MC01~MC14·MC16~MC24·MC26~MC30 초안)는 연결하지 않음. 걷기 프레임이 없으므로 CCTV에는 쓰지 않음.",
+ "source": "Drive 404호는_없습니다_최종_게임에셋: 03_사건장면/main_scene_mapping_40_v03.json (장면→인물), 07_검수완료/approved_static_assets_v01.json + approved_patch_assets_v02.json (승인 목록). 원본·검증은 character-v5/, 변환은 scripts/build-stage-assets.py (전신 컷·발 기준점; v0.15 흉상 크롭은 v0.16에서 무대 합성으로 대체)",
+ "rules": "승인(PASS) 정지 이미지만 사용. REVISE/DRAFT(MC07·MC27·MC30, MC01~MC14·MC16~MC24·MC26~MC30 초안)는 연결하지 않음. 걷기 프레임이 없으므로 CCTV에는 쓰지 않음. v0.16.0부터 인터폰 화면에서 BG02 위 정지 대기로 합성(stage.js).",
  "assets": {
   "CH09": {
-   "file": "assets/v5/bust-CH09.webp",
+   "file": "assets/v5/figure-CH09.webp",
    "name": "정범수, 현 관리소장 [DESIGN]",
    "approval": "07_검수완료/approved_static_assets_v01.json",
    "source": "CH09_jeong_beomsu_2026_front_full_v01.png",
-   "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e"
+   "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e",
+   "figure": {
+    "file": "assets/v5/figure-CH09.webp",
+    "size": [
+     452,
+     1200
+    ],
+    "foot": [
+     229.5,
+     1194
+    ],
+    "feet": [
+     [
+      132.5,
+      1194
+     ],
+     [
+      337.0,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
   },
   "CH10": {
-   "file": "assets/v5/bust-CH10.webp",
+   "file": "assets/v5/figure-CH10.webp",
    "name": "윤도경, 후보 캠프 실무자 [DESIGN]",
    "approval": "07_검수완료/approved_static_assets_v01.json",
    "source": "CH10_yoon_dogyeong_2026_front_full_v01.png",
-   "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d"
+   "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d",
+   "figure": {
+    "file": "assets/v5/figure-CH10.webp",
+    "size": [
+     382,
+     1200
+    ],
+    "foot": [
+     215.0,
+     1194
+    ],
+    "feet": [
+     [
+      123.5,
+      1194
+     ],
+     [
+      306.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
   },
   "MC15": {
-   "file": "assets/v5/bust-MC15.webp",
+   "file": "assets/v5/figure-MC15.webp",
    "name": "이영자",
    "approval": "07_검수완료/approved_patch_assets_v02.json",
    "source": "MC15_2026_front_full_v02.png",
-   "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237"
+   "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237",
+   "figure": {
+    "file": "assets/v5/figure-MC15.webp",
+    "size": [
+     380,
+     1200
+    ],
+    "foot": [
+     202.5,
+     1193
+    ],
+    "feet": [
+     [
+      120.5,
+      1193
+     ],
+     [
+      278.5,
+      1193
+     ]
+    ],
+    "height_px": 1185,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
   },
   "MC25": {
-   "file": "assets/v5/bust-MC25.webp",
+   "file": "assets/v5/figure-MC25.webp",
    "name": "전직 대표회의 간사",
    "approval": "07_검수완료/approved_patch_assets_v02.json",
    "source": "MC25_2026_front_full_v02.png",
-   "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0"
+   "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0",
+   "figure": {
+    "file": "assets/v5/figure-MC25.webp",
+    "size": [
+     357,
+     1200
+    ],
+    "foot": [
+     195.0,
+     1193
+    ],
+    "feet": [
+     [
+      101.5,
+      1193
+     ],
+     [
+      280.5,
+      1193
+     ]
+    ],
+    "height_px": 1186,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
   }
  },
  "contacts": {
@@ -60,5 +156,203 @@
   "지인": "NPC10"
  },
  "visitor_roles_enabled": false,
- "visitor_roles_note": "방문객 100명의 역할별 그림 NPC01~NPC10은 10장이 모두 낱개 파일로 확인된 뒤 한 번에 켭니다. CCTV 걷기 그림은 새 그림에 없어 기존 그림이 남습니다."
+ "visitor_roles_note": "방문객 100명의 역할별 그림 NPC01~NPC10은 10장이 모두 낱개 파일로 확인된 뒤 한 번에 켭니다. CCTV 걷기 그림은 새 그림에 없어 기존 그림이 남습니다.",
+ "legacy": {
+  "status": "LEGACY_IN_GAME",
+  "note": "v0.6~v0.15 게임에 쓰이던 방문객 정지 그림. v02 에셋 패키지 검수 대상이 아님. NPC01~NPC10 역할군 그림이 PASS로 들어오면 교체.",
+  "figures": {
+   "visitor-01": {
+    "file": "assets/v2/visitor-01-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     194.0,
+     496
+    ],
+    "feet": [
+     [
+      162.0,
+      496
+     ],
+     [
+      226.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "0939036d4264e3bfdae29dde4b7cf3922dfd1cdc81538eb653e281bc7401b0a3"
+   },
+   "visitor-02": {
+    "file": "assets/v2/visitor-02-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     192.0,
+     496
+    ],
+    "feet": [
+     [
+      137.5,
+      496
+     ],
+     [
+      240.5,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "cd3f09ef1fa786b2d29d25f70a4c6ce689aa6e5d157d13b22f07ffaacf760486"
+   },
+   "visitor-03": {
+    "file": "assets/v2/visitor-03-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     196.0,
+     496
+    ],
+    "feet": [
+     [
+      196.0,
+      496
+     ],
+     [
+      196.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "c235cc312e73e96bda8251b15e2f96be72eec0892b175ec3b9a61a43e11554d6"
+   },
+   "visitor-04": {
+    "file": "assets/v2/visitor-04-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     191.5,
+     496
+    ],
+    "feet": [
+     [
+      136.5,
+      496
+     ],
+     [
+      242.5,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "99aee36cd8278bb583fd8716dd3bcdbe6ca36216acc18aff4b72ee613a22d8b9"
+   },
+   "visitor-05": {
+    "file": "assets/v2/visitor-05-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     179.5,
+     496
+    ],
+    "feet": [
+     [
+      138.0,
+      496
+     ],
+     [
+      220.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "a51d17d39acba4c6969012fae34e1e7ca32a2f315ad626f11c21f4f24e0a86b5"
+   },
+   "visitor-06": {
+    "file": "assets/v2/visitor-06-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     198.5,
+     496
+    ],
+    "feet": [
+     [
+      146.0,
+      496
+     ],
+     [
+      249.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "28ffbba343120a3241f4981b9a6f68059386ba7eb49238df9aa8cf89b7e28c2e"
+   },
+   "visitor-07": {
+    "file": "assets/v2/visitor-07-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     194.5,
+     496
+    ],
+    "feet": [
+     [
+      167.5,
+      496
+     ],
+     [
+      216.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "984d56d808e553829c287dfa71c436029a500c6a9ef46949b5e30ebbfc9bd477"
+   },
+   "visitor-08": {
+    "file": "assets/v2/visitor-08-stand.webp",
+    "size": [
+     384,
+     512
+    ],
+    "foot": [
+     206.0,
+     496
+    ],
+    "feet": [
+     [
+      172.0,
+      496
+     ],
+     [
+      230.0,
+      496
+     ]
+    ],
+    "height_px": 470,
+    "height_m": 1.68,
+    "sha256": "b47e237917ecf00714ec6eb2b02d3f5fdea4ab8785e41b80b03e79b343770269"
+   }
+  }
+ }
 }

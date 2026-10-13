@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "node",
+      "/workspace/scratch/23365834fbd2/production_v05/NPC09/render.js"
+    ],
+    "exit_code": 0,
+    "stdout": "Rendered requested views/frames; count from output inventory\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "/workspace/scratch/23365834fbd2/production_v05/NPC09/check_frames.js"
+    ],
+    "exit_code": 0,
+    "stdout": "[]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "/workspace/scratch/23365834fbd2/production_v05/NPC09/qa_contact.js"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "/workspace/scratch/23365834fbd2/production_v05/NPC09/encode.py"
+    ],
+    "exit_code": 0,
+    "stdout": "NPC09 verified 3x48 frames +144 frame montage\n",
+    "stderr": ""
+  }
+]

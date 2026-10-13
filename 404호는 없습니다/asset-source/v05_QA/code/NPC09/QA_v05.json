@@ -1,0 +1,29 @@
+{
+  "id": "NPC09",
+  "revision": "v05",
+  "status": "REVISE",
+  "technical_export": "PASS",
+  "engine_applied": false,
+  "new_carrying_source": true,
+  "new_source_views": 3,
+  "rig_unchanged_from_v04": true,
+  "frames": 144,
+  "videos": 4,
+  "visual_review_scope": "first frame 3-view comparison, side 8 phases; NPC03/09 additionally front/rear 8 phases",
+  "changes": [
+    "thigh/shin upper-edge runtime alpha blend",
+    "replace separate carrying-arm and prop with coherent shoulder-to-hand/prop source"
+  ],
+  "remaining": [
+    "full-motion naturalness not certified",
+    "texture joints and body rotation still limited",
+    "scene lighting and contact shadows need engine-side calibration"
+  ],
+  "carrying_arm": {
+    "driver": "Lshoulder",
+    "Lelbow_Lwrist": "not used to deform carrying source",
+    "pose": "static bent carrying arm attached to moving shoulder",
+    "rear_mapping": "mirrored locally to keep left-arm object tucked toward torso",
+    "status": "REVISE: shoulder texture and held-arm secondary motion remain"
+  }
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "UI01",
+    "name": "판단 화면 프레임",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI02",
+    "name": "CCTV 재생 패널",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI03",
+    "name": "명부·문서 뷰어",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI04",
+    "name": "통화 패널",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI05",
+    "name": "증거보드",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI06",
+    "name": "메인 메뉴",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI07",
+    "name": "접근성·설정",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI08",
+    "name": "엔딩·사건 도감",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI09",
+    "name": "검증 상태 배지",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI10",
+    "name": "대화 프레임",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI11",
+    "name": "출입 허용 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI12",
+    "name": "출입 거부 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI13",
+    "name": "긴급 신고 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI14",
+    "name": "재확인 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI15",
+    "name": "문서 비교 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI16",
+    "name": "증거 보존 버튼",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI17",
+    "name": "CCTV 아이콘",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI18",
+    "name": "전화 아이콘",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI19",
+    "name": "서류 아이콘",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  },
+  {
+    "id": "UI20",
+    "name": "잠금 아이콘",
+    "category": "ui",
+    "status": "BLOCKED",
+    "reason": "미제작",
+    "text_policy": "문구 별도 JSON/DOM, 모바일 히트 영역 44pt 이상"
+  }
+]

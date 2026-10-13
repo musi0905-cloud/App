@@ -1,0 +1,13 @@
+{
+  "name": "404-npc08-animation-review",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "render": "node render.js",
+    "qa": "node check_frames.js && node qa_contact.js",
+    "encode": "python encode.py"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  }
+}

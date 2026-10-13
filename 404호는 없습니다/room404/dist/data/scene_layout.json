@@ -1,0 +1,1136 @@
+{
+ "source": "배경: asset-source/02_배경 (download_integrity_v02.json 해시 일치, approved_static_assets_v01.json PASS). 좌표는 배경 설계 공간 1080x1920 기준. BG02 카메라는 v05 binding.json의 카메라(720x1280)를 1.5배 한 값. 그 밖의 수평선·바닥선은 실제 배경을 100px 격자로 놓고 읽은 시각 추정값(calibration: visual_estimate)이며 측정값이 아니다.",
+ "layers": [
+  "background",
+  "back_objects",
+  "contact_shadow",
+  "character",
+  "foreground_occlusion",
+  "ui"
+ ],
+ "rules": [
+  "캔버스는 장면마다 고정한다. 인물 프레임은 같은 변환으로만 그리고 프레임마다 다시 가운데 맞추지 않는다.",
+  "이동 중에는 마지막 프레임에서 첫 프레임으로 되감지 않는다. 입장·퇴장 클립은 한 번만 재생한다.",
+  "입장(enter) → 대기(idle) → 퇴장(exit) 상태를 나눈다. 걷기를 거꾸로 재생하지 않는다. 정지 이미지를 옮기거나 키워서 걷기로 쓰지 않는다.",
+  "걷기 클립이 없거나 qa_status가 PASS가 아니면 정지 대기가 기본값이다(02_ASSET_AND_SCRIPT_CONTRACT). 등장·퇴장은 제자리에서 불투명도만 바뀐다.",
+  "2004년 배경(BG05·BG10·BG11)은 2004년 기록을 보여 주는 자리에만 쓴다. 2026년 현재 장면에는 쓰지 않는다."
+ ],
+ "backgrounds": {
+  "BG01": {
+   "name": "경비실 정면",
+   "era": "2026",
+   "file": "assets/bg/BG01.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 900,
+   "floor_line_y": 1720,
+   "floor": [
+    [
+     150,
+     1720
+    ],
+    [
+     400,
+     1720
+    ],
+    [
+     400,
+     1920
+    ],
+    [
+     150,
+     1920
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ],
+    "desk": [
+     0,
+     880,
+     1080,
+     540
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "monitor",
+     "rect": [
+      40,
+      920,
+      540,
+      240
+     ],
+     "action": "tool:CCTV",
+     "label": "CCTV 모니터"
+    },
+    {
+     "id": "ledger",
+     "rect": [
+      270,
+      1225,
+      570,
+      110
+     ],
+     "action": "tool:명부",
+     "label": "방문 기록부"
+    },
+    {
+     "id": "phone",
+     "rect": [
+      800,
+      1060,
+      200,
+      175
+     ],
+     "action": "tool:통화",
+     "label": "전화기"
+    }
+   ],
+   "occluders": [
+    {
+     "id": "desk_front",
+     "polygon": [
+      [
+       0,
+       1395
+      ],
+      [
+       1080,
+       1395
+      ],
+      [
+       1080,
+       1920
+      ],
+      [
+       0,
+       1920
+      ]
+     ],
+     "note": "책상 앞판. 책상 뒤에 선 인물의 하반신을 가린다."
+    }
+   ]
+  },
+  "BG02": {
+   "name": "공동현관 정면",
+   "era": "2026",
+   "file": "assets/bg/BG02.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "v05_binding",
+   "camera_model": {
+    "horizon_y": 675,
+    "focal_px": 1100,
+    "camera_height_m": 1.6,
+    "door_plane_z_m": 3.09,
+    "source": "asset-source/v05_QA/code/NPC03/binding.json camera x1.5"
+   },
+   "horizon_y": 675,
+   "floor_line_y": 1244.6,
+   "floor_line_note": "문 문턱(z 3.09m) = 675 + 1100x1.6/3.09. 격자로 읽은 문 아래선 약 1240과 일치.",
+   "floor": [
+    [
+     150,
+     1240
+    ],
+    [
+     960,
+     1240
+    ],
+    [
+     1080,
+     1300
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1300
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ],
+    "intercom": [
+     60,
+     560,
+     960,
+     1280
+    ]
+   },
+   "stand_points": {
+    "idle": {
+     "x": 540,
+     "y": 1780,
+     "z": 1.593,
+     "source": "00_스타일가이드/QA_NPC01_BG02_static_placement_v01.jpg (PASS) 의 발 위치. z = 1100x1.6/(1780-675)."
+    },
+    "clip_enter_end": {
+     "x": 540,
+     "z": "클립마다 다름: walk_clips.json npcs.<id>.checks.enter_end_z (1.865~2.333m)"
+    }
+   },
+   "paths": {
+    "enter": {
+     "clip": "front",
+     "from": {
+      "x_m": 0,
+      "z_m": 2.92
+     },
+     "toward": "camera",
+     "note": "문 안쪽(z 2.92)에서 카메라 쪽으로 2초 걷기. 끝 위치는 걷는 속도에 따라 다르다."
+    },
+    "exit": {
+     "clip": "rear",
+     "from": {
+      "x_m": 0,
+      "z_m": 1.8
+     },
+     "toward": "door",
+     "note": "z 1.8에서 문 쪽으로 걷기. 입장 끝과 차이(gap)는 walk_clips.json checks."
+    },
+    "pass": {
+     "clip": "side",
+     "from": {
+      "x_m": 0.52,
+      "z_m": 2.35
+     },
+     "toward": "screen-left"
+    }
+   },
+   "click_areas": [
+    {
+     "id": "visitor",
+     "rect": "figure",
+     "action": "tool:CCTV",
+     "label": "방문객 자세히 보기",
+     "note": "인물이 그려진 영역(정지 이미지 상자 또는 클립 프레임의 bbox)"
+    },
+    {
+     "id": "intercom_panel",
+     "rect": [
+      1000,
+      690,
+      75,
+      200
+     ],
+     "action": null,
+     "label": "벽 인터폰"
+    }
+   ],
+   "occluders": [],
+   "occluder_note": "카메라와 인물 사이에 가림 구조물이 없다. 문틀(z 3.09)은 입장 시작점(z 2.92)보다 뒤에 있다.",
+   "figure_grade": {
+    "y0": 630,
+    "y1": 1500,
+    "from": "rgba(104,115,104,0.055)",
+    "to": "rgba(36,43,44,0.15)",
+    "source": "v05 render.js의 인물 조명 보정(720 공간 y 420→1000 그라데이션, source-atop)을 설계 공간(x1.5)으로 옮김. 스프라이트에는 이 보정이 들어 있지 않고 렌더 합성본에만 있어 엔진이 적용한다."
+   }
+  },
+  "BG03": {
+   "name": "1층 로비",
+   "era": "2026",
+   "file": "assets/bg/BG03.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 700,
+   "floor_line_y": 1000,
+   "floor": [
+    [
+     240,
+     1000
+    ],
+    [
+     900,
+     1000
+    ],
+    [
+     1080,
+     1180
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1260
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {
+    "elevator": {
+     "x": 690,
+     "y": 1010
+    }
+   },
+   "paths": {
+    "enter": {
+     "from": {
+      "x": 690,
+      "y": 1010
+     },
+     "toward": "camera",
+     "note": "걷기 클립 없음"
+    }
+   },
+   "click_areas": [
+    {
+     "id": "elevator",
+     "rect": [
+      600,
+      610,
+      170,
+      390
+     ],
+     "action": null,
+     "label": "엘리베이터"
+    },
+    {
+     "id": "mailboxes",
+     "rect": [
+      0,
+      560,
+      120,
+      450
+     ],
+     "action": null,
+     "label": "우편함"
+    },
+    {
+     "id": "intercom_panel",
+     "rect": [
+      1000,
+      680,
+      75,
+      200
+     ],
+     "action": null,
+     "label": "벽 인터폰"
+    }
+   ],
+   "occluders": []
+  },
+  "BG04": {
+   "name": "4층 복도 현재",
+   "era": "2026",
+   "file": "assets/bg/BG04.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 700,
+   "floor_line_y": 1000,
+   "vanishing_x": 540,
+   "floor": [
+    [
+     360,
+     1000
+    ],
+    [
+     740,
+     1000
+    ],
+    [
+     1080,
+     1500
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1460
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "far_window",
+     "rect": [
+      400,
+      600,
+      360,
+      280
+     ],
+     "action": null,
+     "label": "복도 끝 창"
+    }
+   ],
+   "occluders": [],
+   "note": "401~406 중 어느 문이 404인지는 기획에 위치 지정이 없어 클릭 영역에 호수를 붙이지 않음."
+  },
+  "BG05": {
+   "name": "4층 복도 2004",
+   "era": "2004",
+   "file": "assets/bg/BG05.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 700,
+   "floor_line_y": 1000,
+   "vanishing_x": 540,
+   "floor": [
+    [
+     360,
+     1000
+    ],
+    [
+     740,
+     1000
+    ],
+    [
+     1080,
+     1500
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1460
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [],
+   "occluders": [],
+   "note": "BG04와 같은 구조(같은 격자 좌표)의 2004년 상태."
+  },
+  "BG06": {
+   "name": "엘리베이터 홀",
+   "era": "2026",
+   "file": "assets/bg/BG06.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 720,
+   "floor_line_y": 1170,
+   "floor": [
+    [
+     100,
+     1170
+    ],
+    [
+     1000,
+     1170
+    ],
+    [
+     1080,
+     1220
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1230
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {
+    "elevator": {
+     "x": 540,
+     "y": 1180
+    }
+   },
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "elevator",
+     "rect": [
+      330,
+      470,
+      420,
+      700
+     ],
+     "action": null,
+     "label": "엘리베이터"
+    },
+    {
+     "id": "floor_sign",
+     "rect": [
+      480,
+      400,
+      120,
+      50
+     ],
+     "action": null,
+     "label": "층 표시"
+    }
+   ],
+   "occluders": []
+  },
+  "BG07": {
+   "name": "지하 주차장",
+   "era": "2026",
+   "file": "assets/bg/BG07.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 760,
+   "floor_line_y": 940,
+   "floor": [
+    [
+     300,
+     940
+    ],
+    [
+     760,
+     940
+    ],
+    [
+     1080,
+     1500
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1220
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "cctv",
+     "rect": [
+      890,
+      160,
+      70,
+      70
+     ],
+     "action": null,
+     "label": "차량 출입 CCTV"
+    },
+    {
+     "id": "parked_car",
+     "rect": [
+      80,
+      820,
+      180,
+      300
+     ],
+     "action": null,
+     "label": "주차 차량"
+    }
+   ],
+   "occluders": [
+    {
+     "id": "pillar_left",
+     "polygon": [
+      [
+       0,
+       360
+      ],
+      [
+       100,
+       360
+      ],
+      [
+       100,
+       1180
+      ],
+      [
+       0,
+       1180
+      ]
+     ],
+     "note": "왼쪽 기둥"
+    }
+   ]
+  },
+  "BG08": {
+   "name": "관리사무소",
+   "era": "2026",
+   "file": null,
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 860,
+   "floor_line_y": 1330,
+   "floor": [
+    [
+     150,
+     1330
+    ],
+    [
+     1000,
+     1330
+    ],
+    [
+     1080,
+     1600
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1600
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {
+    "behind_desk": {
+     "x": 560,
+     "y": 1300
+    }
+   },
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "cabinet",
+     "rect": [
+      0,
+      730,
+      150,
+      900
+     ],
+     "action": null,
+     "label": "파일 캐비닛"
+    },
+    {
+     "id": "desk_ledger",
+     "rect": [
+      520,
+      1010,
+      220,
+      50
+     ],
+     "action": null,
+     "label": "책상 위 서류"
+    }
+   ],
+   "occluders": [
+    {
+     "id": "desk",
+     "polygon": [
+      [
+       140,
+       1020
+      ],
+      [
+       1000,
+       1020
+      ],
+      [
+       1000,
+       1340
+      ],
+      [
+       140,
+       1340
+      ]
+     ],
+     "note": "책상. 뒤에 선 인물의 하반신을 가린다."
+    }
+   ],
+   "status": "승인본(BG08_management_office_2026_base_v02_v01) 미반입. asset-source의 BG08_management_office_2026_v01은 승인 목록에 없어 게임 파일로 만들지 않음. 아래 좌표는 v01을 보고 읽은 값이라 승인본이 오면 다시 확인."
+  },
+  "BG09": {
+   "name": "전기·통신 유지보수실 표지",
+   "era": "2026",
+   "file": "assets/bg/BG09.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 700,
+   "floor_line_y": 1150,
+   "floor": [
+    [
+     250,
+     1150
+    ],
+    [
+     480,
+     1150
+    ],
+    [
+     1080,
+     1900
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1300
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "cover_door",
+     "rect": [
+      660,
+      200,
+      270,
+      1560
+     ],
+     "action": null,
+     "label": "유지보수실 문"
+    },
+    {
+     "id": "cover_plate",
+     "rect": [
+      730,
+      440,
+      140,
+      170
+     ],
+     "action": null,
+     "label": "표찰"
+    }
+   ],
+   "occluders": []
+  },
+  "BG10": {
+   "name": "404호 실내 사건 이전",
+   "era": "2004",
+   "file": "assets/bg/BG10.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 760,
+   "floor_line_y": 820,
+   "floor": [
+    [
+     180,
+     820
+    ],
+    [
+     900,
+     820
+    ],
+    [
+     1000,
+     1900
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1100
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [],
+   "occluders": [],
+   "note": "회상 전용. 사람을 세우지 않는다(피해자 2026 등장 금지)."
+  },
+  "BG11": {
+   "name": "404호 실내 화재 이후",
+   "era": "2004",
+   "file": "assets/bg/BG11.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 760,
+   "floor_line_y": 820,
+   "floor": [
+    [
+     180,
+     820
+    ],
+    [
+     900,
+     820
+    ],
+    [
+     1000,
+     1900
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1100
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [],
+   "occluders": [],
+   "note": "기록 전용. 사람을 세우지 않는다."
+  },
+  "BG12": {
+   "name": "공공자료 열람실",
+   "era": "2026",
+   "file": "assets/bg/BG12.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 700,
+   "floor_line_y": 1090,
+   "floor": [
+    [
+     140,
+     1090
+    ],
+    [
+     1000,
+     1090
+    ],
+    [
+     1080,
+     1140
+    ],
+    [
+     0,
+     1140
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {
+    "clerk": {
+     "x": 640,
+     "y": 1060,
+     "note": "카운터 뒤. 발은 카운터에 가려 보이지 않음."
+    }
+   },
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "counter",
+     "rect": [
+      140,
+      860,
+      860,
+      235
+     ],
+     "action": null,
+     "label": "열람 카운터"
+    },
+    {
+     "id": "document",
+     "rect": [
+      270,
+      1220,
+      520,
+      120
+     ],
+     "action": null,
+     "label": "열람 서류"
+    }
+   ],
+   "occluders": [
+    {
+     "id": "counter",
+     "polygon": [
+      [
+       140,
+       862
+      ],
+      [
+       1000,
+       862
+      ],
+      [
+       1000,
+       1095
+      ],
+      [
+       140,
+       1095
+      ]
+     ],
+     "note": "열람 카운터 앞판"
+    },
+    {
+     "id": "table",
+     "polygon": [
+      [
+       0,
+       1140
+      ],
+      [
+       1080,
+       1140
+      ],
+      [
+       1080,
+       1420
+      ],
+      [
+       0,
+       1420
+      ]
+     ],
+     "note": "앞쪽 열람 책상"
+    }
+   ]
+  },
+  "BG13_2026": {
+   "name": "단지 외관 2026",
+   "era": "2026",
+   "file": "assets/bg/BG13_2026.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 1300,
+   "floor_line_y": 1390,
+   "floor": [
+    [
+     300,
+     1390
+    ],
+    [
+     860,
+     1390
+    ],
+    [
+     1080,
+     1500
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1520
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "entrance",
+     "rect": [
+      500,
+      1280,
+      120,
+      100
+     ],
+     "action": null,
+     "label": "공동현관"
+    },
+    {
+     "id": "guard_booth",
+     "rect": [
+      0,
+      1170,
+      280,
+      330
+     ],
+     "action": null,
+     "label": "경비실"
+    }
+   ],
+   "occluders": [],
+   "note": "4층 창의 정확한 줄은 보이는 1층이 몇 층인지 확정되지 않아 지정하지 않음(BG13_2004와 대조 필요, 2004판 미반입)."
+  }
+ },
+ "usage": {
+  "intercom": {
+   "background": "BG02",
+   "camera": "intercom",
+   "stand_point": "idle",
+   "era": "2026"
+  },
+  "desk": {
+   "background": "BG01",
+   "camera": "desk",
+   "era": "2026"
+  },
+  "night_intro": {
+   "1": "BG13_2026",
+   "2": "BG09",
+   "3": "BG04",
+   "4": "BG07",
+   "5": "BG12"
+  },
+  "night_intro_era": "2026",
+  "cutscene_setting": {
+   "경비실": "BG01"
+  },
+  "evidence_backdrop": {
+   "EV05": "BG10",
+   "EV18": "BG10",
+   "EV06": "BG05",
+   "EV07": "BG05",
+   "EV08": "BG05",
+   "EV09": "BG05",
+   "EV12": "BG05",
+   "EV10": "BG11"
+  },
+  "evidence_backdrop_note": "2004년 자료를 열 때만 2004년 배경을 어둡게 깐다(06_ASSET_SHOTLIST: BG05 N3~5 기록, BG10 N3 회상, BG11 N5 기록)."
+ }
+}

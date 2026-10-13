@@ -61,7 +61,7 @@ export const currentScene=s=>s.run?sceneId(s.run.night||1,s.run.index+1):null;
 export function recordDecision(s){if(s.phase!=='SHIFT'||!s.run||s.run.screen!=='feedback')return null;const id=currentScene(s);add(s.completedScenes,id);return id}
 // Called when the engine run reached its result screen. Running it again changes nothing (re-entry guard).
 export function finishNight(s,anomalies){const r=s.run,n=r?.night||1;if(s.phase!=='SHIFT'||!r||r.screen!=='result'||s.nightCompleted>=n)return false;
- s.nightCompleted=n;const t=totals(r);s.accessHistory.push({night:n,...t});
+ s.nightCompleted=n;const t=totals(r);s.accessHistory.push({night:n,...t,reports:Array.isArray(r.reports)?r.reports.length:0});
  if(n===1){const id=ENDING_IDS[ending(r,anomalies)];s.legacyEnding=id;add(s.endingsUnlocked,id)}
  s.phase='RECAP';return true}
 export function nextNight(s,data){if(s.phase!=='RECAP'||s.nightCompleted!==s.night||s.night>=5)return false;s.night++;s.run=nightRun(s.night,data.slots,data.visitors,data.anomalies,s.date);s.phase='INTRO';s.selectedArchiveScene=null;return true}

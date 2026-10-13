@@ -1,0 +1,668 @@
+[
+  {
+    "id": "EV01",
+    "title": "준공 평면도 보존 사본",
+    "acquire": "N2 설비 방문/도면뷰어",
+    "proves": "당시 404호 존재",
+    "does_not_prove": "2004 범죄",
+    "crosscheck_ids": [
+      "EV02",
+      "EV03"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "REVISE",
+    "reason": "문자 카드 검수 통과. 실제 도면과의 결합 및 구조 대조 검수 미완료.",
+    "body": [
+      "서림파크 · 4층",
+      "등록 세대: 401 / 402 / 403",
+      "등록 세대: 404 / 405 / 406"
+    ],
+    "issued_at": "1997",
+    "source": "준공 자료 보존본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV01_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV01_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": false
+  },
+  {
+    "id": "EV02",
+    "title": "운영 세대 명부",
+    "acquire": "경비실 기본 도구",
+    "proves": "현재 404 항목 부재",
+    "does_not_prove": "실제 세대가 없었음",
+    "crosscheck_ids": [
+      "EV01"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "조회 범위: 4층",
+      "세대 항목: 401 / 402 / 403",
+      "세대 항목: 405 / 406"
+    ],
+    "issued_at": "2026",
+    "source": "관리사무소 운영 단말",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV02_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV02_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV03",
+    "title": "설비 개보수 발주 기록",
+    "acquire": "N2 관리실 문서",
+    "proves": "404 앞 보수 공사",
+    "does_not_prove": "고의 은폐",
+    "crosscheck_ids": [
+      "EV01",
+      "EV04"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "공사 구역: 4-04",
+      "작업: 기존 출입부 가림벽 설치",
+      "표찰: 전기·통신 유지보수실",
+      "세대 출입 안내는 운영도면으로 통일."
+    ],
+    "issued_at": "2006",
+    "source": "관리사무소 보관 서류",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV03_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV03_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV04",
+    "title": "봉쇄 공간 사진/설비 표찰",
+    "acquire": "N2 현장 조사 컷",
+    "proves": "호실 구조 잔재",
+    "does_not_prove": "범행 이유",
+    "crosscheck_ids": [
+      "EV03"
+    ],
+    "content_state": "기획서 확인 사실만 기록. 상세 증거 원문은 미작성.",
+    "category": "evidence",
+    "status": "BLOCKED",
+    "reason": "본 패치의 문서 렌더 대상 아님. 기존 사진 원본 재사용 후 문서/앞뒤면 조합 검수 필요.",
+    "body": [],
+    "engine_applied": false
+  },
+  {
+    "id": "EV05",
+    "title": "가족 사진 뒷면 주소",
+    "acquire": "N3 주민 방문",
+    "proves": "김정우 가족의 404 거주",
+    "does_not_prove": "사망 원인",
+    "crosscheck_ids": [
+      "EV06",
+      "EV07"
+    ],
+    "content_state": "기획서 확인 사실만 기록. 상세 증거 원문은 미작성.",
+    "category": "evidence",
+    "status": "BLOCKED",
+    "reason": "본 패치의 문서 렌더 대상 아님. 기존 사진 원본 재사용 후 문서/앞뒤면 조합 검수 필요.",
+    "body": [],
+    "engine_applied": false
+  },
+  {
+    "id": "EV06",
+    "title": "화재 최초 접수 요약",
+    "acquire": "N3 문서 수집",
+    "proves": "해당 주소 화재 신고 존재",
+    "does_not_prove": "방화범",
+    "crosscheck_ids": [
+      "EV07",
+      "EV08"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "접수번호: F04-1118-404",
+      "최초 접수시각: 21:28",
+      "신고 주소: 서림파크 404호",
+      "신고 내용: 세대 내부 연기 및 화재"
+    ],
+    "issued_at": "2004-11-18",
+    "source": "외부 화재 접수 보존본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV06_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV06_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV07",
+    "title": "입주민 안내문 보관 사본",
+    "acquire": "N3 명부 보관실",
+    "proves": "발표상 화재 미기재",
+    "does_not_prove": "발표가 사실임",
+    "crosscheck_ids": [
+      "EV06"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "404호 관련 특별한 사건은 없었습니다.",
+      "관련 문의는 관리사무소로 일원화합니다.",
+      "외부에 확인되지 않은 정보를 전달하지",
+      "말아 주시기 바랍니다."
+    ],
+    "issued_at": "2004-11",
+    "source": "관리사무소 배포본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV07_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV07_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV08",
+    "title": "출동 메모 보존 사본",
+    "acquire": "N3 외부 보관자",
+    "proves": "최초 접수시간과 주소",
+    "does_not_prove": "살인 원인",
+    "crosscheck_ids": [
+      "EV06",
+      "EV10"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "접수번호 대조: F04-1118-404",
+      "신고 접수: 21:28",
+      "출동 주소 기재: 서림파크 404호"
+    ],
+    "issued_at": "2004-11-18",
+    "source": "당시 관계자의 외부 보관본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV08_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV08_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV09",
+    "title": "야간 근무일지",
+    "acquire": "N4 박영식 유품",
+    "proves": "당시 차량·출입 동선",
+    "does_not_prove": "차량 탑승자 단독 확정",
+    "crosscheck_ids": [
+      "EV11"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "20:40 · 차량 방문 기입",
+      "목적지: 404호 · 면담",
+      "차량 뒷자리: 7286"
+    ],
+    "issued_at": "2004-11-18",
+    "source": "박영식 유품 보관 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV09_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV09_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV10",
+    "title": "사망 관련 기록 시간대 사본",
+    "acquire": "N5 외부 보관 서류",
+    "proves": "사망 시점이 화재 전",
+    "does_not_prove": "단독 범인 확정",
+    "crosscheck_ids": [
+      "EV06",
+      "EV09"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "대상: 김정우",
+      "기록상 사망시점: 21:10"
+    ],
+    "issued_at": "2004-11-18",
+    "source": "외부 보관 관련 서류",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV10_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV10_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV11",
+    "title": "차량 등록대장 보존본",
+    "acquire": "N4 로그 비교",
+    "proves": "방문 차량 소속",
+    "does_not_prove": "탑승자 확정",
+    "crosscheck_ids": [
+      "EV09",
+      "EV12"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "등록 차량 뒷자리: 7286",
+      "사용 구분: 건설사 임원 업무 차량",
+      "당시 담당 직책: 강태준 임원"
+    ],
+    "issued_at": "2004",
+    "source": "외부 보존 대장 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV11_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV11_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV12",
+    "title": "임원 면담 일정 보존 사본",
+    "acquire": "N4 기록 조각",
+    "proves": "특정 시간 서림파크 일정",
+    "does_not_prove": "현장 범행",
+    "crosscheck_ids": [
+      "EV09",
+      "EV11"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "대상 직책: 강태준 임원",
+      "저녁 일정: 서림파크 · 김정우 면담",
+      "예정 시각: 20:40"
+    ],
+    "issued_at": "2004-11-18",
+    "source": "당시 비서 보관 일정 조각",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV12_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV12_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV13",
+    "title": "협력업체 거래 장부 사본",
+    "acquire": "N4 보관자 전달",
+    "proves": "비정상 공사비 흐름",
+    "does_not_prove": "강태준의 유죄 확정",
+    "crosscheck_ids": [
+      "EV14"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "동일 공사 항목의 두 정산본 보존",
+      "실제 작업 내역과 청구 내역 불일치",
+      "협력업체 정산 경로에 추가 지급 기입",
+      "회계책임자 검토 표시: 김정우"
+    ],
+    "issued_at": "2003~2004",
+    "source": "회계 자료 외부 보관본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV13_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV13_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV14",
+    "title": "내부제보 초안",
+    "acquire": "N4 잠긴 파일",
+    "proves": "김정우의 폭로 준비",
+    "does_not_prove": "살해범 확정",
+    "crosscheck_ids": [
+      "EV13"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "허위 공사비와 특혜 정산 경로를",
+      "원본 장부와 비교해 확인해야 합니다.",
+      "제보 전 관련 사본을 외부에 보존하려 합니다.",
+      "자료가 사라지면 지급 내역을 다시 대조해",
+      "주십시오. · 작성자: 김정우"
+    ],
+    "issued_at": "2004",
+    "source": "김정우가 보존한 자료 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV14_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV14_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV15",
+    "title": "관리 기록 교체 지시서",
+    "acquire": "N4 관리실 서랍",
+    "proves": "일부 출입 기록 덮어쓰기 지시",
+    "does_not_prove": "지시자의 살인 인지",
+    "crosscheck_ids": [
+      "EV16"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "관련 방문 항목은 운영 자료에서 교체.",
+      "대외 안내와 다른 출입 기록은 별도 회수.",
+      "404호 문의는 관리소 답변으로 통일.",
+      "기존 사본의 배포를 중단할 것.",
+      "지시 수신: 당시 관리 책임자 오명철"
+    ],
+    "issued_at": "2004~2005",
+    "source": "관리사무소 보관 지시 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV15_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV15_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV16",
+    "title": "입주자대표 회의록 발췌",
+    "acquire": "N3~N4 주민 자료",
+    "proves": "가격 하락 우려와 비공개 결의",
+    "does_not_prove": "주민 전체의 공모",
+    "crosscheck_ids": [
+      "EV07",
+      "EV15"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "논의: 사건 언급에 따른 집값 하락 우려",
+      "결의: 관련 자료의 외부 배포 중단",
+      "문의 응답은 관리사무소에 일원화"
+    ],
+    "issued_at": "2004~2005",
+    "source": "일부 주민 보존 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV16_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV16_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV17",
+    "title": "보관 자료 회수 요청",
+    "acquire": "N4 캠프 방문",
+    "proves": "현재 자료 회수·압박 시도",
+    "does_not_prove": "과거 범죄 직접 실행",
+    "crosscheck_ids": [
+      "EV15"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "과거 관리 기록의 원본 확인을 요청합니다.",
+      "보관 중인 원본 자료를 반환해 주십시오.",
+      "관련 문의는 본 요청의 담당자를 통합니다.",
+      "담당: 윤도경 · 후보 캠프 실무"
+    ],
+    "issued_at": "2026",
+    "source": "후보 캠프 측 방문자가 제시",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV17_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV17_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  },
+  {
+    "id": "EV18",
+    "title": "하은의 일기 · 복도 그림",
+    "acquire": "N3 사진첩",
+    "proves": "가족 생활, 옛 층 구조, 일자",
+    "does_not_prove": "사건 범인의 신원",
+    "crosscheck_ids": [
+      "EV01",
+      "EV05"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "REVISE",
+    "reason": "문자 카드 검수 통과. 일기 그림과 404 숫자 레이어 결합 미완료.",
+    "body": [
+      "오늘은 우리 집 앞 복도를 그렸다.",
+      "우리 집은 404호다.",
+      "아빠가 책상에서 종이를 정리했다.",
+      "내일은 함께 사진을 보기로 했다."
+    ],
+    "issued_at": "2004",
+    "source": "가족 사진첩 보존본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV18_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV18_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": false
+  },
+  {
+    "id": "EV19",
+    "title": "교대 근무 음성 기록",
+    "acquire": "N5 이전 기록",
+    "proves": "정정 요청에 대한 관리실 거부",
+    "does_not_prove": "범죄 진상",
+    "crosscheck_ids": [
+      "EV15"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "REVISE",
+    "reason": "전사 카드 검수 통과. 음성 파일 미제작; 음성 증거 완성 아님.",
+    "body": [
+      "근무원: 원본 명부와 현재 단말이 다릅니다.",
+      "관리실: 현재 운영 명부를 따르세요.",
+      "근무원: 정정 요청을 기록하겠습니다.",
+      "관리실: 과거 자료로 세대를 추가할 수 없습니다."
+    ],
+    "issued_at": "2026",
+    "source": "근무 기록 보존 사본",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV19_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV19_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": false
+  },
+  {
+    "id": "EV20",
+    "title": "원본 패킷 · 버전 비교",
+    "acquire": "N5 원본 아카이브",
+    "proves": "자료 생성 순서·서로 다른 버전",
+    "does_not_prove": "자동으로 자료 진위 보장",
+    "crosscheck_ids": [
+      "EV06",
+      "EV09",
+      "EV15"
+    ],
+    "content_state": "제작용 허구 원문 작성. 명시되지 않은 세부는 DESIGN; 추리 해설은 메타데이터에 분리.",
+    "category": "evidence",
+    "status": "PASS",
+    "reason": "정지 전사 카드: 원문 JSON·SVG·PNG 문자 일치, 줄넘침 없음. 추리 해설 본문 분리. 원본 문서 재현으로 사용하지 말 것.",
+    "body": [
+      "외부 접수 기록",
+      "수기 경비일지",
+      "관리 기록 교체 지시"
+    ],
+    "issued_at": "2026",
+    "source": "플레이어 보존 아카이브",
+    "verification_state": "unverified",
+    "design_details": [
+      "정확한 문서 문구·출처 표현은 제작용 DESIGN",
+      "신고 접수번호 F04-1118-404 및 접수시각21:28은 미지정 공백을 확정한 DESIGN",
+      "차량 뒷자리7286은 독립 교차증거 연결용 DESIGN"
+    ],
+    "original_or_copy": "copy",
+    "game_path": "04_증거소품/game/EV20_evidence_readable_v03.png",
+    "source_path": "04_증거소품/sources/EV20_evidence_readable_v03.svg",
+    "engine_applied": false,
+    "text_layout_qa": "PASS",
+    "qa_scope": "1080x1440 readable transcript card only, not an original historical document facsimile",
+    "full_evidence_complete": true
+  }
+]

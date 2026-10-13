@@ -17,7 +17,7 @@ test('every portrait file exists, is cached for offline use, and comes from a ve
  const sw=readFileSync(dist('sw.js'),'utf8');assert.match(sw,/character_assets\.json/);
  const integ=json(pkg('docs/download_integrity_v02.json')).images,rev=json(pkg('docs/character_revision_manifest_v02.json'));
  for(const [id,a] of Object.entries(ca.assets)){assert.ok(existsSync(dist(a.file)),a.file);assert.ok(readFileSync(dist(a.file)).length>5000);
-  assert.ok(sw.includes(`'${id}'`)&&sw.includes('assets/v5/bust-'),id+' precached');
+  assert.ok(sw.includes(`'${id}'`)&&sw.includes('assets/v5/figure-'),id+' precached');
   const src=readFileSync(pkg('png/'+a.source)),sha=createHash('sha256').update(src).digest('hex');assert.equal(sha,a.source_sha256,id);
   const expected=integ.find(x=>x.path==='01_캐릭터/game/'+a.source)?.sha256||rev.find(x=>x.game_path?.endsWith(a.source))?.sha256;assert.equal(sha,expected,id+' matches the package hash')}
 });

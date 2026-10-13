@@ -2,7 +2,7 @@
 
 코드 구조를 섹션별로 정리합니다. **코드를 바꾸면 해당 섹션도 함께 고칩니다.**
 
-- 기준 버전: v0.15.0 (2026-10-09)
+- 기준 버전: v0.16.0 (2026-10-13)
 - 코드 위치: `room404/`
 - 빌드 과정 없이 `room404/dist/` 폴더를 그대로 웹 서버에 올리면 실행됩니다.
 
@@ -19,15 +19,18 @@ room404/
 │  ├─ engine.js           규칙: 사건 선택·판정·결말·저장 검증
 │  ├─ story.js            5야간 이야기: 상태·증거·퍼즐·엔딩 E01~E30 조건·저장 이전
 │  ├─ replay.js           CCTV 재현 (canvas 애니메이션)
+│  ├─ stage.js            레이어 무대: 배경→그림자→인물→앞 가림→UI 버튼 (v0.16)
+│  ├─ walk.js             입장→대기→퇴장 시간 상태기계 (v0.16)
 │  ├─ voice.js            전화 목소리 (기기 내장 한국어 음성)
 │  ├─ sfx.js              합성 효과음 (벨 소리, 문 소리)
 │  ├─ sw.js               오프라인 캐시 (서비스워커)
 │  ├─ manifest.webmanifest PWA 설정
 │  ├─ data/               게임 데이터 (JSON)
-│  ├─ assets/             그림. v2/ = 이미지·모션 v2 (WebP, motion/*.mp4, previews/)
+│  ├─ assets/             그림. v2/ = 이미지·모션 v2 (WebP, motion/*.mp4, previews/), bg/ = 승인 배경 720x1280, v5/ = 승인 인물 전신
 │  └─ icons/              앱 아이콘
+├─ qa/                    내부 QA 뷰어 (배포 밖, npm run qa)
 ├─ tests/                 자동 검사
-├─ scripts/               v0.6 문구 변환 기록 (다시 실행 금지), convert-gates-v13.py (엔딩 조건 변환, 다시 실행 가능)
+├─ scripts/               v0.6 문구 변환 기록 (다시 실행 금지), convert-gates-v13.py (엔딩 조건 변환), build-stage-assets.py·build-walk-binding.py·merge-evidence-text.py·import-v05-frames.py·build-asset-registry.py (v0.16, 다시 실행 가능)
 ├─ test-artifacts/        검사 결과와 화면 캡처
 └─ CLAUDE_HANDOFF.md 등   인수인계·변경 기록
 ```
@@ -195,7 +198,7 @@ home ──시작──▶ game ◀──돌아가기── investigation
 ## 8. 오프라인 (sw.js)
 
 - 설치할 때 `FILES` 목록 전체를 캐시합니다. 이후에는 캐시를 먼저 쓰고, 없으면 네트워크를 씁니다.
-- **파일을 추가하거나 수정하면 `CACHE` 이름(`room404-v0.10.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
+- **파일을 추가하거나 수정하면 `CACHE` 이름(지금 `room404-v0.16.0`)을 올려야** 사용자에게 새 파일이 전달됩니다. 새 파일은 `FILES`에도 추가합니다.
 - 영상(.mp4)은 미리 저장하지 않고 서비스워커도 가로채지 않습니다(용량, 구간 요청). 인터넷이 없으면 사진이 보입니다.
 - 앱(Capacitor) 안에서는 서비스워커를 쓰지 않습니다. 모든 파일이 앱 안에 들어 있습니다.
 
@@ -204,8 +207,9 @@ home ──시작──▶ game ◀──돌아가기── investigation
 ```bash
 cd room404
 npm ci
-npm test                 # engine + scenarios + story + gates (32개)
-npm run test:ui          # 브라우저 회귀 10그룹 + 이야기 8그룹(story-ui.mjs). Linux용 Chromium 준비를 겸함
+npm test                 # engine + scenarios + story + gates + characters + stage + world + registry + import-v05 (62개)
+npm run test:ui          # 브라우저 회귀 10 + 이야기 8(story-ui) + v0.16 화면 10(game-ui) + QA 뷰어 7(qa-ui). Linux용 Chromium 준비를 겸함
+npm run screens          # 폰·데스크톱 화면 캡처(검사 아님)
 npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 ```
 
@@ -215,7 +219,7 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 - 브라우저 검사는 `speechSynthesis`를 가짜로 바꿔 끼워 통화 음성을 검사합니다(읽은 줄 수, ko-KR, 사람마다 다른 높이, 소리 끄기). `primeVoice()`의 빈 발화는 세지 않습니다.
 - 테스트용 서버는 `tests/static-server.mjs`입니다. 영상 탐색에 필요한 Range 요청을 지원합니다.
 - 이 환경의 브라우저는 GPU가 없어 스크린샷에 영상이 검게 나옵니다. 영상 확인은 `data-video`와 `currentTime`으로 합니다.
-- 마지막 결과(2026-10-08, v0.14.0): 32/32, 10/10 + 8/8, 100/100 모두 통과
+- 마지막 결과(2026-10-13, v0.16.0): 62/62, 10/10 + 8/8 + 10/10 + 7/7, 100/100 모두 통과
 
 ## 9-1. 스토리 v1.1 데이터 (v0.13.0)
 
@@ -242,11 +246,24 @@ npm run test:all-cases   # 사건 100개 × 장면 3개 전수 검사
 ## 9-3. 새 캐릭터 그림 (v0.15.0)
 
 - 원본·승인 목록·매핑: `character-v5/` (Drive 최종 게임에셋 v02 패치). 무엇을 넣고 무엇을 안 넣었는지는 `character-v5/engine_applied_v0.15.0.json`.
-- `scripts/build-character-busts.py`가 승인된 PNG만 받아(원본 SHA-256 확인) 먼지 픽셀(alpha ≤ 16)을 지우고 상반신 WebP를 `dist/assets/v5/bust-<ID>.webp`로 만든다. 새 그림이 오면 `APPROVED`에 추가하고 다시 실행한다.
+- v0.16.0부터 `scripts/build-stage-assets.py`가 승인된 PNG만 받아(원본 SHA-256 확인) 먼지 픽셀(alpha ≤ 16)을 지우고 전신 WebP `dist/assets/v5/figure-<ID>.webp`와 발 기준점·양발 위치·키(px)를 만든다(v0.15의 상반신 크롭과 `build-character-busts.py`는 삭제). 새 그림이 오면 `FIGURES`에 추가하고 다시 실행한다.
 - `dist/data/character_assets.json`: `assets`(ID→파일·승인 출처·해시), `contacts`(장면→ID, `main_scene_mapping_40_v03.json`과 일치해야 함), `contacts_waiting_for_files`, `visitor_roles`(역할→NPC), `visitor_roles_enabled`(false).
-- 화면: `renderStoryCard()`가 `contacts[scene]`이 있을 때만 `#contactScreen`(인터폰 화면, `lobby-door-inside` 배경)에 상반신을 보여 준다. CSS `.person-sprite.cropped`.
+- 화면: `renderStoryCard()`가 `contacts[scene]`이 있을 때만 `#contactScreen`에 무대(9-4)를 띄워 BG02 위에 전신을 세운다.
 - 쓰지 않는 것: REVISE(MC07·MC27·MC30), DRAFT MC 초안, CCTV(걷기 프레임 없음). 검사: `tests/characters.test.mjs`, `story-ui.mjs`.
-- 그림을 추가하면 `sw.js`의 캐시 목록(`bust-` 목록)도 같이 고친다. 테스트가 확인한다.
+- 그림을 추가하면 `sw.js`의 캐시 목록(`figure-` 목록)도 같이 고친다. 테스트가 확인한다.
+
+## 9-4. 레이어 무대·긴급 신고·증거 뷰어 (v0.16.0)
+
+- 데이터 `dist/data/scene_layout.json`: 배경 13개(파일·연도·카메라 자르기·수평선·바닥선·바닥 다각형·서 있는 위치·입장/퇴장 경로·클릭 영역·앞 가림)와 게임 사용처(`usage`). 좌표는 배경 설계 공간 1080x1920. BG02만 v05 카메라 값, 나머지는 시각 추정(`calibration`).
+- `stage.js` `mountStage(host, {layout, background, camera, actor, areas, stand, reduced, base})`: 한 캔버스에 배경→뒤 물체→접지 그림자→인물(별도 레이어에 그리고 `figure_grade` 조명 보정)→앞 가림(가림 다각형 안에 배경을 다시 그림) 순서로 그리고, 클릭 영역은 그 위 버튼(UI). 인물은 정지 그림(서 있는 위치·카메라 모델로 크기 계산, 이동·확대 없음) 또는 걷기 클립(720x1280 고정 캔버스 프레임, `walk_clips.json` 그림자). `clipActor()`는 qa_status가 PASS가 아니면 null(게임은 REVISE 클립을 쓰지 않음).
+- `walk.js` `createWalker()`: enter→idle→exit→gone. 클립은 한 번만 앞으로 재생하고 마지막 프레임에서 멈춤(되감기·역재생 없음). 클립이 없으면 제자리 불투명도만 바꿈. 동작 줄이기면 즉시.
+- game.js: 인터폰 `#portrait`(BG02 `intercom` 카메라, 레거시 방문객 그림), 기록 인물 `#contactScreen`(승인 인물), 책상 `#desk`(BG01 `desk` 카메라, 모니터/기록부/전화기 → 도구). 야간 소개와 엔딩 '경비실' 컷은 `bg:` 포스터로 승인 배경 사용. 방문객 상태 키가 같으면 다시 입장하지 않음.
+- 긴급 신고: `engine.reportRun(run)`(판정 화면, 사건당 한 번) → `run.reports`. `totals()`·`ending()`·게이트는 읽지 않음. `validRun`이 형식 검사. 판정 뒤 `#reportNote`, 결과·야간 결산에 횟수, `story.accessHistory[].reports`.
+- 증거 뷰어 `#docViewer`: `story_evidence.json`의 `body`(카드 v03 본문)를 글로 보여 줌. 확대 80~200%(버튼, +/-/0, 두 손가락), Esc·배경 누르기로 닫고 여는 버튼으로 초점 복귀. 2004년 자료는 `usage.evidence_backdrop`의 2004 배경을 어둡게 깜. 열어도 확인(검증)되지 않음.
+- 야간 결산: 오늘 밤과 누적(accessHistory 합계).
+- QA 뷰어 `room404/qa/`: `npm run qa`. 상세는 `docs/animation_qa.md` 5절.
+- 에셋 레지스트리: `python3 scripts/build-asset-registry.py` → `../asset_registry.json`. 검사 `tests/registry.test.mjs`.
+- 검사: `stage.test.mjs`, `world.test.mjs`, `registry.test.mjs`, `import-v05.test.mjs`, `game-ui.mjs`, `qa-ui.mjs`.
 
 ## 10. 주의사항
 

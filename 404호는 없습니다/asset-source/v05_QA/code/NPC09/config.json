@@ -1,0 +1,12 @@
+{
+  "id": "NPC09",
+  "height_m": 1.64,
+  "prop": "folder",
+  "status": "REVISE",
+  "engine_applied": false,
+  "flip_side_shoes": [
+    "R"
+  ],
+  "revision": "v05",
+  "arm_wrist_fraction": 0.72
+}

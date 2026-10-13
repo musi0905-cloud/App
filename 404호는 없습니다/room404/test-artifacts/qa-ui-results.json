@@ -1,0 +1,37 @@
+[
+ {
+  "test": "viewer loads with the nine v05 NPCs, all REVISE, frames not in hand",
+  "status": "PASS",
+  "ms": 678
+ },
+ {
+  "test": "three views and frame step; playback runs once and stops on frame 47 (no wrap)",
+  "status": "PASS",
+  "ms": 2602
+ },
+ {
+  "test": "NPC06 elder rig and the enter/exit gap warning; NPC03 carrying arm listed",
+  "status": "PASS",
+  "ms": 54
+ },
+ {
+  "test": "MP4 review frames (opaque composite) with the computed feet and shadows on top",
+  "status": "PASS",
+  "ms": 2431
+ },
+ {
+  "test": "background swap: other backgrounds are marked as not calibrated for the clip",
+  "status": "PASS",
+  "ms": 467
+ },
+ {
+  "test": "still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor",
+  "status": "PASS",
+  "ms": 2075
+ },
+ {
+  "test": "zero uncaught JavaScript errors in the QA viewer",
+  "status": "PASS",
+  "ms": 2
+ }
+]

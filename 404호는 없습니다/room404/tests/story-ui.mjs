@@ -24,7 +24,7 @@ async function playNightUI(page,n,{choose=defaultChoice,check=()=>true,afterCase
   await page.locator('#game').waitFor({state:'visible'});assert.equal(await page.locator('#storyCard').isVisible(),false,'no story card on the decision screen');
   if(n>1){const txt=await page.locator('#game').innerText();assert.ok(!txt.includes(sl.story_contact_arrival)&&!/EV\d\d|E\d\d/.test(txt),'decision screen leaks nothing of the story record: '+sc)}
   await page.locator(sl.gate_outcome==='allow'?'#allow':'#deny').click();await page.locator('#feedback').waitFor({state:'visible'});
-  if(n>1){assert.ok(await page.locator('#storyCard').isVisible(),sc);const fig=characterAssets.contacts[sc]||null;assert.equal(await page.locator('#contactScreen').isVisible(),!!fig,sc+' portrait shown only for an approved figure');if(fig)assert.equal(await page.locator('#contactPortrait [data-character]').getAttribute('data-character'),fig,sc);assert.match(await page.locator('#contactLine').innerText(),new RegExp(sl.story_contact_arrival.slice(0,6)));
+  if(n>1){assert.ok(await page.locator('#storyCard').isVisible(),sc);const fig=characterAssets.contacts[sc]||null;assert.equal(await page.locator('#contactScreen').isVisible(),!!fig,sc+' portrait shown only for an approved figure');if(fig)assert.equal(await page.locator('#contactScreen').getAttribute('data-actor'),'still:'+fig,sc);assert.match(await page.locator('#contactLine').innerText(),new RegExp(sl.story_contact_arrival.slice(0,6)));
    const opts=data.flow.choices[sc];if(opts)assert.ok(await page.locator('#next').isDisabled(),'a handling choice is required: '+sc);
    if(check(sc)){await page.locator('#contactRecheck').click();for(const ev of sl.story_ev_candidates)assert.match(await page.locator('#contactResult').innerText(),new RegExp(ev))}
    if(opts){await page.locator(`[data-choice="${choose(sc)}"]`).click();assert.equal(await page.locator(`[data-choice="${choose(sc)}"]`).getAttribute('aria-pressed'),'true')}}
@@ -61,7 +61,7 @@ try{
    await page.locator('#beginShift').click();assert.match(await page.locator('#shiftLabel').innerText(),new RegExp(n+'야간'));
    await playNightUI(page,n,{choose:sc=>sc==='N2_01'?'accept_unverified_replacement':defaultChoice(sc),afterCase:async(i,sc)=>{
     if(n===2&&i===0)await page.screenshot({path:art+'/story-n2-card.png',fullPage:true});
-    if(n===4&&i===3){await page.waitForFunction(()=>getComputedStyle(document.querySelector('#contactPortrait .person-sprite')).backgroundImage.includes('bust-CH09'));await page.screenshot({path:art+'/story-contact-portrait.png',fullPage:false})}
+    if(n===4&&i===3){await page.waitForFunction(()=>document.querySelector('#contactScreen').dataset.actor==='still:CH09'&&document.querySelector('#contactScreen').dataset.state==='idle');await page.screenshot({path:art+'/story-contact-portrait.png',fullPage:false})}
     if(n===3&&i===2){const before=await story(page);await page.reload();await page.waitForFunction(()=>!document.getElementById('startStory').disabled);assert.match(await page.locator('#resume').innerText(),/3야간/);await resume(page);
      await page.locator('#feedback').waitFor({state:'visible'});const after=await story(page);assert.deepEqual(after,before,'reload keeps the whole story state');assert.ok(await page.locator('#storyCard').isVisible())}}});
    const st=await story(page);assert.equal(st.nightCompleted,n);assert.equal(st.completedScenes.length,8*n);

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 내부 QA 뷰어</title>
+<link rel="stylesheet" href="qa.css">
+<script src="qa.js" type="module"></script>
+</head>
+<body>
+<header><h1>404호는 없습니다 · 내부 QA 뷰어</h1><p>배포용 dist/ 밖에 있는 검수 도구예요. 게임에는 들어가지 않아요. 실행: <code>npm run qa</code></p></header>
+<nav class="modes" role="tablist"><button role="tab" data-mode="clip" aria-selected="true">걷기 클립 (v05)</button><button role="tab" data-mode="still" aria-selected="false">정지 인물 합성</button></nav>
+
+<section id="clipMode" aria-label="걷기 클립 검수">
+ <div class="controls">
+  <label>인물 <select id="npc"></select></label>
+  <div class="views" role="group" aria-label="방향"><button data-view="front" aria-pressed="true">정면·입장</button><button data-view="side" aria-pressed="false">측면·지나감</button><button data-view="rear" aria-pressed="false">후면·퇴장</button></div>
+  <label>배경 <select id="bg"></select></label>
+  <label>카메라 <select id="cam"><option value="full">전체</option><option value="intercom">인터폰(3:4)</option></select></label>
+  <label>인물 레이어 <select id="source"><option value="rig">리그 골격(프레임 미반입)</option><option value="mp4">검토 영상 MP4(불투명 합성)</option><option value="frames">스프라이트 프레임</option></select></label>
+  <div class="transport" role="group" aria-label="재생"><button id="prev" aria-label="한 프레임 뒤로">◀ 1</button><button id="play">▶ 재생</button><button id="next" aria-label="한 프레임 앞으로">1 ▶</button><label class="inline"><input type="checkbox" id="loop"> 반복(검수용)</label></div>
+  <input id="frame" type="range" min="0" max="47" value="0" aria-label="프레임">
+  <p id="frameLabel" class="mono"></p>
+  <fieldset><legend>겹쳐 보기</legend>
+   <label><input type="checkbox" data-ov="foot" checked> 발 기준점</label>
+   <label><input type="checkbox" data-ov="floor" checked> 바닥선·수평선·바닥</label>
+   <label><input type="checkbox" data-ov="shadow" checked> 접지 그림자</label>
+   <label><input type="checkbox" data-ov="click" checked> 클릭 영역</label>
+   <label><input type="checkbox" data-ov="occ" checked> 가림</label>
+   <label><input type="checkbox" data-ov="cam"> 인터폰 카메라 틀</label>
+  </fieldset>
+ </div>
+ <div class="view"><canvas id="clipCanvas" width="540" height="960" role="img" aria-label="걷기 클립 검수 화면"></canvas><video id="video" muted playsinline preload="auto" hidden></video></div>
+ <aside id="clipStatus" class="status" aria-live="polite"></aside>
+</section>
+
+<section id="stillMode" aria-label="정지 인물 합성 검수" hidden>
+ <div class="controls">
+  <label>인물 <select id="figure"></select></label>
+  <label>장면 <select id="scene"><option value="BG02:intercom:idle">BG02 공동현관 · 인터폰</option><option value="BG02:full:idle">BG02 공동현관 · 전체</option><option value="BG12:full:clerk">BG12 열람실 · 카운터 뒤(가림)</option></select></label>
+  <div class="transport" role="group" aria-label="상태"><button id="sEnter">입장</button><button id="sLeave">퇴장</button><button id="sReset">처음으로</button></div>
+  <p id="sState" class="mono"></p>
+  <label class="inline"><input type="checkbox" id="sOverlay" checked> 발·바닥·클릭 영역 겹쳐 보기</label>
+ </div>
+ <div class="view"><div id="stillStage" class="stage-host"></div><canvas id="stillOverlay" class="overlay" aria-hidden="true"></canvas></div>
+ <aside id="stillStatus" class="status" aria-live="polite"></aside>
+</section>
+</body>
+</html>

@@ -2,9 +2,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/engine.test.mjs tests/scenarios.test.mjs tests/story.test.mjs tests/gates.test.mjs tests/characters.test.mjs",
-    "test:ui": "node tests/browser.mjs && node tests/story-ui.mjs",
-    "test:all-cases": "node tests/all-cases.mjs"
+    "test": "node --test tests/engine.test.mjs tests/scenarios.test.mjs tests/story.test.mjs tests/gates.test.mjs tests/characters.test.mjs tests/stage.test.mjs tests/world.test.mjs tests/registry.test.mjs tests/import-v05.test.mjs",
+    "test:ui": "node tests/browser.mjs && node tests/story-ui.mjs && node tests/game-ui.mjs && node tests/qa-ui.mjs",
+    "test:all-cases": "node tests/all-cases.mjs",
+    "qa": "node scripts/qa-server.mjs",
+    "screens": "node tests/screens.mjs"
   },
   "devDependencies": {
     "playwright": "1.51.1",
