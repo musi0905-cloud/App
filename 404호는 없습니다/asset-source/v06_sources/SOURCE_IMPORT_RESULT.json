@@ -1,0 +1,2031 @@
+{
+ "generated_by": "room404/scripts/import-v06-sources.py",
+ "generated": "2026-10-14",
+ "format": "404-byte-pieces-v1",
+ "packages": 41,
+ "files": 169,
+ "images_decoded": 50,
+ "copied": 41,
+ "already_identical": 128,
+ "requests": 41,
+ "requests_resolved": 41,
+ "manifest_flags": {
+  "artModified": false,
+  "motionFixed": false
+ },
+ "note": "전송 형식 검사(해시·해독) 결과다. 시각 검수는 다시 하지 않았고(visualQA NOT_REASSESSED) 걷기 품질 PASS가 아니다. 패키지 안의 QA_v05.json·frame_connectivity_check.json은 과거 결과이며 새 수정본의 검수 증거로 쓰지 않는다.",
+ "rows": [
+  {
+   "source": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+   "bytes": 1049795,
+   "sha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476",
+   "size": [
+    941,
+    1671
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "CH06_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1671
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part01.zip"
+  },
+  {
+   "source": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+   "bytes": 880177,
+   "sha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "CH08_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part01.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
+   "bytes": 1030479,
+   "sha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC01_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
+   "bytes": 1068773,
+   "sha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f",
+   "size": [
+    942,
+    1670
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC03_2026_front_full_v02",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    942,
+    1670
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
+   "bytes": 1724608,
+   "sha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11",
+   "size": [
+    1024,
+    1536
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC04_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1024,
+    1536
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
+   "bytes": 1642510,
+   "sha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da",
+   "size": [
+    1024,
+    1536
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC05_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1024,
+    1536
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
+   "bytes": 1103364,
+   "sha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC06_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
+   "bytes": 1172392,
+   "sha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC07_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part02.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
+   "bytes": 1532350,
+   "sha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744",
+   "size": [
+    1024,
+    1536
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC08_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1024,
+    1536
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part03.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
+   "bytes": 925198,
+   "sha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC09_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part03.zip"
+  },
+  {
+   "source": "01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
+   "bytes": 1058554,
+   "sha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3",
+   "size": [
+    941,
+    1672
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC10_2026_front_full",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    941,
+    1672
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "01_캐릭터_복구완료_v02_part03.zip"
+  },
+  {
+   "source": "02_배경/game/BG04_floor4_2026_v01.webp",
+   "bytes": 352922,
+   "sha256": "c65f11e95c4748fdbf68e190ee980205767a744f2f2a9e03001b8ae4732b1b17",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG04_floor4_2026_v01.webp",
+   "rule": "copy",
+   "action": "copy",
+   "request": "BG04_2026",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1080,
+    1920
+   ],
+   "reportMode": "RGB",
+   "recoveryArchive": "02_배경_20261008_복구저장_v01_part01.zip"
+  },
+  {
+   "source": "02_배경/game/BG05_floor4_2004_v01.webp",
+   "bytes": 295214,
+   "sha256": "12ccb33814f1c1a2e311db75b752801dabe86bc2363ae5420c27766b03dfb03c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG05_floor4_2004_v01.webp",
+   "rule": "copy",
+   "action": "copy",
+   "request": "BG05_2004",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1080,
+    1920
+   ],
+   "reportMode": "RGB",
+   "recoveryArchive": "02_배경_20261008_복구저장_v01_part01.zip"
+  },
+  {
+   "source": "02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+   "bytes": 259802,
+   "sha256": "73db049cb437a8c725e786d897f9ad4f2372d6ad9356a0c1d8ac527714c31648",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+   "rule": "copy",
+   "action": "copy",
+   "request": "BG06_interior_2026_interior",
+   "priority": "P2",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1080,
+    1920
+   ],
+   "reportMode": "RGB",
+   "recoveryArchive": "02_배경_20261008_복구저장_v01_part01.zip"
+  },
+  {
+   "source": "02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+   "bytes": 310778,
+   "sha256": "d0c3c33cd2b43d447a54d17a2f16b471a56edd88a7ee0458cab15d342d70842e",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+   "rule": "copy",
+   "action": "copy",
+   "request": "BG08_2026_base_v02",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1080,
+    1920
+   ],
+   "reportMode": "RGB",
+   "recoveryArchive": "02_배경_20261008_복구저장_v01_part01.zip"
+  },
+  {
+   "source": "02_배경/game/BG13_2004_exterior_2004_v01.webp",
+   "bytes": 438110,
+   "sha256": "1b7cb1ea74218c53dfaed975f50965d484f62f4aff2879d91e2896b0f7d13e9e",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG13_2004_exterior_2004_v01.webp",
+   "rule": "copy",
+   "action": "copy",
+   "request": "BG13_2004_2004",
+   "priority": "P1",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1080,
+    1920
+   ],
+   "reportMode": "RGB",
+   "recoveryArchive": "02_배경_20261008_복구저장_v01_part01.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/QA_v05.json",
+   "bytes": 617,
+   "sha256": "c5f8831c4e336fe02c283ad70557eb32638af561f384cade329bb8a3b131aabb",
+   "dest": "asset-source/v05_QA/code/NPC02/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/README_v05.md",
+   "bytes": 1000,
+   "sha256": "68a8a8d0f43d184b7cbe7b3e4e340871c02a96c9194190611ddafbd1e2406908",
+   "dest": "asset-source/v05_QA/code/NPC02/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/assets/NPC02_3view_parts_atlas_v01.png",
+   "bytes": 1288808,
+   "sha256": "ac1dacde36afd7684a4ccabfd7ba78c629cabe5f26c0287fc38e7f23bf941bab",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC02/assets/NPC02_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC02/assets/NPC02_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC02_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/assets/NPC02_continuous_arms_v03.png",
+   "bytes": 1379280,
+   "sha256": "6f4ea788b75d1a4dcdc27cba1c211269f4bc40150796252f915b2862e4a8c4ef",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC02/assets/NPC02_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC02/assets/NPC02_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC02_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/binding.json",
+   "bytes": 7592,
+   "sha256": "6b9d56e945be61d1584a044389baae38fd134a8a52a340b71eff36155c60527c",
+   "dest": "asset-source/v05_QA/code/NPC02/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC02/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/checksums_v05.json",
+   "bytes": 16215,
+   "sha256": "9d3ed76e712e2a836a14e4dbc6525d5d52d5ba2ca18fa3268252aa2d98661884",
+   "dest": "asset-source/v05_QA/code/NPC02/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/config.json",
+   "bytes": 175,
+   "sha256": "3cf331e6be23b1f6fa0cd2d6361de995ef2748ac614a15740029ccfe7aa51589",
+   "dest": "asset-source/v05_QA/code/NPC02/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC02/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/execution_v05.json",
+   "bytes": 819,
+   "sha256": "d6853596999c6f1107f7e2bce664e293e9a1d53cd1428eb735187b8e1cd0e2ce",
+   "dest": "asset-source/v05_QA/code/NPC02/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/frame_connectivity_check.json",
+   "bytes": 29005,
+   "sha256": "794a74b17ea60a8b515a6f6785f4e31d6a953e40c15b7a0e6c9f19b65658337c",
+   "dest": "asset-source/v05_QA/code/NPC02/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/package.json",
+   "bytes": 282,
+   "sha256": "8f6352b1ec4cb656037054931dbfe410840a65691c713c7991b051703b13b94c",
+   "dest": "asset-source/v05_QA/code/NPC02/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC02/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/render.js",
+   "bytes": 13844,
+   "sha256": "8bb8be10e18b3725dd50c85233629d27810ff75aea8136f0e9044bde2a8f7d74",
+   "dest": "asset-source/v05_QA/code/NPC02/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "5ad3508a0b2e046839ab493dceb4c829fe9141d4ca2dd1f4a78bfaad8c814574",
+   "dest": "asset-source/v05_QA/code/NPC02/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/QA_v05.json",
+   "bytes": 1046,
+   "sha256": "d7465caca772cd9c983384ee17b1bb635ba17e1f37e285cb15cdb300e6b6fc00",
+   "dest": "asset-source/v05_QA/code/NPC03/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/README_v05.md",
+   "bytes": 1142,
+   "sha256": "d3878e246d8a806255f807b1d4b4c8080fe76ed7fb012c6dc84d5c7c339b1c55",
+   "dest": "asset-source/v05_QA/code/NPC03/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_3view_parts_atlas_v01.png",
+   "bytes": 1471378,
+   "sha256": "b5bdd261a3d98b808e8997eb2b3b029d187b85adb4cccbd7228181620e06638b",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC03/assets/NPC03_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC03/assets/NPC03_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC03_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_carrying_arm_v05.png",
+   "bytes": 1816582,
+   "sha256": "5fedac60bb81cabafc468bf5359da2c9fc691e686d0ecc96e61c86ccaaeb4f3e",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC03/assets/NPC03_carrying_arm_v05.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC03/assets/NPC03_carrying_arm_v05.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC03_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_continuous_arms_v03.png",
+   "bytes": 1502487,
+   "sha256": "c0507d6f13b0de665c751e9f19922b8593ca8cd6abc6bc86d23386b52a403de5",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC03/assets/NPC03_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC03/assets/NPC03_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC03_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/binding.json",
+   "bytes": 8428,
+   "sha256": "0b8599874fd49743b3e7b2f14601d9dac5aabff688d72b9c126d3fbda60467c0",
+   "dest": "asset-source/v05_QA/code/NPC03/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/carrying_binding_v05.json",
+   "bytes": 439,
+   "sha256": "5b225c828f7c46426f92b4895af32dbe2ec908967c10a4ca5d3942709e2e1efc",
+   "dest": "asset-source/v05_QA/code/NPC03/carrying_binding_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC03/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/checksums_v05.json",
+   "bytes": 16421,
+   "sha256": "0c69cd8973a139ca860d26004d17e294dc1379ae12926666f0036ccb53c33d56",
+   "dest": "asset-source/v05_QA/code/NPC03/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/config.json",
+   "bytes": 159,
+   "sha256": "32f7b356c8ea7206bf335f229384c9b3607a5c68f195cc3dd1d0181d13a978cd",
+   "dest": "asset-source/v05_QA/code/NPC03/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC03/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/execution_v05.json",
+   "bytes": 819,
+   "sha256": "d9d0c4141a3361e69b6eb67eb9b93666c4c78e81cfbdc7aef81ae63788ee64d3",
+   "dest": "asset-source/v05_QA/code/NPC03/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/frame_connectivity_check.json",
+   "bytes": 29008,
+   "sha256": "c2dd1888d3979dda3a57feb1f69ca387e9c36ccc57062ac8000523d5f0b1f855",
+   "dest": "asset-source/v05_QA/code/NPC03/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/package.json",
+   "bytes": 282,
+   "sha256": "77c8b2f8093df980fc0a5b2e842cf7a14fedc702649bafb416b273cff370c22d",
+   "dest": "asset-source/v05_QA/code/NPC03/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC03/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/render.js",
+   "bytes": 13494,
+   "sha256": "2e508c17c8ecca6275138bf0e20d299b36e06e1315a87a2f5747aaf6567979b0",
+   "dest": "asset-source/v05_QA/code/NPC03/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "87c6f9fcd18f132332eedd3655cef4c2d1bb5042bf4744402f247c0803fbf768",
+   "dest": "asset-source/v05_QA/code/NPC03/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/QA_v05.json",
+   "bytes": 617,
+   "sha256": "3a22b35da206e98ec785f22bde67719f667c682afc237ae3c4c9ad6a99885ed4",
+   "dest": "asset-source/v05_QA/code/NPC04/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/README_v05.md",
+   "bytes": 1000,
+   "sha256": "a6f41a79979b1b81160b17ffcae3bee6cc5797c5ec2b8eeb1c92b918da7acc9e",
+   "dest": "asset-source/v05_QA/code/NPC04/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_parts_atlas_v01.png",
+   "bytes": 1597572,
+   "sha256": "81ffd7e7b3e322ca24395e7480a9431f2397785e44214fa6e00778a242bf8500",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC04/assets/NPC04_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC04_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_torso_v03.png",
+   "bytes": 1516476,
+   "sha256": "843ddea2165e0ceb0e7abe9116c08b31ad6cd2a9e0e8cf5cd31518c43443c825",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_torso_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC04/assets/NPC04_3view_torso_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC04_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_torso_v03b.png",
+   "bytes": 1374741,
+   "sha256": "1d3ca64ce78c67c7ffd4b2bd2089277c73ca577d200fb18dd8e1c28701a4e3ec",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_torso_v03b.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC04/assets/NPC04_3view_torso_v03b.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC04_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_continuous_arms_v03.png",
+   "bytes": 2016684,
+   "sha256": "55bd3ff41e21bd47cdb3078c97b5be9fc67d518d46103233f0e6e56c6393c119",
+   "size": [
+    1024,
+    1536
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC04/assets/NPC04_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC04/assets/NPC04_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1024,
+    1536
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC04_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/binding.json",
+   "bytes": 8414,
+   "sha256": "908196daa9f2d3491b7614239d1805a35525f748699c5d5ef0dea42b52971a0b",
+   "dest": "asset-source/v05_QA/code/NPC04/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC04/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/checksums_v05.json",
+   "bytes": 16428,
+   "sha256": "b9ce1c199d7f596c7e0aee3853901767109847d377cd8a764dfe6fd9bb089baf",
+   "dest": "asset-source/v05_QA/code/NPC04/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/config.json",
+   "bytes": 160,
+   "sha256": "e04f6dd15fb99c919959522c4302ec025bda68fcb670ca1faa9bafd57eb1528e",
+   "dest": "asset-source/v05_QA/code/NPC04/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC04/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/execution_v05.json",
+   "bytes": 9135,
+   "sha256": "969fb1543ee1f52816b7426957a0be226f2105fad3a9c1f267a76f3e6268921b",
+   "dest": "asset-source/v05_QA/code/NPC04/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/frame_connectivity_check.json",
+   "bytes": 39485,
+   "sha256": "1fee1c9815898d773d98451115fea52ea0717bc393bb1bc53e0b133f5482491a",
+   "dest": "asset-source/v05_QA/code/NPC04/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/package.json",
+   "bytes": 282,
+   "sha256": "48f5da5ea52dcac99867726baa440a879cedb2058ede47e5d8592f15030b4613",
+   "dest": "asset-source/v05_QA/code/NPC04/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC04/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/render.js",
+   "bytes": 13846,
+   "sha256": "5759d8bcb774372b916d1bc1fdc932898b31bbbe57b2630d573f27757268b5d5",
+   "dest": "asset-source/v05_QA/code/NPC04/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "34abc15a5313108f93ab00a675d69475faaa899977cdf5d7e5ccb86bb66da617",
+   "dest": "asset-source/v05_QA/code/NPC04/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/QA_v05.json",
+   "bytes": 617,
+   "sha256": "2f449e3382548b17767f81f0ff3d13c9c5dee2063276866d870670869c685b9c",
+   "dest": "asset-source/v05_QA/code/NPC05/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/README_v05.md",
+   "bytes": 1000,
+   "sha256": "326b67a474dcb851baf2f7d26955f5d1a6b44c22706c77a07415e2cc22bd8444",
+   "dest": "asset-source/v05_QA/code/NPC05/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/assets/NPC05_3view_parts_atlas_v01.png",
+   "bytes": 1404015,
+   "sha256": "8a3839119b759e070dfc0900ec7c33cb5f8afffa6a485c9686d4f1d8476d9d8c",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC05/assets/NPC05_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC05/assets/NPC05_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC05_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/assets/NPC05_continuous_arms_v03.png",
+   "bytes": 1420413,
+   "sha256": "1d7b427789f99fb4418831b989f1384a84f11c34e6288696de6a5db9822e785f",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC05/assets/NPC05_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC05/assets/NPC05_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC05_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/binding.json",
+   "bytes": 7907,
+   "sha256": "d658a0d4f537242a53d7d3f7ab9a60a24985c065f5072976289c04c589bd8993",
+   "dest": "asset-source/v05_QA/code/NPC05/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC05/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/checksums_v05.json",
+   "bytes": 16215,
+   "sha256": "f2a05e8aabdfe722415d962eb543bd66e709f59130dd6c3559e2a633070cf3c4",
+   "dest": "asset-source/v05_QA/code/NPC05/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/config.json",
+   "bytes": 159,
+   "sha256": "6bdf3ae2aeb24879c6ba4b3cbb2565e178a94e3a23664078bb5064ba0244e758",
+   "dest": "asset-source/v05_QA/code/NPC05/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC05/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/execution_v05.json",
+   "bytes": 819,
+   "sha256": "4fb548cd37fb8d420b29d90b35eb58c55f662ceb76891b2a661c3316f30ed85e",
+   "dest": "asset-source/v05_QA/code/NPC05/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/frame_connectivity_check.json",
+   "bytes": 29005,
+   "sha256": "9fefd6a7f3da2b9356b26f65652b81b1f73cbdc9e1bf04e0424fedd2df0c5ced",
+   "dest": "asset-source/v05_QA/code/NPC05/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/package.json",
+   "bytes": 282,
+   "sha256": "500e758ff4702971c6a57408c6b710b16ba1570f93a224a13c6620da78308af6",
+   "dest": "asset-source/v05_QA/code/NPC05/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC05/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/render.js",
+   "bytes": 13844,
+   "sha256": "8bb8be10e18b3725dd50c85233629d27810ff75aea8136f0e9044bde2a8f7d74",
+   "dest": "asset-source/v05_QA/code/NPC05/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "5d9692b02eb46c4bfa8b7b3846921fe27b6f924fd445548980f1feb3ea347fe1",
+   "dest": "asset-source/v05_QA/code/NPC05/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/QA_v05.json",
+   "bytes": 617,
+   "sha256": "6128b431c3d1273cbf077a013c46f851a0acb288aebb2cdee6e82437236f13ea",
+   "dest": "asset-source/v05_QA/code/NPC06/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/README_v05.md",
+   "bytes": 1000,
+   "sha256": "5b4c219d4712e37273eb2464ce1c70101d32bfc94b2b92ce311624240e05926b",
+   "dest": "asset-source/v05_QA/code/NPC06/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "bytes": 1296093,
+   "sha256": "056f97b4915a987c0843346b66537609281bcaf293d736f106f070c1481a4b3c",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC06_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/assets/NPC06_continuous_arms_v03.png",
+   "bytes": 1542297,
+   "sha256": "35f72d1c7eb336689a87be144c9c49b89912adc5d4ddd4131b9cd6af24c2d0e4",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC06/assets/NPC06_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC06_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/binding.json",
+   "bytes": 7901,
+   "sha256": "e9fd5376a44faf176bcd0997ea8ecc730bbcdfb89fa0d23753f88b0bb68b3259",
+   "dest": "asset-source/v05_QA/code/NPC06/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC06/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/checksums_v05.json",
+   "bytes": 16207,
+   "sha256": "2701f1c1f7f1e7528268f7f23ce1c54fbc06c98290aae1643465fc29fabb6ac4",
+   "dest": "asset-source/v05_QA/code/NPC06/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/config.json",
+   "bytes": 230,
+   "sha256": "297dbef056dd56b1a8e10d053095a7e678bb5d0d7af9dcbddc567084aa15807a",
+   "dest": "asset-source/v05_QA/code/NPC06/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC06/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/execution_v05.json",
+   "bytes": 819,
+   "sha256": "0bc3dd4c6fa0940b344b524a8f612ba05cb9a0be10e7bd030b4106266278acf4",
+   "dest": "asset-source/v05_QA/code/NPC06/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/frame_connectivity_check.json",
+   "bytes": 29000,
+   "sha256": "0350f7f246604ce11dcc8f8952ca143e0d63170e6dcabd548eff7c0c57276c7c",
+   "dest": "asset-source/v05_QA/code/NPC06/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/package.json",
+   "bytes": 282,
+   "sha256": "96581202c30947e29f0fe0dc0aeb6b707003740d8e3461dcf9ed14a8570881af",
+   "dest": "asset-source/v05_QA/code/NPC06/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC06/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/render.js",
+   "bytes": 13844,
+   "sha256": "8bb8be10e18b3725dd50c85233629d27810ff75aea8136f0e9044bde2a8f7d74",
+   "dest": "asset-source/v05_QA/code/NPC06/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/walk_rig_elder_v04.json",
+   "bytes": 138046,
+   "sha256": "cc5be7619c45ae5b141bbc493ea8ee14590fd587f4a42f6c34bba95e67fa31d9",
+   "dest": "asset-source/v05_QA/code/NPC06/walk_rig_elder_v04.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/QA_v05.json",
+   "bytes": 617,
+   "sha256": "98d1914fcb64fde4a79ea334fd13397c13b353eb5cd6f50ac218f9f1a3babb02",
+   "dest": "asset-source/v05_QA/code/NPC07/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/README_v05.md",
+   "bytes": 1000,
+   "sha256": "3a604ace62afeb8b3203f0e9046598c39351751ed77d2f37347aad193045287c",
+   "dest": "asset-source/v05_QA/code/NPC07/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_3view_parts_atlas_v01.png",
+   "bytes": 1429985,
+   "sha256": "15afd271e22ac6fa200761c8b91d2f582154ed976c881d44204fb5e334422052",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC07/assets/NPC07_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC07/assets/NPC07_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC07_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_3view_torso_v02.png",
+   "bytes": 1229208,
+   "sha256": "f23b15315c1fa734a7812b95c74cc7921eb1922c346a24daafbef9d125dfdf5f",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC07/assets/NPC07_3view_torso_v02.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC07/assets/NPC07_3view_torso_v02.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC07_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_continuous_arms_v03.png",
+   "bytes": 1474372,
+   "sha256": "64d7de78ef8760d5fd349c53f6995995a0f7ce9f56cbc27bb3d8b566b855845d",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC07/assets/NPC07_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC07/assets/NPC07_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC07_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/binding.json",
+   "bytes": 8405,
+   "sha256": "bd91493ce183e8d224ad46875039cc030edff725f9a0ceb97498a7138c2b174e",
+   "dest": "asset-source/v05_QA/code/NPC07/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC07/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/checksums_v05.json",
+   "bytes": 16321,
+   "sha256": "dfcac07cbc32edc8cd87de0ee811c0d70407f070a58ec1fa0c907f35cb14c638",
+   "dest": "asset-source/v05_QA/code/NPC07/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/config.json",
+   "bytes": 185,
+   "sha256": "788e5c59a7a95874ce78f02ebb030ee53628d489d1b2fa702d85a9cc6bda623c",
+   "dest": "asset-source/v05_QA/code/NPC07/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC07/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/execution_v05.json",
+   "bytes": 819,
+   "sha256": "7eab2260b04dbaedc6c25c90afcc3d52ddba33d6cde83f3bac778888d3bb2366",
+   "dest": "asset-source/v05_QA/code/NPC07/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/frame_connectivity_check.json",
+   "bytes": 29012,
+   "sha256": "efe3fd035b327ead9bdb30cdc79965b07f76e81d33938e1108835c08e5e40d04",
+   "dest": "asset-source/v05_QA/code/NPC07/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/package.json",
+   "bytes": 282,
+   "sha256": "13e010f02255174be93052fcfcb68f5678a547fe12db03f627986898cad82099",
+   "dest": "asset-source/v05_QA/code/NPC07/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC07/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/render.js",
+   "bytes": 13844,
+   "sha256": "8bb8be10e18b3725dd50c85233629d27810ff75aea8136f0e9044bde2a8f7d74",
+   "dest": "asset-source/v05_QA/code/NPC07/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "a565ccb741fd50fd77f988b706169338074bf7f25289278bdc48473b0f2b121f",
+   "dest": "asset-source/v05_QA/code/NPC07/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/QA_v05.json",
+   "bytes": 617,
+   "sha256": "80f7420f58e731190c4bdafd01f03271e44942307934e87e30a1c003058c7115",
+   "dest": "asset-source/v05_QA/code/NPC08/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/README_v05.md",
+   "bytes": 1000,
+   "sha256": "9783c562962e982a785709c5db9e50bba8292f54a57176e2b2d03425f12972f6",
+   "dest": "asset-source/v05_QA/code/NPC08/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/assets/NPC08_3view_parts_atlas_v01.png",
+   "bytes": 1310958,
+   "sha256": "88ebe45bd6caa9c1daad9feba5e567c13c41d1447691ab5048e9ec9a373ceb47",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC08/assets/NPC08_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC08/assets/NPC08_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC08_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/assets/NPC08_continuous_arms_v03.png",
+   "bytes": 1447089,
+   "sha256": "7aa505635d66a511080df8f453491988eecf2b9838072a177bdef79ac0fd8233",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC08/assets/NPC08_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC08/assets/NPC08_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC08_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/binding.json",
+   "bytes": 7915,
+   "sha256": "1dd3abac3b5e4130a507277a20fe4cd5b5d1c8cbc7052d4de21294331dbac39c",
+   "dest": "asset-source/v05_QA/code/NPC08/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC08/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/checksums_v05.json",
+   "bytes": 16215,
+   "sha256": "a6b547a5f4a20c0c55ed9699aabb1a987180fad58ea1f3aaecdff7c22056ede0",
+   "dest": "asset-source/v05_QA/code/NPC08/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/config.json",
+   "bytes": 181,
+   "sha256": "73c57907b6adf8f3a70cb8aab8c1602c8376369b41c1f28fc0956de6af378c36",
+   "dest": "asset-source/v05_QA/code/NPC08/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC08/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/execution_v05.json",
+   "bytes": 819,
+   "sha256": "4a52d855643e15c2701a24cf4dd5e904b0515bf2d567f0af9f4085b6cc0a73a7",
+   "dest": "asset-source/v05_QA/code/NPC08/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/frame_connectivity_check.json",
+   "bytes": 29005,
+   "sha256": "c5e1efcb8912e5fc2d5e8760a4b83049f742f44b7c76e4184f0e7850a457a281",
+   "dest": "asset-source/v05_QA/code/NPC08/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/package.json",
+   "bytes": 282,
+   "sha256": "988af761be73cad390c58cab86fec3d8fb9e57fc0649416c5189ff9237c70114",
+   "dest": "asset-source/v05_QA/code/NPC08/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC08/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/render.js",
+   "bytes": 13844,
+   "sha256": "8bb8be10e18b3725dd50c85233629d27810ff75aea8136f0e9044bde2a8f7d74",
+   "dest": "asset-source/v05_QA/code/NPC08/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "a751bc3a320340822961eea54396f31295f60eade42f050d19194265f5fd5bff",
+   "dest": "asset-source/v05_QA/code/NPC08/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/QA_v05.json",
+   "bytes": 1046,
+   "sha256": "80a3e41db13b373fe09164ac464a1bb92bc433893b13a896bbddea749c0b2ae7",
+   "dest": "asset-source/v05_QA/code/NPC09/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/README_v05.md",
+   "bytes": 1142,
+   "sha256": "553778e9387ad500b6381528e5386240c257395aba0cfe9e6d6095c04cc6bbb1",
+   "dest": "asset-source/v05_QA/code/NPC09/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_3view_parts_atlas_v01.png",
+   "bytes": 1190034,
+   "sha256": "6e00a4e24aa254a5663b6897d14b085d4a6fc293b8df5ebcf03c657efdc7c67c",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC09/assets/NPC09_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC09/assets/NPC09_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC09_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_carrying_arm_v05.png",
+   "bytes": 1591848,
+   "sha256": "65a53daa0655ab054b6ca7d250698b5946675e19d55f9332a70ba238ffa73b84",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC09/assets/NPC09_carrying_arm_v05.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC09/assets/NPC09_carrying_arm_v05.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC09_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_continuous_arms_v03.png",
+   "bytes": 1303923,
+   "sha256": "fa9c44a5565bd52fed6221ef6f4ebdda39e0311b71a445455d0ea5ae82114c55",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC09/assets/NPC09_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC09/assets/NPC09_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC09_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/binding.json",
+   "bytes": 8415,
+   "sha256": "52d7cd6bd104111e49bcbf0b1a08993cee55a73c6df4bbf7291c93e33ccbd439",
+   "dest": "asset-source/v05_QA/code/NPC09/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/carrying_binding_v05.json",
+   "bytes": 439,
+   "sha256": "912b5a3a450f2729b9ef77017e118413e1260f29335f779c17a17d68fd63b7d7",
+   "dest": "asset-source/v05_QA/code/NPC09/carrying_binding_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC09/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/checksums_v05.json",
+   "bytes": 16421,
+   "sha256": "4038a5dd148c4aaf68857418bcdbdce4711d1d2210e6a58dfbf0c1a247f62a3d",
+   "dest": "asset-source/v05_QA/code/NPC09/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/config.json",
+   "bytes": 195,
+   "sha256": "a376948f7e0213e84c39d40825a1f2ad042ffa858d2e68fc8d575d5c52966272",
+   "dest": "asset-source/v05_QA/code/NPC09/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC09/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/execution_v05.json",
+   "bytes": 819,
+   "sha256": "a8a354490474c12c8de3df97bf97ad183e88674b04aef0b5e0b1ab04fbcbbc66",
+   "dest": "asset-source/v05_QA/code/NPC09/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/frame_connectivity_check.json",
+   "bytes": 29005,
+   "sha256": "15ed5ed48b5b93807a7622293fb4c7d8fe3d0354a3aefd6ec87445ff2a879a5b",
+   "dest": "asset-source/v05_QA/code/NPC09/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/package.json",
+   "bytes": 282,
+   "sha256": "2c9cd911282793d180b16bd1dda97e6583081644eac0e39f417326e2517a9b1c",
+   "dest": "asset-source/v05_QA/code/NPC09/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC09/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/render.js",
+   "bytes": 13494,
+   "sha256": "2e508c17c8ecca6275138bf0e20d299b36e06e1315a87a2f5747aaf6567979b0",
+   "dest": "asset-source/v05_QA/code/NPC09/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "169b28eaecb2a1942f654ca5b4052833c899a9e9c71aa1ff270fad2b5cdd33da",
+   "dest": "asset-source/v05_QA/code/NPC09/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/QA_v05.json",
+   "bytes": 617,
+   "sha256": "88bfcbe4c3146b5b54a1ce36a9e9999e9b211f6ed709d41898559b4b8f2d83fa",
+   "dest": "asset-source/v05_QA/code/NPC10/QA_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/README_v05.md",
+   "bytes": 1000,
+   "sha256": "3811211e200d9818e9cca041beefdbab6fb02df55978139c518e1956621e8e7f",
+   "dest": "asset-source/v05_QA/code/NPC10/README_v05.md",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/BG02_shared_entrance_night_v01.webp",
+   "bytes": 410270,
+   "sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "size": [
+    1080,
+    1920
+   ],
+   "mode": "RGB",
+   "dest": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "rule": "same_as_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_parts_atlas_v01.png",
+   "bytes": 1337871,
+   "sha256": "08d6a578062a07f6b3c81317085ee8b41efa28d2470d502a78ebf71e97ebb892",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_parts_atlas_v01.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC10/assets/NPC10_3view_parts_atlas_v01.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC10_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_torso_v03.png",
+   "bytes": 1226319,
+   "sha256": "9ea11e8257fe1d3c2d7bdf38310d9e809c4b76a8fa1e169758a1aeb90610e99b",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_torso_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC10/assets/NPC10_3view_torso_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC10_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_torso_v03b.png",
+   "bytes": 1165423,
+   "sha256": "3adfa940855bc00f1ca51210931c1f5b8502c4e71daff781fdd6a50c18c34d2b",
+   "size": [
+    2172,
+    724
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_torso_v03b.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC10/assets/NPC10_3view_torso_v03b.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    2172,
+    724
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC10_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_continuous_arms_v03.png",
+   "bytes": 1386796,
+   "sha256": "bb4f4decc962ab0f4e4903bb7341976777ad93e63a17c590510a67ff7e461480",
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "dest": "asset-source/v05_QA/code/NPC10/assets/NPC10_continuous_arms_v03.png",
+   "rule": "copy",
+   "action": "copy",
+   "request": "NPC10/assets/NPC10_continuous_arms_v03.png",
+   "priority": "P3",
+   "transferStatus": "HASH_AND_DECODE_PASS",
+   "visualQA": "NOT_REASSESSED",
+   "reportDimensions": [
+    1536,
+    1024
+   ],
+   "reportMode": "RGBA",
+   "recoveryArchive": "NPC10_손소품경계_REVISE_v05.zip"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/binding.json",
+   "bytes": 8400,
+   "sha256": "be642835c979bbac6a693fbe64aec7b38605987c33937c3a58d192d3fca0b30c",
+   "dest": "asset-source/v05_QA/code/NPC10/binding.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/check_frames.js",
+   "bytes": 1212,
+   "sha256": "10790d91897cb3d68a2e5c4b660a4a754778b076f819d8460d246c897e978235",
+   "dest": "asset-source/v05_QA/code/NPC10/check_frames.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/checksums_v05.json",
+   "bytes": 16428,
+   "sha256": "bd16ca2a937ab3c298b62284b0a5bf8bec831006730d82002c56cb3319c8ac10",
+   "dest": "asset-source/v05_QA/code/NPC10/checksums_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/config.json",
+   "bytes": 187,
+   "sha256": "323cdcab01aeb679a922570bdf1e3abbd5ff9981d9d2cdda877809511d80a8a1",
+   "dest": "asset-source/v05_QA/code/NPC10/config.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/encode.py",
+   "bytes": 1181,
+   "sha256": "7110e11712c879e2fa105275972712d987068ca997ef81e886e037aa904773cb",
+   "dest": "asset-source/v05_QA/code/NPC10/encode.py",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/execution_v05.json",
+   "bytes": 10704,
+   "sha256": "283e320bf58f7a5bc1ddb16e729d90cdec9a6bd110b2e9f5f1d3737a11418b85",
+   "dest": "asset-source/v05_QA/code/NPC10/execution_v05.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/frame_connectivity_check.json",
+   "bytes": 44043,
+   "sha256": "8509b5114d1716334af2d079e5324f5bae5177ca17b54c7c2ace0b60dbe2a5a3",
+   "dest": "asset-source/v05_QA/code/NPC10/frame_connectivity_check.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/package.json",
+   "bytes": 282,
+   "sha256": "63a4da4bbe2bb8947c12d241244bd591e2a88a55bc0296c2c99289a27ca97819",
+   "dest": "asset-source/v05_QA/code/NPC10/package.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/qa_contact.js",
+   "bytes": 1150,
+   "sha256": "01dedc348cd088ebacc370356f7a8ba10d515d1bd4fe0260eaff865b2cef1fc0",
+   "dest": "asset-source/v05_QA/code/NPC10/qa_contact.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/render.js",
+   "bytes": 13975,
+   "sha256": "da0d06c4cadaa2d0f0900802f16b7e99248d0b8608a707e4eac23fffc88b0e6c",
+   "dest": "asset-source/v05_QA/code/NPC10/render.js",
+   "rule": "must_equal_existing",
+   "action": "already"
+  },
+  {
+   "source": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/walk_rig_scene_retimed_v01.json",
+   "bytes": 137229,
+   "sha256": "5a6aa030e4ec3aff82f6e4c7a5087b703d214180c3293a7443e7c1a1e9336f62",
+   "dest": "asset-source/v05_QA/code/NPC10/walk_rig_scene_retimed_v01.json",
+   "rule": "must_equal_existing",
+   "action": "already"
+  }
+ ]
+}

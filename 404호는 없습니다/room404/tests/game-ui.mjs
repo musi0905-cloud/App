@@ -55,6 +55,11 @@ await check('evidence viewer: transcribed body, era backdrop, zoom by buttons, k
  assert.equal(await scale(),2,'two-finger spread doubles the text');await page.keyboard.press('Escape');assert.ok(await dlg.isHidden());assert.equal(await page.evaluate(()=>document.activeElement?.dataset.read),'EV06','focus back on the opener')});
 await check('photo evidence without its photo says so instead of inventing text; opening does not verify',async()=>{const before=(await saved()).evidenceVerified.length;
  await page.locator('[data-read="EV04"]').click();assert.match(await page.locator('#docBody').innerText(),/사진 원본이 아직 들어오지 않아/);await page.locator('#docClose').click();assert.equal((await saved()).evidenceVerified.length,before)});
+await check('a paper found in the management office opens over BG08 (v0.18.0), labelled as where it was found, not as a 2026 record',async()=>{
+ if(!await page.locator('#archive').isVisible()){await page.locator('#openArchive').click();await page.locator('#archive').waitFor()}
+ const open=page.locator('[data-read="EV03"]');assert.equal(await open.count(),1,'EV03 found by night 3');await open.click();
+ assert.equal(await page.locator('#docEra').innerText(),'찾은 곳 · 2026년 관리사무소');assert.match(await page.locator('#docViewer .doc-backdrop').evaluate(e=>e.style.backgroundImage),/assets\/bg\/BG08\.webp/);
+ assert.match(await page.locator('#docMeta').innerText(),/2006/);await page.screenshot({path:art+'/evidence-viewer-found-at-BG08.png'});await page.locator('#docClose').click()});
 await check('ending cutscene: the guard-room shot uses the approved BG01',async()=>{const s=playTo(1);await inject(s);await page.locator('#resume').click();await page.locator('#result').waitFor();
  const posters=[];for(let i=0;i<4;i++){posters.push(await page.locator('#result .scene-media').getAttribute('data-poster'));await page.locator('#result .scene-media').click()}assert.ok(posters.includes('bg:BG01'),posters.join(','))});
 await check('zero uncaught JavaScript errors',async()=>assert.deepEqual(errors,[]));

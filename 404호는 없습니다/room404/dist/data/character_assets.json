@@ -125,21 +125,83 @@
     "height_m": 1.68,
     "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
    }
+  },
+  "CH06": {
+   "name": "장혜숙, 2004 입주자대표 [DESIGN]",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "CH06_jang_hyesook_2026_front_full_v01.png",
+   "source_sha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-CH06.webp",
+   "figure": {
+    "file": "assets/v5/figure-CH06.webp",
+    "size": [
+     430,
+     1200
+    ],
+    "foot": [
+     209.0,
+     1194
+    ],
+    "feet": [
+     [
+      121.0,
+      1194
+     ],
+     [
+      292.0,
+      1194
+     ]
+    ],
+    "height_px": 1187,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
+  },
+  "CH08": {
+   "name": "서민아, 현재 입주민 [DESIGN]",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "CH08_seo_mina_2026_front_full_v01.png",
+   "source_sha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-CH08.webp",
+   "figure": {
+    "file": "assets/v5/figure-CH08.webp",
+    "size": [
+     348,
+     1200
+    ],
+    "foot": [
+     156.0,
+     1194
+    ],
+    "feet": [
+     [
+      111.5,
+      1194
+     ],
+     [
+      219.0,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
   }
  },
  "contacts": {
+  "N2_04": "CH06",
+  "N2_06": "CH08",
   "N3_01": "MC15",
+  "N3_04": "CH06",
   "N3_08": "CH10",
   "N4_04": "CH09",
   "N4_06": "CH10",
   "N4_07": "MC25",
   "N5_04": "CH10",
-  "N5_05": "CH09"
- },
- "contacts_waiting_for_files": {
-  "N2_04": "CH06",
-  "N2_06": "CH08",
-  "N3_04": "CH06",
+  "N5_05": "CH09",
   "N5_06": "CH06",
   "N5_07": "CH08"
  },
@@ -156,7 +218,7 @@
   "지인": "NPC10"
  },
  "visitor_roles_enabled": false,
- "visitor_roles_note": "방문객 100명의 역할별 그림 NPC01~NPC10은 10장이 모두 낱개 파일로 확인된 뒤 한 번에 켭니다. CCTV 걷기 그림은 새 그림에 없어 기존 그림이 남습니다.",
+ "visitor_roles_note": "방문객 역할 그림 NPC01~NPC10 10장은 승인 파일로 만들어 visitor_role_figures에 두었고 QA 뷰어에서 볼 수 있다. 게임에서는 아직 켜지 않는다(visitor_roles_status.blocked_by). 10장은 역할별 공용 그림이며 방문객 100명 각각의 고유 원화가 아니다.",
  "legacy": {
   "status": "LEGACY_IN_GAME",
   "note": "v0.6~v0.15 게임에 쓰이던 방문객 정지 그림. v02 에셋 패키지 검수 대상이 아님. NPC01~NPC10 역할군 그림이 PASS로 들어오면 교체.",
@@ -354,5 +416,334 @@
     "sha256": "b47e237917ecf00714ec6eb2b02d3f5fdea4ab8785e41b80b03e79b343770269"
    }
   }
+ },
+ "visitor_role_figures": {
+  "NPC01": {
+   "name": "방문객 역할 그림: 귀가 주민",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC01_visitor_male_2026_front_full_v01.png",
+   "source_sha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC01.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC01.webp",
+    "size": [
+     443,
+     1200
+    ],
+    "foot": [
+     225.5,
+     1194
+    ],
+    "feet": [
+     [
+      137.5,
+      1194
+     ],
+     [
+      321.0,
+      1194
+     ]
+    ],
+    "height_px": 1187,
+    "height_m": 1.68,
+    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값"
+   }
+  },
+  "NPC02": {
+   "name": "방문객 역할 그림: 가족 방문",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC02_visitor_female_2026_front_full_v01.png",
+   "source_sha256": "a27b97d7c480ad9eb36f68d8ff08759799ffc22d187ad585df5cd197da68aaa6",
+   "source_dir": "character-v5/png",
+   "file": "assets/v5/figure-NPC02.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC02.webp",
+    "size": [
+     414,
+     1200
+    ],
+    "foot": [
+     225.5,
+     1194
+    ],
+    "feet": [
+     [
+      155.5,
+      1194
+     ],
+     [
+      288.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.64,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC02/config.json) height_m"
+   }
+  },
+  "NPC03": {
+   "name": "방문객 역할 그림: 택배 기사",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC03_courier_2026_front_full_v02_v01.png",
+   "source_sha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC03.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC03.webp",
+    "size": [
+     471,
+     1200
+    ],
+    "foot": [
+     217.5,
+     1194
+    ],
+    "feet": [
+     [
+      113.0,
+      1194
+     ],
+     [
+      318.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.74,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC03/config.json) height_m"
+   }
+  },
+  "NPC04": {
+   "name": "방문객 역할 그림: 시설 점검",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC04_technician_2026_front_full_v01.png",
+   "source_sha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC04.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC04.webp",
+    "size": [
+     521,
+     1200
+    ],
+    "foot": [
+     242.5,
+     1194
+    ],
+    "feet": [
+     [
+      121.5,
+      1194
+     ],
+     [
+      362.5,
+      1194
+     ]
+    ],
+    "height_px": 1187,
+    "height_m": 1.72,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC04/config.json) height_m"
+   }
+  },
+  "NPC05": {
+   "name": "방문객 역할 그림: 돌봄 방문",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC05_caregiver_2026_front_full_v01.png",
+   "source_sha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC05.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC05.webp",
+    "size": [
+     458,
+     1200
+    ],
+    "foot": [
+     233.0,
+     1193
+    ],
+    "feet": [
+     [
+      158.5,
+      1193
+     ],
+     [
+      303.0,
+      1193
+     ]
+    ],
+    "height_px": 1186,
+    "height_m": 1.61,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC05/config.json) height_m"
+   }
+  },
+  "NPC06": {
+   "name": "방문객 역할 그림: 이웃",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC06_elderly_neighbor_2026_front_full_v01.png",
+   "source_sha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC06.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC06.webp",
+    "size": [
+     440,
+     1200
+    ],
+    "foot": [
+     207.5,
+     1194
+    ],
+    "feet": [
+     [
+      152.0,
+      1194
+     ],
+     [
+      276.0,
+      1194
+     ]
+    ],
+    "height_px": 1187,
+    "height_m": 1.55,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC06/config.json) height_m"
+   }
+  },
+  "NPC07": {
+   "name": "방문객 역할 그림: 음식 배달",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC07_food_delivery_2026_front_full_v01.png",
+   "source_sha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC07.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC07.webp",
+    "size": [
+     504,
+     1200
+    ],
+    "foot": [
+     220.0,
+     1194
+    ],
+    "feet": [
+     [
+      138.0,
+      1194
+     ],
+     [
+      297.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.74,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC07/config.json) height_m"
+   }
+  },
+  "NPC08": {
+   "name": "방문객 역할 그림: 차량 동승",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC08_vehicle_companion_2026_front_full_v01.png",
+   "source_sha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC08.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC08.webp",
+    "size": [
+     471,
+     1200
+    ],
+    "foot": [
+     267.0,
+     1193
+    ],
+    "feet": [
+     [
+      150.5,
+      1193
+     ],
+     [
+      370.0,
+      1193
+     ]
+    ],
+    "height_px": 1185,
+    "height_m": 1.7,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC08/config.json) height_m"
+   }
+  },
+  "NPC09": {
+   "name": "방문객 역할 그림: 공공 업무",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC09_public_service_2026_front_full_v01.png",
+   "source_sha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC09.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC09.webp",
+    "size": [
+     368,
+     1200
+    ],
+    "foot": [
+     200.5,
+     1194
+    ],
+    "feet": [
+     [
+      126.5,
+      1194
+     ],
+     [
+      261.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.64,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC09/config.json) height_m"
+   }
+  },
+  "NPC10": {
+   "name": "방문객 역할 그림: 지인",
+   "approval": "07_검수완료/approved_static_assets_v01.json",
+   "source": "NPC10_friend_2026_front_full_v01.png",
+   "source_sha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3",
+   "source_dir": "asset-source/01_캐릭터/game",
+   "file": "assets/v5/figure-NPC10.webp",
+   "figure": {
+    "file": "assets/v5/figure-NPC10.webp",
+    "size": [
+     402,
+     1200
+    ],
+    "foot": [
+     218.5,
+     1194
+    ],
+    "feet": [
+     [
+      133.5,
+      1194
+     ],
+     [
+      305.5,
+      1194
+     ]
+    ],
+    "height_px": 1188,
+    "height_m": 1.75,
+    "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC10/config.json) height_m"
+   }
+  }
+ },
+ "visitor_roles_status": {
+  "files": "10/10",
+  "approved_static": "10/10",
+  "stage_check": "tests/figures-qa.mjs (BG02 인터폰, 발·키·그림자) — test-artifacts/figures",
+  "cctv_art": "0/10",
+  "blocked_by": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌)."
  }
 }

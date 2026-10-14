@@ -61,6 +61,8 @@ try{
    await page.locator('#beginShift').click();assert.match(await page.locator('#shiftLabel').innerText(),new RegExp(n+'야간'));
    await playNightUI(page,n,{choose:sc=>sc==='N2_01'?'accept_unverified_replacement':defaultChoice(sc),afterCase:async(i,sc)=>{
     if(n===2&&i===0)await page.screenshot({path:art+'/story-n2-card.png',fullPage:true});
+    // v0.18.0: CH06 (N2_04) and CH08 (N2_06) from the restored game exports, on BG02 at the stand point
+    if(n===2&&(i===3||i===5)){const id=i===3?'CH06':'CH08';await page.waitForFunction(id=>document.querySelector('#contactScreen').dataset.actor==='still:'+id&&document.querySelector('#contactScreen').dataset.state==='idle',id);await page.locator('#storyCard').screenshot({path:art+`/story-contact-${id}.png`})}
     if(n===4&&i===3){await page.waitForFunction(()=>document.querySelector('#contactScreen').dataset.actor==='still:CH09'&&document.querySelector('#contactScreen').dataset.state==='idle');await page.screenshot({path:art+'/story-contact-portrait.png',fullPage:false})}
     if(n===3&&i===2){const before=await story(page);await page.reload();await page.waitForFunction(()=>!document.getElementById('startStory').disabled);assert.match(await page.locator('#resume').innerText(),/3야간/);await resume(page);
      await page.locator('#feedback').waitFor({state:'visible'});const after=await story(page);assert.deepEqual(after,before,'reload keeps the whole story state');assert.ok(await page.locator('#storyCard').isVisible())}}});

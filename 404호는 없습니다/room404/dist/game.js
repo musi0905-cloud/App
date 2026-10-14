@@ -267,11 +267,11 @@ function archiveClick(ev){const b=ev.target.closest('button');if(!b||!story)retu
 // Evidence text viewer (v0.16.0): the transcribed body of evidence_readable_20_v03 (a JSON text layer, never baked into
 // an image), zoomable with buttons, + / - / 0 keys and a two-finger pinch. Opening a document does not verify it.
 let docScale=1,docOpener=null,pinch=null;
-function openDoc(id,opener){const x=evInfo(id);if(!x||!story?.evidenceAcquired.includes(id))return;const e=escapeHTML,ok=story.evidenceVerified.includes(id),bg=sceneLayout.usage.evidence_backdrop?.[id],info=bg&&sceneLayout.backgrounds[bg];
+function openDoc(id,opener){const x=evInfo(id);if(!x||!story?.evidenceAcquired.includes(id))return;const e=escapeHTML,ok=story.evidenceVerified.includes(id),bg=sceneLayout.usage.evidence_backdrop?.[id],found=!bg&&sceneLayout.usage.evidence_found_at?.[id],info=sceneLayout.backgrounds[bg||found];
  $('docTitle').textContent=`${x.id} ${x.title}`;$('docMeta').textContent=`${x.era} · ${x.source_doc||x.source} · 옮겨 적은 본문이에요(원본 문서 사진이 아니에요)`;
  $('docBody').innerHTML=x.body?.length?x.body.map(l=>`<p>${e(l)}</p>`).join(''):'<p class="doc-missing">이 자료는 사진이에요. 사진 원본이 아직 들어오지 않아 글로 옮긴 본문이 없어요.</p>';
  $('docState').innerHTML=`${badge(ok)} ${ok?'다른 자료와 대조해 확인한 자료예요.':'찾았지만 아직 다른 자료와 대조하지 않았어요.'}`;
- const back=$('docViewer').querySelector('.doc-backdrop');back.style.backgroundImage=info?`url(${info.file})`:'';$('docEra').hidden=!info;$('docEra').textContent=info?`${info.era}년 기록 · ${info.name}`:'';
+ const back=$('docViewer').querySelector('.doc-backdrop');back.style.backgroundImage=info?`url(${info.file})`:'';$('docEra').hidden=!info;$('docEra').textContent=info?(found?`찾은 곳 · ${info.era}년 ${info.name}`:`${info.era}년 기록 · ${info.name}`):'';
  $('docViewer').dataset.ev=id;docOpener=opener||null;setDocScale(1);$('docViewer').hidden=false;$('docPaper').scrollTop=0;$('docClose').focus()}
 function closeDoc(){if($('docViewer').hidden)return;$('docViewer').hidden=true;docOpener?.focus();docOpener=null}
 function setDocScale(v){docScale=Math.round(Math.min(2,Math.max(.8,v))*10)/10;$('docPaper').style.setProperty('--doc-scale',docScale);$('docScale').textContent=Math.round(docScale*100)+'%';const lost=document.activeElement;$('docOut').disabled=docScale<=.8;$('docIn').disabled=docScale>=2;if(lost?.disabled)$('docPaper').focus()}
@@ -328,4 +328,4 @@ $('docViewer').querySelector('.doc-backdrop').onclick=closeDoc;
 $('docPaper').addEventListener('touchstart',e=>{if(e.touches.length===2){const [a,b]=e.touches;pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),s:docScale}}},{passive:true});
 $('docPaper').addEventListener('touchmove',e=>{if(pinch&&e.touches.length===2){const [a,b]=e.touches;setDocScale(pinch.s*Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)/pinch.d)}},{passive:true});
 $('docPaper').addEventListener('touchend',()=>{pinch=null},{passive:true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.17.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.18.0';boot();

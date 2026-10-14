@@ -1,5 +1,5 @@
 {
- "source": "배경: asset-source/02_배경 (download_integrity_v02.json 해시 일치, approved_static_assets_v01.json PASS). 좌표는 배경 설계 공간 1080x1920 기준. BG02 카메라는 v05 binding.json의 카메라(720x1280)를 1.5배 한 값. 그 밖의 수평선·바닥선은 실제 배경을 100px 격자로 놓고 읽은 시각 추정값(calibration: visual_estimate)이며 측정값이 아니다.",
+ "source": "배경: asset-source/02_배경 (download_integrity_v02.json 해시 일치, approved_static_assets_v01.json PASS). 좌표는 배경 설계 공간 1080x1920 기준. BG02 카메라는 v05 binding.json의 카메라(720x1280)를 1.5배 한 값. 그 밖의 수평선·바닥선은 실제 배경을 100px 격자로 놓고 읽은 시각 추정값(calibration: visual_estimate)이며 측정값이 아니다. BG08·BG06_interior·BG13_2004는 v0.18.0 복원 전달(asset-source/v06_sources)로 반입.",
  "layers": [
   "background",
   "back_objects",
@@ -542,6 +542,81 @@
    ],
    "occluders": []
   },
+  "BG06_interior": {
+   "name": "엘리베이터 내부",
+   "era": "2026",
+   "file": "assets/bg/BG06_interior.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 865,
+   "floor_line_y": 1490,
+   "vanishing_x": 550,
+   "floor": [
+    [
+     240,
+     1490
+    ],
+    [
+     840,
+     1490
+    ],
+    [
+     1080,
+     1720
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1720
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "door",
+     "rect": [
+      250,
+      380,
+      580,
+      1100
+     ],
+     "action": null,
+     "label": "엘리베이터 문"
+    },
+    {
+     "id": "panel",
+     "rect": [
+      864,
+      504,
+      76,
+      596
+     ],
+     "action": null,
+     "label": "층 버튼"
+    }
+   ],
+   "occluders": [],
+   "note": "게임에서 쓰는 곳이 기획에 지정되지 않음(06_ASSET_SHOTLIST에는 BG06 엘리베이터 홀만 N1~5). 게임 파일만 만들고 화면에 연결하지 않음."
+  },
   "BG07": {
    "name": "지하 주차장",
    "era": "2026",
@@ -641,26 +716,27 @@
   "BG08": {
    "name": "관리사무소",
    "era": "2026",
-   "file": null,
+   "file": "assets/bg/BG08.webp",
    "size": [
     1080,
     1920
    ],
    "calibration": "visual_estimate",
-   "horizon_y": 860,
-   "floor_line_y": 1330,
+   "horizon_y": 770,
+   "floor_line_y": 1100,
+   "vanishing_x": 550,
    "floor": [
     [
-     150,
-     1330
+     270,
+     1100
     ],
     [
-     1000,
-     1330
+     990,
+     1100
     ],
     [
      1080,
-     1600
+     1185
     ],
     [
      1080,
@@ -672,7 +748,7 @@
     ],
     [
      0,
-     1600
+     1530
     ]
    ],
    "cameras": {
@@ -683,62 +759,57 @@
      1920
     ]
    },
-   "stand_points": {
-    "behind_desk": {
-     "x": 560,
-     "y": 1300
-    }
-   },
+   "stand_points": {},
    "paths": {},
    "click_areas": [
     {
      "id": "cabinet",
      "rect": [
       0,
-      730,
-      150,
-      900
+      420,
+      270,
+      1080
      ],
      "action": null,
      "label": "파일 캐비닛"
     },
     {
-     "id": "desk_ledger",
+     "id": "desk_files",
      "rect": [
-      520,
-      1010,
-      220,
-      50
+      270,
+      745,
+      690,
+      135
      ],
      "action": null,
-     "label": "책상 위 서류"
+     "label": "책상 위 서류철"
     }
    ],
    "occluders": [
     {
-     "id": "desk",
+     "id": "chair",
      "polygon": [
       [
-       140,
-       1020
+       158,
+       915
       ],
       [
-       1000,
-       1020
+       398,
+       915
       ],
       [
-       1000,
-       1340
+       398,
+       1275
       ],
       [
-       140,
-       1340
+       158,
+       1275
       ]
      ],
-     "note": "책상. 뒤에 선 인물의 하반신을 가린다."
+     "note": "앞쪽 의자. 뒤에 선 인물의 하반신을 가린다."
     }
    ],
-   "status": "승인본(BG08_management_office_2026_base_v02_v01) 미반입. asset-source의 BG08_management_office_2026_v01은 승인 목록에 없어 게임 파일로 만들지 않음. 아래 좌표는 v01을 보고 읽은 값이라 승인본이 오면 다시 확인."
+   "note": "승인본 BG08_management_office_2026_base_v02_v01(v0.18.0 반입) 기준. v01과 방 배치가 달라(책상이 안쪽 벽, 캐비닛이 왼쪽 벽) v01에서 읽은 좌표를 버리고 다시 읽음. 수평선은 캐비닛 윗선·게시판 아랫선의 소실점. 사람을 세우는 장면 기획이 없어 서 있는 곳을 두지 않음."
   },
   "BG09": {
    "name": "전기·통신 유지보수실 표지",
@@ -1095,7 +1166,81 @@
     }
    ],
    "occluders": [],
-   "note": "4층 창의 정확한 줄은 보이는 1층이 몇 층인지 확정되지 않아 지정하지 않음(BG13_2004와 대조 필요, 2004판 미반입)."
+   "note": "BG13_2004와 건물 윤곽·창 줄이 같은 자리(가장자리 상관 0.97, 가로·세로 이동 0px, v0.18.0 측정). 4층 창의 정확한 줄은 보이는 1층이 몇 층인지 기록이 없어 지정하지 않음."
+  },
+  "BG13_2004": {
+   "name": "단지 외관 2004",
+   "era": "2004",
+   "file": "assets/bg/BG13_2004.webp",
+   "size": [
+    1080,
+    1920
+   ],
+   "calibration": "visual_estimate",
+   "horizon_y": 1300,
+   "floor_line_y": 1390,
+   "floor": [
+    [
+     300,
+     1390
+    ],
+    [
+     860,
+     1390
+    ],
+    [
+     1080,
+     1500
+    ],
+    [
+     1080,
+     1920
+    ],
+    [
+     0,
+     1920
+    ],
+    [
+     0,
+     1520
+    ]
+   ],
+   "cameras": {
+    "full": [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   },
+   "stand_points": {},
+   "paths": {},
+   "click_areas": [
+    {
+     "id": "entrance",
+     "rect": [
+      500,
+      1280,
+      120,
+      100
+     ],
+     "action": null,
+     "label": "공동현관"
+    },
+    {
+     "id": "guard_booth",
+     "rect": [
+      0,
+      1170,
+      280,
+      330
+     ],
+     "action": null,
+     "label": "경비실"
+    }
+   ],
+   "occluders": [],
+   "note": "BG13_2026과 같은 좌표(건물 윤곽 이동 0px로 확인). 2004년 상태라 2026년 현재 장면에는 쓰지 않는다. 쓸 장면(06_ASSET_SHOTLIST: 도입·엔딩)은 기획에 정확히 지정되지 않아 화면에 연결하지 않음."
   }
  },
  "usage": {
@@ -1131,6 +1276,11 @@
    "EV12": "BG05",
    "EV10": "BG11"
   },
-  "evidence_backdrop_note": "2004년 자료를 열 때만 2004년 배경을 어둡게 깐다(06_ASSET_SHOTLIST: BG05 N3~5 기록, BG10 N3 회상, BG11 N5 기록)."
+  "evidence_backdrop_note": "2004년 자료를 열 때만 2004년 배경을 어둡게 깐다(06_ASSET_SHOTLIST: BG05 N3~5 기록, BG10 N3 회상, BG11 N5 기록).",
+  "evidence_found_at": {
+   "EV03": "BG08",
+   "EV15": "BG08"
+  },
+  "evidence_found_at_note": "2026년 지금 관리사무소에서 찾은 문서(EV03 N2 관리실 문서, EV15 N4 관리실 서랍)를 열 때 찾은 곳을 어둡게 깐다(06_ASSET_SHOTLIST BG08: N2 N4 파일 캐비닛·보수 문서 수납). 문서의 작성 연도가 아니라 찾은 곳이므로 \"찾은 곳\"으로 표시한다."
  }
 }

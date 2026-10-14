@@ -98,6 +98,34 @@
    ],
    "bytes": 119548
   },
+  "BG06_interior": {
+   "file": "assets/bg/BG06_interior.webp",
+   "source": "asset-source/02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+   "source_sha256": "73db049cb437a8c725e786d897f9ad4f2372d6ad9356a0c1d8ac527714c31648",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 73042
+  },
+  "BG08": {
+   "file": "assets/bg/BG08.webp",
+   "source": "asset-source/02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+   "source_sha256": "d0c3c33cd2b43d447a54d17a2f16b471a56edd88a7ee0458cab15d342d70842e",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 84990
+  },
   "BG09": {
    "file": "assets/bg/BG09.webp",
    "source": "asset-source/02_배경/game/BG09_maintenance_cover_2026_v01.webp",
@@ -167,6 +195,20 @@
     1280
    ],
    "bytes": 154594
+  },
+  "BG13_2004": {
+   "file": "assets/bg/BG13_2004.webp",
+   "source": "asset-source/02_배경/game/BG13_2004_exterior_2004_v01.webp",
+   "source_sha256": "1b7cb1ea74218c53dfaed975f50965d484f62f4aff2879d91e2896b0f7d13e9e",
+   "source_size": [
+    1080,
+    1920
+   ],
+   "size": [
+    720,
+    1280
+   ],
+   "bytes": 147500
   }
  },
  "figures": {
@@ -194,6 +236,10 @@
    "height_m": 1.68,
    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
    "source_sha256": "cdd9d1422d5f79467ab7be58989748fe489caa1c4e6540fe5ef41f3f9bec7b0e",
+   "source_size": [
+    941,
+    1672
+   ],
    "crop": [
     164,
     0,
@@ -226,6 +272,10 @@
    "height_m": 1.68,
    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
    "source_sha256": "03a0d468d6313d27666455fa433a37eb54d38213104792fcff818f07b5c79b4d",
+   "source_size": [
+    941,
+    1671
+   ],
    "crop": [
     210,
     12,
@@ -258,6 +308,10 @@
    "height_m": 1.68,
    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
    "source_sha256": "24aa4165b1ab02b9454ae5a11ad7c7c1ccef7a5801b6d707183cdb391850a237",
+   "source_size": [
+    942,
+    1670
+   ],
    "crop": [
     226,
     34,
@@ -290,6 +344,10 @@
    "height_m": 1.68,
    "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
    "source_sha256": "788628840b4b174f4366c060519b47efa5921a1cfdc38314aa57713bdfe13fd0",
+   "source_size": [
+    942,
+    1669
+   ],
    "crop": [
     240,
     38,
@@ -297,6 +355,438 @@
     1612
    ],
    "bytes": 62446
+  },
+  "CH06": {
+   "file": "assets/v5/figure-CH06.webp",
+   "size": [
+    430,
+    1200
+   ],
+   "foot": [
+    209.0,
+    1194
+   ],
+   "feet": [
+    [
+     121.0,
+     1194
+    ],
+    [
+     292.0,
+     1194
+    ]
+   ],
+   "height_px": 1187,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476",
+   "source_size": [
+    941,
+    1671
+   ],
+   "crop": [
+    197,
+    23,
+    776,
+    1640
+   ],
+   "bytes": 78540
+  },
+  "CH08": {
+   "file": "assets/v5/figure-CH08.webp",
+   "size": [
+    348,
+    1200
+   ],
+   "foot": [
+    156.0,
+    1194
+   ],
+   "feet": [
+    [
+     111.5,
+     1194
+    ],
+    [
+     219.0,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    236,
+    12,
+    712,
+    1655
+   ],
+   "bytes": 65824
+  },
+  "NPC01": {
+   "file": "assets/v5/figure-NPC01.webp",
+   "size": [
+    443,
+    1200
+   ],
+   "foot": [
+    225.5,
+    1194
+   ],
+   "feet": [
+    [
+     137.5,
+     1194
+    ],
+    [
+     321.0,
+     1194
+    ]
+   ],
+   "height_px": 1187,
+   "height_m": 1.68,
+   "height_note": "[DESIGN] 기획·에셋 문서에 키 기록 없음: 성별·외형으로 추정하지 않고 1.68m 공통값",
+   "source_sha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    174,
+    19,
+    772,
+    1639
+   ],
+   "bytes": 97626
+  },
+  "NPC02": {
+   "file": "assets/v5/figure-NPC02.webp",
+   "size": [
+    414,
+    1200
+   ],
+   "foot": [
+    225.5,
+    1194
+   ],
+   "feet": [
+    [
+     155.5,
+     1194
+    ],
+    [
+     288.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.64,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC02/config.json) height_m",
+   "source_sha256": "a27b97d7c480ad9eb36f68d8ff08759799ffc22d187ad585df5cd197da68aaa6",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    182,
+    3,
+    756,
+    1667
+   ],
+   "bytes": 92752
+  },
+  "NPC03": {
+   "file": "assets/v5/figure-NPC03.webp",
+   "size": [
+    471,
+    1200
+   ],
+   "foot": [
+    217.5,
+    1194
+   ],
+   "feet": [
+    [
+     113.0,
+     1194
+    ],
+    [
+     318.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.74,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC03/config.json) height_m",
+   "source_sha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f",
+   "source_size": [
+    942,
+    1670
+   ],
+   "crop": [
+    178,
+    12,
+    813,
+    1631
+   ],
+   "bytes": 88334
+  },
+  "NPC04": {
+   "file": "assets/v5/figure-NPC04.webp",
+   "size": [
+    521,
+    1200
+   ],
+   "foot": [
+    242.5,
+    1194
+   ],
+   "feet": [
+    [
+     121.5,
+     1194
+    ],
+    [
+     362.5,
+     1194
+    ]
+   ],
+   "height_px": 1187,
+   "height_m": 1.72,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC04/config.json) height_m",
+   "source_sha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11",
+   "source_size": [
+    1024,
+    1536
+   ],
+   "crop": [
+    202,
+    7,
+    862,
+    1528
+   ],
+   "bytes": 126472
+  },
+  "NPC05": {
+   "file": "assets/v5/figure-NPC05.webp",
+   "size": [
+    458,
+    1200
+   ],
+   "foot": [
+    233.0,
+    1193
+   ],
+   "feet": [
+    [
+     158.5,
+     1193
+    ],
+    [
+     303.0,
+     1193
+    ]
+   ],
+   "height_px": 1186,
+   "height_m": 1.61,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC05/config.json) height_m",
+   "source_sha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da",
+   "source_size": [
+    1024,
+    1536
+   ],
+   "crop": [
+    250,
+    1,
+    828,
+    1517
+   ],
+   "bytes": 118490
+  },
+  "NPC06": {
+   "file": "assets/v5/figure-NPC06.webp",
+   "size": [
+    440,
+    1200
+   ],
+   "foot": [
+    207.5,
+    1194
+   ],
+   "feet": [
+    [
+     152.0,
+     1194
+    ],
+    [
+     276.0,
+     1194
+    ]
+   ],
+   "height_px": 1187,
+   "height_m": 1.55,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC06/config.json) height_m",
+   "source_sha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    189,
+    19,
+    784,
+    1641
+   ],
+   "bytes": 110172
+  },
+  "NPC07": {
+   "file": "assets/v5/figure-NPC07.webp",
+   "size": [
+    504,
+    1200
+   ],
+   "foot": [
+    220.0,
+    1194
+   ],
+   "feet": [
+    [
+     138.0,
+     1194
+    ],
+    [
+     297.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.74,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC07/config.json) height_m",
+   "source_sha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    168,
+    5,
+    853,
+    1636
+   ],
+   "bytes": 117482
+  },
+  "NPC08": {
+   "file": "assets/v5/figure-NPC08.webp",
+   "size": [
+    471,
+    1200
+   ],
+   "foot": [
+    267.0,
+    1193
+   ],
+   "feet": [
+    [
+     150.5,
+     1193
+    ],
+    [
+     370.0,
+     1193
+    ]
+   ],
+   "height_px": 1185,
+   "height_m": 1.7,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC08/config.json) height_m",
+   "source_sha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744",
+   "source_size": [
+    1024,
+    1536
+   ],
+   "crop": [
+    220,
+    6,
+    813,
+    1517
+   ],
+   "bytes": 102962
+  },
+  "NPC09": {
+   "file": "assets/v5/figure-NPC09.webp",
+   "size": [
+    368,
+    1200
+   ],
+   "foot": [
+    200.5,
+    1194
+   ],
+   "feet": [
+    [
+     126.5,
+     1194
+    ],
+    [
+     261.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.64,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC09/config.json) height_m",
+   "source_sha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    234,
+    5,
+    743,
+    1666
+   ],
+   "bytes": 80152
+  },
+  "NPC10": {
+   "file": "assets/v5/figure-NPC10.webp",
+   "size": [
+    402,
+    1200
+   ],
+   "foot": [
+    218.5,
+    1194
+   ],
+   "feet": [
+    [
+     133.5,
+     1194
+    ],
+    [
+     305.5,
+     1194
+    ]
+   ],
+   "height_px": 1188,
+   "height_m": 1.75,
+   "height_note": "제작 측 v05 걷기 렌더 설정(asset-source/v05_QA/code/NPC10/config.json) height_m",
+   "source_sha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3",
+   "source_size": [
+    941,
+    1672
+   ],
+   "crop": [
+    202,
+    4,
+    752,
+    1646
+   ],
+   "bytes": 104306
   }
  }
 }

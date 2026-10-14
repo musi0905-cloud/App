@@ -1,0 +1,973 @@
+{
+ "generated": "2026-10-14",
+ "scene": "BG02 intercom idle",
+ "stand_point": {
+  "x": 540,
+  "y": 1780,
+  "z": 1.593,
+  "source": "00_스타일가이드/QA_NPC01_BG02_static_placement_v01.jpg (PASS) 의 발 위치. z = 1100x1.6/(1780-675)."
+ },
+ "errors": [],
+ "rows": [
+  {
+   "id": "CH09",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    319.3122689544535,
+    619.9246704331449,
+    760.6877310455466,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9764943851572855,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 53,
+   "beside_lum": 60,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "CH10",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    353.48957243495846,
+    619.9246704331449,
+    726.5104275650415,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9764943851572855,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 59,
+   "beside_lum": 66,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "MC15",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    353.9963606601667,
+    619.9246704331449,
+    726.0036393398333,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9789665228412279,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 112,
+   "beside_lum": 66,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "MC25",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    365.40181591257704,
+    619.9246704331449,
+    714.598184087423,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9781410873244983,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 90,
+   "beside_lum": 64,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "CH06",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    329.8768358408813,
+    619.9246704331449,
+    750.1231641591187,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9773170426005519,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 106,
+   "beside_lum": 62,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "CH08",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    370.0899769826323,
+    619.9246704331449,
+    709.9100230173676,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9764943851572855,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 76,
+   "beside_lum": 63,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "approved"
+  },
+  {
+   "id": "NPC01",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    323.52427506397777,
+    619.9246704331449,
+    756.4757249360223,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9773170426005519,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 52,
+   "beside_lum": 60,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC02",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    342.67838459928856,
+    647.5455116133082,
+    737.3216154007114,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9532445188440166,
+   "shadows": [
+    [
+     480.9154179972161,
+     1780,
+     62.367058780716356,
+     18.381869956421664,
+     0.32
+    ],
+    [
+     599.0845820027839,
+     1780,
+     62.367058780716356,
+     18.381869956421664,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 83,
+   "beside_lum": 63,
+   "height_m": 1.64,
+   "screen_height_design_px": 1132.5,
+   "expected_height_design_px": 1132.5,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC03",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    301.82255702029704,
+    578.4934086629,
+    778.177442979703,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 1.0113691846271886,
+   "shadows": [
+    [
+     477.31269958241217,
+     1780,
+     66.16992821856492,
+     19.502715685471767,
+     0.32
+    ],
+    [
+     602.6873004175878,
+     1780,
+     66.16992821856492,
+     19.502715685471767,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 66,
+   "beside_lum": 66,
+   "height_m": 1.74,
+   "screen_height_design_px": 1201.5,
+   "expected_height_design_px": 1201.5,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC04",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    279.3472177930933,
+    592.3038292529818,
+    800.6527822069067,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 1.000586495995803,
+   "shadows": [
+    [
+     478.03324326537296,
+     1780,
+     65.40935433099521,
+     19.278546539661747,
+     0.32
+    ],
+    [
+     601.9667567346271,
+     1780,
+     65.40935433099521,
+     19.278546539661747,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 84,
+   "beside_lum": 54,
+   "height_m": 1.72,
+   "screen_height_design_px": 1187.7,
+   "expected_height_design_px": 1187.7,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC05",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    325.3387872109111,
+    668.2611424984304,
+    754.661212789089,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9373852086859777,
+   "shadows": [
+    [
+     481.99623352165725,
+     1780,
+     61.2261979493618,
+     18.045616237706636,
+     0.32
+    ],
+    [
+     598.0037664783428,
+     1780,
+     61.2261979493618,
+     18.045616237706636,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 73,
+   "beside_lum": 59,
+   "height_m": 1.61,
+   "screen_height_design_px": 1111.7,
+   "expected_height_design_px": 1111.7,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC06",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    341.6279098054832,
+    709.6924042686753,
+    738.3720901945168,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9016913190659854,
+   "shadows": [
+    [
+     484.1578645705396,
+     1780,
+     58.94447628665266,
+     17.373108800276572,
+     0.32
+    ],
+    [
+     595.8421354294604,
+     1780,
+     58.94447628665266,
+     17.373108800276572,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 139,
+   "beside_lum": 61,
+   "height_m": 1.55,
+   "screen_height_design_px": 1070.3,
+   "expected_height_design_px": 1070.3,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC07",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    285.13496547394845,
+    578.4934086629,
+    794.8650345260515,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 1.0113691846271886,
+   "shadows": [
+    [
+     477.31269958241217,
+     1780,
+     66.16992821856492,
+     19.502715685471767,
+     0.32
+    ],
+    [
+     602.6873004175878,
+     1780,
+     66.16992821856492,
+     19.502715685471767,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 118,
+   "beside_lum": 59,
+   "height_m": 1.74,
+   "screen_height_design_px": 1201.5,
+   "expected_height_design_px": 1201.5,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC08",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    306.70878129792527,
+    606.1142498430634,
+    773.2912187020747,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9906208862083854,
+   "shadows": [
+    [
+     478.75378694833375,
+     1780,
+     64.6487804434255,
+     19.054377393851727,
+     0.32
+    ],
+    [
+     601.2462130516662,
+     1780,
+     64.6487804434255,
+     19.054377393851727,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 94,
+   "beside_lum": 63,
+   "height_m": 1.7,
+   "screen_height_design_px": 1173.9,
+   "expected_height_design_px": 1173.9,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC09",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    364.603008532701,
+    647.5455116133082,
+    715.396991467299,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 0.9532445188440166,
+   "shadows": [
+    [
+     480.9154179972161,
+     1780,
+     62.367058780716356,
+     18.381869956421664,
+     0.32
+    ],
+    [
+     599.0845820027839,
+     1780,
+     62.367058780716356,
+     18.381869956421664,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 68,
+   "beside_lum": 64,
+   "height_m": 1.64,
+   "screen_height_design_px": 1132.5,
+   "expected_height_design_px": 1132.5,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "NPC10",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    335.54648810769334,
+    571.5881983678594,
+    744.4535118923067,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 1.0171816512055056,
+   "shadows": [
+    [
+     476.9524277409318,
+     1780,
+     66.55021516234977,
+     19.614800258376775,
+     0.32
+    ],
+    [
+     603.0475722590683,
+     1780,
+     66.55021516234977,
+     19.614800258376775,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 114,
+   "beside_lum": 62,
+   "height_m": 1.75,
+   "screen_height_design_px": 1208.4,
+   "expected_height_design_px": 1208.4,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "role_off"
+  },
+  {
+   "id": "visitor-01",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 96,
+   "beside_lum": 32,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-02",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 110,
+   "beside_lum": 32,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-03",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 107,
+   "beside_lum": 32,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-04",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 67,
+   "beside_lum": 32,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-05",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 84,
+   "beside_lum": 33,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-06",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 82,
+   "beside_lum": 32,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-07",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 161,
+   "beside_lum": 33,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  },
+  {
+   "id": "visitor-08",
+   "scene": "BG02:intercom:idle",
+   "box": [
+    66.09688664502943,
+    619.9246704331449,
+    1013.9031133549706,
+    1780
+   ],
+   "z": 1.593,
+   "scale": 2.4682453820571384,
+   "shadows": [
+    [
+     479.4743306312945,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ],
+    [
+     600.5256693687055,
+     1780,
+     63.88820655585578,
+     18.830208248041703,
+     0.32
+    ]
+   ],
+   "canvas": [
+    540,
+    720
+   ],
+   "torso_lum": 65,
+   "beside_lum": 30,
+   "height_m": 1.68,
+   "screen_height_design_px": 1160.1,
+   "expected_height_design_px": 1160.1,
+   "feet_on_stand_point": true,
+   "shadows_under_soles": true,
+   "kind": "legacy"
+  }
+ ]
+}
