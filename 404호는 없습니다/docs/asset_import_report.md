@@ -60,7 +60,7 @@ v05 부품 그림(`assets/` 25개)은 이 패키지에 없습니다. 그래서 R
 |---|---|
 | 매니페스트 | ZIP 98개, 2,072,965,448바이트(인수인계 기록: 97개 정상, 1개 손상) |
 | 이 세션에서 받은 ZIP | 15개(3MB 이하 전부). SHA-256이 매니페스트와 모두 일치 |
-| 받지 못한 ZIP | 83개. 3MB를 넘어 Drive 도구로 받을 수 없었고, `drive.usercontent.google.com` 직접 내려받기는 프록시가 403으로 막음. 손상 ZIP `01_캐릭터_이전업로드_불완전_사용금지.zip`은 받지 않음 |
+| 받지 못한 ZIP | 83개. 3MB를 넘는 ZIP은 그 세션의 Drive 연결 도구로 받지 못했고(그 환경의 도구 동작이며 Drive의 일반 제한이 아님. v0.17에서는 1.9MB 이하 독립 ZIP 93개를 정상으로 받음), `drive.usercontent.google.com` 직접 내려받기는 프록시가 403으로 막음. 손상 ZIP `01_캐릭터_이전업로드_불완전_사용금지.zip`은 받지 않음 |
 | `extract_404_archives.py` 실행 | 받은 15개를 원래 경로 구조로 놓고 그대로 실행. EXTRACTED 15개, 파일 558개. 받지 못한 83개 때문에 종료 코드 1(스크립트 설명대로) |
 | 보고서 | `docs/extraction/EXTRACTION_REPORT_session_20261013.json`, 실행 기록 `docs/extraction/extract_run_session_20261013.log` |
 
