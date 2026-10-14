@@ -1,90 +1,83 @@
 #!/usr/bin/env python3
-"""Missing-asset request list for the producer: docs/missing_assets_request.json (v0.17.0).
+"""Asset request list for the producer: docs/missing_assets_request.json (v0.18.0).
 
-  python3 scripts/build-missing-request.py
+  python3 scripts/build-missing-request.py      (after import-v06-sources.py and build-v06-review.py)
 
-Only approved (PASS) files the game or the walk QA needs and this repository does not hold. Every value comes from a
-record, nothing is guessed; what no record states is null:
-  assetId         asset_key of the approval record (approved_static_assets_v01.json); for v05 part art the package path
-  expectedSha256  download_integrity_v02.json (package game path) or checksums_v05.json; null if neither lists it
-  sourceDriveId   a Drive file id only where this session found that exact file; otherwise null
-  candidateArchives  recovery ZIPs whose folder matches (ZIP_압축해제_목록_20261013.json). Their contents are not listed
-                  there, so a candidate is not a claim that the file is inside.
-Drive lookups (2026-10-14): title searches for every name below found only the NPC01 copies listed; the 9.4 MB
-01_캐릭터_복구완료_v02_part05.zip could not be read through this session's Drive connector (response message too large).
+resolved: the 41 requests of v0.17.0, each matched by SHA-256 to a file now in the repository (the restored delivery of
+2026-10-14, asset-source/v06_sources/SOURCE_IMPORT_RESULT.json). A request counts as resolved only when its expected
+hash is held; nothing is resolved by name.
+requests: what is still needed, taken from records only (null where no record says it):
+  new_art   the v06 frame review's open issues that the existing parts cannot express (production_requests_v06.json),
+            CCTV walk/gesture art for the visitor role figures (character_assets.json visitor_roles_status), the NPC01
+            walk clip (no package), the approval-backlog revisions (revision_backlog_v02.json)
+  record    facts the game needs but no document gives (figure heights marked [DESIGN], the 4th-floor window row of BG13)
+Fields as v0.17.0 (assetId, entityId, era, expectedFilename, sourceDriveId, sourceUrl, expectedSha256, priority,
+blockingReason) plus kind, use and spec.
 """
 import hashlib, json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT = os.path.dirname(ROOT)
-DOCS = os.path.join(PROJECT, 'character-v5', 'docs')
+AS = os.path.join(PROJECT, 'asset-source')
 J = lambda *p: json.load(open(os.path.join(*p)))
-VIEW = 'https://drive.google.com/file/d/{}/view?usp=drivesdk'
 
 def held_hashes():
-    out = set()
+    out = {}
     for base in ('asset-source', 'character-v5', os.path.join('room404', 'dist', 'assets')):
         for dp, _, fs in os.walk(os.path.join(PROJECT, base)):
             for f in fs:
-                if f.lower().endswith(('.png', '.webp', '.jpg', '.json')): out.add(hashlib.sha256(open(os.path.join(dp, f), 'rb').read()).hexdigest())
+                if f.lower().endswith(('.png', '.webp', '.jpg', '.json')): out.setdefault(hashlib.sha256(open(os.path.join(dp, f), 'rb').read()).hexdigest(), os.path.relpath(os.path.join(dp, f), PROJECT))
     return out
 
+def row(asset, ent, era, kind, priority, reason, use, spec=None, filename=None):
+    return {'assetId': asset, 'entityId': ent, 'era': era, 'expectedFilename': filename, 'sourceDriveId': None, 'sourceUrl': None, 'expectedSha256': None,
+            'priority': priority, 'blockingReason': reason, 'kind': kind, 'use': use, 'spec': spec}
+
 def main():
-    static = J(DOCS, 'approved_static_assets_v01.json'); integ = {x['path']: x for x in J(DOCS, 'download_integrity_v02.json')['images']}
-    zips = J(PROJECT, 'docs', 'extraction', 'ZIP_압축해제_목록_20261013.json'); have = held_hashes()
-    archives = {os.path.basename(z['source_path']): {'driveId': z['drive_id'], 'bytes': z['zip_size'], 'sha256': z['zip_sha256']}
-                for z in zips if '복구' in os.path.basename(z['source_path']) and ('01_캐릭터' in z['source_path'] or '02_배경' in z['source_path'])}
-    cand = lambda word: sorted(n for n in archives if word in n)
-    char_zips, bg_zips = cand('01_캐릭터_복구완료_v02'), cand('02_배경_20261008_복구저장')
-    found = {  # exact files this session located on Drive (title search), with what they turned out to be
-        '01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png': ('1CDivKEz1G-SdJIh9tLj__SXxA7aTzLEw',
-            'Drive의 game 사본이 잘려 있음(327,769바이트, sha256 eaee7a07…, PNG 해독 실패). 승인 원본(01_캐릭터/originals, sha256 c6836c1c…)은 받아서 asset-source/01_캐릭터/originals에 보관. 게임 출력본이 원본과 같은지 제작 측 확인 필요.')}
+    path = os.path.join(PROJECT, 'docs', 'missing_assets_request.json'); old = json.load(open(path)); have = held_hashes()
+    prev = old.get('requests', []) + [r for r in old.get('resolved', [])]
+    resolved = []
+    for r in prev:
+        h = r.get('expectedSha256'); p = have.get(h) if h else None
+        resolved.append({'assetId': r['assetId'], 'priority': r['priority'], 'expectedSha256': h, 'heldAt': p, 'status': 'RESOLVED' if p else 'OPEN'})
     rows = []
-    want_char = {'NPC01', 'NPC03', 'NPC04', 'NPC05', 'NPC06', 'NPC07', 'NPC08', 'NPC09', 'NPC10', 'CH06', 'CH08'}
-    for x in static:
-        if x['status'] != 'PASS': continue
-        is_role = x['id'] in want_char and 'front_full' in x['asset_key']
-        is_bg = x['id'] in ('BG06_interior', 'BG08', 'BG13_2004')
-        if not (is_role or is_bg): continue
-        gp = x['game_path']; rec = integ.get(gp, {}); h = rec.get('sha256')
-        if h in have: continue
-        drive, reason = found.get(gp, (None, None))
-        if not reason:
-            reason = ('Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼). '
-                      + ('승인본은 front_full_v02(v01은 대체됨).' if x['asset_key'].endswith('_v02') and x['id'] == 'NPC03' else ''))
-        ent = x['id'].split('_')[0]
-        rows.append({'assetId': x['asset_key'], 'entityId': ent, 'era': x['state'][:4] if x['state'][:4].isdigit() else None,
-                     'expectedFilename': gp, 'sourceDriveId': drive, 'sourceUrl': VIEW.format(drive) if drive else None, 'expectedSha256': h,
-                     'priority': 'P1' if is_role or x['id'] in ('BG08', 'BG13_2004') else 'P2',
-                     'blockingReason': reason.strip(),
-                     'use': ('방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)' if ent.startswith('NPC') else
-                             '기록 인물 화면(CH06 N2_04·N3_04·N5_06, CH08 N2_06·N5_07). 지금은 글만 나옴' if ent.startswith('CH') else
-                             {'BG08': '관리사무소 승인본(v01은 미승인이라 게임 파일 없음)', 'BG13': '2004/2026 외관 대조(4층 창 위치)', 'BG06': '엘리베이터 내부(현재 쓰는 곳 없음)'}[ent]),
-                     'candidateArchives': char_zips if is_role else bg_zips, 'originalSha256': x.get('sha256')})
-    # Game exports of BG04/BG05: the approved originals are held and the game files are built from them.
-    for bid in ('BG04', 'BG05'):
-        x = next(s for s in static if s['id'] == bid); rec = integ[x['game_path']]
-        if rec['sha256'] in have: continue
-        rows.append({'assetId': x['asset_key'], 'entityId': bid, 'era': x['state'][:4], 'expectedFilename': x['game_path'], 'sourceDriveId': None, 'sourceUrl': None,
-                     'expectedSha256': rec['sha256'], 'priority': 'P3', 'blockingReason': '패키지 WebP 출력본은 받지 못함. 승인 원본 PNG(941x1672)를 받아 게임 파일을 만들었으므로 게임에는 영향 없음.',
-                     'use': '레지스트리 대조용', 'candidateArchives': bg_zips, 'originalSha256': x.get('sha256')})
-    # v05 part art (render inputs) — not part of the 93 frame ZIPs.
-    for npc in ['NPC%02d' % n for n in range(2, 11)]:
-        sums = J(PROJECT, 'asset-source', 'v05_QA', 'code', npc, 'checksums_v05.json')
-        for k, h in sorted(sums.items()):
-            if k.startswith('assets/') and h not in have:
-                rows.append({'assetId': f'{npc}/{k}', 'entityId': npc, 'era': '2026', 'expectedFilename': f'06_애니메이션/NPC02-NPC10_손소품경계수정_v05/{npc}/{k}', 'sourceDriveId': None, 'sourceUrl': None,
-                             'expectedSha256': h, 'priority': 'P3', 'blockingReason': 'v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.',
-                             'use': 'render.js 입력(걷기 프레임 재출력)', 'candidateArchives': [], 'originalSha256': None})
-    out = {'generated_by': 'room404/scripts/build-missing-request.py', 'generated': '2026-10-14',
-           'fields': ['assetId', 'entityId', 'era', 'expectedFilename', 'sourceDriveId', 'sourceUrl', 'expectedSha256', 'priority', 'blockingReason'],
-           'extra_fields': {'use': '게임에서 쓰는 곳', 'candidateArchives': '폴더 이름이 맞는 복구 ZIP 이름(archives 참고). 내용 미확인이며 포함 여부를 주장하지 않음', 'originalSha256': '승인 기록의 원본 해시'},
-           'archives': archives,
-           'counts': {p: sum(r['priority'] == p for r in rows) for p in ('P1', 'P2', 'P3')}, 'requests': rows}
-    path = os.path.join(PROJECT, 'docs', 'missing_assets_request.json')
+    # 1. v06 review: open issues that need new art (one row per NPC and issue; the views are listed in the spec)
+    pr = J(AS, 'v06_QA', 'production_requests_v06.json'); review = J(AS, 'v06_QA', 'visual_review_v06.json'); by = {}
+    for q in pr['requests']:
+        if q['needs_new_art']: by.setdefault((q['npc'], q['issue']), []).append(q)
+    for (npc, iss), qs in sorted(by.items()):
+        spec = {k: v for k, v in qs[0]['art_spec'].items() if k not in ('view', 'character')}; spec['views'] = sorted({q['view'] for q in qs})
+        rows.append(row(f'{npc}/walk/{iss}', npc, '2026', 'new_art', qs[0]['priority'], f"v06 재렌더 후에도 남음: {qs[0]['still_wrong']}",
+                        '걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)', spec))
+    for npc in sorted({q['npc'] for q in pr['requests']}):
+        sug = review['suggestions']['TURN_45']
+        rows.append(row(f'{npc}/walk/TURN_45', npc, '2026', 'new_art', sug['priority'], '막지 않음(연결 PASS). ' + sug['note'], '회전 구간을 끊김 없이', {'required_art': sug['required_art']}))
+    # 2. visitor role figures: the switch waits for CCTV art of the same people
+    ca = J(ROOT, 'dist', 'data', 'character_assets.json'); st = ca.get('visitor_roles_status', {})
+    for role, npc in sorted(ca['visitor_roles'].items(), key=lambda x: x[1]):
+        rows.append(row(f'{npc}/cctv_motion', npc, '2026', 'new_art', 'P2', st.get('blocked_by'), f'CCTV 재생의 {role} 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬',
+                        {'required_art': '걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립',
+                         'reference': [f"room404/dist/{ca['visitor_role_figures'][npc]['figure']['file']}" if npc in ca.get('visitor_role_figures', {}) else None, 'room404/dist/assets/v2/visitor-01-walk.webp']}))
+    rows.append(row('NPC01/walk', 'NPC01', '2026', 'new_art', 'P2', 'v05 걷기 패키지에 NPC01이 없음(NPC02~NPC10만).', '귀가 주민 역할 걷기 클립', {'required_art': 'NPC01 3방향 부품 아틀라스(…_3view_parts_atlas)·연속 팔 그림, v05 패키지와 같은 구성'}))
+    # 3. approval backlog (records say what is wrong)
+    for b in J(PROJECT, 'character-v5', 'docs', 'revision_backlog_v02.json'):
+        rows.append(row(f"{b['id']}/{b['status']}", b['id'], None, 'new_art', 'P2' if b['id'].startswith('EV') else 'P3', b['reason'],
+                        '증거 카드' if b['id'].startswith('EV') else '이야기 장면 인물(초안만 있음)'))
+    # 4. records the game needs
+    for cid in ['CH06', 'CH08', 'CH09', 'CH10', 'MC15', 'MC25', 'NPC01']:
+        f = (ca['assets'].get(cid) or ca.get('visitor_role_figures', {}).get(cid) or {}).get('figure')
+        if f and 'DESIGN' in f.get('height_note', ''):
+            rows.append(row(f'{cid}/height', cid, None, 'record', 'P3', '기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.', '정지 인물의 화면 키(머리 크기)', {'required': '키(m) 한 값'}))
+    rows.append(row('BG13/floor4_row', 'BG13', None, 'record', 'P3', '보이는 1층이 몇 층인지 기록이 없어 4층 창 줄을 지정하지 못함(2004·2026 건물 윤곽은 같은 자리, 이동 0px).', '외관에서 404호 창 위치', {'required': '외관 그림의 층 번호(가장 낮은 창 줄이 몇 층인지)'}))
+    counts = {}
+    for r in rows: counts.setdefault(r['priority'], 0); counts[r['priority']] += 1
+    out = {'generated_by': 'room404/scripts/build-missing-request.py', 'generated': '2026-10-14', 'version': 'v0.18.0',
+           'fields': old['fields'], 'extra_fields': {'kind': 'file(받을 파일) / new_art(새로 그려야 함) / record(기록으로 정할 값)', 'use': '게임에서 쓰는 곳', 'spec': '그려야 할 것(인물·방향·부품·프레임·참고 그림)'},
+           'resolved_counts': {'requests_v0_17': len(resolved), 'resolved': sum(r['status'] == 'RESOLVED' for r in resolved), 'open': sum(r['status'] == 'OPEN' for r in resolved)},
+           'resolved': resolved, 'counts': counts, 'requests': rows,
+           'note': '41건 해결은 파일 확보(해시 일치)이며 시각 검수 통과가 아님. 계획된 에셋 전체가 끝났다는 뜻도 아님(requests 참고).'}
     json.dump(out, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    print('wrote', path, out['counts'], len(rows))
-    for r in rows[:16]: print(r['priority'], r['assetId'], r['expectedSha256'] and r['expectedSha256'][:12], r['sourceDriveId'])
+    print('resolved', out['resolved_counts'], 'open requests', counts, len(rows))
 
 if __name__ == '__main__':
     main()

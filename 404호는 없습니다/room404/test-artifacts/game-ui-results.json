@@ -2,51 +2,56 @@
  {
   "test": "intercom stage: BG02, intercom camera, the visitor waits in place; returning from a tool does not replay the arrival",
   "status": "PASS",
-  "ms": 901
+  "ms": 997
  },
  {
   "test": "click areas: visitor -> CCTV, desk monitor / ledger / phone -> their tools; every target at least 44 px",
   "status": "PASS",
-  "ms": 1340
+  "ms": 1345
  },
  {
   "test": "emergency report: separate from the decision, saved, once per case, noted on feedback, totals unchanged",
   "status": "PASS",
-  "ms": 2375
+  "ms": 2277
  },
  {
   "test": "N1_04 (V036, gas alarm): without a report the feedback names the separate emergency channel",
   "status": "PASS",
-  "ms": 5406
+  "ms": 5288
  },
  {
   "test": "night recap: tonight and the running total across nights, reports included",
   "status": "PASS",
-  "ms": 194
+  "ms": 205
  },
  {
   "test": "night intro shows the approved background for that night",
   "status": "PASS",
-  "ms": 202
+  "ms": 170
  },
  {
   "test": "evidence viewer: transcribed body, era backdrop, zoom by buttons, keys and pinch, Escape returns focus",
   "status": "PASS",
-  "ms": 90896
+  "ms": 90923
  },
  {
   "test": "photo evidence without its photo says so instead of inventing text; opening does not verify",
   "status": "PASS",
-  "ms": 96
+  "ms": 112
+ },
+ {
+  "test": "a paper found in the management office opens over BG08 (v0.18.0), labelled as where it was found, not as a 2026 record",
+  "status": "PASS",
+  "ms": 341
  },
  {
   "test": "ending cutscene: the guard-room shot uses the approved BG01",
   "status": "PASS",
-  "ms": 413
+  "ms": 405
  },
  {
   "test": "zero uncaught JavaScript errors",
   "status": "PASS",
-  "ms": 0
+  "ms": 1
  }
 ]

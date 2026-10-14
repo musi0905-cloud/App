@@ -1,4 +1,66 @@
-# 에셋 반입 보고 (v0.17.0, 2026-10-14)
+# 에셋 반입 보고 (v0.18.0, 2026-10-14)
+
+## 0. v0.18.0 반입: 복원 전달 41 source ZIP (2026-10-14)
+
+전달 폴더는 Drive `1OjyxfqzZS7wWfcNo-ppjmi2dYft7i1xM`입니다. `CLAUDE_NEXT.md`를 먼저 읽고 받았습니다. 이번 전달은 원본 확보이며, 걷기 품질 PASS가 아닙니다.
+
+### 0-1. 받기와 검증
+
+| 단계 | 결과 |
+|---|---|
+| 받은 파일 | `SOURCE_MANIFEST.json`, `MATCH_REPORT.json`, `restore_sources.py`, `source_000.zip`~`source_040.zip` **41/41**. ZIP은 모두 1.9MB 이하이고 Drive 연결 도구로 받았음. 실패·재시도 0 |
+| ZIP 크기·SHA-256 | 매니페스트와 41/41 일치 |
+| `python3 -I restore_sources.py --verify-only` | `{"status": "VERIFIED", "files": 169, "packages": 41}` |
+| `python3 -I restore_sources.py` (새 빈 폴더로) | `{"status": "RESTORED", "files": 169, "packages": 41}` |
+| 독립 재검사 | 169/169 매니페스트 바이트·해시 일치, 그림 50/50 끝까지 해독(PIL load) |
+| 요청 41건 대조 | `MATCH_REPORT.json`의 공통 필드가 `docs/missing_assets_request.json`(v0.17.0)과 차이 0. 41/41이 기대 SHA-256으로 복원 파일과 일치. MATCH_REPORT의 `visualQA`는 전부 `NOT_REASSESSED` |
+
+`restore_sources.py`는 받은 그대로 `-I`(격리)로 실행했습니다. 복원은 새 빈 폴더(scratch)에 했고 저장소에는 아래 반입 스크립트로만 옮겼습니다.
+
+### 0-2. 저장소로 옮김 (`room404/scripts/import-v06-sources.py`)
+
+- 169개를 다시 해시하고 그림을 해독한 뒤, 하나라도 틀리면 아무것도 쓰지 않고 멈추는 방식입니다.
+- 바이트는 그대로 복사했습니다(크기 변경·재인코딩 없음). 덮어쓰기는 없고, 같은 바이트가 있으면 기록만 했습니다.
+
+| 구분 | 수 | 위치 |
+|---|---|---|
+| 새로 복사 | **41** | 아래 3줄 |
+| 게임 출력본 인물 | 11 | `asset-source/01_캐릭터/game/` (CH06, CH08, NPC01, NPC03 v02, NPC04~NPC10) |
+| 게임 출력본 배경 | 5 | `asset-source/02_배경/game/` (BG04·BG05 WebP, BG06 내부, BG08 승인본 base_v02, BG13_2004) |
+| v05 부품 그림 | 25 | `asset-source/v05_QA/code/<NPC>/assets/` (렌더 입력) |
+| 이미 같은 바이트가 있음 | **128** | v05 렌더 코드·설정·리그·옛 QA 기록 119개(저장소 `v05_QA/code`와 같음), 패키지마다 든 BG02 사본 9개(`02_배경/game/BG02`와 같아 두 번 두지 않음) |
+| 전달 기록 | 4 | `asset-source/v06_sources/` (매니페스트, 대조 보고, 복원 스크립트, `SOURCE_IMPORT_RESULT.json`) |
+
+- **NPC01:** 복원된 게임 출력본(6679a805…)은 승인 원본(c6836c1c…)과 **픽셀이 모두 같습니다**(1,573,352 픽셀 중 차이 0). PNG 압축만 다릅니다. Drive의 잘린 사본(eaee7a07…)은 쓰지 않았습니다.
+- **옛 QA 기록:** 패키지 안의 `QA_v05.json`, `frame_connectivity_check.json` 같은 옛 QA 기록은 과거 결과로만 보관했습니다. v06 판정 근거로 쓰지 않았습니다.
+
+### 0-3. 게임 파일과 연결 (`build-stage-assets.py`)
+
+| 대상 | 게임 파일 | 연결 | 확인 |
+|---|---|---|---|
+| CH06 장혜숙, CH08 서민아 | `dist/assets/v5/figure-CH06/CH08.webp` | 기록 인물 장면 N2_04·N3_04·N5_06(CH06), N2_06·N5_07(CH08). `contacts_waiting_for_files`는 비었음 | BG02 인터폰 무대에서 발·키·그림자(`tests/figures-qa.mjs`), 5야간 실제 클릭 진행 중 화면(`story-ui`) |
+| 방문객 역할 그림 NPC01~NPC10 | `dist/assets/v5/figure-NPC01~10.webp` | `character_assets.json` `visitor_role_figures` 10/10. **게임에서는 꺼 둠**(아래) | BG02 무대 10/10: 발이 서는 점 위, 키는 `height_m`대로, 그림자 둘 |
+| BG08 관리사무소(승인본) | `dist/assets/bg/BG08.webp` | 관리실에서 찾은 문서 EV03·EV15의 배경(`usage.evidence_found_at`). "찾은 곳 · 2026년 관리사무소"로 표시 | v02는 v01과 방 배치가 달라 좌표를 다시 읽음 |
+| BG06 엘리베이터 내부 | `dist/assets/bg/BG06_interior.webp` | 좌표만(기획에 쓰는 장면 없음) | — |
+| BG13 2004 외관 | `dist/assets/bg/BG13_2004.webp` | 좌표만(2004 상태라 현재 장면에 안 씀, 기획에 장면 지정 없음) | 2026판과 건물 윤곽 이동 0px(가장자리 상관 0.97) |
+| BG04·BG05 WebP | 없음 | 게임 파일은 계속 941x1672 원본 PNG에서 만듦(WebP는 같은 원본의 확대 출력) | 해시 일치, 레지스트리에 등록 |
+
+**역할 그림을 켜지 않은 이유:** 10장 모두 확보·승인·무대 표시를 확인했습니다. 그런데 CCTV 재생(`replay.js`)은 기존 8개 외형의 걷기·몸짓 그림을 그립니다. 인터폰만 바꾸면 같은 방문객이 두 화면에서 다른 사람으로 보입니다. 예를 들어 V001(귀가 주민)은 인터폰에서 초록 재킷의 남자(NPC01), CCTV에서 회색 코트의 여자(외형 1)가 됩니다. 이는 "같은 옷차림" 단서(A001, A075)와 충돌합니다. 그래서 `visitor_roles_enabled`는 false로 두었고, 이유는 `visitor_roles_status.blocked_by`에 적었습니다. 이 10장은 역할별 공용 그림이며 방문객 100명 각각의 고유 원화가 아닙니다.
+
+### 0-4. 레지스트리 (v0.18.0)
+
+- `asset_registry.json`은 1,647개입니다(v0.17.0 1,552).
+- 원본 해시와 파생본 해시(`derivedFrom`)를 따로 적었습니다.
+- 새 분류:
+  - `animation_art`: 부품 그림 25
+  - `delivery_record`: 3
+  - v06 `qa_atlas`, `review_video`
+- `missing`은 186줄입니다(v0.17.0 227). v05 부품 그림과 요청 41건의 파일이 빠졌습니다.
+
+---
+
+# 이전 기록 (v0.17.0)
+
 
 ## 0. v0.17.0 반입 (2026-10-14)
 

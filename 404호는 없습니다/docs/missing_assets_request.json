@@ -1,6 +1,7 @@
 {
  "generated_by": "room404/scripts/build-missing-request.py",
  "generated": "2026-10-14",
+ "version": "v0.18.0",
  "fields": [
   "assetId",
   "entityId",
@@ -13,717 +14,1394 @@
   "blockingReason"
  ],
  "extra_fields": {
+  "kind": "file(받을 파일) / new_art(새로 그려야 함) / record(기록으로 정할 값)",
   "use": "게임에서 쓰는 곳",
-  "candidateArchives": "폴더 이름이 맞는 복구 ZIP 이름(archives 참고). 내용 미확인이며 포함 여부를 주장하지 않음",
-  "originalSha256": "승인 기록의 원본 해시"
+  "spec": "그려야 할 것(인물·방향·부품·프레임·참고 그림)"
  },
- "archives": {
-  "02_배경_20261008_복구저장_v01_part03.zip": {
-   "driveId": "1tw9lFXQ_Rvgl_p2IJXkBPzDeWZlzWGuF",
-   "bytes": 12447932,
-   "sha256": "dc222142fc2e34b63d9272ea57ad7be0ce502dfa7fb9a1934c4a3e55c3e36a85"
-  },
-  "02_배경_20261008_복구저장_v01_part02.zip": {
-   "driveId": "1RZGfpdsKfY2ryyu4wmAL3BmCL7CYEyAE",
-   "bytes": 16741051,
-   "sha256": "11f2b54e7d2156aa1bf8a710ac70b1508b9d2fe82b2658f1f9ef357b2caa7cfb"
-  },
-  "02_배경_20261008_복구저장_v01_part01.zip": {
-   "driveId": "1MZhX3D9zBylW1jTHWK-IwpgqA6tMqCVL",
-   "bytes": 15261271,
-   "sha256": "be4325c30377e4006a3eafed4b248f28a7f19a23d29369d788df6864eb4a4b68"
-  },
-  "01_캐릭터_복구완료_v02_part05.zip": {
-   "driveId": "1dyBRKyGD4XOVa35H-ACLybktXbtHRqQD",
-   "bytes": 9419934,
-   "sha256": "9bea89a1611706b381e870dd30d586cd4ebd6e833824a13bd915a12468d62284"
-  },
-  "01_캐릭터_복구완료_v02_part04.zip": {
-   "driveId": "1CcaJTE-32dRimvaMKmDvt1MOlCpyUi-S",
-   "bytes": 15812272,
-   "sha256": "f764a26f20239d2cf31a83af6d567a7bea4335a100cf21b8eb8646286ecfe616"
-  },
-  "01_캐릭터_복구완료_v02_part03.zip": {
-   "driveId": "1UjjU34sWr9St7Oefq1AiMGFe3hNhTY55",
-   "bytes": 15982908,
-   "sha256": "f5c9a98b1084b5891655c69576ff495e26732f3f88769e60477b8669f2865ae2"
-  },
-  "01_캐릭터_복구완료_v02_part02.zip": {
-   "driveId": "1fmciO5QxdmjcpzgG6-D_9lrLkWSAebIc",
-   "bytes": 16387171,
-   "sha256": "d574cfd8c15d185a785a630efae0f0cca2b7a459ef70acb1e4cddbbfb56fbf0e"
-  },
-  "01_캐릭터_복구완료_v02_part01.zip": {
-   "driveId": "1vKS6K4Tf375zsXCO6uDKUJPpn_i9Y98o",
-   "bytes": 17763321,
-   "sha256": "6da0c4133d2cfa3886b54de88cd3874103cda30ca580fa9c50d82cc746316a06"
-  }
+ "resolved_counts": {
+  "requests_v0_17": 41,
+  "resolved": 41,
+  "open": 0
  },
- "counts": {
-  "P1": 13,
-  "P2": 1,
-  "P3": 27
- },
- "requests": [
+ "resolved": [
   {
    "assetId": "NPC01_2026_front_full",
-   "entityId": "NPC01",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
-   "sourceDriveId": "1CDivKEz1G-SdJIh9tLj__SXxA7aTzLEw",
-   "sourceUrl": "https://drive.google.com/file/d/1CDivKEz1G-SdJIh9tLj__SXxA7aTzLEw/view?usp=drivesdk",
-   "expectedSha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b",
    "priority": "P1",
-   "blockingReason": "Drive의 game 사본이 잘려 있음(327,769바이트, sha256 eaee7a07…, PNG 해독 실패). 승인 원본(01_캐릭터/originals, sha256 c6836c1c…)은 받아서 asset-source/01_캐릭터/originals에 보관. 게임 출력본이 원본과 같은지 제작 측 확인 필요.",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "c6836c1c92156117e50bff89579e6851701a7573a33b6ca818f9f48df904eebb"
+   "expectedSha256": "6679a8051d8f4e8b9c9740074a7f70de7ce1fae8d718a96dda4aa70dd7cc2d9b",
+   "heldAt": "asset-source/01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "BG13_2004_2004",
-   "entityId": "BG13",
-   "era": "2004",
-   "expectedFilename": "02_배경/game/BG13_2004_exterior_2004_v01.webp",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "1b7cb1ea74218c53dfaed975f50965d484f62f4aff2879d91e2896b0f7d13e9e",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "2004/2026 외관 대조(4층 창 위치)",
-   "candidateArchives": [
-    "02_배경_20261008_복구저장_v01_part01.zip",
-    "02_배경_20261008_복구저장_v01_part02.zip",
-    "02_배경_20261008_복구저장_v01_part03.zip"
-   ],
-   "originalSha256": "837b9bc59ac75a2fc796930c91f87fd4c2007af4634e1fb9cf258735769c8301"
+   "expectedSha256": "1b7cb1ea74218c53dfaed975f50965d484f62f4aff2879d91e2896b0f7d13e9e",
+   "heldAt": "asset-source/02_배경/game/BG13_2004_exterior_2004_v01.webp",
+   "status": "RESOLVED"
   },
   {
    "assetId": "CH08_2026_front_full",
-   "entityId": "CH08",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "기록 인물 화면(CH06 N2_04·N3_04·N5_06, CH08 N2_06·N5_07). 지금은 글만 나옴",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "8472b59d8951c7fa1a4c72d98e9ce05ddaf21e19db04596ff6ff1492f5dc38b6"
+   "expectedSha256": "360ea47dbc60f34b67c3ac973482def42ae7aaa8636cf0a68b065416aae3a0d6",
+   "heldAt": "asset-source/01_캐릭터/game/CH08_seo_mina_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "CH06_2026_front_full",
-   "entityId": "CH06",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "기록 인물 화면(CH06 N2_04·N3_04·N5_06, CH08 N2_06·N5_07). 지금은 글만 나옴",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "4a869b809b085c90782aa1c9b4c605a71c90c75d721427e95e324a605d6886f6"
+   "expectedSha256": "e1ec891528cce2a66f337715d586b0d40d6e786eabc3b248c768d679440de476",
+   "heldAt": "asset-source/01_캐릭터/game/CH06_jang_hyesook_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC04_2026_front_full",
-   "entityId": "NPC04",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "551ea62f0d33171efa7eac0c0198ab4147fba41e9081962183b868f1270137b8"
+   "expectedSha256": "23a875d8bb54d423bd7444ab9392d9071ff546c162fb4ee05f6bddb5ce307b11",
+   "heldAt": "asset-source/01_캐릭터/game/NPC04_technician_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC05_2026_front_full",
-   "entityId": "NPC05",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "1f2ed5b1810ce90dd7fc74f48ff5cd1ccaacf4c118507b8978cba6662ccd74c9"
+   "expectedSha256": "754848405cd4328ebdb9f294da730e635db22c19a3a7b495b94b16a5b86260da",
+   "heldAt": "asset-source/01_캐릭터/game/NPC05_caregiver_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC06_2026_front_full",
-   "entityId": "NPC06",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "26801d98ff9fa5ba8f7996e1264f8783c3855e7d23ef8f7c0af07237b1a89451"
+   "expectedSha256": "8456b84fd5492bc79a393809da596b084cb2e64c9541fd2e4881dd8cffede585",
+   "heldAt": "asset-source/01_캐릭터/game/NPC06_elderly_neighbor_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC07_2026_front_full",
-   "entityId": "NPC07",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "57c5c2499f7008984b989de89fbae306aca2014744f050e0d80608bed48da4d9"
+   "expectedSha256": "e2baa8fb4bba5a6a9ab5f109c1fe7f286133f5c50f77f2c5644d498f1a8a2e62",
+   "heldAt": "asset-source/01_캐릭터/game/NPC07_food_delivery_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC08_2026_front_full",
-   "entityId": "NPC08",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "ac401f8a1d7188c111f80096ae19a02948c9bbf7fb22d81ced413e3ff1a40404"
+   "expectedSha256": "ab75d440de5d381efb151c8586bc2b5ba2c38fde4dedfa654cd61d980f0df744",
+   "heldAt": "asset-source/01_캐릭터/game/NPC08_vehicle_companion_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC09_2026_front_full",
-   "entityId": "NPC09",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "78a2f4a7fd55c192f64f53adba94c1a87c97ca22d36a54c11f4aa1cc94b4d188"
+   "expectedSha256": "cc68b47210a1593e53904de6631fc71e62a3864bfa54a1f281dbfcefd9d9590e",
+   "heldAt": "asset-source/01_캐릭터/game/NPC09_public_service_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC10_2026_front_full",
-   "entityId": "NPC10",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": "48fd94f54439b543d2821d666ca38ac2cae56fc1a08219d3b5b3bd10027ab0c1"
+   "expectedSha256": "543a7eedb4182f4350aac9f99369a45fa9914d592892d322151d5bca5043d1c3",
+   "heldAt": "asset-source/01_캐릭터/game/NPC10_friend_2026_front_full_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "BG08_2026_base_v02",
-   "entityId": "BG08",
-   "era": "2026",
-   "expectedFilename": "02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "d0c3c33cd2b43d447a54d17a2f16b471a56edd88a7ee0458cab15d342d70842e",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "관리사무소 승인본(v01은 미승인이라 게임 파일 없음)",
-   "candidateArchives": [
-    "02_배경_20261008_복구저장_v01_part01.zip",
-    "02_배경_20261008_복구저장_v01_part02.zip",
-    "02_배경_20261008_복구저장_v01_part03.zip"
-   ],
-   "originalSha256": null
+   "expectedSha256": "d0c3c33cd2b43d447a54d17a2f16b471a56edd88a7ee0458cab15d342d70842e",
+   "heldAt": "asset-source/02_배경/game/BG08_management_office_2026_base_v02_v01.webp",
+   "status": "RESOLVED"
   },
   {
    "assetId": "BG06_interior_2026_interior",
-   "entityId": "BG06",
-   "era": "2026",
-   "expectedFilename": "02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "73db049cb437a8c725e786d897f9ad4f2372d6ad9356a0c1d8ac527714c31648",
    "priority": "P2",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼).",
-   "use": "엘리베이터 내부(현재 쓰는 곳 없음)",
-   "candidateArchives": [
-    "02_배경_20261008_복구저장_v01_part01.zip",
-    "02_배경_20261008_복구저장_v01_part02.zip",
-    "02_배경_20261008_복구저장_v01_part03.zip"
-   ],
-   "originalSha256": null
+   "expectedSha256": "73db049cb437a8c725e786d897f9ad4f2372d6ad9356a0c1d8ac527714c31648",
+   "heldAt": "asset-source/02_배경/game/BG06_interior_elevator_2026_interior_v01.webp",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC03_2026_front_full_v02",
-   "entityId": "NPC03",
-   "era": "2026",
-   "expectedFilename": "01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f",
    "priority": "P1",
-   "blockingReason": "Drive에서 낱개 파일을 찾지 못함(2026-10-14 제목 검색). 복구 ZIP 안에 있을 수 있으나 ZIP 목록에 내용이 없고, 이 세션의 Drive 연결 도구로 9.4MB ZIP을 읽지 못함(응답 메시지가 너무 큼). 승인본은 front_full_v02(v01은 대체됨).",
-   "use": "방문객 역할 그림(10장이 모두 있어야 visitor_roles_enabled를 켬)",
-   "candidateArchives": [
-    "01_캐릭터_복구완료_v02_part01.zip",
-    "01_캐릭터_복구완료_v02_part02.zip",
-    "01_캐릭터_복구완료_v02_part03.zip",
-    "01_캐릭터_복구완료_v02_part04.zip",
-    "01_캐릭터_복구완료_v02_part05.zip"
-   ],
-   "originalSha256": null
+   "expectedSha256": "caacae5c6331bb996f9791e89ee80d9d9e5997219c07985f4878e34d0c58dc7f",
+   "heldAt": "asset-source/01_캐릭터/game/NPC03_courier_2026_front_full_v02_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "BG04_2026",
-   "entityId": "BG04",
-   "era": "2026",
-   "expectedFilename": "02_배경/game/BG04_floor4_2026_v01.webp",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "c65f11e95c4748fdbf68e190ee980205767a744f2f2a9e03001b8ae4732b1b17",
    "priority": "P3",
-   "blockingReason": "패키지 WebP 출력본은 받지 못함. 승인 원본 PNG(941x1672)를 받아 게임 파일을 만들었으므로 게임에는 영향 없음.",
-   "use": "레지스트리 대조용",
-   "candidateArchives": [
-    "02_배경_20261008_복구저장_v01_part01.zip",
-    "02_배경_20261008_복구저장_v01_part02.zip",
-    "02_배경_20261008_복구저장_v01_part03.zip"
-   ],
-   "originalSha256": "a402fce964126081950ffe6c1d24725b1d5cf3271a3a9c78cf39f9868a2f4d98"
+   "expectedSha256": "c65f11e95c4748fdbf68e190ee980205767a744f2f2a9e03001b8ae4732b1b17",
+   "heldAt": "asset-source/02_배경/game/BG04_floor4_2026_v01.webp",
+   "status": "RESOLVED"
   },
   {
    "assetId": "BG05_2004",
-   "entityId": "BG05",
-   "era": "2004",
-   "expectedFilename": "02_배경/game/BG05_floor4_2004_v01.webp",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "12ccb33814f1c1a2e311db75b752801dabe86bc2363ae5420c27766b03dfb03c",
    "priority": "P3",
-   "blockingReason": "패키지 WebP 출력본은 받지 못함. 승인 원본 PNG(941x1672)를 받아 게임 파일을 만들었으므로 게임에는 영향 없음.",
-   "use": "레지스트리 대조용",
-   "candidateArchives": [
-    "02_배경_20261008_복구저장_v01_part01.zip",
-    "02_배경_20261008_복구저장_v01_part02.zip",
-    "02_배경_20261008_복구저장_v01_part03.zip"
-   ],
-   "originalSha256": "9020689bf488c5c862b048c194a434c49c4f37f739b2fb23e3097353a1e6f71f"
+   "expectedSha256": "12ccb33814f1c1a2e311db75b752801dabe86bc2363ae5420c27766b03dfb03c",
+   "heldAt": "asset-source/02_배경/game/BG05_floor4_2004_v01.webp",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC02/assets/NPC02_3view_parts_atlas_v01.png",
-   "entityId": "NPC02",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/assets/NPC02_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "ac1dacde36afd7684a4ccabfd7ba78c629cabe5f26c0287fc38e7f23bf941bab",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "ac1dacde36afd7684a4ccabfd7ba78c629cabe5f26c0287fc38e7f23bf941bab",
+   "heldAt": "asset-source/v05_QA/code/NPC02/assets/NPC02_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC02/assets/NPC02_continuous_arms_v03.png",
-   "entityId": "NPC02",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02/assets/NPC02_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "6f4ea788b75d1a4dcdc27cba1c211269f4bc40150796252f915b2862e4a8c4ef",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "6f4ea788b75d1a4dcdc27cba1c211269f4bc40150796252f915b2862e4a8c4ef",
+   "heldAt": "asset-source/v05_QA/code/NPC02/assets/NPC02_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC03/assets/NPC03_3view_parts_atlas_v01.png",
-   "entityId": "NPC03",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "b5bdd261a3d98b808e8997eb2b3b029d187b85adb4cccbd7228181620e06638b",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "b5bdd261a3d98b808e8997eb2b3b029d187b85adb4cccbd7228181620e06638b",
+   "heldAt": "asset-source/v05_QA/code/NPC03/assets/NPC03_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC03/assets/NPC03_carrying_arm_v05.png",
-   "entityId": "NPC03",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_carrying_arm_v05.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "5fedac60bb81cabafc468bf5359da2c9fc691e686d0ecc96e61c86ccaaeb4f3e",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "5fedac60bb81cabafc468bf5359da2c9fc691e686d0ecc96e61c86ccaaeb4f3e",
+   "heldAt": "asset-source/v05_QA/code/NPC03/assets/NPC03_carrying_arm_v05.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC03/assets/NPC03_continuous_arms_v03.png",
-   "entityId": "NPC03",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03/assets/NPC03_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "c0507d6f13b0de665c751e9f19922b8593ca8cd6abc6bc86d23386b52a403de5",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "c0507d6f13b0de665c751e9f19922b8593ca8cd6abc6bc86d23386b52a403de5",
+   "heldAt": "asset-source/v05_QA/code/NPC03/assets/NPC03_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC04/assets/NPC04_3view_parts_atlas_v01.png",
-   "entityId": "NPC04",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "81ffd7e7b3e322ca24395e7480a9431f2397785e44214fa6e00778a242bf8500",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "81ffd7e7b3e322ca24395e7480a9431f2397785e44214fa6e00778a242bf8500",
+   "heldAt": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC04/assets/NPC04_3view_torso_v03.png",
-   "entityId": "NPC04",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_torso_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "843ddea2165e0ceb0e7abe9116c08b31ad6cd2a9e0e8cf5cd31518c43443c825",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "843ddea2165e0ceb0e7abe9116c08b31ad6cd2a9e0e8cf5cd31518c43443c825",
+   "heldAt": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_torso_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC04/assets/NPC04_3view_torso_v03b.png",
-   "entityId": "NPC04",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_3view_torso_v03b.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "1d3ca64ce78c67c7ffd4b2bd2089277c73ca577d200fb18dd8e1c28701a4e3ec",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "1d3ca64ce78c67c7ffd4b2bd2089277c73ca577d200fb18dd8e1c28701a4e3ec",
+   "heldAt": "asset-source/v05_QA/code/NPC04/assets/NPC04_3view_torso_v03b.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC04/assets/NPC04_continuous_arms_v03.png",
-   "entityId": "NPC04",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04/assets/NPC04_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "55bd3ff41e21bd47cdb3078c97b5be9fc67d518d46103233f0e6e56c6393c119",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "55bd3ff41e21bd47cdb3078c97b5be9fc67d518d46103233f0e6e56c6393c119",
+   "heldAt": "asset-source/v05_QA/code/NPC04/assets/NPC04_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC05/assets/NPC05_3view_parts_atlas_v01.png",
-   "entityId": "NPC05",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/assets/NPC05_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "8a3839119b759e070dfc0900ec7c33cb5f8afffa6a485c9686d4f1d8476d9d8c",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "8a3839119b759e070dfc0900ec7c33cb5f8afffa6a485c9686d4f1d8476d9d8c",
+   "heldAt": "asset-source/v05_QA/code/NPC05/assets/NPC05_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC05/assets/NPC05_continuous_arms_v03.png",
-   "entityId": "NPC05",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05/assets/NPC05_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "1d7b427789f99fb4418831b989f1384a84f11c34e6288696de6a5db9822e785f",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "1d7b427789f99fb4418831b989f1384a84f11c34e6288696de6a5db9822e785f",
+   "heldAt": "asset-source/v05_QA/code/NPC05/assets/NPC05_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC06/assets/NPC06_3view_parts_atlas_v01.png",
-   "entityId": "NPC06",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "056f97b4915a987c0843346b66537609281bcaf293d736f106f070c1481a4b3c",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "056f97b4915a987c0843346b66537609281bcaf293d736f106f070c1481a4b3c",
+   "heldAt": "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC06/assets/NPC06_continuous_arms_v03.png",
-   "entityId": "NPC06",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06/assets/NPC06_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "35f72d1c7eb336689a87be144c9c49b89912adc5d4ddd4131b9cd6af24c2d0e4",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "35f72d1c7eb336689a87be144c9c49b89912adc5d4ddd4131b9cd6af24c2d0e4",
+   "heldAt": "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC07/assets/NPC07_3view_parts_atlas_v01.png",
-   "entityId": "NPC07",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "15afd271e22ac6fa200761c8b91d2f582154ed976c881d44204fb5e334422052",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "15afd271e22ac6fa200761c8b91d2f582154ed976c881d44204fb5e334422052",
+   "heldAt": "asset-source/v05_QA/code/NPC07/assets/NPC07_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC07/assets/NPC07_3view_torso_v02.png",
-   "entityId": "NPC07",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_3view_torso_v02.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "f23b15315c1fa734a7812b95c74cc7921eb1922c346a24daafbef9d125dfdf5f",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "f23b15315c1fa734a7812b95c74cc7921eb1922c346a24daafbef9d125dfdf5f",
+   "heldAt": "asset-source/v05_QA/code/NPC07/assets/NPC07_3view_torso_v02.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC07/assets/NPC07_continuous_arms_v03.png",
-   "entityId": "NPC07",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07/assets/NPC07_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "64d7de78ef8760d5fd349c53f6995995a0f7ce9f56cbc27bb3d8b566b855845d",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "64d7de78ef8760d5fd349c53f6995995a0f7ce9f56cbc27bb3d8b566b855845d",
+   "heldAt": "asset-source/v05_QA/code/NPC07/assets/NPC07_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC08/assets/NPC08_3view_parts_atlas_v01.png",
-   "entityId": "NPC08",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/assets/NPC08_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "88ebe45bd6caa9c1daad9feba5e567c13c41d1447691ab5048e9ec9a373ceb47",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "88ebe45bd6caa9c1daad9feba5e567c13c41d1447691ab5048e9ec9a373ceb47",
+   "heldAt": "asset-source/v05_QA/code/NPC08/assets/NPC08_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC08/assets/NPC08_continuous_arms_v03.png",
-   "entityId": "NPC08",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08/assets/NPC08_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "7aa505635d66a511080df8f453491988eecf2b9838072a177bdef79ac0fd8233",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "7aa505635d66a511080df8f453491988eecf2b9838072a177bdef79ac0fd8233",
+   "heldAt": "asset-source/v05_QA/code/NPC08/assets/NPC08_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC09/assets/NPC09_3view_parts_atlas_v01.png",
-   "entityId": "NPC09",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "6e00a4e24aa254a5663b6897d14b085d4a6fc293b8df5ebcf03c657efdc7c67c",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "6e00a4e24aa254a5663b6897d14b085d4a6fc293b8df5ebcf03c657efdc7c67c",
+   "heldAt": "asset-source/v05_QA/code/NPC09/assets/NPC09_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC09/assets/NPC09_carrying_arm_v05.png",
-   "entityId": "NPC09",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_carrying_arm_v05.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "65a53daa0655ab054b6ca7d250698b5946675e19d55f9332a70ba238ffa73b84",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "65a53daa0655ab054b6ca7d250698b5946675e19d55f9332a70ba238ffa73b84",
+   "heldAt": "asset-source/v05_QA/code/NPC09/assets/NPC09_carrying_arm_v05.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC09/assets/NPC09_continuous_arms_v03.png",
-   "entityId": "NPC09",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09/assets/NPC09_continuous_arms_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "fa9c44a5565bd52fed6221ef6f4ebdda39e0311b71a445455d0ea5ae82114c55",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "fa9c44a5565bd52fed6221ef6f4ebdda39e0311b71a445455d0ea5ae82114c55",
+   "heldAt": "asset-source/v05_QA/code/NPC09/assets/NPC09_continuous_arms_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC10/assets/NPC10_3view_parts_atlas_v01.png",
-   "entityId": "NPC10",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_parts_atlas_v01.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "08d6a578062a07f6b3c81317085ee8b41efa28d2470d502a78ebf71e97ebb892",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "08d6a578062a07f6b3c81317085ee8b41efa28d2470d502a78ebf71e97ebb892",
+   "heldAt": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_parts_atlas_v01.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC10/assets/NPC10_3view_torso_v03.png",
-   "entityId": "NPC10",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_torso_v03.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "9ea11e8257fe1d3c2d7bdf38310d9e809c4b76a8fa1e169758a1aeb90610e99b",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "9ea11e8257fe1d3c2d7bdf38310d9e809c4b76a8fa1e169758a1aeb90610e99b",
+   "heldAt": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_torso_v03.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC10/assets/NPC10_3view_torso_v03b.png",
-   "entityId": "NPC10",
-   "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_3view_torso_v03b.png",
-   "sourceDriveId": null,
-   "sourceUrl": null,
-   "expectedSha256": "3adfa940855bc00f1ca51210931c1f5b8502c4e71daff781fdd6a50c18c34d2b",
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "expectedSha256": "3adfa940855bc00f1ca51210931c1f5b8502c4e71daff781fdd6a50c18c34d2b",
+   "heldAt": "asset-source/v05_QA/code/NPC10/assets/NPC10_3view_torso_v03b.png",
+   "status": "RESOLVED"
   },
   {
    "assetId": "NPC10/assets/NPC10_continuous_arms_v03.png",
-   "entityId": "NPC10",
+   "priority": "P3",
+   "expectedSha256": "bb4f4decc962ab0f4e4903bb7341976777ad93e63a17c590510a67ff7e461480",
+   "heldAt": "asset-source/v05_QA/code/NPC10/assets/NPC10_continuous_arms_v03.png",
+   "status": "RESOLVED"
+  }
+ ],
+ "counts": {
+  "P1": 9,
+  "P2": 26,
+  "P3": 20
+ },
+ "requests": [
+  {
+   "assetId": "NPC02/walk/LEG_STRIP",
+   "entityId": "NPC02",
    "era": "2026",
-   "expectedFilename": "06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10/assets/NPC10_continuous_arms_v03.png",
+   "expectedFilename": null,
    "sourceDriveId": null,
    "sourceUrl": null,
-   "expectedSha256": "bb4f4decc962ab0f4e4903bb7341976777ad93e63a17c590510a67ff7e461480",
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC02/walk/TORSO_STATIC",
+   "entityId": "NPC02",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC03/walk/LEG_STRIP",
+   "entityId": "NPC03",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC03/walk/TORSO_STATIC",
+   "entityId": "NPC03",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC04/walk/LEG_STRIP",
+   "entityId": "NPC04",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC04/walk/TORSO_STATIC",
+   "entityId": "NPC04",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC05/walk/LEG_STRIP",
+   "entityId": "NPC05",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC05/walk/TORSO_STATIC",
+   "entityId": "NPC05",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC06/walk/LEG_STRIP",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC06/walk/TORSO_STATIC",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC07/walk/LEG_STRIP",
+   "entityId": "NPC07",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC07/walk/TORSO_STATIC",
+   "entityId": "NPC07",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC08/walk/LEG_STRIP",
+   "entityId": "NPC08",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC08/walk/TORSO_STATIC",
+   "entityId": "NPC08",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC09/walk/LEG_STRIP",
+   "entityId": "NPC09",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC09/walk/TORSO_STATIC",
+   "entityId": "NPC09",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC10/walk/ARM_LONG",
+   "entityId": "NPC10",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The bare near forearm still reads long and thin in the forward swing (side 12-24); the texture has no forearm volume.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "near arm (short sleeve, bare forearm and hand)",
+    "views": [
+     "side"
+    ],
+    "frames": "pass 12-24",
+    "required_art": "NPC10 continuous arm texture, side view: bare forearm with volume (muscle and shading) and a hand in proportion to a 1.75 m figure; same layout as NPC10_continuous_arms_v03.png (sleeve 0-0.43, forearm 0.43-0.78, hand 0.78-1).",
+    "reference": [
+     "v06_QA/NPC10/arm_side_v05_v06.jpg",
+     "v05_QA/code/NPC10/assets/NPC10_continuous_arms_v03.png"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC10/walk/LEG_STRIP",
+   "entityId": "NPC10",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P1",
+   "blockingReason": "v06 재렌더 후에도 남음: The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "trouser leg, thigh and shin",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+    "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+    "reference": [
+     "v06_QA/<NPC>/legs_v05_v06.jpg",
+     "v06_QA/<NPC>/walk_sheet.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC10/walk/TORSO_STATIC",
+   "entityId": "NPC10",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v06 재렌더 후에도 남음: The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)",
+   "spec": {
+    "part": "torso",
+    "views": [
+     "front",
+     "rear"
+    ],
+    "frames": "enter 0-47, exit 0-47",
+    "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+    "reference": [
+     "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC02/walk/TURN_45",
+   "entityId": "NPC02",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
    "priority": "P3",
-   "blockingReason": "v05 프레임 전송 ZIP 93개에는 프레임·설정·리그·QA만 있고 부품 그림은 없음(제작 측 안내). 다시 렌더할 때만 필요.",
-   "use": "render.js 입력(걷기 프레임 재출력)",
-   "candidateArchives": [],
-   "originalSha256": null
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC03/walk/TURN_45",
+   "entityId": "NPC03",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC04/walk/TURN_45",
+   "entityId": "NPC04",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC05/walk/TURN_45",
+   "entityId": "NPC05",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC06/walk/TURN_45",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC07/walk/TURN_45",
+   "entityId": "NPC07",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC08/walk/TURN_45",
+   "entityId": "NPC08",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC09/walk/TURN_45",
+   "entityId": "NPC09",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC10/walk/TURN_45",
+   "entityId": "NPC10",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "막지 않음(연결 PASS). The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "kind": "new_art",
+   "use": "회전 구간을 끊김 없이",
+   "spec": {
+    "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."
+   }
+  },
+  {
+   "assetId": "NPC01/cctv_motion",
+   "entityId": "NPC01",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 귀가 주민 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC01.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC02/cctv_motion",
+   "entityId": "NPC02",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 가족 방문 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC02.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC03/cctv_motion",
+   "entityId": "NPC03",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 택배 기사 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC03.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC04/cctv_motion",
+   "entityId": "NPC04",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 시설 점검 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC04.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC05/cctv_motion",
+   "entityId": "NPC05",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 돌봄 방문 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC05.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC06/cctv_motion",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 이웃 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC06.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC07/cctv_motion",
+   "entityId": "NPC07",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 음식 배달 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC07.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC08/cctv_motion",
+   "entityId": "NPC08",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 차량 동승 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC08.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC09/cctv_motion",
+   "entityId": "NPC09",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 공공 업무 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC09.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC10/cctv_motion",
+   "entityId": "NPC10",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "kind": "new_art",
+   "use": "CCTV 재생의 지인 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "spec": {
+    "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "reference": [
+     "room404/dist/assets/v5/figure-NPC10.webp",
+     "room404/dist/assets/v2/visitor-01-walk.webp"
+    ]
+   }
+  },
+  {
+   "assetId": "NPC01/walk",
+   "entityId": "NPC01",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "v05 걷기 패키지에 NPC01이 없음(NPC02~NPC10만).",
+   "kind": "new_art",
+   "use": "귀가 주민 역할 걷기 클립",
+   "spec": {
+    "required_art": "NPC01 3방향 부품 아틀라스(…_3view_parts_atlas)·연속 팔 그림, v05 패키지와 같은 구성"
+   }
+  },
+  {
+   "assetId": "MC07/REVISE",
+   "entityId": "MC07",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "헤어라인 후퇴와 짧은 측면 머리 표현이 기준보다 약함. 추가 수정 필요.",
+   "kind": "new_art",
+   "use": "이야기 장면 인물(초안만 있음)",
+   "spec": null
+  },
+  {
+   "assetId": "MC27/REVISE",
+   "entityId": "MC27",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "높은 이마·각진 턱의 차별화 부족. MC15와의 얼굴 구별 재검수 필요.",
+   "kind": "new_art",
+   "use": "이야기 장면 인물(초안만 있음)",
+   "spec": null
+  },
+  {
+   "assetId": "MC30/REVISE",
+   "entityId": "MC30",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "직사각 얼굴·긴 코 디자인 반영 부족. 외형 차별화 수정 필요.",
+   "kind": "new_art",
+   "use": "이야기 장면 인물(초안만 있음)",
+   "spec": null
+  },
+  {
+   "assetId": "EV01/REVISE",
+   "entityId": "EV01",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "문자 카드 검수 통과. 실제 도면과의 결합 및 구조 대조 검수 미완료.",
+   "kind": "new_art",
+   "use": "증거 카드",
+   "spec": null
+  },
+  {
+   "assetId": "EV04/BLOCKED",
+   "entityId": "EV04",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "본 패치의 문서 렌더 대상 아님. 기존 사진 원본 재사용 후 문서/앞뒤면 조합 검수 필요.",
+   "kind": "new_art",
+   "use": "증거 카드",
+   "spec": null
+  },
+  {
+   "assetId": "EV05/BLOCKED",
+   "entityId": "EV05",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "본 패치의 문서 렌더 대상 아님. 기존 사진 원본 재사용 후 문서/앞뒤면 조합 검수 필요.",
+   "kind": "new_art",
+   "use": "증거 카드",
+   "spec": null
+  },
+  {
+   "assetId": "EV18/REVISE",
+   "entityId": "EV18",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "문자 카드 검수 통과. 일기 그림과 404 숫자 레이어 결합 미완료.",
+   "kind": "new_art",
+   "use": "증거 카드",
+   "spec": null
+  },
+  {
+   "assetId": "EV19/REVISE",
+   "entityId": "EV19",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "전사 카드 검수 통과. 음성 파일 미제작; 음성 증거 완성 아님.",
+   "kind": "new_art",
+   "use": "증거 카드",
+   "spec": null
+  },
+  {
+   "assetId": "CH06/height",
+   "entityId": "CH06",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "CH08/height",
+   "entityId": "CH08",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "CH09/height",
+   "entityId": "CH09",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "CH10/height",
+   "entityId": "CH10",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "MC15/height",
+   "entityId": "MC15",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "MC25/height",
+   "entityId": "MC25",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "NPC01/height",
+   "entityId": "NPC01",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "기획·에셋 문서에 키 기록이 없어 [DESIGN] 1.68m 공통값으로 세움.",
+   "kind": "record",
+   "use": "정지 인물의 화면 키(머리 크기)",
+   "spec": {
+    "required": "키(m) 한 값"
+   }
+  },
+  {
+   "assetId": "BG13/floor4_row",
+   "entityId": "BG13",
+   "era": null,
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "보이는 1층이 몇 층인지 기록이 없어 4층 창 줄을 지정하지 못함(2004·2026 건물 윤곽은 같은 자리, 이동 0px).",
+   "kind": "record",
+   "use": "외관에서 404호 창 위치",
+   "spec": {
+    "required": "외관 그림의 층 번호(가장 낮은 창 줄이 몇 층인지)"
+   }
   }
- ]
+ ],
+ "note": "41건 해결은 파일 확보(해시 일치)이며 시각 검수 통과가 아님. 계획된 에셋 전체가 끝났다는 뜻도 아님(requests 참고)."
 }

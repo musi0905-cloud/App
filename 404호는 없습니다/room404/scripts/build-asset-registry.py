@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Asset registry: every production asset file that is actually in this repository, hashed here (v0.17.0).
+"""Asset registry: every production asset file that is actually in this repository, hashed here (v0.18.0).
 
   python3 scripts/build-asset-registry.py        -> ../asset_registry.json
 
@@ -73,12 +73,13 @@ def main():
     # 1. Backgrounds: package files (sources) and the game copies.
     bg_files = {v['source'].split('/')[-1]: k for k, v in J(SRC, 'stage_build_report.json')['backgrounds'].items()}
     add(os.path.join(SRC, '02_배경', 'game', 'BG08_management_office_2026_v01.webp'), 'BG08', '2026', 'background', f'{PKG_NAME}/02_배경/game',
-        notes='승인 목록에 없는 판(승인본은 BG08_management_office_2026_base_v02_v01, 미반입). 게임 파일을 만들지 않음.')
+        notes='승인 목록에 없는 판. 게임 파일은 승인본 BG08_management_office_2026_base_v02_v01(v0.18.0 복원 반입)로 만듦.')
     usage = layout['usage']; bg_use = {}
     bg_use.setdefault(usage['intercom']['background'], []).append('game:intercom'); bg_use.setdefault(usage['desk']['background'], []).append('game:desk')
     for n, b in usage['night_intro'].items(): bg_use.setdefault(b, []).append(f'game:night_intro:N{n}')
     for s, b in usage['cutscene_setting'].items(): bg_use.setdefault(b, []).append(f'game:cutscene:{s}')
     for ev, b in usage['evidence_backdrop'].items(): bg_use.setdefault(b, []).append(f'game:evidence_backdrop:{ev}')
+    for ev, b in usage.get('evidence_found_at', {}).items(): bg_use.setdefault(b, []).append(f'game:evidence_found_at:{ev}')
     repl = {'BG02': 'assets/v2/lobby-door-inside.webp (인터폰 배경)', 'BG01': 'assets/v2/guard-monitors.webp (엔딩 컷 경비실)'}
     for name, bid in bg_files.items():
         era = layout['backgrounds'][bid]['era']; ent = bid.split('_')[0]
@@ -87,22 +88,34 @@ def main():
         game = add(os.path.join(DIST, 'assets', 'bg', f'{bid}.webp'), ent, era, 'background', 'room404/scripts/build-stage-assets.py',
                    selected=bg_use.get(bid, []), replacement=repl.get(bid), derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
                    notes='게임용 720x1280 축소본. 장면 좌표는 dist/data/scene_layout.json.')
-    # 2. Approved character figures (sources + game crops) and the NPC02 file that is held back.
-    for f in sorted(os.listdir(os.path.join(PROJECT, 'character-v5', 'png'))):
-        ent = f.split('_')[0]; era = '2026' if '_2026_' in f else '2004' if '_2004_' else None
-        a = chars['assets'].get(ent); scenes = [f'scene:{s}' for s, c in chars['contacts'].items() if c == ent]
-        src = add(os.path.join(PROJECT, 'character-v5', 'png', f), ent, era, 'character', f'{PKG_NAME}/01_캐릭터/game',
-                  notes='' if a else '검증된 파일이지만 NPC01~NPC10 역할군 그림은 10장이 다 모일 때 한 번에 켬(visitor_roles_enabled=false).')
-        if a:
-            add(os.path.join(DIST, a['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=scenes,
-                replacement=f'assets/v5/bust-{ent}.webp (v0.15 흉상 크롭, v0.16에서 삭제)', derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
-                notes=f"전신 컷, 발 기준점 {a['figure']['foot']}, 키 {a['figure']['height_m']}m [DESIGN]")
+    # 2. Approved character figures (sources + game crops): character-v5/png (v0.15) and asset-source/01_캐릭터/game (game
+    #    exports restored 2026-10-14). Story contacts are shown in their scenes; the ten visitor role figures are built but
+    #    the switch stays off (character_assets.json visitor_roles_status.blocked_by), so they are not selected.
+    role_off = chars.get('visitor_roles_status', {}).get('blocked_by', '')
+    for folder, pkg in ((os.path.join(PROJECT, 'character-v5', 'png'), f'{PKG_NAME}/01_캐릭터/game'), (os.path.join(SRC, '01_캐릭터', 'game'), f'{PKG_NAME}/01_캐릭터/game (복원 전달 2026-10-14, asset-source/v06_sources)')):
+        for f in sorted(os.listdir(folder)) if os.path.isdir(folder) else []:
+            ent = f.split('_')[0]; era = '2026' if '_2026_' in f else '2004' if '_2004_' in f else None
+            a = chars['assets'].get(ent); r = chars.get('visitor_role_figures', {}).get(ent); scenes = [f'scene:{s}' for s, c in chars['contacts'].items() if c == ent]
+            if (a and a.get('source') != f) or (r and r.get('source') != f): a = r = None  # another revision of the same entity
+            src = add(os.path.join(folder, f), ent, era, 'character', pkg,
+                      notes='' if a else ('방문객 역할 그림: 게임 파일은 만들었지만 켜지 않음. ' + role_off) if r else '')
+            if a:
+                add(os.path.join(DIST, a['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=scenes,
+                    replacement=f'assets/v5/bust-{ent}.webp (v0.15 흉상 크롭, v0.16에서 삭제)' if ent in ('CH09', 'CH10', 'MC15', 'MC25') else None, derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
+                    notes=f"전신 컷, 발 기준점 {a['figure']['foot']}, 키 {a['figure']['height_m']}m ({'DESIGN' if 'DESIGN' in a['figure'].get('height_note', '') else a['figure'].get('height_note', '')})")
+            if r:
+                add(os.path.join(DIST, r['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=['qa_viewer'], derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
+                    notes=f"역할 그림 전신 컷(게임 꺼짐, 오프라인 캐시 제외), 발 기준점 {r['figure']['foot']}, 키 {r['figure']['height_m']}m. 방문객 100명의 고유 원화가 아님.")
     # 2b. Approved character originals received as single files (01_캐릭터/originals). QA from the approval record by SHA-256.
     #     Role figures switch on only when all ten are in hand, so these are not selected for the game.
     orig = os.path.join(SRC, '01_캐릭터', 'originals')
     for f in sorted(os.listdir(orig)) if os.path.isdir(orig) else []:
         add(os.path.join(orig, f), f.split('_')[0], '2026' if '_2026_' in f else '2004' if '_2004_' in f else None, 'character', f'{PKG_NAME}/01_캐릭터/originals',
-            notes='승인 원본(게임 출력본 아님). Drive의 game 사본은 잘려 있어 받지 않음(docs/missing_assets_request.json).')
+            notes='승인 원본(게임 출력본 아님). 게임 출력본 6679a805…는 2026-10-14 복원 전달로 받았고 이 원본과 픽셀이 같음(PNG 압축만 다름).')
+    # 2c. Package game WebPs of BG04/BG05 (restored 2026-10-14): hash-matched; the game files stay built from the PNG originals.
+    for f in ('BG04_floor4_2026_v01.webp', 'BG05_floor4_2004_v01.webp'):
+        p = os.path.join(SRC, '02_배경', 'game', f)
+        if os.path.exists(p): add(p, f[:4], '2026' if '2026' in f else '2004', 'background', f'{PKG_NAME}/02_배경/game (복원 전달 2026-10-14)', notes='패키지 WebP(941x1672 원본의 1080x1920 확대 출력). 게임 파일은 원본 PNG에서 만듦.')
     # 3. Legacy game files (v2): in the game before the v02 asset package; not reviewed by it.
     legacy_sel = {f['file'].split('/')[-1]: 'game:intercom:gate_visitors' for f in chars['legacy']['figures'].values()}
     for f in sorted(os.listdir(os.path.join(DIST, 'assets', 'v2'))):
@@ -128,6 +141,10 @@ def main():
             if f.endswith('.json') and (f.startswith('walk_rig') or f in ('config.json', 'binding.json', 'carrying_binding_v05.json')):
                 add(os.path.join(d, f), npc, '2026', 'animation_data', f'{PKG_NAME}/v05 (NPC02-NPC10_재현코드_QA_v05)', selected=['dist/data/walk_clips.json', 'qa_viewer'],
                     qa=(v05[npc]['status'], 'validation_all_v05.json'), notes='걷기 클립 재현 데이터. 렌더된 스프라이트는 missing 참고.')
+        # part art (render inputs), restored 2026-10-14; the BG02 copy each package carries equals 02_배경/game/BG02 and is not kept twice
+        for f in sorted(os.listdir(os.path.join(d, 'assets'))) if os.path.isdir(os.path.join(d, 'assets')) else []:
+            add(os.path.join(d, 'assets', f), npc, '2026', 'animation_art', f'{PKG_NAME}/06_애니메이션/NPC02-NPC10_손소품경계수정_v05 (복원 전달 2026-10-14)', selected=['asset-source/v06_render/render_v06.js'],
+                qa=(v05[npc]['status'], 'validation_all_v05.json'), notes='걷기 렌더 입력 부품 그림(원본 바이트). v06 재렌더에 사용.')
     # v05 walk sprites: the original 720x1280 RGBA frames (asset-source/v05_frames, from the 93 transfer ZIPs) and the
     # QA-viewer atlases built from them. Package status REVISE; the frame review (frame_qa/review_summary_v05.json) did
     # not pass any view, so none of them is selected for the game.
@@ -150,6 +167,23 @@ def main():
             for f in ('atlas.webp', 'atlas.json'):
                 add(os.path.join(atlas, f), npc, '2026', 'qa_atlas', 'room404/scripts/import-v05-frames.py', selected=['qa_viewer'], qa=(v05[npc]['status'], 'derived:validation_all_v05.json'),
                     derived=f'asset-source/v05_frames/{npc}/sprites', notes='QA 뷰어용 아틀라스(원본 알파 상자 + 오프셋, 0.5배). 게임 빌드에 넣지 않음.')
+    # v06 renders (own renderer): QA atlases and the side-by-side review videos. Status from review_summary_v06.json.
+    r6p = os.path.join(SRC, 'v06_QA', 'review_summary_v06.json'); r6 = J(r6p) if os.path.exists(r6p) else None
+    for npc in sorted(v05):
+        d = os.path.join(SRC, 'v06_QA', npc)
+        if not os.path.isdir(d): continue
+        st6 = ', '.join(f"{v} {r6['npcs'][npc][v]['status']}" for v in ('front', 'side', 'rear', 'sequence')) if r6 and npc in r6['npcs'] else None
+        for f in ('atlas.webp', 'atlas.json'):
+            if os.path.exists(os.path.join(d, f)):
+                add(os.path.join(d, f), npc, '2026', 'qa_atlas', 'asset-source/v06_render/render_v06.js -> room404/scripts/import-v06-frames.py', selected=['qa_viewer'],
+                    qa=('REVISE' if not st6 or 'REVISE' in st6 else 'PASS', 'v06 frame review: ' + str(st6)), derived='asset-source/v06_render (render_v06.js, 입력 asset-source/v05_QA/code)',
+                    notes='v06 재렌더 프레임의 QA 아틀라스(입장·멈춤·대기·회전·출발·퇴장·지나감). 게임 빌드에 넣지 않음.')
+        for f in sorted(x for x in os.listdir(d) if x.endswith('.mp4')):
+            add(os.path.join(d, f), npc, '2026', 'review_video', 'room404/scripts/analyze-v06-frames.py', selected=['qa_viewer'], qa=('REFERENCE_ONLY', None),
+                notes='v05 원본 프레임과 v06 재렌더를 나란히 놓은 검토 영상(불투명 합성).')
+    for f in ('SOURCE_MANIFEST.json', 'MATCH_REPORT.json', 'SOURCE_IMPORT_RESULT.json'):
+        p = os.path.join(SRC, 'v06_sources', f)
+        if os.path.exists(p): add(p, None, None, 'delivery_record', 'Drive 1OjyxfqzZS7wWfcNo-ppjmi2dYft7i1xM (2026-10-14)', qa=('RECORD', None), notes='복원 전달 기록(41 source ZIP, 169 파일). 품질 상태를 정하지 않음.')
     add(os.path.join(SRC, '00_스타일가이드', 'QA_NPC01_BG02_static_placement_v01.jpg'), 'NPC01', '2026', 'reference', f'{PKG_NAME}/00_스타일가이드', selected=['scene_layout:BG02.stand_points.idle'],
         qa=('REFERENCE_ONLY', None), notes='BG02 정지 배치 기준(발 y 1780). 이 이미지 자체는 게임에 쓰지 않음.')
     # 6. v1.1 planning blockouts.
