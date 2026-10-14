@@ -1,0 +1,982 @@
+[
+  {
+    "drive_id": "1Kdl2vAPxFOz2auf408s6qcY_ouVVMb9i",
+    "source_path": "404호는_없습니다_v0.6_02_이미지와검사자료.zip",
+    "source_url": "https://drive.google.com/file/d/1Kdl2vAPxFOz2auf408s6qcY_ouVVMb9i/view?usp=drivesdk",
+    "zip_size": 9672089,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 19,
+    "zip_sha256": "becb26855b1bd370b23fe8ef7ee565fa7390af7af270065475443dc71bd43e3d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Z0lTuWpNxdpXVaLsH3UbtASnGUmDrx3U",
+    "source_path": "404호는_없습니다_v0.6_01_소스코드.zip",
+    "source_url": "https://drive.google.com/file/d/1Z0lTuWpNxdpXVaLsH3UbtASnGUmDrx3U/view?usp=drivesdk",
+    "zip_size": 7261714,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 43,
+    "zip_sha256": "e84b607a643b871d12c86c6604953c9812e5f4e9e5aa380d55b8edf121c59a5d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "17r2vy_gziv9PYflIma9AmoGZv7NhI_oc",
+    "source_path": "404호는_없습니다_V001_걷기캐릭터_Claude_Code_적용패키지.zip",
+    "source_url": "https://drive.google.com/file/d/17r2vy_gziv9PYflIma9AmoGZv7NhI_oc/view?usp=drivesdk",
+    "zip_size": 4071162,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 14,
+    "zip_sha256": "91a441fdd743b495a90d8d4cd1dbaf8f797d570a3647a0123efcfe3c26c7d499",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "105SOPJaUCVOi2h3l4gL4bnKVeVgloDRZ",
+    "source_path": "404호는_없습니다_v0.6.0_코드_검사결과_Claude인수인계.zip",
+    "source_url": "https://drive.google.com/file/d/105SOPJaUCVOi2h3l4gL4bnKVeVgloDRZ/view?usp=drivesdk",
+    "zip_size": 16933028,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 61,
+    "zip_sha256": "5f5a6a2baececc8e9b5d2c3c888c10657eebff8dc68e4495e5a0933aa98a2381",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1v_92zw9SeChWdHmwNrbOqZp3wEL5v3Du",
+    "source_path": "404호는_없습니다_v0.5.0_코드_이미지_전수검사.zip",
+    "source_url": "https://drive.google.com/file/d/1v_92zw9SeChWdHmwNrbOqZp3wEL5v3Du/view?usp=drivesdk",
+    "zip_size": 18021222,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 50,
+    "zip_sha256": "cd4a5b7195f05a44d366a0dc78644f17ea7ea03a28308079ed27c1e1d162c5c0",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Cxq7hMuBqN9fj-nO8Af2oMBYVJmSXklk",
+    "source_path": "404호는_없습니다_v0.4.0_코드_테스트.zip",
+    "source_url": "https://drive.google.com/file/d/1Cxq7hMuBqN9fj-nO8Af2oMBYVJmSXklk/view?usp=drivesdk",
+    "zip_size": 6528099,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 30,
+    "zip_sha256": "9352ace6bd819e6f95d8c3edf7ffebb5e8bf13597f0e3bbd86d885eeed1f228a",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "13yKT_Iuxzme3y8tlgaNCgXBeAdw_mJmg",
+    "source_path": "404호는_없습니다_v0.3.0_코드_테스트.zip",
+    "source_url": "https://drive.google.com/file/d/13yKT_Iuxzme3y8tlgaNCgXBeAdw_mJmg/view?usp=drivesdk",
+    "zip_size": 4296255,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 28,
+    "zip_sha256": "8975347d43d95cdfeb0e4ac7d602c2d4df510ade4a2d21ba0e9f89489167660d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1xTuy2JAy1SANXCOtXkb4eTgq6nH3EWO5",
+    "source_path": "404호는_없습니다_앱_v0.2.zip",
+    "source_url": "https://drive.google.com/file/d/1xTuy2JAy1SANXCOtXkb4eTgq6nH3EWO5/view?usp=drivesdk",
+    "zip_size": 1718697,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 93,
+    "zip_sha256": "e9fa51c4fc7caf57810e66ca5476cdb7ef45f89366221cccaf9e08c415d1dfc1",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Lg64sXSmtRBcGnjgCDygndaGWwyLEeaf",
+    "source_path": "스토리_개발기획_v1.3_엔딩시뮬레이션/404호는_없습니다_엔딩_시뮬레이션_v1.3.zip",
+    "source_url": "https://drive.google.com/file/d/1Lg64sXSmtRBcGnjgCDygndaGWwyLEeaf/view?usp=drivesdk",
+    "zip_size": 8442,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 5,
+    "zip_sha256": "818c3c6f35b1f7f4225bd580aa29893d504c1ee5c2d76086840d995541139112",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1lsVgYKZiQjTY4PEln0YFE58mU0HZJn0I",
+    "source_path": "스토리_개발기획_v1.2_S2-S5/404호는_없습니다_S2-S5_기획결정_v1.2.zip",
+    "source_url": "https://drive.google.com/file/d/1lsVgYKZiQjTY4PEln0YFE58mU0HZJn0I/view?usp=drivesdk",
+    "zip_size": 32957,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 8,
+    "zip_sha256": "5d3e65398385ef5a07dff8ad4b16a3f633aa04bf8d62305265ffa645f5a0dbd6",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1ndjyYJ0IaWlvufd4c-AuAopAYHUI6yYa",
+    "source_path": "404호는_없습니다_최종_게임에셋/404_assets_revision_20261009_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1ndjyYJ0IaWlvufd4c-AuAopAYHUI6yYa/view?usp=drivesdk",
+    "zip_size": 17052382,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 65,
+    "zip_sha256": "7e8472e0f5158ad4eb769c97d28cffcb26c560b937acf8c814dc60b0d4d12b6f",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "19mwbtFIgmOXd5nkbB_zyl9p_e0HrqhC4",
+    "source_path": "404호는_없습니다_최종_게임에셋/제작작업_재개자료_20261008_v01.zip",
+    "source_url": "https://drive.google.com/file/d/19mwbtFIgmOXd5nkbB_zyl9p_e0HrqhC4/view?usp=drivesdk",
+    "zip_size": 75345,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 23,
+    "zip_sha256": "061ed573cfeb9cf9be44f80d1a0b3bacbe5b6bad120ef14ba15f097b23f0f42d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1HroZKNI2eoJ9ZyshVXGk4HjgAV1feM7-",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part10.zip",
+    "source_url": "https://drive.google.com/file/d/1HroZKNI2eoJ9ZyshVXGk4HjgAV1feM7-/view?usp=drivesdk",
+    "zip_size": 17400099,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 12,
+    "zip_sha256": "63cf276978c390ed71f874da2ec238b8940adc3400b702a64de49c633ce7474f",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Ezi2UB6mhscMUSA9hLcgMzqPB_9ZtJs8",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part09.zip",
+    "source_url": "https://drive.google.com/file/d/1Ezi2UB6mhscMUSA9hLcgMzqPB_9ZtJs8/view?usp=drivesdk",
+    "zip_size": 17487714,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 13,
+    "zip_sha256": "e877b6d2adfe3017391176d407932c717117e87193cd41215c680b98f12cecb7",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1tE2fF8DfvqNLbVJgKUiZTaEf6N7JHxaW",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part08.zip",
+    "source_url": "https://drive.google.com/file/d/1tE2fF8DfvqNLbVJgKUiZTaEf6N7JHxaW/view?usp=drivesdk",
+    "zip_size": 17926823,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 13,
+    "zip_sha256": "14ea3d9972cf765a7a07e64fb25ea56f9a115b95d05054de82fd98f88309746c",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1OGEL2vIPytvjhwEjJCmStU_0NTNHTJYN",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part07.zip",
+    "source_url": "https://drive.google.com/file/d/1OGEL2vIPytvjhwEjJCmStU_0NTNHTJYN/view?usp=drivesdk",
+    "zip_size": 17647018,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 12,
+    "zip_sha256": "007680b975b1f8669a21d34f43cf93f9a4b274dc47a05c3c298fa21ae4f1d972",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1TTMxA7MqZqhdMkMn1p1d86k-usJzlhXc",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part06.zip",
+    "source_url": "https://drive.google.com/file/d/1TTMxA7MqZqhdMkMn1p1d86k-usJzlhXc/view?usp=drivesdk",
+    "zip_size": 17673203,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 16,
+    "zip_sha256": "f0bc47b963a6bc0627e7e08c43cf9be2a76a6341db8c68c3491c3eeb98e15933",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1raud8XV9mcDPv2yA_sR49HW57QvCgL5I",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part05.zip",
+    "source_url": "https://drive.google.com/file/d/1raud8XV9mcDPv2yA_sR49HW57QvCgL5I/view?usp=drivesdk",
+    "zip_size": 17691740,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 15,
+    "zip_sha256": "c6fbd5fa870f18f6088da86c129f775cbaf20ebf3b0484c2d095f9b3841982aa",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1wr1jeaEJ4A1RjTQAK8FEk_Qmp5BDUuiF",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part04.zip",
+    "source_url": "https://drive.google.com/file/d/1wr1jeaEJ4A1RjTQAK8FEk_Qmp5BDUuiF/view?usp=drivesdk",
+    "zip_size": 17582957,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 17,
+    "zip_sha256": "257e93bf08927e1ec20b5d37ced662d3664e0099591faf8afb74012daaa9c33a",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "16-LXpHHh013ATSecqAMBFfRaDUBP-Asu",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part03.zip",
+    "source_url": "https://drive.google.com/file/d/16-LXpHHh013ATSecqAMBFfRaDUBP-Asu/view?usp=drivesdk",
+    "zip_size": 16611721,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 13,
+    "zip_sha256": "3c42ddd0b595c24e36e229fa94b0cf36a4eedf21b5db5c843406af2956916eee",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1rmR03yBCJqALwRch9LIWv5WDu6bnhCBI",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part02.zip",
+    "source_url": "https://drive.google.com/file/d/1rmR03yBCJqALwRch9LIWv5WDu6bnhCBI/view?usp=drivesdk",
+    "zip_size": 17282028,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 12,
+    "zip_sha256": "091dccdf9d39be85b7a76bc640130c88e28cee70d69b820cc3ff25a39e0ecf04",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "15I-QK9RVZo9vqcT0k4esjcuWGVU-Xpzm",
+    "source_path": "404호는_없습니다_최종_게임에셋/생성원본_전체_20261008_복구저장_v01_part01.zip",
+    "source_url": "https://drive.google.com/file/d/15I-QK9RVZo9vqcT0k4esjcuWGVU-Xpzm/view?usp=drivesdk",
+    "zip_size": 17403025,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 14,
+    "zip_sha256": "d97cc08174d76cc912442840565cfa544d1a888a17858f41cd264d8009a7e011",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1_aJ5kad5AT5VYqYLnqu9VD8Emwteq8Ht",
+    "source_path": "스토리_개발기획_v1.1_추가제작/404호는_없습니다_개발제작_추가본_v1.1.zip",
+    "source_url": "https://drive.google.com/file/d/1_aJ5kad5AT5VYqYLnqu9VD8Emwteq8Ht/view?usp=drivesdk",
+    "zip_size": 2473289,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 83,
+    "zip_sha256": "57e812b4ba8f8b2f87df5aad61acde09fd190d83fa7417211d9e050624af5566",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1yxIPDzY1Rp-QMLUiy6KiCs3XLqwCZbuA",
+    "source_path": "스토리_개발기획_v1.0/404호는_없습니다_개발기획_통합_v1.0.zip",
+    "source_url": "https://drive.google.com/file/d/1yxIPDzY1Rp-QMLUiy6KiCs3XLqwCZbuA/view?usp=drivesdk",
+    "zip_size": 44128,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 19,
+    "zip_sha256": "80f39aab5432cff2392ddd52c8538690ecbd368f8809a869b420b54e1b83928f",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1KQDxiwTdx3fyaWAPoYBC25dFx2EqkXzj",
+    "source_path": "스토리_리빌드_v0.5/404호는_없습니다_스토리_리빌드_v0.5_MD_9종.zip",
+    "source_url": "https://drive.google.com/file/d/1KQDxiwTdx3fyaWAPoYBC25dFx2EqkXzj/view?usp=drivesdk",
+    "zip_size": 22227,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 9,
+    "zip_sha256": "b7ce13110ab3c366198a7af7435fc2a97b1bbc7bd485ca02c26dbd953eb60749",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1y5frVLF4l4yUZHLb_1uyham63iZhVnH4",
+    "source_path": "404호는_없습니다_최종_게임에셋/08_수정필요/08_수정필요_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1y5frVLF4l4yUZHLb_1uyham63iZhVnH4/view?usp=drivesdk",
+    "zip_size": 11300239,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 11,
+    "zip_sha256": "6da24a05b9d27d4db13afc7095ae53d4d65eb7ffa70a309814f444f91dda57fd",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1sCLFcpB9Ru7E7E8F9nO9KZGCe-l9eluT",
+    "source_path": "404호는_없습니다_최종_게임에셋/07_검수완료/07_검수완료_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1sCLFcpB9Ru7E7E8F9nO9KZGCe-l9eluT/view?usp=drivesdk",
+    "zip_size": 8141,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 1,
+    "zip_sha256": "52307d68cb31a606082903166b856f308245c5cc38a800931d631ecdf81745f5",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1jJbUsqD4q0gQHXC3B-tBNphfLZAwp_Ws",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/404_animation_walk_rig_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1jJbUsqD4q0gQHXC3B-tBNphfLZAwp_Ws/view?usp=drivesdk",
+    "zip_size": 7792962,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 105,
+    "zip_sha256": "b29a73189ce4df1face54c87f9efd7084dd6503654115e97564c23ef6bd8a841",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1a2QjOklRH_dhB_Ruu-jH9qpfwSoIATaU",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/404_animation_walk_rig_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1a2QjOklRH_dhB_Ruu-jH9qpfwSoIATaU/view?usp=drivesdk",
+    "zip_size": 7894636,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 105,
+    "zip_sha256": "1a8d69659e09124f4ad1a3c25cecd982c6c9b20061e8b4f8e0f80843adb77d17",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1QxxkvHeka1w5_2UhIuPN3dB3Nk67-fmB",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/06_애니메이션_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1QxxkvHeka1w5_2UhIuPN3dB3Nk67-fmB/view?usp=drivesdk",
+    "zip_size": 1123,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 1,
+    "zip_sha256": "5004713953946d46ced13e32b9c79d28d66ff3188aca752ad3530a04db1022f5",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1JSjRnPPmCjPcZADwolDi9SMh-XQ5Wv56",
+    "source_path": "404호는_없습니다_최종_게임에셋/05_UI/05_UI_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1JSjRnPPmCjPcZADwolDi9SMh-XQ5Wv56/view?usp=drivesdk",
+    "zip_size": 60171,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 43,
+    "zip_sha256": "7efb3689f735f05ea42108c9aa77bed76ab6629fec809d642a919d3c3da66257",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1gz6cRaEw4qkOc2kSbotVqaBmMg-9vVOW",
+    "source_path": "404호는_없습니다_최종_게임에셋/04_증거소품/04_증거소품_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1gz6cRaEw4qkOc2kSbotVqaBmMg-9vVOW/view?usp=drivesdk",
+    "zip_size": 21781068,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 94,
+    "zip_sha256": "a9ee858278f88c8d59d07a350cb76059eb0bbcc20964bb20ca82ad2b1be37ec3",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1rXZztZ9U8l9HuZpJNsmmBh_MCYsUj0fa",
+    "source_path": "404호는_없습니다_최종_게임에셋/03_사건장면/03_사건장면_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1rXZztZ9U8l9HuZpJNsmmBh_MCYsUj0fa/view?usp=drivesdk",
+    "zip_size": 3505871,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 15,
+    "zip_sha256": "a74d9a4c163ecbd50b2e3c2ebe2f53ebe1281888af7b081dd9a6aa629b2524fc",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1tw9lFXQ_Rvgl_p2IJXkBPzDeWZlzWGuF",
+    "source_path": "404호는_없습니다_최종_게임에셋/02_배경/02_배경_20261008_복구저장_v01_part03.zip",
+    "source_url": "https://drive.google.com/file/d/1tw9lFXQ_Rvgl_p2IJXkBPzDeWZlzWGuF/view?usp=drivesdk",
+    "zip_size": 12447932,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 5,
+    "zip_sha256": "dc222142fc2e34b63d9272ea57ad7be0ce502dfa7fb9a1934c4a3e55c3e36a85",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1RZGfpdsKfY2ryyu4wmAL3BmCL7CYEyAE",
+    "source_path": "404호는_없습니다_최종_게임에셋/02_배경/02_배경_20261008_복구저장_v01_part02.zip",
+    "source_url": "https://drive.google.com/file/d/1RZGfpdsKfY2ryyu4wmAL3BmCL7CYEyAE/view?usp=drivesdk",
+    "zip_size": 16741051,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 7,
+    "zip_sha256": "11f2b54e7d2156aa1bf8a710ac70b1508b9d2fe82b2658f1f9ef357b2caa7cfb",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1MZhX3D9zBylW1jTHWK-IwpgqA6tMqCVL",
+    "source_path": "404호는_없습니다_최종_게임에셋/02_배경/02_배경_20261008_복구저장_v01_part01.zip",
+    "source_url": "https://drive.google.com/file/d/1MZhX3D9zBylW1jTHWK-IwpgqA6tMqCVL/view?usp=drivesdk",
+    "zip_size": 15261271,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 22,
+    "zip_sha256": "be4325c30377e4006a3eafed4b248f28a7f19a23d29369d788df6864eb4a4b68",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Z-OMnuSFIV3Pp5OCV5LIw7eRUiYYvjOD",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/MC01_MC04_추가생성_검수전_20261008_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1Z-OMnuSFIV3Pp5OCV5LIw7eRUiYYvjOD/view?usp=drivesdk",
+    "zip_size": 4107204,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 5,
+    "zip_sha256": "f741f5eb26c86693a5bf2170469310d31ed5d825fcc6b843b25a23ed8ba27300",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1dyBRKyGD4XOVa35H-ACLybktXbtHRqQD",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_복구완료_v02_part05.zip",
+    "source_url": "https://drive.google.com/file/d/1dyBRKyGD4XOVa35H-ACLybktXbtHRqQD/view?usp=drivesdk",
+    "zip_size": 9419934,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 7,
+    "zip_sha256": "9bea89a1611706b381e870dd30d586cd4ebd6e833824a13bd915a12468d62284",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1CcaJTE-32dRimvaMKmDvt1MOlCpyUi-S",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_복구완료_v02_part04.zip",
+    "source_url": "https://drive.google.com/file/d/1CcaJTE-32dRimvaMKmDvt1MOlCpyUi-S/view?usp=drivesdk",
+    "zip_size": 15812272,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 17,
+    "zip_sha256": "f764a26f20239d2cf31a83af6d567a7bea4335a100cf21b8eb8646286ecfe616",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1UjjU34sWr9St7Oefq1AiMGFe3hNhTY55",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_복구완료_v02_part03.zip",
+    "source_url": "https://drive.google.com/file/d/1UjjU34sWr9St7Oefq1AiMGFe3hNhTY55/view?usp=drivesdk",
+    "zip_size": 15982908,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 18,
+    "zip_sha256": "f5c9a98b1084b5891655c69576ff495e26732f3f88769e60477b8669f2865ae2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1fmciO5QxdmjcpzgG6-D_9lrLkWSAebIc",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_복구완료_v02_part02.zip",
+    "source_url": "https://drive.google.com/file/d/1fmciO5QxdmjcpzgG6-D_9lrLkWSAebIc/view?usp=drivesdk",
+    "zip_size": 16387171,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 16,
+    "zip_sha256": "d574cfd8c15d185a785a630efae0f0cca2b7a459ef70acb1e4cddbbfb56fbf0e",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1vKS6K4Tf375zsXCO6uDKUJPpn_i9Y98o",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_복구완료_v02_part01.zip",
+    "source_url": "https://drive.google.com/file/d/1vKS6K4Tf375zsXCO6uDKUJPpn_i9Y98o/view?usp=drivesdk",
+    "zip_size": 17763321,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 20,
+    "zip_sha256": "6da0c4133d2cfa3886b54de88cd3874103cda30ca580fa9c50d82cc746316a06",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Xt0GQcpOj5mmHeb6JRDoOMvrFowuzkhD",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/01_캐릭터_이전업로드_불완전_사용금지.zip",
+    "source_url": "https://drive.google.com/file/d/1Xt0GQcpOj5mmHeb6JRDoOMvrFowuzkhD/view?usp=drivesdk",
+    "zip_size": 64150502,
+    "status": "BLOCKED_INVALID_ZIP",
+    "extracted_files": 0,
+    "zip_sha256": null,
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1zz8U2dS7BcOmwcuOpApUoKEYebDfZg2x",
+    "source_path": "404호는_없습니다_최종_게임에셋/00_스타일가이드/00_스타일가이드_20261008_복구저장_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1zz8U2dS7BcOmwcuOpApUoKEYebDfZg2x/view?usp=drivesdk",
+    "zip_size": 8380509,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 20,
+    "zip_sha256": "e5af45be2153fd25dea72135de3afb122311853617aadda0554aed02cc402eaf",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "15hIXutqDwBdAWpo3n116pU0ve8Ds4g2w",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC10_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/15hIXutqDwBdAWpo3n116pU0ve8Ds4g2w/view?usp=drivesdk",
+    "zip_size": 33446259,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "d96ae1cb1c454e3e2025985d7099ea42398b65ff4ed90b012e8390c1deae1fe2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1WcZleT-PVSjIFeDjANhFwGypsUq1qf7N",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC09_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1WcZleT-PVSjIFeDjANhFwGypsUq1qf7N/view?usp=drivesdk",
+    "zip_size": 29161209,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "51cfa725e81cf82e6d471cb7dc7ef0fb3e7f8b4cfd708457e20a73618ca551c0",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1gxAYLchAD4Ubv6138J7THUvbcOriALE-",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC08_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1gxAYLchAD4Ubv6138J7THUvbcOriALE-/view?usp=drivesdk",
+    "zip_size": 28575514,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "6a897c35177232ddcee2201f6f5201597039a358dab1a90e6e2128e598bf1eed",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1J8PJZ914vFI0MafOG4UqzA77YOnXdcon",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC07_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1J8PJZ914vFI0MafOG4UqzA77YOnXdcon/view?usp=drivesdk",
+    "zip_size": 34258107,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "9c06556f31d3028ddaf4108c64d61d7a46fc463e513fb08754544c7c1f7cab69",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1ejvSHJlxeicShqBmVqMXWuqhWIP4wHiz",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC06_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1ejvSHJlxeicShqBmVqMXWuqhWIP4wHiz/view?usp=drivesdk",
+    "zip_size": 26541011,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "14ec42e0ca25e1dae9702cb03d3cf231dedf139a9e922e3e4280588df67ffe66",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1lPk7I6JT6wM73AcGuz7L9TFvS087F6Hw",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC05_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1lPk7I6JT6wM73AcGuz7L9TFvS087F6Hw/view?usp=drivesdk",
+    "zip_size": 29972017,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "920499e0e903fffdc32f0a3b54ce2b4c6d07d5611ec2452377fb4472ba639f11",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1BXMSyuWvRYZrkSDLi-zp8CvWty9TNBMY",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC04_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1BXMSyuWvRYZrkSDLi-zp8CvWty9TNBMY/view?usp=drivesdk",
+    "zip_size": 36262435,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "fae5c2b1f750adb19263205c3514001eeb48752b4d3691605274addf6279b3c7",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1_zlOSLRxQejHz-1y5SpWPD-sBQK11c0v",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC03_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1_zlOSLRxQejHz-1y5SpWPD-sBQK11c0v/view?usp=drivesdk",
+    "zip_size": 33001837,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "835d597adafbc1179057078d5bcb1d1c5a77f734ee1cbc61b95857d052cd7df2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1CeKW2sXYNsi12hVV12__4ZpJ2CIxuosS",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02_손소품경계_REVISE_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1CeKW2sXYNsi12hVV12__4ZpJ2CIxuosS/view?usp=drivesdk",
+    "zip_size": 27718080,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "a401b663d716b861ed865ca61ab3533b3e9f3a07a5c3159c77f3290ecb527e2d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1hYvodhr-RkR6ZJa22PimOQnlBljjpFAf",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_손소품경계수정_v05/NPC02-NPC10_재현코드_QA_v05.zip",
+    "source_url": "https://drive.google.com/file/d/1hYvodhr-RkR6ZJa22PimOQnlBljjpFAf/view?usp=drivesdk",
+    "zip_size": 434223,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 125,
+    "zip_sha256": "c821cbb6cf930353d3c9b3f8e757716fd44a726b633299c22ae8d4e03798cd7d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1ZwnBedXotmBgw39HVxWvkaIzfZgfUAaK",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/404_공통수정코드_검수데이터_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1ZwnBedXotmBgw39HVxWvkaIzfZgfUAaK/view?usp=drivesdk",
+    "zip_size": 77194,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 42,
+    "zip_sha256": "9a2ed36570e21a87caa9eac1356c143c9ccbe4e348cbcd0b375bf73145ebb577",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1gK96eBwvqUh5gtjjGUrbAJpz8yMw8N__",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC10_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1gK96eBwvqUh5gtjjGUrbAJpz8yMw8N__/view?usp=drivesdk",
+    "zip_size": 33379217,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "24e5c20fb00523c6fcf88b373d2480378ff49bfc4999db2d9b0ac60cdb6e56fd",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "10Cxv4Q6bYHvzkOVWlo3nHcP3lUf_qEXM",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC09_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/10Cxv4Q6bYHvzkOVWlo3nHcP3lUf_qEXM/view?usp=drivesdk",
+    "zip_size": 27700900,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "15e8208a1a649c35d07bd1bcd641dc7a42a8668c8a0f9ea6f6bcaf332625eff7",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "11g9BG0ZPfJscIp8JwGZbxOpoEpJfmt0s",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC08_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/11g9BG0ZPfJscIp8JwGZbxOpoEpJfmt0s/view?usp=drivesdk",
+    "zip_size": 28460313,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "10e00d24a9a857751e83fe4c14e1070365f4ff327175f4d288dcedd7c9d8bf09",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1N0XXweeJ_WpxTK0kBW6J1T2prkBy19NM",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC07_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1N0XXweeJ_WpxTK0kBW6J1T2prkBy19NM/view?usp=drivesdk",
+    "zip_size": 34211436,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "19ff27386178b03915b364ccb84d00ebdae934358eeff013b977694656c56476",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1O4ywVNYFZbGjI3f5BdxYUtAzR2KfQv_k",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC06_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1O4ywVNYFZbGjI3f5BdxYUtAzR2KfQv_k/view?usp=drivesdk",
+    "zip_size": 26503056,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "c9ca85c73ced9893d55c3f0aee0c261dfc2f275bd50c25e735289f6ef35ea111",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1qol6k3qCiewLeJGKGaXPBlGqr5Y1yAK1",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC05_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1qol6k3qCiewLeJGKGaXPBlGqr5Y1yAK1/view?usp=drivesdk",
+    "zip_size": 29886054,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "050687fe441c17a8e18182a95058d21b43b081171a26ffa02d8b2efcd968be6a",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1AbXLIs9jJOWQXiY7gas1r65GyraB6K53",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC04_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1AbXLIs9jJOWQXiY7gas1r65GyraB6K53/view?usp=drivesdk",
+    "zip_size": 36241991,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "3d8cc4775ab320ebdc3570039d93c5b1c86988dc6bc3f9ba604b38c1d8e1478a",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1rjdsJDiffFK43axKJcUIGU8VBwA5W2yY",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC03_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1rjdsJDiffFK43axKJcUIGU8VBwA5W2yY/view?usp=drivesdk",
+    "zip_size": 31285978,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "0f30e171ea8bff2cb3b6c7898f7887882e2e443c02d485ff4d0894d095d19af9",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1tgK2vMxR2kKBYR2il7D9bkpXg8Jrjzmn",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_관절어깨합성수정_v04/NPC02_관절어깨합성_REVISE_v04.zip",
+    "source_url": "https://drive.google.com/file/d/1tgK2vMxR2kKBYR2il7D9bkpXg8Jrjzmn/view?usp=drivesdk",
+    "zip_size": 27613475,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "073c44fc8399f5a98510d43b51b6c7ce175be430f09101f09b1848cc3597a56a",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "18DgbBCZp9PTPFmlivcSZ2nia2gJMsRxS",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/CH_시대별11ID_원화합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/18DgbBCZp9PTPFmlivcSZ2nia2gJMsRxS/view?usp=drivesdk",
+    "zip_size": 98954214,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 109,
+    "zip_sha256": "2909b21264a1479ae144976816e8d4ce3463fe9807d82c74678413ce81a028b6",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1II70kFb-NjMEttQK6iAvsdwjI3o8AADk",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC10_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1II70kFb-NjMEttQK6iAvsdwjI3o8AADk/view?usp=drivesdk",
+    "zip_size": 33992978,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "8e5b9b48f4c1363f7a3c24c3129e9fc892b7e23acdc1222e131c742edb7a29bc",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1KmvWiyR4Wqu4Hdihj8xZ-0vs5WsNp-XY",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC09_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1KmvWiyR4Wqu4Hdihj8xZ-0vs5WsNp-XY/view?usp=drivesdk",
+    "zip_size": 28168694,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "ef96391f5122dc38e5ee2ae28f2a4231526244f5113ea7032ca3b1f759c63cf0",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1CGOLLCDtIPRPcViIAs13r196rCOdz4xI",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC08_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1CGOLLCDtIPRPcViIAs13r196rCOdz4xI/view?usp=drivesdk",
+    "zip_size": 28996295,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "9ffcfdcfedb76dff33abdc98a2cca57a89f0c111ff11134792140bef9ab79f49",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Is-EtGMU8WijCB-De0VIQLLX0tgjeuKB",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC07_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1Is-EtGMU8WijCB-De0VIQLLX0tgjeuKB/view?usp=drivesdk",
+    "zip_size": 34856612,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "8f8bc3ec76794e318811c9be34d4e09e32bd8626f042d2c728e0ffb4578a27dc",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1UsLWgB_qIckohYAzAERqxwl70D7eUG86",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC06_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1UsLWgB_qIckohYAzAERqxwl70D7eUG86/view?usp=drivesdk",
+    "zip_size": 27444725,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "3931580c1bc0be11b8449491daf485d3984090e73f89235cb45bf431e9a149f5",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Ww-0Gb8ZGCGZ0A-SyjlLq71ocbwRkiyk",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC05_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1Ww-0Gb8ZGCGZ0A-SyjlLq71ocbwRkiyk/view?usp=drivesdk",
+    "zip_size": 30553586,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "5b9413be43ca394f61bdd29fb4fdf0be8c567fbf49131899af9e53b1c92c7a54",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1dpqqJdzJt6nGICiIoEt3NsNqryFPoB0B",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC04_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1dpqqJdzJt6nGICiIoEt3NsNqryFPoB0B/view?usp=drivesdk",
+    "zip_size": 37102386,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "aff7e39933c07357b878c4eb752b0aa7c6ae1f30157d0c4304f57c83c74d9cb6",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1fNd4TUMwo3lASWa1bnGeP9ytGcO7ZkST",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC03_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1fNd4TUMwo3lASWa1bnGeP9ytGcO7ZkST/view?usp=drivesdk",
+    "zip_size": 31981108,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "7903b4180ce3c89f686a81f609233f91bbc743c833598917b674e0abc993dbc3",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1LK9nfBf8slgEyMuWU3r_GugmJza4BeS0",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/NPC02_보행합성_REVISE_v03.zip",
+    "source_url": "https://drive.google.com/file/d/1LK9nfBf8slgEyMuWU3r_GugmJza4BeS0/view?usp=drivesdk",
+    "zip_size": 28379839,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "226251d2389c5cad00a88439b303295eae565d7cd8a33b2623341d049d499396",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1y71KQu-xWUw0LAD5uHUD-TTjXbWbUm7B",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC수정_시대별인물_제작_v03/404_v03_source_checkpoint.zip",
+    "source_url": "https://drive.google.com/file/d/1y71KQu-xWUw0LAD5uHUD-TTjXbWbUm7B/view?usp=drivesdk",
+    "zip_size": 36923756,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 140,
+    "zip_sha256": "cbc78f782ae3414ee2b444ba912bb8d9d171d6ca2b9c7c46b6327f24ecd1aea9",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1mKfl1CbI8ujVlyEX47o2c417gss0yZf1",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_전체인물_제작현황_코드_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1mKfl1CbI8ujVlyEX47o2c417gss0yZf1/view?usp=drivesdk",
+    "zip_size": 18804,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 8,
+    "zip_sha256": "78356a3b0c21c73d5a3dab81ad00362197be5f176ca186f28a41bd12376518d9",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "19-KAKVjfH2Ggmk3q_jryLoKLokCH8Qum",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC10_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/19-KAKVjfH2Ggmk3q_jryLoKLokCH8Qum/view?usp=drivesdk",
+    "zip_size": 29819663,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "ffeab073d48559c089ec9963e06bcb97038b968b02392e80919f7291b8e26962",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1_cp0kNLKwpFoO5HTVp5-ltgpJ-A-xcAa",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC09_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1_cp0kNLKwpFoO5HTVp5-ltgpJ-A-xcAa/view?usp=drivesdk",
+    "zip_size": 26509732,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "7222404f4377a4d0b410e6538756e7867262661231c03e48353fa7600d480b64",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1DuOMhdzTII8C0k_9LTz-vNPbiO7d5PWu",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC08_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1DuOMhdzTII8C0k_9LTz-vNPbiO7d5PWu/view?usp=drivesdk",
+    "zip_size": 27536793,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "67667412100ee2ea4342057899caa226731d38df90fe8fdfc184857423dfccbf",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1cnvATRrpddc3_0TtTfc-_-mlnN40UgcP",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC07_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1cnvATRrpddc3_0TtTfc-_-mlnN40UgcP/view?usp=drivesdk",
+    "zip_size": 33063474,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "ef87b0c7d8d3f46cbb3c1010791b38e469170e9880551558aa9661008dac5ff8",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1j7Q70OAyfkjRtJKzXGVfYwYKH9gMAeq1",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC06_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1j7Q70OAyfkjRtJKzXGVfYwYKH9gMAeq1/view?usp=drivesdk",
+    "zip_size": 26299689,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "93400613537909ca7d746e1d101d84e0b22c62e1d5ea134041107041d83a6ded",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1GDp6RG6rWuda6UqZx5xxQIbeqXrtdOl7",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC05_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1GDp6RG6rWuda6UqZx5xxQIbeqXrtdOl7/view?usp=drivesdk",
+    "zip_size": 28706154,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "1d96e7e650368aca13fd0910bd3bc28a70e8532fc0af009c4c3f3f2a523030f2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1nNzbcEPmbjnPNGbRmlnni_N3CEZPy19h",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC04_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1nNzbcEPmbjnPNGbRmlnni_N3CEZPy19h/view?usp=drivesdk",
+    "zip_size": 31881894,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "396ce4fad57aa5c03327bcedf9d51863d89445e1ecd3ebde764054d05a2b4dc2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1Etw-GJp-gWyhdAAQxJS77NlUnNcGOPFL",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC03_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1Etw-GJp-gWyhdAAQxJS77NlUnNcGOPFL/view?usp=drivesdk",
+    "zip_size": 30238411,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 170,
+    "zip_sha256": "d8daaacf5ff3a012326b007090a1a075e9261d490bb0cd17026b75390a119cbc",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1CPA5UO3ZG5RszDH04_mVyFdeBBEJ6ULz",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_NPC02_보행_배경합성_REVISE_v02.zip",
+    "source_url": "https://drive.google.com/file/d/1CPA5UO3ZG5RszDH04_mVyFdeBBEJ6ULz/view?usp=drivesdk",
+    "zip_size": 26812343,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "d4a2dac68f38801d1c796bb563a5e93a35916832804095f4958823ec3f0de822",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1QDXXOQPIpIL7pvJ6c7FTjjfWoqTLG-oL",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC02-NPC10_수정보행_v02/404_walk_v02_source_checkpoint.zip",
+    "source_url": "https://drive.google.com/file/d/1QDXXOQPIpIL7pvJ6c7FTjjfWoqTLG-oL/view?usp=drivesdk",
+    "zip_size": 17157732,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 121,
+    "zip_sha256": "a585bbb3e63ad4238253139d56c857df2610fe379165341f8a7c5c2d41116d42",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "12gBePpqbfqLJH1klPxInhRs4zDZMhKeF",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_전체인물_제작현황_코드_v01.zip",
+    "source_url": "https://drive.google.com/file/d/12gBePpqbfqLJH1klPxInhRs4zDZMhKeF/view?usp=drivesdk",
+    "zip_size": 55867,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 66,
+    "zip_sha256": "d44a5314c6a66d5d6af938de0204a082d20d4ceb21f2833c6d97ac04e6545c43",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1d2WiXzD3k_Ly4kaBUvlUtpRFZx7h5EwC",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC10_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1d2WiXzD3k_Ly4kaBUvlUtpRFZx7h5EwC/view?usp=drivesdk",
+    "zip_size": 32913197,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "2604811052ae6d858fde42e8329ecd3f5bdf8514e86fef5c8af3c068f3316395",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1qyCjFr5tC64u0G_FqdZ3kk32-zxQ-Zjm",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC09_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1qyCjFr5tC64u0G_FqdZ3kk32-zxQ-Zjm/view?usp=drivesdk",
+    "zip_size": 28198966,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "36bd2f2d7263495f8a6fbfe03fb49df9f555f157f007629c2c8d79e04b939609",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "15uIUeNPC-b1RUc3-EvTGRddsS6sLyGHD",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC08_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/15uIUeNPC-b1RUc3-EvTGRddsS6sLyGHD/view?usp=drivesdk",
+    "zip_size": 29358617,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "7964a0b0d599241ece41e073c979862e46826c78cc56f4108f7d5b92e3eaadca",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1o357Jd86VhmvFWZ-qUQhRU1JyjvRhu_5",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC07_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1o357Jd86VhmvFWZ-qUQhRU1JyjvRhu_5/view?usp=drivesdk",
+    "zip_size": 32991425,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "d9a35d8130d5511022d39e99c5124ac0a2c77ed82ceb2a46a239656212e3ebbd",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1uztFncHk7oxP0VZ4OTbgHZ1FayFKppET",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC06_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1uztFncHk7oxP0VZ4OTbgHZ1FayFKppET/view?usp=drivesdk",
+    "zip_size": 28419824,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "7525f7fc719dd353b4cd5de6d74a237a98a0ceb37bda3ff6403b241069684b8e",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1EszK4P_hEKjkXIZQVh9nQY0F4M6l0ykF",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC05_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1EszK4P_hEKjkXIZQVh9nQY0F4M6l0ykF/view?usp=drivesdk",
+    "zip_size": 30888889,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 173,
+    "zip_sha256": "6d1c7cc255dfabe5df498d0b4f504bb25366469b65c8bfda2e50f6e74873355b",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1xyc9Axolsa7zdV8UzPMT31g_lQxgdqwY",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC04_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1xyc9Axolsa7zdV8UzPMT31g_lQxgdqwY/view?usp=drivesdk",
+    "zip_size": 33475533,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 172,
+    "zip_sha256": "a8bbbf49b096a9689735db9d20ebdc5a9e6874c01c2efb4d2c03432f5675733b",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1DFxtTeVLrKwLvlqnO1XoeGhzUyQBHLhY",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC03_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1DFxtTeVLrKwLvlqnO1XoeGhzUyQBHLhY/view?usp=drivesdk",
+    "zip_size": 31495579,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "e5d0619073bf3dd7ac29df6dd05439c1e01ba391ef15872fe93a3514d39bd294",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1VspXfNhP-XBeYblSC2na-AigRZfIkCmE",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/전체인물_보행합성_재개_v01/404_NPC02_보행_배경합성_REVISE_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1VspXfNhP-XBeYblSC2na-AigRZfIkCmE/view?usp=drivesdk",
+    "zip_size": 27968708,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 171,
+    "zip_sha256": "066d5458d7ad36340cf6fa976e4e11a9ff092c8229f3fb7cdd8d33f2e3d1487d",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1v5F9Oz2LQC2ggTL0ecw8eHd2hHpYk2uu",
+    "source_path": "404호는_없습니다_최종_게임에셋/06_애니메이션/NPC01_그림연결_배경합성_v01/404_NPC01_art_background_animation_v01.zip",
+    "source_url": "https://drive.google.com/file/d/1v5F9Oz2LQC2ggTL0ecw8eHd2hHpYk2uu/view?usp=drivesdk",
+    "zip_size": 35050119,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 174,
+    "zip_sha256": "7cb64b395cf8110b5aea819a0db8d014a60d3f22c5584bf993ce2282645c42c2",
+    "drive_expanded_uploaded": false
+  },
+  {
+    "drive_id": "1T4edu74o3p_hGLrOSVCDN7AEMhshFwcQ",
+    "source_path": "404호는_없습니다_최종_게임에셋/01_캐릭터/추가제작_20261009_MC05-MC30/production_records.zip",
+    "source_url": "https://drive.google.com/file/d/1T4edu74o3p_hGLrOSVCDN7AEMhshFwcQ/view?usp=drivesdk",
+    "zip_size": 303886,
+    "status": "EXTRACTED_LOCAL",
+    "extracted_files": 32,
+    "zip_sha256": "ca40647ef109a9c4f02c93b00d9718a6894c5cede35d5e4dbe9b95b36121fcc8",
+    "drive_expanded_uploaded": false
+  }
+]

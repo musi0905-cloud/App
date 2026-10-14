@@ -1,4 +1,51 @@
-# 에셋 반입 보고 (v0.16.0, 2026-10-13)
+# 에셋 반입 보고 (v0.17.0, 2026-10-14)
+
+## 0. v0.17.0 반입 (2026-10-14)
+
+### 0-1. v05 걷기 원본 프레임
+
+받은 곳: Drive 폴더 1WGKr1rLNaUORGJMp-8IZaRQStqddjeiU. 독립 ZIP 93개(각 1.9MB 이하, 분할 압축 아님)와 `TRANSFER_MANIFEST.json`, `import_v05_frames.py`, `CLAUDE_후속지시_반입과검수.md`가 있었습니다.
+
+| 단계 | 결과 |
+|---|---|
+| 첫 ZIP(NPC03 part003) | 먼저 받아 크기·SHA-256·안의 파일 10개 해시를 확인한 뒤 나머지를 받음 |
+| ZIP 93개 | **93/93** 받음. ZIP마다 크기와 SHA-256, 안의 파일마다 SHA-256을 매니페스트와 대조해 모두 일치. 실패·누락 0 |
+| 제작 측 반입 스크립트 | `python3 import_v05_frames.py --packages <받은 폴더> --output asset-source/v05_frames`. 종료 코드 0, `V05_IMPORT_RESULT.json`: TRANSFER_VERIFIED, quality REVISE, engine_applied false, 인물마다 144장 |
+| 독립 검사 `scripts/verify-v05-frames.py` | **1,296/1,296 PASS**. 인물마다 다음을 확인: 매니페스트와 `checksums_v05.json` 두 기록의 해시, 720x1280 RGBA PNG, 투명이 아닌 화소 존재, 남는 파일 없음, config id = 폴더, rig_path 파일 있음, 설정·리그·바인딩·QA 파일이 재현 코드 사본과 바이트까지 같음. 결과는 `V05_VERIFY_REPORT.json` |
+| 원본 보관 | `asset-source/v05_frames/<NPC>/sprites/<view>/0000-0047.png` 그대로. 자르기, 가운데 맞춤, 좌우 반전, 크기 변경 없음 |
+| QA용 아틀라스 | `scripts/import-v05-frames.py`가 원본을 읽어 `asset-source/v05_QA/frames/<NPC>/atlas.webp`(0.5배)와 `atlas.json`을 만듦. 프레임마다 자기 알파 상자와 오프셋을 저장(패커의 trim+offset)하고, 모든 사각형이 원래 알파 상자로 돌아가는지 확인함. 게임 빌드 밖 |
+| 인물·설정 연결 | NPC06만 `walk_rig_elder_v04.json`, 나머지는 `walk_rig_scene_retimed_v01.json`. `walk_clips.json`이 같은 리그를 씀(`tests/v05-frames.test.mjs`) |
+| 품질 | 반입 성공은 품질 PASS가 아님. 프레임 검수 결과는 `docs/animation_qa.md` (전부 REVISE, NPC06 연속 BLOCKED) |
+
+v05 부품 그림(`assets/` 25개)은 이 패키지에 없습니다. 그래서 README의 렌더 명령은 실행되지 않습니다(제작 측 안내와 같음).
+
+### 0-2. 남은 미술 에셋 찾기
+
+| 대상 | 결과 |
+|---|---|
+| NPC01 정면 | Drive에 두 개가 있었음. originals 사본(1P5Jooxpp…, 1,108,538바이트)은 승인 기록 SHA-256 c6836c1c…와 일치해 `asset-source/01_캐릭터/originals/`에 반입(PASS, 게임 미선택). game 사본(1CDivKEz…, 327,769바이트)은 SHA-256 eaee7a07…로 기대값 6679a805…와 다르고 PNG가 잘려 있어 쓰지 않음 |
+| NPC03~NPC10 정면, CH06, CH08, BG08 base_v02, BG13_2004, BG06 내부 | Drive 제목 검색(영문 이름 포함)으로 낱개 파일을 찾지 못함. 복구 ZIP 8개 중 가장 작은 9.4MB ZIP을 한 번 받으려 했으나 이 세션의 Drive 연결 도구가 "응답 메시지가 너무 큼"으로 닫힘. 비슷한 파일로 대체하지 않음 |
+| 요청 목록 | `docs/missing_assets_request.json` 41건(P1 13, P2 1, P3 27) |
+
+### 0-3. 레지스트리 (v0.17.0)
+
+| qaStatus | 수 |
+|---|---|
+| REVISE | 1,344 (v05 원본 프레임 1,296 + QA 아틀라스 18 + 리그·설정 30) |
+| LEGACY_IN_GAME | 99 |
+| PASS | 66 (NPC01 승인 원본 추가) |
+| NOT_GAME_ASSET | 36 |
+| REFERENCE_ONLY | 5 |
+| UNREVIEWED | 1 (BG08 v01) |
+| PASS_TEXT_LAYOUT_PER_ITEM | 1 |
+
+- 전체 1,552개입니다.
+- missing은 227줄로, v05 스프라이트 27줄이 빠지고 NPC01 원본 1줄이 빠졌습니다.
+- v05 프레임과 아틀라스는 `selectedFor`가 `qa_viewer`뿐입니다. 게임 선택이 없는 것을 `registry.test.mjs`가 검사합니다.
+
+---
+
+아래 1~5절은 v0.16.0 기록입니다.
 
 자료를 가져온 곳은 두 곳입니다.
 

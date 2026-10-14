@@ -2,9 +2,9 @@
  "generated_by": "room404/scripts/build-asset-registry.py",
  "rules": "- Only files read and hashed by this script are entries. Nothing is marked PASS from a file or folder name: qaStatus comes\n  from the package QA records (approved_static_assets_v01.json, approved_patch_assets_v02.json, character_revision_\n  manifest_v02.json, ui_inventory_v02.json, evidence_readable_20_v03.json, validation_all_v05.json) matched by SHA-256 or\n  by the package path the record names; legacy game files are LEGACY_IN_GAME, everything else UNREVIEWED.\n  download_integrity_v02.json is byte integrity only and never sets qaStatus.\n- Entries are de-duplicated by SHA-256 (every other path with the same bytes goes to duplicatePaths).\n- ID systems stay separate: entityId is one of CH## / MC## / NPC## / BG## / UI## / EV## (asset entities); gate visitors\n  (V001-V100), scene ids (N1_01-N5_08), story contacts and gate_visitor_id live in game data and are only referenced from\n  selectedFor as 'scene:N3_01' or 'visitor:V001'.\n-",
  "counts": {
-  "entries": 1551,
+  "entries": 1552,
   "duplicate_paths": 57,
-  "missing": 228
+  "missing": 227
  },
  "assets": [
   {
@@ -34910,6 +34910,29 @@
    "notes": ""
   },
   {
+   "assetId": "character:NPC01:src",
+   "entityId": "NPC01",
+   "era": "2026",
+   "category": "character",
+   "sourcePath": "asset-source/01_캐릭터/originals/NPC01_visitor_male_2026_front_full_v01.png",
+   "sourcePackage": "404호는_없습니다_최종_게임에셋/01_캐릭터/originals",
+   "revision": "v01",
+   "sha256": "c6836c1c92156117e50bff89579e6851701a7573a33b6ca818f9f48df904eebb",
+   "width": 941,
+   "height": 1672,
+   "format": "png",
+   "hasAlpha": true,
+   "alphaChannel": true,
+   "bytes": 1108538,
+   "qaStatus": "PASS",
+   "qaBasis": "approved_static_assets_v01.json",
+   "selectedFor": [],
+   "replacementOf": null,
+   "derivedFrom": null,
+   "duplicatePaths": [],
+   "notes": "승인 원본(게임 출력본 아님). Drive의 game 사본은 잘려 있어 받지 않음(docs/missing_assets_request.json)."
+  },
+  {
    "assetId": "character:NPC02:src",
    "entityId": "NPC02",
    "era": "2026",
@@ -39375,15 +39398,6 @@
   {
    "path": "01_캐릭터/originals/NPC01_npc01_2026_side_v01.png",
    "sha256": "ef358effcc0f3926f05547d7d99234f10138c1b5a352ac6311ae482806b17572",
-   "size": [
-    941,
-    1672
-   ],
-   "source": "download_integrity_v02.json"
-  },
-  {
-   "path": "01_캐릭터/originals/NPC01_visitor_male_2026_front_full_v01.png",
-   "sha256": "c6836c1c92156117e50bff89579e6851701a7573a33b6ca818f9f48df904eebb",
    "size": [
     941,
     1672

@@ -149,14 +149,15 @@
    "side": {
     "status": "REVISE",
     "issues": [
-     "KNEE_CROUCH"
+     "KNEE_CROUCH",
+     "FAR_ARM"
     ],
     "criteria": {
      "alternation": "PASS",
      "planted_foot": "PASS",
-     "joints": "PASS",
+     "joints": "REVISE",
      "rotation": "PASS",
-     "arms": "PASS",
+     "arms": "REVISE",
      "consistency": "PASS",
      "perspective": "PASS",
      "contact": "PASS"
@@ -394,14 +395,15 @@
    "side": {
     "status": "REVISE",
     "issues": [
-     "KNEE_CROUCH"
+     "KNEE_CROUCH",
+     "FAR_ARM"
     ],
     "criteria": {
      "alternation": "PASS",
      "planted_foot": "PASS",
-     "joints": "PASS",
+     "joints": "REVISE",
      "rotation": "PASS",
-     "arms": "PASS",
+     "arms": "REVISE",
      "consistency": "PASS",
      "perspective": "PASS",
      "contact": "PASS"

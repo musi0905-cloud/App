@@ -39,3 +39,7 @@ test('world: victims never appear alive in 2026; 1997 -> 2004 -> 2006 order; Par
  for(const x of ev)for(const l of x.body)assert.doesNotMatch(l,/귀신|유령|저주|초자연/,x.id)});
 test('2004 names stay in 2004: story contacts that mention a victim are other people (colleague, relative), never the victim',()=>{
  for(const s of slots)for(const v of ['김정우','이수연','김하은'])if(s.story_contact.includes(v))assert.notEqual(s.story_contact.trim(),v,s.scene_id)});
+test('EV06: the report receipt (21:28, evidence card) and the arson (21:25, 02 timeline) stay two different times',()=>{
+ const e6=ev.find(x=>x.id==='EV06'),note=read('story_evidence').note;assert.match(e6.era,/2004-11-18 21:28 최초 접수/);assert.match(note,/21:25 방화/);
+ for(const x of ev)for(const l of [x.era,...x.body]){const m=l.match(/(?:접수[^0-9]*)(\d\d:\d\d)/);if(m)assert.equal(m[1],'21:28',x.id+': a receipt time is the receipt, not the arson: '+l);assert.doesNotMatch(l,/방화[^0-9]*21:28|21:28[^가-힣]*방화/,x.id)}
+ const mins=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};assert.ok(mins('21:28')>mins('21:25'),'the report comes after the fire was set')});

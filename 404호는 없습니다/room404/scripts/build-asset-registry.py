@@ -97,6 +97,12 @@ def main():
             add(os.path.join(DIST, a['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=scenes,
                 replacement=f'assets/v5/bust-{ent}.webp (v0.15 흉상 크롭, v0.16에서 삭제)', derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
                 notes=f"전신 컷, 발 기준점 {a['figure']['foot']}, 키 {a['figure']['height_m']}m [DESIGN]")
+    # 2b. Approved character originals received as single files (01_캐릭터/originals). QA from the approval record by SHA-256.
+    #     Role figures switch on only when all ten are in hand, so these are not selected for the game.
+    orig = os.path.join(SRC, '01_캐릭터', 'originals')
+    for f in sorted(os.listdir(orig)) if os.path.isdir(orig) else []:
+        add(os.path.join(orig, f), f.split('_')[0], '2026' if '_2026_' in f else '2004' if '_2004_' in f else None, 'character', f'{PKG_NAME}/01_캐릭터/originals',
+            notes='승인 원본(게임 출력본 아님). Drive의 game 사본은 잘려 있어 받지 않음(docs/missing_assets_request.json).')
     # 3. Legacy game files (v2): in the game before the v02 asset package; not reviewed by it.
     legacy_sel = {f['file'].split('/')[-1]: 'game:intercom:gate_visitors' for f in chars['legacy']['figures'].values()}
     for f in sorted(os.listdir(os.path.join(DIST, 'assets', 'v2'))):

@@ -6,7 +6,7 @@
  "method": [
   "contact sheets frame_qa/<NPC>_sheet.jpg (3 views x frames 0,4,..,44,47) for all 9",
   "feet sheets frame_qa/<NPC>_feet.jpg (all 48 frames per view)",
-  "side upper-body sheets frame_qa/<NPC>_arm_side.jpg (every 2nd frame): looked at for NPC02, NPC03, NPC09, NPC10; NPC04-08 only at 4-frame steps in the contact sheet",
+  "side upper-body sheets frame_qa/<NPC>_arm_side.jpg (every 2nd frame) for all 9",
   "seam sheets frame_qa/<NPC>_seam.jpg (enter front 47 vs exit rear 0)",
   "measurements frame_qa/frame_metrics_v05.json (scripts/analyze-v05-frames.py)"
  ],
@@ -23,50 +23,243 @@
   "sequence": "position and pose continue from enter (front) through idle to exit (rear)"
  },
  "issues": {
-  "LEG_STRIP": {"views": ["front", "rear"], "frames": "measured: rig near/far leg image length > 1.15 (see production_requests_v05.json)",
+  "LEG_STRIP": {
+   "views": [
+    "front",
+    "rear"
+   ],
+   "frames": "measured: rig near/far leg image length > 1.15 (see production_requests_v05.json)",
    "problem": "The leg nearer the camera is a flat texture strip stretched along the projected hip-heel line (up to 1.72x the far leg, NPC03 front 46). No foreshortening, and the shin strip sits on the thigh with a blurred band at the knee, so it reads as a long stovepipe leg.",
    "evidence": "frame_qa/evidence_LEG_STRIP.jpg",
-   "fix": "Redraw the near leg for frames toward the camera with foreshortening (knee overlap, shorter visible shin, trouser folds), or render legs from a volume model; remove the knee band. Re-export the affected front/rear frames on the same 720x1280 canvas and path."},
-  "KNEE_CROUCH": {"views": ["side"], "frames": "measured: stance (flat foot) knee flexion > 25 deg",
+   "fix": "Redraw the near leg for frames toward the camera with foreshortening (knee overlap, shorter visible shin, trouser folds), or render legs from a volume model; remove the knee band. Re-export the affected front/rear frames on the same 720x1280 canvas and path."
+  },
+  "KNEE_CROUCH": {
+   "views": [
+    "side"
+   ],
+   "frames": "measured: stance (flat foot) knee flexion > 25 deg",
    "problem": "Knee stays bent while the foot is flat on the floor: up to 44.4 deg on walk_rig_scene_retimed_v01 and 42.9 deg on walk_rig_elder_v04. Reads as a crouched walk.",
    "evidence": "frame_qa/evidence_KNEE_CROUCH.jpg",
-   "fix": "Retime the rig so the stance knee straightens to about 5-20 deg after loading (elder rig may stay a little more bent if that is the design intent, stated in the rig). Re-render side, front and rear from the corrected rig."},
-  "TORSO_STATIC": {"views": ["front", "rear"], "frames": "0-47",
+   "fix": "Retime the rig so the stance knee straightens to about 5-20 deg after loading (elder rig may stay a little more bent if that is the design intent, stated in the rig). Re-render side, front and rear from the corrected rig."
+  },
+  "TORSO_STATIC": {
+   "views": [
+    "front",
+    "rear"
+   ],
+   "frames": "0-47",
    "problem": "The torso is one texture with at most about 1 deg roll (render.js sin(frame)*0.018 rad). No shoulder/pelvis counter-rotation, small arm swing; the figure glides.",
    "evidence": "frame_qa/<NPC>_sheet.jpg front/rear rows",
-   "fix": "Add shoulder and pelvis counter-rotation (shoulder line and hip line visibly opposite over the cycle) and a matching arm swing; keep the face texture unchanged."},
-  "FAR_ARM": {"views": ["side"], "frames": "NPC03 14-26, NPC09 14-22",
-   "problem": "The far arm shows behind the back as a thin flat strip. NPC03: bare skin strip without the rolled grey sleeve the near arm has. NPC09: thin dark strip with a white cuff, no shading.",
-   "evidence": "frame_qa/NPC03_arm_side.jpg, frame_qa/NPC09_arm_side.jpg",
-   "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip."},
-  "ARM_LONG": {"views": ["side"], "frames": "NPC10 12-24",
+   "fix": "Add shoulder and pelvis counter-rotation (shoulder line and hip line visibly opposite over the cycle) and a matching arm swing; keep the face texture unchanged."
+  },
+  "FAR_ARM": {
+   "views": [
+    "side"
+   ],
+   "frames": "NPC03 14-26, NPC04 12-28, NPC08 14-24, NPC09 14-22",
+   "problem": "The far arm shows behind the back as a thin flat strip. NPC03 and NPC04: bare skin strip without the rolled sleeve the near arm has. NPC08: flat dark strip. NPC09: thin dark strip with a white cuff, no shading. (NPC02, NPC05, NPC06, NPC07, NPC10 show only the far hand, which reads correctly.)",
+   "evidence": "frame_qa/<NPC>_arm_side.jpg",
+   "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip."
+  },
+  "ARM_LONG": {
+   "views": [
+    "side"
+   ],
+   "frames": "NPC10 12-24",
    "problem": "The bare near arm is drawn very long and thin in the forward swing; the hand reaches below the hip.",
    "evidence": "frame_qa/NPC10_arm_side.jpg",
-   "fix": "Correct the arm segment lengths / wrist fraction for NPC10 (config arm_wrist_fraction) and redraw the bare forearm with volume."},
-  "CARRY_STATIC": {"views": ["front", "side", "rear"], "frames": "0-47",
+   "fix": "Correct the arm segment lengths / wrist fraction for NPC10 (config arm_wrist_fraction) and redraw the bare forearm with volume."
+  },
+  "CARRY_STATIC": {
+   "views": [
+    "front",
+    "side",
+    "rear"
+   ],
+   "frames": "0-47",
    "problem": "The carrying arm (NPC03 parcel, NPC09 folder) is one fixed bent-arm drawing hung on the left shoulder; elbow and wrist never move, the prop does not react to the steps.",
    "evidence": "frame_qa/NPC03_arm_side.jpg, frame_qa/NPC09_arm_side.jpg",
-   "fix": "Small secondary motion of elbow and wrist (a few degrees, in step with the stride) and a slight prop bounce; keep the sleeve texture continuous with the shoulder."},
-  "NO_TURN_IDLE": {"views": ["sequence"], "frames": "enter front 47 -> exit rear 0",
+   "fix": "Small secondary motion of elbow and wrist (a few degrees, in step with the stride) and a slight prop bounce; keep the sleeve texture continuous with the shoulder."
+  },
+  "NO_TURN_IDLE": {
+   "views": [
+    "sequence"
+   ],
+   "frames": "enter front 47 -> exit rear 0",
    "problem": "Enter ends mid-stride facing the camera and exit starts mid-stride facing away. There is no idle (standing) art and no turn frames, so the figure has to hold a mid-step pose while waiting and then pops 180 deg. The lowest silhouette row jumps 101-150 px and the body scale 0-10 % (NPC06 28 %).",
    "evidence": "frame_qa/<NPC>_seam.jpg",
-   "fix": "Per NPC: an in-place idle loop (no root motion) that starts from enter frame 47, and an in-place turn (front -> rear) that ends on exit frame 0, on the same canvas and camera."},
-  "PATH_GAP": {"views": ["sequence"], "frames": "front 47, rear 0",
+   "fix": "Per NPC: an in-place idle loop (no root motion) that starts from enter frame 47, and an in-place turn (front -> rear) that ends on exit frame 0, on the same canvas and camera."
+  },
+  "PATH_GAP": {
+   "views": [
+    "sequence"
+   ],
+   "frames": "front 47, rear 0",
    "problem": "render.js line 50 places every clip on fixed paths: front z = 2.92 - p0, rear z = 1.8 + p0. The elder rig walks 0.587 m in 47 frames (0.34 m/s), so enter ends at z 2.333 m while exit starts at z 1.8 m: 0.533 m at the root, 0.437 m measured from the lowest silhouette row (the 0.44 m reported before), head width +28.1 % in the images.",
    "evidence": "frame_qa/NPC06_seam.jpg",
-   "fix": "Start the rear path where the enter clip ends: rear z = (2.92 - root_x(47) * S) + p0 for walk_rig_elder_v04 (2.333 m), or derive both path constants from the rig travel for every NPC. Re-render NPC06 rear (exit) frames. The engine must not stretch or shift the frames to hide it."}
+   "fix": "Start the rear path where the enter clip ends: rear z = (2.92 - root_x(47) * S) + p0 for walk_rig_elder_v04 (2.333 m), or derive both path constants from the rig travel for every NPC. Re-render NPC06 rear (exit) frames. The engine must not stretch or shift the frames to hide it."
+  }
  },
  "npcs": {
-  "NPC02": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC03": {"front": ["LEG_STRIP", "TORSO_STATIC", "CARRY_STATIC"], "side": ["KNEE_CROUCH", "FAR_ARM", "CARRY_STATIC"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC04": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC05": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC06": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["PATH_GAP", "NO_TURN_IDLE"]},
-  "NPC07": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC08": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC09": {"front": ["LEG_STRIP", "TORSO_STATIC", "CARRY_STATIC"], "side": ["KNEE_CROUCH", "FAR_ARM", "CARRY_STATIC"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]},
-  "NPC10": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["KNEE_CROUCH", "ARM_LONG"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": ["NO_TURN_IDLE"]}
+  "NPC02": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC03": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC",
+    "CARRY_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH",
+    "FAR_ARM",
+    "CARRY_STATIC"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC04": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH",
+    "FAR_ARM"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC05": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC06": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "PATH_GAP",
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC07": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC08": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH",
+    "FAR_ARM"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC09": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC",
+    "CARRY_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH",
+    "FAR_ARM",
+    "CARRY_STATIC"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  },
+  "NPC10": {
+   "front": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "side": [
+    "KNEE_CROUCH",
+    "ARM_LONG"
+   ],
+   "rear": [
+    "LEG_STRIP",
+    "TORSO_STATIC"
+   ],
+   "sequence": [
+    "NO_TURN_IDLE"
+   ]
+  }
  },
- "blocked": {"NPC06": {"sequence": "PATH_GAP needs a re-render of the exit path; no engine-side fix without moving or scaling the figure"}},
+ "blocked": {
+  "NPC06": {
+   "sequence": "PATH_GAP needs a re-render of the exit path; no engine-side fix without moving or scaling the figure"
+  }
+ },
  "passed_by_measurement": "alternation, planted_foot, consistency, perspective (BG02), contact: see frame_metrics_v05.json. These do not make a view PASS on their own."
 }

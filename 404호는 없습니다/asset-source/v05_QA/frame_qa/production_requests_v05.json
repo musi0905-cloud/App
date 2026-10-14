@@ -119,8 +119,8 @@
    "view": "side",
    "issue": "FAR_ARM",
    "frames": "14-26",
-   "problem": "The far arm shows behind the back as a thin flat strip. NPC03: bare skin strip without the rolled grey sleeve the near arm has. NPC09: thin dark strip with a white cuff, no shading.",
-   "evidence": "frame_qa/NPC03_arm_side.jpg, frame_qa/NPC09_arm_side.jpg",
+   "problem": "The far arm shows behind the back as a thin flat strip. NPC03 and NPC04: bare skin strip without the rolled sleeve the near arm has. NPC08: flat dark strip. NPC09: thin dark strip with a white cuff, no shading. (NPC02, NPC05, NPC06, NPC07, NPC10 show only the far hand, which reads correctly.)",
+   "evidence": "frame_qa/NPC03_arm_side.jpg",
    "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip.",
    "priority": "P2"
   },
@@ -199,6 +199,17 @@
    "problem": "Knee stays bent while the foot is flat on the floor: up to 44.4 deg on walk_rig_scene_retimed_v01 and 42.9 deg on walk_rig_elder_v04. Reads as a crouched walk.",
    "evidence": "frame_qa/evidence_KNEE_CROUCH.jpg",
    "fix": "Retime the rig so the stance knee straightens to about 5-20 deg after loading (elder rig may stay a little more bent if that is the design intent, stated in the rig). Re-render side, front and rear from the corrected rig.",
+   "priority": "P2"
+  },
+  {
+   "id": "NPC04-side-FAR_ARM",
+   "npc": "NPC04",
+   "view": "side",
+   "issue": "FAR_ARM",
+   "frames": "12-28",
+   "problem": "The far arm shows behind the back as a thin flat strip. NPC03 and NPC04: bare skin strip without the rolled sleeve the near arm has. NPC08: flat dark strip. NPC09: thin dark strip with a white cuff, no shading. (NPC02, NPC05, NPC06, NPC07, NPC10 show only the far hand, which reads correctly.)",
+   "evidence": "frame_qa/NPC04_arm_side.jpg",
+   "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip.",
    "priority": "P2"
   },
   {
@@ -477,6 +488,17 @@
    "priority": "P2"
   },
   {
+   "id": "NPC08-side-FAR_ARM",
+   "npc": "NPC08",
+   "view": "side",
+   "issue": "FAR_ARM",
+   "frames": "14-24",
+   "problem": "The far arm shows behind the back as a thin flat strip. NPC03 and NPC04: bare skin strip without the rolled sleeve the near arm has. NPC08: flat dark strip. NPC09: thin dark strip with a white cuff, no shading. (NPC02, NPC05, NPC06, NPC07, NPC10 show only the far hand, which reads correctly.)",
+   "evidence": "frame_qa/NPC08_arm_side.jpg",
+   "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip.",
+   "priority": "P2"
+  },
+  {
    "id": "NPC08-rear-LEG_STRIP",
    "npc": "NPC08",
    "view": "rear",
@@ -559,8 +581,8 @@
    "view": "side",
    "issue": "FAR_ARM",
    "frames": "14-22",
-   "problem": "The far arm shows behind the back as a thin flat strip. NPC03: bare skin strip without the rolled grey sleeve the near arm has. NPC09: thin dark strip with a white cuff, no shading.",
-   "evidence": "frame_qa/NPC03_arm_side.jpg, frame_qa/NPC09_arm_side.jpg",
+   "problem": "The far arm shows behind the back as a thin flat strip. NPC03 and NPC04: bare skin strip without the rolled sleeve the near arm has. NPC08: flat dark strip. NPC09: thin dark strip with a white cuff, no shading. (NPC02, NPC05, NPC06, NPC07, NPC10 show only the far hand, which reads correctly.)",
+   "evidence": "frame_qa/NPC09_arm_side.jpg",
    "fix": "Draw the far arm with the same sleeve as the near arm, darker (it is in the body's shadow) and mostly hidden behind the torso; never as a flat strip.",
    "priority": "P2"
   },

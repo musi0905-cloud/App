@@ -78,6 +78,13 @@ test('real path: E28, E29 and E30 after five nights; E01-E06 from the night-1 en
  assert.equal(ENDING_IDS[ending(daily,data.anomalies)],'E01','E01 stays the daily-shift ending');
  for(const id of ['E02','E06'])assert.equal(S.resolveEnding(gates,{...S.newStory('2026-10-08'),legacyEnding:id,nightCompleted:1},S.LEGACY_TYPES).id,id);
  const n1=S.startStory(data,'2026-10-08');const night1=playNight(n1,{decide:()=>true,investigate:false});assert.equal(night1.legacyEnding,'E05');assert.ok(S.nextNight(night1,data),'a terminal night-1 ending does not lock night 2 (v1.2 rule)');
+ // E03-E05 (v1.3 ending_gates_30_simulated: terminal, "N1 통과 후 스토리 진행에는 적용 금지"): the night-1 run ends with that
+ // ending, the result stays in the save, and night 2 stays open. Ending a run is not deleting the save.
+ for(const [id,choices] of [['E03',[true,true,true,true,true,false,true,false]],['E04',Array(8).fill(false)],['E05',Array(8).fill(true)]]){let i=0;
+  const st=playNight(S.startStory(data,'2026-10-08'),{decide:()=>choices[i++],investigate:false});assert.equal(st.legacyEnding,id);assert.ok(st.endingsUnlocked.includes(id));
+  assert.equal(st.phase,'RECAP');assert.equal(st.nightCompleted,1);assert.equal(st.accessHistory.length,1);assert.ok(S.validStory(st,data),id+' save stays valid');
+  const kept=JSON.parse(JSON.stringify(st));assert.ok(S.nextNight(st,data),id+' does not lock night 2');assert.equal(st.night,2);assert.equal(st.legacyEnding,id,'night-1 result kept after moving on');
+  assert.equal(S.finishNight(kept,data.anomalies),false,'finishing night 1 again changes nothing')}
 });
 
 test('blocking: missing requirements stop the ending and say what is missing without spoilers',()=>{

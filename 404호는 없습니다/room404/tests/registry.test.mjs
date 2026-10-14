@@ -37,3 +37,11 @@ test('missing files are not secretly present; the 1,296 v05 sprites are held and
  for(const a of assets.filter(a=>a.category==='animation_frame')){assert.equal(a.width,720);assert.equal(a.height,1280);assert.equal(a.hasAlpha,true,a.sourcePath)}
  assert.ok(reg.missing.filter(m=>/^NPC\d\d\/assets\//.test(m.path)).length>0,'v05 part art (assets/) not in hand');
  for(const p of ['01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png','02_배경/game/BG13_2004_exterior_2004_v01.webp','02_배경/game/BG08_management_office_2026_base_v02_v01.webp','02_배경/game/BG06_interior_elevator_2026_interior_v01.webp'])assert.ok(reg.missing.some(m=>m.path===p),p)});
+test('missing_assets_request.json: the nine required fields on every request, unknowns are null, nothing requested is already held',()=>{
+ const req=JSON.parse(readFileSync(P('docs/missing_assets_request.json'))),have=new Set(assets.map(a=>a.sha256));
+ const f=['assetId','entityId','era','expectedFilename','sourceDriveId','sourceUrl','expectedSha256','priority','blockingReason'];assert.deepEqual(req.fields,f);
+ for(const r of req.requests){for(const k of f)assert.ok(k in r,r.assetId+' '+k);assert.match(r.priority,/^P[123]$/);assert.ok(r.blockingReason.length>0);
+  assert.ok(r.expectedSha256===null||/^[0-9a-f]{64}$/.test(r.expectedSha256),r.assetId);if(r.expectedSha256)assert.ok(!have.has(r.expectedSha256),r.assetId+' is already in the repository');
+  assert.equal(r.sourceUrl===null,r.sourceDriveId===null,r.assetId+': a URL only where a Drive id is known');for(const v of Object.values(r))assert.notEqual(v,'',r.assetId+' empty string instead of null');
+  for(const a of r.candidateArchives)assert.ok(req.archives[a],a)}
+ assert.deepEqual(req.counts,{P1:req.requests.filter(r=>r.priority==='P1').length,P2:req.requests.filter(r=>r.priority==='P2').length,P3:req.requests.filter(r=>r.priority==='P3').length})});

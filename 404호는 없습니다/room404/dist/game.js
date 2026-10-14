@@ -328,4 +328,4 @@ $('docViewer').querySelector('.doc-backdrop').onclick=closeDoc;
 $('docPaper').addEventListener('touchstart',e=>{if(e.touches.length===2){const [a,b]=e.touches;pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),s:docScale}}},{passive:true});
 $('docPaper').addEventListener('touchmove',e=>{if(pinch&&e.touches.length===2){const [a,b]=e.touches;setDocScale(pinch.s*Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)/pinch.d)}},{passive:true});
 $('docPaper').addEventListener('touchend',()=>{pinch=null},{passive:true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.16.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.17.0';boot();

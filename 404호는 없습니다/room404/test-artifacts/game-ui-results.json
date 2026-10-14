@@ -2,47 +2,47 @@
  {
   "test": "intercom stage: BG02, intercom camera, the visitor waits in place; returning from a tool does not replay the arrival",
   "status": "PASS",
-  "ms": 1302
+  "ms": 901
  },
  {
   "test": "click areas: visitor -> CCTV, desk monitor / ledger / phone -> their tools; every target at least 44 px",
   "status": "PASS",
-  "ms": 1632
+  "ms": 1340
  },
  {
   "test": "emergency report: separate from the decision, saved, once per case, noted on feedback, totals unchanged",
   "status": "PASS",
-  "ms": 2520
+  "ms": 2375
  },
  {
   "test": "N1_04 (V036, gas alarm): without a report the feedback names the separate emergency channel",
   "status": "PASS",
-  "ms": 5431
+  "ms": 5406
  },
  {
   "test": "night recap: tonight and the running total across nights, reports included",
   "status": "PASS",
-  "ms": 324
+  "ms": 194
  },
  {
   "test": "night intro shows the approved background for that night",
   "status": "PASS",
-  "ms": 284
+  "ms": 202
  },
  {
   "test": "evidence viewer: transcribed body, era backdrop, zoom by buttons, keys and pinch, Escape returns focus",
   "status": "PASS",
-  "ms": 91352
+  "ms": 90896
  },
  {
   "test": "photo evidence without its photo says so instead of inventing text; opening does not verify",
   "status": "PASS",
-  "ms": 106
+  "ms": 96
  },
  {
   "test": "ending cutscene: the guard-room shot uses the approved BG01",
   "status": "PASS",
-  "ms": 541
+  "ms": 413
  },
  {
   "test": "zero uncaught JavaScript errors",
