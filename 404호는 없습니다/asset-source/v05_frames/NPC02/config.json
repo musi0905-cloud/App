@@ -1,0 +1,11 @@
+{
+  "id": "NPC02",
+  "height_m": 1.64,
+  "flip_side_shoes": [
+    "R"
+  ],
+  "status": "REVISE",
+  "engine_applied": false,
+  "revision": "v05",
+  "arm_wrist_fraction": 0.72
+}

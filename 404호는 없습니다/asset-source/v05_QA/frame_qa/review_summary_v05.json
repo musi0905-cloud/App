@@ -1,0 +1,564 @@
+{
+ "reviewed": "2026-10-14",
+ "reviewer": "Claude Code session (internal frame review on the imported originals; not a producer approval)",
+ "rule": "PASS only when every criterion below is PASS for that NPC and view. Any art or motion defect = REVISE. A defect that the existing frames cannot fix without re-rendering the source path = BLOCKED. Integrity PASS is not quality PASS.",
+ "npcs": {
+  "NPC02": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC03": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC",
+     "CARRY_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH",
+     "FAR_ARM",
+     "CARRY_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "PASS",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC04": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC05": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC06": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "BLOCKED",
+    "issues": [
+     "PATH_GAP",
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "BLOCKED"
+    }
+   }
+  },
+  "NPC07": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC08": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC09": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC",
+     "CARRY_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH",
+     "FAR_ARM",
+     "CARRY_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "PASS",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  },
+  "NPC10": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "KNEE_CROUCH",
+     "ARM_LONG"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "PASS",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "contact": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "REVISE",
+    "issues": [
+     "NO_TURN_IDLE"
+    ],
+    "criteria": {
+     "sequence": "REVISE"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "NPC04",
+  "height_m": 1.72,
+  "prop": "toolbox",
+  "status": "REVISE",
+  "engine_applied": false,
+  "revision": "v05",
+  "arm_wrist_fraction": 0.78
+}

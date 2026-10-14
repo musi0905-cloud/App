@@ -1,0 +1,92 @@
+[
+ {
+  "npc": "NPC02",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   982
+  ],
+  "bytes": 3177826
+ },
+ {
+  "npc": "NPC03",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1278
+  ],
+  "bytes": 3728014
+ },
+ {
+  "npc": "NPC04",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1261
+  ],
+  "bytes": 4088920
+ },
+ {
+  "npc": "NPC05",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1170
+  ],
+  "bytes": 3557770
+ },
+ {
+  "npc": "NPC06",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   877
+  ],
+  "bytes": 2954540
+ },
+ {
+  "npc": "NPC07",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1278
+  ],
+  "bytes": 4114450
+ },
+ {
+  "npc": "NPC08",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1273
+  ],
+  "bytes": 3488264
+ },
+ {
+  "npc": "NPC09",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1192
+  ],
+  "bytes": 3141728
+ },
+ {
+  "npc": "NPC10",
+  "ok": true,
+  "frames": 144,
+  "atlas": [
+   4096,
+   1331
+  ],
+  "bytes": 3923426
+ }
+]

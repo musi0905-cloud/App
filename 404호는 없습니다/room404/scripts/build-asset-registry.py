@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Asset registry: every production asset file that is actually in this repository, hashed here (v0.16.0).
+"""Asset registry: every production asset file that is actually in this repository, hashed here (v0.17.0).
 
   python3 scripts/build-asset-registry.py        -> ../asset_registry.json
 
@@ -122,6 +122,28 @@ def main():
             if f.endswith('.json') and (f.startswith('walk_rig') or f in ('config.json', 'binding.json', 'carrying_binding_v05.json')):
                 add(os.path.join(d, f), npc, '2026', 'animation_data', f'{PKG_NAME}/v05 (NPC02-NPC10_재현코드_QA_v05)', selected=['dist/data/walk_clips.json', 'qa_viewer'],
                     qa=(v05[npc]['status'], 'validation_all_v05.json'), notes='걷기 클립 재현 데이터. 렌더된 스프라이트는 missing 참고.')
+    # v05 walk sprites: the original 720x1280 RGBA frames (asset-source/v05_frames, from the 93 transfer ZIPs) and the
+    # QA-viewer atlases built from them. Package status REVISE; the frame review (frame_qa/review_summary_v05.json) did
+    # not pass any view, so none of them is selected for the game.
+    review_path = os.path.join(SRC, 'v05_QA', 'frame_qa', 'review_summary_v05.json'); review = J(review_path) if os.path.exists(review_path) else None
+    frames_root = os.path.join(SRC, 'v05_frames')
+    for npc in sorted(v05):
+        d = os.path.join(frames_root, npc)
+        if not os.path.isdir(d): continue
+        for view in ('front', 'side', 'rear'):
+            st = review['npcs'][npc][view]['status'] if review else None
+            for f in sorted(os.listdir(os.path.join(d, 'sprites', view))):
+                add(os.path.join(d, 'sprites', view, f), npc, '2026', 'animation_frame', f'{PKG_NAME}/v05 frames (TRANSFER_MANIFEST.json, {npc}_v05_frames_part*.zip)',
+                    selected=['qa_viewer'], qa=(v05[npc]['status'], 'validation_all_v05.json' + (f'; frame review {st}' if st else '')),
+                    notes=f'{view} 원본 프레임(고정 캔버스, 루트 이동 포함). 게임 미적용.')
+        for f in sorted(os.listdir(d)):
+            if f.endswith('.json') and (f.startswith('walk_rig') or f in ('config.json', 'binding.json', 'carrying_binding_v05.json')):
+                add(os.path.join(d, f), npc, '2026', 'animation_data', f'{PKG_NAME}/v05 frames', selected=['qa_viewer'], qa=(v05[npc]['status'], 'validation_all_v05.json'))
+        atlas = os.path.join(SRC, 'v05_QA', 'frames', npc)
+        if os.path.isdir(atlas):
+            for f in ('atlas.webp', 'atlas.json'):
+                add(os.path.join(atlas, f), npc, '2026', 'qa_atlas', 'room404/scripts/import-v05-frames.py', selected=['qa_viewer'], qa=(v05[npc]['status'], 'derived:validation_all_v05.json'),
+                    derived=f'asset-source/v05_frames/{npc}/sprites', notes='QA 뷰어용 아틀라스(원본 알파 상자 + 오프셋, 0.5배). 게임 빌드에 넣지 않음.')
     add(os.path.join(SRC, '00_스타일가이드', 'QA_NPC01_BG02_static_placement_v01.jpg'), 'NPC01', '2026', 'reference', f'{PKG_NAME}/00_스타일가이드', selected=['scene_layout:BG02.stand_points.idle'],
         qa=('REFERENCE_ONLY', None), notes='BG02 정지 배치 기준(발 y 1780). 이 이미지 자체는 게임에 쓰지 않음.')
     # 6. v1.1 planning blockouts.
@@ -141,7 +163,8 @@ def main():
         sums = J(SRC, 'v05_QA', 'code', npc, 'checksums_v05.json')
         for view in ('front', 'side', 'rear'):
             keys = [k for k in sums if k.startswith(f'sprites/{view}/')]
-            missing.append({'path': f'{npc}/sprites/{view}/0000-0047.png', 'count': len(keys), 'sha256': 'checksums_v05.json', 'size': [720, 1280], 'source': f'asset-source/v05_QA/code/{npc}/checksums_v05.json'})
+            if any(sums[k] not in have for k in keys):
+                missing.append({'path': f'{npc}/sprites/{view}/0000-0047.png', 'count': sum(sums[k] not in have for k in keys), 'sha256': 'checksums_v05.json', 'size': [720, 1280], 'source': f'asset-source/v05_QA/code/{npc}/checksums_v05.json'})
         for k, h in sums.items():
             if k.startswith('assets/') and h not in have: missing.append({'path': f'{npc}/{k}', 'sha256': h, 'source': f'asset-source/v05_QA/code/{npc}/checksums_v05.json'})
     reg = {'generated_by': 'room404/scripts/build-asset-registry.py', 'rules': __doc__.split('Rules (작업 지시 6항):')[1].split('`missing`')[0].strip(),

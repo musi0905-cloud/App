@@ -1,0 +1,11 @@
+{
+  "id": "NPC06",
+  "height_m": 1.55,
+  "prop": "shoulderbag",
+  "status": "REVISE",
+  "engine_applied": false,
+  "flip_side_shoes": [],
+  "revision": "v05",
+  "rig_path": "walk_rig_elder_v04.json",
+  "arm_wrist_fraction": 0.72
+}

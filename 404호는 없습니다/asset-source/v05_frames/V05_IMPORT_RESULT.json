@@ -1,0 +1,18 @@
+{
+  "status": "TRANSFER_VERIFIED",
+  "quality": "REVISE",
+  "engine_applied": false,
+  "frames": {
+    "NPC09": 144,
+    "NPC04": 144,
+    "NPC07": 144,
+    "NPC03": 144,
+    "NPC02": 144,
+    "NPC10": 144,
+    "NPC05": 144,
+    "NPC08": 144,
+    "NPC06": 144
+  },
+  "packages": 93,
+  "note": "Original bytes preserved. No crops, re-centering, scaling or motion correction."
+}

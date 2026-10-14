@@ -5,8 +5,10 @@
 
 Input: ../asset-source/v05_QA/code/<NPC>/ — the reproduction-code part of 'NPC02-NPC10_재현코드_QA_v05.zip' (config.json,
 binding.json, the walk rig, carrying_binding_v05.json for NPC03/NPC09, checksums_v05.json) and validation_all_v05.json.
-The rendered sprites themselves (sprites/<view>/0000-0047.png, 720x1280 RGBA) are not in hand; their expected SHA-256
-values are listed in checksums_v05.json and checked by scripts/import-v05-frames.py when they arrive.
+The rendered sprites (sprites/<view>/0000-0047.png, 720x1280 RGBA) are kept as originals in ../asset-source/v05_frames/
+(scripts/verify-v05-frames.py); scripts/import-v05-frames.py packs the QA-viewer atlases. When the frame review exists
+(../asset-source/v05_QA/frame_qa/review_summary_v05.json, scripts/build-v05-review.py), each NPC gets its per-view and
+enter->idle->exit statuses plus the seam measured on the images; the package qa_status itself is copied, never raised.
 
 What is computed here is exactly what the package renderer (render.js) does, ported line for line, so the engine can
 draw the parts render.js leaves to it: per frame, the two contact-shadow ellipses from world-space heel/toe positions,
@@ -67,6 +69,9 @@ def clip(npc, cfg, rig, view):
 
 def main():
     validation = {x['id']: x for x in json.load(open(os.path.join(PKG, 'validation_all_v05.json')))}
+    qa_dir = os.path.join(os.path.dirname(PKG), 'frame_qa'); review_path = os.path.join(qa_dir, 'review_summary_v05.json')
+    review = json.load(open(review_path)) if os.path.exists(review_path) else None
+    metrics_path = os.path.join(qa_dir, 'frame_metrics_v05.json'); metrics = json.load(open(metrics_path))['npcs'] if os.path.exists(metrics_path) else {}
     out = {'source': 'asset-source/v05_QA/code (NPC02-NPC10_재현코드_QA_v05.zip, 재현 코드·QA 부분) + validation_all_v05.json',
            'rule': 'qa_status가 PASS가 아닌 클립은 게임 화면에 쓰지 않는다(README_CLAUDE_CODE_v02 3항: REVISE/BLOCKED는 완성 화면으로 표시 금지). QA 뷰어에서만 재생. MP4는 불투명 합성 검토 영상이라 투명 에셋으로 쓰지 않는다.',
            'canvas': {'width': W, 'height': H, 'design_scale': 1.5, 'background': 'BG02', 'note': '프레임은 BG02 전체 화면(2/3 축척)에 루트 이동이 구워진 고정 캔버스. 프레임마다 다시 가운데 맞추지 않는다.'},
@@ -91,6 +96,15 @@ def main():
             cb = json.load(open(os.path.join(base, 'carrying_binding_v05.json')))
             entry['carrying'] = {'file': cb['file'], 'driver': v['carrying_arm']['driver'], 'pose': v['carrying_arm']['pose'],
                                  'rear_mapping': v['carrying_arm']['rear_mapping'], 'status': v['carrying_arm']['status'], 'views': cb['views']}
+        if review and npc in review['npcs']:
+            r = review['npcs'][npc]
+            entry['review'] = {'reviewed': review['reviewed'], 'source': 'asset-source/v05_QA/frame_qa/review_summary_v05.json',
+                               'views': {v: r[v]['status'] for v in ('front', 'side', 'rear')}, 'sequence': r['sequence']['status'],
+                               'issues': {v: r[v]['issues'] for v in r}}
+        if npc in metrics:
+            g = metrics[npc]['seam']['gap']
+            entry['checks']['seam_measured'] = {'lowest_row_px': g['lowest_row_px'], 'depth_from_lowest_row_m': g['depth_from_lowest_row_m'],
+                                                'head_width_change': g['head_width_change'], 'body_scale_rig': g['body_scale_rig']}
         out['npcs'][npc] = entry
         print(npc, entry['qa_status'], rig_name, 'enter z', views['front']['start_z'], '->', views['front']['end_z'],
               'exit z', views['rear']['start_z'], '->', views['rear']['end_z'], 'gap', entry['checks']['enter_exit_gap_m'], 'slide mm', entry['checks']['foot_slide_mm'])

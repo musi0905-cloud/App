@@ -1,5 +1,6 @@
-// Internal QA viewer and the layered stage in a real browser (v0.16.0): three views, frame step, one-pass playback that
-// never wraps, MP4 review frames with the binding data on top, background swap, and the stage layers checked by pixels:
+// Internal QA viewer and the layered stage in a real browser (v0.17.0): imported sprite frames on the fixed canvas, three
+// views and the enter -> idle -> exit sequence (NPC06 seam), frame step, one-pass playback that never wraps, MP4 review
+// frames with the binding data on top, background swap, and the stage layers checked by pixels:
 // the foreground occluder hides the figure, the contact shadow darkens the floor, the figure is drawn over its shadow.
 import {chromium} from 'playwright';
 import {readFile,mkdir,writeFile,stat} from 'node:fs/promises';
@@ -16,9 +17,13 @@ const frame=()=>page.locator('#clipCanvas').getAttribute('data-frame').then(Numb
 // Average RGB of a canvas rectangle given in CSS pixels of the element.
 const sample=(sel,[x,y,w,h])=>page.evaluate(({sel,x,y,w,h})=>{const c=document.querySelector(sel),k=c.width/c.getBoundingClientRect().width,d=c.getContext('2d').getImageData(Math.round(x*k),Math.round(y*k),Math.max(1,Math.round(w*k)),Math.max(1,Math.round(h*k))).data;let r=0,g=0,b=0;for(let i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2]}const n=d.length/4;return [r/n,g/n,b/n]},{sel,x,y,w,h});
 const diff=(a,b)=>Math.max(...a.map((v,i)=>Math.abs(v-b[i])));
-await check('viewer loads with the nine v05 NPCs, all REVISE, frames not in hand',async()=>{await page.goto(url);await page.waitForFunction(()=>document.querySelector('#clipCanvas').dataset.frame==='0');
- assert.equal(await page.locator('#npc option').count(),9);assert.match(await page.locator('#clipStatus').innerText(),/REVISE/);assert.match(await page.locator('#clipStatus').innerText(),/0 \/ 144/);
- assert.equal(await page.locator('#source option[value=frames]').evaluate(o=>o.disabled),true,'no sprite frames imported');await page.screenshot({path:art+'/qa-viewer-rig.png'})});
+await check('viewer loads the nine v05 NPCs with their 144 imported frames; every view REVISE in the frame review',async()=>{await page.goto(url);await page.waitForFunction(()=>document.querySelector('#clipCanvas').dataset.frame==='0');
+ const t=await page.locator('#clipStatus').innerText();assert.equal(await page.locator('#npc option').count(),9);assert.match(t,/REVISE/);assert.match(t,/144 \/ 144/);assert.match(t,/프레임 검수/);assert.doesNotMatch(t,/정면 PASS|후면 PASS/);
+ assert.equal(await page.locator('#source').inputValue(),'frames');assert.equal(await page.locator('#source option[value=frames]').evaluate(o=>o.disabled),false);
+ const box=await page.evaluate(()=>{const n=qa.walk.npcs.NPC03,b=n.views.front.bbox[0],c=document.querySelector('#clipCanvas'),s=c.getBoundingClientRect().width/1080;return [(b[0]+b[2])/2*1.5*s,(b[1]*.6+b[3]*.4)*1.5*s]});
+ const sprite=await sample('#clipCanvas',[box[0]-4,box[1]-4,8,8]);await page.screenshot({path:art+'/qa-viewer-frames.png'});
+ await page.selectOption('#source','rig');const rig=await sample('#clipCanvas',[box[0]-4,box[1]-4,8,8]);await page.screenshot({path:art+'/qa-viewer-rig.png'});
+ assert.ok(diff(sprite,rig)>10,'the sprite layer draws the figure: '+sprite+' vs '+rig);await page.selectOption('#source','frames')});
 await check('three views and frame step; playback runs once and stops on frame 47 (no wrap)',async()=>{
  for(const v of ['side','rear','front']){await page.locator(`button[data-view="${v}"]`).click();assert.equal(await page.locator('#clipCanvas').getAttribute('data-clip-view'),v)}
  await page.locator('#next').click();await page.locator('#next').click();assert.equal(await frame(),2);await page.locator('#prev').click();assert.equal(await frame(),1);
@@ -33,7 +38,15 @@ await check('MP4 review frames (opaque composite) with the computed feet and sha
  await page.selectOption('#source','mp4');await page.locator('button[data-view="front"]').click();await page.locator('#frame').fill('24');await page.waitForTimeout(800);
  const fill=await sample('#clipCanvas',[200,200,40,40]);assert.ok(Math.max(...fill)>20,'video frame drawn');await page.screenshot({path:art+'/qa-viewer-mp4-front24.png'});
  await page.locator('button[data-view="rear"]').click();await page.locator('#frame').fill('0');await page.waitForTimeout(800);await page.screenshot({path:art+'/qa-viewer-mp4-rear0.png'});
- await page.selectOption('#npc','NPC04');assert.equal(await page.locator('#source').inputValue(),'rig','no MP4 for NPC04: back to the rig')});
+ await page.selectOption('#npc','NPC04');assert.equal(await page.locator('#source').inputValue(),'frames','no MP4 for NPC04: back to the sprite frames')});
+await check('enter -> idle -> exit sequence: NPC06 seam shown on the real frames (front 47 held, then rear 0)',async()=>{
+ await page.selectOption('#npc','NPC06');await page.selectOption('#source','frames');await page.locator('button[data-view="seq"]').click();
+ const t=await page.locator('#clipStatus').innerText();assert.match(t,/BLOCKED/);assert.match(t,/PATH_GAP/);assert.match(t,/이음 끊김/);assert.match(t,/\+150px/);
+ await page.locator('#frame').fill('47');await page.waitForTimeout(300);assert.equal(await page.locator('#clipCanvas').getAttribute('data-drawn-view'),'front');await page.screenshot({path:art+'/qa-viewer-seq-NPC06-enter47.png'});
+ await page.locator('#frame').fill('60');await page.waitForTimeout(300);assert.match(await page.locator('#frameLabel').innerText(),/대기/);assert.equal(await page.locator('#clipCanvas').getAttribute('data-drawn-frame'),'47');
+ await page.locator('#frame').fill('72');await page.waitForTimeout(300);assert.equal(await page.locator('#clipCanvas').getAttribute('data-drawn-view'),'rear');assert.equal(await page.locator('#clipCanvas').getAttribute('data-drawn-frame'),'0');await page.screenshot({path:art+'/qa-viewer-seq-NPC06-exit0.png'});
+ await page.locator('#frame').fill('119');await page.locator('#next').click();assert.equal(await frame(),119,'the sequence ends on exit 47, no wrap');
+ await page.locator('button[data-view="front"]').click();assert.equal(await frame(),47,'back to a single clip: frame clamped to 47')});
 await check('background swap: other backgrounds are marked as not calibrated for the clip',async()=>{
  await page.selectOption('#bg','BG12');assert.match(await page.locator('#clipStatus').innerText(),/BG02 카메라 기준/);await page.locator('[data-ov="cam"]').check();await page.screenshot({path:art+'/qa-viewer-bg12.png'});await page.selectOption('#bg','BG02')});
 await check('still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor',async()=>{

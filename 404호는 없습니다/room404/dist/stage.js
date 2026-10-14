@@ -16,9 +16,12 @@ export function placeStill(bg,stand,fig){const c=bg.camera_model||{focal_px:1100
  const top=stand.y-fig.height_px*scale;
  const shadows=(fig.feet||[[fig.foot[0]-.09*S*q/scale],[fig.foot[0]+.09*S*q/scale]]).map(([fx])=>[stand.x+(fx-fig.foot[0])*scale,stand.y,.095*S*q,.028*S*q,.32]);
  return {x,y,w,h,z,scale,box:[stand.x-w/2,top,stand.x+w/2,stand.y],shadows}}
-// A walk clip may stand in a game scene only when its package QA status is PASS (README_CLAUDE_CODE_v02 3항); the QA viewer
-// passes allowRevise. Returns the stage actor for an npc entry of walk_clips.json and its imported atlas.json, or null.
-export function clipActor(id,entry,atlas,{allowRevise=false}={}){if(!entry||!atlas||!(entry.qa_status==='PASS'||allowRevise))return null;
+// A walk clip may stand in a game scene only when (README_CLAUDE_CODE_v02 3항 + the v05 frame review) the package QA status
+// is PASS, the frame review passed the enter (front) and exit (rear) views and the enter -> idle -> exit sequence, and the
+// clip's enter end and exit start meet (rig gap <= 0.15 m): a package PASS alone never puts a teleporting pair on screen.
+// The QA viewer passes allowRevise. Returns the stage actor for an npc entry of walk_clips.json and its atlas.json, or null.
+export function clipUsable(entry){const r=entry?.review;return !!entry&&entry.qa_status==='PASS'&&r?.views?.front==='PASS'&&r?.views?.rear==='PASS'&&r?.sequence==='PASS'&&(entry.checks?.enter_exit_gap_m??Infinity)<=.15}
+export function clipActor(id,entry,atlas,{allowRevise=false}={}){if(!entry||!atlas||!(allowRevise||clipUsable(entry)))return null;
  if(atlas.frames!==entry.frames_expected||Object.values(atlas.clips).some(c=>c.frames!==entry.frames))return null;
  return {kind:'clip',id,binding:{...entry,design_scale:1.5},atlas:{src:atlas.base+atlas.src,scale:atlas.scale,rects:atlas.rects,cols:1,cell:[0,0]},clips:{enter:atlas.clips.enter,exit:atlas.clips.exit}}}
 export function cameraOf(layout,bgId,camera){const bg=layout.backgrounds[bgId];if(!bg)throw Error('unknown background '+bgId);const r=bg.cameras[camera]||bg.cameras.full;return {bg,rect:r}}

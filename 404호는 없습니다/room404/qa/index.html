@@ -15,10 +15,10 @@
 <section id="clipMode" aria-label="걷기 클립 검수">
  <div class="controls">
   <label>인물 <select id="npc"></select></label>
-  <div class="views" role="group" aria-label="방향"><button data-view="front" aria-pressed="true">정면·입장</button><button data-view="side" aria-pressed="false">측면·지나감</button><button data-view="rear" aria-pressed="false">후면·퇴장</button></div>
+  <div class="views" role="group" aria-label="방향"><button data-view="front" aria-pressed="true">정면·입장</button><button data-view="side" aria-pressed="false">측면·지나감</button><button data-view="rear" aria-pressed="false">후면·퇴장</button><button data-view="seq" aria-pressed="false">입장→대기→퇴장</button></div>
   <label>배경 <select id="bg"></select></label>
   <label>카메라 <select id="cam"><option value="full">전체</option><option value="intercom">인터폰(3:4)</option></select></label>
-  <label>인물 레이어 <select id="source"><option value="rig">리그 골격(프레임 미반입)</option><option value="mp4">검토 영상 MP4(불투명 합성)</option><option value="frames">스프라이트 프레임</option></select></label>
+  <label>인물 레이어 <select id="source"><option value="frames">스프라이트 프레임(원본 반입)</option><option value="rig">리그 골격(움직임 데이터)</option><option value="mp4">검토 영상 MP4(불투명 합성)</option></select></label>
   <div class="transport" role="group" aria-label="재생"><button id="prev" aria-label="한 프레임 뒤로">◀ 1</button><button id="play">▶ 재생</button><button id="next" aria-label="한 프레임 앞으로">1 ▶</button><label class="inline"><input type="checkbox" id="loop"> 반복(검수용)</label></div>
   <input id="frame" type="range" min="0" max="47" value="0" aria-label="프레임">
   <p id="frameLabel" class="mono"></p>

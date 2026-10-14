@@ -1,0 +1,10 @@
+{
+  "id": "NPC08",
+  "height_m": 1.7,
+  "prop": "keys",
+  "status": "REVISE",
+  "engine_applied": false,
+  "flip_side_shoes": [],
+  "revision": "v05",
+  "arm_wrist_fraction": 0.72
+}

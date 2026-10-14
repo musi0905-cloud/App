@@ -1,7 +1,7 @@
 // Layered stage (v0.16.0): walk.js timing rules, stage.js placement math, scene_layout.json and walk_clips.json data.
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync,existsSync} from 'node:fs';
 import {createWalker,STATES} from '../dist/walk.js';
-import {depthAt,placeStill,areaStyle,clipActor,cameraOf} from '../dist/stage.js';
+import {depthAt,placeStill,areaStyle,clipActor,clipUsable,cameraOf} from '../dist/stage.js';
 const read=p=>JSON.parse(readFileSync(new URL('../dist/'+p,import.meta.url)));
 const layout=read('data/scene_layout.json'),walk=read('data/walk_clips.json'),chars=read('data/character_assets.json'),evidence=read('data/story_evidence.json');
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
@@ -56,4 +56,11 @@ test('walk_clips: NPC02-NPC10, 3 views x 48 frames, data per frame, REVISE every
  for(const id of ['NPC02','NPC04','NPC05','NPC06','NPC07','NPC08','NPC10'])assert.equal(walk.npcs[id].carrying,undefined)});
 test('REVISE clips never reach a game scene; the game does not load walk_clips.json',()=>{const atlas={base:'',src:'a.webp',scale:.5,frames:144,clips:{enter:{offset:0,frames:48},exit:{offset:48,frames:48},pass:{offset:96,frames:48}},rects:[]};
  assert.equal(clipActor('NPC03',walk.npcs.NPC03,atlas),null);assert.ok(clipActor('NPC03',walk.npcs.NPC03,atlas,{allowRevise:true}));assert.equal(clipActor('NPC03',{...walk.npcs.NPC03,qa_status:'PASS'},{...atlas,frames:100}),null,'incomplete atlas refused');
+ for(const [id,n] of Object.entries(walk.npcs)){assert.equal(clipUsable(n),false,id+' is not usable in a game scene');assert.equal(clipActor(id,n,atlas),null)}
+ // A package PASS alone is not enough: the frame review must pass front, rear and the sequence, and the seam must meet.
+ const passed={...walk.npcs.NPC03,qa_status:'PASS',review:{views:{front:'PASS',side:'REVISE',rear:'PASS'},sequence:'PASS'}};
+ assert.ok(clipActor('NPC03',passed,atlas),'all gates passed');assert.equal(clipActor('NPC03',{...walk.npcs.NPC03,qa_status:'PASS'},atlas),null,'no review');
+ assert.equal(clipActor('NPC03',{...passed,review:{...passed.review,sequence:'REVISE'}},atlas),null,'turn/idle missing');
+ assert.equal(clipActor('NPC03',{...passed,review:{...passed.review,views:{front:'PASS',rear:'REVISE'}}},atlas),null,'exit view not passed');
+ assert.equal(clipActor('NPC06',{...walk.npcs.NPC06,qa_status:'PASS',review:passed.review},atlas),null,'NPC06 0.533 m seam refused even if marked PASS');
  assert.doesNotMatch(game,/walk_clips/);assert.doesNotMatch(game,/clipActor/);assert.equal(cameraOf(layout,'BG02','intercom').rect.length,4)});

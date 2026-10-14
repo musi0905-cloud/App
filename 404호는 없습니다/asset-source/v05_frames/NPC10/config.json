@@ -1,0 +1,10 @@
+{
+  "id": "NPC10",
+  "height_m": 1.75,
+  "prop": "crossbody",
+  "status": "REVISE",
+  "engine_applied": false,
+  "flip_side_shoes": [],
+  "revision": "v05",
+  "arm_wrist_fraction": 0.78
+}

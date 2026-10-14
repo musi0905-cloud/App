@@ -1,0 +1,214 @@
+{
+ "source": "asset-source/v05_frames",
+ "quality": "REVISE",
+ "npcs": {
+  "NPC02": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC02",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC03": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC03",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "carrying_binding_v05.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC04": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC04",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC05": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC05",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC06": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC06",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_elder_v04.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_elder_v04.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC07": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC07",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC08": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC08",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC09": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC09",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "carrying_binding_v05.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  },
+  "NPC10": {
+   "frames_expected": 144,
+   "frames_ok": 144,
+   "missing": [],
+   "hash_fail": [],
+   "format_fail": [],
+   "extra": [],
+   "linkage": {
+    "config_id": "NPC10",
+    "id_matches_folder": true,
+    "rig_path": "walk_rig_scene_retimed_v01.json",
+    "rig_present": true,
+    "same_as_code_copy": {
+     "QA_v05.json": true,
+     "README_v05.md": true,
+     "binding.json": true,
+     "config.json": true,
+     "walk_rig_scene_retimed_v01.json": true
+    }
+   },
+   "integrity": "PASS"
+  }
+ },
+ "totals": {
+  "frames_expected": 1296,
+  "frames_ok": 1296,
+  "missing": 0,
+  "hash_fail": 0,
+  "format_fail": 0,
+  "npc_fail": []
+ }
+}
