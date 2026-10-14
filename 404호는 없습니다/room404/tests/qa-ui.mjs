@@ -49,6 +49,18 @@ await check('enter -> idle -> exit sequence: NPC06 seam shown on the real frames
  await page.locator('button[data-view="front"]').click();assert.equal(await frame(),47,'back to a single clip: frame clamped to 47')});
 await check('background swap: other backgrounds are marked as not calibrated for the clip',async()=>{
  await page.selectOption('#bg','BG12');assert.match(await page.locator('#clipStatus').innerText(),/BG02 카메라 기준/);await page.locator('[data-ov="cam"]').check();await page.screenshot({path:art+'/qa-viewer-bg12.png'});await page.selectOption('#bg','BG02')});
+await check('v06 (render_v06.js): NPC06 enter -> settle -> idle -> turn -> start -> exit on the real frames, frame step, slow playback runs once',async()=>{
+ await page.selectOption('#npc','NPC06');await page.selectOption('#rev','v06');await page.locator('button[data-view="seq"]').click();await page.waitForTimeout(300);
+ const t=await page.locator('#clipStatus').innerText();assert.match(t,/v06/);assert.match(t,/입장→대기→회전→퇴장 PASS/);assert.match(t,/정면 REVISE/);assert.match(t,/측면 PASS/);
+ const at=async n=>{await page.locator('#frame').fill(String(n));await page.waitForTimeout(120);return [await page.locator('#clipCanvas').getAttribute('data-segment'),await page.locator('#clipCanvas').getAttribute('data-drawn-view')]};
+ const segs=[];for(const n of [0,47,48,63,64,111,112,151,152,166,167,214])segs.push((await at(n))[0]);
+ assert.deepEqual(segs,['enter','enter','settle','settle','idle','idle','turn','turn','start','start','exit','exit']);
+ assert.deepEqual(await at(113),['turn','front']);assert.deepEqual(await at(132),['turn','side']);await page.screenshot({path:art+'/qa-viewer-v06-NPC06-turn-side.png'});assert.deepEqual(await at(150),['turn','rear']);
+ await at(80);await page.screenshot({path:art+'/qa-viewer-v06-NPC06-idle.png'});await at(167);await page.screenshot({path:art+'/qa-viewer-v06-NPC06-exit0.png'});
+ await at(214);await page.locator('#next').click();assert.equal(await frame(),214,'the sequence ends on exit 47, no wrap');
+ await page.selectOption('#speed','8');await at(205);await page.locator('#play').click();const t0=Date.now();while(Date.now()-t0<4000&&(await page.locator('#play').innerText()).includes('멈춤'))await page.waitForTimeout(100);
+ assert.equal(await frame(),214,'8 fps playback reached the end and stopped');assert.ok(Date.now()-t0>900,'slow: 9 frames at 8 fps take about a second');
+ await page.selectOption('#speed','24');await page.selectOption('#rev','v05');await page.selectOption('#npc','NPC03')});
 await check('still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor',async()=>{
  await page.locator('[data-mode="still"]').click();await page.selectOption('#figure','CH09');await page.selectOption('#scene','BG12:full:clerk');await page.locator('#sOverlay').uncheck();
  await page.waitForFunction(()=>document.querySelector('#stillStage').dataset.state==='idle');

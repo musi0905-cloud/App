@@ -1,0 +1,53 @@
+{
+ "title": "v06 walk frame review (render_v06.js output, NPC02-NPC10)",
+ "reviewed": "2026-10-14",
+ "reviewer": "Claude (this session). Looked at the real v06 frames, not at the v05 records: v06_QA/<NPC>/walk_sheet.jpg, legs_v05_v06.jpg, arm_side_v05_v06.jpg, torso_lines_v05_v06.jpg, turn_settle_start_sheet.jpg, seams_sheet.jpg, feet_synth_sheet.jpg, before_after.jpg, compare_v05_v06*.mp4 (side by side with the delivered v05 frames), full-size crops of NPC06 front 44 / side 20 / side 36 and the NPC06 turn 119-143.",
+ "material": "render_v06.js frames (720x1280 RGBA, BG02 camera from camera_v06.json). The same renderer with --mode=v05 reproduces all 1,296 delivered v05 sprites byte for byte (port_check_v05.log), so every difference is a v06 change.",
+ "status_rule": "PASS only when the view has no open issue and every measured criterion passes (build-v06-review.py). An issue the existing part art cannot express stays open (REVISE) with an art spec, whatever the renderer changed. The engine uses a clip only when front, rear and the sequence all pass (stage.js clipUsable).",
+ "resolved": {
+  "KNEE_CROUCH": {"how": "Rig retime in render_v06.js: while a foot is flat the body rises until that knee bends at most 18 deg (elder rig 24 deg, design), never past either leg's reach, smoothed into a bob (max 3.4-5.0 cm); feet exactly where the rig puts them. Flat-foot frames over 25 deg: 0 for all nine (v05: up to 44.4 / 42.9 deg)."},
+  "NO_TURN_IDLE": {"how": "Sequence enter -> settle (the trailing foot steps up beside the planted one, which never moves) -> idle loop in place (breathing, weight shift, feet fixed) -> turn in four steps toward screen left (a foot moves only while lifted) -> start step (the pushing-off foot stays on its toe) -> exit. Same camera and floor coordinates; resting points move 0 mm at every boundary."},
+  "PATH_GAP": {"how": "The exit path starts where the person stands after the turn (aligned on the pivot foot's toe), not at a fixed z; the path constants live once in camera_v06.json. NPC06: enter ends at root z 2.333, stands at 2.192, exit starts at 2.273 after the start step (v05: rear start fixed at 1.8, 0.533 m gap)."},
+  "FAR_ARM": {"how": "Side view: the far arm uses the near arm's sleeve texture, in the body's shadow (38 % darker) and behind the torso; the bare/flat strip behind the back is gone (NPC03, NPC04, NPC08, NPC09 checked side by side with v05)."},
+  "CARRY_STATIC": {"how": "NPC03/NPC09: the one-piece held arm turns about the shoulder with the shoulder line and +-2 deg in step with the stride, and the parcel/folder dips up to 6 mm on each step; the sleeve stays continuous at the shoulder pivot."}
+ },
+ "issues": {
+  "LEG_STRIP": {"priority": "P1", "needs_new_art": true,
+   "v06_change": "One continuous trouser texture per leg (thigh rows over shin rows, cross-faded inside the texture): the knee band is gone (alpha on the leg axis at the knee >= 252 in every v06 frame; delivered v05 175-208, all legs). Strips are spaced along the 3D leg and each takes the width of its own depth (perspective taper).",
+   "still_wrong": "The near leg is still one flat trouser texture with no knee shape or folds; at heel strike toward the camera (front 40-47, rear 0-8) it reads as a long straight tube. Its length is the camera's true perspective, its flatness is the art.",
+   "art_spec": {"part": "trouser leg, thigh and shin", "views": "front and rear", "frames": "front (enter) 0-47 and rear (exit) 0-47, worst at heel strike toward/away from the camera",
+                "required_art": "Per leg three knee states for each view: straight (stance/heel strike), knee bent about 30 deg toward the camera, about 60 deg (mid-swing), with trouser folds and the knee overlapping the shin; transparent PNG at the scale of the existing 3-view parts atlas, same palette and light.",
+                "reference": ["v06_QA/<NPC>/legs_v05_v06.jpg", "v06_QA/<NPC>/walk_sheet.jpg"]},
+   "evidence": ["v06_QA/<NPC>/legs_v05_v06.jpg"]},
+  "TORSO_STATIC": {"priority": "P2", "needs_new_art": true,
+   "v06_change": "Pelvic tilt follows the swinging leg (projected hip line about +-2.7 to +-3.3 deg), the shoulder line counter-tilts (0.45 of it) and the torso image turns with it; the stance-knee retime adds a vertical bob.",
+   "still_wrong": "The torso is one flat front (or back) image, so the twist that makes counter-rotation visible (one shoulder forward, the other back) cannot show; seen only on close inspection (torso_lines_v05_v06.jpg). Arm swing is the rig's (+-12.7 deg elder, +-18.8 deg standard), plausible for 0.34-0.54 m/s.",
+   "art_spec": {"part": "torso", "views": "front and rear", "frames": "enter 0-47, exit 0-47",
+                "required_art": "Two torso variants per view at about +-8 deg yaw (left shoulder forward / right shoulder forward), same size, pivot and lighting as the current torso art, so the renderer can blend them over the stride.",
+                "reference": ["v06_QA/<NPC>/torso_lines_v05_v06.jpg"]},
+   "evidence": ["v06_QA/<NPC>/torso_lines_v05_v06.jpg"]},
+  "ARM_LONG": {"priority": "P2", "needs_new_art": true,
+   "v06_change": "NPC10 config: arm strip 0.150 m (was the shared 0.132 m; the bare forearm fills only 44-60 of 131 texture px), hand reach 0.10 m past the wrist (was 0.12).",
+   "still_wrong": "The bare near forearm still reads long and thin in the forward swing (side 12-24); the texture has no forearm volume.",
+   "art_spec": {"part": "near arm (short sleeve, bare forearm and hand)", "views": "side", "frames": "pass 12-24",
+                "required_art": "NPC10 continuous arm texture, side view: bare forearm with volume (muscle and shading) and a hand in proportion to a 1.75 m figure; same layout as NPC10_continuous_arms_v03.png (sleeve 0-0.43, forearm 0.43-0.78, hand 0.78-1).",
+                "reference": ["v06_QA/NPC10/arm_side_v05_v06.jpg", "v05_QA/code/NPC10/assets/NPC10_continuous_arms_v03.png"]},
+   "evidence": ["v06_QA/NPC10/arm_side_v05_v06.jpg"]}
+ },
+ "suggestions": {
+  "TURN_45": {"priority": "P3", "blocking": false,
+   "note": "The turn changes art front -> side -> rear at the moments both feet are down (no position, scale or foot jump; head width changes by up to 9 % and the head centre by up to 5 px at those frames, the painted heads differ). A 45-degree full-body part set (front-left, rear-left) would make the turn continuous.",
+   "required_art": "3-view parts atlas layout for the 45-degree views (front-left and rear-left), same scale as the existing atlas."}
+ },
+ "npcs": {
+  "NPC02": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC03": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC04": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC05": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC06": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC07": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC08": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC09": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": [], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []},
+  "NPC10": {"front": ["LEG_STRIP", "TORSO_STATIC"], "side": ["ARM_LONG"], "rear": ["LEG_STRIP", "TORSO_STATIC"], "sequence": []}
+ }
+}

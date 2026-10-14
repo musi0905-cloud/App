@@ -1,0 +1,45 @@
+{
+ "note": "Merged under configs/<NPC>.json. v05_variant reproduces the four render.js variants the producer delivered (checked byte for byte with --mode v05). fixes and sequence are the v06 changes; every value is a design choice of this revision, not a measurement. side_lateral_depth is off: the side clip keeps the v05 side path (all joints at z 2.35); depth per foot would put the near foot about 30 px lower, a change no request asked for.",
+ "v05_variant": {
+  "torso_files": [
+   "_3view_torso_v03.png",
+   "_3view_torso_v02.png"
+  ],
+  "carry": null,
+  "bag_below_near_arm_side": false
+ },
+ "fixes": {
+  "leg_mesh": true,
+  "leg_depth_order": true,
+  "counter_roll": {
+   "pelvis_rad": 0.06,
+   "shoulder_ratio": 0.45
+  },
+  "stance_knee_max_deg": 18,
+  "side_lateral_depth": false,
+  "far_arm_sleeve": {
+   "darken": 0.38
+  },
+  "carry_motion": {
+   "swing_rad": 0.035,
+   "bounce_m": 0.006
+  },
+  "arm": {
+   "width": 0.132,
+   "hand_ext": 0.12
+  }
+ },
+ "sequence": {
+  "settle_frames": 12,
+  "idle_frames": 48,
+  "turn_frames": 32,
+  "start_frames": 12,
+  "idle_knee_deg": 6,
+  "turn_steps": [
+   "R",
+   "L",
+   "R",
+   "L"
+  ]
+ }
+}

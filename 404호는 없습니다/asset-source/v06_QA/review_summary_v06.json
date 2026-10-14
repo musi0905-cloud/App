@@ -1,0 +1,594 @@
+{
+ "reviewed": "2026-10-14",
+ "reviewer": "Claude (this session). Looked at the real v06 frames, not at the v05 records: v06_QA/<NPC>/walk_sheet.jpg, legs_v05_v06.jpg, arm_side_v05_v06.jpg, torso_lines_v05_v06.jpg, turn_settle_start_sheet.jpg, seams_sheet.jpg, feet_synth_sheet.jpg, before_after.jpg, compare_v05_v06*.mp4 (side by side with the delivered v05 frames), full-size crops of NPC06 front 44 / side 20 / side 36 and the NPC06 turn 119-143.",
+ "rule": "PASS only when the view has no open issue and every measured criterion passes (build-v06-review.py). An issue the existing part art cannot express stays open (REVISE) with an art spec, whatever the renderer changed. The engine uses a clip only when front, rear and the sequence all pass (stage.js clipUsable).",
+ "npcs": {
+  "NPC02": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1863,
+   "max_seam_root_m": 0.0041
+  },
+  "NPC03": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1976,
+   "max_seam_root_m": 0.0043
+  },
+  "NPC04": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1953,
+   "max_seam_root_m": 0.0042
+  },
+  "NPC05": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1829,
+   "max_seam_root_m": 0.004
+  },
+  "NPC06": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.0607,
+   "max_seam_root_m": 0.0015
+  },
+  "NPC07": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1976,
+   "max_seam_root_m": 0.0043
+  },
+  "NPC08": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1931,
+   "max_seam_root_m": 0.0042
+  },
+  "NPC09": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1863,
+   "max_seam_root_m": 0.0041
+  },
+  "NPC10": {
+   "front": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "side": {
+    "status": "REVISE",
+    "issues": [
+     "ARM_LONG"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "PASS",
+     "arms": "REVISE",
+     "knee_load": "PASS"
+    }
+   },
+   "rear": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "criteria": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "criteria": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   },
+   "enter_end_to_exit_start_m": 0.1987,
+   "max_seam_root_m": 0.0044
+  }
+ }
+}

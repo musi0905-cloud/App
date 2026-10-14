@@ -23,15 +23,15 @@ test('reduced motion: no timed transitions',()=>{const w=createWalker({clips:{en
 test('BG02 camera model: floor line, PASS placement reference, and the still figure stands on its stand point',()=>{const bg=layout.backgrounds.BG02,c=bg.camera_model;
  assert.ok(Math.abs(bg.floor_line_y-(c.horizon_y+c.focal_px*c.camera_height_m/c.door_plane_z_m))<.1);
  const sp=bg.stand_points.idle;assert.ok(Math.abs(depthAt(bg,sp.y)-sp.z)<.002);
- for(const [id,a] of Object.entries(chars.assets)){const f=a.figure,p=placeStill(bg,sp,f);assert.ok(Math.abs(p.box[3]-sp.y)<1e-6,id+' feet on the floor point');
+ for(const [id,a] of [...Object.entries(chars.assets),...Object.entries(chars.visitor_role_figures)]){const f=a.figure,p=placeStill(bg,sp,f);assert.ok(Math.abs(p.box[3]-sp.y)<1e-6,id+' feet on the floor point');
   assert.ok(Math.abs((p.box[3]-p.box[1])-f.height_m*c.focal_px/sp.z)<1,id+' height follows depth');assert.equal(p.shadows.length,2);for(const s of p.shadows){assert.equal(s[1],sp.y);assert.ok(Math.abs(s[0]-sp.x)<p.w/2)}
   const cam=bg.cameras.intercom;assert.ok(p.box[1]>=cam[1]&&p.box[3]<=cam[1]+cam[3],id+' whole figure inside the intercom camera')}});
 test('click areas grow to a 44 px touch target; figure areas need an idle figure',()=>{const s=areaStyle([500,500,10,10],[0,0,1080,1920],{width:270,height:480});assert.equal(s.width,44);assert.equal(s.height,44);
  const big=areaStyle([0,0,540,960],[0,0,1080,1920],{width:270,height:480});assert.equal(big.width,135)});
 test('scene_layout: every background id maps to a game file, camera, horizon, floor; areas and occluders stay inside',()=>{
- const ids=Object.keys(layout.backgrounds);for(const id of ['BG01','BG02','BG03','BG04','BG05','BG06','BG07','BG08','BG09','BG10','BG11','BG12','BG13_2026'])assert.ok(ids.includes(id),id);
- for(const u of [layout.usage.intercom.background,layout.usage.desk.background,...Object.values(layout.usage.night_intro),...Object.values(layout.usage.cutscene_setting),...Object.values(layout.usage.evidence_backdrop)])assert.ok(layout.backgrounds[u].file,u+' used in the game has a game file');
- for(const [id,b] of Object.entries(layout.backgrounds)){if(id==='BG08')assert.equal(b.file,null,'BG08: approved file not in hand, no game copy');else assert.ok(existsSync(new URL('../dist/'+b.file,import.meta.url)),b.file);assert.deepEqual(b.size,[1080,1920]);assert.ok(['2004','2026'].includes(b.era),id);
+ const ids=Object.keys(layout.backgrounds);for(const id of ['BG01','BG02','BG03','BG04','BG05','BG06','BG06_interior','BG07','BG08','BG09','BG10','BG11','BG12','BG13_2026','BG13_2004'])assert.ok(ids.includes(id),id);
+ for(const u of [layout.usage.intercom.background,layout.usage.desk.background,...Object.values(layout.usage.night_intro),...Object.values(layout.usage.cutscene_setting),...Object.values(layout.usage.evidence_backdrop),...Object.values(layout.usage.evidence_found_at)])assert.ok(layout.backgrounds[u].file,u+' used in the game has a game file');
+ for(const [id,b] of Object.entries(layout.backgrounds)){assert.ok(existsSync(new URL('../dist/'+b.file,import.meta.url)),b.file);assert.deepEqual(b.size,[1080,1920]);assert.ok(['2004','2026'].includes(b.era),id);
   assert.ok(b.horizon_y>0&&b.horizon_y<1920&&b.floor_line_y>0&&b.floor_line_y<=1920,id);assert.ok(['v05_binding','visual_estimate'].includes(b.calibration),id);
   const inside=([x,y])=>x>=0&&x<=1080&&y>=0&&y<=1920;
   for(const r of Object.values(b.cameras))assert.ok(inside([r[0],r[1]])&&inside([r[0]+r[2],r[1]+r[3]]),id+' camera');
@@ -43,7 +43,10 @@ test('era rule: 2004 backgrounds only behind 2004 records; present-day screens u
  assert.equal(era(u.intercom.background),'2026');assert.equal(era(u.desk.background),'2026');for(const id of Object.values(u.night_intro))assert.equal(era(id),'2026',id);for(const id of Object.values(u.cutscene_setting))assert.equal(era(id),'2026',id);
  for(const [ev,id] of Object.entries(u.evidence_backdrop)){const x=evidence.evidence.find(e=>e.id===ev),years=(x.era+' '+(x.issued_at||'')).match(/(19|20)\d\d/g).map(Number);assert.ok(years.every(y=>y<2006)&&era(id)==='2004',ev+' '+x.era+' -> '+id)}
  const used2004=new Set(Object.values(u.evidence_backdrop));for(const [id,b] of Object.entries(layout.backgrounds))if(b.era==='2004')assert.ok(!Object.values(u.night_intro).includes(id)&&u.intercom.background!==id&&u.desk.background!==id,id);
- for(const id of ['BG10','BG11'])assert.deepEqual(layout.backgrounds[id].stand_points,{},id+' has no stand point (victims never appear alive in 2026)');assert.ok(used2004.size>0)});
+ for(const id of ['BG10','BG11'])assert.deepEqual(layout.backgrounds[id].stand_points,{},id+' has no stand point (victims never appear alive in 2026)');assert.ok(used2004.size>0);
+ // Found-at backdrops show where a paper was found today (2026), never a 2004 scene, and only for papers found there.
+ for(const [ev,id] of Object.entries(u.evidence_found_at)){const x=evidence.evidence.find(e=>e.id===ev);assert.equal(era(id),'2026',ev);assert.match(x.source,/관리실/,ev+' found in the management office');assert.ok(!u.evidence_backdrop[ev],ev+' has one backdrop')}
+ assert.match(game,/찾은 곳 · /);assert.equal(layout.backgrounds.BG13_2004.era,'2004');assert.deepEqual(layout.backgrounds.BG13_2004.floor,layout.backgrounds.BG13_2026.floor,'same building, same coordinates')});
 test('walk_clips: NPC02-NPC10, 3 views x 48 frames, data per frame, REVISE everywhere, carrying arm and rig_path honoured',()=>{
  assert.deepEqual(Object.keys(walk.npcs),['NPC02','NPC03','NPC04','NPC05','NPC06','NPC07','NPC08','NPC09','NPC10']);assert.equal(walk.canvas.width,720);assert.equal(walk.canvas.height,1280);assert.equal(walk.canvas.design_scale,1.5);
  for(const [id,n] of Object.entries(walk.npcs)){assert.equal(n.fps,24);assert.equal(n.frames,48);assert.equal(n.frames_expected,144);assert.equal(n.engine_applied,false);assert.equal(n.qa_status,'REVISE');

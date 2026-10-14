@@ -9,6 +9,9 @@ The rendered sprites (sprites/<view>/0000-0047.png, 720x1280 RGBA) are kept as o
 (scripts/verify-v05-frames.py); scripts/import-v05-frames.py packs the QA-viewer atlases. When the frame review exists
 (../asset-source/v05_QA/frame_qa/review_summary_v05.json, scripts/build-v05-review.py), each NPC gets its per-view and
 enter->idle->exit statuses plus the seam measured on the images; the package qa_status itself is copied, never raised.
+v0.18.0: when the v06 review exists (../asset-source/v06_QA/review_summary_v06.json, scripts/build-v06-review.py), each NPC
+also gets a 'v06' entry (own renderer, render_v06.js): qa_status PASS only if front, side, rear and the sequence all pass,
+its review, segment clips and enter_exit_gap_m = the largest root jump between consecutive frames at a segment boundary.
 
 What is computed here is exactly what the package renderer (render.js) does, ported line for line, so the engine can
 draw the parts render.js leaves to it: per frame, the two contact-shadow ellipses from world-space heel/toe positions,
@@ -72,6 +75,8 @@ def main():
     qa_dir = os.path.join(os.path.dirname(PKG), 'frame_qa'); review_path = os.path.join(qa_dir, 'review_summary_v05.json')
     review = json.load(open(review_path)) if os.path.exists(review_path) else None
     metrics_path = os.path.join(qa_dir, 'frame_metrics_v05.json'); metrics = json.load(open(metrics_path))['npcs'] if os.path.exists(metrics_path) else {}
+    v06_dir = os.path.join(os.path.dirname(os.path.dirname(PKG)), 'v06_QA'); v06_path = os.path.join(v06_dir, 'review_summary_v06.json')
+    review06 = json.load(open(v06_path)) if os.path.exists(v06_path) else None
     out = {'source': 'asset-source/v05_QA/code (NPC02-NPC10_재현코드_QA_v05.zip, 재현 코드·QA 부분) + validation_all_v05.json',
            'rule': 'qa_status가 PASS가 아닌 클립은 게임 화면에 쓰지 않는다(README_CLAUDE_CODE_v02 3항: REVISE/BLOCKED는 완성 화면으로 표시 금지). QA 뷰어에서만 재생. MP4는 불투명 합성 검토 영상이라 투명 에셋으로 쓰지 않는다.',
            'canvas': {'width': W, 'height': H, 'design_scale': 1.5, 'background': 'BG02', 'note': '프레임은 BG02 전체 화면(2/3 축척)에 루트 이동이 구워진 고정 캔버스. 프레임마다 다시 가운데 맞추지 않는다.'},
@@ -105,6 +110,16 @@ def main():
             g = metrics[npc]['seam']['gap']
             entry['checks']['seam_measured'] = {'lowest_row_px': g['lowest_row_px'], 'depth_from_lowest_row_m': g['depth_from_lowest_row_m'],
                                                 'head_width_change': g['head_width_change'], 'body_scale_rig': g['body_scale_rig']}
+        if review06 and npc in review06['npcs']:
+            r6 = review06['npcs'][npc]; a6p = os.path.join(v06_dir, npc, 'atlas.json'); a6 = json.load(open(a6p)) if os.path.exists(a6p) else None
+            ok = all(r6[v]['status'] == 'PASS' for v in ('front', 'side', 'rear', 'sequence'))
+            entry['v06'] = {'revision': 'v06', 'renderer': 'asset-source/v06_render/render_v06.js', 'qa_status': 'PASS' if ok else 'REVISE', 'engine_applied': False,
+                            'atlas': f'asset-source/v06_QA/{npc}/atlas.json' if a6 else None, 'clips': a6['clips'] if a6 else None, 'fps': 24,
+                            'review': {'reviewed': review06['reviewed'], 'source': 'asset-source/v06_QA/review_summary_v06.json',
+                                       'views': {v: r6[v]['status'] for v in ('front', 'side', 'rear')}, 'sequence': r6['sequence']['status'],
+                                       'issues': {v: r6[v]['issues'] for v in ('front', 'side', 'rear', 'sequence')}},
+                            'checks': {'enter_exit_gap_m': r6['max_seam_root_m'], 'enter_end_to_exit_start_m': r6['enter_end_to_exit_start_m'],
+                                       'sequence': a6['sequence'] if a6 else None}}
         out['npcs'][npc] = entry
         print(npc, entry['qa_status'], rig_name, 'enter z', views['front']['start_z'], '->', views['front']['end_z'],
               'exit z', views['rear']['start_z'], '->', views['rear']['end_z'], 'gap', entry['checks']['enter_exit_gap_m'], 'slide mm', entry['checks']['foot_slide_mm'])

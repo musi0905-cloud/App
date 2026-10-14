@@ -1,0 +1,3 @@
+{"v05_variant": {"torso_files": ["_3view_torso_v03b.png", "_3view_torso_v02.png"], "bag_below_near_arm_side": true},
+ "note": "ARM_LONG: the bare forearm fills about 40 % of the arm texture width (sleeve 114 px, forearm 44-60 px of 131), so at the shared 0.132 m strip width it reads thin; strip 0.150 m and a shorter hand reach (0.10 m past the wrist). A forearm with volume needs new art.",
+ "fixes": {"arm": {"width": 0.150, "hand_ext": 0.10}}}
