@@ -78,6 +78,10 @@ await check('still stage: enter -> idle -> leave -> gone; occluder hides the fig
  await page.locator('#sLeave').click();await page.waitForFunction(()=>document.querySelector('#stillStage').dataset.state==='gone');const plain=await sample('#stillStage canvas',gap);
  assert.ok(lit.reduce((a,b)=>a+b)<plain.reduce((a,b)=>a+b),'the contact shadow darkens the floor at the shadow edge: '+lit+' vs '+plain);
  await page.locator('#sReset').click();await page.waitForFunction(()=>document.querySelector('#stillStage').dataset.state==='idle');await page.locator('#sOverlay').check();await page.screenshot({path:art+'/qa-viewer-still-bg02.png'})});
+await check('still mode chosen while the frame atlases are still loading opens without an error (race found 2026-10-14)',async()=>{
+ const p2=await browser.newPage();const e2=[];p2.on('pageerror',e=>e2.push(e.message));await p2.route(/frames\/NPC\d\d\/atlas\.json$/,async r=>{await new Promise(f=>setTimeout(f,1500));await r.continue()});
+ await p2.goto(url,{waitUntil:'domcontentloaded'});await p2.waitForSelector('[data-mode="still"]');await p2.waitForTimeout(300);await p2.locator('[data-mode="still"]').click();
+ await p2.waitForFunction(()=>document.querySelector('#stillStage').dataset.state==='idle');assert.deepEqual(e2,[]);await p2.close()});
 await check('zero uncaught JavaScript errors in the QA viewer',async()=>{assert.deepEqual(errors,[])});
 await browser.close();server.close();
 await writeFile(art+'/qa-ui-results.json',JSON.stringify(results,null,1));

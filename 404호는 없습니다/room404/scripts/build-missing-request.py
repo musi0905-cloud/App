@@ -35,7 +35,9 @@ def row(asset, ent, era, kind, priority, reason, use, spec=None, filename=None):
 
 def main():
     path = os.path.join(PROJECT, 'docs', 'missing_assets_request.json'); old = json.load(open(path)); have = held_hashes()
-    prev = old.get('requests', []) + [r for r in old.get('resolved', [])]
+    # The v0.17 requests: the file's own 'resolved' list once it exists (its 'requests' are the open rows this script writes;
+    # reading both double-counted them on a second run, 41 -> 96, found 2026-10-14).
+    prev = old['resolved'] if 'resolved' in old else old.get('requests', [])
     resolved = []
     for r in prev:
         h = r.get('expectedSha256'); p = have.get(h) if h else None
@@ -45,10 +47,17 @@ def main():
     pr = J(AS, 'v06_QA', 'production_requests_v06.json'); review = J(AS, 'v06_QA', 'visual_review_v06.json'); by = {}
     for q in pr['requests']:
         if q['needs_new_art']: by.setdefault((q['npc'], q['issue']), []).append(q)
+    # art that was delivered against a request and tested (NPC06 v07, 2026-10-14): the request stays open unless the review resolves it
+    r7p = os.path.join(AS, 'v07_QA', 'review_summary_v07.json'); r7 = J(r7p) if os.path.exists(r7p) else None
+    tried = {q['id']: q for q in (r7 or {}).get('requests', [])}
     for (npc, iss), qs in sorted(by.items()):
         spec = {k: v for k, v in qs[0]['art_spec'].items() if k not in ('view', 'character')}; spec['views'] = sorted({q['view'] for q in qs})
         rows.append(row(f'{npc}/walk/{iss}', npc, '2026', 'new_art', qs[0]['priority'], f"v06 재렌더 후에도 남음: {qs[0]['still_wrong']}",
                         '걷기 클립(정면·후면 PASS가 되어야 게임에 씀, stage.js clipUsable)', spec))
+        att = [tried[q['id']] for q in qs if q['id'] in tried]
+        if att:
+            rows[-1]['latest_attempt'] = {'art': 'v07b (asset-source/v07_NPC06/source)', 'review': 'asset-source/v07_QA/review_summary_v07.json', 'requests': {a['id']: a['status'] for a in att},
+                                          'revision_requests': 'asset-source/v07_QA/art_revision_requests_v07.json'}
     for npc in sorted({q['npc'] for q in pr['requests']}):
         sug = review['suggestions']['TURN_45']
         rows.append(row(f'{npc}/walk/TURN_45', npc, '2026', 'new_art', sug['priority'], '막지 않음(연결 PASS). ' + sug['note'], '회전 구간을 끊김 없이', {'required_art': sug['required_art']}))

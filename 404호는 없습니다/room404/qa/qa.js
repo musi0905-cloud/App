@@ -108,13 +108,15 @@ document.querySelectorAll('button[data-view]').forEach(b=>b.onclick=()=>{play(fa
 document.querySelectorAll('[data-ov]').forEach(c=>c.onchange=()=>{c.checked?st.ov.add(c.dataset.ov):st.ov.delete(c.dataset.ov);draw()});
 $('prev').onclick=()=>{play(false);st.frame=Math.max(0,st.frame-1);draw()};$('next').onclick=()=>{play(false);st.frame=Math.min(last(),st.frame+1);draw()};$('play').onclick=()=>play(!st.playing);$('frame').oninput=e=>{play(false);st.frame=Number(e.target.value);draw()};
 document.addEventListener('keydown',e=>{if(e.target.closest('select,input'))return;if(e.key==='ArrowLeft')$('prev').click();else if(e.key==='ArrowRight')$('next').click();else if(e.key===' '){e.preventDefault();$('play').click()}});
+// Still-mode figures exist before the mode buttons work: the frame atlases load after this (await below), and a click on
+// 'still' during that load used to reach figures/stage before their declarations (intermittent ReferenceError).
+const figures=[...Object.entries(chars.assets).filter(([,a])=>a.figure).map(([id,a])=>[id,a.figure,`${id} ${a.name} (승인 PASS)`]),...Object.entries(chars.visitor_role_figures||{}).map(([id,a])=>[id,a.figure,`${id} ${a.name} (승인 PASS · 게임 꺼짐)`]),...Object.entries(chars.legacy.figures).map(([id,f])=>[id,f,`${id} (레거시 v2, 게임 방문객)`])];
+fill($('figure'),figures.map(([id,,t])=>[id,t]));
+let stage=null;
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));$('clipMode').hidden=b.dataset.mode!=='clip';$('stillMode').hidden=b.dataset.mode!=='still';play(false);if(b.dataset.mode==='still')still()});
 await Promise.all(Object.keys(walk.npcs).map(framesOf));await v06Of(st.npc);redraw();
 
 // ---- still mode: the game's stage.js ---------------------------------------------------------------------------------
-const figures=[...Object.entries(chars.assets).filter(([,a])=>a.figure).map(([id,a])=>[id,a.figure,`${id} ${a.name} (승인 PASS)`]),...Object.entries(chars.visitor_role_figures||{}).map(([id,a])=>[id,a.figure,`${id} ${a.name} (승인 PASS · 게임 꺼짐)`]),...Object.entries(chars.legacy.figures).map(([id,f])=>[id,f,`${id} (레거시 v2, 게임 방문객)`])];
-fill($('figure'),figures.map(([id,,t])=>[id,t]));
-let stage=null;
 function still(){const [id,f]=figures.find(x=>x[0]===$('figure').value),[bgId,cam,stand]=$('scene').value.split(':'),host=$('stillStage');stage?.destroy();host.innerHTML='';host.style.aspectRatio=`${layout.backgrounds[bgId].cameras[cam][2]}/${layout.backgrounds[bgId].cameras[cam][3]}`;
  stage=mountStage(host,{layout,background:bgId,camera:cam,stand,base:DIST,actor:{kind:'still',id,src:f.file,size:f.size,foot:f.foot,height_px:f.height_px,height_m:f.height_m},areas:[{id:'figure',rect:'figure',label:'인물 클릭 영역',onClick:()=>{$('sState').textContent+=' · 클릭됨'}}]});
  stage.enter().then(()=>{overlay();stillStatus(id,f,bgId,cam,stand);tick()});tick()}

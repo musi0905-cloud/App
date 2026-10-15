@@ -181,6 +181,22 @@ def main():
         for f in sorted(x for x in os.listdir(d) if x.endswith('.mp4')):
             add(os.path.join(d, f), npc, '2026', 'review_video', 'room404/scripts/analyze-v06-frames.py', selected=['qa_viewer'], qa=('REFERENCE_ONLY', None),
                 notes='v05 원본 프레임과 v06 재렌더를 나란히 놓은 검토 영상(불투명 합성).')
+    # NPC06 v07 experiment (2026-10-14): the producer's sheets (v07b bound by render_v06.js --art=v07, v07a drafts kept for
+    # comparison only), their documents and the review videos. Status from the producer manifest and review_summary_v07.json;
+    # nothing here is selected for the game.
+    d7 = os.path.join(SRC, 'v07_NPC06', 'source'); r7p = os.path.join(SRC, 'v07_QA', 'review_summary_v07.json'); r7 = J(r7p) if os.path.exists(r7p) else None
+    if os.path.isdir(d7):
+        st7 = ', '.join(f"{v} {r7['views'][v]['status']}" for v in ('front', 'side', 'rear', 'sequence')) if r7 else None; pkg7 = 'Drive 1gMILNQsB8yY7VBo2oFHRml7BYYDca8cA (NPC06_보행부품_v07_1차검수_20261014)'
+        for f in sorted(x for x in os.listdir(d7) if x.endswith('.png')):
+            add(os.path.join(d7, f), 'NPC06', '2026', 'animation_art', pkg7, selected=['asset-source/v06_render/render_v06.js --art=v07'], qa=('REVISE', 'producer manifest visual REVISE; v07 frame review: ' + str(st7)),
+                notes='NPC06 v07b 후보 시트(정면·후면 다리 6상태, 몸통 4상태). 시험 연결만 했고 게임에는 쓰지 않음.')
+        for f in sorted(os.listdir(os.path.join(d7, 'draft_v07a'))):
+            add(os.path.join(d7, 'draft_v07a', f), 'NPC06', '2026', 'animation_art', pkg7, qa=('REVISE', 'producer manifest: draft (candidate false)'), notes='v07a 초안. 비교용으로만 보관, 렌더러가 읽지 않음.')
+        for f in ('NPC06_v07_asset_manifest.json', 'NPC06_v07_prompts.json'):
+            add(os.path.join(d7, f), 'NPC06', None, 'delivery_record', pkg7, qa=('RECORD', None), notes='제작자 기록. 품질 상태를 정하지 않음.')
+        for f in sorted(x for x in os.listdir(os.path.join(SRC, 'v07_QA', 'NPC06')) if x.endswith('.mp4')):
+            add(os.path.join(SRC, 'v07_QA', 'NPC06', f), 'NPC06', '2026', 'review_video', 'asset-source/v07_NPC06/tools/analyze_v07.py', qa=('REFERENCE_ONLY', None),
+                notes='같은 조건의 v06 재렌더와 v07 시험 렌더 비교(또는 v07 겹침 표시) 영상.')
     for f in ('SOURCE_MANIFEST.json', 'MATCH_REPORT.json', 'SOURCE_IMPORT_RESULT.json'):
         p = os.path.join(SRC, 'v06_sources', f)
         if os.path.exists(p): add(p, None, None, 'delivery_record', 'Drive 1OjyxfqzZS7wWfcNo-ppjmi2dYft7i1xM (2026-10-14)', qa=('RECORD', None), notes='복원 전달 기록(41 source ZIP, 169 파일). 품질 상태를 정하지 않음.')

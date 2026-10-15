@@ -2,42 +2,47 @@
  {
   "test": "viewer loads the nine v05 NPCs with their 144 imported frames; every view REVISE in the frame review",
   "status": "PASS",
-  "ms": 792
+  "ms": 754
  },
  {
   "test": "three views and frame step; playback runs once and stops on frame 47 (no wrap)",
   "status": "PASS",
-  "ms": 2575
+  "ms": 2548
  },
  {
   "test": "NPC06 elder rig and the enter/exit gap warning; NPC03 carrying arm listed",
   "status": "PASS",
-  "ms": 129
+  "ms": 108
  },
  {
   "test": "MP4 review frames (opaque composite) with the computed feet and shadows on top",
   "status": "PASS",
-  "ms": 2262
+  "ms": 2112
  },
  {
   "test": "enter -> idle -> exit sequence: NPC06 seam shown on the real frames (front 47 held, then rear 0)",
   "status": "PASS",
-  "ms": 1687
+  "ms": 1581
  },
  {
   "test": "background swap: other backgrounds are marked as not calibrated for the clip",
   "status": "PASS",
-  "ms": 328
+  "ms": 266
  },
  {
   "test": "v06 (render_v06.js): NPC06 enter -> settle -> idle -> turn -> start -> exit on the real frames, frame step, slow playback runs once",
   "status": "PASS",
-  "ms": 5091
+  "ms": 5044
  },
  {
   "test": "still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor",
   "status": "PASS",
-  "ms": 1911
+  "ms": 1783
+ },
+ {
+  "test": "still mode chosen while the frame atlases are still loading opens without an error (race found 2026-10-14)",
+  "status": "PASS",
+  "ms": 757
  },
  {
   "test": "zero uncaught JavaScript errors in the QA viewer",

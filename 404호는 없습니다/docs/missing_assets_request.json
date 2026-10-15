@@ -546,6 +546,15 @@
      "v06_QA/<NPC>/legs_v05_v06.jpg",
      "v06_QA/<NPC>/walk_sheet.jpg"
     ]
+   },
+   "latest_attempt": {
+    "art": "v07b (asset-source/v07_NPC06/source)",
+    "review": "asset-source/v07_QA/review_summary_v07.json",
+    "requests": {
+     "NPC06-front-LEG_STRIP": "OPEN",
+     "NPC06-rear-LEG_STRIP": "OPEN"
+    },
+    "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
    }
   },
   {
@@ -571,6 +580,15 @@
     "reference": [
      "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
     ]
+   },
+   "latest_attempt": {
+    "art": "v07b (asset-source/v07_NPC06/source)",
+    "review": "asset-source/v07_QA/review_summary_v07.json",
+    "requests": {
+     "NPC06-front-TORSO_STATIC": "OPEN",
+     "NPC06-rear-TORSO_STATIC": "OPEN"
+    },
+    "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
    }
   },
   {

@@ -28,15 +28,18 @@ test('every image the game loads is registered (paths), and every file in asset-
  const game=[...Object.values(layout.backgrounds).map(b=>b.file).filter(Boolean),...Object.values(chars.assets).map(a=>a.figure.file),...Object.values(chars.legacy.figures).map(f=>f.file)];
  for(const f of game)assert.ok(byPath.has('room404/dist/'+f),f);
  const walk=d=>readdirSync(P(d)).filter(f=>f!=='node_modules').flatMap(f=>statSync(join(P(d),f)).isDirectory()?walk(join(d,f)):[join(d,f)]);
- // renderer code/config (v06_render), review sheets and numbers (v06_QA) are tools and records, not assets
- const skip=/(v06_render\/.*|v06_QA\/.*\.jpg|(metrics|review_summary|production_requests|visual_review)_v06\.json|\.gitignore|stage_build_report\.json|ui_inventory_v0[12]\.json|ui_text_ko_v01\.json|\.md|\.js|\.py|checksums_v05\.json|QA_v05\.json|execution_v05\.json|frame_connectivity_check\.json|package\.json|validation_all_v05\.json|prompts_v05\.json|walk_rig_elder_v02_original\.json|TRANSFER_MANIFEST\.json|V05_IMPORT_RESULT\.json|V05_VERIFY_REPORT\.json|import_report\.json|\/frame_qa\/.*)$/;
+ // renderer code/config (v06_render), review sheets and numbers (v06_QA, v07_QA, the stage check figures_qa.json) and the
+ // v07 binding/import records are tools and records, not assets (figures_qa.json was missing here since v0.18.0, found 2026-10-14)
+ const skip=/(v06_render\/.*|v06_QA\/.*\.jpg|(metrics|review_summary|production_requests|visual_review)_v06\.json|static_figures\/figures_qa\.json|v07_QA\/.*\.(jpg|png|json)|v07_NPC06\/(IMPORT|binding)_v07\.json|\.gitignore|stage_build_report\.json|ui_inventory_v0[12]\.json|ui_text_ko_v01\.json|\.md|\.js|\.py|checksums_v05\.json|QA_v05\.json|execution_v05\.json|frame_connectivity_check\.json|package\.json|validation_all_v05\.json|prompts_v05\.json|walk_rig_elder_v02_original\.json|TRANSFER_MANIFEST\.json|V05_IMPORT_RESULT\.json|V05_VERIFY_REPORT\.json|import_report\.json|\/frame_qa\/.*)$/;
  for(const f of [...walk('asset-source'),...walk('room404/dist/assets')])if(!skip.test(f))assert.ok(byPath.has(f),'registered: '+f)});
 test('missing files are not secretly present; the 1,296 v05 sprites and (v0.18.0) their part art are held and registered',()=>{const have=new Set(assets.map(a=>a.sha256));
  for(const m of reg.missing)if(/^[0-9a-f]{64}$/.test(m.sha256))assert.ok(!have.has(m.sha256),m.path);
  assert.equal(reg.missing.filter(m=>/sprites\/(front|side|rear)\/0000-0047\.png$/.test(m.path)).length,0);
  const frames=assets.flatMap(a=>a.category==='animation_frame'?[a.sourcePath,...a.duplicatePaths]:[]);assert.equal(frames.length,1296);
  for(const a of assets.filter(a=>a.category==='animation_frame')){assert.equal(a.width,720);assert.equal(a.height,1280);assert.equal(a.hasAlpha,true,a.sourcePath)}
- assert.equal(reg.missing.filter(m=>/^NPC\d\d\/assets\//.test(m.path)).length,0,'v05 part art restored 2026-10-14');assert.equal(assets.filter(a=>a.category==='animation_art').length,25);
+ assert.equal(reg.missing.filter(m=>/^NPC\d\d\/assets\//.test(m.path)).length,0,'v05 part art restored 2026-10-14');assert.equal(assets.filter(a=>a.category==='animation_art'&&a.sourcePath.startsWith('asset-source/v05_QA/')).length,25);
+ const v07=assets.filter(a=>a.category==='animation_art'&&a.sourcePath.startsWith('asset-source/v07_NPC06/'));assert.equal(v07.length,6,'NPC06 v07b x3 + v07a drafts x3');
+ for(const a of v07){assert.equal(a.qaStatus,'REVISE',a.sourcePath);assert.ok(!a.selectedFor.some(x=>x.startsWith('game:')||x.startsWith('scene:')),a.sourcePath+' not in the game')}
  for(const p of ['01_캐릭터/game/NPC01_visitor_male_2026_front_full_v01.png','02_배경/game/BG13_2004_exterior_2004_v01.webp','02_배경/game/BG08_management_office_2026_base_v02_v01.webp','02_배경/game/BG06_interior_elevator_2026_interior_v01.webp']){
   assert.ok(!reg.missing.some(m=>m.path===p),p+' no longer missing');assert.ok(byPath.has('asset-source/'+p),p+' registered')}});
 test('missing_assets_request.json: the 41 v0.17 requests resolved by hash; open requests carry the nine fields, unknowns are null, nothing requested is held',()=>{
