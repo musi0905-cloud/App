@@ -963,7 +963,7 @@
     "required_art": "몸통·팔·가방의 3/4 후면(약 135도) 그림, TURN_45와 같은 요청.",
     "source": null,
     "frames": {
-     "worst": "turn 30-35 (sequence 142-147)"
+     "worst": "turn 31-36 (sequence 142-147)"
     },
     "evidence": [
      "asset-source/v09_QA/evidence/switch_turn.jpg"

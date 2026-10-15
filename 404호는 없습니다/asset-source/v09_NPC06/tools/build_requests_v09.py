@@ -56,7 +56,7 @@ reqs = [
     {'id': 'NPC06-TURN_REAR_STRAP', 'view': 'turn (rear picture)', 'priority': 'P3', 'status': 'OPEN', 'v06_request': False, 'new_in': 'v09 review', 'part_of': 'NPC06/walk/TURN_45',
      'what_code_did': 'v09r: 끈 꼭짓점을 그림 어깨에 얹음. 회전 142~151의 끈 고리 안 배경 %d px(가장 큰 프레임 %d px), v06 %d px(가장 큰 프레임 %d px)' % (HV['px'], HV['max_px'], HD['px'], HD['max_px']),
      'still_wrong': '몸 방향 136~158도에서 후면 그림을 쓰는데 왼팔이 몸 뒤로 가 있어, 끈이 빈 몸통 옆선 옆에 걸림.',
-     'frames': {'worst': 'turn 30-35 (sequence 142-147)'}, 'reference_px': shoulders([142, 144, 146]),
+     'frames': {'worst': 'turn 31-36 (sequence 142-147)'}, 'reference_px': shoulders([142, 144, 146]),
      'required_art': '몸통·팔·가방의 3/4 후면(약 135도) 그림, TURN_45와 같은 요청.', 'evidence': ['asset-source/v09_QA/evidence/switch_turn.jpg']},
 ]
 out = {'npc': 'NPC06', 'made': '2026-10-15', 'after': 'v09 (producer) and v09r (this repository) review, asset-source/v09_QA/review_v09.json', 'closed': [], 'note': '통과한 요청이 없어 닫은 요청 없음. 좌표는 720x1280 렌더 픽셀.', 'requests': reqs}
