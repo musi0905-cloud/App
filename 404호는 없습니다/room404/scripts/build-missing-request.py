@@ -50,6 +50,8 @@ def main():
     # art that was delivered against a request and tested (NPC06 v07, 2026-10-14): the request stays open unless the review resolves it
     r7p = os.path.join(AS, 'v07_QA', 'review_summary_v07.json'); r7 = J(r7p) if os.path.exists(r7p) else None
     tried = {q['id']: q for q in (r7 or {}).get('requests', [])}
+    r9p = os.path.join(AS, 'v09_QA', 'review_v09.json'); r9 = J(r9p) if os.path.exists(r9p) else None
+    q9p = os.path.join(AS, 'v09_QA', 'art_revision_requests_v09.json'); q9 = J(q9p) if os.path.exists(q9p) else None
     for (npc, iss), qs in sorted(by.items()):
         spec = {k: v for k, v in qs[0]['art_spec'].items() if k not in ('view', 'character')}; spec['views'] = sorted({q['view'] for q in qs})
         rows.append(row(f'{npc}/walk/{iss}', npc, '2026', 'new_art', qs[0]['priority'], f"v06 재렌더 후에도 남음: {qs[0]['still_wrong']}",
@@ -58,6 +60,17 @@ def main():
         if att:
             rows[-1]['latest_attempt'] = {'art': 'v07b (asset-source/v07_NPC06/source)', 'review': 'asset-source/v07_QA/review_summary_v07.json', 'requests': {a['id']: a['status'] for a in att},
                                           'revision_requests': 'asset-source/v07_QA/art_revision_requests_v07.json'}
+        # NPC06 v09 (producer, code only) and v09r (this repository): the request stays open unless review_v09.json closes it
+        t9 = {k: v for k, v in (r9 or {}).get('requests', {}).items() if any(q['id'] == k for q in qs)}
+        if t9:
+            if 'latest_attempt' in rows[-1]: rows[-1]['previous_attempts'] = [rows[-1]['latest_attempt']]
+            rows[-1]['latest_attempt'] = {'art': 'v09 / v09r: no new art, the original parts re-mapped in code (asset-source/v09_NPC06)', 'review': 'asset-source/v09_QA/review_v09.json',
+                                          'requests': {k: v['status'] for k, v in t9.items()}, 'revision_requests': 'asset-source/v09_QA/art_revision_requests_v09.json'}
+    # found in the v09 review and not fixable in code (new rows; the leg/torso ones above stay the v06 rows)
+    for q in (q9 or {}).get('requests', []):
+        if q.get('v06_request'): continue
+        rows.append(row(f"NPC06/walk/{q['id'].split('NPC06-')[1]}", 'NPC06', '2026', 'new_art', q['priority'], q['still_wrong'], '걷기 클립(정면·후면 PASS가 되어야 게임에 씀)',
+                        {'required_art': q['required_art'], 'source': q.get('source'), 'frames': q['frames'], 'evidence': q['evidence'], 'request': 'asset-source/v09_QA/art_revision_requests_v09.json'}))
     for npc in sorted({q['npc'] for q in pr['requests']}):
         sug = review['suggestions']['TURN_45']
         rows.append(row(f'{npc}/walk/TURN_45', npc, '2026', 'new_art', sug['priority'], '막지 않음(연결 PASS). ' + sug['note'], '회전 구간을 끊김 없이', {'required_art': sug['required_art']}))

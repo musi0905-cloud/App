@@ -314,8 +314,8 @@
  ],
  "counts": {
   "P1": 9,
-  "P2": 26,
-  "P3": 20
+  "P2": 27,
+  "P3": 21
  },
  "requests": [
   {
@@ -548,14 +548,25 @@
     ]
    },
    "latest_attempt": {
-    "art": "v07b (asset-source/v07_NPC06/source)",
-    "review": "asset-source/v07_QA/review_summary_v07.json",
+    "art": "v09 / v09r: no new art, the original parts re-mapped in code (asset-source/v09_NPC06)",
+    "review": "asset-source/v09_QA/review_v09.json",
     "requests": {
      "NPC06-front-LEG_STRIP": "OPEN",
      "NPC06-rear-LEG_STRIP": "OPEN"
     },
-    "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
-   }
+    "revision_requests": "asset-source/v09_QA/art_revision_requests_v09.json"
+   },
+   "previous_attempts": [
+    {
+     "art": "v07b (asset-source/v07_NPC06/source)",
+     "review": "asset-source/v07_QA/review_summary_v07.json",
+     "requests": {
+      "NPC06-front-LEG_STRIP": "OPEN",
+      "NPC06-rear-LEG_STRIP": "OPEN"
+     },
+     "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
+    }
+   ]
   },
   {
    "assetId": "NPC06/walk/TORSO_STATIC",
@@ -582,14 +593,25 @@
     ]
    },
    "latest_attempt": {
-    "art": "v07b (asset-source/v07_NPC06/source)",
-    "review": "asset-source/v07_QA/review_summary_v07.json",
+    "art": "v09 / v09r: no new art, the original parts re-mapped in code (asset-source/v09_NPC06)",
+    "review": "asset-source/v09_QA/review_v09.json",
     "requests": {
      "NPC06-front-TORSO_STATIC": "OPEN",
      "NPC06-rear-TORSO_STATIC": "OPEN"
     },
-    "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
-   }
+    "revision_requests": "asset-source/v09_QA/art_revision_requests_v09.json"
+   },
+   "previous_attempts": [
+    {
+     "art": "v07b (asset-source/v07_NPC06/source)",
+     "review": "asset-source/v07_QA/review_summary_v07.json",
+     "requests": {
+      "NPC06-front-TORSO_STATIC": "OPEN",
+      "NPC06-rear-TORSO_STATIC": "OPEN"
+     },
+     "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
+    }
+   ]
   },
   {
    "assetId": "NPC07/walk/LEG_STRIP",
@@ -818,6 +840,135 @@
     "reference": [
      "v06_QA/<NPC>/torso_lines_v05_v06.jpg"
     ]
+   }
+  },
+  {
+   "assetId": "NPC06/walk/SLEEVE_FABRIC",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P2",
+   "blockingReason": "소매가 가디건 몸판보다 밝고 굵은 니트이고, 팔 위쪽 40% 동안 폭 92px(칸 100px)로 일정해 몸통 옆에 따로 부푼 옷처럼 보임. 소매와 가디건이 만나는 솔기가 맞지 않음.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀)",
+   "spec": {
+    "required_art": "가디건과 같은 색·니트(같은 조명)의 소매, 어깨 솔기에서 아래로 좁아지는 위팔(일정 폭으로 부풀지 않게), 기준 좌표의 가디건 어깨 솔기 아래에 들어가는 소매 윗끝. NPC06_continuous_arms_v03.png와 같은 칸 배치·크기라 렌더러가 그대로 붙일 수 있게.",
+    "source": {
+     "arms": "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png (1536x1024)",
+     "cells_xywh": {
+      "front": {
+       "L": [
+        283,
+        9,
+        100,
+        495
+       ],
+       "R": [
+        284,
+        518,
+        108,
+        493
+       ]
+      },
+      "rear": {
+       "L": [
+        1150,
+        9,
+        102,
+        497
+       ],
+       "R": [
+        1156,
+        516,
+        100,
+        497
+       ]
+      }
+     },
+     "sleeve_width_px_at_10_25_40_60pct": {
+      "front": {
+       "L": [
+        92,
+        91,
+        86,
+        74
+       ],
+       "R": [
+        93,
+        92,
+        83,
+        71
+       ]
+      },
+      "rear": {
+       "L": [
+        92,
+        92,
+        92,
+        76
+       ],
+       "R": [
+        94,
+        92,
+        94,
+        77
+       ]
+      }
+     },
+     "torso_for_colour_and_knit": {
+      "atlas": "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png (2172x724)",
+      "front": [
+       273,
+       6,
+       162,
+       204
+      ],
+      "rear": [
+       1700,
+       6,
+       157,
+       194
+      ]
+     },
+     "drawn_width_m": 0.1186
+    },
+    "frames": {
+     "front": "enter/settle/idle 0-111 (worst idle 64-111, nearest)",
+     "rear": "start/exit 152-214"
+    },
+    "evidence": [
+     "asset-source/v09_QA/evidence/shoulders_front.jpg",
+     "asset-source/v09_QA/evidence/shoulders_rear.jpg",
+     "asset-source/v09_QA/evidence/qa_viewer_steps.jpg"
+    ],
+    "request": "asset-source/v09_QA/art_revision_requests_v09.json"
+   }
+  },
+  {
+   "assetId": "NPC06/walk/TURN_REAR_STRAP",
+   "entityId": "NPC06",
+   "era": "2026",
+   "expectedFilename": null,
+   "sourceDriveId": null,
+   "sourceUrl": null,
+   "expectedSha256": null,
+   "priority": "P3",
+   "blockingReason": "몸 방향 136~158도에서 후면 그림을 쓰는데 왼팔이 몸 뒤로 가 있어, 끈이 빈 몸통 옆선 옆에 걸림.",
+   "kind": "new_art",
+   "use": "걷기 클립(정면·후면 PASS가 되어야 게임에 씀)",
+   "spec": {
+    "required_art": "몸통·팔·가방의 3/4 후면(약 135도) 그림, TURN_45와 같은 요청.",
+    "source": null,
+    "frames": {
+     "worst": "turn 30-35 (sequence 142-147)"
+    },
+    "evidence": [
+     "asset-source/v09_QA/evidence/switch_turn.jpg"
+    ],
+    "request": "asset-source/v09_QA/art_revision_requests_v09.json"
    }
   },
   {

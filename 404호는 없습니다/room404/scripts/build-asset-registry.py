@@ -197,6 +197,22 @@ def main():
         for f in sorted(x for x in os.listdir(os.path.join(SRC, 'v07_QA', 'NPC06')) if x.endswith('.mp4')):
             add(os.path.join(SRC, 'v07_QA', 'NPC06', f), 'NPC06', '2026', 'review_video', 'asset-source/v07_NPC06/tools/analyze_v07.py', qa=('REFERENCE_ONLY', None),
                 notes='같은 조건의 v06 재렌더와 v07 시험 렌더 비교(또는 v07 겹침 표시) 영상.')
+    # NPC06 v09 / v09r (2026-10-15): no new art, only code and renders of the existing parts. The QA atlases of the producer's
+    # v09 candidate and of this repository's v09r revision, and the comparison videos. Status from review_v09.json; not in the game.
+    r9p = os.path.join(SRC, 'v09_QA', 'review_v09.json'); r9 = J(r9p) if os.path.exists(r9p) else None
+    for rev in ('v09', 'v09r'):
+        d = os.path.join(SRC, 'v09_QA', rev)
+        if not os.path.isdir(d): continue
+        c = (r9 or {}).get('candidates', {}).get(rev, {}); st9 = ', '.join(f"{k} {c[k]['status']}" for k in ('front_legs', 'rear_legs', 'front_torso', 'rear_torso', 'side', 'sequence') if k in c) or None
+        for f in ('atlas.webp', 'atlas.json'):
+            add(os.path.join(d, f), 'NPC06', '2026', 'qa_atlas', f'asset-source/v09_NPC06/render_v06.js --art={rev} -> room404/scripts/import-v06-frames.py --out', selected=['qa_viewer'],
+                qa=('REVISE', f'{rev} frame review: {st9}'), derived='asset-source/v09_NPC06 (입력 asset-source/v05_QA/code/NPC06)',
+                notes=f'NPC06 {rev} 렌더 263장의 QA 아틀라스(원본 배율). 게임 빌드에 넣지 않음.')
+    ev9 = os.path.join(SRC, 'v09_QA', 'evidence')
+    if os.path.isdir(ev9):
+        for f in sorted(x for x in os.listdir(ev9) if x.endswith('.mp4')):
+            add(os.path.join(ev9, f), 'NPC06', '2026', 'review_video', 'asset-source/v09_NPC06/tools/media_v09.py', qa=('REFERENCE_ONLY', None),
+                notes='v06 기본 렌더 · v09 · v09r를 BG02에 나란히 합성한 검토 영상(불투명).')
     for f in ('SOURCE_MANIFEST.json', 'MATCH_REPORT.json', 'SOURCE_IMPORT_RESULT.json'):
         p = os.path.join(SRC, 'v06_sources', f)
         if os.path.exists(p): add(p, None, None, 'delivery_record', 'Drive 1OjyxfqzZS7wWfcNo-ppjmi2dYft7i1xM (2026-10-14)', qa=('RECORD', None), notes='복원 전달 기록(41 source ZIP, 169 파일). 품질 상태를 정하지 않음.')

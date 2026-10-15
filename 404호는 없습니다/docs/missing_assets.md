@@ -45,6 +45,14 @@
 - 표시: 요청 목록의 해당 두 줄에 `latest_attempt`를 달았습니다.
 - 원화 수정 요청: `asset-source/v07_QA/NPC06_v07_원화수정요청.md`(R1 정면 다리, R2 후면 다리, R3 몸통)
 
+**NPC06 v09 / v09r (2026-10-15)**
+
+- 받은 것: 새 그림 없는 v09 보정 코드와 그 렌더 프레임(해시 일치). 이 저장소에서 v09r로 다시 고침
+- 판정: 다리·몸통 정면·후면 모두 REVISE, 측면·연결·배경 합성 PASS
+- 요청: LEG_STRIP·TORSO_STATIC 4건은 **OPEN 그대로**. 두 줄의 `latest_attempt`를 v09/v09r로 바꾸고 v07 시도는 `previous_attempts`로 옮김
+- 새 요청 2줄: `NPC06/walk/SLEEVE_FABRIC`(P2, 소매가 가디건과 다른 밝은 굵은 니트·위팔 일정 폭), `NPC06/walk/TURN_REAR_STRAP`(P3, 3/4 후면 그림 — TURN_45의 일부)
+- 원화 수정 요청(원본 크롭·관절 좌표·문제 프레임 포함): `asset-source/v09_QA/NPC06_v09_원화수정요청.md`
+
 ## 3. 배경 수 (v0.18.0)
 
 | 구분 | 수 | 내용 |
