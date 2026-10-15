@@ -1,0 +1,15 @@
+{
+ "note": "Single source of the BG02 camera and walk paths for render_v06.js (v05 had the same numbers twice in render.js: the camera object on line 6 and the world() lambdas on line 50). Design values are 1080-wide; the renderer derives the 720x1280 values exactly as v05 did (F = 1100*720/1080, horizon = 675*720/1080).",
+ "canvas": [720, 1280],
+ "design_width": 1080,
+ "focal_px_design": 1100,
+ "horizon_y_design": 675,
+ "camera_height_m": 1.6,
+ "door_plane_z_m": 3.09,
+ "paths": {
+  "enter": {"origin": [0, 2.92], "heading_deg": 0, "note": "front view, walking toward the camera from just inside the door plane (v05 front start_z)"},
+  "pass": {"origin": [0.52, 2.35], "heading_deg": 90, "note": "side view, walking toward screen left (v05 side start_x, z)"},
+  "exit_v05": {"origin": [0, 1.8], "heading_deg": 180, "note": "v05 rear start_z. Only for --mode v05; v06 derives the exit origin from the stand point after the turn (render_v06.js exitOrigin)"}
+ }
+}
+

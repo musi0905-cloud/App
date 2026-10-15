@@ -1,0 +1,346 @@
+{
+ "package": {
+  "drive_folder_id": "1ewKtr9Fl-yQMSY9Tx4OAW8QQ10H7pLTH",
+  "drive_folder": "NPC06_v09_원본텍스처_보정시험_20261015",
+  "received": "2026-10-15",
+  "status_from_producer": "REVISE (engine_applied false)"
+ },
+ "documents": [
+  {
+   "file": "CLAUDE_CODE_PROMPT_v09.txt",
+   "bytes": 5467,
+   "sha256": "7719b81e8a58a4c0ef3a6243fcfed91858309a6781f27112eb48fe91c06446e3",
+   "matches_SHA256SUMS": true
+  },
+  {
+   "file": "QA_REPORT_v09.md",
+   "bytes": 4378,
+   "sha256": "0c8fc39b51bc938133b607dc34fa52ea9884a6e22436ed8778255ae680f8b639",
+   "matches_SHA256SUMS": true
+  },
+  {
+   "file": "manifest_v09.json",
+   "bytes": 46985,
+   "sha256": "846b1a79179ff488585b51687fd22090b30c1fc678d48a5e1c9ca85eaca967b0",
+   "matches_SHA256SUMS": true
+  },
+  {
+   "file": "source_lock.json",
+   "bytes": 788,
+   "sha256": "7398e7a5cde334ea712510421d46b7607f91b71be974037ea7e35a41d84f58fc",
+   "matches_SHA256SUMS": true
+  },
+  {
+   "file": "verification_v09.json",
+   "bytes": 1544,
+   "sha256": "10b6ae044d5eb712e948de1e92ca011cbd5fb9408bcbfb5cd6069c3889fb2a9f",
+   "matches_SHA256SUMS": true
+  },
+  {
+   "file": "SHA256SUMS.txt",
+   "bytes": 2163,
+   "sha256": "fc8a6da0fe1ea2f5dce4479485911f88b499681e8c50c11f7fe34e1440361562",
+   "matches_SHA256SUMS": null
+  }
+ ],
+ "code_zip": {
+  "file": "NPC06_v09_code.zip",
+  "bytes": 40547,
+  "sha256": "b1b6e5c177a4a783d96a5cbb0ad25b590047eeeb5862fd11cc62b2304e11c4f5",
+  "matches": true,
+  "extracted_to": "asset-source/v09_NPC06 (code/asset-source/v09_NPC06 of the ZIP, new folder; nothing overwritten)"
+ },
+ "frame_zips": [
+  {
+   "file": "NPC06_v09_frames_01.zip",
+   "drive_id": "1fJomakH_5Hf4R_-pPINzTQA4hXiFzvxL",
+   "bytes": 1885072,
+   "sha256": "fdcd8db1a13d09e2cd41c57cac05176108a0a276e839a8147d06c7996d85c370",
+   "members": 22,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_02.zip",
+   "drive_id": "1UIdN7lbuYl-1HE3Z90zrdQ3pAeoK44gp",
+   "bytes": 2136162,
+   "sha256": "476b1f35fb2a555399868369715a7bc3c470f5a3471d20030ee4840d4055c27a",
+   "members": 24,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_03.zip",
+   "drive_id": "1FMWsbvow05vc9eUed2qUoCpeRCFBT8BP",
+   "bytes": 2131912,
+   "sha256": "e517edf8e2d086a1603f058ade74c36553b171c23acdf53ca4048432150b5d9b",
+   "members": 25,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_04.zip",
+   "drive_id": "1aJMS7W5qaQHdsDdCQ186i575yV_Lwsbs",
+   "bytes": 2104089,
+   "sha256": "d4f7fdd40f3ebd526987f9960a1fa20a835e2ba53c0cc6d3a9c97f598cc87fdc",
+   "members": 21,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_05.zip",
+   "drive_id": "1jgfbqPAjJlyp-e_U-QsBGbpzAj7Sg8gp",
+   "bytes": 2123044,
+   "sha256": "f246c551fd46d9bd269e06887333c1efcfb044b27c122075b55113ee5d1531bf",
+   "members": 18,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_06.zip",
+   "drive_id": "15bPKjvlXVRs0WiRXXgLJlop1GR8yyHJJ",
+   "bytes": 2130454,
+   "sha256": "dc76f9582d0dd1a83fc9b8cd8e25acde7883978fba7fca9a59bfdf83b529ed51",
+   "members": 17,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_07.zip",
+   "drive_id": "18s5dtJehu-iGmQgFQmT-V37z_DBB9Cr-",
+   "bytes": 2129575,
+   "sha256": "7e60a705a861fdaf9f8f0448dafe8b064626a826b4ec5897c6e0207e36c233ab",
+   "members": 17,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_08.zip",
+   "drive_id": "1FK_ch25lwfuXRjzt7Yc8LjuKh3wjLUg_",
+   "bytes": 2128688,
+   "sha256": "1146c0192e3c6dbd107b4a11897ea8a595df6216f94ab0eca5d20153196b04b7",
+   "members": 17,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_09.zip",
+   "drive_id": "1DY_YOmq9MEGLHrlqiqMgnA6C5EcnoD5s",
+   "bytes": 2112633,
+   "sha256": "efefbc9b75d4cdc92eb787410ecdfc6ab2818cf4165a293a1043c0c2f3900829",
+   "members": 20,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_10.zip",
+   "drive_id": "1IiUClA8Pp5-v_R0EhCnFzVa8-0PMK-Se",
+   "bytes": 2134103,
+   "sha256": "c106709b024fb44833df7b46983ac7373171b9aad154f04f1a8e5fcb0397da00",
+   "members": 20,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_11.zip",
+   "drive_id": "1HNaDKXpYsaFkymkQylWrgZdEDayzXh7x",
+   "bytes": 2069643,
+   "sha256": "8c36aa28dcb016d9ffcb6b19ce794dd5eb931e187c7d586e95cd52d85f3d730a",
+   "members": 18,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_12.zip",
+   "drive_id": "1XTc7ezAxo56kYg1N5G9l2mPBUqC-mGgh",
+   "bytes": 2095405,
+   "sha256": "c7ca0e168d8076b7b764db869434310ca5e7b2db41cff05d052c8ac8947c5a0e",
+   "members": 21,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  },
+  {
+   "file": "NPC06_v09_frames_13.zip",
+   "drive_id": "1ONU6ECsVrQ1mZ67SPk8pTLXEpTT6Th6Y",
+   "bytes": 1991946,
+   "sha256": "6342d494c9c3f1cae7792dca527825fac607766e34bd340e1dca9ae0dcb948c9",
+   "members": 24,
+   "size_and_sha_match_manifest_and_SHA256SUMS": true
+  }
+ ],
+ "frame_extraction": {
+  "files": 264,
+  "png": 263,
+  "frames_json": 1,
+  "zip_slip_or_absolute_paths": 0,
+  "duplicate_names_across_archives": 0,
+  "member_hash_mismatch": 0,
+  "kept_in_repo": false,
+  "why": "the 263 PNG are rebuilt byte for byte by render_v06.js --art=v09 (see reproduction); only their QA atlas is kept"
+ },
+ "review_video": {
+  "file": "NPC06_BG02_review_v09.mp4",
+  "drive_id": "1wbL4KSPRYAigLeyUwIPxtj8auiawiVoS",
+  "bytes": 317158,
+  "sha256": "e5e1cb5ef805a5a5a049f4b2bc0c2fb6c606405ab345ca04680e30f058c1c263",
+  "matches_SHA256SUMS": true,
+  "kept_in_repo": false,
+  "why": "producer review; the comparison videos here are made from this repository renders (asset-source/v09_QA/evidence)"
+ },
+ "not_downloaded": [
+  {
+   "file": "NPC06_BG02_comparison_v09.jpg",
+   "sha256_listed": "cc4aafef985e42fba2c6f0f24b839d634d26e465f7a1c1eb58eca4b835af1b91",
+   "why": "producer comparison stills; this QA makes its own from the reproduced frames"
+  },
+  {
+   "file": "NPC06_front_comparison_v09.jpg",
+   "sha256_listed": "26e68feced0fc776f94520230ed75041d6ac986f40f83ba7ce4c994eb2bff62f",
+   "why": "producer comparison stills; this QA makes its own from the reproduced frames"
+  },
+  {
+   "file": "NPC06_rear_comparison_v09.jpg",
+   "sha256_listed": "7636a0d6e2f74b3559877cbb9cb6504fec05996e547fbb4b60105f64f70d06bb",
+   "why": "producer comparison stills; this QA makes its own from the reproduced frames"
+  },
+  {
+   "file": "NPC06_turn_comparison_v09.jpg",
+   "sha256_listed": "408d02b87cb2f7a1248c6996db7fc21f8b07db399d355531d19d32439acfbf54",
+   "why": "producer comparison stills; this QA makes its own from the reproduced frames"
+  }
+ ],
+ "source_lock": [
+  {
+   "path": "asset-source/v06_render/render_v06.js",
+   "lock_sha256": "2c4b55bb8e44b396b47f1dcacb513993b29be101cf340321fe21be004d0862a0",
+   "repo_path": "asset-source/v06_render/render_v06.js",
+   "repo_sha256": "3957eacabb84ff8febbd6626fab97f7a8d4efc8f542e55ee3e2bbe43cd910c6b",
+   "equal": false,
+   "difference": "repo file + one trailing LF = locked bytes (content identical apart from the final newline)"
+  },
+  {
+   "path": "asset-source/v05_QA/code/NPC06/config.json",
+   "lock_sha256": "297dbef056dd56b1a8e10d053095a7e678bb5d0d7af9dcbddc567084aa15807a",
+   "repo_path": "asset-source/v05_QA/code/NPC06/config.json",
+   "repo_sha256": "297dbef056dd56b1a8e10d053095a7e678bb5d0d7af9dcbddc567084aa15807a",
+   "equal": true
+  },
+  {
+   "path": "asset-source/v05_QA/code/NPC06/walk_rig_elder_v04.json",
+   "lock_sha256": "d6b0bb45831c2cbc50345b926ea27ee2884b99a3f631e950d27a150c303128b6",
+   "repo_path": "asset-source/v05_QA/code/NPC06/walk_rig_elder_v04.json",
+   "repo_sha256": "cc5be7619c45ae5b141bbc493ea8ee14590fd587f4a42f6c34bba95e67fa31d9",
+   "equal": false,
+   "difference": "repo file + one trailing LF = locked bytes (content identical apart from the final newline)"
+  },
+  {
+   "path": "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png",
+   "lock_sha256": "35f72d1c7eb336689a87be144c9c49b89912adc5d4ddd4131b9cd6af24c2d0e4",
+   "repo_path": "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png",
+   "repo_sha256": "35f72d1c7eb336689a87be144c9c49b89912adc5d4ddd4131b9cd6af24c2d0e4",
+   "equal": true
+  },
+  {
+   "path": "asset-source/v05_QA/code/NPC06/assets/BG02_shared_entrance_night_v01.webp",
+   "lock_sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "repo_path": "asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp",
+   "repo_sha256": "8ba3bbf5dd1fb32d60a4599990a7a288edc17230f7c0f90fd00f9685dc293a6c",
+   "equal": true,
+   "difference": "not under v05_QA/code/NPC06/assets: the repo keeps the single BG02 copy at asset-source/02_배경/game (same bytes)"
+  },
+  {
+   "path": "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "lock_sha256": "056f97b4915a987c0843346b66537609281bcaf293d736f106f070c1481a4b3c",
+   "repo_path": "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png",
+   "repo_sha256": "056f97b4915a987c0843346b66537609281bcaf293d736f106f070c1481a4b3c",
+   "equal": true
+  }
+ ],
+ "code": [
+  {
+   "file": "camera_v06.json",
+   "delivered_sha256": "9bc643b7b5fa29683d94414adaf931900eb77a222a055ea1ca678cd81ef96b43",
+   "now_sha256": "9bc643b7b5fa29683d94414adaf931900eb77a222a055ea1ca678cd81ef96b43",
+   "unchanged": true
+  },
+  {
+   "file": "configs/NPC06.json",
+   "delivered_sha256": "317410cb87c1aa7e1aa36a93c2d1014645589289920437e623ca0be29d9d96a4",
+   "now_sha256": "317410cb87c1aa7e1aa36a93c2d1014645589289920437e623ca0be29d9d96a4",
+   "unchanged": true
+  },
+  {
+   "file": "configs/default.json",
+   "delivered_sha256": "615b6d6f528dd2b64bdc092cc3059e5f9b409c15dc9d912ab72613471868264c",
+   "now_sha256": "615b6d6f528dd2b64bdc092cc3059e5f9b409c15dc9d912ab72613471868264c",
+   "unchanged": true
+  },
+  {
+   "file": "material_v09.js",
+   "delivered_sha256": "4b961ef5e9b056e762dee96fdce7b8938fa3d4f7fb1516643c8f7d77c42337b0",
+   "now_sha256": "4b961ef5e9b056e762dee96fdce7b8938fa3d4f7fb1516643c8f7d77c42337b0",
+   "unchanged": true
+  },
+  {
+   "file": "package-lock.json",
+   "delivered_sha256": "91c80927e89da73dcca9dafa749214da2e0ecb8bdda08a909ddc145162189ebe",
+   "now_sha256": "91c80927e89da73dcca9dafa749214da2e0ecb8bdda08a909ddc145162189ebe",
+   "unchanged": true
+  },
+  {
+   "file": "package.json",
+   "delivered_sha256": "13851cf1d981e18e7473f92d5b43c9b4b9d862ce622bb7162a8fde5f3bb22c59",
+   "now_sha256": "13851cf1d981e18e7473f92d5b43c9b4b9d862ce622bb7162a8fde5f3bb22c59",
+   "unchanged": true
+  },
+  {
+   "file": "render_source.js",
+   "delivered_sha256": "2c4b55bb8e44b396b47f1dcacb513993b29be101cf340321fe21be004d0862a0",
+   "now_sha256": "2c4b55bb8e44b396b47f1dcacb513993b29be101cf340321fe21be004d0862a0",
+   "unchanged": true
+  },
+  {
+   "file": "render_v06.js",
+   "delivered_sha256": "11ca086b8eb395c171f3fb8573ed1f17f353f18c320b93ae725e88d4eb783a18",
+   "now_sha256": "7cf03dd4a1e71daba2d48a50637c6e03b29d33ba51058a9a00efcc25c07cdf67",
+   "unchanged": false
+  },
+  {
+   "file": "verify_v09.py",
+   "delivered_sha256": "4bc73b50d1e2ac4bc6096d08ccae2ff2b56578b75b9603fff39da3f4998d62ce",
+   "now_sha256": "4bc73b50d1e2ac4bc6096d08ccae2ff2b56578b75b9603fff39da3f4998d62ce",
+   "unchanged": true
+  }
+ ],
+ "dependencies": {
+  "command": "npm ci --prefix asset-source/v09_NPC06",
+  "result": "added 3 packages (@napi-rs/canvas 0.1.100 + its linux-x64 gnu/musl binaries), 0 vulnerabilities",
+  "node": "v22.22.2",
+  "npm": "10.9.7",
+  "canvas": "0.1.100",
+  "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39"
+ },
+ "reproduction": {
+  "run": "2026-10-15, this checkout, from the project root (asset-source/v09_QA/* are git-ignored renders)",
+  "commands": [
+   "npm ci --prefix asset-source/v09_NPC06",
+   "node --expose-gc asset-source/v09_NPC06/render_source.js NPC06 asset-source/v09_QA/reference",
+   "node --expose-gc asset-source/v09_NPC06/render_v06.js NPC06 asset-source/v09_QA/default",
+   "node --expose-gc asset-source/v09_NPC06/render_v06.js NPC06 asset-source/v09_QA/candidate --art=v09",
+   "python asset-source/v09_NPC06/verify_v09.py asset-source/v09_QA/reference asset-source/v09_QA/default asset-source/v09_QA/candidate"
+  ],
+  "verify_v09_py": "PASS technical regression only: default 263/263, side 48/48, geometry 263/263. Visual QA remains REVISE.",
+  "candidate_vs_drive_frames": "263/263 PNG byte-identical, frames.json byte-identical (the 13 frame ZIPs)",
+  "reference_vs_repo_v06_atlas": "263/263 PNG hashes equal to asset-source/v06_QA/NPC06/atlas.json sha256 (the v06 QA atlas is this exact render)",
+  "render_twice": "v09r rendered twice: 263/263 byte-identical (deterministic)"
+ },
+ "changes_after_import": [
+  {
+   "file": "render_v06.js",
+   "delivered_sha256": "11ca086b8eb395c171f3fb8573ed1f17f353f18c320b93ae725e88d4eb783a18",
+   "now_sha256": "7cf03dd4a1e71daba2d48a50637c6e03b29d33ba51058a9a00efcc25c07cdf67",
+   "what": "added --art=v09r (NPC06 front/rear only, material_v09r.js) and hipTurn(); nothing on the default or --art=v09 paths changed",
+   "proof": "after the change: default 263/263 + frames.json byte-identical to the earlier default render, --art=v09 263/263 + frames.json byte-identical to the Drive frames, verify_v09.py PASS"
+  },
+  {
+   "file": "material_v09r.js",
+   "what": "new (v09r material)"
+  },
+  {
+   "file": "tools/",
+   "what": "new: analyze_v09.py, media_v09.py, fold_position.py, viewer_capture.mjs, build_review_v09.py, build_requests_v09.py"
+  },
+  {
+   "file": ".gitignore",
+   "what": "node_modules, out/, __pycache__/"
+  }
+ ]
+}

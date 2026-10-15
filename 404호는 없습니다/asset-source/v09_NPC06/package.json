@@ -1,0 +1,8 @@
+{
+ "name": "room404-walk-render-v06",
+ "private": true,
+ "description": "v06 walk renderer for NPC02-NPC10 (render_v06.js). Inputs: ../v05_QA/code/<NPC>/ and ../02_배경/game/BG02. Outputs go to out/ (not committed; regenerate).",
+ "scripts": {"render": "node render_v06.js"},
+ "dependencies": {"@napi-rs/canvas": "0.1.100"}
+}
+

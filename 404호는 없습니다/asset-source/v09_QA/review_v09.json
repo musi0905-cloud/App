@@ -1,0 +1,386 @@
+{
+ "npc": "NPC06",
+ "reviewed": "2026-10-15",
+ "reviewer": "Claude Code (이 저장소의 재렌더 실프레임)",
+ "rule": "a part is PASS only with no open issue; equal joint\ncoordinates never make a picture PASS; format and reproduction checks are recorded separately.",
+ "reproduction": {
+  "drive_frames_vs_this_repo_v09": "263/263 PNG + frames.json byte-identical",
+  "verify_v09_py": "PASS (default 263/263 = reference, side 48/48, geometry 263/263)",
+  "npm_ci": "added 3 packages (@napi-rs/canvas 0.1.100 + its linux-x64 gnu/musl binaries), 0 vulnerabilities",
+  "node": "v22.22.2",
+  "canvas": "0.1.100"
+ },
+ "viewer_playback": {
+  "v06_24": {
+   "ms": 8855,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 24.2
+  },
+  "v06_12": {
+   "ms": 17898,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 12
+  },
+  "v09_24": {
+   "ms": 8871,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 24.1
+  },
+  "v09_12": {
+   "ms": 17881,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 12
+  },
+  "v09r_24": {
+   "ms": 8877,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 24.1
+  },
+  "v09r_12": {
+   "ms": 17907,
+   "last": 214,
+   "monotonic": true,
+   "fps_measured": 12
+  }
+ },
+ "viewer_errors": [],
+ "game_applied": false,
+ "game_rule": "NPC06 걷기는 정면·후면·연결이 모두 PASS일 때만 게임에 씀(stage.js clipUsable). 이번에도 켜지 않음.",
+ "candidates": {
+  "v09": {
+   "status": "REVISE",
+   "what": "제작 측 v09: render_v06.js --art=v09 (material_v09.js). 이 저장소에서 다시 렌더한 263장이 Drive 전달본과 같음.",
+   "front_legs": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "V09_KNEE_LINE",
+     "V09_FOLD_ABOVE_KNEE"
+    ],
+    "numbers": {
+     "neck_median_p95": [
+      0.998,
+      1.006
+     ],
+     "step_px_median_p95": [
+      2.0,
+      3.0
+     ],
+     "seam_ratio_median_p95": [
+      2.39,
+      5.655
+     ],
+     "rim_band_median": 4.75,
+     "baseline_v06": {
+      "neck": [
+       0.853,
+       0.955
+      ],
+      "step_px": [
+       5.0,
+       6.0
+      ],
+      "seam_ratio": [
+       1.455,
+       2.318
+      ]
+     }
+    },
+    "fold": "주름 중심 -8.4~-5.6px(중앙 -7.3), 어둡게 -5.88 luma",
+    "note": "무릎 폭 단차는 사라졌지만(목조임 0.998) 허벅지·정강이 조각의 둥근 끝 행을 가로로 늘려 무릎에 가로선이 생김(이음선 비율 p95 5.66, v06 2.32; 30-37 L이 최악). 바지색 ΔE 0.66, 직조 0.926배."
+   },
+   "rear_legs": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP",
+     "V09_FOLD_ABOVE_KNEE"
+    ],
+    "numbers": {
+     "neck_median_p95": [
+      0.972,
+      0.988
+     ],
+     "step_px_median_p95": [
+      2.0,
+      3.0
+     ],
+     "seam_ratio_median_p95": [
+      0.915,
+      1.671
+     ],
+     "rim_band_median": 4.07,
+     "baseline_v06": {
+      "neck": [
+       0.875,
+       0.922
+      ],
+      "step_px": [
+       6.0,
+       7.1
+      ],
+      "seam_ratio": [
+       1.12,
+       1.434
+      ]
+     }
+    },
+    "fold": "주름 중심 -6.0~-2.9px(중앙 -4.7), 어둡게 -5.72 luma"
+   },
+   "front_torso": {
+    "status": "REVISE",
+    "issues": [
+     "TORSO_STATIC",
+     "V09_YAW_REVERSED",
+     "WHOLE_TILT",
+     "STRAP_FLOAT",
+     "SLEEVE_ABOVE_SHOULDER",
+     "SLEEVE_FABRIC"
+    ],
+    "note": "몸통 UV 이동이 2px 안팎이고 어깨가 앞으로 나오는 쪽으로 움직임(실제 회전의 반대). 그림 전체를 어깨선 각도로 기울임. 가방끈 꼭짓점이 리그 어깨점에 붙어 그림 어깨보다 10~15px 위·바깥에 떠 끈과 팔 사이로 배경이 보임: enter/front 48/48프레임 7696px(최대 256), idle/front 48/48프레임 11367px(최대 245)"
+   },
+   "rear_torso": {
+    "status": "REVISE",
+    "issues": [
+     "TORSO_STATIC",
+     "V09_YAW_REVERSED",
+     "WHOLE_TILT",
+     "STRAP_FLOAT",
+     "SLEEVE_ABOVE_SHOULDER",
+     "SLEEVE_FABRIC"
+    ],
+    "note": "끈이 어깨 위에 뜸: start/rear 15/15프레임 904px(최대 63), exit/rear 48/48프레임 2148px(최대 63), turn/rear 10/10프레임 2555px(최대 1121)"
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "why": "side pass 48/48 PNG byte-identical to v06 (verify_v09.py) and turn side frames unchanged; v06 side PASS stands",
+    "numbers": {
+     "alternates": true,
+     "planted_slide_px_max": 1.11,
+     "shadow_under_shoe": {
+      "frames": 69,
+      "inside": 59
+     }
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "why": "joint paths, feet and shadows identical to v06 in all 263 frames (verify_v09.py geometry); resting feet do not slide (0.0 mm in every synthesised segment); the view switches change shape no more than v06",
+    "numbers": {
+     "resting_slide_mm_max": 0.0,
+     "enter_end_to_exit_start_m": 0.0607
+    }
+   },
+   "bg_composite": {
+    "status": "PASS",
+    "issues": [],
+    "why": "same BG02 camera and contact shadows as v06: sole vs rig floor line front -1.16 / rear -1.52 px, shadow under the planted shoe front 67/69, rear 67/69; figure not relit (same as v06)"
+   },
+   "view_switches": {
+    "122": {
+     "figure_iou": 0.739,
+     "head_width_change": -0.015,
+     "box_height_change": -0.006
+    },
+    "142": {
+     "figure_iou": 0.727,
+     "head_width_change": 0.0,
+     "box_height_change": -0.011
+    }
+   }
+  },
+  "v09r": {
+   "status": "REVISE",
+   "what": "v09를 이 저장소에서 다시 고친 것: render_v06.js --art=v09r (material_v09r.js). 둥근 끝 없는 무릎 텍스처, 무릎 위치 주름, 골반→어깨 비틀림과 올바른 방향의 원통 yaw, 소매 윗끝과 가방끈을 그림 어깨에 맞춤.",
+   "front_legs": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP"
+    ],
+    "fixed": [
+     "V09_KNEE_LINE",
+     "V09_FOLD_ABOVE_KNEE",
+     "knee notch"
+    ],
+    "numbers": {
+     "neck_median_p95": [
+      0.982,
+      1.001
+     ],
+     "step_px_median_p95": [
+      1.0,
+      2.0
+     ],
+     "seam_ratio_median_p95": [
+      2.19,
+      4.218
+     ],
+     "rim_band_median": 3.09,
+     "baseline_v06": {
+      "neck": [
+       0.853,
+       0.955
+      ],
+      "step_px": [
+       5.0,
+       6.0
+      ],
+      "seam_ratio": [
+       1.455,
+       2.318
+      ]
+     }
+    },
+    "fold": "주름 중심 -4.2~-1.8px(중앙 -2.9), 어둡게 -2.18 luma",
+    "note": "단차·가로선 없음, 주름은 투영 무릎 바로 위(무릎뼈 위 접힘). 남은 것: 발뒤꿈치 착지(정면 40-47)에서 무릎 모양·겹침이 없는 곧은 관 — 원화가 필요(v06 LEG_STRIP 그대로). 바지색 ΔE 0.084, 직조 1.006배."
+   },
+   "rear_legs": {
+    "status": "REVISE",
+    "issues": [
+     "LEG_STRIP"
+    ],
+    "fixed": [
+     "V09_FOLD_ABOVE_KNEE",
+     "knee notch"
+    ],
+    "numbers": {
+     "neck_median_p95": [
+      0.971,
+      1.0
+     ],
+     "step_px_median_p95": [
+      1.0,
+      2.0
+     ],
+     "seam_ratio_median_p95": [
+      1.28,
+      2.001
+     ],
+     "rim_band_median": 3.235,
+     "baseline_v06": {
+      "neck": [
+       0.875,
+       0.922
+      ],
+      "step_px": [
+       6.0,
+       7.1
+      ],
+      "seam_ratio": [
+       1.12,
+       1.434
+      ]
+     }
+    },
+    "fold": "주름 중심 -0.6~1.6px(중앙 0.3), 어둡게 -2.24 luma",
+    "note": "남은 것: 착지(퇴장 0-8 = 시퀀스 167-175)에서 곧은 관."
+   },
+   "front_torso": {
+    "status": "REVISE",
+    "issues": [
+     "TORSO_STATIC",
+     "SLEEVE_FABRIC"
+    ],
+    "fixed": [
+     "V09_YAW_REVERSED",
+     "WHOLE_TILT",
+     "STRAP_FLOAT",
+     "SLEEVE_ABOVE_SHOULDER"
+    ],
+    "note": "비틀림은 리그 크기(위·아래 반대 이동, 최대 차 5.0px; v09 1.75px)로 보이지만 평면 그림 한 장이라 입체 회전은 아님. 끈 꼭짓점이 가디건 어깨에 얹힘: enter/front 48/48프레임 1238px(최대 63), idle/front 48/48프레임 1653px(최대 38). 소매 직물(밝은 굵은 니트)과 가디건이 다름 — 원화."
+   },
+   "rear_torso": {
+    "status": "REVISE",
+    "issues": [
+     "TORSO_STATIC",
+     "SLEEVE_FABRIC",
+     "TURN_REAR_STRAP"
+    ],
+    "fixed": [
+     "V09_YAW_REVERSED",
+     "WHOLE_TILT",
+     "STRAP_FLOAT",
+     "SLEEVE_ABOVE_SHOULDER"
+    ],
+    "note": "start/rear 0/15프레임 3px(최대 1), exit/rear 1/48프레임 3px(최대 2), turn/rear 6/10프레임 2352px(최대 1195). 회전 142-147(몸 방향 136-158도)에서 왼팔이 몸 뒤로 가려 끈 바깥쪽과 몸통 옆선 사이로 배경 — v06보다 작지만 남음(3/4 후면 원화 필요)."
+   },
+   "side": {
+    "status": "PASS",
+    "issues": [],
+    "why": "side pass 48/48 PNG byte-identical to v06 (verify_v09.py) and turn side frames unchanged; v06 side PASS stands",
+    "numbers": {
+     "alternates": true,
+     "planted_slide_px_max": 1.11,
+     "shadow_under_shoe": {
+      "frames": 69,
+      "inside": 59
+     }
+    }
+   },
+   "sequence": {
+    "status": "PASS",
+    "issues": [],
+    "why": "joint paths, feet and shadows identical to v06 in all 263 frames (verify_v09.py geometry); resting feet do not slide (0.0 mm in every synthesised segment); the view switches change shape no more than v06",
+    "numbers": {
+     "resting_slide_mm_max": 0.0,
+     "enter_end_to_exit_start_m": 0.0607
+    }
+   },
+   "bg_composite": {
+    "status": "PASS",
+    "issues": [],
+    "why": "same BG02 camera and contact shadows as v06: sole vs rig floor line front -1.16 / rear -1.52 px, shadow under the planted shoe front 67/69, rear 67/69; figure not relit (same as v06)"
+   },
+   "view_switches": {
+    "122": {
+     "figure_iou": 0.747,
+     "head_width_change": -0.015,
+     "box_height_change": -0.006
+    },
+    "142": {
+     "figure_iou": 0.73,
+     "head_width_change": 0.0,
+     "box_height_change": -0.011
+    }
+   }
+  }
+ },
+ "requests": {
+  "NPC06-front-LEG_STRIP": {
+   "status": "OPEN",
+   "v09": "REVISE",
+   "v09r": "REVISE (notch, knee line and fold placement fixed in code; knee shape at heel strike needs art)"
+  },
+  "NPC06-rear-LEG_STRIP": {
+   "status": "OPEN",
+   "v09": "REVISE",
+   "v09r": "REVISE (same)"
+  },
+  "NPC06-front-TORSO_STATIC": {
+   "status": "OPEN",
+   "v09": "REVISE",
+   "v09r": "REVISE (twist and yaw at the rig size; still one flat picture)"
+  },
+  "NPC06-rear-TORSO_STATIC": {
+   "status": "OPEN",
+   "v09": "REVISE",
+   "v09r": "REVISE (same)"
+  }
+ },
+ "issues": {
+  "V09_KNEE_LINE": "v09: the thigh piece’s rounded knee end (dark outline) and the shin piece’s rounded top (light rim) are inside the knee cross-fade, and the row stretch widens them across the leg: a horizontal line at the knee",
+  "V09_FOLD_ABOVE_KNEE": "v09: the fold shading sits 3-8 px above the projected knee",
+  "V09_YAW_REVERSED": "v09: torso texture moves ~1-2 px toward the shoulder that comes forward (the turn would move it the other way)",
+  "WHOLE_TILT": "v06/v09: the torso is one picture rotated by the shoulder line about the waist, so its hem tilts against the pelvis piece",
+  "STRAP_FLOAT": "v06/v09: the bag strap apex is pinned to the rig shoulder point, 10-15 px above and outside the painted cardigan shoulder: background between the strap and the shoulder/arm",
+  "SLEEVE_ABOVE_SHOULDER": "v06/v09: the sleeve top starts at the rig shoulder, above the painted shoulder line, so its round cap shows as a puff",
+  "SLEEVE_FABRIC": "art: the sleeves (NPC06_continuous_arms_v03.png) are a lighter, coarser knit than the cardigan body in the parts atlas, constant 92 px wide over the top 40 % of the arm: they read as a separate puffy garment",
+  "TURN_REAR_STRAP": "art/turn: rear picture used at 136-158 deg during the turn while the left arm is hidden behind the body; the strap hangs outside the torso edge (3/4 rear art, see TURN_45)"
+ }
+}

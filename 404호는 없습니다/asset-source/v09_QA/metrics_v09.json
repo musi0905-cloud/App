@@ -1,0 +1,10869 @@
+{
+ "npc": "NPC06",
+ "baseline": "default",
+ "runs": [
+  {
+   "label": "default",
+   "dir": "asset-source/v09_QA/default",
+   "art": "v06",
+   "suite": {
+    "views": {
+     "front": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.16,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.14,
+       "min": 0.0,
+       "max": 1.0
+      },
+      "height_ratio": {
+       "mean": 1.053,
+       "cv": 0.02
+      },
+      "head_width_ratio": {
+       "mean": 0.226,
+       "cv": 0.006
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "rear": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.52,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.11,
+       "min": 0.0,
+       "max": 0.5
+      },
+      "height_ratio": {
+       "mean": 1.001,
+       "cv": 0.016
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.007
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "side": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -2.49,
+       "min": -5.3,
+       "max": -1.3
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.2,
+       "min": 0.0,
+       "max": 1.11
+      },
+      "height_ratio": {
+       "mean": 0.962,
+       "cv": 0.004
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.008
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 59
+      }
+     }
+    },
+    "seams": [
+     {
+      "at": 48,
+      "from": "enter 47 (front)",
+      "to": "settle 1 (front)",
+      "root_px": 0.09,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0015
+     },
+     {
+      "at": 64,
+      "from": "settle 16 (front)",
+      "to": "idle 1 (front)",
+      "root_px": 0.16,
+      "head_rig_px": 0.23,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0005
+     },
+     {
+      "at": 112,
+      "from": "idle 48 (front)",
+      "to": "turn 1 (front)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0
+      },
+      "root_world_m": 0.0
+     },
+     {
+      "at": 122,
+      "from": "turn 10 (front)",
+      "to": "turn 11 (side)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": -1.4,
+      "head_top_px": 1,
+      "head_width_change": -0.015,
+      "lowest_row_px": -2,
+      "box_height_change": -0.006,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.736
+     },
+     {
+      "at": 142,
+      "from": "turn 30 (side)",
+      "to": "turn 31 (rear)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 1.2,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": -6,
+      "box_height_change": -0.011,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.739
+     },
+     {
+      "at": 152,
+      "from": "turn 40 (rear)",
+      "to": "start 1 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     },
+     {
+      "at": 167,
+      "from": "start 15 (rear)",
+      "to": "exit 0 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.05,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     }
+    ],
+    "walk_step_reference": {
+     "enter": {
+      "root_px": {
+       "median": 1.036,
+       "max": 4.148
+      },
+      "head_rig_px": {
+       "median": 0.49,
+       "max": 3.15
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.7
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.02
+      },
+      "lowest_row_px": {
+       "median": 0.0,
+       "max": 13.0
+      }
+     },
+     "exit": {
+      "root_px": {
+       "median": 1.241,
+       "max": 3.114
+      },
+      "head_rig_px": {
+       "median": 0.477,
+       "max": 3.006
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.6
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.019
+      },
+      "lowest_row_px": {
+       "median": 1.0,
+       "max": 10.0
+      }
+     }
+    },
+    "resting_contact_slide": {
+     "enter->settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle->idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle->turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn->start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start->exit": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     }
+    },
+    "knee_band": {
+     "enter_exit": {
+      "legs": 192,
+      "min_alpha": 252,
+      "below_250": 0
+     },
+     "all_segments": {
+      "legs": 430,
+      "min_alpha": 252,
+      "below_250": 0
+     }
+    },
+    "knee": {
+     "stance_flex_max_deg": 24,
+     "flat_frames_over_25": 0
+    },
+    "enter_end_vs_exit_start": {
+     "root_gap_m": 0.0607
+    }
+   },
+   "legs": {
+    "front": {
+     "legs": 244,
+     "merged_skipped": 0,
+     "neck": {
+      "n": 244,
+      "min": 0.538,
+      "median": 0.853,
+      "p95": 0.955,
+      "max": 0.965
+     },
+     "bulge": {
+      "n": 244,
+      "min": 0.978,
+      "median": 1.026,
+      "p95": 1.07,
+      "max": 1.13
+     },
+     "step_px": {
+      "n": 244,
+      "min": 3.0,
+      "median": 5.0,
+      "p95": 6.0,
+      "max": 25.0
+     },
+     "seam_ratio": {
+      "n": 244,
+      "min": 0.37,
+      "median": 1.455,
+      "p95": 2.318,
+      "max": 6.05
+     },
+     "seam_luma": {
+      "n": 244,
+      "min": 1.26,
+      "median": 2.14,
+      "p95": 2.469,
+      "max": 6.59
+     },
+     "fold_offset_px": {
+      "n": 244,
+      "min": -20.5,
+      "median": -8.95,
+      "p95": -6.0,
+      "max": 17.0
+     },
+     "fold_depth_luma": {
+      "n": 244,
+      "min": -0.63,
+      "median": 3.87,
+      "p95": 5.418,
+      "max": 5.55
+     },
+     "rim_band": {
+      "n": 244,
+      "min": 1.92,
+      "median": 3.94,
+      "p95": 4.51,
+      "max": 4.84
+     },
+     "rim_ref": {
+      "n": 244,
+      "min": 1.54,
+      "median": 3.58,
+      "p95": 3.969,
+      "max": 4.41
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 50.0,
+       "shin_w": 45.0,
+       "neck": 0.538,
+       "bulge": 1.122,
+       "step_px": 25.0,
+       "seam_ratio": 1.48,
+       "seam_luma": 2.69,
+       "fold_offset_px": -20.3,
+       "fold_depth_luma": 3.5,
+       "rim_band": 4.26,
+       "rim_ref": 4.12,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 44.5,
+       "neck": 0.637,
+       "bulge": 1.13,
+       "step_px": 21.0,
+       "seam_ratio": 0.37,
+       "seam_luma": 2.09,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.14,
+       "rim_band": 4.24,
+       "rim_ref": 4.0,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 45.0,
+       "neck": 0.741,
+       "bulge": 1.11,
+       "step_px": 16.0,
+       "seam_ratio": 1.32,
+       "seam_luma": 6.59,
+       "fold_offset_px": 16.1,
+       "fold_depth_luma": 1.55,
+       "rim_band": 4.49,
+       "rim_ref": 3.38,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 38.0,
+       "shin_w": 40.0,
+       "neck": 0.844,
+       "bulge": 1.004,
+       "step_px": 6.0,
+       "seam_ratio": 2.15,
+       "seam_luma": 2.6,
+       "fold_offset_px": -5.5,
+       "fold_depth_luma": 5.23,
+       "rim_band": 3.6,
+       "rim_ref": 3.24,
+       "n": 21,
+       "seg": "enter",
+       "i": 21,
+       "side": "L",
+       "flex": 24
+      },
+      {
+       "merged": false,
+       "thigh_w": 39.0,
+       "shin_w": 41.0,
+       "neck": 0.824,
+       "bulge": 0.985,
+       "step_px": 6.0,
+       "seam_ratio": 1.9,
+       "seam_luma": 2.44,
+       "fold_offset_px": -7.8,
+       "fold_depth_luma": 5.13,
+       "rim_band": 3.82,
+       "rim_ref": 3.12,
+       "n": 23,
+       "seg": "enter",
+       "i": 23,
+       "side": "L",
+       "flex": 38.1
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 47.0,
+       "shin_w": 48.0,
+       "neck": 0.842,
+       "bulge": 1.003,
+       "step_px": 6.0,
+       "seam_ratio": 6.05,
+       "seam_luma": 6.56,
+       "fold_offset_px": 6.8,
+       "fold_depth_luma": 4.14,
+       "rim_band": 3.58,
+       "rim_ref": 3.01,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "L",
+       "flex": 5.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 47.0,
+       "shin_w": 49.0,
+       "neck": 0.834,
+       "bulge": 1.001,
+       "step_px": 6.0,
+       "seam_ratio": 2.72,
+       "seam_luma": 2.27,
+       "fold_offset_px": -6.5,
+       "fold_depth_luma": 5.32,
+       "rim_band": 3.76,
+       "rim_ref": 3.59,
+       "n": 114,
+       "seg": "turn",
+       "i": 3,
+       "side": "L",
+       "flex": 9.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 47.0,
+       "shin_w": 49.0,
+       "neck": 0.834,
+       "bulge": 1.001,
+       "step_px": 6.0,
+       "seam_ratio": 2.68,
+       "seam_luma": 2.36,
+       "fold_offset_px": -7.3,
+       "fold_depth_luma": 5.42,
+       "rim_band": 3.82,
+       "rim_ref": 3.79,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "L",
+       "flex": 7.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 39.5,
+       "shin_w": 42.0,
+       "neck": 0.832,
+       "bulge": 1.003,
+       "step_px": 6.0,
+       "seam_ratio": 2.65,
+       "seam_luma": 2.47,
+       "fold_offset_px": -8.2,
+       "fold_depth_luma": 5.12,
+       "rim_band": 3.96,
+       "rim_ref": 3.44,
+       "n": 26,
+       "seg": "enter",
+       "i": 26,
+       "side": "L",
+       "flex": 47.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 49.0,
+       "neck": 0.842,
+       "bulge": 1.002,
+       "step_px": 6.0,
+       "seam_ratio": 2.56,
+       "seam_luma": 2.24,
+       "fold_offset_px": -7.1,
+       "fold_depth_luma": 5.35,
+       "rim_band": 3.92,
+       "rim_ref": 3.52,
+       "n": 59,
+       "seg": "settle",
+       "i": 12,
+       "side": "L",
+       "flex": 15.3
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 50.0,
+       "shin_w": 45.0,
+       "neck": 0.538,
+       "bulge": 1.122,
+       "step_px": 25.0,
+       "seam_ratio": 1.48,
+       "seam_luma": 2.69,
+       "fold_offset_px": -20.3,
+       "fold_depth_luma": 3.5,
+       "rim_band": 4.26,
+       "rim_ref": 4.12,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 44.5,
+       "neck": 0.637,
+       "bulge": 1.13,
+       "step_px": 21.0,
+       "seam_ratio": 0.37,
+       "seam_luma": 2.09,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.14,
+       "rim_band": 4.24,
+       "rim_ref": 4.0,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 45.0,
+       "neck": 0.741,
+       "bulge": 1.11,
+       "step_px": 16.0,
+       "seam_ratio": 1.32,
+       "seam_luma": 6.59,
+       "fold_offset_px": 16.1,
+       "fold_depth_luma": 1.55,
+       "rim_band": 4.49,
+       "rim_ref": 3.38,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 41.0,
+       "shin_w": 44.0,
+       "neck": 0.819,
+       "bulge": 0.98,
+       "step_px": 6.0,
+       "seam_ratio": 1.89,
+       "seam_luma": 2.38,
+       "fold_offset_px": -8.5,
+       "fold_depth_luma": 5.21,
+       "rim_band": 4.3,
+       "rim_ref": 3.11,
+       "n": 31,
+       "seg": "enter",
+       "i": 31,
+       "side": "L",
+       "flex": 56.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 36.5,
+       "shin_w": 39.0,
+       "neck": 0.823,
+       "bulge": 1.0,
+       "step_px": 5.0,
+       "seam_ratio": 1.93,
+       "seam_luma": 2.3,
+       "fold_offset_px": -7.0,
+       "fold_depth_luma": 5.31,
+       "rim_band": 3.47,
+       "rim_ref": 3.1,
+       "n": 7,
+       "seg": "enter",
+       "i": 7,
+       "side": "L",
+       "flex": 24
+      }
+     ]
+    },
+    "rear": {
+     "legs": 146,
+     "merged_skipped": 27,
+     "neck": {
+      "n": 119,
+      "min": 0.435,
+      "median": 0.875,
+      "p95": 0.922,
+      "max": 0.933
+     },
+     "bulge": {
+      "n": 119,
+      "min": 1.002,
+      "median": 1.054,
+      "p95": 1.083,
+      "max": 1.094
+     },
+     "step_px": {
+      "n": 119,
+      "min": 4.0,
+      "median": 6.0,
+      "p95": 7.1,
+      "max": 9.0
+     },
+     "seam_ratio": {
+      "n": 119,
+      "min": 0.16,
+      "median": 1.12,
+      "p95": 1.434,
+      "max": 3.96
+     },
+     "seam_luma": {
+      "n": 119,
+      "min": 2.25,
+      "median": 2.91,
+      "p95": 4.118,
+      "max": 6.67
+     },
+     "fold_offset_px": {
+      "n": 119,
+      "min": -18.7,
+      "median": -11.7,
+      "p95": -7.19,
+      "max": 14.6
+     },
+     "fold_depth_luma": {
+      "n": 119,
+      "min": -2.29,
+      "median": 0.7,
+      "p95": 1.757,
+      "max": 2.01
+     },
+     "rim_band": {
+      "n": 119,
+      "min": 2.48,
+      "median": 3.64,
+      "p95": 4.181,
+      "max": 4.59
+     },
+     "rim_ref": {
+      "n": 119,
+      "min": 1.71,
+      "median": 3.59,
+      "p95": 4.214,
+      "max": 4.82
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 48.5,
+       "shin_w": 46.5,
+       "neck": 0.839,
+       "bulge": 1.074,
+       "step_px": 9.0,
+       "seam_ratio": 0.87,
+       "seam_luma": 2.84,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": -2.1,
+       "rim_band": 4.24,
+       "rim_ref": 3.79,
+       "n": 144,
+       "seg": "turn",
+       "i": 33,
+       "side": "L",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 47.0,
+       "neck": 0.871,
+       "bulge": 1.083,
+       "step_px": 8.0,
+       "seam_ratio": 2.55,
+       "seam_luma": 4.74,
+       "fold_offset_px": 1.8,
+       "fold_depth_luma": -1.46,
+       "rim_band": 4.19,
+       "rim_ref": 1.91,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 46.5,
+       "neck": 0.854,
+       "bulge": 1.094,
+       "step_px": 8.0,
+       "seam_ratio": 2.8,
+       "seam_luma": 6.25,
+       "fold_offset_px": 14.6,
+       "fold_depth_luma": -1.6,
+       "rim_band": 4.59,
+       "rim_ref": 3.23,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 48.5,
+       "shin_w": 46.0,
+       "neck": 0.812,
+       "bulge": 1.086,
+       "step_px": 8.0,
+       "seam_ratio": 1.3,
+       "seam_luma": 2.76,
+       "fold_offset_px": -15.3,
+       "fold_depth_luma": 1.06,
+       "rim_band": 4.05,
+       "rim_ref": 4.28,
+       "n": 145,
+       "seg": "turn",
+       "i": 34,
+       "side": "L",
+       "flex": 30.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 48.0,
+       "shin_w": 46.0,
+       "neck": 0.847,
+       "bulge": 1.086,
+       "step_px": 8.0,
+       "seam_ratio": 1.17,
+       "seam_luma": 2.6,
+       "fold_offset_px": -15.5,
+       "fold_depth_luma": 0.91,
+       "rim_band": 3.95,
+       "rim_ref": 3.55,
+       "n": 146,
+       "seg": "turn",
+       "i": 35,
+       "side": "L",
+       "flex": 31.4
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 46.0,
+       "neck": 0.913,
+       "bulge": 1.065,
+       "step_px": 7.0,
+       "seam_ratio": 3.96,
+       "seam_luma": 6.67,
+       "fold_offset_px": -18.7,
+       "fold_depth_luma": 2.01,
+       "rim_band": 4.15,
+       "rim_ref": 1.71,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 46.5,
+       "neck": 0.854,
+       "bulge": 1.094,
+       "step_px": 8.0,
+       "seam_ratio": 2.8,
+       "seam_luma": 6.25,
+       "fold_offset_px": 14.6,
+       "fold_depth_luma": -1.6,
+       "rim_band": 4.59,
+       "rim_ref": 3.23,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 47.0,
+       "neck": 0.871,
+       "bulge": 1.083,
+       "step_px": 8.0,
+       "seam_ratio": 2.55,
+       "seam_luma": 4.74,
+       "fold_offset_px": 1.8,
+       "fold_depth_luma": -1.46,
+       "rim_band": 4.19,
+       "rim_ref": 1.91,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 46.0,
+       "neck": 0.913,
+       "bulge": 1.065,
+       "step_px": 7.0,
+       "seam_ratio": 2.5,
+       "seam_luma": 6.61,
+       "fold_offset_px": 13.3,
+       "fold_depth_luma": 0.23,
+       "rim_band": 3.9,
+       "rim_ref": 2.87,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 35.0,
+       "shin_w": 36.0,
+       "neck": 0.932,
+       "bulge": 1.059,
+       "step_px": 4.0,
+       "seam_ratio": 1.53,
+       "seam_luma": 4.24,
+       "fold_offset_px": -9.5,
+       "fold_depth_luma": 0.83,
+       "rim_band": 3.97,
+       "rim_ref": 3.58,
+       "n": 209,
+       "seg": "exit",
+       "i": 42,
+       "side": "R",
+       "flex": 24
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 37.0,
+       "neck": 0.435,
+       "bulge": 1.05,
+       "step_px": 6.0,
+       "seam_ratio": 0.17,
+       "seam_luma": 3.35,
+       "fold_offset_px": -6.5,
+       "fold_depth_luma": 1.66,
+       "rim_band": 3.82,
+       "rim_ref": 4.27,
+       "n": 184,
+       "seg": "exit",
+       "i": 17,
+       "side": "R",
+       "flex": 46.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 38.0,
+       "neck": 0.447,
+       "bulge": 1.04,
+       "step_px": 5.0,
+       "seam_ratio": 0.18,
+       "seam_luma": 3.36,
+       "fold_offset_px": -7.2,
+       "fold_depth_luma": 1.88,
+       "rim_band": 2.86,
+       "rim_ref": 4.08,
+       "n": 183,
+       "seg": "exit",
+       "i": 16,
+       "side": "R",
+       "flex": 53.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 79.0,
+       "shin_w": 37.0,
+       "neck": 0.461,
+       "bulge": 1.049,
+       "step_px": 4.0,
+       "seam_ratio": 0.23,
+       "seam_luma": 3.35,
+       "fold_offset_px": -7.1,
+       "fold_depth_luma": 1.48,
+       "rim_band": 3.57,
+       "rim_ref": 4.13,
+       "n": 185,
+       "seg": "exit",
+       "i": 18,
+       "side": "R",
+       "flex": 39.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 80.0,
+       "shin_w": 38.0,
+       "neck": 0.466,
+       "bulge": 1.049,
+       "step_px": 5.0,
+       "seam_ratio": 0.16,
+       "seam_luma": 3.31,
+       "fold_offset_px": -6.5,
+       "fold_depth_luma": 1.54,
+       "rim_band": 2.48,
+       "rim_ref": 3.96,
+       "n": 182,
+       "seg": "exit",
+       "i": 15,
+       "side": "R",
+       "flex": 58.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 82.0,
+       "shin_w": 44.0,
+       "neck": 0.501,
+       "bulge": 1.012,
+       "step_px": 7.0,
+       "seam_ratio": 0.26,
+       "seam_luma": 2.54,
+       "fold_offset_px": -11.0,
+       "fold_depth_luma": 1.89,
+       "rim_band": 4.22,
+       "rim_ref": 3.69,
+       "n": 168,
+       "seg": "exit",
+       "i": 1,
+       "side": "L",
+       "flex": 30.4
+      }
+     ]
+    }
+   },
+   "holes": {
+    "frames_with_holes": [
+     [
+      0,
+      142,
+      [
+       410,
+       545,
+       417,
+       594
+      ]
+     ],
+     [
+      1,
+      146,
+      [
+       359,
+       549,
+       417,
+       687
+      ]
+     ],
+     [
+      2,
+      146,
+      [
+       410,
+       549,
+       417,
+       599
+      ]
+     ],
+     [
+      3,
+      151,
+      [
+       409,
+       548,
+       417,
+       598
+      ]
+     ],
+     [
+      4,
+      153,
+      [
+       358,
+       548,
+       417,
+       694
+      ]
+     ],
+     [
+      5,
+      136,
+      [
+       409,
+       548,
+       416,
+       598
+      ]
+     ],
+     [
+      6,
+      135,
+      [
+       409,
+       548,
+       416,
+       598
+      ]
+     ],
+     [
+      7,
+      138,
+      [
+       409,
+       549,
+       416,
+       599
+      ]
+     ],
+     [
+      8,
+      137,
+      [
+       357,
+       549,
+       416,
+       697
+      ]
+     ],
+     [
+      9,
+      126,
+      [
+       409,
+       550,
+       416,
+       600
+      ]
+     ],
+     [
+      10,
+      124,
+      [
+       409,
+       550,
+       417,
+       600
+      ]
+     ],
+     [
+      11,
+      133,
+      [
+       409,
+       551,
+       417,
+       600
+      ]
+     ],
+     [
+      12,
+      127,
+      [
+       356,
+       551,
+       417,
+       697
+      ]
+     ],
+     [
+      13,
+      112,
+      [
+       410,
+       551,
+       417,
+       601
+      ]
+     ],
+     [
+      14,
+      125,
+      [
+       410,
+       552,
+       418,
+       602
+      ]
+     ],
+     [
+      15,
+      112,
+      [
+       357,
+       552,
+       418,
+       699
+      ]
+     ],
+     [
+      16,
+      112,
+      [
+       411,
+       553,
+       419,
+       603
+      ]
+     ],
+     [
+      17,
+      104,
+      [
+       412,
+       553,
+       420,
+       603
+      ]
+     ],
+     [
+      18,
+      106,
+      [
+       412,
+       554,
+       420,
+       604
+      ]
+     ],
+     [
+      19,
+      111,
+      [
+       413,
+       554,
+       421,
+       605
+      ]
+     ],
+     [
+      20,
+      110,
+      [
+       413,
+       554,
+       422,
+       605
+      ]
+     ],
+     [
+      21,
+      103,
+      [
+       414,
+       555,
+       422,
+       605
+      ]
+     ],
+     [
+      22,
+      106,
+      [
+       415,
+       558,
+       423,
+       609
+      ]
+     ],
+     [
+      23,
+      117,
+      [
+       359,
+       559,
+       424,
+       719
+      ]
+     ],
+     [
+      24,
+      115,
+      [
+       417,
+       559,
+       425,
+       611
+      ]
+     ],
+     [
+      25,
+      124,
+      [
+       417,
+       558,
+       426,
+       610
+      ]
+     ],
+     [
+      26,
+      120,
+      [
+       361,
+       558,
+       426,
+       715
+      ]
+     ],
+     [
+      27,
+      124,
+      [
+       419,
+       558,
+       427,
+       611
+      ]
+     ],
+     [
+      28,
+      143,
+      [
+       419,
+       558,
+       428,
+       611
+      ]
+     ],
+     [
+      29,
+      138,
+      [
+       420,
+       558,
+       429,
+       612
+      ]
+     ],
+     [
+      30,
+      159,
+      [
+       420,
+       558,
+       429,
+       613
+      ]
+     ],
+     [
+      31,
+      161,
+      [
+       421,
+       559,
+       430,
+       614
+      ]
+     ],
+     [
+      32,
+      168,
+      [
+       422,
+       559,
+       430,
+       614
+      ]
+     ],
+     [
+      33,
+      174,
+      [
+       422,
+       560,
+       430,
+       615
+      ]
+     ],
+     [
+      34,
+      194,
+      [
+       422,
+       560,
+       431,
+       617
+      ]
+     ],
+     [
+      35,
+      199,
+      [
+       422,
+       560,
+       431,
+       618
+      ]
+     ],
+     [
+      36,
+      211,
+      [
+       422,
+       561,
+       431,
+       620
+      ]
+     ],
+     [
+      37,
+      220,
+      [
+       422,
+       562,
+       431,
+       621
+      ]
+     ],
+     [
+      38,
+      224,
+      [
+       422,
+       563,
+       431,
+       622
+      ]
+     ],
+     [
+      39,
+      231,
+      [
+       422,
+       563,
+       431,
+       623
+      ]
+     ],
+     [
+      40,
+      242,
+      [
+       422,
+       564,
+       431,
+       624
+      ]
+     ],
+     [
+      41,
+      246,
+      [
+       422,
+       565,
+       431,
+       626
+      ]
+     ],
+     [
+      42,
+      251,
+      [
+       422,
+       566,
+       431,
+       627
+      ]
+     ],
+     [
+      43,
+      256,
+      [
+       421,
+       567,
+       431,
+       628
+      ]
+     ],
+     [
+      44,
+      243,
+      [
+       421,
+       571,
+       430,
+       632
+      ]
+     ],
+     [
+      45,
+      254,
+      [
+       421,
+       572,
+       430,
+       633
+      ]
+     ],
+     [
+      46,
+      254,
+      [
+       358,
+       571,
+       430,
+       745
+      ]
+     ],
+     [
+      47,
+      255,
+      [
+       357,
+       571,
+       430,
+       746
+      ]
+     ],
+     [
+      48,
+      258,
+      [
+       357,
+       571,
+       430,
+       746
+      ]
+     ],
+     [
+      49,
+      253,
+      [
+       421,
+       571,
+       430,
+       633
+      ]
+     ],
+     [
+      50,
+      249,
+      [
+       421,
+       571,
+       431,
+       633
+      ]
+     ],
+     [
+      51,
+      254,
+      [
+       421,
+       571,
+       431,
+       634
+      ]
+     ],
+     [
+      52,
+      243,
+      [
+       422,
+       571,
+       431,
+       634
+      ]
+     ],
+     [
+      53,
+      247,
+      [
+       422,
+       571,
+       432,
+       634
+      ]
+     ],
+     [
+      54,
+      245,
+      [
+       423,
+       571,
+       433,
+       634
+      ]
+     ],
+     [
+      55,
+      242,
+      [
+       423,
+       571,
+       433,
+       634
+      ]
+     ],
+     [
+      56,
+      244,
+      [
+       424,
+       571,
+       434,
+       634
+      ]
+     ],
+     [
+      57,
+      239,
+      [
+       358,
+       570,
+       434,
+       754
+      ]
+     ],
+     [
+      58,
+      241,
+      [
+       425,
+       570,
+       435,
+       634
+      ]
+     ],
+     [
+      59,
+      230,
+      [
+       359,
+       570,
+       435,
+       754
+      ]
+     ],
+     [
+      60,
+      238,
+      [
+       359,
+       570,
+       436,
+       754
+      ]
+     ],
+     [
+      61,
+      236,
+      [
+       426,
+       570,
+       436,
+       635
+      ]
+     ],
+     [
+      62,
+      230,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      63,
+      232,
+      [
+       426,
+       570,
+       437,
+       634
+      ]
+     ],
+     [
+      64,
+      233,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      65,
+      234,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      66,
+      235,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      67,
+      236,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      68,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      69,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      70,
+      240,
+      [
+       425,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      71,
+      230,
+      [
+       425,
+       569,
+       436,
+       633
+      ]
+     ],
+     [
+      72,
+      231,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      73,
+      233,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      74,
+      230,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      75,
+      232,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      76,
+      230,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      77,
+      233,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      78,
+      231,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      79,
+      230,
+      [
+       425,
+       569,
+       436,
+       633
+      ]
+     ],
+     [
+      80,
+      240,
+      [
+       425,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      81,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      82,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      83,
+      236,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      84,
+      235,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      85,
+      234,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      86,
+      233,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      87,
+      232,
+      [
+       426,
+       570,
+       437,
+       634
+      ]
+     ],
+     [
+      88,
+      240,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      89,
+      241,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      90,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      91,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      92,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      93,
+      235,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      94,
+      234,
+      [
+       427,
+       571,
+       438,
+       635
+      ]
+     ],
+     [
+      95,
+      243,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      96,
+      244,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      97,
+      242,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      98,
+      244,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      99,
+      245,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      100,
+      244,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      101,
+      242,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      102,
+      244,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      103,
+      243,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      104,
+      234,
+      [
+       427,
+       571,
+       438,
+       635
+      ]
+     ],
+     [
+      105,
+      235,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      106,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      107,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      108,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      109,
+      241,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      110,
+      240,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      111,
+      232,
+      [
+       426,
+       570,
+       437,
+       634
+      ]
+     ],
+     [
+      112,
+      212,
+      [
+       427,
+       570,
+       437,
+       634
+      ]
+     ],
+     [
+      113,
+      139,
+      [
+       427,
+       571,
+       437,
+       634
+      ]
+     ],
+     [
+      114,
+      62,
+      [
+       427,
+       572,
+       435,
+       586
+      ]
+     ],
+     [
+      115,
+      51,
+      [
+       426,
+       573,
+       434,
+       584
+      ]
+     ],
+     [
+      116,
+      46,
+      [
+       301,
+       574,
+       432,
+       860
+      ]
+     ],
+     [
+      117,
+      1139,
+      [
+       300,
+       575,
+       429,
+       919
+      ]
+     ],
+     [
+      118,
+      707,
+      [
+       304,
+       575,
+       429,
+       876
+      ]
+     ],
+     [
+      119,
+      431,
+      [
+       311,
+       575,
+       429,
+       947
+      ]
+     ],
+     [
+      120,
+      182,
+      [
+       313,
+       575,
+       429,
+       944
+      ]
+     ],
+     [
+      121,
+      48,
+      [
+       362,
+       575,
+       429,
+       947
+      ]
+     ],
+     [
+      122,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      123,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      124,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      125,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      126,
+      7,
+      [
+       321,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      127,
+      13,
+      [
+       315,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      128,
+      29,
+      [
+       310,
+       511,
+       418,
+       872
+      ]
+     ],
+     [
+      129,
+      62,
+      [
+       308,
+       511,
+       414,
+       978
+      ]
+     ],
+     [
+      130,
+      73,
+      [
+       314,
+       511,
+       412,
+       981
+      ]
+     ],
+     [
+      131,
+      62,
+      [
+       327,
+       511,
+       414,
+       984
+      ]
+     ],
+     [
+      132,
+      64,
+      [
+       315,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      133,
+      65,
+      [
+       313,
+       511,
+       362,
+       984
+      ]
+     ],
+     [
+      134,
+      68,
+      [
+       314,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      135,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      136,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      137,
+      45,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      138,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      139,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      140,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      141,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      142,
+      190,
+      [
+       291,
+       576,
+       359,
+       839
+      ]
+     ],
+     [
+      143,
+      343,
+      [
+       291,
+       576,
+       359,
+       847
+      ]
+     ],
+     [
+      144,
+      618,
+      [
+       291,
+       576,
+       362,
+       969
+      ]
+     ],
+     [
+      145,
+      1103,
+      [
+       290,
+       575,
+       362,
+       970
+      ]
+     ],
+     [
+      146,
+      1508,
+      [
+       288,
+       574,
+       363,
+       972
+      ]
+     ],
+     [
+      147,
+      119,
+      [
+       286,
+       573,
+       311,
+       657
+      ]
+     ],
+     [
+      148,
+      59,
+      [
+       286,
+       572,
+       312,
+       650
+      ]
+     ],
+     [
+      149,
+      60,
+      [
+       300,
+       571,
+       312,
+       577
+      ]
+     ],
+     [
+      150,
+      59,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      151,
+      60,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      152,
+      60,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      153,
+      62,
+      [
+       301,
+       548,
+       377,
+       577
+      ]
+     ],
+     [
+      154,
+      59,
+      [
+       301,
+       570,
+       313,
+       577
+      ]
+     ],
+     [
+      155,
+      59,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      156,
+      58,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      157,
+      61,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      158,
+      62,
+      [
+       301,
+       549,
+       377,
+       577
+      ]
+     ],
+     [
+      159,
+      58,
+      [
+       302,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      160,
+      59,
+      [
+       302,
+       571,
+       314,
+       577
+      ]
+     ],
+     [
+      161,
+      59,
+      [
+       302,
+       571,
+       314,
+       578
+      ]
+     ],
+     [
+      162,
+      57,
+      [
+       302,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      163,
+      56,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      164,
+      59,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      165,
+      58,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      166,
+      60,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      167,
+      61,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      168,
+      56,
+      [
+       304,
+       575,
+       315,
+       581
+      ]
+     ],
+     [
+      169,
+      59,
+      [
+       304,
+       574,
+       316,
+       580
+      ]
+     ],
+     [
+      170,
+      60,
+      [
+       305,
+       551,
+       378,
+       578
+      ]
+     ],
+     [
+      171,
+      56,
+      [
+       306,
+       571,
+       318,
+       577
+      ]
+     ],
+     [
+      172,
+      54,
+      [
+       307,
+       570,
+       318,
+       576
+      ]
+     ],
+     [
+      173,
+      53,
+      [
+       308,
+       569,
+       362,
+       739
+      ]
+     ],
+     [
+      174,
+      50,
+      [
+       308,
+       568,
+       319,
+       574
+      ]
+     ],
+     [
+      175,
+      49,
+      [
+       309,
+       568,
+       319,
+       573
+      ]
+     ],
+     [
+      176,
+      45,
+      [
+       309,
+       568,
+       319,
+       573
+      ]
+     ],
+     [
+      177,
+      46,
+      [
+       310,
+       567,
+       320,
+       572
+      ]
+     ],
+     [
+      178,
+      48,
+      [
+       310,
+       566,
+       320,
+       571
+      ]
+     ],
+     [
+      179,
+      43,
+      [
+       310,
+       566,
+       320,
+       571
+      ]
+     ],
+     [
+      180,
+      43,
+      [
+       310,
+       565,
+       320,
+       570
+      ]
+     ],
+     [
+      181,
+      45,
+      [
+       310,
+       564,
+       320,
+       569
+      ]
+     ],
+     [
+      182,
+      43,
+      [
+       310,
+       564,
+       320,
+       569
+      ]
+     ],
+     [
+      183,
+      42,
+      [
+       310,
+       563,
+       320,
+       568
+      ]
+     ],
+     [
+      184,
+      41,
+      [
+       310,
+       563,
+       319,
+       568
+      ]
+     ],
+     [
+      185,
+      40,
+      [
+       309,
+       563,
+       319,
+       567
+      ]
+     ],
+     [
+      186,
+      42,
+      [
+       309,
+       562,
+       319,
+       567
+      ]
+     ],
+     [
+      187,
+      46,
+      [
+       309,
+       561,
+       319,
+       566
+      ]
+     ],
+     [
+      188,
+      45,
+      [
+       309,
+       560,
+       319,
+       565
+      ]
+     ],
+     [
+      189,
+      44,
+      [
+       308,
+       563,
+       318,
+       568
+      ]
+     ],
+     [
+      190,
+      45,
+      [
+       308,
+       563,
+       318,
+       568
+      ]
+     ],
+     [
+      191,
+      43,
+      [
+       308,
+       562,
+       318,
+       567
+      ]
+     ],
+     [
+      192,
+      42,
+      [
+       308,
+       560,
+       318,
+       565
+      ]
+     ],
+     [
+      193,
+      41,
+      [
+       308,
+       558,
+       317,
+       563
+      ]
+     ],
+     [
+      194,
+      40,
+      [
+       308,
+       557,
+       317,
+       562
+      ]
+     ],
+     [
+      195,
+      42,
+      [
+       307,
+       556,
+       357,
+       709
+      ]
+     ],
+     [
+      196,
+      43,
+      [
+       307,
+       555,
+       317,
+       561
+      ]
+     ],
+     [
+      197,
+      43,
+      [
+       308,
+       555,
+       317,
+       560
+      ]
+     ],
+     [
+      198,
+      47,
+      [
+       308,
+       554,
+       318,
+       559
+      ]
+     ],
+     [
+      199,
+      46,
+      [
+       308,
+       553,
+       318,
+       558
+      ]
+     ],
+     [
+      200,
+      46,
+      [
+       308,
+       552,
+       318,
+       558
+      ]
+     ],
+     [
+      201,
+      44,
+      [
+       309,
+       552,
+       318,
+       557
+      ]
+     ],
+     [
+      202,
+      44,
+      [
+       309,
+       551,
+       319,
+       556
+      ]
+     ],
+     [
+      203,
+      44,
+      [
+       309,
+       551,
+       319,
+       556
+      ]
+     ],
+     [
+      204,
+      44,
+      [
+       310,
+       550,
+       320,
+       556
+      ]
+     ],
+     [
+      205,
+      43,
+      [
+       310,
+       550,
+       320,
+       555
+      ]
+     ],
+     [
+      206,
+      42,
+      [
+       311,
+       550,
+       321,
+       555
+      ]
+     ],
+     [
+      207,
+      40,
+      [
+       312,
+       549,
+       321,
+       554
+      ]
+     ],
+     [
+      208,
+      42,
+      [
+       312,
+       549,
+       322,
+       554
+      ]
+     ],
+     [
+      209,
+      41,
+      [
+       313,
+       549,
+       322,
+       554
+      ]
+     ],
+     [
+      210,
+      36,
+      [
+       314,
+       549,
+       323,
+       553
+      ]
+     ],
+     [
+      211,
+      36,
+      [
+       314,
+       551,
+       323,
+       555
+      ]
+     ],
+     [
+      212,
+      34,
+      [
+       315,
+       551,
+       324,
+       555
+      ]
+     ],
+     [
+      213,
+      38,
+      [
+       316,
+       549,
+       325,
+       554
+      ]
+     ],
+     [
+      214,
+      39,
+      [
+       316,
+       548,
+       325,
+       553
+      ]
+     ]
+    ],
+    "total_px": 34017,
+    "by_segment": {
+     "enter/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 7718,
+      "max_px": 256
+     },
+     "settle/front": {
+      "frames": 16,
+      "with_holes": 16,
+      "px": 3881,
+      "max_px": 258
+     },
+     "idle/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 11365,
+      "max_px": 245
+     },
+     "turn/front": {
+      "frames": 10,
+      "with_holes": 10,
+      "px": 3017,
+      "max_px": 1139
+     },
+     "turn/side": {
+      "frames": 20,
+      "with_holes": 20,
+      "px": 874,
+      "max_px": 73
+     },
+     "turn/rear": {
+      "frames": 10,
+      "with_holes": 10,
+      "px": 4119,
+      "max_px": 1508
+     },
+     "start/rear": {
+      "frames": 15,
+      "with_holes": 15,
+      "px": 887,
+      "max_px": 62
+     },
+     "exit/rear": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 2156,
+      "max_px": 61
+     }
+    }
+   },
+   "hem_shoe": {
+    "probes": 243,
+    "gaps": [
+     [
+      117,
+      "R",
+      101
+     ]
+    ],
+    "min_alpha": 101
+   },
+   "switches": [
+    {
+     "at": 122,
+     "from": "turn 10 (front)",
+     "to": "turn 11 (side)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": -1.4,
+     "head_top_px": 1,
+     "head_width_change": -0.015,
+     "lowest_row_px": -2,
+     "box_height_change": -0.006,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.736
+    },
+    {
+     "at": 142,
+     "from": "turn 30 (side)",
+     "to": "turn 31 (rear)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": 1.2,
+     "head_top_px": 0,
+     "head_width_change": 0.0,
+     "lowest_row_px": -6,
+     "box_height_change": -0.011,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.739
+    }
+   ]
+  },
+  {
+   "label": "v09",
+   "dir": "asset-source/v09_QA/candidate",
+   "art": "v09",
+   "suite": {
+    "views": {
+     "front": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.16,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.14,
+       "min": 0.0,
+       "max": 1.0
+      },
+      "height_ratio": {
+       "mean": 1.053,
+       "cv": 0.02
+      },
+      "head_width_ratio": {
+       "mean": 0.226,
+       "cv": 0.006
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "rear": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.52,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.11,
+       "min": 0.0,
+       "max": 0.5
+      },
+      "height_ratio": {
+       "mean": 1.001,
+       "cv": 0.016
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.007
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "side": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -2.49,
+       "min": -5.3,
+       "max": -1.3
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.2,
+       "min": 0.0,
+       "max": 1.11
+      },
+      "height_ratio": {
+       "mean": 0.962,
+       "cv": 0.004
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.008
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 59
+      }
+     }
+    },
+    "seams": [
+     {
+      "at": 48,
+      "from": "enter 47 (front)",
+      "to": "settle 1 (front)",
+      "root_px": 0.09,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0015
+     },
+     {
+      "at": 64,
+      "from": "settle 16 (front)",
+      "to": "idle 1 (front)",
+      "root_px": 0.16,
+      "head_rig_px": 0.23,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0005
+     },
+     {
+      "at": 112,
+      "from": "idle 48 (front)",
+      "to": "turn 1 (front)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0
+      },
+      "root_world_m": 0.0
+     },
+     {
+      "at": 122,
+      "from": "turn 10 (front)",
+      "to": "turn 11 (side)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": -1.4,
+      "head_top_px": 1,
+      "head_width_change": -0.015,
+      "lowest_row_px": -2,
+      "box_height_change": -0.006,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.739
+     },
+     {
+      "at": 142,
+      "from": "turn 30 (side)",
+      "to": "turn 31 (rear)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 1.2,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": -6,
+      "box_height_change": -0.011,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.727
+     },
+     {
+      "at": 152,
+      "from": "turn 40 (rear)",
+      "to": "start 1 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     },
+     {
+      "at": 167,
+      "from": "start 15 (rear)",
+      "to": "exit 0 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.05,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     }
+    ],
+    "walk_step_reference": {
+     "enter": {
+      "root_px": {
+       "median": 1.036,
+       "max": 4.148
+      },
+      "head_rig_px": {
+       "median": 0.49,
+       "max": 3.15
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.7
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.02
+      },
+      "lowest_row_px": {
+       "median": 0.0,
+       "max": 13.0
+      }
+     },
+     "exit": {
+      "root_px": {
+       "median": 1.241,
+       "max": 3.114
+      },
+      "head_rig_px": {
+       "median": 0.477,
+       "max": 3.006
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.6
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.019
+      },
+      "lowest_row_px": {
+       "median": 1.0,
+       "max": 10.0
+      }
+     }
+    },
+    "resting_contact_slide": {
+     "enter->settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle->idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle->turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn->start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start->exit": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     }
+    },
+    "knee_band": {
+     "enter_exit": {
+      "legs": 192,
+      "min_alpha": 252,
+      "below_250": 0
+     },
+     "all_segments": {
+      "legs": 430,
+      "min_alpha": 252,
+      "below_250": 0
+     }
+    },
+    "knee": {
+     "stance_flex_max_deg": 24,
+     "flat_frames_over_25": 0
+    },
+    "enter_end_vs_exit_start": {
+     "root_gap_m": 0.0607
+    }
+   },
+   "legs": {
+    "front": {
+     "legs": 244,
+     "merged_skipped": 0,
+     "neck": {
+      "n": 244,
+      "min": 0.542,
+      "median": 0.998,
+      "p95": 1.006,
+      "max": 1.016
+     },
+     "bulge": {
+      "n": 244,
+      "min": 1.039,
+      "median": 1.055,
+      "p95": 1.069,
+      "max": 1.091
+     },
+     "step_px": {
+      "n": 244,
+      "min": 2.0,
+      "median": 2.0,
+      "p95": 3.0,
+      "max": 23.0
+     },
+     "seam_ratio": {
+      "n": 244,
+      "min": 0.36,
+      "median": 2.39,
+      "p95": 5.655,
+      "max": 9.31
+     },
+     "seam_luma": {
+      "n": 244,
+      "min": 1.55,
+      "median": 2.47,
+      "p95": 5.807,
+      "max": 8.3
+     },
+     "fold_offset_px": {
+      "n": 244,
+      "min": -20.2,
+      "median": -7.3,
+      "p95": -5.8,
+      "max": -5.5
+     },
+     "fold_depth_luma": {
+      "n": 244,
+      "min": 2.47,
+      "median": 5.54,
+      "p95": 8.687,
+      "max": 10.19
+     },
+     "rim_band": {
+      "n": 244,
+      "min": 1.66,
+      "median": 4.75,
+      "p95": 5.518,
+      "max": 5.93
+     },
+     "rim_ref": {
+      "n": 244,
+      "min": 1.49,
+      "median": 4.2,
+      "p95": 4.82,
+      "max": 5.4
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.542,
+       "bulge": 1.067,
+       "step_px": 23.0,
+       "seam_ratio": 1.91,
+       "seam_luma": 3.9,
+       "fold_offset_px": -9.3,
+       "fold_depth_luma": 3.48,
+       "rim_band": 3.84,
+       "rim_ref": 3.43,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 43.0,
+       "neck": 0.647,
+       "bulge": 1.091,
+       "step_px": 18.0,
+       "seam_ratio": 0.9,
+       "seam_luma": 3.03,
+       "fold_offset_px": -20.2,
+       "fold_depth_luma": 3.46,
+       "rim_band": 4.0,
+       "rim_ref": 5.16,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 43.0,
+       "neck": 0.759,
+       "bulge": 1.069,
+       "step_px": 13.0,
+       "seam_ratio": 5.74,
+       "seam_luma": 7.87,
+       "fold_offset_px": -10.9,
+       "fold_depth_luma": 2.81,
+       "rim_band": 4.24,
+       "rim_ref": 1.57,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 49.0,
+       "neck": 0.955,
+       "bulge": 1.039,
+       "step_px": 4.0,
+       "seam_ratio": 1.38,
+       "seam_luma": 2.38,
+       "fold_offset_px": -8.2,
+       "fold_depth_luma": 3.72,
+       "rim_band": 3.55,
+       "rim_ref": 3.25,
+       "n": 115,
+       "seg": "turn",
+       "i": 4,
+       "side": "R",
+       "flex": 30.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.5,
+       "shin_w": 49.0,
+       "neck": 0.931,
+       "bulge": 1.046,
+       "step_px": 4.0,
+       "seam_ratio": 1.2,
+       "seam_luma": 2.67,
+       "fold_offset_px": -7.4,
+       "fold_depth_luma": 3.8,
+       "rim_band": 3.66,
+       "rim_ref": 3.24,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 1.003,
+       "bulge": 1.06,
+       "step_px": 3.0,
+       "seam_ratio": 9.31,
+       "seam_luma": 8.3,
+       "fold_offset_px": -6.2,
+       "fold_depth_luma": 5.14,
+       "rim_band": 3.79,
+       "rim_ref": 1.59,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "L",
+       "flex": 5.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 43.0,
+       "neck": 0.986,
+       "bulge": 1.054,
+       "step_px": 3.0,
+       "seam_ratio": 7.32,
+       "seam_luma": 6.81,
+       "fold_offset_px": -7.7,
+       "fold_depth_luma": 10.0,
+       "rim_band": 4.96,
+       "rim_ref": 5.12,
+       "n": 32,
+       "seg": "enter",
+       "i": 32,
+       "side": "L",
+       "flex": 60.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 48.0,
+       "shin_w": 45.0,
+       "neck": 0.995,
+       "bulge": 1.066,
+       "step_px": 3.0,
+       "seam_ratio": 6.86,
+       "seam_luma": 6.36,
+       "fold_offset_px": -7.9,
+       "fold_depth_luma": 10.19,
+       "rim_band": 4.56,
+       "rim_ref": 4.23,
+       "n": 36,
+       "seg": "enter",
+       "i": 36,
+       "side": "L",
+       "flex": 61.2
+      },
+      {
+       "merged": false,
+       "thigh_w": 47.0,
+       "shin_w": 45.0,
+       "neck": 0.993,
+       "bulge": 1.06,
+       "step_px": 2.0,
+       "seam_ratio": 6.45,
+       "seam_luma": 6.69,
+       "fold_offset_px": -7.9,
+       "fold_depth_luma": 10.19,
+       "rim_band": 4.5,
+       "rim_ref": 4.61,
+       "n": 35,
+       "seg": "enter",
+       "i": 35,
+       "side": "L",
+       "flex": 63.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 45.0,
+       "shin_w": 42.0,
+       "neck": 0.984,
+       "bulge": 1.058,
+       "step_px": 3.0,
+       "seam_ratio": 5.94,
+       "seam_luma": 6.48,
+       "fold_offset_px": -7.5,
+       "fold_depth_luma": 9.67,
+       "rim_band": 5.44,
+       "rim_ref": 4.53,
+       "n": 31,
+       "seg": "enter",
+       "i": 31,
+       "side": "L",
+       "flex": 56.7
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.542,
+       "bulge": 1.067,
+       "step_px": 23.0,
+       "seam_ratio": 1.91,
+       "seam_luma": 3.9,
+       "fold_offset_px": -9.3,
+       "fold_depth_luma": 3.48,
+       "rim_band": 3.84,
+       "rim_ref": 3.43,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 43.0,
+       "neck": 0.647,
+       "bulge": 1.091,
+       "step_px": 18.0,
+       "seam_ratio": 0.9,
+       "seam_luma": 3.03,
+       "fold_offset_px": -20.2,
+       "fold_depth_luma": 3.46,
+       "rim_band": 4.0,
+       "rim_ref": 5.16,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 43.0,
+       "neck": 0.759,
+       "bulge": 1.069,
+       "step_px": 13.0,
+       "seam_ratio": 5.74,
+       "seam_luma": 7.87,
+       "fold_offset_px": -10.9,
+       "fold_depth_luma": 2.81,
+       "rim_band": 4.24,
+       "rim_ref": 1.57,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.5,
+       "shin_w": 49.0,
+       "neck": 0.931,
+       "bulge": 1.046,
+       "step_px": 4.0,
+       "seam_ratio": 1.2,
+       "seam_luma": 2.67,
+       "fold_offset_px": -7.4,
+       "fold_depth_luma": 3.8,
+       "rim_band": 3.66,
+       "rim_ref": 3.24,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 49.0,
+       "neck": 0.955,
+       "bulge": 1.039,
+       "step_px": 4.0,
+       "seam_ratio": 1.38,
+       "seam_luma": 2.38,
+       "fold_offset_px": -8.2,
+       "fold_depth_luma": 3.72,
+       "rim_band": 3.55,
+       "rim_ref": 3.25,
+       "n": 115,
+       "seg": "turn",
+       "i": 4,
+       "side": "R",
+       "flex": 30.8
+      }
+     ]
+    },
+    "rear": {
+     "legs": 146,
+     "merged_skipped": 26,
+     "neck": {
+      "n": 120,
+      "min": 0.507,
+      "median": 0.972,
+      "p95": 0.988,
+      "max": 0.989
+     },
+     "bulge": {
+      "n": 120,
+      "min": 0.973,
+      "median": 1.034,
+      "p95": 1.051,
+      "max": 1.065
+     },
+     "step_px": {
+      "n": 120,
+      "min": 2.0,
+      "median": 2.0,
+      "p95": 3.0,
+      "max": 13.0
+     },
+     "seam_ratio": {
+      "n": 120,
+      "min": 0.16,
+      "median": 0.915,
+      "p95": 1.671,
+      "max": 5.24
+     },
+     "seam_luma": {
+      "n": 120,
+      "min": 1.45,
+      "median": 2.795,
+      "p95": 3.975,
+      "max": 7.25
+     },
+     "fold_offset_px": {
+      "n": 120,
+      "min": -17.2,
+      "median": -11.1,
+      "p95": -3.5,
+      "max": -3.1
+     },
+     "fold_depth_luma": {
+      "n": 120,
+      "min": -2.21,
+      "median": 0.705,
+      "p95": 2.79,
+      "max": 3.39
+     },
+     "rim_band": {
+      "n": 120,
+      "min": 1.49,
+      "median": 4.07,
+      "p95": 5.627,
+      "max": 6.89
+     },
+     "rim_ref": {
+      "n": 120,
+      "min": 1.31,
+      "median": 4.22,
+      "p95": 4.832,
+      "max": 5.69
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 45.0,
+       "neck": 0.769,
+       "bulge": 1.041,
+       "step_px": 13.0,
+       "seam_ratio": 1.58,
+       "seam_luma": 3.29,
+       "fold_offset_px": -7.3,
+       "fold_depth_luma": 1.1,
+       "rim_band": 3.73,
+       "rim_ref": 4.16,
+       "n": 145,
+       "seg": "turn",
+       "i": 34,
+       "side": "L",
+       "flex": 30.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 46.0,
+       "neck": 0.866,
+       "bulge": 1.034,
+       "step_px": 8.0,
+       "seam_ratio": 0.5,
+       "seam_luma": 3.24,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": -1.15,
+       "rim_band": 4.51,
+       "rim_ref": 4.25,
+       "n": 144,
+       "seg": "turn",
+       "i": 33,
+       "side": "L",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 46.0,
+       "neck": 0.978,
+       "bulge": 1.055,
+       "step_px": 4.0,
+       "seam_ratio": 1.12,
+       "seam_luma": 1.88,
+       "fold_offset_px": -17.2,
+       "fold_depth_luma": 2.37,
+       "rim_band": 1.5,
+       "rim_ref": 1.61,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.964,
+       "bulge": 1.032,
+       "step_px": 4.0,
+       "seam_ratio": 1.39,
+       "seam_luma": 3.27,
+       "fold_offset_px": -15.5,
+       "fold_depth_luma": 0.5,
+       "rim_band": 3.23,
+       "rim_ref": 3.23,
+       "n": 146,
+       "seg": "turn",
+       "i": 35,
+       "side": "L",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 46.0,
+       "neck": 0.976,
+       "bulge": 1.037,
+       "step_px": 3.0,
+       "seam_ratio": 4.9,
+       "seam_luma": 7.03,
+       "fold_offset_px": -15.4,
+       "fold_depth_luma": 2.12,
+       "rim_band": 4.32,
+       "rim_ref": 1.68,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 50.0,
+       "shin_w": 46.0,
+       "neck": 0.988,
+       "bulge": 1.051,
+       "step_px": 2.0,
+       "seam_ratio": 5.24,
+       "seam_luma": 7.25,
+       "fold_offset_px": -12.7,
+       "fold_depth_luma": 2.01,
+       "rim_band": 3.85,
+       "rim_ref": 1.31,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 46.0,
+       "neck": 0.976,
+       "bulge": 1.037,
+       "step_px": 3.0,
+       "seam_ratio": 4.9,
+       "seam_luma": 7.03,
+       "fold_offset_px": -15.4,
+       "fold_depth_luma": 2.12,
+       "rim_band": 4.32,
+       "rim_ref": 1.68,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 40.0,
+       "neck": 0.974,
+       "bulge": 1.023,
+       "step_px": 2.0,
+       "seam_ratio": 1.81,
+       "seam_luma": 3.71,
+       "fold_offset_px": -5.8,
+       "fold_depth_luma": 0.67,
+       "rim_band": 3.29,
+       "rim_ref": 4.17,
+       "n": 190,
+       "seg": "exit",
+       "i": 23,
+       "side": "L",
+       "flex": 38.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 40.0,
+       "shin_w": 38.0,
+       "neck": 0.972,
+       "bulge": 1.038,
+       "step_px": 3.0,
+       "seam_ratio": 1.8,
+       "seam_luma": 4.38,
+       "fold_offset_px": -4.4,
+       "fold_depth_luma": 2.79,
+       "rim_band": 4.86,
+       "rim_ref": 3.94,
+       "n": 200,
+       "seg": "exit",
+       "i": 33,
+       "side": "L",
+       "flex": 63.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 43.0,
+       "shin_w": 40.0,
+       "neck": 0.962,
+       "bulge": 1.016,
+       "step_px": 2.0,
+       "seam_ratio": 1.79,
+       "seam_luma": 3.79,
+       "fold_offset_px": -6.0,
+       "fold_depth_luma": 1.9,
+       "rim_band": 4.24,
+       "rim_ref": 3.94,
+       "n": 194,
+       "seg": "exit",
+       "i": 27,
+       "side": "L",
+       "flex": 46.5
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 38.0,
+       "neck": 0.507,
+       "bulge": 0.988,
+       "step_px": 3.0,
+       "seam_ratio": 0.26,
+       "seam_luma": 3.76,
+       "fold_offset_px": -3.2,
+       "fold_depth_luma": 3.15,
+       "rim_band": 5.36,
+       "rim_ref": 4.13,
+       "n": 183,
+       "seg": "exit",
+       "i": 16,
+       "side": "R",
+       "flex": 53.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 37.0,
+       "neck": 0.507,
+       "bulge": 1.023,
+       "step_px": 2.0,
+       "seam_ratio": 0.2,
+       "seam_luma": 2.93,
+       "fold_offset_px": -3.5,
+       "fold_depth_luma": 2.59,
+       "rim_band": 4.79,
+       "rim_ref": 5.69,
+       "n": 184,
+       "seg": "exit",
+       "i": 17,
+       "side": "R",
+       "flex": 46.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 80.0,
+       "shin_w": 38.0,
+       "neck": 0.529,
+       "bulge": 0.996,
+       "step_px": 3.0,
+       "seam_ratio": 0.24,
+       "seam_luma": 3.6,
+       "fold_offset_px": -3.5,
+       "fold_depth_luma": 3.39,
+       "rim_band": 5.76,
+       "rim_ref": 4.43,
+       "n": 182,
+       "seg": "exit",
+       "i": 15,
+       "side": "R",
+       "flex": 58.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 79.0,
+       "shin_w": 37.0,
+       "neck": 0.538,
+       "bulge": 1.022,
+       "step_px": 3.0,
+       "seam_ratio": 0.19,
+       "seam_luma": 2.34,
+       "fold_offset_px": -3.1,
+       "fold_depth_luma": 1.66,
+       "rim_band": 6.0,
+       "rim_ref": 4.56,
+       "n": 185,
+       "seg": "exit",
+       "i": 18,
+       "side": "R",
+       "flex": 39.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 82.0,
+       "shin_w": 42.0,
+       "neck": 0.574,
+       "bulge": 1.012,
+       "step_px": 3.0,
+       "seam_ratio": 0.31,
+       "seam_luma": 2.88,
+       "fold_offset_px": -11.0,
+       "fold_depth_luma": 1.57,
+       "rim_band": 5.5,
+       "rim_ref": 3.98,
+       "n": 168,
+       "seg": "exit",
+       "i": 1,
+       "side": "L",
+       "flex": 30.4
+      }
+     ]
+    }
+   },
+   "holes": {
+    "frames_with_holes": [
+     [
+      0,
+      142,
+      [
+       410,
+       545,
+       417,
+       594
+      ]
+     ],
+     [
+      1,
+      145,
+      [
+       410,
+       549,
+       417,
+       598
+      ]
+     ],
+     [
+      2,
+      146,
+      [
+       410,
+       549,
+       417,
+       599
+      ]
+     ],
+     [
+      3,
+      151,
+      [
+       409,
+       548,
+       417,
+       598
+      ]
+     ],
+     [
+      4,
+      150,
+      [
+       409,
+       548,
+       417,
+       598
+      ]
+     ],
+     [
+      5,
+      136,
+      [
+       409,
+       548,
+       416,
+       598
+      ]
+     ],
+     [
+      6,
+      135,
+      [
+       409,
+       548,
+       416,
+       598
+      ]
+     ],
+     [
+      7,
+      138,
+      [
+       409,
+       549,
+       416,
+       599
+      ]
+     ],
+     [
+      8,
+      134,
+      [
+       409,
+       549,
+       416,
+       599
+      ]
+     ],
+     [
+      9,
+      126,
+      [
+       409,
+       550,
+       416,
+       600
+      ]
+     ],
+     [
+      10,
+      124,
+      [
+       409,
+       550,
+       417,
+       600
+      ]
+     ],
+     [
+      11,
+      133,
+      [
+       409,
+       551,
+       417,
+       600
+      ]
+     ],
+     [
+      12,
+      126,
+      [
+       409,
+       551,
+       417,
+       601
+      ]
+     ],
+     [
+      13,
+      112,
+      [
+       410,
+       551,
+       417,
+       601
+      ]
+     ],
+     [
+      14,
+      125,
+      [
+       410,
+       552,
+       418,
+       602
+      ]
+     ],
+     [
+      15,
+      110,
+      [
+       410,
+       552,
+       418,
+       602
+      ]
+     ],
+     [
+      16,
+      112,
+      [
+       411,
+       553,
+       419,
+       603
+      ]
+     ],
+     [
+      17,
+      104,
+      [
+       412,
+       553,
+       420,
+       603
+      ]
+     ],
+     [
+      18,
+      106,
+      [
+       412,
+       554,
+       420,
+       604
+      ]
+     ],
+     [
+      19,
+      111,
+      [
+       413,
+       554,
+       421,
+       605
+      ]
+     ],
+     [
+      20,
+      110,
+      [
+       413,
+       554,
+       422,
+       605
+      ]
+     ],
+     [
+      21,
+      103,
+      [
+       414,
+       555,
+       422,
+       605
+      ]
+     ],
+     [
+      22,
+      106,
+      [
+       415,
+       558,
+       423,
+       609
+      ]
+     ],
+     [
+      23,
+      111,
+      [
+       416,
+       559,
+       424,
+       610
+      ]
+     ],
+     [
+      24,
+      115,
+      [
+       417,
+       559,
+       425,
+       611
+      ]
+     ],
+     [
+      25,
+      124,
+      [
+       417,
+       558,
+       426,
+       610
+      ]
+     ],
+     [
+      26,
+      117,
+      [
+       418,
+       558,
+       426,
+       610
+      ]
+     ],
+     [
+      27,
+      124,
+      [
+       419,
+       558,
+       427,
+       611
+      ]
+     ],
+     [
+      28,
+      143,
+      [
+       419,
+       558,
+       428,
+       611
+      ]
+     ],
+     [
+      29,
+      138,
+      [
+       420,
+       558,
+       429,
+       612
+      ]
+     ],
+     [
+      30,
+      159,
+      [
+       420,
+       558,
+       429,
+       613
+      ]
+     ],
+     [
+      31,
+      161,
+      [
+       421,
+       559,
+       430,
+       614
+      ]
+     ],
+     [
+      32,
+      168,
+      [
+       422,
+       559,
+       430,
+       614
+      ]
+     ],
+     [
+      33,
+      174,
+      [
+       422,
+       560,
+       430,
+       615
+      ]
+     ],
+     [
+      34,
+      194,
+      [
+       422,
+       560,
+       431,
+       617
+      ]
+     ],
+     [
+      35,
+      199,
+      [
+       422,
+       560,
+       431,
+       618
+      ]
+     ],
+     [
+      36,
+      211,
+      [
+       422,
+       561,
+       431,
+       620
+      ]
+     ],
+     [
+      37,
+      220,
+      [
+       422,
+       562,
+       431,
+       621
+      ]
+     ],
+     [
+      38,
+      224,
+      [
+       422,
+       563,
+       431,
+       622
+      ]
+     ],
+     [
+      39,
+      231,
+      [
+       422,
+       563,
+       431,
+       623
+      ]
+     ],
+     [
+      40,
+      242,
+      [
+       422,
+       564,
+       431,
+       624
+      ]
+     ],
+     [
+      41,
+      246,
+      [
+       422,
+       565,
+       431,
+       626
+      ]
+     ],
+     [
+      42,
+      251,
+      [
+       422,
+       566,
+       431,
+       627
+      ]
+     ],
+     [
+      43,
+      256,
+      [
+       421,
+       567,
+       431,
+       628
+      ]
+     ],
+     [
+      44,
+      243,
+      [
+       421,
+       571,
+       430,
+       632
+      ]
+     ],
+     [
+      45,
+      254,
+      [
+       421,
+       572,
+       430,
+       633
+      ]
+     ],
+     [
+      46,
+      252,
+      [
+       421,
+       571,
+       430,
+       633
+      ]
+     ],
+     [
+      47,
+      254,
+      [
+       420,
+       571,
+       430,
+       633
+      ]
+     ],
+     [
+      48,
+      257,
+      [
+       420,
+       571,
+       430,
+       633
+      ]
+     ],
+     [
+      49,
+      253,
+      [
+       421,
+       571,
+       430,
+       633
+      ]
+     ],
+     [
+      50,
+      249,
+      [
+       421,
+       571,
+       431,
+       633
+      ]
+     ],
+     [
+      51,
+      255,
+      [
+       409,
+       571,
+       431,
+       741
+      ]
+     ],
+     [
+      52,
+      243,
+      [
+       422,
+       571,
+       431,
+       634
+      ]
+     ],
+     [
+      53,
+      247,
+      [
+       422,
+       571,
+       432,
+       634
+      ]
+     ],
+     [
+      54,
+      245,
+      [
+       423,
+       571,
+       433,
+       634
+      ]
+     ],
+     [
+      55,
+      242,
+      [
+       423,
+       571,
+       433,
+       634
+      ]
+     ],
+     [
+      56,
+      244,
+      [
+       424,
+       571,
+       434,
+       634
+      ]
+     ],
+     [
+      57,
+      238,
+      [
+       424,
+       570,
+       434,
+       634
+      ]
+     ],
+     [
+      58,
+      241,
+      [
+       425,
+       570,
+       435,
+       634
+      ]
+     ],
+     [
+      59,
+      229,
+      [
+       425,
+       570,
+       435,
+       634
+      ]
+     ],
+     [
+      60,
+      236,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      61,
+      236,
+      [
+       426,
+       570,
+       436,
+       635
+      ]
+     ],
+     [
+      62,
+      231,
+      [
+       305,
+       570,
+       436,
+       749
+      ]
+     ],
+     [
+      63,
+      233,
+      [
+       305,
+       570,
+       437,
+       749
+      ]
+     ],
+     [
+      64,
+      233,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      65,
+      234,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      66,
+      235,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      67,
+      236,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      68,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      69,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      70,
+      240,
+      [
+       425,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      71,
+      230,
+      [
+       425,
+       569,
+       436,
+       633
+      ]
+     ],
+     [
+      72,
+      231,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      73,
+      233,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      74,
+      230,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      75,
+      232,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      76,
+      230,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      77,
+      233,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      78,
+      231,
+      [
+       425,
+       569,
+       435,
+       633
+      ]
+     ],
+     [
+      79,
+      230,
+      [
+       425,
+       569,
+       436,
+       633
+      ]
+     ],
+     [
+      80,
+      240,
+      [
+       425,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      81,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      82,
+      238,
+      [
+       426,
+       569,
+       436,
+       634
+      ]
+     ],
+     [
+      83,
+      236,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      84,
+      235,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      85,
+      234,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      86,
+      233,
+      [
+       426,
+       570,
+       436,
+       634
+      ]
+     ],
+     [
+      87,
+      233,
+      [
+       305,
+       570,
+       437,
+       749
+      ]
+     ],
+     [
+      88,
+      240,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      89,
+      241,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      90,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      91,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      92,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      93,
+      235,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      94,
+      234,
+      [
+       427,
+       571,
+       438,
+       635
+      ]
+     ],
+     [
+      95,
+      243,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      96,
+      244,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      97,
+      242,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      98,
+      244,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      99,
+      245,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      100,
+      244,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      101,
+      242,
+      [
+       428,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      102,
+      244,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      103,
+      243,
+      [
+       427,
+       571,
+       438,
+       636
+      ]
+     ],
+     [
+      104,
+      234,
+      [
+       427,
+       571,
+       438,
+       635
+      ]
+     ],
+     [
+      105,
+      235,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      106,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      107,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      108,
+      237,
+      [
+       427,
+       571,
+       437,
+       635
+      ]
+     ],
+     [
+      109,
+      241,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      110,
+      240,
+      [
+       427,
+       570,
+       437,
+       635
+      ]
+     ],
+     [
+      111,
+      233,
+      [
+       305,
+       570,
+       437,
+       749
+      ]
+     ],
+     [
+      112,
+      212,
+      [
+       427,
+       570,
+       437,
+       634
+      ]
+     ],
+     [
+      113,
+      139,
+      [
+       427,
+       571,
+       437,
+       634
+      ]
+     ],
+     [
+      114,
+      62,
+      [
+       427,
+       572,
+       435,
+       586
+      ]
+     ],
+     [
+      115,
+      51,
+      [
+       426,
+       573,
+       434,
+       584
+      ]
+     ],
+     [
+      116,
+      46,
+      [
+       301,
+       574,
+       432,
+       860
+      ]
+     ],
+     [
+      117,
+      773,
+      [
+       300,
+       575,
+       429,
+       932
+      ]
+     ],
+     [
+      118,
+      359,
+      [
+       304,
+       575,
+       429,
+       884
+      ]
+     ],
+     [
+      119,
+      78,
+      [
+       311,
+       575,
+       429,
+       941
+      ]
+     ],
+     [
+      120,
+      37,
+      [
+       422,
+       575,
+       429,
+       583
+      ]
+     ],
+     [
+      121,
+      37,
+      [
+       422,
+       575,
+       429,
+       583
+      ]
+     ],
+     [
+      122,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      123,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      124,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      125,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      126,
+      7,
+      [
+       321,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      127,
+      13,
+      [
+       315,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      128,
+      29,
+      [
+       310,
+       511,
+       418,
+       872
+      ]
+     ],
+     [
+      129,
+      62,
+      [
+       308,
+       511,
+       414,
+       978
+      ]
+     ],
+     [
+      130,
+      73,
+      [
+       314,
+       511,
+       412,
+       981
+      ]
+     ],
+     [
+      131,
+      62,
+      [
+       327,
+       511,
+       414,
+       984
+      ]
+     ],
+     [
+      132,
+      64,
+      [
+       315,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      133,
+      65,
+      [
+       313,
+       511,
+       362,
+       984
+      ]
+     ],
+     [
+      134,
+      68,
+      [
+       314,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      135,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      136,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      137,
+      45,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      138,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      139,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      140,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      141,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      142,
+      12,
+      [
+       291,
+       648,
+       292,
+       655
+      ]
+     ],
+     [
+      143,
+      56,
+      [
+       291,
+       648,
+       358,
+       860
+      ]
+     ],
+     [
+      144,
+      299,
+      [
+       291,
+       648,
+       362,
+       969
+      ]
+     ],
+     [
+      145,
+      726,
+      [
+       290,
+       646,
+       363,
+       970
+      ]
+     ],
+     [
+      146,
+      1121,
+      [
+       288,
+       574,
+       363,
+       972
+      ]
+     ],
+     [
+      147,
+      110,
+      [
+       286,
+       573,
+       310,
+       657
+      ]
+     ],
+     [
+      148,
+      54,
+      [
+       286,
+       572,
+       311,
+       650
+      ]
+     ],
+     [
+      149,
+      58,
+      [
+       300,
+       571,
+       312,
+       577
+      ]
+     ],
+     [
+      150,
+      59,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      151,
+      60,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      152,
+      60,
+      [
+       301,
+       570,
+       312,
+       577
+      ]
+     ],
+     [
+      153,
+      62,
+      [
+       301,
+       548,
+       377,
+       577
+      ]
+     ],
+     [
+      154,
+      60,
+      [
+       301,
+       570,
+       313,
+       577
+      ]
+     ],
+     [
+      155,
+      60,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      156,
+      58,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      157,
+      62,
+      [
+       301,
+       571,
+       313,
+       577
+      ]
+     ],
+     [
+      158,
+      63,
+      [
+       301,
+       549,
+       377,
+       577
+      ]
+     ],
+     [
+      159,
+      60,
+      [
+       302,
+       571,
+       314,
+       577
+      ]
+     ],
+     [
+      160,
+      62,
+      [
+       302,
+       571,
+       314,
+       578
+      ]
+     ],
+     [
+      161,
+      60,
+      [
+       302,
+       571,
+       314,
+       578
+      ]
+     ],
+     [
+      162,
+      57,
+      [
+       302,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      163,
+      59,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      164,
+      60,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      165,
+      60,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      166,
+      61,
+      [
+       303,
+       572,
+       314,
+       578
+      ]
+     ],
+     [
+      167,
+      63,
+      [
+       303,
+       572,
+       315,
+       578
+      ]
+     ],
+     [
+      168,
+      58,
+      [
+       304,
+       575,
+       315,
+       581
+      ]
+     ],
+     [
+      169,
+      60,
+      [
+       304,
+       574,
+       316,
+       580
+      ]
+     ],
+     [
+      170,
+      61,
+      [
+       305,
+       572,
+       317,
+       578
+      ]
+     ],
+     [
+      171,
+      57,
+      [
+       306,
+       571,
+       318,
+       577
+      ]
+     ],
+     [
+      172,
+      55,
+      [
+       307,
+       570,
+       318,
+       576
+      ]
+     ],
+     [
+      173,
+      53,
+      [
+       308,
+       569,
+       319,
+       575
+      ]
+     ],
+     [
+      174,
+      50,
+      [
+       308,
+       568,
+       319,
+       574
+      ]
+     ],
+     [
+      175,
+      48,
+      [
+       309,
+       568,
+       319,
+       573
+      ]
+     ],
+     [
+      176,
+      43,
+      [
+       309,
+       568,
+       319,
+       573
+      ]
+     ],
+     [
+      177,
+      42,
+      [
+       310,
+       567,
+       319,
+       572
+      ]
+     ],
+     [
+      178,
+      45,
+      [
+       310,
+       566,
+       320,
+       571
+      ]
+     ],
+     [
+      179,
+      40,
+      [
+       310,
+       566,
+       319,
+       570
+      ]
+     ],
+     [
+      180,
+      41,
+      [
+       310,
+       565,
+       320,
+       570
+      ]
+     ],
+     [
+      181,
+      40,
+      [
+       310,
+       564,
+       319,
+       569
+      ]
+     ],
+     [
+      182,
+      39,
+      [
+       310,
+       564,
+       319,
+       569
+      ]
+     ],
+     [
+      183,
+      38,
+      [
+       310,
+       563,
+       319,
+       568
+      ]
+     ],
+     [
+      184,
+      37,
+      [
+       310,
+       563,
+       319,
+       568
+      ]
+     ],
+     [
+      185,
+      37,
+      [
+       309,
+       563,
+       319,
+       567
+      ]
+     ],
+     [
+      186,
+      39,
+      [
+       309,
+       562,
+       319,
+       566
+      ]
+     ],
+     [
+      187,
+      44,
+      [
+       309,
+       561,
+       319,
+       566
+      ]
+     ],
+     [
+      188,
+      44,
+      [
+       309,
+       560,
+       319,
+       565
+      ]
+     ],
+     [
+      189,
+      42,
+      [
+       308,
+       563,
+       318,
+       568
+      ]
+     ],
+     [
+      190,
+      43,
+      [
+       308,
+       563,
+       318,
+       568
+      ]
+     ],
+     [
+      191,
+      41,
+      [
+       308,
+       562,
+       317,
+       567
+      ]
+     ],
+     [
+      192,
+      39,
+      [
+       308,
+       560,
+       317,
+       564
+      ]
+     ],
+     [
+      193,
+      40,
+      [
+       308,
+       558,
+       317,
+       563
+      ]
+     ],
+     [
+      194,
+      40,
+      [
+       308,
+       557,
+       317,
+       562
+      ]
+     ],
+     [
+      195,
+      41,
+      [
+       307,
+       556,
+       317,
+       561
+      ]
+     ],
+     [
+      196,
+      43,
+      [
+       307,
+       555,
+       317,
+       561
+      ]
+     ],
+     [
+      197,
+      45,
+      [
+       308,
+       555,
+       318,
+       560
+      ]
+     ],
+     [
+      198,
+      49,
+      [
+       308,
+       554,
+       318,
+       559
+      ]
+     ],
+     [
+      199,
+      49,
+      [
+       308,
+       553,
+       318,
+       559
+      ]
+     ],
+     [
+      200,
+      47,
+      [
+       308,
+       552,
+       318,
+       558
+      ]
+     ],
+     [
+      201,
+      47,
+      [
+       309,
+       552,
+       319,
+       557
+      ]
+     ],
+     [
+      202,
+      47,
+      [
+       309,
+       551,
+       319,
+       557
+      ]
+     ],
+     [
+      203,
+      45,
+      [
+       309,
+       551,
+       319,
+       556
+      ]
+     ],
+     [
+      204,
+      47,
+      [
+       310,
+       550,
+       320,
+       556
+      ]
+     ],
+     [
+      205,
+      46,
+      [
+       310,
+       550,
+       320,
+       555
+      ]
+     ],
+     [
+      206,
+      45,
+      [
+       311,
+       550,
+       321,
+       555
+      ]
+     ],
+     [
+      207,
+      43,
+      [
+       312,
+       549,
+       322,
+       555
+      ]
+     ],
+     [
+      208,
+      43,
+      [
+       312,
+       549,
+       322,
+       554
+      ]
+     ],
+     [
+      209,
+      42,
+      [
+       313,
+       549,
+       322,
+       554
+      ]
+     ],
+     [
+      210,
+      39,
+      [
+       314,
+       549,
+       323,
+       554
+      ]
+     ],
+     [
+      211,
+      37,
+      [
+       314,
+       551,
+       323,
+       556
+      ]
+     ],
+     [
+      212,
+      36,
+      [
+       315,
+       551,
+       324,
+       556
+      ]
+     ],
+     [
+      213,
+      39,
+      [
+       316,
+       549,
+       325,
+       554
+      ]
+     ],
+     [
+      214,
+      39,
+      [
+       316,
+       548,
+       325,
+       553
+      ]
+     ]
+    ],
+    "total_px": 31217,
+    "by_segment": {
+     "enter/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 7696,
+      "max_px": 256
+     },
+     "settle/front": {
+      "frames": 16,
+      "with_holes": 16,
+      "px": 3879,
+      "max_px": 257
+     },
+     "idle/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 11367,
+      "max_px": 245
+     },
+     "turn/front": {
+      "frames": 10,
+      "with_holes": 10,
+      "px": 1794,
+      "max_px": 773
+     },
+     "turn/side": {
+      "frames": 20,
+      "with_holes": 20,
+      "px": 874,
+      "max_px": 73
+     },
+     "turn/rear": {
+      "frames": 10,
+      "with_holes": 10,
+      "px": 2555,
+      "max_px": 1121
+     },
+     "start/rear": {
+      "frames": 15,
+      "with_holes": 15,
+      "px": 904,
+      "max_px": 63
+     },
+     "exit/rear": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 2148,
+      "max_px": 63
+     }
+    }
+   },
+   "hem_shoe": {
+    "probes": 243,
+    "gaps": [
+     [
+      117,
+      "R",
+      101
+     ]
+    ],
+    "min_alpha": 101
+   },
+   "switches": [
+    {
+     "at": 122,
+     "from": "turn 10 (front)",
+     "to": "turn 11 (side)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": -1.4,
+     "head_top_px": 1,
+     "head_width_change": -0.015,
+     "lowest_row_px": -2,
+     "box_height_change": -0.006,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.739
+    },
+    {
+     "at": 142,
+     "from": "turn 30 (side)",
+     "to": "turn 31 (rear)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": 1.2,
+     "head_top_px": 0,
+     "head_width_change": 0.0,
+     "lowest_row_px": -6,
+     "box_height_change": -0.011,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.727
+    }
+   ],
+   "vs_baseline": {
+    "trouser_delta_e76": {
+     "n": 195,
+     "min": 0.483,
+     "median": 0.66,
+     "p95": 0.72,
+     "max": 0.803
+    },
+    "weave_ratio": {
+     "n": 195,
+     "min": 0.808,
+     "median": 0.926,
+     "p95": 1.001,
+     "max": 1.049
+    },
+    "torso_mean_abs_rgb": {
+     "n": 195,
+     "min": 0.48,
+     "median": 3.869,
+     "p95": 9.772,
+     "max": 17.256
+    },
+    "torso_shift": {
+     "rows": [
+      {
+       "n": 0,
+       "seg": "enter",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        1.0,
+        1.0,
+        0.5
+       ]
+      },
+      {
+       "n": 4,
+       "seg": "enter",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        0.75,
+        0.75,
+        0.25
+       ]
+      },
+      {
+       "n": 8,
+       "seg": "enter",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        1.5,
+        1.0,
+        0.25
+       ]
+      },
+      {
+       "n": 12,
+       "seg": "enter",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        1.5,
+        1.0,
+        0.0
+       ]
+      },
+      {
+       "n": 16,
+       "seg": "enter",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        1.0,
+        0.25,
+        0.0
+       ]
+      },
+      {
+       "n": 20,
+       "seg": "enter",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        -0.5,
+        -0.75,
+        -0.5
+       ]
+      },
+      {
+       "n": 24,
+       "seg": "enter",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        -1.0,
+        -1.0,
+        -0.5
+       ]
+      },
+      {
+       "n": 28,
+       "seg": "enter",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        -1.0,
+        -0.75,
+        -0.25
+       ]
+      },
+      {
+       "n": 32,
+       "seg": "enter",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        -2.0,
+        -1.0,
+        -0.25
+       ]
+      },
+      {
+       "n": 36,
+       "seg": "enter",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        -1.25,
+        -0.75,
+        0.0
+       ]
+      },
+      {
+       "n": 40,
+       "seg": "enter",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        -0.75,
+        0.0,
+        0.25
+       ]
+      },
+      {
+       "n": 44,
+       "seg": "enter",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        1.25,
+        1.0,
+        0.5
+       ]
+      },
+      {
+       "n": 64,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 65,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 66,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 67,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 68,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 69,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 70,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 71,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 72,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 73,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 74,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 75,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 76,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 77,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 78,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 79,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 80,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 81,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 82,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 83,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 84,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 85,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 86,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 87,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 88,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 89,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 90,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 91,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 92,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 93,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 94,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 95,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 96,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 97,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 98,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 99,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 100,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 101,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 102,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 103,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 104,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 105,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 106,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 107,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 108,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 109,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 110,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 111,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 112,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.5,
+        0.25,
+        0.0
+       ]
+      },
+      {
+       "n": 121,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        3.75,
+        4.0,
+        1.5
+       ]
+      },
+      {
+       "n": 142,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        -3.75,
+        -4.0,
+        -1.5
+       ]
+      },
+      {
+       "n": 151,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 167,
+       "seg": "exit",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        1.0,
+        1.0,
+        0.5
+       ]
+      },
+      {
+       "n": 171,
+       "seg": "exit",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        0.75,
+        0.75,
+        0.25
+       ]
+      },
+      {
+       "n": 175,
+       "seg": "exit",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        -0.75,
+        -0.5,
+        0.0
+       ]
+      },
+      {
+       "n": 179,
+       "seg": "exit",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        -1.75,
+        -1.25,
+        -0.25
+       ]
+      },
+      {
+       "n": 183,
+       "seg": "exit",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        -2.25,
+        -1.75,
+        -0.5
+       ]
+      },
+      {
+       "n": 187,
+       "seg": "exit",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        -1.0,
+        -1.0,
+        -0.5
+       ]
+      },
+      {
+       "n": 191,
+       "seg": "exit",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        -0.75,
+        -0.75,
+        -0.25
+       ]
+      },
+      {
+       "n": 195,
+       "seg": "exit",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        0.0,
+        -0.25,
+        0.0
+       ]
+      },
+      {
+       "n": 199,
+       "seg": "exit",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        1.5,
+        1.0,
+        0.25
+       ]
+      },
+      {
+       "n": 203,
+       "seg": "exit",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        1.75,
+        1.5,
+        0.25
+       ]
+      },
+      {
+       "n": 207,
+       "seg": "exit",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        2.25,
+        1.5,
+        0.5
+       ]
+      },
+      {
+       "n": 211,
+       "seg": "exit",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        0.75,
+        0.75,
+        0.25
+       ]
+      }
+     ],
+     "max_abs_px": 4.0
+    }
+   }
+  },
+  {
+   "label": "v09r",
+   "dir": "asset-source/v09_QA/render_v09r",
+   "art": "v09r",
+   "suite": {
+    "views": {
+     "front": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.16,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.14,
+       "min": 0.0,
+       "max": 1.0
+      },
+      "height_ratio": {
+       "mean": 1.053,
+       "cv": 0.02
+      },
+      "head_width_ratio": {
+       "mean": 0.226,
+       "cv": 0.006
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "rear": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.52,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.11,
+       "min": 0.0,
+       "max": 0.5
+      },
+      "height_ratio": {
+       "mean": 1.001,
+       "cv": 0.016
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.007
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "side": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -2.49,
+       "min": -5.3,
+       "max": -1.3
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.2,
+       "min": 0.0,
+       "max": 1.11
+      },
+      "height_ratio": {
+       "mean": 0.962,
+       "cv": 0.004
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.008
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 59
+      }
+     }
+    },
+    "seams": [
+     {
+      "at": 48,
+      "from": "enter 47 (front)",
+      "to": "settle 1 (front)",
+      "root_px": 0.09,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0015
+     },
+     {
+      "at": 64,
+      "from": "settle 16 (front)",
+      "to": "idle 1 (front)",
+      "root_px": 0.16,
+      "head_rig_px": 0.23,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0005
+     },
+     {
+      "at": 112,
+      "from": "idle 48 (front)",
+      "to": "turn 1 (front)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0
+      },
+      "root_world_m": 0.0
+     },
+     {
+      "at": 122,
+      "from": "turn 10 (front)",
+      "to": "turn 11 (side)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": -1.4,
+      "head_top_px": 1,
+      "head_width_change": -0.015,
+      "lowest_row_px": -2,
+      "box_height_change": -0.006,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.747
+     },
+     {
+      "at": 142,
+      "from": "turn 30 (side)",
+      "to": "turn 31 (rear)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 1.2,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": -6,
+      "box_height_change": -0.011,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.73
+     },
+     {
+      "at": 152,
+      "from": "turn 40 (rear)",
+      "to": "start 1 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     },
+     {
+      "at": 167,
+      "from": "start 15 (rear)",
+      "to": "exit 0 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.05,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     }
+    ],
+    "walk_step_reference": {
+     "enter": {
+      "root_px": {
+       "median": 1.036,
+       "max": 4.148
+      },
+      "head_rig_px": {
+       "median": 0.49,
+       "max": 3.15
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.7
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.02
+      },
+      "lowest_row_px": {
+       "median": 0.0,
+       "max": 13.0
+      }
+     },
+     "exit": {
+      "root_px": {
+       "median": 1.241,
+       "max": 3.114
+      },
+      "head_rig_px": {
+       "median": 0.477,
+       "max": 3.006
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.6
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.019
+      },
+      "lowest_row_px": {
+       "median": 1.0,
+       "max": 10.0
+      }
+     }
+    },
+    "resting_contact_slide": {
+     "enter->settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle->idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle->turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn->start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start->exit": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     }
+    },
+    "knee_band": {
+     "enter_exit": {
+      "legs": 192,
+      "min_alpha": 252,
+      "below_250": 0
+     },
+     "all_segments": {
+      "legs": 430,
+      "min_alpha": 252,
+      "below_250": 0
+     }
+    },
+    "knee": {
+     "stance_flex_max_deg": 24,
+     "flat_frames_over_25": 0
+    },
+    "enter_end_vs_exit_start": {
+     "root_gap_m": 0.0607
+    }
+   },
+   "legs": {
+    "front": {
+     "legs": 244,
+     "merged_skipped": 0,
+     "neck": {
+      "n": 244,
+      "min": 0.539,
+      "median": 0.982,
+      "p95": 1.001,
+      "max": 1.024
+     },
+     "bulge": {
+      "n": 244,
+      "min": 0.989,
+      "median": 1.04,
+      "p95": 1.07,
+      "max": 1.135
+     },
+     "step_px": {
+      "n": 244,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 25.0
+     },
+     "seam_ratio": {
+      "n": 244,
+      "min": 0.42,
+      "median": 2.19,
+      "p95": 4.218,
+      "max": 5.65
+     },
+     "seam_luma": {
+      "n": 244,
+      "min": 1.38,
+      "median": 3.095,
+      "p95": 6.009,
+      "max": 8.29
+     },
+     "fold_offset_px": {
+      "n": 244,
+      "min": -19.6,
+      "median": -6.0,
+      "p95": -2.315,
+      "max": 8.1
+     },
+     "fold_depth_luma": {
+      "n": 244,
+      "min": 0.01,
+      "median": 4.365,
+      "p95": 5.995,
+      "max": 6.64
+     },
+     "rim_band": {
+      "n": 244,
+      "min": 1.5,
+      "median": 3.09,
+      "p95": 3.907,
+      "max": 5.03
+     },
+     "rim_ref": {
+      "n": 244,
+      "min": 1.43,
+      "median": 3.44,
+      "p95": 4.095,
+      "max": 4.79
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.48,
+       "seam_luma": 5.54,
+       "fold_offset_px": -19.3,
+       "fold_depth_luma": 3.6,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.94,
+       "seam_luma": 5.65,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.3,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 51.0,
+       "neck": 0.972,
+       "bulge": 1.036,
+       "step_px": 3.0,
+       "seam_ratio": 2.22,
+       "seam_luma": 4.2,
+       "fold_offset_px": -18.4,
+       "fold_depth_luma": 3.49,
+       "rim_band": 3.55,
+       "rim_ref": 2.96,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 38.0,
+       "shin_w": 37.5,
+       "neck": 0.976,
+       "bulge": 1.04,
+       "step_px": 2.0,
+       "seam_ratio": 3.11,
+       "seam_luma": 3.56,
+       "fold_offset_px": -5.1,
+       "fold_depth_luma": 5.26,
+       "rim_band": 4.09,
+       "rim_ref": 3.62,
+       "n": 4,
+       "seg": "enter",
+       "i": 4,
+       "side": "L",
+       "flex": 24
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 43.0,
+       "shin_w": 42.0,
+       "neck": 0.969,
+       "bulge": 1.002,
+       "step_px": 1.0,
+       "seam_ratio": 5.42,
+       "seam_luma": 5.66,
+       "fold_offset_px": -6.0,
+       "fold_depth_luma": 5.73,
+       "rim_band": 3.41,
+       "rim_ref": 4.27,
+       "n": 29,
+       "seg": "enter",
+       "i": 29,
+       "side": "L",
+       "flex": 48.9
+      },
+      {
+       "merged": false,
+       "thigh_w": 45.0,
+       "shin_w": 44.0,
+       "neck": 0.96,
+       "bulge": 1.0,
+       "step_px": 2.0,
+       "seam_ratio": 5.36,
+       "seam_luma": 5.61,
+       "fold_offset_px": -6.7,
+       "fold_depth_luma": 6.36,
+       "rim_band": 3.37,
+       "rim_ref": 3.29,
+       "n": 32,
+       "seg": "enter",
+       "i": 32,
+       "side": "L",
+       "flex": 60.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 45.0,
+       "shin_w": 45.0,
+       "neck": 0.978,
+       "bulge": 1.0,
+       "step_px": 1.0,
+       "seam_ratio": 5.25,
+       "seam_luma": 5.54,
+       "fold_offset_px": -7.5,
+       "fold_depth_luma": 6.16,
+       "rim_band": 2.89,
+       "rim_ref": 3.78,
+       "n": 33,
+       "seg": "enter",
+       "i": 33,
+       "side": "L",
+       "flex": 63.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 43.0,
+       "neck": 0.947,
+       "bulge": 0.989,
+       "step_px": 2.0,
+       "seam_ratio": 4.98,
+       "seam_luma": 5.67,
+       "fold_offset_px": -6.2,
+       "fold_depth_luma": 6.03,
+       "rim_band": 2.89,
+       "rim_ref": 4.04,
+       "n": 30,
+       "seg": "enter",
+       "i": 30,
+       "side": "L",
+       "flex": 52.8
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.48,
+       "seam_luma": 5.54,
+       "fold_offset_px": -19.3,
+       "fold_depth_luma": 3.6,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.94,
+       "seam_luma": 5.65,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.3,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 43.0,
+       "neck": 0.947,
+       "bulge": 0.989,
+       "step_px": 2.0,
+       "seam_ratio": 4.98,
+       "seam_luma": 5.67,
+       "fold_offset_px": -6.2,
+       "fold_depth_luma": 6.03,
+       "rim_band": 2.89,
+       "rim_ref": 4.04,
+       "n": 30,
+       "seg": "enter",
+       "i": 30,
+       "side": "L",
+       "flex": 52.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 41.0,
+       "shin_w": 39.0,
+       "neck": 0.953,
+       "bulge": 1.024,
+       "step_px": 2.0,
+       "seam_ratio": 3.57,
+       "seam_luma": 3.85,
+       "fold_offset_px": -4.6,
+       "fold_depth_luma": 5.05,
+       "rim_band": 3.83,
+       "rim_ref": 3.81,
+       "n": 19,
+       "seg": "enter",
+       "i": 19,
+       "side": "L",
+       "flex": 24
+      }
+     ]
+    },
+    "rear": {
+     "legs": 146,
+     "merged_skipped": 26,
+     "neck": {
+      "n": 120,
+      "min": 0.471,
+      "median": 0.971,
+      "p95": 1.0,
+      "max": 1.001
+     },
+     "bulge": {
+      "n": 120,
+      "min": 1.002,
+      "median": 1.044,
+      "p95": 1.075,
+      "max": 1.103
+     },
+     "step_px": {
+      "n": 120,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 11.0
+     },
+     "seam_ratio": {
+      "n": 120,
+      "min": 0.23,
+      "median": 1.28,
+      "p95": 2.001,
+      "max": 4.81
+     },
+     "seam_luma": {
+      "n": 120,
+      "min": 1.92,
+      "median": 3.505,
+      "p95": 5.412,
+      "max": 7.37
+     },
+     "fold_offset_px": {
+      "n": 120,
+      "min": -19.7,
+      "median": -11.6,
+      "p95": -0.1,
+      "max": 9.6
+     },
+     "fold_depth_luma": {
+      "n": 120,
+      "min": -3.67,
+      "median": 0.77,
+      "p95": 2.091,
+      "max": 3.45
+     },
+     "rim_band": {
+      "n": 120,
+      "min": 1.34,
+      "median": 3.235,
+      "p95": 4.695,
+      "max": 5.28
+     },
+     "rim_ref": {
+      "n": 120,
+      "min": 1.24,
+      "median": 3.505,
+      "p95": 4.07,
+      "max": 4.22
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.779,
+       "bulge": 1.084,
+       "step_px": 11.0,
+       "seam_ratio": 1.52,
+       "seam_luma": 3.34,
+       "fold_offset_px": -15.3,
+       "fold_depth_luma": 0.98,
+       "rim_band": 3.15,
+       "rim_ref": 3.49,
+       "n": 145,
+       "seg": "turn",
+       "i": 34,
+       "side": "L",
+       "flex": 30.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.88,
+       "bulge": 1.089,
+       "step_px": 6.0,
+       "seam_ratio": 0.46,
+       "seam_luma": 3.14,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": -2.08,
+       "rim_band": 3.2,
+       "rim_ref": 3.18,
+       "n": 144,
+       "seg": "turn",
+       "i": 33,
+       "side": "L",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 47.0,
+       "neck": 0.974,
+       "bulge": 1.081,
+       "step_px": 2.0,
+       "seam_ratio": 1.44,
+       "seam_luma": 2.47,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": 3.45,
+       "rim_band": 1.48,
+       "rim_ref": 1.28,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.81,
+       "seam_luma": 7.37,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.88,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.972,
+       "bulge": 1.087,
+       "step_px": 2.0,
+       "seam_ratio": 1.56,
+       "seam_luma": 3.48,
+       "fold_offset_px": -14.5,
+       "fold_depth_luma": 0.75,
+       "rim_band": 2.77,
+       "rim_ref": 2.95,
+       "n": 146,
+       "seg": "turn",
+       "i": 35,
+       "side": "L",
+       "flex": 31.4
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.81,
+       "seam_luma": 7.37,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.88,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 46.0,
+       "neck": 0.983,
+       "bulge": 1.042,
+       "step_px": 1.0,
+       "seam_ratio": 4.52,
+       "seam_luma": 6.35,
+       "fold_offset_px": -19.7,
+       "fold_depth_luma": 1.66,
+       "rim_band": 3.68,
+       "rim_ref": 1.24,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 43.0,
+       "neck": 0.97,
+       "bulge": 1.045,
+       "step_px": 1.0,
+       "seam_ratio": 2.17,
+       "seam_luma": 5.69,
+       "fold_offset_px": -0.8,
+       "fold_depth_luma": 0.93,
+       "rim_band": 3.11,
+       "rim_ref": 3.59,
+       "n": 171,
+       "seg": "exit",
+       "i": 4,
+       "side": "R",
+       "flex": 47.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 43.0,
+       "shin_w": 40.0,
+       "neck": 0.972,
+       "bulge": 1.075,
+       "step_px": 2.0,
+       "seam_ratio": 2.06,
+       "seam_luma": 5.72,
+       "fold_offset_px": -0.1,
+       "fold_depth_luma": 1.5,
+       "rim_band": 4.56,
+       "rim_ref": 3.95,
+       "n": 178,
+       "seg": "exit",
+       "i": 11,
+       "side": "R",
+       "flex": 62.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 37.0,
+       "shin_w": 35.0,
+       "neck": 0.973,
+       "bulge": 1.057,
+       "step_px": 2.0,
+       "seam_ratio": 2.03,
+       "seam_luma": 5.81,
+       "fold_offset_px": -1.3,
+       "fold_depth_luma": 1.1,
+       "rim_band": 3.94,
+       "rim_ref": 3.71,
+       "n": 214,
+       "seg": "exit",
+       "i": 47,
+       "side": "R",
+       "flex": 47.3
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 38.0,
+       "neck": 0.471,
+       "bulge": 1.04,
+       "step_px": 1.0,
+       "seam_ratio": 0.29,
+       "seam_luma": 5.12,
+       "fold_offset_px": -0.2,
+       "fold_depth_luma": 2.48,
+       "rim_band": 4.79,
+       "rim_ref": 3.87,
+       "n": 183,
+       "seg": "exit",
+       "i": 16,
+       "side": "R",
+       "flex": 53.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 37.0,
+       "neck": 0.483,
+       "bulge": 1.05,
+       "step_px": 1.0,
+       "seam_ratio": 0.26,
+       "seam_luma": 4.82,
+       "fold_offset_px": 0.5,
+       "fold_depth_luma": 2.09,
+       "rim_band": 4.29,
+       "rim_ref": 3.87,
+       "n": 184,
+       "seg": "exit",
+       "i": 17,
+       "side": "R",
+       "flex": 46.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 80.0,
+       "shin_w": 38.0,
+       "neck": 0.504,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.32,
+       "seam_luma": 5.41,
+       "fold_offset_px": 0.5,
+       "fold_depth_luma": 2.4,
+       "rim_band": 4.0,
+       "rim_ref": 3.52,
+       "n": 182,
+       "seg": "exit",
+       "i": 15,
+       "side": "R",
+       "flex": 58.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 79.0,
+       "shin_w": 37.0,
+       "neck": 0.513,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.33,
+       "seam_luma": 4.34,
+       "fold_offset_px": -0.1,
+       "fold_depth_luma": 1.76,
+       "rim_band": 5.07,
+       "rim_ref": 4.06,
+       "n": 185,
+       "seg": "exit",
+       "i": 18,
+       "side": "R",
+       "flex": 39.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 82.0,
+       "shin_w": 43.0,
+       "neck": 0.562,
+       "bulge": 1.035,
+       "step_px": 1.0,
+       "seam_ratio": 0.31,
+       "seam_luma": 2.89,
+       "fold_offset_px": -11.0,
+       "fold_depth_luma": 1.82,
+       "rim_band": 3.25,
+       "rim_ref": 3.59,
+       "n": 168,
+       "seg": "exit",
+       "i": 1,
+       "side": "L",
+       "flex": 30.4
+      }
+     ]
+    }
+   },
+   "holes": {
+    "frames_with_holes": [
+     [
+      0,
+      29,
+      [
+       413,
+       584,
+       417,
+       594
+      ]
+     ],
+     [
+      1,
+      31,
+      [
+       412,
+       587,
+       416,
+       598
+      ]
+     ],
+     [
+      2,
+      33,
+      [
+       359,
+       588,
+       416,
+       693
+      ]
+     ],
+     [
+      3,
+      29,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      4,
+      28,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      5,
+      28,
+      [
+       412,
+       589,
+       416,
+       598
+      ]
+     ],
+     [
+      6,
+      26,
+      [
+       412,
+       589,
+       416,
+       598
+      ]
+     ],
+     [
+      7,
+      23,
+      [
+       412,
+       590,
+       415,
+       599
+      ]
+     ],
+     [
+      8,
+      24,
+      [
+       357,
+       591,
+       416,
+       692
+      ]
+     ],
+     [
+      9,
+      21,
+      [
+       413,
+       592,
+       416,
+       600
+      ]
+     ],
+     [
+      10,
+      15,
+      [
+       414,
+       594,
+       416,
+       600
+      ]
+     ],
+     [
+      11,
+      15,
+      [
+       414,
+       594,
+       416,
+       601
+      ]
+     ],
+     [
+      12,
+      12,
+      [
+       414,
+       596,
+       416,
+       601
+      ]
+     ],
+     [
+      13,
+      9,
+      [
+       415,
+       597,
+       417,
+       602
+      ]
+     ],
+     [
+      14,
+      8,
+      [
+       357,
+       597,
+       417,
+       698
+      ]
+     ],
+     [
+      15,
+      7,
+      [
+       417,
+       598,
+       418,
+       603
+      ]
+     ],
+     [
+      16,
+      4,
+      [
+       417,
+       597,
+       418,
+       603
+      ]
+     ],
+     [
+      17,
+      7,
+      [
+       418,
+       599,
+       419,
+       604
+      ]
+     ],
+     [
+      18,
+      6,
+      [
+       418,
+       598,
+       419,
+       605
+      ]
+     ],
+     [
+      19,
+      6,
+      [
+       358,
+       599,
+       420,
+       705
+      ]
+     ],
+     [
+      20,
+      3,
+      [
+       420,
+       601,
+       421,
+       605
+      ]
+     ],
+     [
+      21,
+      6,
+      [
+       420,
+       600,
+       422,
+       606
+      ]
+     ],
+     [
+      22,
+      5,
+      [
+       421,
+       604,
+       422,
+       610
+      ]
+     ],
+     [
+      23,
+      4,
+      [
+       422,
+       606,
+       423,
+       611
+      ]
+     ],
+     [
+      24,
+      4,
+      [
+       423,
+       607,
+       424,
+       612
+      ]
+     ],
+     [
+      25,
+      8,
+      [
+       423,
+       603,
+       425,
+       611
+      ]
+     ],
+     [
+      26,
+      6,
+      [
+       424,
+       604,
+       426,
+       611
+      ]
+     ],
+     [
+      27,
+      8,
+      [
+       425,
+       605,
+       426,
+       611
+      ]
+     ],
+     [
+      28,
+      9,
+      [
+       426,
+       607,
+       427,
+       612
+      ]
+     ],
+     [
+      29,
+      14,
+      [
+       425,
+       606,
+       428,
+       613
+      ]
+     ],
+     [
+      30,
+      14,
+      [
+       362,
+       608,
+       428,
+       719
+      ]
+     ],
+     [
+      31,
+      18,
+      [
+       426,
+       607,
+       429,
+       614
+      ]
+     ],
+     [
+      32,
+      24,
+      [
+       426,
+       606,
+       429,
+       615
+      ]
+     ],
+     [
+      33,
+      26,
+      [
+       426,
+       606,
+       429,
+       616
+      ]
+     ],
+     [
+      34,
+      29,
+      [
+       426,
+       606,
+       430,
+       617
+      ]
+     ],
+     [
+      35,
+      35,
+      [
+       362,
+       607,
+       430,
+       725
+      ]
+     ],
+     [
+      36,
+      38,
+      [
+       425,
+       607,
+       430,
+       619
+      ]
+     ],
+     [
+      37,
+      44,
+      [
+       425,
+       607,
+       430,
+       621
+      ]
+     ],
+     [
+      38,
+      49,
+      [
+       425,
+       608,
+       430,
+       622
+      ]
+     ],
+     [
+      39,
+      52,
+      [
+       425,
+       609,
+       430,
+       623
+      ]
+     ],
+     [
+      40,
+      53,
+      [
+       425,
+       610,
+       430,
+       624
+      ]
+     ],
+     [
+      41,
+      59,
+      [
+       424,
+       611,
+       430,
+       625
+      ]
+     ],
+     [
+      42,
+      60,
+      [
+       424,
+       612,
+       430,
+       627
+      ]
+     ],
+     [
+      43,
+      60,
+      [
+       424,
+       613,
+       430,
+       628
+      ]
+     ],
+     [
+      44,
+      60,
+      [
+       424,
+       616,
+       429,
+       632
+      ]
+     ],
+     [
+      45,
+      63,
+      [
+       423,
+       617,
+       429,
+       633
+      ]
+     ],
+     [
+      46,
+      63,
+      [
+       423,
+       617,
+       429,
+       632
+      ]
+     ],
+     [
+      47,
+      63,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      48,
+      62,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      49,
+      60,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      50,
+      59,
+      [
+       358,
+       618,
+       429,
+       747
+      ]
+     ],
+     [
+      51,
+      58,
+      [
+       358,
+       619,
+       430,
+       748
+      ]
+     ],
+     [
+      52,
+      52,
+      [
+       425,
+       619,
+       430,
+       633
+      ]
+     ],
+     [
+      53,
+      53,
+      [
+       425,
+       619,
+       431,
+       634
+      ]
+     ],
+     [
+      54,
+      48,
+      [
+       426,
+       621,
+       431,
+       634
+      ]
+     ],
+     [
+      55,
+      49,
+      [
+       427,
+       621,
+       432,
+       634
+      ]
+     ],
+     [
+      56,
+      46,
+      [
+       427,
+       621,
+       433,
+       635
+      ]
+     ],
+     [
+      57,
+      43,
+      [
+       359,
+       622,
+       433,
+       753
+      ]
+     ],
+     [
+      58,
+      42,
+      [
+       429,
+       622,
+       434,
+       635
+      ]
+     ],
+     [
+      59,
+      36,
+      [
+       430,
+       623,
+       434,
+       635
+      ]
+     ],
+     [
+      60,
+      39,
+      [
+       431,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      61,
+      37,
+      [
+       359,
+       624,
+       435,
+       756
+      ]
+     ],
+     [
+      62,
+      33,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      63,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      64,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      65,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      66,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      67,
+      35,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      68,
+      38,
+      [
+       359,
+       623,
+       435,
+       754
+      ]
+     ],
+     [
+      69,
+      34,
+      [
+       431,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      70,
+      35,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      71,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      72,
+      32,
+      [
+       431,
+       623,
+       434,
+       634
+      ]
+     ],
+     [
+      73,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      74,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      75,
+      29,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      76,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      77,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      78,
+      32,
+      [
+       431,
+       623,
+       434,
+       634
+      ]
+     ],
+     [
+      79,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      80,
+      35,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      81,
+      34,
+      [
+       431,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      82,
+      38,
+      [
+       359,
+       623,
+       435,
+       754
+      ]
+     ],
+     [
+      83,
+      35,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      84,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      85,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      86,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      87,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      88,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      89,
+      38,
+      [
+       432,
+       624,
+       436,
+       635
+      ]
+     ],
+     [
+      90,
+      36,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      91,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      92,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      93,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      94,
+      34,
+      [
+       433,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      95,
+      35,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      96,
+      36,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      97,
+      37,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      98,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      99,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      100,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      101,
+      37,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      102,
+      36,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      103,
+      35,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      104,
+      34,
+      [
+       433,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      105,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      106,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      107,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      108,
+      36,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      109,
+      38,
+      [
+       432,
+       624,
+       436,
+       635
+      ]
+     ],
+     [
+      110,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      111,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      112,
+      25,
+      [
+       433,
+       626,
+       436,
+       635
+      ]
+     ],
+     [
+      113,
+      9,
+      [
+       435,
+       629,
+       436,
+       635
+      ]
+     ],
+     [
+      117,
+      685,
+      [
+       300,
+       770,
+       359,
+       907
+      ]
+     ],
+     [
+      118,
+      308,
+      [
+       304,
+       778,
+       357,
+       873
+      ]
+     ],
+     [
+      119,
+      58,
+      [
+       311,
+       815,
+       362,
+       943
+      ]
+     ],
+     [
+      120,
+      5,
+      [
+       313,
+       850,
+       362,
+       940
+      ]
+     ],
+     [
+      122,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      123,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      124,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      125,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      126,
+      7,
+      [
+       321,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      127,
+      13,
+      [
+       315,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      128,
+      29,
+      [
+       310,
+       511,
+       418,
+       872
+      ]
+     ],
+     [
+      129,
+      62,
+      [
+       308,
+       511,
+       414,
+       978
+      ]
+     ],
+     [
+      130,
+      73,
+      [
+       314,
+       511,
+       412,
+       981
+      ]
+     ],
+     [
+      131,
+      62,
+      [
+       327,
+       511,
+       414,
+       984
+      ]
+     ],
+     [
+      132,
+      64,
+      [
+       315,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      133,
+      65,
+      [
+       313,
+       511,
+       362,
+       984
+      ]
+     ],
+     [
+      134,
+      68,
+      [
+       314,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      135,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      136,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      137,
+      45,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      138,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      139,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      140,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      141,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      143,
+      28,
+      [
+       356,
+       815,
+       356,
+       842
+      ]
+     ],
+     [
+      144,
+      281,
+      [
+       304,
+       783,
+       363,
+       970
+      ]
+     ],
+     [
+      145,
+      772,
+      [
+       290,
+       648,
+       363,
+       971
+      ]
+     ],
+     [
+      146,
+      1195,
+      [
+       288,
+       627,
+       364,
+       973
+      ]
+     ],
+     [
+      147,
+      73,
+      [
+       286,
+       634,
+       358,
+       755
+      ]
+     ],
+     [
+      148,
+      3,
+      [
+       286,
+       647,
+       286,
+       649
+      ]
+     ],
+     [
+      211,
+      2,
+      [
+       359,
+       692,
+       359,
+       693
+      ]
+     ]
+    ],
+    "total_px": 7966,
+    "by_segment": {
+     "enter/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1238,
+      "max_px": 63
+     },
+     "settle/front": {
+      "frames": 16,
+      "with_holes": 16,
+      "px": 751,
+      "max_px": 62
+     },
+     "idle/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1653,
+      "max_px": 38
+     },
+     "turn/front": {
+      "frames": 10,
+      "with_holes": 6,
+      "px": 1092,
+      "max_px": 685
+     },
+     "turn/side": {
+      "frames": 20,
+      "with_holes": 20,
+      "px": 874,
+      "max_px": 73
+     },
+     "turn/rear": {
+      "frames": 10,
+      "with_holes": 6,
+      "px": 2352,
+      "max_px": 1195
+     },
+     "start/rear": {
+      "frames": 15,
+      "with_holes": 0,
+      "px": 3,
+      "max_px": 1
+     },
+     "exit/rear": {
+      "frames": 48,
+      "with_holes": 1,
+      "px": 3,
+      "max_px": 2
+     }
+    }
+   },
+   "hem_shoe": {
+    "probes": 243,
+    "gaps": [
+     [
+      117,
+      "R",
+      101
+     ]
+    ],
+    "min_alpha": 101
+   },
+   "switches": [
+    {
+     "at": 122,
+     "from": "turn 10 (front)",
+     "to": "turn 11 (side)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": -1.4,
+     "head_top_px": 1,
+     "head_width_change": -0.015,
+     "lowest_row_px": -2,
+     "box_height_change": -0.006,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.747
+    },
+    {
+     "at": 142,
+     "from": "turn 30 (side)",
+     "to": "turn 31 (rear)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": 1.2,
+     "head_top_px": 0,
+     "head_width_change": 0.0,
+     "lowest_row_px": -6,
+     "box_height_change": -0.011,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.73
+    }
+   ],
+   "vs_baseline": {
+    "trouser_delta_e76": {
+     "n": 195,
+     "min": 0.009,
+     "median": 0.084,
+     "p95": 0.153,
+     "max": 0.188
+    },
+    "weave_ratio": {
+     "n": 195,
+     "min": 0.854,
+     "median": 1.006,
+     "p95": 1.078,
+     "max": 1.109
+    },
+    "torso_mean_abs_rgb": {
+     "n": 195,
+     "min": 2.149,
+     "median": 5.482,
+     "p95": 12.737,
+     "max": 20.774
+    },
+    "torso_shift": {
+     "rows": [
+      {
+       "n": 0,
+       "seg": "enter",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        -1.5,
+        -0.25,
+        0.75
+       ]
+      },
+      {
+       "n": 4,
+       "seg": "enter",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        -1.25,
+        -0.25,
+        0.75
+       ]
+      },
+      {
+       "n": 8,
+       "seg": "enter",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        0.25,
+        -0.25,
+        0.25
+       ]
+      },
+      {
+       "n": 12,
+       "seg": "enter",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        1.75,
+        0.25,
+        -0.5
+       ]
+      },
+      {
+       "n": 16,
+       "seg": "enter",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        2.75,
+        0.5,
+        -1.25
+       ]
+      },
+      {
+       "n": 20,
+       "seg": "enter",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        2.0,
+        0.25,
+        -1.5
+       ]
+      },
+      {
+       "n": 24,
+       "seg": "enter",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        1.75,
+        0.25,
+        -1.25
+       ]
+      },
+      {
+       "n": 28,
+       "seg": "enter",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        0.75,
+        0.25,
+        -0.75
+       ]
+      },
+      {
+       "n": 32,
+       "seg": "enter",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        -1.25,
+        0.25,
+        0.5
+       ]
+      },
+      {
+       "n": 36,
+       "seg": "enter",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        -2.5,
+        -0.25,
+        1.25
+       ]
+      },
+      {
+       "n": 40,
+       "seg": "enter",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        -3.25,
+        -0.5,
+        1.75
+       ]
+      },
+      {
+       "n": 44,
+       "seg": "enter",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        -1.75,
+        -0.25,
+        1.5
+       ]
+      },
+      {
+       "n": 64,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 65,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 66,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 67,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 68,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 69,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 70,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 71,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        -0.25,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 72,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 73,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 74,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 75,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 76,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 77,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 78,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 79,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        -0.25,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 80,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 81,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 82,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 83,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 84,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 85,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 86,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 87,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 88,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 89,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 90,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 91,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 92,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 93,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 94,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 95,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 96,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 97,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 98,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 99,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 100,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 101,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 102,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 103,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 104,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 105,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 106,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 107,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 108,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 109,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 110,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 111,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 112,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.25,
+        0.25,
+        0.25
+       ]
+      },
+      {
+       "n": 121,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        3.75,
+        4.0,
+        3.5
+       ]
+      },
+      {
+       "n": 142,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        -3.75,
+        -4.0,
+        -2.5
+       ]
+      },
+      {
+       "n": 151,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 167,
+       "seg": "exit",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        -1.5,
+        -0.5,
+        0.75
+       ]
+      },
+      {
+       "n": 171,
+       "seg": "exit",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        -1.5,
+        -0.5,
+        0.75
+       ]
+      },
+      {
+       "n": 175,
+       "seg": "exit",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        -1.5,
+        -0.25,
+        0.75
+       ]
+      },
+      {
+       "n": 179,
+       "seg": "exit",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        -1.0,
+        0.0,
+        0.25
+       ]
+      },
+      {
+       "n": 183,
+       "seg": "exit",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        -0.25,
+        0.5,
+        -0.25
+       ]
+      },
+      {
+       "n": 187,
+       "seg": "exit",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        0.5,
+        0.5,
+        -0.75
+       ]
+      },
+      {
+       "n": 191,
+       "seg": "exit",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        1.25,
+        0.5,
+        -0.75
+       ]
+      },
+      {
+       "n": 195,
+       "seg": "exit",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        1.0,
+        0.25,
+        -0.75
+       ]
+      },
+      {
+       "n": 199,
+       "seg": "exit",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        1.25,
+        -0.25,
+        -0.5
+       ]
+      },
+      {
+       "n": 203,
+       "seg": "exit",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        0.25,
+        -0.5,
+        -0.25
+       ]
+      },
+      {
+       "n": 207,
+       "seg": "exit",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        -0.5,
+        -0.75,
+        0.25
+       ]
+      },
+      {
+       "n": 211,
+       "seg": "exit",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        -1.5,
+        -0.5,
+        0.5
+       ]
+      }
+     ],
+     "max_abs_px": 4.0
+    }
+   }
+  }
+ ]
+}

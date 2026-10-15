@@ -2,6 +2,8 @@
 """QA-viewer atlases of the v06 walk renders (asset-source/v06_render/render_v06.js), NPC02-NPC10.
 
   python3 scripts/import-v06-frames.py --render <out root> [--npc NPC06] [--scale 0.5]
+  python3 scripts/import-v06-frames.py --render <NPC06 render dir> --npc NPC06 --out <dir> --revision v09r --scale 1
+        (one candidate render of one NPC: <NPC06 render dir> is that render itself, written to <dir>/atlas.*)
 
 <out root>/<NPC>/ is what render_v06.js wrote (seq/NNNN.png, pass/NNNN.png, frames.json). The rendered PNGs are not
 kept in the repository (they are rebuilt byte for byte from the inputs; their SHA-256 are kept here). Every frame is a
@@ -22,7 +24,7 @@ MAX_W = 4096
 
 def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 
-def import_npc(src, npc, scale):
+def import_npc(src, npc, scale, out=None, revision='v06', note=None):
     R = json.load(open(os.path.join(src, 'frames.json'))); problems = []
     files = [('seq', n) for n in range(len(R['frames']))] + [('pass', i) for i in range(len(R['pass']))]
     crops, hashes = [], []
@@ -45,7 +47,7 @@ def import_npc(src, npc, scale):
         atlas.paste(c, (px, py))
         if abs(b[0] + c.width / scale - b[2]) > 1 / scale or abs(b[1] + c.height / scale - b[3]) > 1 / scale: problems.append(f'rect {px},{py} does not map back onto {b}')
     if problems: return {'npc': npc, 'ok': False, 'problems': problems}
-    out = os.path.join(QA, npc); os.makedirs(out, exist_ok=True)
+    out = out or os.path.join(QA, npc); os.makedirs(out, exist_ok=True)
     # Lossy colour, exact alpha: QA-only and rebuilt from the renders, so ~4x smaller than lossless (v05 atlases are lossless).
     atlas.save(os.path.join(out, 'atlas.webp'), 'WEBP', quality=90, alpha_quality=100, method=6)
     clips = {k: {'offset': v['offset'], 'frames': v['frames'], 'art': v['art']} for k, v in R['segments'].items()}
@@ -57,17 +59,23 @@ def import_npc(src, npc, scale):
         data.append({'seg': f['seg'], 'i': f['i'], 'art': f['art'], 'heading': f['heading'], 'feet': [round(sum(hx) / 4, 1), round(max(hy), 1)], 'shadows': f['shadows'], 'root_px': f['root_px']})
     for p in R['pass']:
         data.append({'seg': 'pass', 'i': p['i'], 'art': 'side', 'heading': 90, 'feet': None, 'shadows': p['shadows'], 'root_px': None})
-    meta = {'npc': npc, 'revision': 'v06', 'src': 'atlas.webp', 'scale': scale, 'frames': len(placed), 'canvas': [720, 1280], 'fps': 24, 'clips': clips,
+    meta = {'npc': npc, 'revision': revision, **({'art': R['art'], 'engine_applied': R.get('engine_applied', False)} if R.get('art') else {}), 'src': 'atlas.webp', 'scale': scale, 'frames': len(placed), 'canvas': [720, 1280], 'fps': 24, 'clips': clips,
             'rects': [[px, py, c.width, c.height, b[0], b[1]] for c, b, px, py in placed], 'sha256': hashes, 'data': data,
             'sequence': R['sequence'], 'rig': R['rig'], 'height_m': R['height_m'], 'fixes': R['fixes'],
-            'qa_status': 'REVISE', 'note': 'QA 뷰어 전용. render_v06.js 출력에서 만든 아틀라스. 게임 빌드(dist)에 넣지 않는다.'}
+            'qa_status': 'REVISE', 'note': note or 'QA 뷰어 전용. render_v06.js 출력에서 만든 아틀라스. 게임 빌드(dist)에 넣지 않는다.'}
     json.dump(meta, open(os.path.join(out, 'atlas.json'), 'w'), separators=(',', ':'))
     return {'npc': npc, 'ok': True, 'frames': len(placed), 'atlas': list(atlas.size), 'bytes': os.path.getsize(os.path.join(out, 'atlas.webp'))}
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--render', required=True); ap.add_argument('--npc', action='append'); ap.add_argument('--scale', type=float, default=.5)
-    a = ap.parse_args(); names = a.npc or sorted(d for d in os.listdir(a.render) if d.startswith('NPC') and os.path.isdir(os.path.join(a.render, d)))
-    report = [import_npc(os.path.join(a.render, n), n, a.scale) for n in names]
+    ap.add_argument('--out'); ap.add_argument('--revision', default='v06'); ap.add_argument('--note')
+    a = ap.parse_args()
+    if a.out:
+        if not a.npc or len(a.npc) != 1: ap.error('--out takes exactly one --npc, and --render is that NPC render directory')
+        report = [import_npc(a.render, a.npc[0], a.scale, a.out, a.revision, a.note)]
+    else:
+        names = a.npc or sorted(d for d in os.listdir(a.render) if d.startswith('NPC') and os.path.isdir(os.path.join(a.render, d)))
+        report = [import_npc(os.path.join(a.render, n), n, a.scale) for n in names]
     for r in report: print(r['npc'], 'OK' if r['ok'] else 'STOPPED', r.get('frames', ''), r.get('atlas', ''), r.get('bytes', ''), '\n  '.join([''] + r.get('problems', [])[:12]))
     if not all(r['ok'] for r in report): sys.exit(1)
 

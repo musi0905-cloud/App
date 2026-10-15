@@ -10,17 +10,18 @@
 </head>
 <body>
 <header><h1>404호는 없습니다 · 내부 QA 뷰어</h1><p>배포용 dist/ 밖에 있는 검수 도구예요. 게임에는 들어가지 않아요. 실행: <code>npm run qa</code></p></header>
-<nav class="modes" role="tablist"><button role="tab" data-mode="clip" aria-selected="true">걷기 클립 (v05·v06)</button><button role="tab" data-mode="still" aria-selected="false">정지 인물 합성</button></nav>
+<nav class="modes" role="tablist"><button role="tab" data-mode="clip" aria-selected="true">걷기 클립 (v05·v06·v09)</button><button role="tab" data-mode="still" aria-selected="false">정지 인물 합성</button></nav>
 
 <section id="clipMode" aria-label="걷기 클립 검수">
  <div class="controls">
   <label>인물 <select id="npc"></select></label>
-  <label>판 <select id="rev"><option value="v05">v05 (제작 측 원본 프레임)</option><option value="v06">v06 (render_v06.js 다시 렌더)</option></select></label>
+  <label>판 <select id="rev"><option value="v05">v05 (제작 측 원본 프레임)</option><option value="v06">v06 (render_v06.js 다시 렌더)</option><option value="v09">v09 후보 (NPC06, 제작 측 보정)</option><option value="v09r">v09r 수정본 (NPC06, v09 다시 고침)</option></select></label>
   <div class="views" role="group" aria-label="방향"><button data-view="front" aria-pressed="true">정면·입장</button><button data-view="side" aria-pressed="false">측면·지나감</button><button data-view="rear" aria-pressed="false">후면·퇴장</button><button data-view="seq" aria-pressed="false">입장→대기→회전→퇴장</button></div>
   <label>배경 <select id="bg"></select></label>
   <label>카메라 <select id="cam"><option value="full">전체</option><option value="intercom">인터폰(3:4)</option></select></label>
+  <label>확대 <select id="zoom"><option value="full">전체</option><option value="legs">다리 3배</option><option value="torso">몸통·어깨 3배</option></select></label>
   <label>인물 레이어 <select id="source"><option value="frames">스프라이트 프레임(원본 반입)</option><option value="rig">리그 골격(움직임 데이터)</option><option value="mp4">검토 영상 MP4(불투명 합성)</option></select></label>
-  <div class="transport" role="group" aria-label="재생"><button id="prev" aria-label="한 프레임 뒤로">◀ 1</button><button id="play">▶ 재생</button><button id="next" aria-label="한 프레임 앞으로">1 ▶</button><label class="inline"><input type="checkbox" id="loop"> 반복(검수용)</label><label class="inline">속도 <select id="speed"><option value="24">1배 (24fps)</option><option value="8">1/3배 (8fps)</option><option value="3">1/8배 (3fps)</option></select></label></div>
+  <div class="transport" role="group" aria-label="재생"><button id="prev" aria-label="한 프레임 뒤로">◀ 1</button><button id="play">▶ 재생</button><button id="next" aria-label="한 프레임 앞으로">1 ▶</button><label class="inline"><input type="checkbox" id="loop"> 반복(검수용)</label><label class="inline">속도 <select id="speed"><option value="24">1배 (24fps)</option><option value="12">1/2배 (12fps)</option><option value="8">1/3배 (8fps)</option><option value="3">1/8배 (3fps)</option></select></label></div>
   <input id="frame" type="range" min="0" max="47" value="0" aria-label="프레임">
   <p id="frameLabel" class="mono"></p>
   <fieldset><legend>겹쳐 보기</legend>

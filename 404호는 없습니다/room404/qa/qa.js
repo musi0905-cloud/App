@@ -5,7 +5,11 @@
 // view plays front 0-47, holds front 47 for one second (there is no idle art) and plays rear 0-47, so the seam is visible.
 // v06 (판 selector): atlases of the render_v06.js frames (asset-source/v06_QA/<NPC>/atlas.json, scripts/import-v06-frames.py):
 // front = enter clip, rear = exit clip, side = pass clip, and the whole enter -> settle -> idle -> turn -> start -> exit
-// sequence as rendered, frame by frame, with the per-frame feet and shadows the renderer wrote. Speed: 24, 8 or 3 fps.
+// sequence as rendered, frame by frame, with the per-frame feet and shadows the renderer wrote. Speed: 24, 12, 8 or 3 fps.
+// v09 / v09r (NPC06 only): the same atlases of the v09 candidate (render_v06.js --art=v09, from the producer) and of the
+// v09r revision (--art=v09r), asset-source/v09_QA/<v09|v09r>/atlas.json at full render scale, with the per-part verdicts
+// of asset-source/v09_QA/review_v09.json. Zoom (atlas revisions): a 3x window on the legs or the torso that follows the
+// figure's root, so knee lines, sleeve tops and the bag strap can be stepped frame by frame.
 // Still mode: the game's own stage.js with an approved figure, enter -> idle -> leave, plus the same overlays.
 import {mountStage,cameraOf} from '../dist/stage.js';
 const $=id=>document.getElementById(id),DIST='../dist/',SRC='../../asset-source/';
@@ -16,16 +20,19 @@ const world=(view,p)=>view==='front'?[-p[2],p[1],2.92-p[0]]:view==='rear'?[p[2],
 const project=(view,p)=>{const [x,y,z]=world(view,p);return [(W/2+F*x/z)*K,(HY+F*(1.6-y)/z)*K]};
 const BONES=[['head','neck'],['neck','Lshoulder'],['neck','Rshoulder'],['Lshoulder','Lelbow'],['Lelbow','Lwrist'],['Rshoulder','Relbow'],['Relbow','Rwrist'],['neck','root'],['root','Lhip'],['root','Rhip'],['Lhip','Lknee'],['Lknee','Lankle'],['Lankle','Lheel'],['Lheel','Ltoe'],['Lankle','Ltoe'],['Rhip','Rknee'],['Rknee','Rankle'],['Rankle','Rheel'],['Rheel','Rtoe'],['Rankle','Rtoe']];
 const MP4={NPC03:'NPC03_BG02_3view_walk_review_v05.mp4',NPC09:'NPC09_BG02_3view_walk_review_v05.mp4'},VIEW_OFFSET={front:0,side:48,rear:96};
-const st={npc:'NPC03',rev:'v05',fps:24,view:'front',bg:'BG02',cam:'full',source:'frames',frame:0,playing:false,ov:new Set(['foot','floor','shadow','click','occ'])};
-const v06={},review06=await json(`${SRC}v06_QA/review_summary_v06.json`).catch(()=>null);
-async function v06Of(npc){if(!(npc in v06))v06[npc]=await json(`${SRC}v06_QA/${npc}/atlas.json`).catch(()=>null);return v06[npc]}
+const st={npc:'NPC03',rev:'v05',fps:24,view:'front',bg:'BG02',cam:'full',zoom:'full',source:'frames',frame:0,playing:false,ov:new Set(['foot','floor','shadow','click','occ'])};
+const v06={},review06=await json(`${SRC}v06_QA/review_summary_v06.json`).catch(()=>null),review09=await json(`${SRC}v09_QA/review_v09.json`).catch(()=>null);
+// atlas revisions: where each one's atlas lives; v09 and v09r exist for NPC06 only
+const ATLAS={v06:npc=>`${SRC}v06_QA/${npc}/`,v09:()=>`${SRC}v09_QA/v09/`,v09r:()=>`${SRC}v09_QA/v09r/`},ONLY={v09:'NPC06',v09r:'NPC06'};
+async function v06Of(npc,rev=st.rev){const r=rev==='v05'?'v06':rev,key=r+':'+npc;if(ONLY[r]&&npc!==ONLY[r])return v06[key]=null;if(!(key in v06))v06[key]=await json(`${ATLAS[r](npc)}atlas.json`).catch(()=>null);return v06[key]}
+const cur06=()=>v06[(st.rev==='v05'?'v06':st.rev)+':'+st.npc];
 const SEG_KO={enter:'입장',settle:'멈춤',idle:'대기',turn:'회전',start:'출발',exit:'퇴장',pass:'지나감'};
 // v06 frame list for a view: atlas indices (seq = every frame of the sequence in render order).
 function v06List(a,view){if(!a)return [];const c=a.clips;if(view==='seq')return Array.from({length:c.pass.offset},(_,i)=>i);const k={front:'enter',rear:'exit',side:'pass'}[view];return Array.from({length:c[k].frames},(_,i)=>c[k].offset+i)}
 const review=await json(`${SRC}v05_QA/frame_qa/review_summary_v05.json`).catch(()=>null);
 // Sequence view: enter (front 0-47), idle = front 47 held for 24 frames (no idle art in the package), exit (rear 0-47).
 const SEQ=[...Array.from({length:48},(_,k)=>['front',k,'입장']),...Array.from({length:24},()=>['front',47,'대기(입장 마지막 프레임 유지 · 대기 원화 없음)']),...Array.from({length:48},(_,k)=>['rear',k,'퇴장'])];
-const last=()=>st.rev==='v06'?Math.max(0,v06List(v06[st.npc],st.view).length-1):st.view==='seq'?SEQ.length-1:47;
+const last=()=>st.rev!=='v05'?Math.max(0,v06List(cur06(),st.view).length-1):st.view==='seq'?SEQ.length-1:47;
 const cur=()=>st.view==='seq'?{view:SEQ[st.frame][0],k:SEQ[st.frame][1],phase:SEQ[st.frame][2]}:{view:st.view,k:st.frame,phase:null};
 const rigs={},configs={},frames={},images={};
 const img=src=>images[src]||(images[src]=new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=src}));
@@ -55,7 +62,7 @@ function status(){const n=walk.npcs[st.npc],c=n.checks,b=layout.backgrounds[st.b
  <tr><th>배경</th><td>${st.bg} ${b.name} · ${b.era} · 보정 ${b.calibration}${st.bg!=='BG02'?` ${badge('클립은 BG02 카메라 기준','warn')}`:''}</td></tr>
  <tr><th>인물 레이어</th><td>${{rig:'리그 골격(움직임 데이터). 그림 아님.',mp4:'검토 영상(배경·인물·그림자가 합쳐진 불투명 MP4). 투명 에셋 아님. 데이터 겹쳐 보기 확인용.',frames:'스프라이트 프레임(원본 720x1280에서 만든 QA 아틀라스, 고정 캔버스, 프레임마다 다시 맞추지 않음)'}[st.source]}</td></tr></table>`;
  const mp4=$('source').querySelector('[value=mp4]'),fr=$('source').querySelector('[value=frames]');mp4.disabled=!MP4[st.npc];fr.disabled=!f;if((st.source==='mp4'&&mp4.disabled)||(st.source==='frames'&&fr.disabled)){st.source=fr.disabled?'rig':'frames';$('source').value=st.source}}
-async function draw(){if(st.rev==='v06')return draw06();const n=walk.npcs[st.npc],{view,k,phase}=cur(),v=n.views[view],{bg,rect:cam}=cameraOf(layout,st.bg,st.cam);
+async function draw(){if(st.rev!=='v05')return draw06();const n=walk.npcs[st.npc],{view,k,phase}=cur(),v=n.views[view],{bg,rect:cam}=cameraOf(layout,st.bg,st.cam);
  canvas.width=540;canvas.height=Math.round(540*cam[3]/cam[2]);const sx=canvas.width/cam[2];ctx.setTransform(sx,0,0,sx,-cam[0]*sx,-cam[1]*sx);ctx.fillStyle='#000';ctx.fillRect(cam[0],cam[1],cam[2],cam[3]);
  if(st.source==='mp4'&&MP4[st.npc]){await seek((VIEW_OFFSET[view]+k+.5)/24);ctx.drawImage(video,0,0,1080,1920)}
  else{ctx.drawImage(await img(DIST+bg.file),0,0,bg.size[0],bg.size[1]);
@@ -74,9 +81,13 @@ async function draw(){if(st.rev==='v06')return draw06();const n=walk.npcs[st.npc
  if(st.ov.has('cam')){const c=bg.cameras.intercom;if(c){ctx.strokeStyle='#ffffff';ctx.setLineDash([20,12]);ctx.strokeRect(...c);ctx.setLineDash([])}}
  $('frame').max=last();$('frame').value=st.frame;$('frameLabel').textContent=`${phase?phase+' · ':''}${view} · 프레임 ${String(k).padStart(2,'0')} / 47 · ${(k/24).toFixed(3)}s · 발 (${v.feet[k].map(x=>(x*K).toFixed(0)).join(', ')}) · 역할 ${v.role}`;
  canvas.dataset.frame=st.frame;canvas.dataset.clipView=st.view;canvas.dataset.drawnView=view;canvas.dataset.drawnFrame=k;canvas.dataset.npc=st.npc;canvas.dataset.source=st.source}
-async function draw06(){const a=v06[st.npc],{bg,rect:cam}=cameraOf(layout,st.bg,st.cam);canvas.width=540;canvas.height=Math.round(540*cam[3]/cam[2]);const sx=canvas.width/cam[2];ctx.setTransform(sx,0,0,sx,-cam[0]*sx,-cam[1]*sx);ctx.fillStyle='#000';ctx.fillRect(cam[0],cam[1],cam[2],cam[3]);
- ctx.drawImage(await img(DIST+bg.file),0,0,bg.size[0],bg.size[1]);if(!a){$('frameLabel').textContent='v06 아틀라스 없음 (scripts/import-v06-frames.py)';return}
- const list=v06List(a,st.view),idx=list[Math.min(st.frame,list.length-1)],d=a.data[idx],r=a.rects[idx],im=await img(`${SRC}v06_QA/${st.npc}/${a.src}`);
+async function draw06(){const a=cur06(),{bg,rect:cam}=cameraOf(layout,st.bg,st.cam);canvas.width=540;canvas.height=Math.round(540*cam[3]/cam[2]);
+ const list=a?v06List(a,st.view):[],idx=list[Math.min(st.frame,list.length-1)],d=a?.data[idx],r=a?.rects[idx];
+ // zoom: a window 1/3 of the camera, centred on the root (x) and on the legs or the torso (y), following the figure
+ let view=cam;if(a&&st.zoom!=='full'){const h=r[3]/a.scale,root=d.root_px||[r[4]+r[2]/a.scale/2,r[5]+h*.45],zw=cam[2]/3,zh=cam[3]/3,cy=(root[1]+(st.zoom==='legs'?.27:-.25)*h)*K;view=[root[0]*K-zw/2,cy-zh/2,zw,zh]}
+ const sx=canvas.width/view[2];ctx.setTransform(sx,0,0,sx,-view[0]*sx,-view[1]*sx);ctx.fillStyle='#000';ctx.fillRect(view[0],view[1],view[2],view[3]);
+ ctx.drawImage(await img(DIST+bg.file),0,0,bg.size[0],bg.size[1]);if(!a){$('frameLabel').textContent=`${st.rev} 아틀라스 없음${ONLY[st.rev]?` (${ONLY[st.rev]} 전용)`:' (scripts/import-v06-frames.py)'}`;return}
+ const im=await img(`${ATLAS[st.rev](st.npc)}${a.src}`);ctx.imageSmoothingQuality='high';
  for(const s of d.shadows)shadowFill(s);ctx.drawImage(im,r[0],r[1],r[2],r[3],r[4]*K,r[5]*K,r[2]/a.scale*K,r[3]/a.scale*K);ctx.lineWidth=3;
  if(st.ov.has('floor')){line(bg.horizon_y,'#ff5ad1','수평선');line(bg.floor_line_y,'#5aff7a','바닥선');if(bg.floor){ctx.strokeStyle='#5aff7a88';ctx.setLineDash([12,10]);poly(bg.floor);ctx.stroke();ctx.setLineDash([])}}
  if(st.ov.has('shadow'))for(const [x,y,rx,ry] of d.shadows){ctx.strokeStyle='#ffe14a';ctx.beginPath();ctx.ellipse(x*K,y*K,rx*K,ry*K,0,0,7);ctx.stroke()}
@@ -84,15 +95,25 @@ async function draw06(){const a=v06[st.npc],{bg,rect:cam}=cameraOf(layout,st.bg,
  if(st.ov.has('click')){ctx.strokeStyle='#ff4dff';ctx.strokeRect(r[4]*K,r[5]*K,r[2]/a.scale*K,r[3]/a.scale*K);for(const x of bg.click_areas||[])if(Array.isArray(x.rect)){ctx.strokeStyle='#4dd2ff';ctx.strokeRect(...x.rect)}}
  if(st.ov.has('occ'))for(const o of bg.occluders||[]){ctx.strokeStyle='#ff8a3d';ctx.setLineDash([16,8]);poly(o.polygon);ctx.stroke();ctx.setLineDash([])}
  if(st.ov.has('cam')){const c=bg.cameras.intercom;if(c){ctx.strokeStyle='#ffffff';ctx.setLineDash([20,12]);ctx.strokeRect(...c);ctx.setLineDash([])}}
- $('frame').max=last();$('frame').value=st.frame;$('frameLabel').textContent=`v06 · ${SEG_KO[d.seg]} ${d.i} · ${d.art} 그림 · 몸 방향 ${d.heading}° · 프레임 ${st.frame} / ${last()} · ${(st.frame/24).toFixed(3)}s${d.feet?` · 발 (${d.feet.map(x=>(x*K).toFixed(0)).join(', ')})`:''}`;
- canvas.dataset.frame=st.frame;canvas.dataset.clipView=st.view;canvas.dataset.drawnView=d.art;canvas.dataset.drawnFrame=d.i;canvas.dataset.segment=d.seg;canvas.dataset.npc=st.npc;canvas.dataset.source='v06'}
-function status06(){const a=v06[st.npc],r=review06?.npcs?.[st.npc];if(!a){$('clipStatus').innerHTML=`<h2>${st.npc} v06</h2><p>아틀라스 없음</p>`;return}const q=a.sequence;
+ $('frame').max=last();$('frame').value=st.frame;$('frameLabel').textContent=`${st.rev}${st.zoom!=='full'?` · ${st.zoom==='legs'?'다리':'몸통'} 3배`:''} · ${SEG_KO[d.seg]} ${d.i} · ${d.art} 그림 · 몸 방향 ${d.heading}° · 프레임 ${st.frame} / ${last()} · ${(st.frame/24).toFixed(3)}s${d.feet?` · 발 (${d.feet.map(x=>(x*K).toFixed(0)).join(', ')})`:''}`;
+ canvas.dataset.frame=st.frame;canvas.dataset.clipView=st.view;canvas.dataset.drawnView=d.art;canvas.dataset.drawnFrame=d.i;canvas.dataset.segment=d.seg;canvas.dataset.npc=st.npc;canvas.dataset.source=st.rev;canvas.dataset.zoom=st.zoom}
+function status06(){if(st.rev!=='v06')return status09();const a=cur06(),r=review06?.npcs?.[st.npc];if(!a){$('clipStatus').innerHTML=`<h2>${st.npc} v06</h2><p>아틀라스 없음</p>`;return}const q=a.sequence;
  $('clipStatus').innerHTML=`<h2>${st.npc} ${badge(a.qa_status)} v06</h2><table>
  <tr><th>게임 적용</th><td>${badge('안 함','warn')} 정면·후면·연결이 모두 PASS인 클립만 게임에 씀(clipUsable)</td></tr>
  <tr><th>구간</th><td>${Object.entries(a.clips).map(([k,c])=>`${SEG_KO[k]} ${c.frames}`).join(' · ')} (24fps, 720x1280)</td></tr>
  <tr><th>경로</th><td>입장 끝 뿌리 (${q.enter_end_root_world.join(', ')}) · 선 자리 (${q.stand_point_world.join(', ')}) · 퇴장 시작 (${q.exit_start_root_world.join(', ')}) m<br>퇴장 경로는 회전 뒤 디딘 ${q.exit_pivot_foot} 발끝에서 시작(고정 상수 아님)</td></tr>
  ${r?`<tr><th>프레임 검수 (${review06.reviewed})</th><td>${['front','side','rear','sequence'].map(v=>`${{front:'정면',side:'측면',rear:'후면',sequence:'입장→대기→회전→퇴장'}[v]} ${badge(r[v].status,r[v].status==='PASS'?'pass':'warn')} ${r[v].issues.join(', ')}`).join('<br>')}</td></tr>`:''}
  <tr><th>고친 것</th><td>${Object.keys(a.fixes).join(', ')}</td></tr><tr><th>인물 레이어</th><td>v06 렌더 프레임(QA 아틀라스, 고정 캔버스, 프레임마다 다시 맞추지 않음)</td></tr></table>`;
+ for(const v of ['rig','mp4'])$('source').querySelector(`[value=${v}]`).disabled=true;st.source='frames';$('source').value='frames'}
+// v09 / v09r: the per-part verdicts (front legs, rear legs, front torso, rear torso, side, sequence) from review_v09.json
+function status09(){const a=cur06(),c=review09?.candidates?.[st.rev],P={front_legs:'정면 다리',rear_legs:'후면 다리',front_torso:'정면 몸통',rear_torso:'후면 몸통',side:'측면 보행',sequence:'입장→대기→회전→출발→퇴장',bg_composite:'배경 합성'};
+ if(!a){$('clipStatus').innerHTML=`<h2>${st.npc} ${st.rev}</h2><p>${ONLY[st.rev]} 전용 후보입니다. 다른 인물로 확대하지 않았습니다.</p>`;return}
+ $('clipStatus').innerHTML=`<h2>${st.npc} ${badge(c?.status||a.qa_status)} ${st.rev}</h2><table>
+ <tr><th>게임 적용</th><td>${badge('안 함','warn')} NPC06 전 항목 PASS 전까지 게임 걷기에 쓰지 않음</td></tr>
+ <tr><th>무엇</th><td>${c?.what||''}</td></tr>
+ ${c?`<tr><th>부위별 판정 (${review09.reviewed})</th><td>${Object.entries(P).filter(([k])=>c[k]).map(([k,t])=>`${t} ${badge(c[k].status,c[k].status==='PASS'?'pass':'warn')} ${c[k].issues.join(', ')}`).join('<br>')}</td></tr>`:''}
+ <tr><th>구간</th><td>${Object.entries(a.clips).map(([k,x])=>`${SEG_KO[k]} ${x.frames}`).join(' · ')} (24fps, 720x1280, 아틀라스 배율 ${a.scale})</td></tr>
+ <tr><th>인물 레이어</th><td>${st.rev} 렌더 프레임(QA 아틀라스, 고정 캔버스, 접지 그림자는 렌더러가 쓴 값으로 따로 그림)</td></tr></table>`;
  for(const v of ['rig','mp4'])$('source').querySelector(`[value=${v}]`).disabled=true;st.source='frames';$('source').value='frames'}
 function line(y,color,label){if(y==null)return;ctx.strokeStyle=color;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(1080,y);ctx.stroke();ctx.fillStyle=color;ctx.font='28px sans-serif';ctx.fillText(label,12,y-8)}
 function poly(pts){ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath()}
@@ -101,9 +122,11 @@ function seek(t){return new Promise(ok=>{if(!video.src.endsWith(MP4[st.npc])){vi
 // Playback: one pass by default (a moving clip never wraps); the loop box is for inspection only.
 let timer=0,busy=false;
 function play(on){st.playing=on;$('play').textContent=on?'❚❚ 멈춤':'▶ 재생';clearInterval(timer);if(on){if(st.frame>=last())st.frame=0;timer=setInterval(async()=>{if(busy)return;busy=true;if(st.frame>=last()){if($('loop').checked)st.frame=0;else{play(false);busy=false;return}}else st.frame++;await draw();busy=false},1000/st.fps)}}
-const redraw=()=>{if(st.rev==='v06')status06();else status();draw()};
-$('npc').onchange=async e=>{st.npc=e.target.value;await framesOf(st.npc);if(st.rev==='v06')await v06Of(st.npc);st.frame=Math.min(st.frame,last());redraw()};
-$('rev').onchange=async e=>{play(false);st.rev=e.target.value;await v06Of(st.npc);st.frame=0;if(st.rev==='v05')for(const v of ['rig','mp4'])$('source').querySelector(`[value=${v}]`).disabled=false;redraw()};$('speed').onchange=e=>{st.fps=Number(e.target.value);if(st.playing)play(true)};$('bg').onchange=e=>{st.bg=e.target.value;redraw()};$('cam').onchange=e=>{st.cam=e.target.value;redraw()};$('source').onchange=e=>{st.source=e.target.value;redraw()};
+const redraw=()=>{if(st.rev!=='v05')status06();else status();draw()};
+// v09 / v09r are NPC06-only: their options are disabled for the other NPCs (and v06 is used if one was selected)
+function syncRev(){for(const [r,npc] of Object.entries(ONLY))$('rev').querySelector(`[value=${r}]`).disabled=st.npc!==npc;if(ONLY[st.rev]&&st.npc!==ONLY[st.rev]){st.rev='v06';$('rev').value='v06'}}
+$('npc').onchange=async e=>{st.npc=e.target.value;syncRev();await framesOf(st.npc);if(st.rev!=='v05')await v06Of(st.npc);st.frame=Math.min(st.frame,last());redraw()};
+$('rev').onchange=async e=>{play(false);st.rev=e.target.value;await v06Of(st.npc);st.frame=0;if(st.rev==='v05')for(const v of ['rig','mp4'])$('source').querySelector(`[value=${v}]`).disabled=false;redraw()};$('speed').onchange=e=>{st.fps=Number(e.target.value);if(st.playing)play(true)};$('bg').onchange=e=>{st.bg=e.target.value;redraw()};$('cam').onchange=e=>{st.cam=e.target.value;redraw()};$('zoom').onchange=e=>{st.zoom=e.target.value;draw()};$('source').onchange=e=>{st.source=e.target.value;redraw()};
 document.querySelectorAll('button[data-view]').forEach(b=>b.onclick=()=>{play(false);st.view=b.dataset.view;st.frame=Math.min(st.frame,last());document.querySelectorAll('button[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()});
 document.querySelectorAll('[data-ov]').forEach(c=>c.onchange=()=>{c.checked?st.ov.add(c.dataset.ov):st.ov.delete(c.dataset.ov);draw()});
 $('prev').onclick=()=>{play(false);st.frame=Math.max(0,st.frame-1);draw()};$('next').onclick=()=>{play(false);st.frame=Math.min(last(),st.frame+1);draw()};$('play').onclick=()=>play(!st.playing);$('frame').oninput=e=>{play(false);st.frame=Number(e.target.value);draw()};
@@ -114,7 +137,7 @@ const figures=[...Object.entries(chars.assets).filter(([,a])=>a.figure).map(([id
 fill($('figure'),figures.map(([id,,t])=>[id,t]));
 let stage=null;
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));$('clipMode').hidden=b.dataset.mode!=='clip';$('stillMode').hidden=b.dataset.mode!=='still';play(false);if(b.dataset.mode==='still')still()});
-await Promise.all(Object.keys(walk.npcs).map(framesOf));await v06Of(st.npc);redraw();
+await Promise.all(Object.keys(walk.npcs).map(framesOf));syncRev();await v06Of(st.npc);redraw();
 
 // ---- still mode: the game's stage.js ---------------------------------------------------------------------------------
 function still(){const [id,f]=figures.find(x=>x[0]===$('figure').value),[bgId,cam,stand]=$('scene').value.split(':'),host=$('stillStage');stage?.destroy();host.innerHTML='';host.style.aspectRatio=`${layout.backgrounds[bgId].cameras[cam][2]}/${layout.backgrounds[bgId].cameras[cam][3]}`;

@@ -1,0 +1,39 @@
+{
+ "v06_24": {
+  "ms": 8855,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 24.2
+ },
+ "v06_12": {
+  "ms": 17898,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 12
+ },
+ "v09_24": {
+  "ms": 8871,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 24.1
+ },
+ "v09_12": {
+  "ms": 17881,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 12
+ },
+ "v09r_24": {
+  "ms": 8877,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 24.1
+ },
+ "v09r_12": {
+  "ms": 17907,
+  "last": 214,
+  "monotonic": true,
+  "fps_measured": 12
+ },
+ "errors": []
+}

@@ -1,4 +1,4 @@
-// Internal QA viewer and the layered stage in a real browser (v0.17.0): imported sprite frames on the fixed canvas, three
+// Internal QA viewer and the layered stage in a real browser (v0.17.0; NPC06 v09/v09r candidates added for v09 QA): imported sprite frames on the fixed canvas, three
 // views and the enter -> idle -> exit sequence (NPC06 seam), frame step, one-pass playback that never wraps, MP4 review
 // frames with the binding data on top, background swap, and the stage layers checked by pixels:
 // the foreground occluder hides the figure, the contact shadow darkens the floor, the figure is drawn over its shadow.
@@ -61,6 +61,22 @@ await check('v06 (render_v06.js): NPC06 enter -> settle -> idle -> turn -> start
  await page.selectOption('#speed','8');await at(205);await page.locator('#play').click();const t0=Date.now();while(Date.now()-t0<4000&&(await page.locator('#play').innerText()).includes('멈춤'))await page.waitForTimeout(100);
  assert.equal(await frame(),214,'8 fps playback reached the end and stopped');assert.ok(Date.now()-t0>900,'slow: 9 frames at 8 fps take about a second');
  await page.selectOption('#speed','24');await page.selectOption('#rev','v05');await page.selectOption('#npc','NPC03')});
+await check('v09 / v09r candidates (NPC06 only): BG02 with the renderer shadows, per-part verdicts, frame step, 12 fps half speed, legs and torso zoom; not offered for other NPCs',async()=>{
+ await page.selectOption('#npc','NPC06');const at=async n=>{await page.locator('#frame').fill(String(n));await page.waitForTimeout(150)};const px={};
+ for(const rev of ['v09','v09r']){await page.selectOption('#rev',rev);await page.locator('button[data-view="seq"]').click();await page.waitForTimeout(400);
+  const t=await page.locator('#clipStatus').innerText();assert.match(t,new RegExp(rev));for(const k of ['정면 다리','후면 다리','정면 몸통','후면 몸통','측면 보행'])assert.match(t,new RegExp(k));assert.match(t,/게임 적용\s*안 함/);
+  await at(132);assert.equal(await page.locator('#clipCanvas').getAttribute('data-drawn-view'),'side');assert.equal(await page.locator('#clipCanvas').getAttribute('data-source'),rev);
+  await at(24);await page.locator('#next').click();assert.equal(await frame(),25);await page.locator('#prev').click();assert.equal(await frame(),24);
+  await page.selectOption('#zoom','torso');await page.waitForTimeout(250);assert.equal(await page.locator('#clipCanvas').getAttribute('data-zoom'),'torso');assert.match(await page.locator('#frameLabel').innerText(),/몸통 3배/);
+  px[rev]=await page.evaluate(()=>{const c=document.querySelector('#clipCanvas'),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;const prev=window.__qaPrev;window.__qaPrev=d;if(!prev||prev.length!==d.length)return null;let n=0;for(let i=0;i<d.length;i+=4)if(Math.abs(d[i]-prev[i])+Math.abs(d[i+1]-prev[i+1])+Math.abs(d[i+2]-prev[i+2])>60)n++;return n});await page.screenshot({path:`${art}/qa-viewer-${rev}-NPC06-torso-zoom-24.png`});
+  await page.selectOption('#zoom','legs');await page.waitForTimeout(250);assert.match(await page.locator('#frameLabel').innerText(),/다리 3배/);await page.screenshot({path:`${art}/qa-viewer-${rev}-NPC06-legs-zoom-24.png`});
+  await page.selectOption('#zoom','full')}
+ assert.ok(px.v09r>500,'v09r torso zoom differs from v09 in '+px.v09r+' canvas pixels (strap, sleeve tops, torso twist)');
+ await page.selectOption('#speed','12');await at(208);const t0=Date.now();await page.locator('#play').click();while(Date.now()-t0<4000&&(await page.locator('#play').innerText()).includes('멈춤'))await page.waitForTimeout(50);
+ assert.equal(await frame(),214,'12 fps playback reached the end and stopped');assert.ok(Date.now()-t0>400,'half speed: 6 frames at 12 fps take about half a second');
+ await page.selectOption('#speed','24');await page.selectOption('#npc','NPC03');assert.equal(await page.locator('#rev').inputValue(),'v06','an NPC06-only revision falls back to v06 for NPC03');
+ assert.equal(await page.locator('#rev option[value=v09r]').evaluate(o=>o.disabled),true);assert.equal(await page.locator('#rev option[value=v09]').evaluate(o=>o.disabled),true);
+ await page.selectOption('#npc','NPC06');assert.equal(await page.locator('#rev option[value=v09r]').evaluate(o=>o.disabled),false);await page.selectOption('#rev','v05');await page.selectOption('#npc','NPC03')});
 await check('still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor',async()=>{
  await page.locator('[data-mode="still"]').click();await page.selectOption('#figure','CH09');await page.selectOption('#scene','BG12:full:clerk');await page.locator('#sOverlay').uncheck();
  await page.waitForFunction(()=>document.querySelector('#stillStage').dataset.state==='idle');
