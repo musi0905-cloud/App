@@ -1,0 +1,489 @@
+{
+  "asset_id": "NPC06",
+  "source_branch": "claude/ecstatic-galileo-qeuh0f",
+  "source_request_blob": "1c22edaaf6405da0dbb7fcc11c6618d62a85f1a8",
+  "generated_images": 6,
+  "current_candidate_sheets": 3,
+  "candidate_states": 16,
+  "resolved_production_requests": 0,
+  "records": [
+    {
+      "file": "NPC06_정면다리_초안_v07a.png",
+      "sha256": "f9786b6f9cf8778923f1a338312ba4fcdd60591b7788641bd6a5ec824e0acbe3",
+      "bytes": 1507686,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 80.516,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            279,
+            31,
+            141,
+            454
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 50711
+        },
+        {
+          "bbox_px": [
+            687,
+            55,
+            171,
+            409
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 47479
+        },
+        {
+          "bbox_px": [
+            1113,
+            101,
+            201,
+            338
+          ],
+          "row": 0,
+          "column": 2,
+          "opaque_component_pixels": 42059
+        },
+        {
+          "bbox_px": [
+            281,
+            528,
+            143,
+            448
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 50895
+        },
+        {
+          "bbox_px": [
+            693,
+            544,
+            179,
+            414
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 48094
+        },
+        {
+          "bbox_px": [
+            1132,
+            574,
+            203,
+            353
+          ],
+          "row": 1,
+          "column": 2,
+          "opaque_component_pixels": 44558
+        }
+      ],
+      "candidate": false,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    },
+    {
+      "file": "NPC06_정면다리_깊이수정_v07b.png",
+      "sha256": "a40317cd53efc25439827a1623fbea1c5b19e963c0ffdc59cd15fbc5a00e52fd",
+      "bytes": 1730864,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 75.508,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            267,
+            11,
+            154,
+            477
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 59724
+        },
+        {
+          "bbox_px": [
+            681,
+            14,
+            167,
+            460
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 58641
+        },
+        {
+          "bbox_px": [
+            1095,
+            40,
+            205,
+            397
+          ],
+          "row": 0,
+          "column": 2,
+          "opaque_component_pixels": 52845
+        },
+        {
+          "bbox_px": [
+            265,
+            502,
+            165,
+            491
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 65784
+        },
+        {
+          "bbox_px": [
+            681,
+            505,
+            177,
+            466
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 61670
+        },
+        {
+          "bbox_px": [
+            1103,
+            536,
+            213,
+            407
+          ],
+          "row": 1,
+          "column": 2,
+          "opaque_component_pixels": 57244
+        }
+      ],
+      "candidate": true,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    },
+    {
+      "file": "NPC06_몸통회전_초안_v07a.png",
+      "sha256": "9e2b2f39ca972e909172975fbddb1e6a707b2b57a59a5f03e7e218b969f79ef9",
+      "bytes": 1921194,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 64.619,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            298,
+            9,
+            337,
+            469
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 130210
+        },
+        {
+          "bbox_px": [
+            901,
+            9,
+            337,
+            469
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 130350
+        },
+        {
+          "bbox_px": [
+            291,
+            502,
+            338,
+            479
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 136083
+        },
+        {
+          "bbox_px": [
+            908,
+            502,
+            338,
+            479
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 135658
+        }
+      ],
+      "candidate": false,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    },
+    {
+      "file": "NPC06_후면다리_초안_v07a.png",
+      "sha256": "e96fab2a0b81c75e1ce49940a5ea1f5d4c1cb5957d5cd4d9ea033cfbe8f68677",
+      "bytes": 1472978,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 78.511,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            259,
+            12,
+            142,
+            485
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 55982
+        },
+        {
+          "bbox_px": [
+            702,
+            28,
+            146,
+            466
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 53892
+        },
+        {
+          "bbox_px": [
+            1147,
+            54,
+            160,
+            397
+          ],
+          "row": 0,
+          "column": 2,
+          "opaque_component_pixels": 46099
+        },
+        {
+          "bbox_px": [
+            266,
+            520,
+            143,
+            484
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 54752
+        },
+        {
+          "bbox_px": [
+            693,
+            539,
+            146,
+            457
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 52590
+        },
+        {
+          "bbox_px": [
+            1133,
+            559,
+            169,
+            387
+          ],
+          "row": 1,
+          "column": 2,
+          "opaque_component_pixels": 45596
+        }
+      ],
+      "candidate": false,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    },
+    {
+      "file": "NPC06_후면다리_경계검토_v07b.png",
+      "sha256": "cab47fb4dd6e360b53d03e78345974f17e9466ddfe363c0523d698c6cdcefbdc",
+      "bytes": 1533228,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 78.273,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            259,
+            13,
+            143,
+            484
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 56701
+        },
+        {
+          "bbox_px": [
+            701,
+            28,
+            149,
+            467
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 55098
+        },
+        {
+          "bbox_px": [
+            1147,
+            54,
+            162,
+            398
+          ],
+          "row": 0,
+          "column": 2,
+          "opaque_component_pixels": 47052
+        },
+        {
+          "bbox_px": [
+            263,
+            518,
+            147,
+            487
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 56950
+        },
+        {
+          "bbox_px": [
+            690,
+            537,
+            153,
+            460
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 54694
+        },
+        {
+          "bbox_px": [
+            1132,
+            557,
+            174,
+            391
+          ],
+          "row": 1,
+          "column": 2,
+          "opaque_component_pixels": 47600
+        }
+      ],
+      "candidate": true,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    },
+    {
+      "file": "NPC06_몸통회전_단추수정_v07b.png",
+      "sha256": "b2e0801d9f4e3ca5a7763235440d141ab47ccca6a139c25cb11d2db5548872f2",
+      "bytes": 1996602,
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_zero_percent": 63.95,
+      "component_threshold": 128,
+      "parts": [
+        {
+          "bbox_px": [
+            297,
+            9,
+            345,
+            468
+          ],
+          "row": 0,
+          "column": 0,
+          "opaque_component_pixels": 132169
+        },
+        {
+          "bbox_px": [
+            893,
+            9,
+            346,
+            469
+          ],
+          "row": 0,
+          "column": 1,
+          "opaque_component_pixels": 133209
+        },
+        {
+          "bbox_px": [
+            284,
+            500,
+            350,
+            480
+          ],
+          "row": 1,
+          "column": 0,
+          "opaque_component_pixels": 139408
+        },
+        {
+          "bbox_px": [
+            901,
+            500,
+            351,
+            481
+          ],
+          "row": 1,
+          "column": 1,
+          "opaque_component_pixels": 140220
+        }
+      ],
+      "candidate": true,
+      "format_check": "PASS",
+      "visual_status": "REVISE",
+      "animation_status": "BLOCKED",
+      "game_applied": false,
+      "pivot_status": "UNMEASURED_REQUIRES_RIG_FIT",
+      "angle_status": "PROMPT_TARGET_NOT_MEASURED"
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+ "npc": "NPC06",
+ "reviewed": "2026-10-14",
+ "rule": "Same as v06: a view is PASS only when it has no open issue and every measured criterion passes. Format and binding checks are recorded separately and never make a view PASS. Receiving the art does not resolve a request.",
+ "art": "v07b (3 sheets, 16 state pictures)",
+ "format_check": {
+  "status": "PASS",
+  "what": "hash, bytes, full decode, 1536x1024 RGBA, alpha>128 components 6/6/4 and their boxes equal to the producer manifest (6 files; v07a drafts included)",
+  "alpha_max": [
+   254
+  ]
+ },
+ "binding_check": {
+  "status": "PASS",
+  "parts_bound": 16,
+  "leg_states": 12,
+  "torso_cells": 4,
+  "anchor": "cuff",
+  "calibration": {
+   "front": {
+    "m_per_px_y": 0.0018326,
+    "reference": "idle (48 frames, both legs)",
+    "straight_px": 484.1,
+    "world_estimate_m_per_px_y": 0.0016436
+   },
+   "rear": {
+    "m_per_px_y": 0.001747,
+    "reference": "turn frame 40 (rear, standing)",
+    "straight_px": 485.6,
+    "world_estimate_m_per_px_y": 0.0016384
+   }
+  },
+  "what": "every v07b state picture placed from measured attach points at one fixed scale per sheet; a binding PASS says the pictures are wired, not that they look right"
+ },
+ "same_rig_geometry_every_frame": true,
+ "side_pass_frames_identical_to_v06": true,
+ "views": {
+  "front": {
+   "status": "REVISE",
+   "issues": [
+    "LEG_STRIP",
+    "TORSO_STATIC",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ],
+   "criteria": {
+    "alternation": "PASS",
+    "planted_foot": "PASS",
+    "contact": "PASS",
+    "consistency": "PASS",
+    "perspective": "PASS",
+    "joints": "REVISE",
+    "rotation": "REVISE",
+    "arms": "REVISE",
+    "knee_band": "PASS",
+    "cuff_join": "PASS",
+    "knee_line": "REVISE",
+    "state_switch": "REVISE",
+    "material": "REVISE",
+    "torso_switch": "REVISE"
+   },
+   "detail": {
+    "v06_criteria_on_v06_render": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    },
+    "cuff_join": {
+     "walk_legs": 96,
+     "gap_px": {
+      "n": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "max": 0.0
+     },
+     "holes": 0,
+     "below_sole": 0,
+     "top_gap_px": {
+      "n": 96,
+      "min": -19.7,
+      "median": 8.98,
+      "max": 40.02
+     },
+     "top_holes": 0,
+     "covers_over_half_shoe": 0,
+     "by_state": {
+      "knee30": {
+       "n": 67,
+       "min": 0.0,
+       "median": 0.0,
+       "max": 0.0
+      },
+      "knee60": {
+       "n": 29,
+       "min": 0.0,
+       "median": 0.0,
+       "max": 0.0
+      }
+     },
+     "all_segments": {
+      "legs": 244,
+      "holes": 0,
+      "top_holes": 0,
+      "below_sole": 0,
+      "covers_over_half_shoe": 0
+     }
+    },
+    "knee_line_max_rel": 0.085,
+    "state_switch": {
+     "switches": 5,
+     "below_same_state_overlap": 2,
+     "same_state_overlap_min": 0.96,
+     "overlap_range": [
+      0.939,
+      0.965
+     ]
+    },
+    "material": {
+     "v07_median_dE76": 10.75,
+     "v06_median_dE76": 7.78,
+     "v07_legs_lab": [
+      30.9,
+      4.5,
+      7.6
+     ],
+     "v06_legs_lab": [
+      27.5,
+      4.3,
+      7.3
+     ]
+    },
+    "torso_switch": {
+     "switches": 4,
+     "pixel_change": [
+      28.72,
+      28.45,
+      29.06,
+      28.75
+     ],
+     "same_picture_max": 20.4
+    }
+   }
+  },
+  "side": {
+   "status": "PASS",
+   "issues": [],
+   "criteria": {
+    "alternation": "PASS",
+    "planted_foot": "PASS",
+    "contact": "PASS",
+    "consistency": "PASS",
+    "perspective": "PASS",
+    "joints": "PASS",
+    "rotation": "PASS",
+    "arms": "PASS",
+    "knee_load": "PASS"
+   },
+   "detail": {
+    "v06_criteria_on_v06_render": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "PASS",
+     "rotation": "PASS",
+     "arms": "PASS",
+     "knee_load": "PASS"
+    }
+   }
+  },
+  "rear": {
+   "status": "REVISE",
+   "issues": [
+    "LEG_STRIP",
+    "TORSO_STATIC",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_HEM_OPENING",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ],
+   "criteria": {
+    "alternation": "PASS",
+    "planted_foot": "PASS",
+    "contact": "PASS",
+    "consistency": "PASS",
+    "perspective": "PASS",
+    "joints": "REVISE",
+    "rotation": "REVISE",
+    "arms": "REVISE",
+    "knee_band": "PASS",
+    "cuff_join": "PASS",
+    "knee_line": "REVISE",
+    "state_switch": "REVISE",
+    "material": "REVISE",
+    "torso_switch": "REVISE"
+   },
+   "detail": {
+    "v06_criteria_on_v06_render": {
+     "alternation": "PASS",
+     "planted_foot": "PASS",
+     "contact": "PASS",
+     "consistency": "PASS",
+     "perspective": "PASS",
+     "joints": "REVISE",
+     "rotation": "REVISE",
+     "arms": "REVISE",
+     "knee_band": "PASS"
+    },
+    "cuff_join": {
+     "walk_legs": 96,
+     "gap_px": {
+      "n": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "max": 0.0
+     },
+     "holes": 0,
+     "below_sole": 0,
+     "top_gap_px": {
+      "n": 96,
+      "min": -34.46,
+      "median": -0.53,
+      "max": 40.33
+     },
+     "top_holes": 0,
+     "covers_over_half_shoe": 0,
+     "by_state": {
+      "knee30": {
+       "n": 67,
+       "min": 0.0,
+       "median": 0.0,
+       "max": 0.0
+      },
+      "knee60": {
+       "n": 29,
+       "min": 0.0,
+       "median": 0.0,
+       "max": 0.0
+      }
+     },
+     "all_segments": {
+      "legs": 146,
+      "holes": 0,
+      "top_holes": 0,
+      "below_sole": 0,
+      "covers_over_half_shoe": 0
+     }
+    },
+    "knee_line_max_rel": 0.05,
+    "state_switch": {
+     "switches": 5,
+     "below_same_state_overlap": 5,
+     "same_state_overlap_min": 0.96,
+     "overlap_range": [
+      0.929,
+      0.948
+     ]
+    },
+    "material": {
+     "v07_median_dE76": 15.11,
+     "v06_median_dE76": 6.01,
+     "v07_legs_lab": [
+      36.0,
+      6.9,
+      10.6
+     ],
+     "v06_legs_lab": [
+      27.2,
+      4.4,
+      7.6
+     ]
+    },
+    "torso_switch": {
+     "switches": 4,
+     "pixel_change": [
+      16.06,
+      17.05,
+      16.39,
+      16.52
+     ],
+     "same_picture_max": 13.11
+    }
+   }
+  },
+  "sequence": {
+   "status": "REVISE",
+   "issues": [
+    "V07_STATE_POP",
+    "V07_TORSO_POP"
+   ],
+   "criteria": {
+    "path": "PASS",
+    "resting_feet": "PASS",
+    "head": "PASS",
+    "turn_idle": "PASS",
+    "v07_switches_outside_walk": "REVISE",
+    "v07_cuff_join_all_segments": "PASS"
+   },
+   "detail": {
+    "leg_switches": [
+     [
+      "settle9->settle10",
+      "R",
+      "knee60",
+      "knee30",
+      0.954
+     ],
+     [
+      "settle12->settle13",
+      "L",
+      "knee30",
+      "straight",
+      0.964
+     ],
+     [
+      "settle15->settle16",
+      "R",
+      "knee30",
+      "straight",
+      0.928
+     ],
+     [
+      "idle48->turn1",
+      "R",
+      "straight",
+      "knee30",
+      0.926
+     ],
+     [
+      "turn9->turn10",
+      "R",
+      "knee30",
+      "straight",
+      0.964
+     ],
+     [
+      "turn39->turn40",
+      "L",
+      "knee30",
+      "straight",
+      0.968
+     ],
+     [
+      "turn40->start1",
+      "L",
+      "straight",
+      "knee30",
+      0.969
+     ],
+     [
+      "start4->start5",
+      "R",
+      "straight",
+      "knee30",
+      0.946
+     ]
+    ],
+    "torso_switches": [
+     [
+      "settle7->settle8",
+      "right_cell",
+      "neutral (atlas)",
+      28.94
+     ],
+     [
+      "start7->start8",
+      "neutral (atlas)",
+      "left_cell",
+      15.59
+     ]
+    ],
+    "v06_criteria_on_v06_render": {
+     "path": "PASS",
+     "resting_feet": "PASS",
+     "head": "PASS",
+     "turn_idle": "PASS"
+    }
+   }
+  }
+ },
+ "requests": [
+  {
+   "id": "NPC06-front-LEG_STRIP",
+   "priority": "P1",
+   "status": "OPEN",
+   "v07_art": "NPC06_정면다리_깊이수정_v07b.png",
+   "why": "Partly addressed: the stance and swing pictures do show a knee and folds, and the cuff now meets the shoe in every frame. Not resolved: the bend is sideways, three discrete pictures jump, and the material is not the existing trousers.",
+   "view_status": "REVISE",
+   "blocking_issues": [
+    "TORSO_STATIC",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ]
+  },
+  {
+   "id": "NPC06-rear-LEG_STRIP",
+   "priority": "P1",
+   "status": "OPEN",
+   "v07_art": "NPC06_후면다리_경계검토_v07b.png",
+   "why": "Partly addressed: the stance and swing pictures do show a knee and folds, and the cuff now meets the shoe in every frame. Not resolved: the bend is sideways, three discrete pictures jump, and the material is not the existing trousers.",
+   "view_status": "REVISE",
+   "blocking_issues": [
+    "TORSO_STATIC",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_HEM_OPENING",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ]
+  },
+  {
+   "id": "NPC06-front-TORSO_STATIC",
+   "priority": "P2",
+   "status": "OPEN",
+   "v07_art": "NPC06_몸통회전_단추수정_v07b.png (top row)",
+   "why": "Not resolved: the variants are a different garment, mirrored, and turned far more than requested; in the stride they read as costume pops, not counter-rotation.",
+   "view_status": "REVISE",
+   "blocking_issues": [
+    "LEG_STRIP",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ]
+  },
+  {
+   "id": "NPC06-rear-TORSO_STATIC",
+   "priority": "P2",
+   "status": "OPEN",
+   "v07_art": "NPC06_몸통회전_단추수정_v07b.png (bottom row)",
+   "why": "Not resolved: the variants are a different garment, mirrored, and turned far more than requested; in the stride they read as costume pops, not counter-rotation.",
+   "view_status": "REVISE",
+   "blocking_issues": [
+    "LEG_STRIP",
+    "V07_KNEE_SIDEWAYS",
+    "V07_STATE_POP",
+    "V07_LEG_MATERIAL",
+    "V07_HEM_OPENING",
+    "V07_TORSO_POP",
+    "V07_TORSO_TURN"
+   ]
+  }
+ ],
+ "requests_resolved": 0,
+ "game": {
+  "clipUsable_would_pass": false,
+  "applied": false,
+  "walk_clips_NPC06_v06_review": {
+   "reviewed": "2026-10-14",
+   "source": "asset-source/v06_QA/review_summary_v06.json",
+   "views": {
+    "front": "REVISE",
+    "side": "PASS",
+    "rear": "REVISE"
+   },
+   "sequence": "PASS",
+   "issues": {
+    "front": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "side": [],
+    "rear": [
+     "LEG_STRIP",
+     "TORSO_STATIC"
+    ],
+    "sequence": []
+   }
+  },
+  "walk_clips_NPC06_qa_status": "REVISE",
+  "note": "NPC06 stays a static visitor (no walk clip in a game scene). walk_clips.json, character_assets.json and the visitor role switch are not changed by v07."
+ }
+}

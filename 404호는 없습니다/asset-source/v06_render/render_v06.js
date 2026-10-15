@@ -7,6 +7,7 @@
 //
 //   node render_v06.js <NPC> <outDir> --mode=v05 [--views=front,side,rear]   delivered v05 sprites, byte for byte
 //   node render_v06.js <NPC> <outDir> [--only=seq|pass] [--frames=0,47]      v06: seq/NNNN.png, pass/NNNN.png, frames.json
+//   node render_v06.js NPC06 <outDir> --art=v07 [--v07-anchor=cuff|top]         NPC06 experiment with the v07 leg/torso sheets
 //
 // Rules kept from the contract: one fixed 720x1280 canvas and the BG02 camera (camera_v06.json, the only copy of the
 // path constants); every joint goes through the same projection; no per-frame re-centring, no canvas move or scale, no
@@ -18,6 +19,8 @@ const readJSON=f=>JSON.parse(fs.readFileSync(f,'utf8'));
 const argv=process.argv.slice(2),pos=argv.filter(a=>!a.startsWith('--')),opt=Object.fromEntries(argv.filter(a=>a.startsWith('--')).map(a=>{const i=a.indexOf('=');return i<0?[a.slice(2),true]:[a.slice(2,i),a.slice(i+1)]}));
 const NPC=pos[0];if(!/^NPC(0[2-9]|10)$/.test(NPC||''))throw Error('usage: node render_v06.js NPC06 <outDir> [--mode=v05]');
 const OUT=path.resolve(pos[1]||path.join(HERE,'out',NPC)),MODE=opt.mode||'v06',V05=MODE==='v05';
+// --art=v07: NPC06 experiment only (asset-source/v07_NPC06/binding_v07.json). Without it nothing below changes a v06 frame.
+const ART07=opt.art==='v07',ANCHOR07=opt['v07-anchor']||'cuff';if(!['top','cuff'].includes(ANCHOR07))throw Error('--v07-anchor is cuff (default) or top');if(opt.art&&!ART07&&opt.art!=='v06')throw Error('--art is v06 or v07');if(ART07&&(NPC!=='NPC06'||V05))throw Error('--art=v07 exists only for NPC06 in v06 mode');
 const SRC=path.join(PROJECT,'asset-source','v05_QA','code',NPC);
 const CAM=readJSON(path.join(HERE,'camera_v06.json'));
 const W=CAM.canvas[0],H=CAM.canvas[1],F=CAM.focal_px_design*W/CAM.design_width,HY=CAM.horizon_y_design*W/CAM.design_width,CH=CAM.camera_height_m;
@@ -112,7 +115,28 @@ async function loadArt(){
    const gradient=cx.createLinearGradient(0,0,0,r.h);gradient.addColorStop(0,name!=='pelvis'?'rgba(255,255,255,0)':'rgba(255,255,255,1)');gradient.addColorStop(.12,'rgba(255,255,255,1)');gradient.addColorStop(name==='pelvis'?.75:.91,'rgba(255,255,255,1)');gradient.addColorStop(1,'rgba(255,255,255,0)');cx.globalCompositeOperation='destination-in';cx.fillStyle=gradient;cx.fillRect(0,0,r.w,r.h);blendParts[name]=cv}
   VIEWS[view]={atlas,rects,torsoImage,torsoRect,armAtlas,armRects,blendParts,shoeRects:{L:rects.Lshoe,R:rects.Rshoe},legTex:FIX.leg_mesh?{L:legTexture(atlas,rects,'L'),R:legTexture(atlas,rects,'R')}:null};
  }
+ if(ART07){B07=readJSON(path.join(PROJECT,'asset-source','v07_NPC06','binding_v07.json'));for(const [k,f] of Object.entries(B07.sheets))SHEET07[k]=await loadImage(path.join(PROJECT,f))}
 }
+// ---- v07 experiment (NPC06): state pictures from the producer's sheets, placed rigidly at a fixed scale ------------------
+let B07=null;const SHEET07={},CAL07={};
+const shoulderTurn=(p,deg)=>{const {h,l}=axes(deg),d=sub(p.Lshoulder,p.Rshoulder);return Math.atan2(d[0]*h[0]+d[2]*h[1],d[0]*l[0]+d[2]*l[1])*180/Math.PI};
+function v07State(fr){if(!ART07||fr.art==='side')return null;const view=fr.art,legs={};
+ for(const s of 'LR'){const flex=flexDeg(fr.p,s),R=B07.leg_state_rule;legs[s]={flex:+flex.toFixed(1),state:flex<R.straight_below_deg?'straight':flex<R.knee60_from_deg?'knee30':'knee60'}}
+ const yaw=shoulderTurn(fr.p,fr.geom_heading??fr.heading),th=B07.torso_state_rule.stride_rule_rendered.threshold_deg;
+ const cell=Math.abs(yaw)<th?null:B07.torso_state_rule.cell_for_forward_shoulder[view+'.'+(yaw>0?'L':'R')];
+ return {view,legs,torso:{yaw_deg:+yaw.toFixed(2),cell}}}
+// Leg: the state picture's top-to-cuff line is turned onto the rig's leg-top-to-leg-end line (leg top 7.5 % of the thigh
+// above the hip, leg end 0.077*S above the sole on the shoe, both v06), scale fixed per sheet, no stretch. Default anchor:
+// the cuff attach on the leg end, the top slides under the pelvis and top_gap_px records by how much the drawn length falls
+// short of (+) or passes (-) the leg top. --v07-anchor=top (first attempt, kept for the record) pins the top instead and
+// cuff_gap_px records the shortfall at the shoe.
+function v07LegPlace(fr,s,st,end){const L=B07.legs[st.view],part=L.parts.find(q=>q.side===s&&q.state===st.legs[s].state),p=fr.p;
+ const top=add(p[s+'hip'],mul(sub(p[s+'hip'],p[s+'knee']),.075)),A=project(top),Bp=end||project([p[s+'ankle'][0],p[s+'ankle'][1]+.045*S,p[s+'ankle'][2]]);
+ const k=F/((top[2]+p[s+'ankle'][2])/2),sx=L.scale.m_per_px_x*k,sy=(CAL07[st.view]??L.scale.m_per_px_y)*k,t=part.top_attach.xy,c=part.cuff_attach.xy;
+ const ax=(c[0]-t[0])*sx,ay=(c[1]-t[1])*sy,rot=Math.atan2(Bp[1]-A[1],Bp[0]-A[0])-Math.atan2(ay,ax),drawn=Math.hypot(ax,ay),need=Math.hypot(Bp[0]-A[0],Bp[1]-A[1]);
+ const O=ANCHOR07==='cuff'?[Bp[0]-(ax*Math.cos(rot)-ay*Math.sin(rot)),Bp[1]-(ax*Math.sin(rot)+ay*Math.cos(rot))]:A;
+ const at=q=>{const x=(q[0]-t[0])*sx,y=(q[1]-t[1])*sy;return [O[0]+x*Math.cos(rot)-y*Math.sin(rot),O[1]+x*Math.sin(rot)+y*Math.cos(rot)]};
+ return {part,A:O,rot,sx,sy,t,anchor:ANCHOR07,cuff_gap_px:ANCHOR07==='cuff'?0:need-drawn,top_gap_px:ANCHOR07==='cuff'?need-drawn:0,top_px:A.slice(0,2),top_drawn_px:O.slice(0,2),cuff_px:at(c),knee_px:at(part.knee.xy),end_px:Bp.slice(0,2)}}
 // One continuous trouser texture per leg (LEG_STRIP): thigh rows over shin rows, cross-faded inside the texture so the knee
 // is opaque (v05 faded both part ends to transparent and the floor showed through the knee band). Rows keep the v05
 // mapping: thigh u in [-0.075, 1] -> its atlas rows (u+0.075)/1.15, shin u in [0, 1.065] -> (u+0.065)/1.13.
@@ -133,7 +157,7 @@ function legTexture(atlas,rects,s){const tr=rects[s+'thigh'],sr=rects[s+'shin'],
 // only released when the event loop turns, and a long synchronous sequence ran out of memory.
 let ART=null,TMP=null;
 function drawFigure(fr){
- const view=fr.art,V=VIEWS[view],{atlas,rects,torsoImage,torsoRect,armAtlas,armRects,blendParts,shoeRects}=V,p=fr.p,frame=fr.frame;
+ const view=fr.art,V=VIEWS[view],{atlas,rects,torsoImage,torsoRect,armAtlas,armRects,blendParts,shoeRects}=V,p=fr.p,frame=fr.frame,st07=v07State(fr);
  ART??=createCanvas(W,H);TMP??=createCanvas(W,H);
  const art=ART,g=art.getContext('2d');g.setTransform(1,0,0,1,0,0);g.globalCompositeOperation='source-over';g.globalAlpha=1;g.clearRect(0,0,W,H);g.imageSmoothingEnabled=true;
  const lineAngle=(a,b)=>{let A=project(a),B=project(b);if(A[0]>B[0])[A,B]=[B,A];return Math.atan2(B[1]-A[1],B[0]-A[0])};
@@ -144,6 +168,9 @@ function drawFigure(fr){
   g.save();g.translate(u[0],u[1]);g.rotate(Math.atan2(dy,dx)-Math.PI/2);if(blendParts[name])g.drawImage(blendParts[name],-width*scale/2,-len*over,width*scale,len*(1+2*over));else g.drawImage(atlas,r.x,r.y,r.w,r.h,-width*scale/2,-len*over,width*scale,len*(1+2*over));g.restore();
  }
  function fixed(name,pos,w,h,bottom=false){const a=project(pos),r=rects[name];
+  if(name==='torso'&&st07?.torso.cell){const T7=B07.torso,c=T7.cells.find(q=>q.view===view&&q.cell===st07.torso.cell),o=c.crop_xywh,an=c.anchor.xy;
+   g.save();g.translate(a[0],a[1]+h*a[2]*.85);g.rotate(torsoAngle-c.baked_shoulder_tilt_deg.value*Math.PI/180);g.scale(T7.scale.m_per_px_x*a[2],T7.scale.m_per_px_y*a[2]);g.imageSmoothingQuality='high';
+   g.drawImage(SHEET07.torso,o[0],o[1],o[2],o[3],o[0]-an[0],o[1]-an[1],o[2],o[3]);g.restore();return}
   if(name==='torso'&&torsoImage){const q=torsoRect;g.save();g.translate(a[0],a[1]+h*a[2]*.85);g.rotate(torsoAngle);g.drawImage(torsoImage,q.x,q.y,q.w,q.h,-w*a[2]/2,-h*a[2]*.85,w*a[2],h*a[2]);g.restore();return;}
   if(name==='pelvis'&&pelvisAngle){g.save();g.translate(a[0],a[1]);g.rotate(pelvisAngle);g.drawImage(blendParts[name],-w*a[2]/2,-(bottom?h:0)*a[2],w*a[2],h*a[2]);g.restore();return}
   if(blendParts[name])g.drawImage(blendParts[name],a[0]-w*a[2]/2,a[1]-(bottom?h:0)*a[2],w*a[2],h*a[2]);else g.drawImage(atlas,r.x,r.y,r.w,r.h,a[0]-w*a[2]/2,a[1]-(bottom?h:0)*a[2],w*a[2],h*a[2]);}
@@ -174,6 +201,8 @@ function drawFigure(fr){
  }
  function leg(s){shoe(s);let end=null;
   if(shoeView(s)!=='side'){const heel=project(p[s+'heel']),toe=project(p[s+'toe']),ankle=project(p[s+'ankle']);end=[ankle[0],Math.max(heel[1],toe[1])-.077*S*ankle[2],ankle[2]];}
+  if(st07){const q=v07LegPlace(fr,s,st07,end),o=q.part.crop_xywh;g.save();g.translate(q.A[0],q.A[1]);g.rotate(q.rot);g.scale(q.sx,q.sy);g.imageSmoothingQuality='high';
+   g.drawImage(SHEET07[st07.view+'_leg'],o[0],o[1],o[2],o[3],o[0]-q.t[0],o[1]-q.t[1],o[2],o[3]);g.restore();return}
   if(FIX.leg_mesh){legMesh(s,end);return}
   part(s+'shin',p[s+'knee'],[p[s+'ankle'][0],p[s+'ankle'][1]+.045*S,p[s+'ankle'][2]],(view==='side'?.165:.17)*S,.065,end);part(s+'thigh',p[s+'hip'],p[s+'knee'],(view==='side'?.174:.185)*S,.075);
  }
@@ -303,6 +332,23 @@ function buildSequence(walk){
   exit_origin_world:[+exitO[0].toFixed(4),+exitO[1].toFixed(4)],exit_pivot_foot:pivot,enter_origin_world:enterO,
   enter_end_root_world:[+frames[47].p.root[0].toFixed(4),+frames[47].p.root[2].toFixed(4)],exit_start_root_world:[+frames.find(f=>f.seg==='exit').p.root[0].toFixed(4),+frames.find(f=>f.seg==='exit').p.root[2].toFixed(4)]}}}
 
+// Fixed y scale per sheet, set once from standing frames (front: idle; rear: the last turn frame, both feet flat): the
+// straight state's mean top-to-cuff length equals the mean v06 leg top-to-leg-end screen distance there. (The v06 leg end
+// sits on the projected toe line, 0.077*S above the sole, not straight under the ankle, so a world-length scale left
+// 27-34 px gaps at rest; see binding_v07.json scale.method_change.)
+function v07Calibrate(frames){const ref={front:frames.filter(f=>f.seg==='idle'),rear:[frames.filter(f=>f.seg==='turn').at(-1)]},out={};
+ for(const view of ['front','rear']){const L=B07.legs[view],st=L.parts.filter(q=>q.state==='straight'),px=st.reduce((a,q)=>a+q.top_to_cuff_px,0)/st.length;let m=0,n=0;
+  for(const f of ref[view]){if(f.art!==view)throw Error('v07 calibration frame is not '+view);for(const s of 'LR'){const p=f.p,top=add(p[s+'hip'],mul(sub(p[s+'hip'],p[s+'knee']),.075)),heel=project(p[s+'heel']),toe=project(p[s+'toe']),an=project(p[s+'ankle']),A=project(top);
+   m+=Math.hypot(an[0]-A[0],Math.max(heel[1],toe[1])-.077*S*an[2]-A[1])*((top[2]+p[s+'ankle'][2])/2)/F;n++}}
+  CAL07[view]=m/n/px;out[view]={m_per_px_y:+CAL07[view].toFixed(7),reference:view==='front'?'idle (48 frames, both legs)':'turn frame 40 (rear, standing)',straight_px:+px.toFixed(1),world_estimate_m_per_px_y:L.scale.m_per_px_y}}
+ return out}
+// v07 per-frame record: the states chosen and where the placed pictures put the knee and the cuff (screen px).
+function v07Info(f){const st=v07State(f);if(!st)return null;const r2=v=>v.map(x=>+x.toFixed(2)),legs={};
+ for(const s of 'LR'){let end=null;const sv=f.seg==='turn'?(()=>{const d=sub(f.p[s+'toe'],f.p[s+'heel']),n=Math.hypot(d[0],d[2])||1;return -d[0]/n>=.5?'side':-d[2]/n>=0?'front':'rear'})():f.art;
+  if(sv!=='side'){const heel=project(f.p[s+'heel']),toe=project(f.p[s+'toe']),ankle=project(f.p[s+'ankle']);end=[ankle[0],Math.max(heel[1],toe[1])-.077*S*ankle[2],ankle[2]]}
+  const q=v07LegPlace(f,s,st,end);legs[s]={...st.legs[s],cuff_gap_px:+q.cuff_gap_px.toFixed(2),...(ANCHOR07==='cuff'?{top_gap_px:+q.top_gap_px.toFixed(2),top_drawn_px:r2(q.top_drawn_px)}:{}),top_px:r2(q.top_px),knee_px:r2(q.knee_px),cuff_px:r2(q.cuff_px),end_px:r2(q.end_px),rot_deg:+(q.rot*180/Math.PI).toFixed(2)}}
+ return {view:st.view,legs,torso:st.torso}}
+
 // ---- main ------------------------------------------------------------------------------------------------------------------
 async function main(){
  const walk=V05?WALK.map(holdArm):fixedWalk();
@@ -316,14 +362,14 @@ async function main(){
   console.log('v05 mode: rendered');return}
  const report={npc:NPC,mode:MODE,rig:RIG_FILE,height_m:CFG.height_m,S,camera:{W,H,F,HY,CH},fixes:FIX,sequence_config:SEQ,knee_lift_m:LIFT.map(v=>+v.toFixed(4)),
   stance_knee_flex_deg:walk.map(p=>Object.fromEntries(['L','R'].filter(s=>p[s+'heel'][1]<=PLANT&&p[s+'toe'][1]<=PLANT).map(s=>[s,+flexDeg(p,s).toFixed(1)]))),
-  rig_stance_knee_flex_deg:WALK.map(p=>Object.fromEntries(['L','R'].filter(s=>p[s+'heel'][1]<=PLANT&&p[s+'toe'][1]<=PLANT).map(s=>[s,+flexDeg(p,s).toFixed(1)])))};
+  rig_stance_knee_flex_deg:WALK.map(p=>Object.fromEntries(['L','R'].filter(s=>p[s+'heel'][1]<=PLANT&&p[s+'toe'][1]<=PLANT).map(s=>[s,+flexDeg(p,s).toFixed(1)]))),...(ART07?{art:'v07',binding:'asset-source/v07_NPC06/binding_v07.json',v07_anchor:ANCHOR07}:{})};
  // Per-frame record (world joints that matter for QA, their projection, engine shadows, knee angles).
  const info=(f,n)=>{const pr=k=>project(f.p[k]).slice(0,2).map(v=>+v.toFixed(2));return {n,seg:f.seg,i:f.i,art:f.art,heading:+f.heading.toFixed(2),
    root_world:f.p.root.map(v=>+v.toFixed(4)),feet_world:Object.fromEntries(['L','R'].map(s=>[s,{heel:f.p[s+'heel'].map(v=>+v.toFixed(4)),toe:f.p[s+'toe'].map(v=>+v.toFixed(4)),ankle:f.p[s+'ankle'].map(v=>+v.toFixed(4))}])),
    root_px:pr('root'),head_px:pr('head'),legs_px:Object.fromEntries(['L','R'].map(s=>[s,{hip:pr(s+'hip'),knee:pr(s+'knee'),ankle:pr(s+'ankle')}])),shoulders_px:{L:pr('Lshoulder'),R:pr('Rshoulder')},
-   feet_px:Object.fromEntries(['L','R'].map(s=>[s,{heel:pr(s+'heel'),toe:pr(s+'toe')}])),shadows:shadows(f.p,f.art),knee_flex_deg:{L:+flexDeg(f.p,'L').toFixed(1),R:+flexDeg(f.p,'R').toFixed(1)}}};
+   feet_px:Object.fromEntries(['L','R'].map(s=>[s,{heel:pr(s+'heel'),toe:pr(s+'toe')}])),shadows:shadows(f.p,f.art),knee_flex_deg:{L:+flexDeg(f.p,'L').toFixed(1),R:+flexDeg(f.p,'R').toFixed(1)},...(ART07?{v07:v07Info(f)}:{})}};
  // The report is always complete; --only limits which images are written (the rest are byte-identical re-renders).
- {const {frames,meta}=buildSequence(walk);report.sequence=meta;report.segments={};
+ {const {frames,meta}=buildSequence(walk);report.sequence=meta;report.segments={};if(ART07)report.v07_calibration=v07Calibrate(frames);
   frames.forEach((f,n)=>{report.segments[f.seg]??={offset:n,frames:0,art:new Set()};report.segments[f.seg].frames++;report.segments[f.seg].art.add(f.art)});
   for(const s of Object.values(report.segments))s.art=[...s.art];
   report.frames=frames.map(info);

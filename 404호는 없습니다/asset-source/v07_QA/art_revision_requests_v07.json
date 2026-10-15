@@ -1,0 +1,89 @@
+{
+ "generated": "2026-10-14",
+ "npc": "NPC06",
+ "from": "frame review of the v07b sheets bound to the v06 rig (asset-source/v07_QA/review_summary_v07.json); this session has no image generation, so nothing was repainted or warped in code to hide these",
+ "scale_note": "Pixel numbers on the sheet are at the v07b sheet scale (1536x1024; straight leg top-to-hem 477-491 px). Keep that scale so the binding stays one fixed scale per sheet.",
+ "requests": [
+  {
+   "id": "NPC06-v07-R1-front-legs",
+   "answers": "NPC06-front-LEG_STRIP",
+   "file": "NPC06_정면다리_깊이수정_v07b.png",
+   "part": "trouser legs, 6 cells (rows L/R, columns straight/knee30/knee60)",
+   "view": "front (person walking toward the camera)",
+   "problem_frames": {"enter": "knee60 picture in 4-17, 25-38, 47; state changes at 4, 18, 25, 39, 47 (knee30 in every other walk frame, sideways too)", "settle": "knee60 1-9, changes at 10, 13, 16", "turn": "changes at 1 and 10"},
+   "evidence": ["v07_QA/NPC06/revision_evidence/E1_front_knee_sideways.jpg", "v07_QA/NPC06/switch_zoom_legs_1.jpg", "v07_QA/NPC06/art_check/annot_front_leg.jpg", "v07_QA/NPC06/revision_evidence/E3_hip_join_colour.jpg"],
+   "actual": [
+    "knee30/knee60 bend sideways in the picture plane: the centreline leaves the hip-to-hem line by 15/47 px (L) and 25/53 px (R), toward the body midline; on screen the knees lean together (X-legs)",
+    "knee drawn high: knee centre at 36-39 % of top-to-hem in the bent cells (estimate), the rig knee is at 52 % (knee30 frames) and 61 % (knee60 frames) of the same line on screen",
+    "colour/material: interior L* 31.8-32.3 (atlas trousers and pelvis 24.1-25.7), herringbone weave high-pass std 7.9-8.7 (atlas 3.0-4.1), turned-up cuff bands (atlas has a plain hem)",
+    "L and R straight cells differ: top-to-hem 477 vs 491 px (2.9 %), widest thigh 154 vs 165 px (7 %)",
+    "three states only: 5 of 10 state changes in front frames give a silhouette jump larger than any frame-to-frame change inside one state"
+   ],
+   "expected": [
+    "bend in depth: knee comes toward the camera; on the sheet the knee centre stays on the straight line from the hip-attach centre to the hem centre (sideways departure <= 2 % of the top-to-hem length, <= 10 px)",
+    "knee centre at 50-54 % of top-to-hem in knee30 and 58-63 % in knee60 (front frames put it there; the thigh is foreshortened, the knee comes lower on screen, it does not ride up)",
+    "the existing trousers: dark plain chocolate brown, interior CIELAB about L* 24-26, a* 4, b* 7; fine plain weave (no herringbone), soft overhead light as the atlas; plain straight hem without turn-up",
+    "L and R straight cells equal within 1 % in length and 3 % in thigh width; hem width within +-10 % of the straight cell in every state"
+   ],
+   "change": ["knee30 and knee60 cells of both rows (new bend)", "colour, weave and hem of all six cells", "add knee15 and knee45 cells (5 states per leg) so a state change is one small step"],
+   "keep": ["sheet size 1536x1024, transparent background, alpha as delivered (no glow, no cast shadow)", "straight-cell length about 484 px and the top-to-hem lengths of the bent cells (knee30 0.95-0.97, knee60 0.82-0.85 of straight)", "one leg per cell with clear gaps; no pelvis, no shoe"],
+   "attach_and_overlap": {"top": "a straight, horizontal waist cut at the top of every cell (no rounded dome); 8-10 % of the length of spare fabric above the hip, it goes under the pelvis piece", "hem": "hem centre is the attach point on the shoe top; the hem should sit over the shoe (it is drawn over it)", "pivot_marks": "none on the art; give the hip-attach centre, knee centre and hem centre of each cell in sheet pixels in the manifest (measured, not detection boxes)"},
+   "prompt": "Edit this NPC06 front-view trouser leg sheet. Keep the 1536x1024 transparent canvas, the same scale and one isolated trouser leg per cell (top row: the person's LEFT leg, bottom row: RIGHT leg). Make FIVE knee states per row: straight, 15, 30, 45 and 60 degrees of knee flexion, seen exactly from the front while the person walks toward the camera. The knee bends IN DEPTH toward the viewer: the kneecap faces the viewer and comes forward, the thigh is foreshortened, the shin hangs behind the knee; the knee centre stays on the straight line from the hip to the hem centre (no sideways bend, no knock-knee, no bow-leg). Knee centre at 50 % (straight), 52 % (30 deg) and 60 % (60 deg) of the hip-to-hem length from the top. Top of every leg is a straight horizontal waist cut with 10 % extra fabric above the hip. Plain straight hem, no turn-up cuff, hem width the same in every state. Fabric: the existing dark chocolate brown wool trousers of the reference atlas (very dark brown, matte, fine plain weave, no herringbone, no visible pattern), soft overhead light, painterly realistic 2D style matching the reference. Left and right legs equal in length and width but not mirrored copies. No shoes, no pelvis, no shadows, no glow, alpha zero outside the cloth."
+  },
+  {
+   "id": "NPC06-v07-R2-rear-legs",
+   "answers": "NPC06-rear-LEG_STRIP",
+   "file": "NPC06_후면다리_경계검토_v07b.png",
+   "part": "trouser legs, 6 cells (rows L/R, columns straight/knee30/knee60)",
+   "view": "rear (person walking away from the camera)",
+   "problem_frames": {"exit": "knee60 picture in 4-17, 25-38, 47 (hem opening and sideways knee); state changes at 4, 18, 25, 39, 47", "start": "change at 1 and 5", "turn": "change at 40"},
+   "evidence": ["v07_QA/NPC06/revision_evidence/E2_rear_knee_hem.jpg", "v07_QA/NPC06/switch_zoom_legs_2.jpg", "v07_QA/NPC06/art_check/annot_rear_leg.jpg", "v07_QA/NPC06/revision_evidence/E3_hip_join_colour.jpg"],
+   "actual": [
+    "knee60 bends sideways (centreline 28 px L / 36 px R toward the midline), knee30 11-12 px",
+    "the inside of the hem shows as a dark ellipse in knee30/knee60: a lifted leg reads as an empty tube with the shoe under it",
+    "colour: interior L* 30.0-31.8, warmer (a* 6.2-6.5, b* 9.5-9.9) than the atlas (L* 24.5-25.7, a* 4.1-4.2, b* 7.0-7.3); in the frames the legs are L* 36.0 against 27.2 for v06; turned-up cuffs",
+    "all 5 knee changes in the exit walk give a silhouette jump larger than any frame-to-frame change inside one state"
+   ],
+   "expected": [
+    "bend in depth: knee goes away from the camera, heel comes up toward it; knee centre on the hip-to-hem line (<= 2 % sideways)",
+    "knee centre at 44-48 % of top-to-hem in knee30 and knee60 (rear frames put it there)",
+    "the hem seen from behind as a closed edge over the heel counter of the shoe; no view into the trouser opening",
+    "colour, weave and hem as R1 (the existing dark plain trousers)"
+   ],
+   "change": ["knee30 and knee60 cells (bend and hem)", "colour, weave and hem of all six cells", "add knee15 and knee45 cells"],
+   "keep": ["sheet size, transparency, alpha as delivered", "top-to-hem lengths (knee30 0.95-0.96, knee60 0.81-0.82 of straight)", "soft back-of-knee folds (they read well in the straight and knee30 cells)"],
+   "attach_and_overlap": {"top": "straight horizontal waist cut, 8-10 % spare fabric above the hip (under the pelvis piece)", "hem": "hem centre on the shoe top, closed edge", "pivot_marks": "hip-attach, knee and hem centres per cell in the manifest"},
+   "prompt": "Edit this NPC06 rear-view trouser leg sheet. Keep the 1536x1024 transparent canvas, the scale and one leg per cell (top row: the person's LEFT leg, bottom row: RIGHT leg, seen from behind). Make FIVE knee states per row: straight, 15, 30, 45, 60 degrees of knee flexion while the person walks AWAY from the camera. The knee bends IN DEPTH away from the viewer and the heel lifts toward the viewer; the knee stays on the straight line from the hip to the hem centre (no sideways bend). Knee centre at 46 % of the hip-to-hem length from the top in the bent states. Show the back of the knee with soft compressed folds. The hem is a closed edge seen from behind; do NOT show the inside of the trouser opening. Top of every leg is a straight horizontal waist cut with 10 % extra fabric above the hip. Fabric: the existing very dark chocolate brown plain wool trousers of the reference atlas, matte, fine plain weave, no herringbone, plain hem without turn-up. Same light and painterly style as the reference. No shoes, no pelvis, no shadows, no glow, alpha zero outside the cloth."
+  },
+  {
+   "id": "NPC06-v07-R3-torso",
+   "answers": "NPC06-front-TORSO_STATIC, NPC06-rear-TORSO_STATIC",
+   "file": "NPC06_몸통회전_단추수정_v07b.png",
+   "part": "torso (cardigan over blouse), top row front, bottom row rear",
+   "view": "front and rear",
+   "problem_frames": {"enter": "turned cell in 0-7, 15-28, 36-47; changes at 8, 15, 29, 36", "settle": "turned 1-7, change at 8", "start": "turned 8-15, change at 8", "exit": "turned 0-7, 15-28, 36-47; changes at 8, 15, 29, 36"},
+   "evidence": ["v07_QA/NPC06/switch_zoom_torso_1.jpg", "v07_QA/NPC06/revision_evidence/E4_torso_cells_mirror.jpg", "v07_QA/NPC06/art_check/annot_torso.jpg", "v07_QA/NPC06/art_check/torso_light.jpg"],
+   "actual": [
+    "a different garment drawing from the atlas torso the renderer keeps as the neutral state: larger shirt collar, larger buttons, stronger knit pattern (high-pass std 17.2 vs 15.2 front, 11.1 vs 9.3 rear), puffed shoulder caps over the arms, narrower body (width/height at mid 0.66 vs 0.78 for the atlas) - every change neutral<->turned is a visible pop",
+    "the two cells of a row are mirror images in outline (IoU 0.991 when one is flipped)",
+    "turned far more than 8 deg: shirt band (front) / collar (rear) offset 0.36-0.40 / 0.22 of the half width; estimated 21-32 deg front, 12-18 deg rear",
+    "front cells named by screen side: the 'left-shoulder-forward' front cell has the person's RIGHT shoulder forward (the rear row is right)",
+    "a +-3.3 deg shoulder tilt is painted in"
+   ],
+   "expected": [
+    "three states per view drawn in one pass from the atlas torso design: 0 deg (neutral, replaces the atlas torso in walk frames), +4/-4 deg and +8/-8 deg (five cells per view), so the garment never changes between states",
+    "a real 3D turn: shirt band / collar centre offset about 0.05-0.07 of the half width at 4 deg and 0.10-0.14 at 8 deg; the nearer side shows more front panel, the farther side a sliver of the side seam; not mirror copies",
+    "shoulder line level (tilt <= 0.5 deg); neck top centre and hem centre at the same height as the atlas torso in every cell",
+    "label cells by the person's anatomical shoulder: front view, LEFT shoulder forward moves the shirt band to screen LEFT; rear view, LEFT shoulder forward moves the collar to screen LEFT"
+   ],
+   "change": ["all four cells (turn amount, garment match, shoulder caps, tilt)", "add the 0 deg and the 4 deg cells"],
+   "keep": ["button side (buttons on screen right in the front view), no buttons in the rear", "transparent background, alpha as delivered, 1536x1024"],
+   "attach_and_overlap": {"neck": "collar top with 6-8 % of the torso height of spare neck skin/collar under the head piece", "waist": "hem straight, 5 % spare below the waist (it covers the pelvis top)", "shoulders": "arm sockets the size of the atlas torso's; no puffed caps (the arms are separate parts drawn under the torso)", "size": "neck-to-hem height and widths in the atlas torso proportion (width/height about 0.78 at mid height)"},
+   "prompt": "Redraw this NPC06 torso sheet as one consistent set from the reference atlas torso (beige knit cardigan over an off-white collared blouse, three brown buttons on the screen-right edge in the front view, plain knit back with a small blouse collar in the rear view). Same garment, same collar size, same buttons, same knit texture strength and same proportions as the reference torso in every cell. Two rows: FRONT view and REAR view. Five cells per row: body turned about a vertical axis by -8, -4, 0, +4 and +8 degrees, where + means the person's LEFT shoulder comes forward. A real three-dimensional turn: the nearer half shows more of its front panel, the farther half recedes and shows a sliver of the side seam; the shoulder line stays level; neckline and hem centre stay at the same height in every cell; at 8 degrees the centre of the blouse band moves only about one tenth of the half width. Do not mirror one cell to make another. Arm sockets plain, no puffed shoulders, no sleeves or arms. Transparent background, no glow, no shadow, no text."
+  }
+ ],
+ "binding_side_notes": [
+  "Not art: the renderer draws trouser legs narrower than the art's own proportions (x/y 0.63 front, 0.70 rear at the world estimate), exactly as v05/v06 did with the atlas legs. Keep the atlas proportions in the art; do not slim the legs.",
+  "Not art: with three states the pictures cannot follow the rig's continuous knee angle; the cuff stays on the shoe because the binding pins it there and slides the top under the pelvis. More states (R1/R2) shrink the jump at each change."
+ ]
+}

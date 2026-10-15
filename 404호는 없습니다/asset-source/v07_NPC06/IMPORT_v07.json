@@ -1,0 +1,173 @@
+{
+ "generated_by": "asset-source/v07_NPC06/tools/build_binding_v07.py",
+ "date": "2026-10-14",
+ "drive_folder": "1gMILNQsB8yY7VBo2oFHRml7BYYDca8cA",
+ "result": "ALL_MATCH",
+ "files": [
+  {
+   "file": "source/draft_v07a/NPC06_정면다리_초안_v07a.png",
+   "drive_id": "1SS2d1qFdPwxsLBFB0KZu00z5jKx9t9GO",
+   "role": "draft, comparison only (not bound)",
+   "bytes": 1507686,
+   "sha256": "f9786b6f9cf8778923f1a338312ba4fcdd60591b7788641bd6a5ec824e0acbe3",
+   "sha256_manifest": "f9786b6f9cf8778923f1a338312ba4fcdd60591b7788641bd6a5ec824e0acbe3",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 80.516,
+   "alpha_zero_percent_manifest": 80.516,
+   "transparent_px_with_rgb": 1104111,
+   "components_alpha_gt128": 6,
+   "components_manifest": 6,
+   "bbox_equal_to_manifest": true
+  },
+  {
+   "file": "source/NPC06_정면다리_깊이수정_v07b.png",
+   "drive_id": "1I9YdkEy0PgPxxsqp_a6JpBN9bC1COQ1d",
+   "role": "candidate (bound)",
+   "bytes": 1730864,
+   "sha256": "a40317cd53efc25439827a1623fbea1c5b19e963c0ffdc59cd15fbc5a00e52fd",
+   "sha256_manifest": "a40317cd53efc25439827a1623fbea1c5b19e963c0ffdc59cd15fbc5a00e52fd",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 75.508,
+   "alpha_zero_percent_manifest": 75.508,
+   "transparent_px_with_rgb": 1059306,
+   "components_alpha_gt128": 6,
+   "components_manifest": 6,
+   "bbox_equal_to_manifest": true
+  },
+  {
+   "file": "source/draft_v07a/NPC06_몸통회전_초안_v07a.png",
+   "drive_id": "1fKI1PorroD7MwUAgaT6w4YChv09AIy7N",
+   "role": "draft, comparison only (not bound)",
+   "bytes": 1921194,
+   "sha256": "9e2b2f39ca972e909172975fbddb1e6a707b2b57a59a5f03e7e218b969f79ef9",
+   "sha256_manifest": "9e2b2f39ca972e909172975fbddb1e6a707b2b57a59a5f03e7e218b969f79ef9",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 64.619,
+   "alpha_zero_percent_manifest": 64.619,
+   "transparent_px_with_rgb": 881430,
+   "components_alpha_gt128": 4,
+   "components_manifest": 4,
+   "bbox_equal_to_manifest": true
+  },
+  {
+   "file": "source/draft_v07a/NPC06_후면다리_초안_v07a.png",
+   "drive_id": "17pr12Wp5gbDK6zuyRJq2A5k06ykUgA0-",
+   "role": "draft, comparison only (not bound)",
+   "bytes": 1472978,
+   "sha256": "e96fab2a0b81c75e1ce49940a5ea1f5d4c1cb5957d5cd4d9ea033cfbe8f68677",
+   "sha256_manifest": "e96fab2a0b81c75e1ce49940a5ea1f5d4c1cb5957d5cd4d9ea033cfbe8f68677",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 78.511,
+   "alpha_zero_percent_manifest": 78.511,
+   "transparent_px_with_rgb": 1077763,
+   "components_alpha_gt128": 6,
+   "components_manifest": 6,
+   "bbox_equal_to_manifest": true
+  },
+  {
+   "file": "source/NPC06_후면다리_경계검토_v07b.png",
+   "drive_id": "1pzVGMOFOWj0aVOC10Hm2zlM_HlwRU3y6",
+   "role": "candidate (bound)",
+   "bytes": 1533228,
+   "sha256": "cab47fb4dd6e360b53d03e78345974f17e9466ddfe363c0523d698c6cdcefbdc",
+   "sha256_manifest": "cab47fb4dd6e360b53d03e78345974f17e9466ddfe363c0523d698c6cdcefbdc",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 78.273,
+   "alpha_zero_percent_manifest": 78.273,
+   "transparent_px_with_rgb": 1102431,
+   "components_alpha_gt128": 6,
+   "components_manifest": 6,
+   "bbox_equal_to_manifest": true
+  },
+  {
+   "file": "source/NPC06_몸통회전_단추수정_v07b.png",
+   "drive_id": "1K3vETUxbuwM4LcqIgdCOVmUDF-CgpIYD",
+   "role": "candidate (bound)",
+   "bytes": 1996602,
+   "sha256": "b2e0801d9f4e3ca5a7763235440d141ab47ccca6a139c25cb11d2db5548872f2",
+   "sha256_manifest": "b2e0801d9f4e3ca5a7763235440d141ab47ccca6a139c25cb11d2db5548872f2",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "decoded": true,
+   "size": [
+    1536,
+    1024
+   ],
+   "mode": "RGBA",
+   "alpha_max": 254,
+   "alpha_255_px": 0,
+   "alpha_zero_percent": 63.95,
+   "alpha_zero_percent_manifest": 63.95,
+   "transparent_px_with_rgb": 875002,
+   "components_alpha_gt128": 4,
+   "components_manifest": 4,
+   "bbox_equal_to_manifest": true
+  }
+ ],
+ "docs": [
+  {
+   "file": "source/NPC06_v07_asset_manifest.json",
+   "drive_id": "1cWzGigiGQPAFX_rfEEk2DpSGR7gcf224",
+   "bytes": 10624,
+   "sha256": "1ee4332f0bbe9bdebc3a3fbfdfdd29f1c0c3ac8cb3f27de8998611d4ba3161c0"
+  },
+  {
+   "file": "source/NPC06_v07_prompts.json",
+   "drive_id": "1KqZkh3LRKw2d_UBVy80kCwdbn5lnIrai",
+   "bytes": 7099,
+   "sha256": "0f46318915438681c2450ce445f1991d8020e888bf7ed249532222674df0ced5"
+  },
+  {
+   "file": "source/NPC06_v07_검수와후속작업.md",
+   "drive_id": "12_hnTdh2BdzRvpkKBj9OdUh68zKmW76N",
+   "bytes": 5157,
+   "sha256": "62193f27e6c2137c6a04de952be367b5352b06b0d606d4a708b4c6a05369a5bd"
+  }
+ ],
+ "note": "Format check only (hash, decode, size, mode, alpha>128 components). It is not a visual or motion pass. Alpha is kept as delivered (max 254, no 255 px); colour left in alpha=0 pixels is invisible after correct compositing and is not treated as background."
+}

@@ -1,0 +1,1072 @@
+{
+ "generated_by": "asset-source/v07_NPC06/tools/build_binding_v07.py",
+ "date": "2026-10-14",
+ "npc": "NPC06",
+ "status": "EXPERIMENT (not game data)",
+ "renderer": "asset-source/v06_render/render_v06.js --art=v07",
+ "sheets": {
+  "front_leg": "asset-source/v07_NPC06/source/NPC06_정면다리_깊이수정_v07b.png",
+  "rear_leg": "asset-source/v07_NPC06/source/NPC06_후면다리_경계검토_v07b.png",
+  "torso": "asset-source/v07_NPC06/source/NPC06_몸통회전_단추수정_v07b.png"
+ },
+ "not_bound": [
+  "source/draft_v07a/* (v07a drafts: comparison only)"
+ ],
+ "kept_from_v06": [
+  "head",
+  "pelvis",
+  "arms (continuous_arms_v03)",
+  "hands",
+  "shoes",
+  "shoulder bag",
+  "side view (no v07 side art)",
+  "torso in neutral frames (atlas torso)"
+ ],
+ "rig": {
+  "file": "asset-source/v05_QA/code/NPC06/walk_rig_elder_v04.json",
+  "S": 0.8985507246376812,
+  "thigh_m": 0.3972,
+  "shin_m": 0.3972,
+  "ankle_height_flat_m": 0.0407,
+  "shoulder_yaw_deg_range": [
+   -2.57,
+   2.58
+  ],
+  "shoulder_yaw_note": "rig: angle of the shoulder line in the floor plane, + = left shoulder forward"
+ },
+ "legs": {
+  "front": {
+   "sheet": "asset-source/v07_NPC06/source/NPC06_정면다리_깊이수정_v07b.png",
+   "parts": [
+    {
+     "sheet_row": 0,
+     "sheet_col": 0,
+     "side": "L",
+     "state": "straight",
+     "manifest_bbox_xywh": [
+      267,
+      11,
+      154,
+      477
+     ],
+     "crop_xywh": [
+      259,
+      3,
+      170,
+      493
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       344.5,
+       11
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       347.3,
+       488
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 477,
+     "top_to_cuff_px": 477.0,
+     "cuff_sideways_px": 2.9,
+     "cuff_sideways_rel": 0.006,
+     "centreline_max_sideways_px": -3.3,
+     "centreline_max_sideways_rel": -0.007,
+     "knee": {
+      "xy": [
+       346.0,
+       266
+      ],
+      "how": "estimated: no visible bend, placed at the thigh fraction of the length"
+     },
+     "width_px": {
+      "top": 73,
+      "thigh_max": 154,
+      "mid": 122,
+      "cuff": 60
+     },
+     "straight_length_error_rel": -0.0146,
+     "projected_length_ratio_to_straight": 0.985
+    },
+    {
+     "sheet_row": 0,
+     "sheet_col": 1,
+     "side": "L",
+     "state": "knee30",
+     "manifest_bbox_xywh": [
+      681,
+      14,
+      167,
+      460
+     ],
+     "crop_xywh": [
+      673,
+      6,
+      183,
+      476
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       761.8,
+       14
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       784.5,
+       474
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 460,
+     "top_to_cuff_px": 460.6,
+     "cuff_sideways_px": 22.7,
+     "cuff_sideways_rel": 0.049,
+     "centreline_max_sideways_px": -15.1,
+     "centreline_max_sideways_rel": -0.033,
+     "knee": {
+      "xy": [
+       755.5,
+       193
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 49,
+      "thigh_max": 160,
+      "mid": 131,
+      "cuff": 43
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.952
+    },
+    {
+     "sheet_row": 0,
+     "sheet_col": 2,
+     "side": "L",
+     "state": "knee60",
+     "manifest_bbox_xywh": [
+      1095,
+      40,
+      205,
+      397
+     ],
+     "crop_xywh": [
+      1087,
+      32,
+      221,
+      413
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       1194.2,
+       40
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       1240.7,
+       437
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 397,
+     "top_to_cuff_px": 399.7,
+     "cuff_sideways_px": 46.5,
+     "cuff_sideways_rel": 0.117,
+     "centreline_max_sideways_px": -46.5,
+     "centreline_max_sideways_rel": -0.117,
+     "knee": {
+      "xy": [
+       1166.5,
+       200
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 42,
+      "thigh_max": 170,
+      "mid": 144,
+      "cuff": 38
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.826
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 0,
+     "side": "R",
+     "state": "straight",
+     "manifest_bbox_xywh": [
+      265,
+      502,
+      165,
+      491
+     ],
+     "crop_xywh": [
+      257,
+      494,
+      181,
+      507
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       347.0,
+       502
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       338.9,
+       993
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 491,
+     "top_to_cuff_px": 491.1,
+     "cuff_sideways_px": -8.2,
+     "cuff_sideways_rel": -0.017,
+     "centreline_max_sideways_px": -4.0,
+     "centreline_max_sideways_rel": -0.008,
+     "knee": {
+      "xy": [
+       342.7,
+       765
+      ],
+      "how": "estimated: no visible bend, placed at the thigh fraction of the length"
+     },
+     "width_px": {
+      "top": 75,
+      "thigh_max": 165,
+      "mid": 132,
+      "cuff": 61
+     },
+     "straight_length_error_rel": 0.0146,
+     "projected_length_ratio_to_straight": 1.015
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 1,
+     "side": "R",
+     "state": "knee30",
+     "manifest_bbox_xywh": [
+      681,
+      505,
+      177,
+      466
+     ],
+     "crop_xywh": [
+      673,
+      497,
+      193,
+      482
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       772.3,
+       505
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       741.7,
+       971
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 466,
+     "top_to_cuff_px": 467.0,
+     "cuff_sideways_px": -30.6,
+     "cuff_sideways_rel": -0.066,
+     "centreline_max_sideways_px": 25.4,
+     "centreline_max_sideways_rel": 0.055,
+     "knee": {
+      "xy": [
+       786.0,
+       683
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 46,
+      "thigh_max": 164,
+      "mid": 142,
+      "cuff": 42
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.965
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 2,
+     "side": "R",
+     "state": "knee60",
+     "manifest_bbox_xywh": [
+      1103,
+      536,
+      213,
+      407
+     ],
+     "crop_xywh": [
+      1095,
+      528,
+      229,
+      423
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       1201.0,
+       536
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       1162.5,
+       943
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 407,
+     "top_to_cuff_px": 408.8,
+     "cuff_sideways_px": -38.6,
+     "cuff_sideways_rel": -0.095,
+     "centreline_max_sideways_px": 53.0,
+     "centreline_max_sideways_rel": 0.13,
+     "knee": {
+      "xy": [
+       1239.5,
+       689
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 52,
+      "thigh_max": 183,
+      "mid": 154,
+      "cuff": 35
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.845
+    }
+   ],
+   "scale": {
+    "m_per_px_y": 0.0016436,
+    "m_per_px_x": 0.0010422,
+    "x_over_y_world_estimate": 0.634,
+    "y_rule": "render_v06.js v07Calibrate: one y scale per sheet, set before drawing from standing frames (front: the 48 idle frames; rear: the last turn frame), so that the straight state's mean top-to-cuff length equals the mean v06 leg-top-to-leg-end screen distance there. The value used is written to frames.json v07_calibration.",
+    "m_per_px_y_is": "world estimate, superseded (kept for the record, see method_change)",
+    "x_rule": "v06 thigh width .185*S over the straight states' widest thigh row (159.5 px), the same for all six states. The art is drawn about 1.58x wider (world estimate) than the v06 trouser legs at one uniform scale; v05/v06 also drew the atlas legs non-uniformly, and a uniform scale would put the thighs outside the pelvis art.",
+    "method_change": {
+     "before": "y from world bone lengths (straight top-to-cuff 484.1 px = 0.7956 m: 1.075*T + shin + ankle height - 0.077*S), as if the v06 leg end were straight under the ankle",
+     "why": "the v06 leg end is on the projected toe line 0.077*S above the sole (render_v06.js leg(): end = ankle x, lowest of heel/toe y - .077*S*scale); in the front view the toe is nearer the camera, so the screen leg is longer than the world bones say",
+     "after": "calibrated per sheet on standing frames (y_rule)",
+     "result": "idle cuff gap with the top anchor: before L 34.31 / R 26.66 px, after L 4.29 / R -4.25 px (fresh renders r1 and r2)"
+    }
+   },
+   "side_mapping": {
+    "top_row": "L",
+    "bottom_row": "R",
+    "how": "nominal (prompt: top row anatomical left). The art carries no side marker (no fly, pocket or seam that fixes the side); see side_evidence"
+   },
+   "side_evidence": {
+    "knee_sideways": {
+     "L.knee30": {
+      "knee_departs_px": -15.1,
+      "toward": "screen-left",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "L.knee60": {
+      "knee_departs_px": -46.5,
+      "toward": "screen-left",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "R.knee30": {
+      "knee_departs_px": 25.4,
+      "toward": "screen-right",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "R.knee60": {
+      "knee_departs_px": 53.0,
+      "toward": "screen-right",
+      "relative_to_midline_with_nominal_rows": "inward"
+     }
+    },
+    "reading": "With the nominal rows both bent states of both legs move the knee sideways in the picture plane toward the body midline; with the rows swapped they would move outward. Either way the bend is sideways on screen, not in depth, so the side mapping does not change the verdict. Nominal mapping kept."
+   }
+  },
+  "rear": {
+   "sheet": "asset-source/v07_NPC06/source/NPC06_후면다리_경계검토_v07b.png",
+   "parts": [
+    {
+     "sheet_row": 0,
+     "sheet_col": 0,
+     "side": "L",
+     "state": "straight",
+     "manifest_bbox_xywh": [
+      259,
+      13,
+      143,
+      484
+     ],
+     "crop_xywh": [
+      251,
+      5,
+      159,
+      500
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       329.4,
+       13
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       337.7,
+       497
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 484,
+     "top_to_cuff_px": 484.1,
+     "cuff_sideways_px": 8.3,
+     "cuff_sideways_rel": 0.017,
+     "centreline_max_sideways_px": 3.3,
+     "centreline_max_sideways_rel": 0.007,
+     "knee": {
+      "xy": [
+       333.9,
+       272
+      ],
+      "how": "estimated: no visible bend, placed at the thigh fraction of the length"
+     },
+     "width_px": {
+      "top": 56,
+      "thigh_max": 143,
+      "mid": 113,
+      "cuff": 60
+     },
+     "straight_length_error_rel": -0.0031,
+     "projected_length_ratio_to_straight": 0.997
+    },
+    {
+     "sheet_row": 0,
+     "sheet_col": 1,
+     "side": "L",
+     "state": "knee30",
+     "manifest_bbox_xywh": [
+      701,
+      28,
+      149,
+      467
+     ],
+     "crop_xywh": [
+      693,
+      20,
+      165,
+      483
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       774.6,
+       28
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       777.1,
+       495
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 467,
+     "top_to_cuff_px": 467.0,
+     "cuff_sideways_px": 2.4,
+     "cuff_sideways_rel": 0.005,
+     "centreline_max_sideways_px": 11.6,
+     "centreline_max_sideways_rel": 0.025,
+     "knee": {
+      "xy": [
+       787.5,
+       269
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 43,
+      "thigh_max": 149,
+      "mid": 115,
+      "cuff": 57
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.962
+    },
+    {
+     "sheet_row": 0,
+     "sheet_col": 2,
+     "side": "L",
+     "state": "knee60",
+     "manifest_bbox_xywh": [
+      1147,
+      54,
+      162,
+      398
+     ],
+     "crop_xywh": [
+      1139,
+      46,
+      178,
+      414
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       1222.8,
+       54
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       1212.5,
+       452
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 398,
+     "top_to_cuff_px": 398.1,
+     "cuff_sideways_px": -10.3,
+     "cuff_sideways_rel": -0.026,
+     "centreline_max_sideways_px": 27.9,
+     "centreline_max_sideways_rel": 0.07,
+     "knee": {
+      "xy": [
+       1246.0,
+       236
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 43,
+      "thigh_max": 149,
+      "mid": 122,
+      "cuff": 32
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.82
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 0,
+     "side": "R",
+     "state": "straight",
+     "manifest_bbox_xywh": [
+      263,
+      518,
+      147,
+      487
+     ],
+     "crop_xywh": [
+      255,
+      510,
+      163,
+      503
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       336.0,
+       518
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       327.8,
+       1005
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 487,
+     "top_to_cuff_px": 487.1,
+     "cuff_sideways_px": -8.1,
+     "cuff_sideways_rel": -0.017,
+     "centreline_max_sideways_px": -2.9,
+     "centreline_max_sideways_rel": -0.006,
+     "knee": {
+      "xy": [
+       331.6,
+       779
+      ],
+      "how": "estimated: no visible bend, placed at the thigh fraction of the length"
+     },
+     "width_px": {
+      "top": 51,
+      "thigh_max": 147,
+      "mid": 111,
+      "cuff": 43
+     },
+     "straight_length_error_rel": 0.0031,
+     "projected_length_ratio_to_straight": 1.003
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 1,
+     "side": "R",
+     "state": "knee30",
+     "manifest_bbox_xywh": [
+      690,
+      537,
+      153,
+      460
+     ],
+     "crop_xywh": [
+      682,
+      529,
+      169,
+      476
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       766.1,
+       537
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       767.4,
+       997
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 460,
+     "top_to_cuff_px": 460.0,
+     "cuff_sideways_px": 1.2,
+     "cuff_sideways_rel": 0.003,
+     "centreline_max_sideways_px": -11.3,
+     "centreline_max_sideways_rel": -0.025,
+     "knee": {
+      "xy": [
+       755.5,
+       779
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 48,
+      "thigh_max": 153,
+      "mid": 122,
+      "cuff": 50
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.947
+    },
+    {
+     "sheet_row": 1,
+     "sheet_col": 2,
+     "side": "R",
+     "state": "knee60",
+     "manifest_bbox_xywh": [
+      1132,
+      557,
+      174,
+      391
+     ],
+     "crop_xywh": [
+      1124,
+      549,
+      190,
+      407
+     ],
+     "crop_note": "alpha>128 box + 8 px transparent margin, sheet coordinates (trim offset = crop x,y); pixels drawn as delivered",
+     "top_attach": {
+      "xy": [
+       1221.0,
+       557
+      ],
+      "how": "measured: centre of the top 3% of the silhouette rows"
+     },
+     "cuff_attach": {
+      "xy": [
+       1241.7,
+       948
+      ],
+      "how": "measured: centre of the bottom 3% of the silhouette rows (cuff hem)"
+     },
+     "length_px": 391,
+     "top_to_cuff_px": 391.5,
+     "cuff_sideways_px": 20.7,
+     "cuff_sideways_rel": 0.053,
+     "centreline_max_sideways_px": -35.6,
+     "centreline_max_sideways_rel": -0.091,
+     "knee": {
+      "xy": [
+       1194.5,
+       729
+      ],
+      "how": "estimated: largest sideways departure of the silhouette centreline"
+     },
+     "width_px": {
+      "top": 43,
+      "thigh_max": 152,
+      "mid": 127,
+      "cuff": 34
+     },
+     "straight_length_error_rel": null,
+     "projected_length_ratio_to_straight": 0.806
+    }
+   ],
+   "scale": {
+    "m_per_px_y": 0.0016384,
+    "m_per_px_x": 0.0011464,
+    "x_over_y_world_estimate": 0.7,
+    "y_rule": "render_v06.js v07Calibrate: one y scale per sheet, set before drawing from standing frames (front: the 48 idle frames; rear: the last turn frame), so that the straight state's mean top-to-cuff length equals the mean v06 leg-top-to-leg-end screen distance there. The value used is written to frames.json v07_calibration.",
+    "m_per_px_y_is": "world estimate, superseded (kept for the record, see method_change)",
+    "x_rule": "v06 thigh width .185*S over the straight states' widest thigh row (145.0 px), the same for all six states. The art is drawn about 1.43x wider (world estimate) than the v06 trouser legs at one uniform scale; v05/v06 also drew the atlas legs non-uniformly, and a uniform scale would put the thighs outside the pelvis art.",
+    "method_change": {
+     "before": "y from world bone lengths (straight top-to-cuff 485.6 px = 0.7956 m: 1.075*T + shin + ankle height - 0.077*S), as if the v06 leg end were straight under the ankle",
+     "why": "the v06 leg end is on the projected toe line 0.077*S above the sole (render_v06.js leg(): end = ankle x, lowest of heel/toe y - .077*S*scale); in the front view the toe is nearer the camera, so the screen leg is longer than the world bones say",
+     "after": "calibrated per sheet on standing frames (y_rule)",
+     "result": "idle cuff gap with the top anchor: before L 34.31 / R 26.66 px, after L 4.29 / R -4.25 px (fresh renders r1 and r2)"
+    }
+   },
+   "side_mapping": {
+    "top_row": "L",
+    "bottom_row": "R",
+    "how": "nominal (prompt: top row anatomical left). The art carries no side marker (no fly, pocket or seam that fixes the side); see side_evidence"
+   },
+   "side_evidence": {
+    "knee_sideways": {
+     "L.knee30": {
+      "knee_departs_px": 11.6,
+      "toward": "screen-right",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "L.knee60": {
+      "knee_departs_px": 27.9,
+      "toward": "screen-right",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "R.knee30": {
+      "knee_departs_px": -11.3,
+      "toward": "screen-left",
+      "relative_to_midline_with_nominal_rows": "inward"
+     },
+     "R.knee60": {
+      "knee_departs_px": -35.6,
+      "toward": "screen-left",
+      "relative_to_midline_with_nominal_rows": "inward"
+     }
+    },
+    "reading": "With the nominal rows both bent states of both legs move the knee sideways in the picture plane toward the body midline; with the rows swapped they would move outward. Either way the bend is sideways on screen, not in depth, so the side mapping does not change the verdict. Nominal mapping kept."
+   }
+  }
+ },
+ "leg_state_rule": {
+  "how": "rig knee flexion of that leg in that frame (render_v06.js flexDeg on the world pose): straight below 15 deg, knee30 from 15 to below 45, knee60 from 45. Thresholds are halfway between the nominal state names; the art angles themselves are not measured.",
+  "straight_below_deg": 15,
+  "knee60_from_deg": 45,
+  "no_double_bend": "the state picture is placed rigidly (fixed scale, turned so its top-to-cuff line lies on the line from the v06 leg top to the v06 leg end): the rig knee is not bent again on top of the drawn bend, and no picture is stretched to fit a frame.",
+  "anchor": {
+   "used": "cuff",
+   "how": "cuff attach on the v06 leg end on the shoe; the top slides along the leg line under the pelvis piece; the shortfall (+) or overrun (-) at the top is recorded per frame (frames.json v07.legs.*.top_gap_px)",
+   "first_attempt": {
+    "anchor": "top",
+    "result": "top attach pinned on the v06 leg top: the cuff missed the shoe. Walk legs with a visible hole between cuff and shoe: front 52/96, rear 30/96; rear cuff below the sole (v06 contact criterion fails, sole row max +10.2 px). Kept as --v07-anchor=top and v07_QA/NPC06/attempt_top_anchor/."
+   },
+   "why_cuff": "it keeps the v06 ground contact that already passed (cuff on the shoe in every frame) and puts the length mismatch under the pelvis, where it is covered (0 holes at the top in 390 legs)"
+  }
+ },
+ "torso": {
+  "sheet": "asset-source/v07_NPC06/source/NPC06_몸통회전_단추수정_v07b.png",
+  "cells": [
+   {
+    "sheet_row": 0,
+    "sheet_col": 0,
+    "view": "front",
+    "cell": "left_cell",
+    "manifest_bbox_xywh": [
+     297,
+     9,
+     345,
+     468
+    ],
+    "crop_xywh": [
+     289,
+     1,
+     361,
+     484
+    ],
+    "prompt_label": "left-shoulder-forward (nominal 8 deg)",
+    "neck_top": {
+     "xy": [
+      442.4,
+      9
+     ],
+     "how": "measured: top edge centre (collar)"
+    },
+    "hem_bottom_y": 477,
+    "height_px": 468,
+    "anchor": {
+     "xy": [
+      470.0,
+      406
+     ],
+     "how": "v06 pivot height (85 % of the torso height from the top); x = silhouette centre at that height, measured"
+    },
+    "width_px": {
+     "max": 345,
+     "at_anchor": 335
+    },
+    "baked_shoulder_tilt_deg": {
+     "value": 3.32,
+     "how": "measured: top silhouette row at 20 % and 80 % of the cell width (shoulders are rounded: approximate)"
+    },
+    "garment_centre_offset_halfwidth": {
+     "value": 0.397,
+     "how": "measured: shirt band between the cardigan fronts centre minus silhouette centre, over the half width"
+    },
+    "shoulder_forward": {
+     "value": "R",
+     "how": "estimated from the garment centre offset (geometry of a turned body seen front)"
+    },
+    "implied_turn_deg": {
+     "value": {
+      "0.7": 31.7,
+      "1.0": 23.4
+     },
+     "how": "estimated: elliptic chest, half-depth/half-width 0.7 or 1.0; not a measurement of the drawn 3D turn"
+    }
+   },
+   {
+    "sheet_row": 0,
+    "sheet_col": 1,
+    "view": "front",
+    "cell": "right_cell",
+    "manifest_bbox_xywh": [
+     893,
+     9,
+     346,
+     469
+    ],
+    "crop_xywh": [
+     885,
+     1,
+     362,
+     485
+    ],
+    "prompt_label": "right-shoulder-forward (nominal 8 deg)",
+    "neck_top": {
+     "xy": [
+      1091.5,
+      9
+     ],
+     "how": "measured: top edge centre (collar)"
+    },
+    "hem_bottom_y": 478,
+    "height_px": 469,
+    "anchor": {
+     "xy": [
+      1065.0,
+      407
+     ],
+     "how": "v06 pivot height (85 % of the torso height from the top); x = silhouette centre at that height, measured"
+    },
+    "width_px": {
+     "max": 346,
+     "at_anchor": 337
+    },
+    "baked_shoulder_tilt_deg": {
+     "value": -3.32,
+     "how": "measured: top silhouette row at 20 % and 80 % of the cell width (shoulders are rounded: approximate)"
+    },
+    "garment_centre_offset_halfwidth": {
+     "value": -0.357,
+     "how": "measured: shirt band between the cardigan fronts centre minus silhouette centre, over the half width"
+    },
+    "shoulder_forward": {
+     "value": "L",
+     "how": "estimated from the garment centre offset (geometry of a turned body seen front)"
+    },
+    "implied_turn_deg": {
+     "value": {
+      "0.7": 28.6,
+      "1.0": 20.9
+     },
+     "how": "estimated: elliptic chest, half-depth/half-width 0.7 or 1.0; not a measurement of the drawn 3D turn"
+    }
+   },
+   {
+    "sheet_row": 1,
+    "sheet_col": 0,
+    "view": "rear",
+    "cell": "left_cell",
+    "manifest_bbox_xywh": [
+     284,
+     500,
+     350,
+     480
+    ],
+    "crop_xywh": [
+     276,
+     492,
+     366,
+     496
+    ],
+    "prompt_label": "left-shoulder-forward (nominal 8 deg)",
+    "neck_top": {
+     "xy": [
+      476.6,
+      500
+     ],
+     "how": "measured: top edge centre (collar)"
+    },
+    "hem_bottom_y": 980,
+    "height_px": 480,
+    "anchor": {
+     "xy": [
+      458.0,
+      908
+     ],
+     "how": "v06 pivot height (85 % of the torso height from the top); x = silhouette centre at that height, measured"
+    },
+    "width_px": {
+     "max": 350,
+     "at_anchor": 341
+    },
+    "baked_shoulder_tilt_deg": {
+     "value": -3.0,
+     "how": "measured: top silhouette row at 20 % and 80 % of the cell width (shoulders are rounded: approximate)"
+    },
+    "garment_centre_offset_halfwidth": {
+     "value": -0.22,
+     "how": "measured: collar centre minus silhouette centre, over the half width"
+    },
+    "shoulder_forward": {
+     "value": "L",
+     "how": "estimated from the garment centre offset (geometry of a turned body seen rear)"
+    },
+    "implied_turn_deg": {
+     "value": {
+      "0.7": 17.9,
+      "1.0": 12.7
+     },
+     "how": "estimated: elliptic chest, half-depth/half-width 0.7 or 1.0; not a measurement of the drawn 3D turn"
+    }
+   },
+   {
+    "sheet_row": 1,
+    "sheet_col": 1,
+    "view": "rear",
+    "cell": "right_cell",
+    "manifest_bbox_xywh": [
+     901,
+     500,
+     351,
+     481
+    ],
+    "crop_xywh": [
+     893,
+     492,
+     367,
+     497
+    ],
+    "prompt_label": "right-shoulder-forward (nominal 8 deg)",
+    "neck_top": {
+     "xy": [
+      1058.3,
+      500
+     ],
+     "how": "measured: top edge centre (collar)"
+    },
+    "hem_bottom_y": 981,
+    "height_px": 481,
+    "anchor": {
+     "xy": [
+      1077.0,
+      908
+     ],
+     "how": "v06 pivot height (85 % of the torso height from the top); x = silhouette centre at that height, measured"
+    },
+    "width_px": {
+     "max": 351,
+     "at_anchor": 341
+    },
+    "baked_shoulder_tilt_deg": {
+     "value": 3.54,
+     "how": "measured: top silhouette row at 20 % and 80 % of the cell width (shoulders are rounded: approximate)"
+    },
+    "garment_centre_offset_halfwidth": {
+     "value": 0.217,
+     "how": "measured: collar centre minus silhouette centre, over the half width"
+    },
+    "shoulder_forward": {
+     "value": "R",
+     "how": "estimated from the garment centre offset (geometry of a turned body seen rear)"
+    },
+    "implied_turn_deg": {
+     "value": {
+      "0.7": 17.6,
+      "1.0": 12.5
+     },
+     "how": "estimated: elliptic chest, half-depth/half-width 0.7 or 1.0; not a measurement of the drawn 3D turn"
+    }
+   }
+  ],
+  "scale": {
+   "m_per_px_y": 0.0010932,
+   "m_per_px_x": 0.0010264,
+   "how": "v06: front cells' mean height (neck to hem, 468.5 px) = the v06 torso height .57*S; x/y as v06 draws the atlas torso (.425*S over 162 px, .57*S over 204 px); one pair for all four cells"
+  },
+  "mirror_check": {
+   "front": {
+    "iou_same": 0.9,
+    "iou_mirrored": 0.991
+   },
+   "rear": {
+    "iou_same": 0.927,
+    "iou_mirrored": 0.991
+   }
+  },
+  "neutral": "the v06 atlas torso (unchanged) in frames whose shoulder turn is under the threshold",
+  "tilt": "each cell is drawn at (v06 shoulder-line angle - its baked shoulder tilt), so the counter-roll is not applied twice"
+ },
+ "torso_state_rule": {
+  "cell_for_forward_shoulder": {
+   "front.R": "left_cell",
+   "front.L": "right_cell",
+   "rear.L": "left_cell",
+   "rear.R": "right_cell"
+  },
+  "how": "by the rig shoulder turn of the frame (+ = left shoulder forward), on front/rear walk frames (enter, exit; not settle/idle/turn/start, whose turn is 0 by construction)",
+  "nearest_nominal": {
+   "threshold_deg": 4.0,
+   "frames_selected": 0,
+   "note": "nearest of -8/0/+8 deg: the rig turns at most 2.58 deg, so the variants are never chosen"
+  },
+  "stride_rule_rendered": {
+   "threshold_deg": 1.289,
+   "note": "the v06 request asks for variants \"the renderer can blend over the stride\": a variant while the rig turn is past half its range, neutral otherwise. This shows the art in motion; it exaggerates the rig turn (the art's implied turn is several times the rig's)."
+  }
+ }
+}

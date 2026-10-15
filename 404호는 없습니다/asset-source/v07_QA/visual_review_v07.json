@@ -1,0 +1,58 @@
+{
+ "reviewed": "2026-10-14",
+ "reviewer": "Claude Code session, frame review of render_v06.js NPC06 --art=v07 (cuff anchor) against a fresh v06 render, same camera/paths/fps/BG02",
+ "status_rule": "Same as v06: a view is PASS only when it has no open issue and every measured criterion passes. Format and binding checks are recorded separately and never make a view PASS. Receiving the art does not resolve a request.",
+ "material_viewed": [
+  "v07_QA/NPC06/compare_v06_v07.mp4", "v07_QA/NPC06/compare_v06_v07_slow.mp4", "v07_QA/NPC06/overlay_v07_slow.mp4",
+  "v07_QA/NPC06/compare_v06_v07_sheet.jpg", "v07_QA/NPC06/legs_zoom_v06_v07.jpg", "v07_QA/NPC06/overlay_front_enter.jpg", "v07_QA/NPC06/overlay_rear_exit.jpg",
+  "v07_QA/NPC06/overlay_settle_start.jpg", "v07_QA/NPC06/switch_zoom_legs_1.jpg", "v07_QA/NPC06/switch_zoom_legs_2.jpg", "v07_QA/NPC06/switch_zoom_torso_1.jpg",
+  "v07_QA/NPC06/revision_evidence/E1-E4", "v07_QA/NPC06/art_check/*", "v07_QA/NPC06/attempt_top_anchor/*"
+ ],
+ "issues": {
+  "V07_KNEE_SIDEWAYS": {
+   "views": ["front", "rear"], "art": true,
+   "seen": "In the knee30 and knee60 pictures the knee leaves the hip-to-cuff line sideways in the picture plane, toward the body midline with the intended rows (front knee60: 46.5 px left leg / 53.0 px right leg on the sheet; rear knee60: 27.9 / 35.6 px). On screen the two knees lean together (X-legged) in the stride; the bend reads as a sideways buckle, not as a knee coming toward (front) or going away from (rear) the camera.",
+   "measured": "drawn knee vs rig knee across the leg: front knee60 15-19 px (7-9 % of the leg), knee30 5-10 px (2-4 %); rear knee60 6-11 px (3-5 %), knee30 2-3 px (1 %). Along the leg the drawn knee sits 11-20 % of the leg above the rig knee in front (median knee30 -27 px, knee60 -41 px).",
+   "evidence": ["v07_QA/NPC06/revision_evidence/E1_front_knee_sideways.jpg", "v07_QA/NPC06/revision_evidence/E2_rear_knee_hem.jpg", "v07_QA/NPC06/art_check/annot_front_leg.jpg", "v07_QA/NPC06/art_check/annot_rear_leg.jpg"]
+  },
+  "V07_STATE_POP": {
+   "views": ["front", "rear"], "art": true,
+   "seen": "At every state change of a leg (knee30<->knee60 in the stride, straight<->knee30 in settle, turn and start) the trouser shape changes in one frame: the knee bulge appears/disappears and moves up or down. With three pictures the shapes do not lie on one continuous bend (top-to-cuff length of knee30 / knee60 = 0.96 / 0.84 of straight in front, 0.95 / 0.81 in the rear; knee drawn at different heights), so the change is a visible jump.",
+   "measured": "18 leg state changes in the 215-frame sequence. Leg silhouette overlap at a change 0.926-0.969 against the lowest same-state overlap 0.96 in both walks (11 of 18 below it: front walk 2 of 5, rear walk 5 of 5, settle/turn/start 4 of 8); drawn knee (estimate) jumps 5-40 px against the largest same-state step 11.0 px (enter) / 9.6 px (exit). The cuff stays on the shoe (cuff jump 0-12 px, same-state max 12.6 / 10.4 px).",
+   "evidence": ["v07_QA/NPC06/switch_zoom_legs_1.jpg", "v07_QA/NPC06/switch_zoom_legs_2.jpg"]
+  },
+  "V07_LEG_MATERIAL": {
+   "views": ["front", "rear"], "art": true,
+   "seen": "The v07 trousers are a lighter, warmer brown with a strong herringbone weave and turned-up cuffs; the existing pelvis piece and the atlas legs are a dark plain chocolate brown with a straight hem. The hip join shows as a colour step under the pelvis, worst in the rear view.",
+   "measured": "sheet interiors CIELAB L* 31.8-32.3 front, 30.0-31.8 rear against 24.3-25.7 for the atlas legs and 24.1-24.9 for the atlas pelvis; luminance high-pass std 7.9-9.4 against 3.0-4.1 (weave about 2.3x stronger). In the frames: legs L* 30.9 front / 36.0 rear against v06 27.5 / 27.2; pelvis-to-legs colour difference dE76 median 10.75 front (v06 7.78) and 15.11 rear (v06 6.01).",
+   "evidence": ["v07_QA/NPC06/revision_evidence/E3_hip_join_colour.jpg", "v07_QA/NPC06/art_check/legs_front_light.jpg", "v07_QA/NPC06/art_check/legs_rear_light.jpg", "v07_QA/NPC06/art_check/part_measure.json"]
+  },
+  "V07_HEM_OPENING": {
+   "views": ["rear"], "art": true,
+   "seen": "Rear knee30/knee60 pictures show the inside of the hem as a dark ellipse. With the shoe drawn under it, a lifted leg reads as an empty trouser tube with a shoe below it (exit 4-8, 25-30, 36-40).",
+   "evidence": ["v07_QA/NPC06/revision_evidence/E2_rear_knee_hem.jpg", "v07_QA/NPC06/art_check/annot_rear_leg.jpg"]
+  },
+  "V07_TORSO_POP": {
+   "views": ["front", "rear"], "art": true,
+   "seen": "The v07 torso cells are a different garment drawing from the atlas torso they alternate with: bigger shirt collar, larger buttons, stronger knit pattern, puffed shoulder caps that sit over the existing arms, lighter cardigan. Each change between the atlas (neutral) torso and a v07 cell is a visible pop; the turn itself is not what one notices.",
+   "measured": "10 torso changes (5 front, 5 rear, stride rule). Pixel change inside the torso at a change 28.5-29.1 front / 15.6-17.1 rear against the largest same-picture step 20.4 / 13.1; colour dE76 1.7-3.6.",
+   "evidence": ["v07_QA/NPC06/switch_zoom_torso_1.jpg", "v07_QA/NPC06/art_check/torso_light.jpg"]
+  },
+  "V07_TORSO_TURN": {
+   "views": ["front", "rear"], "art": true,
+   "seen": "The two cells of each row are mirror images in outline (alpha>128 IoU 0.991 mirrored, 0.90/0.93 as drawn) with the buttons repainted; the turn they show is several times the requested 8 deg and the rig's own shoulder turn (+-2.6 deg), so no frame can use them at their nominal angle. Front cells are labelled by screen side: the 'left-shoulder-forward' front cell has the person's right shoulder forward. A +-3.3 deg shoulder tilt is painted in (taken out by the binding so the v06 counter-roll is not applied twice).",
+   "measured": "garment centre offset over half width: front 0.397 / -0.357, rear -0.220 / 0.217 (atlas torso -0.058 front); implied turn (estimate, elliptic chest 0.7-1.0 depth/width) 21-32 deg front, 12-18 deg rear. Rig shoulder turn +-2.58 deg: nearest-nominal selection (threshold 4 deg) chooses a variant in 0 frames.",
+   "evidence": ["v07_QA/NPC06/revision_evidence/E4_torso_cells_mirror.jpg", "v07_QA/NPC06/art_check/annot_torso.jpg", "v07_QA/NPC06/art_check/torso_cues.json"]
+  }
+ },
+ "views": {"front": ["LEG_STRIP", "TORSO_STATIC", "V07_KNEE_SIDEWAYS", "V07_STATE_POP", "V07_LEG_MATERIAL", "V07_TORSO_POP", "V07_TORSO_TURN"],
+           "rear": ["LEG_STRIP", "TORSO_STATIC", "V07_KNEE_SIDEWAYS", "V07_STATE_POP", "V07_LEG_MATERIAL", "V07_HEM_OPENING", "V07_TORSO_POP", "V07_TORSO_TURN"],
+           "side": [],
+           "sequence": ["V07_STATE_POP", "V07_TORSO_POP"]},
+ "v06_issues_still_open": {
+  "LEG_STRIP": "Partly addressed: the stance and swing pictures do show a knee and folds, and the cuff now meets the shoe in every frame. Not resolved: the bend is sideways, three discrete pictures jump, and the material is not the existing trousers.",
+  "TORSO_STATIC": "Not resolved: the variants are a different garment, mirrored, and turned far more than requested; in the stride they read as costume pops, not counter-rotation."
+ },
+ "side_note": "The side (pass) clip has no v07 art: its 48 frames are byte-identical to the fresh v06 render, so its v06 PASS is unchanged.",
+ "rule_note": "Torso pictures are shown with the stride rule (variant while the rig's shoulder turn is past half its range) because the nearest-nominal rule never selects them; this exaggerates the rig turn and is recorded as a test rule, not a fix."
+}
