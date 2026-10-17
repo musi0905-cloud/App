@@ -1,0 +1,116 @@
+{
+  "status": "REVISE",
+  "game_applied": false,
+  "files": [
+    {
+      "file": "NPC06_v10r5_BG02_comparison.mp4",
+      "bytes": 387838,
+      "sha256": "34a8e2939d73950f78a37e2d1ac305b2a812c2ce214ebfeee92ef45f7b4134ba"
+    },
+    {
+      "file": "NPC06_v10r5_QA.zip",
+      "bytes": 1430035,
+      "sha256": "73b5ddec3d856defbecc13d10f4e8c5ddaee97f8e7de41d4d6bc428e99e5dfa8"
+    },
+    {
+      "file": "NPC06_v10r5_comparison.jpg",
+      "bytes": 255803,
+      "sha256": "6938db76463834e36ff2250f74aa07ed957a2ab40d17f840001ec510fe8988dd"
+    },
+    {
+      "file": "NPC06_v10r5_frames_01.zip",
+      "bytes": 2127177,
+      "sha256": "b7e89bf119aabc23e55a506115028a975ecaf1e0d40121a827c7bb5faa790a55"
+    },
+    {
+      "file": "NPC06_v10r5_frames_02.zip",
+      "bytes": 2132888,
+      "sha256": "e29844dd998bb779e0d1f3a6e8ef54391fac260ce7b577b173d60d6c0058c3ba"
+    },
+    {
+      "file": "NPC06_v10r5_frames_03.zip",
+      "bytes": 2156595,
+      "sha256": "ebfab05c0fc243cbcac15ddb49b54443949a5afcfe94b0f6dec1b49e31ebe102"
+    },
+    {
+      "file": "NPC06_v10r5_frames_04.zip",
+      "bytes": 2113386,
+      "sha256": "2f7f09807a2bb3e9fa4bc41fec09a667c02286e1535106f17fac303d3f556bc6"
+    },
+    {
+      "file": "NPC06_v10r5_frames_05.zip",
+      "bytes": 2099674,
+      "sha256": "b98415aa3d202d94ce2da71b157c7fce9f70075fdcf07939fce0ed1662eae098"
+    },
+    {
+      "file": "NPC06_v10r5_frames_06.zip",
+      "bytes": 2171497,
+      "sha256": "66ca83c105955b3a437f2c9c7b8f470d64f2c7edd3140efeef0ea7fdb62d34dc"
+    },
+    {
+      "file": "NPC06_v10r5_frames_07.zip",
+      "bytes": 2169732,
+      "sha256": "fa5827aa23deca5910fef95174e8cc0bdeedda4fc48b2d253a40d9710b3ad452"
+    },
+    {
+      "file": "NPC06_v10r5_frames_08.zip",
+      "bytes": 2160166,
+      "sha256": "5c258d32e655f369daa68b2123d8a9552c63665807b723b3439fd561b3abc763"
+    },
+    {
+      "file": "NPC06_v10r5_frames_09.zip",
+      "bytes": 2167170,
+      "sha256": "928dc86cd3443c2a02751327b6b5c3ff3ab6e72d07a594433ae7c3bd8f7ad41a"
+    },
+    {
+      "file": "NPC06_v10r5_frames_10.zip",
+      "bytes": 2217009,
+      "sha256": "0ed13c0572786f6e4c3b4a2ed416476758d3c6c3d431ba0e8613b8eccd931875"
+    },
+    {
+      "file": "NPC06_v10r5_frames_11.zip",
+      "bytes": 2180716,
+      "sha256": "94e9fe95c370d4ab9f58c2f8a5b359aa1832e2a7fb99c88e82c94a0a8d5b98f3"
+    },
+    {
+      "file": "NPC06_v10r5_frames_12.zip",
+      "bytes": 2153226,
+      "sha256": "d42cc29efe07ad448558661be3aef87230652d6ba57730e6f3c5afeab0bdd44d"
+    },
+    {
+      "file": "NPC06_v10r5_frames_13.zip",
+      "bytes": 602881,
+      "sha256": "44630b9facb989158ba4a326f26d3be75f7cdfaa2dab27cb92aef9ad1b92d78d"
+    },
+    {
+      "file": "NPC06_v10r5_report.md",
+      "bytes": 3115,
+      "sha256": "4a6f6a8b0a9962d925968f8db52c8f4a883ce1fe4b29694b369ba2ec6e187f12"
+    },
+    {
+      "file": "NPC06_v10r5_source_parts_01.zip",
+      "bytes": 1733397,
+      "sha256": "13474242ce0fcd192fe6fe30763c4b4a1435c6ea8113d5901bb5e41493b96645"
+    },
+    {
+      "file": "NPC06_v10r5_source_parts_02.zip",
+      "bytes": 1537807,
+      "sha256": "630faa5dc3d79f97cfe55275888653112e8a8a94d4ad37ad9dbca8b1da18c371"
+    },
+    {
+      "file": "NPC06_v10r5_source_parts_03.zip",
+      "bytes": 2055957,
+      "sha256": "ba607bfbd959b3cbda86c8cbe48669ce9ac73dc0a8972750d42f577998b8f0be"
+    },
+    {
+      "file": "NPC06_v10r5_source_parts_04.zip",
+      "bytes": 1933284,
+      "sha256": "e782b337d60123e140643b206fa16f56c3e7badc2fc0e93b711e00a0b49ceeba"
+    },
+    {
+      "file": "NPC06_v10r5_source_parts_05.zip",
+      "bytes": 529694,
+      "sha256": "00fb006969687b27fd18cf8f7c295e7beaefd8cd25b364d23c2d4c50916aee37"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ const project=fileURLToPath(new URL('../../',import.meta.url)),P=p=>join(project
 const reg=JSON.parse(readFileSync(P('asset_registry.json'))),assets=reg.assets;
 const sha=p=>createHash('sha256').update(readFileSync(P(p))).digest('hex');
 const data=n=>JSON.parse(readFileSync(P('room404/dist/data/'+n+'.json')));
-const slots=data('story_slots'),layout=data('scene_layout'),chars=data('character_assets');
+const slots=data('story_slots'),layout=data('scene_layout'),chars=data('character_assets'),figs=data('visitor_figures');
 const byPath=new Map(assets.flatMap(a=>[a.sourcePath,...a.duplicatePaths].map(p=>[p,a])));
 test('every entry is a real file whose bytes match its SHA-256; duplicates share the bytes',()=>{for(const a of assets){assert.ok(existsSync(P(a.sourcePath)),a.sourcePath);assert.equal(sha(a.sourcePath),a.sha256,a.sourcePath);for(const d of a.duplicatePaths)assert.equal(sha(d),a.sha256,d)}
  assert.equal(new Set(assets.map(a=>a.sha256)).size,assets.length,'one entry per SHA-256')});
@@ -17,7 +17,12 @@ test('every required field is present',()=>{const f=['assetId','entityId','era',
  for(const a of assets)for(const k of f)assert.ok(k in a,a.assetId+' '+k)});
 test('QA status comes from QA records, never from a name; REVISE and unreviewed files are not used by the game',()=>{
  for(const a of assets){if(a.qaStatus==='PASS')assert.ok(a.qaBasis&&/json/.test(a.qaBasis),a.assetId+' PASS needs a QA record');
-  const inGame=a.selectedFor.some(s=>s.startsWith('game:')||s.startsWith('scene:'));if(inGame)assert.ok(['PASS','LEGACY_IN_GAME','PASS_TEXT_LAYOUT_PER_ITEM'].includes(a.qaStatus),a.assetId+' '+a.qaStatus)}
+  const inGame=a.selectedFor.some(s=>s.startsWith('game:')||s.startsWith('scene:'));
+  // v0.19.0: the one REVISE asset the game may use is NPC06 v10r5 under the user's exception, and only the exact files it names.
+  if(inGame&&a.qaStatus==='REVISE_USER_EXCEPTION'){assert.equal(a.entityId,'NPC06',a.assetId);assert.match(a.qaBasis,/visitor_figures\.json intercom_clips\.NPC06/);
+   const rec=figs.intercom_clips.NPC06;assert.ok(Object.values(rec.scope.pages).includes(a.sha256)||rec.clip_sha256===a.sha256,a.sourcePath+' is a file the exception names')}
+  else if(inGame)assert.ok(['PASS','LEGACY_IN_GAME','PASS_TEXT_LAYOUT_PER_ITEM'].includes(a.qaStatus),a.assetId+' '+a.qaStatus)}
+ assert.equal(assets.filter(a=>a.qaStatus==='REVISE_USER_EXCEPTION').length,Object.keys(figs.intercom_clips.NPC06.scope.pages).length+1,'7 pages + clip.json');
  assert.equal(assets.find(a=>a.sourcePath.endsWith('BG08_management_office_2026_v01.webp')).qaStatus,'UNREVIEWED');
  for(const a of assets.filter(a=>['animation_data','animation_frame','qa_atlas'].includes(a.category))){assert.equal(a.qaStatus,'REVISE',a.assetId);assert.ok(!a.selectedFor.some(x=>x.startsWith('game:')||x.startsWith('scene:')),a.assetId+' not in the game')}});
 test('era: 2004 files only behind 2004 records; alpha kept where figures are cut out, backgrounds opaque',()=>{
@@ -25,13 +30,15 @@ test('era: 2004 files only behind 2004 records; alpha kept where figures are cut
   if(a.category==='character')assert.equal(a.hasAlpha,true,a.assetId+' keeps transparency');if(a.category==='background')assert.equal(a.hasAlpha,false,a.assetId);if(a.category==='review_video')assert.equal(a.hasAlpha,false,'MP4 is not a transparent asset')}
  for(const f of Object.values(chars.legacy.figures))assert.equal(byPath.get('room404/dist/'+f.file).hasAlpha,true,f.file)});
 test('every image the game loads is registered (paths), and every file in asset-source and dist/assets is accounted for',()=>{
- const game=[...Object.values(layout.backgrounds).map(b=>b.file).filter(Boolean),...Object.values(chars.assets).map(a=>a.figure.file),...Object.values(chars.legacy.figures).map(f=>f.file)];
+ const game=[...Object.values(layout.backgrounds).map(b=>b.file).filter(Boolean),...Object.values(chars.assets).map(a=>a.figure.file),...Object.values(chars.legacy.figures).map(f=>f.file),
+  ...figs.summary.role_figures_used.map(n=>chars.visitor_role_figures[n].figure.file),figs.intercom_clips.NPC06.clip,...Object.keys(figs.intercom_clips.NPC06.scope.pages).map(f=>'assets/clips/NPC06_v10r5/'+f)];
  for(const f of game)assert.ok(byPath.has('room404/dist/'+f),f);
  const walk=d=>readdirSync(P(d)).filter(f=>f!=='node_modules').flatMap(f=>statSync(join(P(d),f)).isDirectory()?walk(join(d,f)):[join(d,f)]);
  // renderer code/config (v06_render), review sheets and numbers (v06_QA, v07_QA, the stage check figures_qa.json) and the
  // v07 binding/import records are tools and records, not assets (figures_qa.json was missing here since v0.18.0, found 2026-10-14)
+ // v10r5: the producer's renderer code and its configs/lock files under v10r5_NPC06/source (tools, not assets)
  // v09: the v09_NPC06 code/config/records, the v09_QA numbers and sheets, and the git-ignored local renders (rebuilt byte for byte)
- const skip=/(v06_render\/.*|v06_QA\/.*\.jpg|(metrics|review_summary|production_requests|visual_review)_v06\.json|static_figures\/figures_qa\.json|v07_QA\/.*\.(jpg|png|json)|v07_NPC06\/(IMPORT|binding)_v07\.json|v09_NPC06\/.*\.(json|mjs)|v09_QA\/(reference|default|candidate|render_v09r)\/.*|v09_QA\/[^/]*\.json|v09_QA\/evidence\/.*\.jpg|\.gitignore|stage_build_report\.json|ui_inventory_v0[12]\.json|ui_text_ko_v01\.json|\.md|\.js|\.py|checksums_v05\.json|QA_v05\.json|execution_v05\.json|frame_connectivity_check\.json|package\.json|validation_all_v05\.json|prompts_v05\.json|walk_rig_elder_v02_original\.json|TRANSFER_MANIFEST\.json|V05_IMPORT_RESULT\.json|V05_VERIFY_REPORT\.json|import_report\.json|\/frame_qa\/.*)$/;
+ const skip=/(v06_render\/.*|v06_QA\/.*\.jpg|(metrics|review_summary|production_requests|visual_review)_v06\.json|static_figures\/figures_qa\.json|v07_QA\/.*\.(jpg|png|json)|v07_NPC06\/(IMPORT|binding)_v07\.json|v09_NPC06\/.*\.(json|mjs)|v09_QA\/(reference|default|candidate|render_v09r)\/.*|v09_QA\/[^/]*\.json|v09_QA\/evidence\/.*\.jpg|v10r5_NPC06\/source\/.*\.json|\.gitignore|stage_build_report\.json|ui_inventory_v0[12]\.json|ui_text_ko_v01\.json|\.md|\.js|\.py|checksums_v05\.json|QA_v05\.json|execution_v05\.json|frame_connectivity_check\.json|package\.json|validation_all_v05\.json|prompts_v05\.json|walk_rig_elder_v02_original\.json|TRANSFER_MANIFEST\.json|V05_IMPORT_RESULT\.json|V05_VERIFY_REPORT\.json|import_report\.json|\/frame_qa\/.*)$/;
  for(const f of [...walk('asset-source'),...walk('room404/dist/assets')])if(!skip.test(f))assert.ok(byPath.has(f),'registered: '+f)});
 test('missing files are not secretly present; the 1,296 v05 sprites and (v0.18.0) their part art are held and registered',()=>{const have=new Set(assets.map(a=>a.sha256));
  for(const m of reg.missing)if(/^[0-9a-f]{64}$/.test(m.sha256))assert.ok(!have.has(m.sha256),m.path);

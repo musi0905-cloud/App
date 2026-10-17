@@ -217,8 +217,8 @@
   "공공 업무": "NPC09",
   "지인": "NPC10"
  },
- "visitor_roles_enabled": false,
- "visitor_roles_note": "방문객 역할 그림 NPC01~NPC10 10장은 승인 파일로 만들어 visitor_role_figures에 두었고 QA 뷰어에서 볼 수 있다. 게임에서는 아직 켜지 않는다(visitor_roles_status.blocked_by). 10장은 역할별 공용 그림이며 방문객 100명 각각의 고유 원화가 아니다.",
+ "visitor_roles_enabled": true,
+ "visitor_roles_note": "v0.19.0부터 사건(방문객+시나리오)마다 켠다: 그 사건의 CCTV 장면을 모두 같은 인물 그림으로 그릴 수 있을 때만 역할 그림을 쓰고, 인터폰과 CCTV가 같은 판정(figures.js figureFor)을 쓴다. 사건별 결과와 이유는 data/visitor_figures.json. 10장은 역할별 공용 그림이며 방문객 100명 각각의 고유 원화가 아니다.",
  "legacy": {
   "status": "LEGACY_IN_GAME",
   "note": "v0.6~v0.15 게임에 쓰이던 방문객 정지 그림. v02 에셋 패키지 검수 대상이 아님. NPC01~NPC10 역할군 그림이 PASS로 들어오면 교체.",
@@ -743,7 +743,10 @@
   "files": "10/10",
   "approved_static": "10/10",
   "stage_check": "tests/figures-qa.mjs (BG02 인터폰, 발·키·그림자) — test-artifacts/figures",
-  "cctv_art": "0/10",
-  "blocked_by": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌)."
- }
+  "cctv_art": "정지 10/10 · 측면 걷기 3(NPC06·NPC07·NPC09 런타임, v06 side PASS) · 정면·후면 걷기 0 · 몸짓 0",
+  "in_game": "8/10 (NPC02, NPC04, NPC05, NPC06, NPC07, NPC08, NPC09, NPC10); NPC01·NPC03은 역할 그림으로 다 그릴 수 있는 사건이 없어 게임에 나오지 않음",
+  "cases": "19/100 사건(방문객 19명)이 역할 그림, 나머지는 두 화면 모두 기존 외형",
+  "limits": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다."
+ },
+ "visitor_roles_scope": "per_case"
 }

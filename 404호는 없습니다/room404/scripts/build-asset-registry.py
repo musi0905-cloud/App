@@ -49,7 +49,11 @@ def main():
     static = J(DOCS, 'approved_static_assets_v01.json'); patch = J(DOCS, 'approved_patch_assets_v02.json'); revmf = J(DOCS, 'character_revision_manifest_v02.json')
     integrity = J(DOCS, 'download_integrity_v02.json')['images']; ui = J(SRC, '05_UI', 'ui_inventory_v02.json')
     cards = J(SRC, '04_증거소품', 'evidence_readable_20_v03.json'); v05 = {x['id']: x for x in J(SRC, 'v05_QA', 'code', 'validation_all_v05.json')}
-    layout = J(DIST, 'data', 'scene_layout.json'); chars = J(DIST, 'data', 'character_assets.json')
+    layout = J(DIST, 'data', 'scene_layout.json'); chars = J(DIST, 'data', 'character_assets.json'); figs = J(DIST, 'data', 'visitor_figures.json')
+    # v0.19.0: which visitors (cases) show each role figure, from data/visitor_figures.json (the game's own per-case rule).
+    role_cases = {}
+    for r in figs['cases']:
+        if r['kind'] == 'role': role_cases.setdefault(r['npc'], []).append(f"visitor:{r['visitor']}")
     qa_by_sha = {x['sha256']: ('PASS' if x['status'] == 'PASS' else x['status'], 'approved_static_assets_v01.json') for x in static if x.get('sha256')}
     for x in revmf:
         if x.get('sha256'): qa_by_sha.setdefault(x['sha256'], (x['status'], 'character_revision_manifest_v02.json'))
@@ -89,23 +93,24 @@ def main():
                    selected=bg_use.get(bid, []), replacement=repl.get(bid), derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
                    notes='게임용 720x1280 축소본. 장면 좌표는 dist/data/scene_layout.json.')
     # 2. Approved character figures (sources + game crops): character-v5/png (v0.15) and asset-source/01_캐릭터/game (game
-    #    exports restored 2026-10-14). Story contacts are shown in their scenes; the ten visitor role figures are built but
-    #    the switch stays off (character_assets.json visitor_roles_status.blocked_by), so they are not selected.
-    role_off = chars.get('visitor_roles_status', {}).get('blocked_by', '')
+    #    exports restored 2026-10-14). Story contacts are shown in their scenes; a visitor role figure is selected for the
+    #    cases data/visitor_figures.json gives it (v0.19.0, intercom + CCTV), the others stay in the QA viewer.
+    role_off = '게임에 나오는 사건 없음(data/visitor_figures.json: CCTV 장면을 이 인물 그림으로 다 그릴 수 있는 사건이 없음).'
     for folder, pkg in ((os.path.join(PROJECT, 'character-v5', 'png'), f'{PKG_NAME}/01_캐릭터/game'), (os.path.join(SRC, '01_캐릭터', 'game'), f'{PKG_NAME}/01_캐릭터/game (복원 전달 2026-10-14, asset-source/v06_sources)')):
         for f in sorted(os.listdir(folder)) if os.path.isdir(folder) else []:
             ent = f.split('_')[0]; era = '2026' if '_2026_' in f else '2004' if '_2004_' in f else None
             a = chars['assets'].get(ent); r = chars.get('visitor_role_figures', {}).get(ent); scenes = [f'scene:{s}' for s, c in chars['contacts'].items() if c == ent]
             if (a and a.get('source') != f) or (r and r.get('source') != f): a = r = None  # another revision of the same entity
             src = add(os.path.join(folder, f), ent, era, 'character', pkg,
-                      notes='' if a else ('방문객 역할 그림: 게임 파일은 만들었지만 켜지 않음. ' + role_off) if r else '')
+                      notes='' if a else ('방문객 역할 그림: ' + (f"{len(role_cases[ent])}개 사건에서 인터폰·CCTV에 씀." if ent in role_cases else role_off)) if r else '')
             if a:
                 add(os.path.join(DIST, a['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=scenes,
                     replacement=f'assets/v5/bust-{ent}.webp (v0.15 흉상 크롭, v0.16에서 삭제)' if ent in ('CH09', 'CH10', 'MC15', 'MC25') else None, derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
                     notes=f"전신 컷, 발 기준점 {a['figure']['foot']}, 키 {a['figure']['height_m']}m ({'DESIGN' if 'DESIGN' in a['figure'].get('height_note', '') else a['figure'].get('height_note', '')})")
             if r:
-                add(os.path.join(DIST, r['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=['qa_viewer'], derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
-                    notes=f"역할 그림 전신 컷(게임 꺼짐, 오프라인 캐시 제외), 발 기준점 {r['figure']['foot']}, 키 {r['figure']['height_m']}m. 방문객 100명의 고유 원화가 아님.")
+                used = ent in role_cases
+                add(os.path.join(DIST, r['figure']['file']), ent, era, 'character', 'room404/scripts/build-stage-assets.py', selected=(['game:intercom:role', 'game:cctv:role'] + role_cases[ent] if used else []) + ['qa_viewer'], derived=src['sha256'], qa=(src['qaStatus'], 'derived:' + str(src['qaBasis'])),
+                    notes=f"역할 그림 전신 컷({'게임 사용' if used else '배정된 사건 없음(옛 저장의 자유 조합에서만 나올 수 있음)'}, 오프라인 캐시), 발 기준점 {r['figure']['foot']}, 키 {r['figure']['height_m']}m. 방문객 100명의 고유 원화가 아님.")
     # 2b. Approved character originals received as single files (01_캐릭터/originals). QA from the approval record by SHA-256.
     #     Role figures switch on only when all ten are in hand, so these are not selected for the game.
     orig = os.path.join(SRC, '01_캐릭터', 'originals')
@@ -213,6 +218,40 @@ def main():
         for f in sorted(x for x in os.listdir(ev9) if x.endswith('.mp4')):
             add(os.path.join(ev9, f), 'NPC06', '2026', 'review_video', 'asset-source/v09_NPC06/tools/media_v09.py', qa=('REFERENCE_ONLY', None),
                 notes='v06 기본 렌더 · v09 · v09r를 BG02에 나란히 합성한 검토 영상(불투명).')
+    # NPC06 v10r5 (2026-10-17): the producer's frames (visual REVISE), the four v10 art sheets, the frame data and records,
+    # and the game pages built from the frames (build-runtime-clips.py). The game uses those pages only under the user's
+    # exception for this exact version (visitor_figures.json intercom_clips.NPC06): qaStatus REVISE_USER_EXCEPTION, never PASS.
+    d10 = os.path.join(SRC, 'v10r5_NPC06'); rec = figs['intercom_clips']['NPC06']; pkg10 = 'Drive 1a9b3RhMVvJSZAXs6KVI_8ZbBa8SPEeta (NPC06 v10 결과, 최종 후보 v10r5)'
+    seq_cases = [f"visitor:{r['visitor']}" for r in figs['cases'] if r['intercom'] == 'seq:NPC06_v10r5']
+    exc = ('REVISE_USER_EXCEPTION', 'data/visitor_figures.json intercom_clips.NPC06 (사용자 예외 승인 2026-10-17; 시각 판정 REVISE 유지)')
+    if os.path.isdir(d10):
+        for sub, n in (('seq', 215), ('pass', 48)):
+            for i in range(n):
+                add(os.path.join(d10, 'frames', sub, f'{i:04d}.png'), 'NPC06', '2026', 'render_frame', pkg10, selected=['room404/scripts/build-runtime-clips.py'],
+                    qa=('REVISE', 'NPC06_v10r5_manifest.json status REVISE; bytes/SHA-256 = QA/verification_v10r5.json'),
+                    notes=('연결 프레임 ' if sub == 'seq' else '측면 지나감 프레임(v06 side PASS와 바이트 동일) ') + '720x1280 고정 캔버스 원본. 게임 페이지는 dist/assets/clips.')
+        for f in sorted(os.listdir(os.path.join(d10, 'source', 'asset-source', 'v09_NPC06', 'art_v10'))):
+            add(os.path.join(d10, 'source', 'asset-source', 'v09_NPC06', 'art_v10', f), 'NPC06', '2026', 'animation_art', pkg10, selected=['asset-source/v10r5_NPC06/source render_v10.js'],
+                qa=('REVISE', 'NPC06_v10r5_report.md 시각 판정'), notes='v10 무릎·소매·몸통 회전 원화. v10r5 렌더 입력.')
+        for f in ('config.json', 'walk_rig_elder_v04.json'):
+            add(os.path.join(d10, 'source', 'asset-source', 'v05_QA', 'code', 'NPC06', f), 'NPC06', '2026', 'animation_data', pkg10, selected=['asset-source/v10r5_NPC06/source render_v10.js'], qa=('REVISE', 'validation_all_v05.json'))
+        add(os.path.join(d10, 'frames', 'frames.json'), 'NPC06', '2026', 'animation_data', pkg10, selected=['room404/scripts/build-runtime-clips.py'], qa=('REVISE', 'frames.json status REVISE'), notes='구간·좌표·그림자·발 위치(프레임별).')
+        for f in ('NPC06_v10r5_manifest.json', 'NPC06_v10r5_report.md', 'IMPORT_v10r5.json', os.path.join('QA', 'verification_v10r5.json'), os.path.join('QA', 'REPORT.md'), os.path.join('QA', 'metrics_v09.json')):
+            add(os.path.join(d10, f), 'NPC06', None, 'delivery_record', pkg10, qa=('RECORD', None), notes='제작자 기록·반입 기록. 품질 상태를 정하지 않음.')
+    clips = os.path.join(DIST, 'assets', 'clips')
+    if os.path.isdir(clips):
+        cj = J(clips, 'NPC06_v10r5', 'clip.json')
+        for p in cj['pages']:
+            add(os.path.join(clips, 'NPC06_v10r5', p['file']), 'NPC06', '2026', 'runtime_clip', 'room404/scripts/build-runtime-clips.py', selected=['game:intercom:NPC06_v10r5'] + seq_cases, qa=exc,
+                derived='asset-source/v10r5_NPC06/frames/seq', notes=f"{p['group']} 묶음 {p['frames']}프레임. 알파 상자만 잘라 원래 캔버스 위치(dx,dy) 보존, 알파 무손실.")
+        add(os.path.join(clips, 'NPC06_v10r5', 'clip.json'), 'NPC06', '2026', 'runtime_clip_data', 'room404/scripts/build-runtime-clips.py', selected=['game:intercom:NPC06_v10r5'] + seq_cases, qa=exc,
+            derived='asset-source/v10r5_NPC06/frames/frames.json', notes='구간·프레임 사각형·그림자·회전 시작 프레임·페이지 해시.')
+        sd = J(clips, 'side', 'side.json'); side_basis = ('PASS', 'asset-source/v06_QA/review_summary_v06.json side PASS (원본 프레임 바이트 동일)')
+        for npc, c in sd['npcs'].items():
+            for p in c['pages']:
+                add(os.path.join(clips, 'side', p['file']), npc, '2026', 'runtime_clip', 'room404/scripts/build-runtime-clips.py', selected=[f'game:cctv:side:{npc}'] + [x for x in role_cases.get(npc, [])], qa=side_basis,
+                    derived=c['source'], notes='CCTV 재현용 측면 걷기 48프레임(0.7배). 화면 왼쪽으로 걷는 그림 그대로, 좌우 반전 없음.')
+        add(os.path.join(clips, 'side', 'side.json'), None, '2026', 'runtime_clip_data', 'room404/scripts/build-runtime-clips.py', selected=['game:cctv:side'], qa=side_basis, notes='측면 걷기 프레임 사각형·루트 x·그림자·걸음 길이.')
     for f in ('SOURCE_MANIFEST.json', 'MATCH_REPORT.json', 'SOURCE_IMPORT_RESULT.json'):
         p = os.path.join(SRC, 'v06_sources', f)
         if os.path.exists(p): add(p, None, None, 'delivery_record', 'Drive 1OjyxfqzZS7wWfcNo-ppjmi2dYft7i1xM (2026-10-14)', qa=('RECORD', None), notes='복원 전달 기록(41 source ZIP, 169 파일). 품질 상태를 정하지 않음.')

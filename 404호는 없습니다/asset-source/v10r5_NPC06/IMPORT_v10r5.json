@@ -1,0 +1,233 @@
+{
+ "imported": "2026-10-17",
+ "by": "Claude Code (이 저장소 작업 세션)",
+ "drive_folder": {
+  "project": "404호는 없습니다_게임 개발",
+  "result_folder_id": "1a9b3RhMVvJSZAXs6KVI_8ZbBa8SPEeta"
+ },
+ "final_candidate": "v10r5 (NPC06_v10_recovery_source.zip은 중간 복구본이라 받지 않음·쓰지 않음)",
+ "downloads": [
+  {
+   "file": "NPC06_v10r5_BG02_comparison.mp4",
+   "drive_id": "1eBJQ3aup5sYx1ean7AIa4C0j-wcZM6I1",
+   "bytes": 387838,
+   "sha256": "34a8e2939d73950f78a37e2d1ac305b2a812c2ce214ebfeee92ef45f7b4134ba",
+   "manifest_match": true
+  },
+  {
+   "file": "NPC06_v10r5_QA.zip",
+   "drive_id": "16Iy7N3E9p9qd5iN-cBvZUScdnilQq395",
+   "bytes": 1430035,
+   "sha256": "73b5ddec3d856defbecc13d10f4e8c5ddaee97f8e7de41d4d6bc428e99e5dfa8",
+   "manifest_match": true,
+   "entries": 12,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_comparison.jpg",
+   "drive_id": "1k2XJz1oZ_gyfJtRPDVxKmnohxT0ws-2V",
+   "bytes": 255803,
+   "sha256": "6938db76463834e36ff2250f74aa07ed957a2ab40d17f840001ec510fe8988dd",
+   "manifest_match": true
+  },
+  {
+   "file": "NPC06_v10r5_frames_01.zip",
+   "drive_id": "1swDBn-ilqg3prOENSjUObSHRe3mYsYrX",
+   "bytes": 2127177,
+   "sha256": "b7e89bf119aabc23e55a506115028a975ecaf1e0d40121a827c7bb5faa790a55",
+   "manifest_match": true,
+   "entries": 24,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_02.zip",
+   "drive_id": "1wQq_PXune-WK5NKCmUmT0m2mFZyxYRXd",
+   "bytes": 2132888,
+   "sha256": "e29844dd998bb779e0d1f3a6e8ef54391fac260ce7b577b173d60d6c0058c3ba",
+   "manifest_match": true,
+   "entries": 24,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_03.zip",
+   "drive_id": "1zc2dg7rj0iREdlozSQtj5deN-aMxA7Bu",
+   "bytes": 2156595,
+   "sha256": "ebfab05c0fc243cbcac15ddb49b54443949a5afcfe94b0f6dec1b49e31ebe102",
+   "manifest_match": true,
+   "entries": 26,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_04.zip",
+   "drive_id": "1cjKZqZOaoQQsc7H5CFvZancWdGvfe7yk",
+   "bytes": 2113386,
+   "sha256": "2f7f09807a2bb3e9fa4bc41fec09a667c02286e1535106f17fac303d3f556bc6",
+   "manifest_match": true,
+   "entries": 21,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_05.zip",
+   "drive_id": "13LzRnj0cfqpjAVulTmWISYTxxt0COVln",
+   "bytes": 2099674,
+   "sha256": "b98415aa3d202d94ce2da71b157c7fce9f70075fdcf07939fce0ed1662eae098",
+   "manifest_match": true,
+   "entries": 18,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_06.zip",
+   "drive_id": "1AVM8pyyk_K8Luim6Of9VToxnW9t05ZvO",
+   "bytes": 2171497,
+   "sha256": "66ca83c105955b3a437f2c9c7b8f470d64f2c7edd3140efeef0ea7fdb62d34dc",
+   "manifest_match": true,
+   "entries": 18,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_07.zip",
+   "drive_id": "1qRpFPqvNye486hWjgBiEcG6GjgiItonh",
+   "bytes": 2169732,
+   "sha256": "fa5827aa23deca5910fef95174e8cc0bdeedda4fc48b2d253a40d9710b3ad452",
+   "manifest_match": true,
+   "entries": 18,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_08.zip",
+   "drive_id": "1ILAe9YOerUXF9mwKSLAkqwgTQQwXB6oi",
+   "bytes": 2160166,
+   "sha256": "5c258d32e655f369daa68b2123d8a9552c63665807b723b3439fd561b3abc763",
+   "manifest_match": true,
+   "entries": 18,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_09.zip",
+   "drive_id": "1UKjyl8fUOyYa8rq3qYx-mz0rMZXsag_7",
+   "bytes": 2167170,
+   "sha256": "928dc86cd3443c2a02751327b6b5c3ff3ab6e72d07a594433ae7c3bd8f7ad41a",
+   "manifest_match": true,
+   "entries": 23,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_10.zip",
+   "drive_id": "1PWUSivZ1WFokKnVJd6pkKK8FJVhO88HZ",
+   "bytes": 2217009,
+   "sha256": "0ed13c0572786f6e4c3b4a2ed416476758d3c6c3d431ba0e8613b8eccd931875",
+   "manifest_match": true,
+   "entries": 19,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_11.zip",
+   "drive_id": "1vxeTG7jRU4UJHtNUiMIozI5LLe0rDbYs",
+   "bytes": 2180716,
+   "sha256": "94e9fe95c370d4ab9f58c2f8a5b359aa1832e2a7fb99c88e82c94a0a8d5b98f3",
+   "manifest_match": true,
+   "entries": 21,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_12.zip",
+   "drive_id": "1BculTnUyXAQYjuguGOdTcAiL26jHdkeE",
+   "bytes": 2153226,
+   "sha256": "d42cc29efe07ad448558661be3aef87230652d6ba57730e6f3c5afeab0bdd44d",
+   "manifest_match": true,
+   "entries": 25,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_frames_13.zip",
+   "drive_id": "1acdN7rkp9bWGy2BGTWZqwH1jIaiQVzcC",
+   "bytes": 602881,
+   "sha256": "44630b9facb989158ba4a326f26d3be75f7cdfaa2dab27cb92aef9ad1b92d78d",
+   "manifest_match": true,
+   "entries": 8,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_report.md",
+   "drive_id": "1_AT1uE8Au-KpFSbdP22nvFZPJlbvnQy1",
+   "bytes": 3115,
+   "sha256": "4a6f6a8b0a9962d925968f8db52c8f4a883ce1fe4b29694b369ba2ec6e187f12",
+   "manifest_match": true
+  },
+  {
+   "file": "NPC06_v10r5_source_parts_01.zip",
+   "drive_id": "1321nS8N8v6mO4GT9jGIU1PGUyvt8PZ3o",
+   "bytes": 1733397,
+   "sha256": "13474242ce0fcd192fe6fe30763c4b4a1435c6ea8113d5901bb5e41493b96645",
+   "manifest_match": true,
+   "entries": 15,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_source_parts_02.zip",
+   "drive_id": "1C1S7WRMJu0NDAjyMKHsjjOjRXB27wyxe",
+   "bytes": 1537807,
+   "sha256": "630faa5dc3d79f97cfe55275888653112e8a8a94d4ad37ad9dbca8b1da18c371",
+   "manifest_match": true,
+   "entries": 4,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_source_parts_03.zip",
+   "drive_id": "1BW97PM3HczTuVTi9fAE_zTnQbK7utqTL",
+   "bytes": 2055957,
+   "sha256": "ba607bfbd959b3cbda86c8cbe48669ce9ac73dc0a8972750d42f577998b8f0be",
+   "manifest_match": true,
+   "entries": 2,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_source_parts_04.zip",
+   "drive_id": "1DLAaYn2ISi__oXxJdjI6JGXbP5OobZsG",
+   "bytes": 1933284,
+   "sha256": "e782b337d60123e140643b206fa16f56c3e7badc2fc0e93b711e00a0b49ceeba",
+   "manifest_match": true,
+   "entries": 1,
+   "path_escape": false
+  },
+  {
+   "file": "NPC06_v10r5_source_parts_05.zip",
+   "drive_id": "1mezOQYEMV-4YVy_vQ5mOFOvTwC8r0Hx9",
+   "bytes": 529694,
+   "sha256": "00fb006969687b27fd18cf8f7c295e7beaefd8cd25b364d23c2d4c50916aee37",
+   "manifest_match": true,
+   "entries": 3,
+   "path_escape": false
+  }
+ ],
+ "manifest_check": "22/22 files equal the manifest (bytes + SHA-256); manifest itself sha256 958468e58433d2c2e524e9a1b46eef61587a1c3996ed0de99a2d506325518e21",
+ "zip_check": "모든 ZIP 항목 경로 검사: 절대 경로·.. 없음. 서로 다른 ZIP에 같은 경로는 없었다(충돌 0, 중복 0).",
+ "extracted": {
+  "frames": "frames_01..13 -> asset-source/v10r5_NPC06/frames/seq (215) + pass (48); frames.json은 QA.zip에서",
+  "frames_verified": "263/263 PNG: bytes·SHA-256이 QA/verification_v10r5.json과 같음",
+  "source": "source_parts_01..05 -> asset-source/v10r5_NPC06/source (22개 보관)",
+  "source_not_kept_twice": [
+   "asset-source/v05_QA/code/NPC06/assets/BG02_shared_entrance_night_v01.webp = asset-source/02_배경/game/BG02_shared_entrance_night_v01.webp (8ba3bbf5…)",
+   "asset-source/v05_QA/code/NPC06/assets/NPC06_continuous_arms_v03.png = 저장소의 같은 경로 파일",
+   "asset-source/v05_QA/code/NPC06/assets/NPC06_3view_parts_atlas_v01.png = 저장소의 같은 경로 파일"
+  ],
+  "qa": "QA.zip -> asset-source/v10r5_NPC06/QA (verification_v10r5.json, REPORT.md, verify_recovery.py, metrics_v09.json). 검토 시트(sequence_1..6.jpg, comparison.jpg), 비교 영상(BG02_comparison.mp4), comparison.jpg는 저장소·게임에 넣지 않음(위 해시로만 기록)."
+ },
+ "source_drift": {
+  "material_v09r.js": "저장소 asset-source/v09_NPC06/material_v09r.js와 비교: torso()에 refresh 매개변수 추가만 다름. 다른 텍스트 파일은 줄바꿈만 다름.",
+  "new": [
+   "render_v10.js",
+   "material_v10.js",
+   "media_v10.js",
+   "review_v10.js",
+   "README_v10.md",
+   "art_v10/NPC06_front_knee_v10.png",
+   "art_v10/NPC06_rear_knee_v10.png",
+   "art_v10/NPC06_sleeves_v10.png",
+   "art_v10/NPC06_torso_turn_v10.png"
+  ]
+ },
+ "segments_found": "frames.json segments: enter 48, settle 16, idle 48, turn 40, start 15, exit 48 (+ pass 48) = 263. sequence_config.start_frames는 16으로 적혀 있으나 실제 segments·프레임은 15장이며 구현은 segments를 따름. 프레임 번호 i는 enter·exit가 0부터, settle·idle·turn·start가 1부터.",
+ "fps": "패키지에 재생 속도 항목 없음. 비교 영상 NPC06_v10r5_BG02_comparison.mp4가 24fps(ffmpeg -i로 확인)라 24fps를 잠정 근거로 씀.",
+ "status": "visual REVISE 유지. 게임 적용은 사용자 예외 승인(2026-10-17)으로만: room404/dist/data/visitor_figures.json intercom_clips.NPC06"
+}

@@ -74,11 +74,27 @@ def main():
     for npc in sorted({q['npc'] for q in pr['requests']}):
         sug = review['suggestions']['TURN_45']
         rows.append(row(f'{npc}/walk/TURN_45', npc, '2026', 'new_art', sug['priority'], '막지 않음(연결 PASS). ' + sug['note'], '회전 구간을 끊김 없이', {'required_art': sug['required_art']}))
-    # 2. visitor role figures: the switch waits for CCTV art of the same people
-    ca = J(ROOT, 'dist', 'data', 'character_assets.json'); st = ca.get('visitor_roles_status', {})
+    # v0.19.0: the four NPC06 limits the user accepted for this release. Still open (visual REVISE): marked as accepted
+    # for the release and left for a later fix, never as resolved.
+    accepted = {'LEG_STRIP': '다리 볼륨', 'TORSO_STATIC': '몸통 회전', 'SLEEVE_FABRIC': '소매 표현', 'TURN_REAR_STRAP': '가방끈'}
+    for r in rows:
+        k = r['assetId'].split('/')[-1]
+        if r['entityId'] == 'NPC06' and k in accepted:
+            r['release_v0_19_0'] = {'status': '이번 릴리스에서 사용자 수용, 후속 개선', 'resolved': False, 'visual_status': 'REVISE', 'limit': accepted[k],
+                                    'applied_as': 'NPC06 v10r5를 사용자 예외 승인(2026-10-17)으로 인터폰에 재생(room404/dist/data/visitor_figures.json intercom_clips.NPC06)',
+                                    'producer_attempt': 'v10r5 (asset-source/v10r5_NPC06, NPC06_v10r5_report.md: 시각 판정 보류, 기존 요청 종결 안 함)'}
+    # 2. visitor role figures (v0.19.0): switched per case. A role still shows only in cases whose CCTV scenes its art can
+    #    draw; the art below would let the remaining cases of that role switch too.
+    ca = J(ROOT, 'dist', 'data', 'character_assets.json'); st = ca.get('visitor_roles_status', {}); vf = J(ROOT, 'dist', 'data', 'visitor_figures.json')
+    names = {'walk_front_rear': '정면·후면 걷기(입장·다가옴·멀어짐)', 'gesture_turn': '뒤돌아보기', 'gesture_phone': '전화', 'gesture_wave': '손 흔들기', 'gesture_knock': '노크', 'direction_bound': '오른쪽으로 걷는 측면 걷기(방향이 단서인 사건)', 'no_side_clip': '측면 걷기'}
     for role, npc in sorted(ca['visitor_roles'].items(), key=lambda x: x[1]):
-        rows.append(row(f'{npc}/cctv_motion', npc, '2026', 'new_art', 'P2', st.get('blocked_by'), f'CCTV 재생의 {role} 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬',
+        legacy = [c for c in vf['cases'] if c['npc'] == npc and c['kind'] == 'legacy']; need = {}
+        for c in legacy:
+            for m in c['missing']: need[m] = need.get(m, 0) + 1
+        rows.append(row(f'{npc}/cctv_motion', npc, '2026', 'new_art', 'P2', st.get('limits'),
+                        f"CCTV 재생의 {role} 방문객: 지금 {len(legacy)}개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
                         {'required_art': '걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립',
+                         'needed_by_cases': {names.get(k, k): n for k, n in sorted(need.items())}, 'cases': [c['visitor'] + '/' + c['anomaly'] for c in legacy],
                          'reference': [f"room404/dist/{ca['visitor_role_figures'][npc]['figure']['file']}" if npc in ca.get('visitor_role_figures', {}) else None, 'room404/dist/assets/v2/visitor-01-walk.webp']}))
     rows.append(row('NPC01/walk', 'NPC01', '2026', 'new_art', 'P2', 'v05 걷기 패키지에 NPC01이 없음(NPC02~NPC10만).', '귀가 주민 역할 걷기 클립', {'required_art': 'NPC01 3방향 부품 아틀라스(…_3view_parts_atlas)·연속 팔 그림, v05 패키지와 같은 구성'}))
     # 3. approval backlog (records say what is wrong)
@@ -93,7 +109,7 @@ def main():
     rows.append(row('BG13/floor4_row', 'BG13', None, 'record', 'P3', '보이는 1층이 몇 층인지 기록이 없어 4층 창 줄을 지정하지 못함(2004·2026 건물 윤곽은 같은 자리, 이동 0px).', '외관에서 404호 창 위치', {'required': '외관 그림의 층 번호(가장 낮은 창 줄이 몇 층인지)'}))
     counts = {}
     for r in rows: counts.setdefault(r['priority'], 0); counts[r['priority']] += 1
-    out = {'generated_by': 'room404/scripts/build-missing-request.py', 'generated': '2026-10-14', 'version': 'v0.18.0',
+    out = {'generated_by': 'room404/scripts/build-missing-request.py', 'generated': '2026-10-17', 'version': 'v0.19.0',
            'fields': old['fields'], 'extra_fields': {'kind': 'file(받을 파일) / new_art(새로 그려야 함) / record(기록으로 정할 값)', 'use': '게임에서 쓰는 곳', 'spec': '그려야 할 것(인물·방향·부품·프레임·참고 그림)'},
            'resolved_counts': {'requests_v0_17': len(resolved), 'resolved': sum(r['status'] == 'RESOLVED' for r in resolved), 'open': sum(r['status'] == 'OPEN' for r in resolved)},
            'resolved': resolved, 'counts': counts, 'requests': rows,

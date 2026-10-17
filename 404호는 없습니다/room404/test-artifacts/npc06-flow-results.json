@@ -1,0 +1,42 @@
+[
+ {
+  "test": "NPC06 v10r5 full visit on the intercom: enter -> settle -> idle (loops) -> decision -> turn -> start -> exit -> result",
+  "status": "PASS",
+  "ms": 16970
+ },
+ {
+  "test": "a decision during the arrival waits for it; a screen change mid-arrival does not restart it",
+  "status": "PASS",
+  "ms": 8962
+ },
+ {
+  "test": "intercom and CCTV show the same person: NPC06 still + its side walk; a legacy case keeps one look in both",
+  "status": "PASS",
+  "ms": 13360
+ },
+ {
+  "test": "reduced motion: idle frame 0 shown still, the decision goes straight to the result, same saved progress",
+  "status": "PASS",
+  "ms": 1451
+ },
+ {
+  "test": "a clip page that fails or does not match its SHA-256: the NPC06 still figure waits instead, the error is logged, the case goes on",
+  "status": "PASS",
+  "ms": 5179
+ },
+ {
+  "test": "a different version is refused: clip.json with another revision or a PASS label never plays",
+  "status": "PASS",
+  "ms": 1116
+ },
+ {
+  "test": "screen sizes: desktop 1280x800 and a 320 px phone show the whole figure in every frame (no face or foot cropping), no sideways scroll",
+  "status": "PASS",
+  "ms": 6735
+ },
+ {
+  "test": "offline: after the first visit the NPC06 clip plays from the offline cache; an existing save resumes where it was",
+  "status": "PASS",
+  "ms": 9620
+ }
+]

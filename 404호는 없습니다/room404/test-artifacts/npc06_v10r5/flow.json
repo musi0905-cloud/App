@@ -1,0 +1,187 @@
+{
+ "started": "2026-10-17T03:43:30.520Z",
+ "environment": "Chromium headless, mobile emulation 390x844 DPR 2 (실기기 아님)",
+ "checks": {
+  "full_flow": {
+   "trail": [
+    "enter",
+    "settle",
+    "idle",
+    "turn",
+    "start",
+    "exit",
+    "gone"
+   ],
+   "frames_seen": {
+    "enter": {
+     "count": 48,
+     "min": 0,
+     "max": 47
+    },
+    "settle": {
+     "count": 16,
+     "min": 0,
+     "max": 15
+    },
+    "idle": {
+     "count": 72,
+     "min": 0,
+     "max": 47
+    },
+    "turn": {
+     "count": 39,
+     "min": 0,
+     "max": 39
+    },
+    "start": {
+     "count": 15,
+     "min": 0,
+     "max": 14
+    },
+    "exit": {
+     "count": 48,
+     "min": 0,
+     "max": 47
+    }
+   },
+   "idle_before_turn": 23,
+   "samples": 242,
+   "captures": [
+    "enter_0",
+    "enter_24",
+    "enter_47",
+    "exit_0",
+    "exit_24",
+    "exit_47",
+    "idle_12",
+    "settle_8",
+    "start_7",
+    "turn_10",
+    "turn_20",
+    "turn_30",
+    "turn_39"
+   ]
+  },
+  "video": {
+   "file": "npc06_flow.mp4",
+   "frames": 257,
+   "fps": 24,
+   "seconds": 10.68
+  },
+  "swap": {
+   "next_actor": "still:visitor-01",
+   "identical_to_fresh_load": true
+  },
+  "decide_during_arrival": {
+   "trail": [
+    "enter",
+    "settle",
+    "idle",
+    "turn",
+    "start",
+    "exit",
+    "gone"
+   ]
+  },
+  "cctv_identity": {
+   "V051": {
+    "0": "NPC06:still",
+    "1": "NPC06:side",
+    "2": "NPC06:still"
+   },
+   "V001": "visitor-01"
+  },
+  "reduced_motion": {
+   "frame": 0,
+   "result_immediate": true
+  },
+  "fallback_missing": {
+   "actor": "still:NPC06",
+   "logged": "[stage] NPC06_v10r5 sequence unavailable, still figure shown instead: assets/clips/NPC06_v10r5/stay-1.webp: 404"
+  },
+  "fallback_corrupt": {
+   "actor": "still:NPC06",
+   "logged": "[stage] NPC06_v10r5 sequence unavailable, still figure shown instead: assets/clips/NPC06_v10r5/stay-1.webp: SHA-256 59ed14023534… is not 1ceecac9d0f9…"
+  },
+  "fallback_exit_pages": {
+   "result": "faded out in place, result shown"
+  },
+  "version_gate": "altered clip.json refused (hash and version checks)",
+  "sizes": [
+   {
+    "label": "desktop",
+    "viewport": {
+     "width": 1280,
+     "height": 800
+    },
+    "camera_css": [
+     400,
+     533
+    ]
+   },
+   {
+    "label": "phone320",
+    "viewport": {
+     "width": 320,
+     "height": 640
+    },
+    "camera_css": [
+     258,
+     344
+    ]
+   }
+  ],
+  "offline": {
+   "cache": {
+    "name": "room404-v0.19.0",
+    "clip": true,
+    "pages": 7,
+    "side": 4
+   },
+   "trail": "enter>settle>idle>turn>start>exit>gone",
+   "resumed_case": 2
+  }
+ },
+ "results": [
+  {
+   "test": "NPC06 v10r5 full visit on the intercom: enter -> settle -> idle (loops) -> decision -> turn -> start -> exit -> result",
+   "status": "PASS",
+   "ms": 16970
+  },
+  {
+   "test": "a decision during the arrival waits for it; a screen change mid-arrival does not restart it",
+   "status": "PASS",
+   "ms": 8962
+  },
+  {
+   "test": "intercom and CCTV show the same person: NPC06 still + its side walk; a legacy case keeps one look in both",
+   "status": "PASS",
+   "ms": 13360
+  },
+  {
+   "test": "reduced motion: idle frame 0 shown still, the decision goes straight to the result, same saved progress",
+   "status": "PASS",
+   "ms": 1451
+  },
+  {
+   "test": "a clip page that fails or does not match its SHA-256: the NPC06 still figure waits instead, the error is logged, the case goes on",
+   "status": "PASS",
+   "ms": 5179
+  },
+  {
+   "test": "a different version is refused: clip.json with another revision or a PASS label never plays",
+   "status": "PASS",
+   "ms": 1116
+  },
+  {
+   "test": "screen sizes: desktop 1280x800 and a 320 px phone show the whole figure in every frame (no face or foot cropping), no sideways scroll",
+   "status": "PASS",
+   "ms": 6735
+  },
+  {
+   "test": "offline: after the first visit the NPC06 clip plays from the offline cache; an existing save resumes where it was",
+   "status": "PASS",
+   "ms": 9620
+  }
+ ]
+}

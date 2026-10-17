@@ -26,7 +26,7 @@
 | 걷기: ±8도 돌린 몸통 두 장(정면·후면) | 9 | P2 | v06 검수 TORSO_STATIC |
 | 걷기: NPC10 측면 맨팔(볼륨, 길이) | 1 | P2 | v06 검수 ARM_LONG |
 | 걷기: 45도 부품 세트 | 9 | P3 | 회전 그림 바꿈을 매끄럽게(막지 않음) |
-| CCTV 걷기·몸짓 그림 NPC01~NPC10 | 10 | P2 | 역할 그림을 게임에서 켜는 조건(인터폰과 CCTV의 같은 사람) |
+| CCTV 걷기·몸짓 그림 NPC01~NPC10 | 10 | P2 | v0.19.0부터 역할 그림은 사건별로 켬(19/100). 남은 81개 사건을 역할 그림으로 바꾸려면 필요(사건별 `needed_by_cases`) |
 | NPC01 걷기 클립 | 1 | P2 | v05 패키지에 NPC01이 없음 |
 | 증거 EV04·EV05 사진 원본 | 2 | P2 | 카드 BLOCKED(revision_backlog_v02) |
 | 증거 EV01·EV18·EV19 결합·음성 | 3 | P2 | REVISE(도면 대조, 일기 그림 결합, 음성 미제작) |
@@ -52,6 +52,14 @@
 - 요청: LEG_STRIP·TORSO_STATIC 4건은 **OPEN 그대로**. 두 줄의 `latest_attempt`를 v09/v09r로 바꾸고 v07 시도는 `previous_attempts`로 옮김
 - 새 요청 2줄: `NPC06/walk/SLEEVE_FABRIC`(P2, 소매가 가디건과 다른 밝은 굵은 니트·위팔 일정 폭), `NPC06/walk/TURN_REAR_STRAP`(P3, 3/4 후면 그림 — TURN_45의 일부)
 - 원화 수정 요청(원본 크롭·관절 좌표·문제 프레임 포함): `asset-source/v09_QA/NPC06_v09_원화수정요청.md`
+
+**NPC06 v10r5 (2026-10-17, v0.19.0 게임 적용)**
+
+- 받은 것: 결과 폴더의 22개 파일(manifest 일치), 프레임 263장(verification 일치). `asset-source/v10r5_NPC06/IMPORT_v10r5.json`
+- 게임: 인터폰 4개 사건에서 전체 방문을 재생합니다. **시각 REVISE / 사용자 예외 승인**입니다.
+- 요청: LEG_STRIP·TORSO_STATIC·SLEEVE_FABRIC·TURN_REAR_STRAP 4건은 **해결이 아닙니다.**
+  - 각 줄에 `release_v0_19_0.status = "이번 릴리스에서 사용자 수용, 후속 개선"`(`resolved: false`)를 붙였습니다.
+  - 표의 건수는 그대로입니다.
 
 ## 3. 배경 수 (v0.18.0)
 

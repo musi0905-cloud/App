@@ -1,0 +1,5 @@
+{"note": "Elder rig (walk_rig_elder_v04.json, 0.34 m/s). The stance knee may stay a little bent by design (production request KNEE_CROUCH allows it for the elder rig), kept under the 25 deg review flag.",
+ "fixes": {"stance_knee_max_deg": 24, "counter_roll": {"pelvis_rad": 0.045, "shoulder_ratio": 0.45}},
+ "sequence": {"settle_frames": 16, "turn_frames": 40, "start_frames": 16, "idle_knee_deg": 10}}
+
+

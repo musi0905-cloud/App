@@ -1,6 +1,7 @@
 import {mountReplay,shiftedTime,sceneTime,LOCATIONS,lookFor,LIVE_MODES} from './replay.js';
 import {VERSION,TOOLS,TIMES,newRun,decideRun,advance,totals,ending,validRun,hash,ENDING_IDS,timesOf,kstDate,reportRun,reportedAt} from './engine.js';
 import {mountStage} from './stage.js';
+import {figureFor,prefetchClip} from './figures.js';
 import * as ST from './story.js';
 import {playDialogue,stopVoice,soundOn,setSoundOn,voiceAvailable,primeVoice} from './voice.js';
 import {ring,doorOpen,doorShut,primeSound} from './sfx.js';
@@ -21,6 +22,9 @@ let story=null,daily=null,archiveTab='evidence',archiveHints=null,resultTitle=''
 let characterAssets={assets:{},contacts:{}};
 // Scene layout (v0.16.0, data/scene_layout.json): background ids -> files, cameras, stand points, click areas, occluders.
 let sceneLayout=null;
+// Gate-visitor pictures (v0.19.0, data/visitor_figures.json + figures.js): one decision per case shared by the intercom
+// stage and the CCTV replay, so the same person is drawn in both. NPC06 v10r5 plays its whole visit at the intercom.
+let visitorFigures=null,leaving=null;
 const pairsOf=()=>Object.fromEntries(storyVisitors.map(v=>[v.id,v.anomaly_id]));
 function storyFor(p){const sv=storyVisitors.find(v=>v.id===p.visitor&&v.anomaly_id===p.anomaly)||null;const pinned=storyVisitors.filter(v=>v.night1_pinned);const scene=run.mode==='story'&&(run.night||1)===1&&pinned[run.index]?.id===p.visitor?storyScenes.find(x=>x.night===1&&x.slot===run.index+1):null;return {sv,scene}}
 function endingTitle(end){return storyEndings.find(e=>e.id===ENDING_IDS[end])?.title||end}
@@ -36,7 +40,7 @@ function mountCutscene(se,lost){clearCutscene();const box=$('result').querySelec
  lines.innerHTML=se.dialogue.map(d=>`<li><b>${escapeHTML(d.speaker)}</b>${escapeHTML(d.text)}</li>`).join('');
  const show=n=>{i=Math.min(n,shots.length-1);const sh=shots[i],last=i===shots.length-1;const poster=last&&lost?'ending-404':shotPoster(sh.setting);setPoster(box,poster,poster==='ending-dawn'?'12-ending-dawn':null);activateMedia();cap.textContent=sh.caption;dots.innerHTML=shots.map((_,k)=>`<span class="${k===i?'on':''}"></span>`).join('');box.dataset.shot=sh.shot;clearCutscene();if(!last&&!reduce)cutTimer=setTimeout(()=>show(i+1),sh.duration_sec*1000)};
  box.onclick=()=>show(i+1);cap.onclick=()=>show(i+1);show(0)}
-function show(screen){if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();if(screen!=='archive')closeDoc();['home','game','investigation','feedback','result','nightIntro','archive'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
+function show(screen){if(screen!=='game'&&leaving){leaving=null;lockGame(false)}if(screen!=='investigation'){clearReplay();stopVoice()}if(screen!=='result')clearCutscene();if(screen!=='archive')closeDoc();['home','game','investigation','feedback','result','nightIntro','archive'].forEach(id=>$(id).hidden=id!==screen);activateMedia();window.scrollTo(0,0)}
 // Photo backdrops with an optional looping video. Videos get a src only while their screen is visible, and never with reduced motion.
 const MEDIA='assets/v2/',reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const posterURL=p=>p.startsWith('bg:')?`assets/bg/${p.slice(3)}.webp`:`${MEDIA}${p}.webp`;
@@ -66,7 +70,11 @@ function log(title,text){const p=document.createElement('p'),b=document.createEl
 // wait in place (enter/leave by opacity only, never slid or scaled).
 const stages={};
 function stillActor(f,id){return f?{kind:'still',id,src:f.file,size:f.size,foot:f.foot,height_px:f.height_px,height_m:f.height_m}:null}
-const visitorActor=v=>stillActor(characterAssets.legacy?.figures?.[`visitor-0${lookFor(v)}`],`visitor-0${lookFor(v)}`);
+const caseFigure=(v,pack)=>figureFor(v,pack,characterAssets,visitorFigures,lookFor(v));
+function visitorActor(f){if(f.kind==='role'&&f.intercom)return {kind:'seq',id:`${f.npc}_${f.intercom.revision}`,record:f.intercom,fallback:stillActor(f.figure,f.npc)};return stillActor(f.figure,f.id)}
+// Warm the cache for the next case's clip (no decoding); the current visitor's clip loads with its stage.
+function prefetchNext(){const p=run?.cases?.[run.index+1];if(!p)return;const o=visitors.find(v=>v.id===p.visitor),a=anomalies.find(a=>a.id===p.anomaly),raw=a&&scenarios.find(s=>s.id===a.id);if(!o||!raw)return;
+ const f=caseFigure({...o,baseRole:o.role,role:raw.role},raw);if(f.kind==='role'&&f.intercom)prefetchClip(f.intercom)}
 const contactActor=cid=>stillActor(characterAssets.assets[cid]?.figure,cid);
 function sceneOn(slot,host,key,{usage='intercom',...opts}){const cur=stages[slot];if(cur?.key===key){cur.ctl.redraw();return cur.ctl}
  cur?.ctl.destroy();const u=sceneLayout.usage[usage];const ctl=mountStage(host,{layout:sceneLayout,background:u.background,camera:u.camera,stand:u.stand_point,reduced:reducedMotion(),...opts});stages[slot]={key,ctl};ctl.enter();return ctl}
@@ -93,8 +101,8 @@ function render(){if(!run)return;const inStory=run.mode==='story'&&story&&story.
  if(inStory&&story.phase==='INTRO')return renderIntro();if(inStory&&story.phase==='FINAL'){archiveTab='final';return renderArchive()}if(inStory&&story.phase==='ENDED')return renderEndingView(story.ending);
  $('shiftLabel').textContent=run.mode==='daily'?'오늘의 근무 · '+run.date:night===1?'첫 근무 · 1야간':`${night}야간 근무`;
  if(run.screen==='game'){
-  const {v}=current(),t=totals(run);$('clock').textContent=nowTime();$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
-  $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);sceneOn('intercom',$('portrait'),`${run.mode}:${run.date}:${run.night||1}:${run.index}`,{actor:visitorActor(v),label:`${v.name} 님이 공동현관 카메라에 보여요`,areas:[{id:'visitor',rect:'figure',label:`${v.name} 님 CCTV로 자세히 보기`,onClick:()=>inspect('CCTV')}]});deskOn();
+  const {v,pack}=current(),t=totals(run),fig=caseFigure(v,pack);$('clock').textContent=nowTime();$('progress').textContent=String(run.index+1).padStart(2,'0')+' / 08';
+  $('mistakes').textContent='틀린 판단 '+(t.threats+t.denials);sceneOn('intercom',$('portrait'),`${run.mode}:${run.date}:${run.night||1}:${run.index}`,{actor:visitorActor(fig),label:`${v.name} 님이 공동현관 카메라에 보여요`,areas:[{id:'visitor',rect:'figure',label:`${v.name} 님 CCTV로 자세히 보기`,onClick:()=>inspect('CCTV')}]});deskOn();$('portrait').dataset.figure=fig.kind==='role'?fig.npc:fig.id;prefetchNext();
   $('report').disabled=reportedAt(run);$('report').textContent=reportedAt(run)?'긴급 신고 접수됨':'긴급 신고';$('reportStatus').textContent=reportedAt(run)?'긴급 신고를 접수했어요. 문을 열지 말지는 따로 정하세요.':'긴급 신고는 문을 열지 말지와 따로 기록돼요.';$('identity').textContent=`${v.role} · ${v.name} · ${v.unit}호 방문`;$('claim').textContent='“'+v.claim+'”';evidence();
  }else if(run.screen==='feedback'){
   const {v,a}=current(),h=run.history.at(-1),g=guide();$('clock').textContent=nowTime();
@@ -189,14 +197,24 @@ function renderTool(autoplay=false){
  }
  if(done){const summary=activeTool==='재확인'?pack.plain.confirmed:clueFor(activeTool);const question=activeTool===a.channel?pack.plain.check:({CCTV:'이 사람이 언제 왔는지 먼저 보세요.',명부:'말한 이름·호수와 적힌 내용이 같은지 보세요.',통화:'그 집 주민이 누구인지, 들어와도 된다고 했는지 확인하세요.'})[activeTool];body=`<aside class="plain-brief"><h3>${activeTool==='재확인'?'다시 알아보니':'지금 알게 된 것'}</h3><p>${e(summary)}</p>${question?`<h3>다음에는 이것을 확인하세요</h3><p>${e(question)}</p>`:''}</aside>`+body;}
  $('toolBody').innerHTML=body;mountBooks($('toolBody'));activateMedia();if(done&&(activeTool==='통화'||activeTool==='재확인'))playCall(autoplay);
- if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,time:T(),now:nowTime(),date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
+ if($('caseReplay')){const generation=replayGeneration;mountReplay($('caseReplay'),{pack,visitor:v,figure:caseFigure(v,pack),time:T(),now:nowTime(),date:run.date}).then(cleanup=>{if(generation!==replayGeneration)cleanup();else replayCleanup=cleanup})}
  $('toolHint').textContent=done?'알게 된 내용은 경비실 메모에 적어 두었어요.':'아래 버튼을 눌러 확인하세요.';
  $('toolAction').textContent=done?'확인 완료':({CCTV:'영상 보기','명부':'기록부 펼치기','통화':'전화 걸기','재확인':'한 번 더 확인하기'})[activeTool];$('toolAction').disabled=done;
  const next=({CCTV:'명부','명부':'통화','통화':'재확인','재확인':null})[activeTool];$('nextTool').hidden=!next;$('nextTool').textContent=next?TOOL_NAMES[next]:'';$('nextTool').onclick=()=>next==='재확인'?verify():inspect(next);$('nextTool').disabled=!done;
  show('investigation');$('toolTitle').focus({preventScroll:true});
 }
 function readTool(){if(!activeTool||!run||run.screen!=='game'||inspected())return;if(activeTool==='통화'||activeTool==='재확인')primeAudio();if(activeTool==='재확인')run.verified=true;else run.seen.push(activeTool);save();renderTool(true)}
-function decide(allow){if(run&&decideRun(run,allow,anomalies)){stages.intercom?.ctl.leave();if(run.mode==='story'&&story)ST.recordDecision(story);save();render();doorTransition(allow)}}
+// The decision is recorded and saved at once. A visitor with a full clip (NPC06 v10r5) then turns and walks off on the
+// intercom before the result screen; inputs stay locked meanwhile, a second click changes nothing, and a watchdog
+// moves on even if no frame is drawn (background tab). Reduced motion and still figures go straight to the result.
+function decide(allow){if(!run||leaving||!decideRun(run,allow,anomalies))return;if(run.mode==='story'&&story)ST.recordDecision(story);save();
+ const ctl=stages.intercom?.ctl;
+ if(ctl?.plays&&!reducedMotion()&&!$('game').hidden){const token={};leaving=token;lockGame(true);
+  const done=()=>{if(leaving!==token)return;leaving=null;lockGame(false);if(!$('game').hidden&&run?.screen==='feedback'){render();doorTransition(allow)}};
+  $('skipLeave').onclick=done;Promise.race([ctl.leave(),new Promise(ok=>setTimeout(ok,(ctl.budget()+1)*1000))]).then(done);return}
+ ctl?.leave();render();doorTransition(allow)}
+function lockGame(on){const g=$('game');g.toggleAttribute('data-leaving',on);g.querySelectorAll('button:not(#skipLeave):not(#homeButton)').forEach(b=>{if(on){b.dataset.lockWas=String(b.disabled);b.disabled=true}else if(b.dataset.lockWas!==undefined){b.disabled=b.dataset.lockWas==='true';delete b.dataset.lockWas}});
+ $('skipLeave').hidden=!on;$('leaveNote').hidden=!on}
 // Short staging after a decision: the door opens (video) or stays shut (photo) over the feedback screen. Never blocks input.
 function doorTransition(allow){const box=$('doorTransition');allow?doorOpen():doorShut();if(reducedMotion())return;
  setPoster(box.querySelector('.scene-media'),allow?'door-open':'door-closed',allow?'23-door-open-ambient':null);box.querySelector('p').textContent=allow?'문을 열었어요.':'문을 열지 않았어요.';
@@ -301,8 +319,8 @@ function loadSaves(){const notes=[];story=null;daily=null;run=null;let raw=null;
 async function boot(){
  $('startStory').disabled=$('startDaily').disabled=true;$('retry').hidden=true;$('record').textContent='게임 자료를 불러오는 중이에요…';
  try{
-  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow','character_assets','scene_layout'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow,characterAssets,sceneLayout]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
-  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices||!characterAssets?.assets||!characterAssets?.contacts||!characterAssets?.legacy?.figures||!sceneLayout?.backgrounds?.BG02||!sceneLayout?.usage?.intercom)throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
+  const response=await Promise.all(['visitors','anomalies','scenarios','story_visitors','story_scenes','story_endings','story_slots','story_gates','story_evidence','story_flow','character_assets','scene_layout','visitor_figures'].map(n=>fetch(`./data/${n}.json`)));if(response.some(r=>!r.ok))throw Error('게임 자료를 불러오지 못했어요.');let gatesDoc;[visitors,anomalies,scenarios,storyVisitors,storyScenes,storyEndings,storySlots,gatesDoc,storyEvidence,storyFlow,characterAssets,sceneLayout,visitorFigures]=await Promise.all(response.map(r=>r.json()));storyGates=gatesDoc?.gates||[];
+  if(visitors.length!==100||anomalies.length!==100||scenarios.length!==100||anomalies.some(a=>!scenarios.some(s=>s.id===a.id))||storyVisitors.length!==100||storyScenes.length!==40||storyEndings.length!==30||storySlots.length!==40||storyGates.length!==30||storyEvidence?.evidence?.length!==20||storyEvidence?.puzzles?.length!==5||!storyFlow?.choices||!characterAssets?.assets||!characterAssets?.contacts||!characterAssets?.legacy?.figures||!sceneLayout?.backgrounds?.BG02||!sceneLayout?.usage?.intercom||!Array.isArray(visitorFigures?.side_clips))throw Error('게임 자료가 망가졌어요. 다시 설치해 주세요.');
   storyData={visitors,anomalies,slots:storySlots,evidence:storyEvidence,flow:storyFlow};ready=true;loadSaves();
   $('startStory').disabled=$('startDaily').disabled=false;home();offline();
  }catch(e){$('record').textContent=e.message;$('retry').hidden=false}
@@ -328,4 +346,4 @@ $('docViewer').querySelector('.doc-backdrop').onclick=closeDoc;
 $('docPaper').addEventListener('touchstart',e=>{if(e.touches.length===2){const [a,b]=e.touches;pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),s:docScale}}},{passive:true});
 $('docPaper').addEventListener('touchmove',e=>{if(pinch&&e.touches.length===2){const [a,b]=e.touches;setDocScale(pinch.s*Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)/pinch.d)}},{passive:true});
 $('docPaper').addEventListener('touchend',()=>{pinch=null},{passive:true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.18.0';boot();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)save();activateMedia()});$('version').textContent='v0.19.0';boot();

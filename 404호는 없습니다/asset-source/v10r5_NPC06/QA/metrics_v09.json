@@ -1,0 +1,6062 @@
+{
+ "npc": "NPC06",
+ "baseline": "v09r",
+ "runs": [
+  {
+   "label": "v09r",
+   "dir": "../baseline",
+   "art": "v09r",
+   "suite": {
+    "views": {
+     "front": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.16,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.14,
+       "min": 0.0,
+       "max": 1.0
+      },
+      "height_ratio": {
+       "mean": 1.053,
+       "cv": 0.02
+      },
+      "head_width_ratio": {
+       "mean": 0.226,
+       "cv": 0.006
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "rear": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.52,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.11,
+       "min": 0.0,
+       "max": 0.5
+      },
+      "height_ratio": {
+       "mean": 1.001,
+       "cv": 0.016
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.007
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "side": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -2.49,
+       "min": -5.3,
+       "max": -1.3
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.2,
+       "min": 0.0,
+       "max": 1.11
+      },
+      "height_ratio": {
+       "mean": 0.962,
+       "cv": 0.004
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.008
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 59
+      }
+     }
+    },
+    "seams": [
+     {
+      "at": 48,
+      "from": "enter 47 (front)",
+      "to": "settle 1 (front)",
+      "root_px": 0.09,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0015
+     },
+     {
+      "at": 64,
+      "from": "settle 16 (front)",
+      "to": "idle 1 (front)",
+      "root_px": 0.16,
+      "head_rig_px": 0.23,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0005
+     },
+     {
+      "at": 112,
+      "from": "idle 48 (front)",
+      "to": "turn 1 (front)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0
+      },
+      "root_world_m": 0.0
+     },
+     {
+      "at": 122,
+      "from": "turn 10 (front)",
+      "to": "turn 11 (side)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": -1.4,
+      "head_top_px": 1,
+      "head_width_change": -0.015,
+      "lowest_row_px": -2,
+      "box_height_change": -0.006,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.747
+     },
+     {
+      "at": 142,
+      "from": "turn 30 (side)",
+      "to": "turn 31 (rear)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 1.2,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": -6,
+      "box_height_change": -0.011,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.73
+     },
+     {
+      "at": 152,
+      "from": "turn 40 (rear)",
+      "to": "start 1 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     },
+     {
+      "at": 167,
+      "from": "start 15 (rear)",
+      "to": "exit 0 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.05,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     }
+    ],
+    "walk_step_reference": {
+     "enter": {
+      "root_px": {
+       "median": 1.036,
+       "max": 4.148
+      },
+      "head_rig_px": {
+       "median": 0.49,
+       "max": 3.15
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.7
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.02
+      },
+      "lowest_row_px": {
+       "median": 0.0,
+       "max": 13.0
+      }
+     },
+     "exit": {
+      "root_px": {
+       "median": 1.241,
+       "max": 3.114
+      },
+      "head_rig_px": {
+       "median": 0.477,
+       "max": 3.006
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.6
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.019
+      },
+      "lowest_row_px": {
+       "median": 1.0,
+       "max": 10.0
+      }
+     }
+    },
+    "resting_contact_slide": {
+     "enter->settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle->idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle->turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn->start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start->exit": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     }
+    },
+    "knee_band": {
+     "enter_exit": {
+      "legs": 192,
+      "min_alpha": 252,
+      "below_250": 0
+     },
+     "all_segments": {
+      "legs": 430,
+      "min_alpha": 252,
+      "below_250": 0
+     }
+    },
+    "knee": {
+     "stance_flex_max_deg": 24,
+     "flat_frames_over_25": 0
+    },
+    "enter_end_vs_exit_start": {
+     "root_gap_m": 0.0607
+    }
+   },
+   "legs": {
+    "front": {
+     "legs": 244,
+     "merged_skipped": 0,
+     "neck": {
+      "n": 244,
+      "min": 0.539,
+      "median": 0.982,
+      "p95": 1.001,
+      "max": 1.024
+     },
+     "bulge": {
+      "n": 244,
+      "min": 0.989,
+      "median": 1.04,
+      "p95": 1.07,
+      "max": 1.135
+     },
+     "step_px": {
+      "n": 244,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 25.0
+     },
+     "seam_ratio": {
+      "n": 244,
+      "min": 0.42,
+      "median": 2.19,
+      "p95": 4.218,
+      "max": 5.65
+     },
+     "seam_luma": {
+      "n": 244,
+      "min": 1.38,
+      "median": 3.095,
+      "p95": 6.009,
+      "max": 8.29
+     },
+     "fold_offset_px": {
+      "n": 244,
+      "min": -19.6,
+      "median": -6.0,
+      "p95": -2.315,
+      "max": 8.1
+     },
+     "fold_depth_luma": {
+      "n": 244,
+      "min": 0.01,
+      "median": 4.365,
+      "p95": 5.995,
+      "max": 6.64
+     },
+     "rim_band": {
+      "n": 244,
+      "min": 1.5,
+      "median": 3.09,
+      "p95": 3.907,
+      "max": 5.03
+     },
+     "rim_ref": {
+      "n": 244,
+      "min": 1.43,
+      "median": 3.44,
+      "p95": 4.095,
+      "max": 4.79
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.48,
+       "seam_luma": 5.54,
+       "fold_offset_px": -19.3,
+       "fold_depth_luma": 3.6,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.94,
+       "seam_luma": 5.65,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.3,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 51.0,
+       "neck": 0.972,
+       "bulge": 1.036,
+       "step_px": 3.0,
+       "seam_ratio": 2.22,
+       "seam_luma": 4.2,
+       "fold_offset_px": -18.4,
+       "fold_depth_luma": 3.49,
+       "rim_band": 3.55,
+       "rim_ref": 2.96,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 38.0,
+       "shin_w": 37.5,
+       "neck": 0.976,
+       "bulge": 1.04,
+       "step_px": 2.0,
+       "seam_ratio": 3.11,
+       "seam_luma": 3.56,
+       "fold_offset_px": -5.1,
+       "fold_depth_luma": 5.26,
+       "rim_band": 4.09,
+       "rim_ref": 3.62,
+       "n": 4,
+       "seg": "enter",
+       "i": 4,
+       "side": "L",
+       "flex": 24
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 43.0,
+       "shin_w": 42.0,
+       "neck": 0.969,
+       "bulge": 1.002,
+       "step_px": 1.0,
+       "seam_ratio": 5.42,
+       "seam_luma": 5.66,
+       "fold_offset_px": -6.0,
+       "fold_depth_luma": 5.73,
+       "rim_band": 3.41,
+       "rim_ref": 4.27,
+       "n": 29,
+       "seg": "enter",
+       "i": 29,
+       "side": "L",
+       "flex": 48.9
+      },
+      {
+       "merged": false,
+       "thigh_w": 45.0,
+       "shin_w": 44.0,
+       "neck": 0.96,
+       "bulge": 1.0,
+       "step_px": 2.0,
+       "seam_ratio": 5.36,
+       "seam_luma": 5.61,
+       "fold_offset_px": -6.7,
+       "fold_depth_luma": 6.36,
+       "rim_band": 3.37,
+       "rim_ref": 3.29,
+       "n": 32,
+       "seg": "enter",
+       "i": 32,
+       "side": "L",
+       "flex": 60.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 45.0,
+       "shin_w": 45.0,
+       "neck": 0.978,
+       "bulge": 1.0,
+       "step_px": 1.0,
+       "seam_ratio": 5.25,
+       "seam_luma": 5.54,
+       "fold_offset_px": -7.5,
+       "fold_depth_luma": 6.16,
+       "rim_band": 2.89,
+       "rim_ref": 3.78,
+       "n": 33,
+       "seg": "enter",
+       "i": 33,
+       "side": "L",
+       "flex": 63.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 43.0,
+       "neck": 0.947,
+       "bulge": 0.989,
+       "step_px": 2.0,
+       "seam_ratio": 4.98,
+       "seam_luma": 5.67,
+       "fold_offset_px": -6.2,
+       "fold_depth_luma": 6.03,
+       "rim_band": 2.89,
+       "rim_ref": 4.04,
+       "n": 30,
+       "seg": "enter",
+       "i": 30,
+       "side": "L",
+       "flex": 52.8
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.48,
+       "seam_luma": 5.54,
+       "fold_offset_px": -19.3,
+       "fold_depth_luma": 3.6,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.94,
+       "seam_luma": 5.65,
+       "fold_offset_px": -19.2,
+       "fold_depth_luma": 3.3,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.65,
+       "seam_luma": 8.29,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 1.95,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 43.0,
+       "neck": 0.947,
+       "bulge": 0.989,
+       "step_px": 2.0,
+       "seam_ratio": 4.98,
+       "seam_luma": 5.67,
+       "fold_offset_px": -6.2,
+       "fold_depth_luma": 6.03,
+       "rim_band": 2.89,
+       "rim_ref": 4.04,
+       "n": 30,
+       "seg": "enter",
+       "i": 30,
+       "side": "L",
+       "flex": 52.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 41.0,
+       "shin_w": 39.0,
+       "neck": 0.953,
+       "bulge": 1.024,
+       "step_px": 2.0,
+       "seam_ratio": 3.57,
+       "seam_luma": 3.85,
+       "fold_offset_px": -4.6,
+       "fold_depth_luma": 5.05,
+       "rim_band": 3.83,
+       "rim_ref": 3.81,
+       "n": 19,
+       "seg": "enter",
+       "i": 19,
+       "side": "L",
+       "flex": 24
+      }
+     ]
+    },
+    "rear": {
+     "legs": 146,
+     "merged_skipped": 26,
+     "neck": {
+      "n": 120,
+      "min": 0.471,
+      "median": 0.971,
+      "p95": 1.0,
+      "max": 1.001
+     },
+     "bulge": {
+      "n": 120,
+      "min": 1.002,
+      "median": 1.044,
+      "p95": 1.075,
+      "max": 1.103
+     },
+     "step_px": {
+      "n": 120,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 11.0
+     },
+     "seam_ratio": {
+      "n": 120,
+      "min": 0.23,
+      "median": 1.28,
+      "p95": 2.001,
+      "max": 4.81
+     },
+     "seam_luma": {
+      "n": 120,
+      "min": 1.92,
+      "median": 3.505,
+      "p95": 5.412,
+      "max": 7.37
+     },
+     "fold_offset_px": {
+      "n": 120,
+      "min": -19.7,
+      "median": -11.6,
+      "p95": -0.1,
+      "max": 9.6
+     },
+     "fold_depth_luma": {
+      "n": 120,
+      "min": -3.67,
+      "median": 0.77,
+      "p95": 2.091,
+      "max": 3.45
+     },
+     "rim_band": {
+      "n": 120,
+      "min": 1.34,
+      "median": 3.235,
+      "p95": 4.695,
+      "max": 5.28
+     },
+     "rim_ref": {
+      "n": 120,
+      "min": 1.24,
+      "median": 3.505,
+      "p95": 4.07,
+      "max": 4.22
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.779,
+       "bulge": 1.084,
+       "step_px": 11.0,
+       "seam_ratio": 1.52,
+       "seam_luma": 3.34,
+       "fold_offset_px": -15.3,
+       "fold_depth_luma": 0.98,
+       "rim_band": 3.15,
+       "rim_ref": 3.49,
+       "n": 145,
+       "seg": "turn",
+       "i": 34,
+       "side": "L",
+       "flex": 30.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.88,
+       "bulge": 1.089,
+       "step_px": 6.0,
+       "seam_ratio": 0.46,
+       "seam_luma": 3.14,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": -2.08,
+       "rim_band": 3.2,
+       "rim_ref": 3.18,
+       "n": 144,
+       "seg": "turn",
+       "i": 33,
+       "side": "L",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 47.0,
+       "neck": 0.974,
+       "bulge": 1.081,
+       "step_px": 2.0,
+       "seam_ratio": 1.44,
+       "seam_luma": 2.47,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": 3.45,
+       "rim_band": 1.48,
+       "rim_ref": 1.28,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.81,
+       "seam_luma": 7.37,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.88,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.972,
+       "bulge": 1.087,
+       "step_px": 2.0,
+       "seam_ratio": 1.56,
+       "seam_luma": 3.48,
+       "fold_offset_px": -14.5,
+       "fold_depth_luma": 0.75,
+       "rim_band": 2.77,
+       "rim_ref": 2.95,
+       "n": 146,
+       "seg": "turn",
+       "i": 35,
+       "side": "L",
+       "flex": 31.4
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.81,
+       "seam_luma": 7.37,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.88,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 46.0,
+       "neck": 0.983,
+       "bulge": 1.042,
+       "step_px": 1.0,
+       "seam_ratio": 4.52,
+       "seam_luma": 6.35,
+       "fold_offset_px": -19.7,
+       "fold_depth_luma": 1.66,
+       "rim_band": 3.68,
+       "rim_ref": 1.24,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 43.0,
+       "neck": 0.97,
+       "bulge": 1.045,
+       "step_px": 1.0,
+       "seam_ratio": 2.17,
+       "seam_luma": 5.69,
+       "fold_offset_px": -0.8,
+       "fold_depth_luma": 0.93,
+       "rim_band": 3.11,
+       "rim_ref": 3.59,
+       "n": 171,
+       "seg": "exit",
+       "i": 4,
+       "side": "R",
+       "flex": 47.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 43.0,
+       "shin_w": 40.0,
+       "neck": 0.972,
+       "bulge": 1.075,
+       "step_px": 2.0,
+       "seam_ratio": 2.06,
+       "seam_luma": 5.72,
+       "fold_offset_px": -0.1,
+       "fold_depth_luma": 1.5,
+       "rim_band": 4.56,
+       "rim_ref": 3.95,
+       "n": 178,
+       "seg": "exit",
+       "i": 11,
+       "side": "R",
+       "flex": 62.1
+      },
+      {
+       "merged": false,
+       "thigh_w": 37.0,
+       "shin_w": 35.0,
+       "neck": 0.973,
+       "bulge": 1.057,
+       "step_px": 2.0,
+       "seam_ratio": 2.03,
+       "seam_luma": 5.81,
+       "fold_offset_px": -1.3,
+       "fold_depth_luma": 1.1,
+       "rim_band": 3.94,
+       "rim_ref": 3.71,
+       "n": 214,
+       "seg": "exit",
+       "i": 47,
+       "side": "R",
+       "flex": 47.3
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 38.0,
+       "neck": 0.471,
+       "bulge": 1.04,
+       "step_px": 1.0,
+       "seam_ratio": 0.29,
+       "seam_luma": 5.12,
+       "fold_offset_px": -0.2,
+       "fold_depth_luma": 2.48,
+       "rim_band": 4.79,
+       "rim_ref": 3.87,
+       "n": 183,
+       "seg": "exit",
+       "i": 16,
+       "side": "R",
+       "flex": 53.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 37.0,
+       "neck": 0.483,
+       "bulge": 1.05,
+       "step_px": 1.0,
+       "seam_ratio": 0.26,
+       "seam_luma": 4.82,
+       "fold_offset_px": 0.5,
+       "fold_depth_luma": 2.09,
+       "rim_band": 4.29,
+       "rim_ref": 3.87,
+       "n": 184,
+       "seg": "exit",
+       "i": 17,
+       "side": "R",
+       "flex": 46.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 80.0,
+       "shin_w": 38.0,
+       "neck": 0.504,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.32,
+       "seam_luma": 5.41,
+       "fold_offset_px": 0.5,
+       "fold_depth_luma": 2.4,
+       "rim_band": 4.0,
+       "rim_ref": 3.52,
+       "n": 182,
+       "seg": "exit",
+       "i": 15,
+       "side": "R",
+       "flex": 58.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 79.0,
+       "shin_w": 37.0,
+       "neck": 0.513,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.33,
+       "seam_luma": 4.34,
+       "fold_offset_px": -0.1,
+       "fold_depth_luma": 1.76,
+       "rim_band": 5.07,
+       "rim_ref": 4.06,
+       "n": 185,
+       "seg": "exit",
+       "i": 18,
+       "side": "R",
+       "flex": 39.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 82.0,
+       "shin_w": 43.0,
+       "neck": 0.562,
+       "bulge": 1.035,
+       "step_px": 1.0,
+       "seam_ratio": 0.31,
+       "seam_luma": 2.89,
+       "fold_offset_px": -11.0,
+       "fold_depth_luma": 1.82,
+       "rim_band": 3.25,
+       "rim_ref": 3.59,
+       "n": 168,
+       "seg": "exit",
+       "i": 1,
+       "side": "L",
+       "flex": 30.4
+      }
+     ]
+    }
+   },
+   "holes": {
+    "frames_with_holes": [
+     [
+      0,
+      29,
+      [
+       413,
+       584,
+       417,
+       594
+      ]
+     ],
+     [
+      1,
+      31,
+      [
+       412,
+       587,
+       416,
+       598
+      ]
+     ],
+     [
+      2,
+      33,
+      [
+       359,
+       588,
+       416,
+       693
+      ]
+     ],
+     [
+      3,
+      29,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      4,
+      28,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      5,
+      28,
+      [
+       412,
+       589,
+       416,
+       598
+      ]
+     ],
+     [
+      6,
+      26,
+      [
+       412,
+       589,
+       416,
+       598
+      ]
+     ],
+     [
+      7,
+      23,
+      [
+       412,
+       590,
+       415,
+       599
+      ]
+     ],
+     [
+      8,
+      24,
+      [
+       357,
+       591,
+       416,
+       692
+      ]
+     ],
+     [
+      9,
+      21,
+      [
+       413,
+       592,
+       416,
+       600
+      ]
+     ],
+     [
+      10,
+      15,
+      [
+       414,
+       594,
+       416,
+       600
+      ]
+     ],
+     [
+      11,
+      15,
+      [
+       414,
+       594,
+       416,
+       601
+      ]
+     ],
+     [
+      12,
+      12,
+      [
+       414,
+       596,
+       416,
+       601
+      ]
+     ],
+     [
+      13,
+      9,
+      [
+       415,
+       597,
+       417,
+       602
+      ]
+     ],
+     [
+      14,
+      8,
+      [
+       357,
+       597,
+       417,
+       698
+      ]
+     ],
+     [
+      15,
+      7,
+      [
+       417,
+       598,
+       418,
+       603
+      ]
+     ],
+     [
+      16,
+      4,
+      [
+       417,
+       597,
+       418,
+       603
+      ]
+     ],
+     [
+      17,
+      7,
+      [
+       418,
+       599,
+       419,
+       604
+      ]
+     ],
+     [
+      18,
+      6,
+      [
+       418,
+       598,
+       419,
+       605
+      ]
+     ],
+     [
+      19,
+      6,
+      [
+       358,
+       599,
+       420,
+       705
+      ]
+     ],
+     [
+      20,
+      3,
+      [
+       420,
+       601,
+       421,
+       605
+      ]
+     ],
+     [
+      21,
+      6,
+      [
+       420,
+       600,
+       422,
+       606
+      ]
+     ],
+     [
+      22,
+      5,
+      [
+       421,
+       604,
+       422,
+       610
+      ]
+     ],
+     [
+      23,
+      4,
+      [
+       422,
+       606,
+       423,
+       611
+      ]
+     ],
+     [
+      24,
+      4,
+      [
+       423,
+       607,
+       424,
+       612
+      ]
+     ],
+     [
+      25,
+      8,
+      [
+       423,
+       603,
+       425,
+       611
+      ]
+     ],
+     [
+      26,
+      6,
+      [
+       424,
+       604,
+       426,
+       611
+      ]
+     ],
+     [
+      27,
+      8,
+      [
+       425,
+       605,
+       426,
+       611
+      ]
+     ],
+     [
+      28,
+      9,
+      [
+       426,
+       607,
+       427,
+       612
+      ]
+     ],
+     [
+      29,
+      14,
+      [
+       425,
+       606,
+       428,
+       613
+      ]
+     ],
+     [
+      30,
+      14,
+      [
+       362,
+       608,
+       428,
+       719
+      ]
+     ],
+     [
+      31,
+      18,
+      [
+       426,
+       607,
+       429,
+       614
+      ]
+     ],
+     [
+      32,
+      24,
+      [
+       426,
+       606,
+       429,
+       615
+      ]
+     ],
+     [
+      33,
+      26,
+      [
+       426,
+       606,
+       429,
+       616
+      ]
+     ],
+     [
+      34,
+      29,
+      [
+       426,
+       606,
+       430,
+       617
+      ]
+     ],
+     [
+      35,
+      35,
+      [
+       362,
+       607,
+       430,
+       725
+      ]
+     ],
+     [
+      36,
+      38,
+      [
+       425,
+       607,
+       430,
+       619
+      ]
+     ],
+     [
+      37,
+      44,
+      [
+       425,
+       607,
+       430,
+       621
+      ]
+     ],
+     [
+      38,
+      49,
+      [
+       425,
+       608,
+       430,
+       622
+      ]
+     ],
+     [
+      39,
+      52,
+      [
+       425,
+       609,
+       430,
+       623
+      ]
+     ],
+     [
+      40,
+      53,
+      [
+       425,
+       610,
+       430,
+       624
+      ]
+     ],
+     [
+      41,
+      59,
+      [
+       424,
+       611,
+       430,
+       625
+      ]
+     ],
+     [
+      42,
+      60,
+      [
+       424,
+       612,
+       430,
+       627
+      ]
+     ],
+     [
+      43,
+      60,
+      [
+       424,
+       613,
+       430,
+       628
+      ]
+     ],
+     [
+      44,
+      60,
+      [
+       424,
+       616,
+       429,
+       632
+      ]
+     ],
+     [
+      45,
+      63,
+      [
+       423,
+       617,
+       429,
+       633
+      ]
+     ],
+     [
+      46,
+      63,
+      [
+       423,
+       617,
+       429,
+       632
+      ]
+     ],
+     [
+      47,
+      63,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      48,
+      62,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      49,
+      60,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      50,
+      59,
+      [
+       358,
+       618,
+       429,
+       747
+      ]
+     ],
+     [
+      51,
+      58,
+      [
+       358,
+       619,
+       430,
+       748
+      ]
+     ],
+     [
+      52,
+      52,
+      [
+       425,
+       619,
+       430,
+       633
+      ]
+     ],
+     [
+      53,
+      53,
+      [
+       425,
+       619,
+       431,
+       634
+      ]
+     ],
+     [
+      54,
+      48,
+      [
+       426,
+       621,
+       431,
+       634
+      ]
+     ],
+     [
+      55,
+      49,
+      [
+       427,
+       621,
+       432,
+       634
+      ]
+     ],
+     [
+      56,
+      46,
+      [
+       427,
+       621,
+       433,
+       635
+      ]
+     ],
+     [
+      57,
+      43,
+      [
+       359,
+       622,
+       433,
+       753
+      ]
+     ],
+     [
+      58,
+      42,
+      [
+       429,
+       622,
+       434,
+       635
+      ]
+     ],
+     [
+      59,
+      36,
+      [
+       430,
+       623,
+       434,
+       635
+      ]
+     ],
+     [
+      60,
+      39,
+      [
+       431,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      61,
+      37,
+      [
+       359,
+       624,
+       435,
+       756
+      ]
+     ],
+     [
+      62,
+      33,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      63,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      64,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      65,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      66,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      67,
+      35,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      68,
+      38,
+      [
+       359,
+       623,
+       435,
+       754
+      ]
+     ],
+     [
+      69,
+      34,
+      [
+       431,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      70,
+      35,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      71,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      72,
+      32,
+      [
+       431,
+       623,
+       434,
+       634
+      ]
+     ],
+     [
+      73,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      74,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      75,
+      29,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      76,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      77,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      78,
+      32,
+      [
+       431,
+       623,
+       434,
+       634
+      ]
+     ],
+     [
+      79,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      80,
+      35,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      81,
+      34,
+      [
+       431,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      82,
+      38,
+      [
+       359,
+       623,
+       435,
+       754
+      ]
+     ],
+     [
+      83,
+      35,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      84,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      85,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      86,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      87,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      88,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      89,
+      38,
+      [
+       432,
+       624,
+       436,
+       635
+      ]
+     ],
+     [
+      90,
+      36,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      91,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      92,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      93,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      94,
+      34,
+      [
+       433,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      95,
+      35,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      96,
+      36,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      97,
+      37,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      98,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      99,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      100,
+      38,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      101,
+      37,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      102,
+      36,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      103,
+      35,
+      [
+       433,
+       624,
+       437,
+       636
+      ]
+     ],
+     [
+      104,
+      34,
+      [
+       433,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      105,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      106,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      107,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      108,
+      36,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      109,
+      38,
+      [
+       432,
+       624,
+       436,
+       635
+      ]
+     ],
+     [
+      110,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      111,
+      34,
+      [
+       432,
+       623,
+       435,
+       635
+      ]
+     ],
+     [
+      112,
+      25,
+      [
+       433,
+       626,
+       436,
+       635
+      ]
+     ],
+     [
+      113,
+      9,
+      [
+       435,
+       629,
+       436,
+       635
+      ]
+     ],
+     [
+      117,
+      685,
+      [
+       300,
+       770,
+       359,
+       907
+      ]
+     ],
+     [
+      118,
+      308,
+      [
+       304,
+       778,
+       357,
+       873
+      ]
+     ],
+     [
+      119,
+      58,
+      [
+       311,
+       815,
+       362,
+       943
+      ]
+     ],
+     [
+      120,
+      5,
+      [
+       313,
+       850,
+       362,
+       940
+      ]
+     ],
+     [
+      122,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      123,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      124,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      125,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      126,
+      7,
+      [
+       321,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      127,
+      13,
+      [
+       315,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      128,
+      29,
+      [
+       310,
+       511,
+       418,
+       872
+      ]
+     ],
+     [
+      129,
+      62,
+      [
+       308,
+       511,
+       414,
+       978
+      ]
+     ],
+     [
+      130,
+      73,
+      [
+       314,
+       511,
+       412,
+       981
+      ]
+     ],
+     [
+      131,
+      62,
+      [
+       327,
+       511,
+       414,
+       984
+      ]
+     ],
+     [
+      132,
+      64,
+      [
+       315,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      133,
+      65,
+      [
+       313,
+       511,
+       362,
+       984
+      ]
+     ],
+     [
+      134,
+      68,
+      [
+       314,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      135,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      136,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      137,
+      45,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      138,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      139,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      140,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      141,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      143,
+      28,
+      [
+       356,
+       815,
+       356,
+       842
+      ]
+     ],
+     [
+      144,
+      281,
+      [
+       304,
+       783,
+       363,
+       970
+      ]
+     ],
+     [
+      145,
+      772,
+      [
+       290,
+       648,
+       363,
+       971
+      ]
+     ],
+     [
+      146,
+      1195,
+      [
+       288,
+       627,
+       364,
+       973
+      ]
+     ],
+     [
+      147,
+      73,
+      [
+       286,
+       634,
+       358,
+       755
+      ]
+     ],
+     [
+      148,
+      3,
+      [
+       286,
+       647,
+       286,
+       649
+      ]
+     ],
+     [
+      211,
+      2,
+      [
+       359,
+       692,
+       359,
+       693
+      ]
+     ]
+    ],
+    "total_px": 7966,
+    "by_segment": {
+     "enter/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1238,
+      "max_px": 63
+     },
+     "settle/front": {
+      "frames": 16,
+      "with_holes": 16,
+      "px": 751,
+      "max_px": 62
+     },
+     "idle/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1653,
+      "max_px": 38
+     },
+     "turn/front": {
+      "frames": 10,
+      "with_holes": 6,
+      "px": 1092,
+      "max_px": 685
+     },
+     "turn/side": {
+      "frames": 20,
+      "with_holes": 20,
+      "px": 874,
+      "max_px": 73
+     },
+     "turn/rear": {
+      "frames": 10,
+      "with_holes": 6,
+      "px": 2352,
+      "max_px": 1195
+     },
+     "start/rear": {
+      "frames": 15,
+      "with_holes": 0,
+      "px": 3,
+      "max_px": 1
+     },
+     "exit/rear": {
+      "frames": 48,
+      "with_holes": 1,
+      "px": 3,
+      "max_px": 2
+     }
+    }
+   },
+   "hem_shoe": {
+    "probes": 243,
+    "gaps": [
+     [
+      117,
+      "R",
+      101
+     ]
+    ],
+    "min_alpha": 101
+   },
+   "switches": [
+    {
+     "at": 122,
+     "from": "turn 10 (front)",
+     "to": "turn 11 (side)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": -1.4,
+     "head_top_px": 1,
+     "head_width_change": -0.015,
+     "lowest_row_px": -2,
+     "box_height_change": -0.006,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.747
+    },
+    {
+     "at": 142,
+     "from": "turn 30 (side)",
+     "to": "turn 31 (rear)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": 1.2,
+     "head_top_px": 0,
+     "head_width_change": 0.0,
+     "lowest_row_px": -6,
+     "box_height_change": -0.011,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.73
+    }
+   ]
+  },
+  {
+   "label": "v10r5",
+   "dir": "../candidate_r5",
+   "art": "v10r5",
+   "suite": {
+    "views": {
+     "front": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.16,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.14,
+       "min": 0.0,
+       "max": 1.0
+      },
+      "height_ratio": {
+       "mean": 1.053,
+       "cv": 0.02
+      },
+      "head_width_ratio": {
+       "mean": 0.226,
+       "cv": 0.006
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "rear": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -1.52,
+       "min": -1.8,
+       "max": -0.8
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.11,
+       "min": 0.0,
+       "max": 0.5
+      },
+      "height_ratio": {
+       "mean": 1.001,
+       "cv": 0.016
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.007
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 67
+      }
+     },
+     "side": {
+      "frames": 48,
+      "heel_strikes": [
+       [
+        21,
+        "R"
+       ],
+       [
+        42,
+        "L"
+       ]
+      ],
+      "alternates": true,
+      "sole_vs_rig_px": {
+       "mean": -2.49,
+       "min": -5.3,
+       "max": -1.3
+      },
+      "planted_shoe_slide_px": {
+       "mean": 0.2,
+       "min": 0.0,
+       "max": 1.11
+      },
+      "height_ratio": {
+       "mean": 0.962,
+       "cv": 0.004
+      },
+      "head_width_ratio": {
+       "mean": 0.223,
+       "cv": 0.008
+      },
+      "shadow_under_shoe": {
+       "frames": 69,
+       "inside": 59
+      }
+     }
+    },
+    "seams": [
+     {
+      "at": 48,
+      "from": "enter 47 (front)",
+      "to": "settle 1 (front)",
+      "root_px": 0.09,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0015
+     },
+     {
+      "at": 64,
+      "from": "settle 16 (front)",
+      "to": "idle 1 (front)",
+      "root_px": 0.16,
+      "head_rig_px": 0.23,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0005
+     },
+     {
+      "at": 112,
+      "from": "idle 48 (front)",
+      "to": "turn 1 (front)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Ltoe": 0.0
+      },
+      "root_world_m": 0.0
+     },
+     {
+      "at": 122,
+      "from": "turn 10 (front)",
+      "to": "turn 11 (side)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": -1.4,
+      "head_top_px": 1,
+      "head_width_change": -0.015,
+      "lowest_row_px": -2,
+      "box_height_change": -0.006,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.747
+     },
+     {
+      "at": 142,
+      "from": "turn 30 (side)",
+      "to": "turn 31 (rear)",
+      "root_px": 0.0,
+      "head_rig_px": 0.0,
+      "head_center_x_px": 1.2,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": -6,
+      "box_height_change": -0.011,
+      "resting_feet_moved_mm": {
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0,
+      "figure_iou": 0.73
+     },
+     {
+      "at": 152,
+      "from": "turn 40 (rear)",
+      "to": "start 1 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.06,
+      "head_center_x_px": 0.0,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Ltoe": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     },
+     {
+      "at": 167,
+      "from": "start 15 (rear)",
+      "to": "exit 0 (rear)",
+      "root_px": 0.03,
+      "head_rig_px": 0.05,
+      "head_center_x_px": -0.1,
+      "head_top_px": 0,
+      "head_width_change": 0.0,
+      "lowest_row_px": 0,
+      "box_height_change": 0.0,
+      "resting_feet_moved_mm": {
+       "Lheel": 0.0,
+       "Rheel": 0.0,
+       "Rtoe": 0.0
+      },
+      "root_world_m": 0.0009
+     }
+    ],
+    "walk_step_reference": {
+     "enter": {
+      "root_px": {
+       "median": 1.036,
+       "max": 4.148
+      },
+      "head_rig_px": {
+       "median": 0.49,
+       "max": 3.15
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.7
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.02
+      },
+      "lowest_row_px": {
+       "median": 0.0,
+       "max": 13.0
+      }
+     },
+     "exit": {
+      "root_px": {
+       "median": 1.241,
+       "max": 3.114
+      },
+      "head_rig_px": {
+       "median": 0.477,
+       "max": 3.006
+      },
+      "head_center_x_px": {
+       "median": 0.4,
+       "max": 0.6
+      },
+      "head_width_change": {
+       "median": 0.0,
+       "max": 0.019
+      },
+      "lowest_row_px": {
+       "median": 1.0,
+       "max": 10.0
+      }
+     }
+    },
+    "resting_contact_slide": {
+     "enter->settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "settle->idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "idle->turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "turn->start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     },
+     "start->exit": {
+      "max_mm": 0.0,
+      "at": null,
+      "point": null
+     }
+    },
+    "knee_band": {
+     "enter_exit": {
+      "legs": 192,
+      "min_alpha": 252,
+      "below_250": 0
+     },
+     "all_segments": {
+      "legs": 430,
+      "min_alpha": 252,
+      "below_250": 0
+     }
+    },
+    "knee": {
+     "stance_flex_max_deg": 24,
+     "flat_frames_over_25": 0
+    },
+    "enter_end_vs_exit_start": {
+     "root_gap_m": 0.0607
+    }
+   },
+   "legs": {
+    "front": {
+     "legs": 244,
+     "merged_skipped": 0,
+     "neck": {
+      "n": 244,
+      "min": 0.539,
+      "median": 0.982,
+      "p95": 1.001,
+      "max": 1.024
+     },
+     "bulge": {
+      "n": 244,
+      "min": 0.989,
+      "median": 1.04,
+      "p95": 1.07,
+      "max": 1.135
+     },
+     "step_px": {
+      "n": 244,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 25.0
+     },
+     "seam_ratio": {
+      "n": 244,
+      "min": 0.36,
+      "median": 1.705,
+      "p95": 2.17,
+      "max": 5.6
+     },
+     "seam_luma": {
+      "n": 244,
+      "min": 1.27,
+      "median": 2.72,
+      "p95": 8.334,
+      "max": 9.93
+     },
+     "fold_offset_px": {
+      "n": 244,
+      "min": -18.5,
+      "median": -5.0,
+      "p95": 13.485,
+      "max": 14.6
+     },
+     "fold_depth_luma": {
+      "n": 244,
+      "min": -0.85,
+      "median": 4.33,
+      "p95": 10.72,
+      "max": 11.53
+     },
+     "rim_band": {
+      "n": 244,
+      "min": 1.5,
+      "median": 3.09,
+      "p95": 3.907,
+      "max": 5.03
+     },
+     "rim_ref": {
+      "n": 244,
+      "min": 1.43,
+      "median": 3.44,
+      "p95": 4.095,
+      "max": 4.79
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.28,
+       "seam_luma": 5.51,
+       "fold_offset_px": 8.7,
+       "fold_depth_luma": 5.29,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.72,
+       "seam_luma": 4.7,
+       "fold_offset_px": 8.8,
+       "fold_depth_luma": 4.25,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.6,
+       "seam_luma": 8.5,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 4.6,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 51.0,
+       "neck": 0.972,
+       "bulge": 1.036,
+       "step_px": 3.0,
+       "seam_ratio": 2.57,
+       "seam_luma": 5.75,
+       "fold_offset_px": 13.6,
+       "fold_depth_luma": 5.55,
+       "rim_band": 3.55,
+       "rim_ref": 2.96,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 38.0,
+       "shin_w": 37.5,
+       "neck": 0.976,
+       "bulge": 1.04,
+       "step_px": 2.0,
+       "seam_ratio": 2.06,
+       "seam_luma": 2.54,
+       "fold_offset_px": 8.9,
+       "fold_depth_luma": 3.65,
+       "rim_band": 4.09,
+       "rim_ref": 3.62,
+       "n": 4,
+       "seg": "enter",
+       "i": 4,
+       "side": "L",
+       "flex": 24
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.6,
+       "seam_luma": 8.5,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 4.6,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 39.0,
+       "shin_w": 37.0,
+       "neck": 0.975,
+       "bulge": 1.054,
+       "step_px": 1.0,
+       "seam_ratio": 2.58,
+       "seam_luma": 3.05,
+       "fold_offset_px": 9.0,
+       "fold_depth_luma": 3.93,
+       "rim_band": 3.72,
+       "rim_ref": 3.38,
+       "n": 7,
+       "seg": "enter",
+       "i": 7,
+       "side": "L",
+       "flex": 24
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 51.0,
+       "neck": 0.972,
+       "bulge": 1.036,
+       "step_px": 3.0,
+       "seam_ratio": 2.57,
+       "seam_luma": 5.75,
+       "fold_offset_px": 13.6,
+       "fold_depth_luma": 5.55,
+       "rim_band": 3.55,
+       "rim_ref": 2.96,
+       "n": 116,
+       "seg": "turn",
+       "i": 5,
+       "side": "R",
+       "flex": 31.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 53.0,
+       "shin_w": 51.0,
+       "neck": 0.982,
+       "bulge": 1.039,
+       "step_px": 1.0,
+       "seam_ratio": 2.46,
+       "seam_luma": 4.84,
+       "fold_offset_px": 14.6,
+       "fold_depth_luma": 4.73,
+       "rim_band": 3.24,
+       "rim_ref": 2.63,
+       "n": 114,
+       "seg": "turn",
+       "i": 3,
+       "side": "R",
+       "flex": 28.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 39.0,
+       "shin_w": 38.0,
+       "neck": 0.977,
+       "bulge": 1.026,
+       "step_px": 1.0,
+       "seam_ratio": 2.44,
+       "seam_luma": 2.95,
+       "fold_offset_px": 7.9,
+       "fold_depth_luma": 3.79,
+       "rim_band": 3.77,
+       "rim_ref": 3.88,
+       "n": 12,
+       "seg": "enter",
+       "i": 12,
+       "side": "L",
+       "flex": 24
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.539,
+       "bulge": 1.135,
+       "step_px": 25.0,
+       "seam_ratio": 2.28,
+       "seam_luma": 5.51,
+       "fold_offset_px": 8.7,
+       "fold_depth_luma": 5.29,
+       "rim_band": 3.29,
+       "rim_ref": 3.42,
+       "n": 117,
+       "seg": "turn",
+       "i": 6,
+       "side": "R",
+       "flex": 30.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 44.0,
+       "neck": 0.633,
+       "bulge": 1.124,
+       "step_px": 21.0,
+       "seam_ratio": 0.72,
+       "seam_luma": 4.7,
+       "fold_offset_px": 8.8,
+       "fold_depth_luma": 4.25,
+       "rim_band": 3.19,
+       "rim_ref": 3.48,
+       "n": 118,
+       "seg": "turn",
+       "i": 7,
+       "side": "R",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 44.0,
+       "neck": 0.746,
+       "bulge": 1.12,
+       "step_px": 15.0,
+       "seam_ratio": 5.6,
+       "seam_luma": 8.5,
+       "fold_offset_px": 8.1,
+       "fold_depth_luma": 4.6,
+       "rim_band": 5.03,
+       "rim_ref": 1.51,
+       "n": 119,
+       "seg": "turn",
+       "i": 8,
+       "side": "R",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 44.0,
+       "shin_w": 43.0,
+       "neck": 0.947,
+       "bulge": 0.989,
+       "step_px": 2.0,
+       "seam_ratio": 1.69,
+       "seam_luma": 8.35,
+       "fold_offset_px": 7.8,
+       "fold_depth_luma": 11.02,
+       "rim_band": 2.89,
+       "rim_ref": 4.04,
+       "n": 30,
+       "seg": "enter",
+       "i": 30,
+       "side": "L",
+       "flex": 52.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 41.0,
+       "shin_w": 39.0,
+       "neck": 0.953,
+       "bulge": 1.024,
+       "step_px": 2.0,
+       "seam_ratio": 1.97,
+       "seam_luma": 2.66,
+       "fold_offset_px": 8.4,
+       "fold_depth_luma": 3.65,
+       "rim_band": 3.83,
+       "rim_ref": 3.81,
+       "n": 19,
+       "seg": "enter",
+       "i": 19,
+       "side": "L",
+       "flex": 24
+      }
+     ]
+    },
+    "rear": {
+     "legs": 146,
+     "merged_skipped": 26,
+     "neck": {
+      "n": 120,
+      "min": 0.471,
+      "median": 0.971,
+      "p95": 1.0,
+      "max": 1.001
+     },
+     "bulge": {
+      "n": 120,
+      "min": 1.002,
+      "median": 1.044,
+      "p95": 1.075,
+      "max": 1.103
+     },
+     "step_px": {
+      "n": 120,
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 2.0,
+      "max": 11.0
+     },
+     "seam_ratio": {
+      "n": 120,
+      "min": 0.26,
+      "median": 1.315,
+      "p95": 2.132,
+      "max": 4.71
+     },
+     "seam_luma": {
+      "n": 120,
+      "min": 1.73,
+      "median": 3.77,
+      "p95": 6.253,
+      "max": 7.38
+     },
+     "fold_offset_px": {
+      "n": 120,
+      "min": -19.7,
+      "median": -11.6,
+      "p95": 3.4,
+      "max": 9.6
+     },
+     "fold_depth_luma": {
+      "n": 120,
+      "min": -3.5,
+      "median": 1.18,
+      "p95": 3.213,
+      "max": 4.26
+     },
+     "rim_band": {
+      "n": 120,
+      "min": 1.34,
+      "median": 3.235,
+      "p95": 4.695,
+      "max": 5.28
+     },
+     "rim_ref": {
+      "n": 120,
+      "min": 1.24,
+      "median": 3.505,
+      "p95": 4.07,
+      "max": 4.22
+     },
+     "worst_step": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.779,
+       "bulge": 1.084,
+       "step_px": 11.0,
+       "seam_ratio": 1.53,
+       "seam_luma": 3.46,
+       "fold_offset_px": -15.3,
+       "fold_depth_luma": 1.33,
+       "rim_band": 3.15,
+       "rim_ref": 3.49,
+       "n": 145,
+       "seg": "turn",
+       "i": 34,
+       "side": "L",
+       "flex": 30.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.88,
+       "bulge": 1.089,
+       "step_px": 6.0,
+       "seam_ratio": 0.49,
+       "seam_luma": 3.37,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": -1.64,
+       "rim_band": 3.2,
+       "rim_ref": 3.18,
+       "n": 144,
+       "seg": "turn",
+       "i": 33,
+       "side": "L",
+       "flex": 28
+      },
+      {
+       "merged": false,
+       "thigh_w": 52.0,
+       "shin_w": 47.0,
+       "neck": 0.974,
+       "bulge": 1.081,
+       "step_px": 2.0,
+       "seam_ratio": 1.01,
+       "seam_luma": 1.73,
+       "fold_offset_px": -16.2,
+       "fold_depth_luma": 3.44,
+       "rim_band": 1.48,
+       "rim_ref": 1.28,
+       "n": 142,
+       "seg": "turn",
+       "i": 31,
+       "side": "L",
+       "flex": 17.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.71,
+       "seam_luma": 7.38,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.49,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.972,
+       "bulge": 1.087,
+       "step_px": 2.0,
+       "seam_ratio": 1.56,
+       "seam_luma": 3.56,
+       "fold_offset_px": -14.5,
+       "fold_depth_luma": 1.28,
+       "rim_band": 2.77,
+       "rim_ref": 2.95,
+       "n": 146,
+       "seg": "turn",
+       "i": 35,
+       "side": "L",
+       "flex": 31.4
+      }
+     ],
+     "worst_seam": [
+      {
+       "merged": false,
+       "thigh_w": 51.0,
+       "shin_w": 46.0,
+       "neck": 0.986,
+       "bulge": 1.103,
+       "step_px": 2.0,
+       "seam_ratio": 4.71,
+       "seam_luma": 7.38,
+       "fold_offset_px": 9.6,
+       "fold_depth_luma": -1.49,
+       "rim_band": 4.07,
+       "rim_ref": 1.52,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "L",
+       "flex": 23.8
+      },
+      {
+       "merged": false,
+       "thigh_w": 49.0,
+       "shin_w": 46.0,
+       "neck": 0.983,
+       "bulge": 1.042,
+       "step_px": 1.0,
+       "seam_ratio": 4.42,
+       "seam_luma": 6.22,
+       "fold_offset_px": -19.7,
+       "fold_depth_luma": 1.63,
+       "rim_band": 3.68,
+       "rim_ref": 1.24,
+       "n": 143,
+       "seg": "turn",
+       "i": 32,
+       "side": "R",
+       "flex": 5.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 43.0,
+       "neck": 0.97,
+       "bulge": 1.045,
+       "step_px": 1.0,
+       "seam_ratio": 2.37,
+       "seam_luma": 6.64,
+       "fold_offset_px": 3.2,
+       "fold_depth_luma": 2.84,
+       "rim_band": 3.11,
+       "rim_ref": 3.59,
+       "n": 171,
+       "seg": "exit",
+       "i": 4,
+       "side": "R",
+       "flex": 47.5
+      },
+      {
+       "merged": false,
+       "thigh_w": 46.0,
+       "shin_w": 43.0,
+       "neck": 0.958,
+       "bulge": 1.046,
+       "step_px": 1.0,
+       "seam_ratio": 2.29,
+       "seam_luma": 6.49,
+       "fold_offset_px": 3.4,
+       "fold_depth_luma": 2.25,
+       "rim_band": 3.16,
+       "rim_ref": 3.41,
+       "n": 172,
+       "seg": "exit",
+       "i": 5,
+       "side": "R",
+       "flex": 47
+      },
+      {
+       "merged": false,
+       "thigh_w": 42.0,
+       "shin_w": 40.0,
+       "neck": 0.962,
+       "bulge": 1.05,
+       "step_px": 2.0,
+       "seam_ratio": 2.2,
+       "seam_luma": 5.46,
+       "fold_offset_px": -6.5,
+       "fold_depth_luma": 2.78,
+       "rim_band": 3.65,
+       "rim_ref": 3.52,
+       "n": 196,
+       "seg": "exit",
+       "i": 29,
+       "side": "L",
+       "flex": 48.9
+      }
+     ],
+     "worst_neck": [
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 38.0,
+       "neck": 0.471,
+       "bulge": 1.04,
+       "step_px": 1.0,
+       "seam_ratio": 0.34,
+       "seam_luma": 5.98,
+       "fold_offset_px": 3.8,
+       "fold_depth_luma": 4.26,
+       "rim_band": 4.79,
+       "rim_ref": 3.85,
+       "n": 183,
+       "seg": "exit",
+       "i": 16,
+       "side": "R",
+       "flex": 53.3
+      },
+      {
+       "merged": false,
+       "thigh_w": 84.0,
+       "shin_w": 37.0,
+       "neck": 0.483,
+       "bulge": 1.05,
+       "step_px": 1.0,
+       "seam_ratio": 0.34,
+       "seam_luma": 6.11,
+       "fold_offset_px": 3.5,
+       "fold_depth_luma": 3.99,
+       "rim_band": 4.29,
+       "rim_ref": 3.88,
+       "n": 184,
+       "seg": "exit",
+       "i": 17,
+       "side": "R",
+       "flex": 46.6
+      },
+      {
+       "merged": false,
+       "thigh_w": 80.0,
+       "shin_w": 38.0,
+       "neck": 0.504,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.38,
+       "seam_luma": 6.39,
+       "fold_offset_px": 3.5,
+       "fold_depth_luma": 4.14,
+       "rim_band": 4.0,
+       "rim_ref": 3.52,
+       "n": 182,
+       "seg": "exit",
+       "i": 15,
+       "side": "R",
+       "flex": 58.7
+      },
+      {
+       "merged": false,
+       "thigh_w": 79.0,
+       "shin_w": 37.0,
+       "neck": 0.513,
+       "bulge": 1.049,
+       "step_px": 1.0,
+       "seam_ratio": 0.41,
+       "seam_luma": 5.55,
+       "fold_offset_px": -1.1,
+       "fold_depth_luma": 3.16,
+       "rim_band": 5.07,
+       "rim_ref": 4.0,
+       "n": 185,
+       "seg": "exit",
+       "i": 18,
+       "side": "R",
+       "flex": 39.4
+      },
+      {
+       "merged": false,
+       "thigh_w": 82.0,
+       "shin_w": 43.0,
+       "neck": 0.562,
+       "bulge": 1.035,
+       "step_px": 1.0,
+       "seam_ratio": 0.32,
+       "seam_luma": 3.29,
+       "fold_offset_px": -11.0,
+       "fold_depth_luma": 2.31,
+       "rim_band": 3.25,
+       "rim_ref": 3.54,
+       "n": 168,
+       "seg": "exit",
+       "i": 1,
+       "side": "L",
+       "flex": 30.4
+      }
+     ]
+    }
+   },
+   "holes": {
+    "frames_with_holes": [
+     [
+      0,
+      29,
+      [
+       413,
+       584,
+       417,
+       594
+      ]
+     ],
+     [
+      1,
+      31,
+      [
+       412,
+       587,
+       416,
+       598
+      ]
+     ],
+     [
+      2,
+      34,
+      [
+       316,
+       588,
+       416,
+       693
+      ]
+     ],
+     [
+      3,
+      30,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      4,
+      29,
+      [
+       412,
+       588,
+       416,
+       598
+      ]
+     ],
+     [
+      5,
+      28,
+      [
+       412,
+       589,
+       416,
+       598
+      ]
+     ],
+     [
+      6,
+      28,
+      [
+       314,
+       589,
+       416,
+       690
+      ]
+     ],
+     [
+      7,
+      23,
+      [
+       412,
+       590,
+       415,
+       599
+      ]
+     ],
+     [
+      8,
+      25,
+      [
+       357,
+       590,
+       416,
+       692
+      ]
+     ],
+     [
+      9,
+      21,
+      [
+       413,
+       593,
+       416,
+       600
+      ]
+     ],
+     [
+      10,
+      15,
+      [
+       414,
+       594,
+       416,
+       600
+      ]
+     ],
+     [
+      11,
+      15,
+      [
+       414,
+       594,
+       416,
+       601
+      ]
+     ],
+     [
+      12,
+      11,
+      [
+       414,
+       597,
+       416,
+       601
+      ]
+     ],
+     [
+      13,
+      9,
+      [
+       415,
+       597,
+       417,
+       602
+      ]
+     ],
+     [
+      14,
+      7,
+      [
+       357,
+       600,
+       417,
+       698
+      ]
+     ],
+     [
+      15,
+      7,
+      [
+       417,
+       598,
+       418,
+       603
+      ]
+     ],
+     [
+      16,
+      4,
+      [
+       417,
+       597,
+       418,
+       603
+      ]
+     ],
+     [
+      17,
+      4,
+      [
+       418,
+       599,
+       419,
+       604
+      ]
+     ],
+     [
+      18,
+      6,
+      [
+       418,
+       598,
+       419,
+       605
+      ]
+     ],
+     [
+      19,
+      6,
+      [
+       358,
+       599,
+       420,
+       705
+      ]
+     ],
+     [
+      20,
+      3,
+      [
+       420,
+       601,
+       421,
+       605
+      ]
+     ],
+     [
+      21,
+      5,
+      [
+       420,
+       600,
+       422,
+       606
+      ]
+     ],
+     [
+      22,
+      5,
+      [
+       421,
+       604,
+       422,
+       610
+      ]
+     ],
+     [
+      23,
+      4,
+      [
+       422,
+       606,
+       423,
+       611
+      ]
+     ],
+     [
+      24,
+      4,
+      [
+       423,
+       607,
+       424,
+       612
+      ]
+     ],
+     [
+      25,
+      9,
+      [
+       423,
+       603,
+       425,
+       611
+      ]
+     ],
+     [
+      26,
+      6,
+      [
+       424,
+       604,
+       426,
+       611
+      ]
+     ],
+     [
+      27,
+      4,
+      [
+       425,
+       605,
+       426,
+       611
+      ]
+     ],
+     [
+      28,
+      9,
+      [
+       426,
+       607,
+       427,
+       612
+      ]
+     ],
+     [
+      29,
+      15,
+      [
+       425,
+       605,
+       428,
+       613
+      ]
+     ],
+     [
+      30,
+      13,
+      [
+       362,
+       608,
+       428,
+       719
+      ]
+     ],
+     [
+      31,
+      18,
+      [
+       426,
+       607,
+       429,
+       614
+      ]
+     ],
+     [
+      32,
+      24,
+      [
+       426,
+       606,
+       429,
+       615
+      ]
+     ],
+     [
+      33,
+      25,
+      [
+       426,
+       607,
+       429,
+       616
+      ]
+     ],
+     [
+      34,
+      28,
+      [
+       426,
+       607,
+       430,
+       617
+      ]
+     ],
+     [
+      35,
+      35,
+      [
+       362,
+       607,
+       430,
+       725
+      ]
+     ],
+     [
+      36,
+      38,
+      [
+       425,
+       607,
+       430,
+       619
+      ]
+     ],
+     [
+      37,
+      43,
+      [
+       425,
+       608,
+       430,
+       621
+      ]
+     ],
+     [
+      38,
+      49,
+      [
+       425,
+       608,
+       430,
+       622
+      ]
+     ],
+     [
+      39,
+      52,
+      [
+       425,
+       609,
+       430,
+       623
+      ]
+     ],
+     [
+      40,
+      54,
+      [
+       310,
+       610,
+       430,
+       737
+      ]
+     ],
+     [
+      41,
+      59,
+      [
+       424,
+       611,
+       430,
+       625
+      ]
+     ],
+     [
+      42,
+      60,
+      [
+       424,
+       612,
+       430,
+       627
+      ]
+     ],
+     [
+      43,
+      62,
+      [
+       424,
+       612,
+       430,
+       628
+      ]
+     ],
+     [
+      44,
+      60,
+      [
+       424,
+       616,
+       429,
+       632
+      ]
+     ],
+     [
+      45,
+      62,
+      [
+       423,
+       617,
+       429,
+       633
+      ]
+     ],
+     [
+      46,
+      63,
+      [
+       423,
+       617,
+       429,
+       632
+      ]
+     ],
+     [
+      47,
+      63,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      48,
+      62,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      49,
+      59,
+      [
+       423,
+       618,
+       429,
+       633
+      ]
+     ],
+     [
+      50,
+      59,
+      [
+       358,
+       618,
+       429,
+       747
+      ]
+     ],
+     [
+      51,
+      58,
+      [
+       358,
+       619,
+       430,
+       748
+      ]
+     ],
+     [
+      52,
+      51,
+      [
+       425,
+       620,
+       430,
+       633
+      ]
+     ],
+     [
+      53,
+      52,
+      [
+       425,
+       620,
+       431,
+       634
+      ]
+     ],
+     [
+      54,
+      49,
+      [
+       426,
+       621,
+       431,
+       634
+      ]
+     ],
+     [
+      55,
+      49,
+      [
+       427,
+       621,
+       432,
+       634
+      ]
+     ],
+     [
+      56,
+      46,
+      [
+       427,
+       621,
+       433,
+       635
+      ]
+     ],
+     [
+      57,
+      42,
+      [
+       359,
+       622,
+       433,
+       753
+      ]
+     ],
+     [
+      58,
+      41,
+      [
+       429,
+       623,
+       434,
+       635
+      ]
+     ],
+     [
+      59,
+      37,
+      [
+       430,
+       623,
+       434,
+       635
+      ]
+     ],
+     [
+      60,
+      38,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      61,
+      37,
+      [
+       359,
+       624,
+       435,
+       756
+      ]
+     ],
+     [
+      62,
+      35,
+      [
+       305,
+       623,
+       435,
+       749
+      ]
+     ],
+     [
+      63,
+      35,
+      [
+       305,
+       623,
+       435,
+       749
+      ]
+     ],
+     [
+      64,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      65,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      66,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      67,
+      34,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      68,
+      37,
+      [
+       359,
+       624,
+       435,
+       754
+      ]
+     ],
+     [
+      69,
+      35,
+      [
+       431,
+       622,
+       435,
+       634
+      ]
+     ],
+     [
+      70,
+      36,
+      [
+       304,
+       622,
+       434,
+       748
+      ]
+     ],
+     [
+      71,
+      34,
+      [
+       304,
+       622,
+       434,
+       748
+      ]
+     ],
+     [
+      72,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      73,
+      31,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      74,
+      31,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      75,
+      30,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      76,
+      31,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      77,
+      31,
+      [
+       431,
+       623,
+       434,
+       633
+      ]
+     ],
+     [
+      78,
+      33,
+      [
+       431,
+       622,
+       434,
+       634
+      ]
+     ],
+     [
+      79,
+      34,
+      [
+       304,
+       622,
+       434,
+       748
+      ]
+     ],
+     [
+      80,
+      36,
+      [
+       304,
+       622,
+       434,
+       748
+      ]
+     ],
+     [
+      81,
+      35,
+      [
+       431,
+       622,
+       435,
+       634
+      ]
+     ],
+     [
+      82,
+      37,
+      [
+       359,
+       624,
+       435,
+       754
+      ]
+     ],
+     [
+      83,
+      34,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      84,
+      33,
+      [
+       431,
+       624,
+       435,
+       634
+      ]
+     ],
+     [
+      85,
+      33,
+      [
+       431,
+       624,
+       435,
+       635
+      ]
+     ],
+     [
+      86,
+      33,
+      [
+       432,
+       623,
+       435,
+       634
+      ]
+     ],
+     [
+      87,
+      35,
+      [
+       305,
+       623,
+       435,
+       749
+      ]
+     ],
+     [
+      88,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      89,
+      37,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      90,
+      35,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      91,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      92,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      93,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      94,
+      36,
+      [
+       306,
+       624,
+       436,
+       750
+      ]
+     ],
+     [
+      95,
+      36,
+      [
+       306,
+       624,
+       437,
+       750
+      ]
+     ],
+     [
+      96,
+      38,
+      [
+       306,
+       623,
+       437,
+       750
+      ]
+     ],
+     [
+      97,
+      38,
+      [
+       433,
+       623,
+       437,
+       636
+      ]
+     ],
+     [
+      98,
+      39,
+      [
+       433,
+       623,
+       437,
+       636
+      ]
+     ],
+     [
+      99,
+      39,
+      [
+       433,
+       623,
+       437,
+       636
+      ]
+     ],
+     [
+      100,
+      39,
+      [
+       433,
+       623,
+       437,
+       636
+      ]
+     ],
+     [
+      101,
+      38,
+      [
+       433,
+       623,
+       437,
+       636
+      ]
+     ],
+     [
+      102,
+      38,
+      [
+       306,
+       623,
+       437,
+       750
+      ]
+     ],
+     [
+      103,
+      36,
+      [
+       306,
+       624,
+       437,
+       750
+      ]
+     ],
+     [
+      104,
+      36,
+      [
+       306,
+       624,
+       436,
+       750
+      ]
+     ],
+     [
+      105,
+      34,
+      [
+       360,
+       624,
+       436,
+       752
+      ]
+     ],
+     [
+      106,
+      34,
+      [
+       432,
+       624,
+       436,
+       636
+      ]
+     ],
+     [
+      107,
+      35,
+      [
+       432,
+       625,
+       436,
+       636
+      ]
+     ],
+     [
+      108,
+      35,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      109,
+      37,
+      [
+       432,
+       625,
+       436,
+       635
+      ]
+     ],
+     [
+      110,
+      36,
+      [
+       432,
+       623,
+       436,
+       635
+      ]
+     ],
+     [
+      111,
+      35,
+      [
+       305,
+       623,
+       435,
+       749
+      ]
+     ],
+     [
+      112,
+      26,
+      [
+       432,
+       626,
+       436,
+       635
+      ]
+     ],
+     [
+      113,
+      9,
+      [
+       435,
+       629,
+       436,
+       635
+      ]
+     ],
+     [
+      117,
+      685,
+      [
+       300,
+       770,
+       359,
+       907
+      ]
+     ],
+     [
+      118,
+      308,
+      [
+       304,
+       778,
+       357,
+       873
+      ]
+     ],
+     [
+      119,
+      58,
+      [
+       311,
+       815,
+       362,
+       943
+      ]
+     ],
+     [
+      120,
+      5,
+      [
+       313,
+       850,
+       362,
+       940
+      ]
+     ],
+     [
+      122,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      123,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      124,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      125,
+      5,
+      [
+       327,
+       511,
+       426,
+       675
+      ]
+     ],
+     [
+      126,
+      7,
+      [
+       321,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      127,
+      13,
+      [
+       315,
+       511,
+       426,
+       875
+      ]
+     ],
+     [
+      128,
+      29,
+      [
+       310,
+       511,
+       418,
+       872
+      ]
+     ],
+     [
+      129,
+      62,
+      [
+       308,
+       511,
+       414,
+       978
+      ]
+     ],
+     [
+      130,
+      73,
+      [
+       314,
+       511,
+       412,
+       981
+      ]
+     ],
+     [
+      131,
+      62,
+      [
+       327,
+       511,
+       414,
+       984
+      ]
+     ],
+     [
+      132,
+      64,
+      [
+       315,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      133,
+      65,
+      [
+       313,
+       511,
+       362,
+       984
+      ]
+     ],
+     [
+      134,
+      68,
+      [
+       314,
+       511,
+       411,
+       984
+      ]
+     ],
+     [
+      135,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      136,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      137,
+      45,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      138,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      139,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      140,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      141,
+      61,
+      [
+       327,
+       511,
+       415,
+       984
+      ]
+     ],
+     [
+      142,
+      5,
+      [
+       436,
+       625,
+       439,
+       652
+      ]
+     ],
+     [
+      143,
+      33,
+      [
+       356,
+       625,
+       439,
+       842
+      ]
+     ],
+     [
+      144,
+      286,
+      [
+       304,
+       625,
+       439,
+       970
+      ]
+     ],
+     [
+      145,
+      777,
+      [
+       290,
+       621,
+       439,
+       971
+      ]
+     ],
+     [
+      146,
+      1197,
+      [
+       288,
+       627,
+       438,
+       973
+      ]
+     ],
+     [
+      147,
+      73,
+      [
+       286,
+       634,
+       358,
+       755
+      ]
+     ],
+     [
+      148,
+      3,
+      [
+       286,
+       647,
+       286,
+       649
+      ]
+     ],
+     [
+      211,
+      2,
+      [
+       359,
+       692,
+       359,
+       693
+      ]
+     ]
+    ],
+    "total_px": 8006,
+    "by_segment": {
+     "enter/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1234,
+      "max_px": 63
+     },
+     "settle/front": {
+      "frames": 16,
+      "with_holes": 16,
+      "px": 750,
+      "max_px": 62
+     },
+     "idle/front": {
+      "frames": 48,
+      "with_holes": 48,
+      "px": 1675,
+      "max_px": 39
+     },
+     "turn/front": {
+      "frames": 10,
+      "with_holes": 6,
+      "px": 1093,
+      "max_px": 685
+     },
+     "turn/side": {
+      "frames": 20,
+      "with_holes": 20,
+      "px": 874,
+      "max_px": 73
+     },
+     "turn/rear": {
+      "frames": 10,
+      "with_holes": 7,
+      "px": 2374,
+      "max_px": 1197
+     },
+     "start/rear": {
+      "frames": 15,
+      "with_holes": 0,
+      "px": 3,
+      "max_px": 1
+     },
+     "exit/rear": {
+      "frames": 48,
+      "with_holes": 1,
+      "px": 3,
+      "max_px": 2
+     }
+    }
+   },
+   "hem_shoe": {
+    "probes": 243,
+    "gaps": [
+     [
+      117,
+      "R",
+      101
+     ]
+    ],
+    "min_alpha": 101
+   },
+   "switches": [
+    {
+     "at": 122,
+     "from": "turn 10 (front)",
+     "to": "turn 11 (side)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": -1.4,
+     "head_top_px": 1,
+     "head_width_change": -0.015,
+     "lowest_row_px": -2,
+     "box_height_change": -0.006,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.747
+    },
+    {
+     "at": 142,
+     "from": "turn 30 (side)",
+     "to": "turn 31 (rear)",
+     "root_px": 0.0,
+     "head_rig_px": 0.0,
+     "head_center_x_px": 1.2,
+     "head_top_px": 0,
+     "head_width_change": 0.0,
+     "lowest_row_px": -6,
+     "box_height_change": -0.011,
+     "resting_feet_moved_mm": {
+      "Rheel": 0.0,
+      "Rtoe": 0.0
+     },
+     "root_world_m": 0.0,
+     "figure_iou": 0.73
+    }
+   ],
+   "vs_baseline": {
+    "trouser_delta_e76": {
+     "n": 195,
+     "min": 0.003,
+     "median": 0.101,
+     "p95": 0.931,
+     "max": 1.145
+    },
+    "weave_ratio": {
+     "n": 195,
+     "min": 0.968,
+     "median": 0.995,
+     "p95": 1.038,
+     "max": 1.088
+    },
+    "torso_mean_abs_rgb": {
+     "n": 195,
+     "min": 0.195,
+     "median": 0.893,
+     "p95": 2.503,
+     "max": 2.793
+    },
+    "torso_shift": {
+     "rows": [
+      {
+       "n": 0,
+       "seg": "enter",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 4,
+       "seg": "enter",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 8,
+       "seg": "enter",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 12,
+       "seg": "enter",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 16,
+       "seg": "enter",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 20,
+       "seg": "enter",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 24,
+       "seg": "enter",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 28,
+       "seg": "enter",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 32,
+       "seg": "enter",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 36,
+       "seg": "enter",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 40,
+       "seg": "enter",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 44,
+       "seg": "enter",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 64,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 65,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 66,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 67,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 68,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 69,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 70,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 71,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 72,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 73,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 74,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 75,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 76,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 77,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 78,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 79,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 80,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 81,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 82,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 83,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 84,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 85,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 86,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 87,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 88,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 89,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 90,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 91,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 92,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 93,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 94,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 95,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 96,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 97,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 98,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 99,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 100,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 101,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 102,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 103,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 104,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 105,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 106,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 107,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 108,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 109,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 110,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 111,
+       "seg": "idle",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 112,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 121,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 142,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 151,
+       "seg": "turn",
+       "yaw_deg": 0.243,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 167,
+       "seg": "exit",
+       "yaw_deg": 2.578,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 171,
+       "seg": "exit",
+       "yaw_deg": 2.154,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 175,
+       "seg": "exit",
+       "yaw_deg": 1.021,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 179,
+       "seg": "exit",
+       "yaw_deg": -0.448,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 183,
+       "seg": "exit",
+       "yaw_deg": -1.77,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 187,
+       "seg": "exit",
+       "yaw_deg": -2.509,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 191,
+       "seg": "exit",
+       "yaw_deg": -2.423,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 195,
+       "seg": "exit",
+       "yaw_deg": -1.54,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 199,
+       "seg": "exit",
+       "yaw_deg": -0.15,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 203,
+       "seg": "exit",
+       "yaw_deg": 1.289,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 207,
+       "seg": "exit",
+       "yaw_deg": 2.304,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      },
+      {
+       "n": 211,
+       "seg": "exit",
+       "yaw_deg": 2.561,
+       "shift_px_top_mid_low": [
+        0.0,
+        0.0,
+        0.0
+       ]
+      }
+     ],
+     "max_abs_px": 0.0
+    }
+   }
+  }
+ ]
+}

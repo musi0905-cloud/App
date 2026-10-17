@@ -1,7 +1,7 @@
 {
  "generated_by": "room404/scripts/build-missing-request.py",
- "generated": "2026-10-14",
- "version": "v0.18.0",
+ "generated": "2026-10-17",
+ "version": "v0.19.0",
  "fields": [
   "assetId",
   "entityId",
@@ -566,7 +566,15 @@
      },
      "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
     }
-   ]
+   ],
+   "release_v0_19_0": {
+    "status": "이번 릴리스에서 사용자 수용, 후속 개선",
+    "resolved": false,
+    "visual_status": "REVISE",
+    "limit": "다리 볼륨",
+    "applied_as": "NPC06 v10r5를 사용자 예외 승인(2026-10-17)으로 인터폰에 재생(room404/dist/data/visitor_figures.json intercom_clips.NPC06)",
+    "producer_attempt": "v10r5 (asset-source/v10r5_NPC06, NPC06_v10r5_report.md: 시각 판정 보류, 기존 요청 종결 안 함)"
+   }
   },
   {
    "assetId": "NPC06/walk/TORSO_STATIC",
@@ -611,7 +619,15 @@
      },
      "revision_requests": "asset-source/v07_QA/art_revision_requests_v07.json"
     }
-   ]
+   ],
+   "release_v0_19_0": {
+    "status": "이번 릴리스에서 사용자 수용, 후속 개선",
+    "resolved": false,
+    "visual_status": "REVISE",
+    "limit": "몸통 회전",
+    "applied_as": "NPC06 v10r5를 사용자 예외 승인(2026-10-17)으로 인터폰에 재생(room404/dist/data/visitor_figures.json intercom_clips.NPC06)",
+    "producer_attempt": "v10r5 (asset-source/v10r5_NPC06, NPC06_v10r5_report.md: 시각 판정 보류, 기존 요청 종결 안 함)"
+   }
   },
   {
    "assetId": "NPC07/walk/LEG_STRIP",
@@ -945,6 +961,14 @@
      "asset-source/v09_QA/evidence/qa_viewer_steps.jpg"
     ],
     "request": "asset-source/v09_QA/art_revision_requests_v09.json"
+   },
+   "release_v0_19_0": {
+    "status": "이번 릴리스에서 사용자 수용, 후속 개선",
+    "resolved": false,
+    "visual_status": "REVISE",
+    "limit": "소매 표현",
+    "applied_as": "NPC06 v10r5를 사용자 예외 승인(2026-10-17)으로 인터폰에 재생(room404/dist/data/visitor_figures.json intercom_clips.NPC06)",
+    "producer_attempt": "v10r5 (asset-source/v10r5_NPC06, NPC06_v10r5_report.md: 시각 판정 보류, 기존 요청 종결 안 함)"
    }
   },
   {
@@ -969,6 +993,14 @@
      "asset-source/v09_QA/evidence/switch_turn.jpg"
     ],
     "request": "asset-source/v09_QA/art_revision_requests_v09.json"
+   },
+   "release_v0_19_0": {
+    "status": "이번 릴리스에서 사용자 수용, 후속 개선",
+    "resolved": false,
+    "visual_status": "REVISE",
+    "limit": "가방끈",
+    "applied_as": "NPC06 v10r5를 사용자 예외 승인(2026-10-17)으로 인터폰에 재생(room404/dist/data/visitor_figures.json intercom_clips.NPC06)",
+    "producer_attempt": "v10r5 (asset-source/v10r5_NPC06, NPC06_v10r5_report.md: 시각 판정 보류, 기존 요청 종결 안 함)"
    }
   },
   {
@@ -1124,11 +1156,28 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 귀가 주민 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 귀가 주민 방문객: 지금 10개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 4,
+     "뒤돌아보기": 5,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 10
+    },
+    "cases": [
+     "V001/A061",
+     "V002/A028",
+     "V003/A052",
+     "V004/A051",
+     "V005/A022",
+     "V006/A090",
+     "V007/A059",
+     "V008/A049",
+     "V009/A024",
+     "V010/A050"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC01.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1144,11 +1193,24 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 가족 방문 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 가족 방문 방문객: 지금 7개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "뒤돌아보기": 4,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 6
+    },
+    "cases": [
+     "V011/A064",
+     "V012/A001",
+     "V013/A046",
+     "V014/A068",
+     "V015/A072",
+     "V016/A099",
+     "V018/A060"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC02.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1164,11 +1226,28 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 택배 기사 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 택배 기사 방문객: 지금 10개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 2,
+     "뒤돌아보기": 7,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 9
+    },
+    "cases": [
+     "V021/A095",
+     "V022/A016",
+     "V023/A088",
+     "V024/A086",
+     "V025/A071",
+     "V026/A062",
+     "V027/A045",
+     "V028/A054",
+     "V029/A058",
+     "V030/A011"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC03.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1184,11 +1263,28 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 시설 점검 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 시설 점검 방문객: 지금 9개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 4,
+     "뒤돌아보기": 3,
+     "손 흔들기": 1,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 7
+    },
+    "cases": [
+     "V031/A040",
+     "V032/A069",
+     "V033/A010",
+     "V034/A044",
+     "V035/A017",
+     "V036/A021",
+     "V038/A092",
+     "V039/A029",
+     "V040/A089"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC04.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1204,11 +1300,24 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 돌봄 방문 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 돌봄 방문 방문객: 지금 6개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 3,
+     "뒤돌아보기": 3,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 3
+    },
+    "cases": [
+     "V042/A083",
+     "V043/A023",
+     "V044/A037",
+     "V046/A078",
+     "V047/A081",
+     "V048/A066"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC05.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1224,11 +1333,24 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 이웃 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 이웃 방문객: 지금 6개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 3,
+     "뒤돌아보기": 3,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 6
+    },
+    "cases": [
+     "V053/A012",
+     "V054/A085",
+     "V055/A087",
+     "V056/A053",
+     "V058/A041",
+     "V059/A030"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC06.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1244,11 +1366,25 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 음식 배달 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 음식 배달 방문객: 지금 7개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "뒤돌아보기": 5,
+     "손 흔들기": 1,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 6
+    },
+    "cases": [
+     "V061/A091",
+     "V062/A005",
+     "V063/A094",
+     "V064/A006",
+     "V065/A015",
+     "V066/A042",
+     "V067/A097"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC07.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1264,11 +1400,28 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 차량 동승 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 차량 동승 방문객: 지금 9개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "오른쪽으로 걷는 측면 걷기(방향이 단서인 사건)": 1,
+     "노크": 1,
+     "뒤돌아보기": 6,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 7
+    },
+    "cases": [
+     "V071/A048",
+     "V072/A039",
+     "V073/A007",
+     "V074/A038",
+     "V075/A057",
+     "V076/A043",
+     "V077/A018",
+     "V078/A070",
+     "V079/A020"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC08.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1284,11 +1437,28 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 공공 업무 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 공공 업무 방문객: 지금 9개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "오른쪽으로 걷는 측면 걷기(방향이 단서인 사건)": 1,
+     "전화": 4,
+     "뒤돌아보기": 3,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 8
+    },
+    "cases": [
+     "V081/A027",
+     "V082/A026",
+     "V083/A082",
+     "V084/A025",
+     "V085/A098",
+     "V086/A075",
+     "V087/A096",
+     "V089/A004",
+     "V090/A093"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC09.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"
@@ -1304,11 +1474,26 @@
    "sourceUrl": null,
    "expectedSha256": null,
    "priority": "P2",
-   "blockingReason": "CCTV 재생은 기존 8개 외형의 걷기·몸짓 그림을 그린다. 역할 그림(NPC01~NPC10)에 쓸 수 있는 걷기·몸짓 그림이 없어(v05 REVISE, NPC01 없음) 인터폰만 바꾸면 같은 방문객이 CCTV와 인터폰에서 다른 사람으로 보인다(A001·A075 같은 옷차림 단서와 충돌).",
+   "blockingReason": "CCTV에 정면·후면 걷기(입장 70건), 뒤돌아보기(46), 전화(21), 손 흔들기(2), 노크(1), 걷는 방향이 단서인 사건(2)이 필요한 사건은 역할 그림으로 그릴 수 없어 그 사건만 기존 외형을 인터폰·CCTV에 똑같이 쓴다(A001·A075 같은 옷차림 단서 보존). NPC01은 걷기 그림이 없고 다른 사람의 걷기로 대신하지 않는다.",
    "kind": "new_art",
-   "use": "CCTV 재생의 지인 방문객(지금은 기존 8개 외형) — 이것이 와야 visitor_roles_enabled를 켬",
+   "use": "CCTV 재생의 지인 방문객: 지금 8개 사건이 기존 외형(인터폰도 같은 외형). 아래 그림이 오면 그 사건들도 역할 그림으로 바꿀 수 있음",
    "spec": {
     "required_art": "걷기(옆·다가옴·멀어짐)와 몸짓(손 흔들기·노크·전화·뒤돌아보기·서 있기) — replay.js의 visitor-0N-*.webp 시트 형식(384x512 칸, 발 (192,496)), 또는 정면·후면·연결이 PASS인 걷기 클립",
+    "needed_by_cases": {
+     "전화": 1,
+     "뒤돌아보기": 7,
+     "정면·후면 걷기(입장·다가옴·멀어짐)": 8
+    },
+    "cases": [
+     "V091/A055",
+     "V092/A019",
+     "V093/A047",
+     "V094/A014",
+     "V095/A084",
+     "V096/A100",
+     "V099/A056",
+     "V100/A013"
+    ],
     "reference": [
      "room404/dist/assets/v5/figure-NPC10.webp",
      "room404/dist/assets/v2/visitor-01-walk.webp"

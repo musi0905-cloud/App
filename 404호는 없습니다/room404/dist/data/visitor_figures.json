@@ -1,0 +1,2509 @@
+{
+ "version": "v0.19.0",
+ "enabled": true,
+ "source": "room404/scripts/build-visitor-figures.py; 규칙 room404/dist/figures.js; 측면 걷기 assets/clips/side/side.json; NPC06 assets/clips/NPC06_v10r5/clip.json",
+ "rule": [
+  "인터폰과 CCTV는 같은 판정(figureFor)을 쓴다. 한 사건 안에서 두 화면의 인물은 항상 같다.",
+  "역할 그림은 그 사건의 CCTV 장면을 모두 같은 인물 그림으로 그릴 수 있을 때만 쓴다. 아니면 그 사건만 기존 외형(visitor-01~08)을 두 화면에 똑같이 쓴다.",
+  "측면 걷기는 v06 검수 side PASS 프레임만, 그림 방향(화면 왼쪽) 그대로 쓴다. 좌우 반전하지 않는다. 걷는 방향이 단서인 사건(direction_bound)은 쓰지 않는다.",
+  "정면·후면 걷기(입장)와 몸짓(뒤돌아보기·전화·손 흔들기·노크)은 어느 역할에도 승인된 그림이 없다. NPC01은 걷기가 없고 다른 사람의 걷기로 대신하지 않는다.",
+  "NPC06 v10r5는 시각 REVISE 상태에서 사용자 예외 승인으로만 인터폰에 재생한다(intercom_clips.NPC06)."
+ ],
+ "side_clips": [
+  "NPC06",
+  "NPC07",
+  "NPC09"
+ ],
+ "side_clips_note": "NPC02~NPC05, NPC08도 v06 side PASS지만 지금 역할 그림으로 그릴 수 있는 사건 중 측면 걷기가 필요한 사건이 없어 런타임 파일을 만들지 않았다(asset-source/v06_QA에 보관). NPC10 측면은 REVISE.",
+ "direction_bound": {
+  "A075": "“방문객이 더 밝은 조명 쪽으로 걸어가요”: 공동현관 CCTV는 오른쪽이 밝다(cctv-lobby 열 평균 밝기 왼쪽 43, 가운데·오른쪽 64~76). 왼쪽으로 걸으면 어두운 쪽으로 가게 돼 단서가 뒤집힌다.",
+  "A038": "“사람이 걸어온 쪽과 발자국 방향을 비교하세요”: 발자국은 오른쪽 위로 그려진다. 걷는 방향을 바꾸면 비교 대상이 달라진다."
+ },
+ "role_heads": {
+  "NPC01": [
+   147,
+   7,
+   146,
+   154
+  ],
+  "NPC02": [
+   123,
+   6,
+   163,
+   154
+  ],
+  "NPC03": [
+   152,
+   6,
+   128,
+   154
+  ],
+  "NPC04": [
+   166,
+   7,
+   136,
+   154
+  ],
+  "NPC05": [
+   130,
+   7,
+   141,
+   154
+  ],
+  "NPC06": [
+   101,
+   7,
+   186,
+   154
+  ],
+  "NPC07": [
+   133,
+   6,
+   139,
+   154
+  ],
+  "NPC08": [
+   140,
+   8,
+   146,
+   154
+  ],
+  "NPC09": [
+   94,
+   6,
+   143,
+   154
+  ],
+  "NPC10": [
+   123,
+   6,
+   138,
+   154
+  ]
+ },
+ "intercom_clips": {
+  "NPC06": {
+   "npc": "NPC06",
+   "revision": "v10r5",
+   "clip": "assets/clips/NPC06_v10r5/clip.json",
+   "clip_sha256": "92b5026430232e5b18569305dd41850ecb850435b33d442c809dfec4c7051678",
+   "visual_status": "REVISE",
+   "qa_status": "REVISE",
+   "visual_note": "시각 판정은 REVISE 그대로다. 아래 네 가지 한계는 해결되지 않았고, 사용자가 이번 게임 적용에서 수용했다.",
+   "user_accepted_limitations": [
+    "다리 볼륨: 정면·후면 다리가 관 모양으로 보이는 한계(무릎 가로선은 줄었으나 남음)",
+    "몸통 회전: 3차원 몸통 회전이 부족함",
+    "소매 표현: 소매 질감·접합 한계",
+    "가방끈: 후면 가방끈 표현 한계"
+   ],
+   "approval_basis": "사용자 지시(2026-10-17): “NPC06 v10r5에 남은 다리 볼륨, 몸통 회전, 소매 표현, 가방끈의 시각적 한계는 이번 게임 적용에서 수용한다.” 시각 품질 PASS로 바꾸지 않으며, 파일 손상·잘못된 경로·재생 오류·인물 바뀜·소품 좌우 뒤집힘·진행·저장 오류는 이 승인에 포함되지 않는다.",
+   "approved_on": "2026-10-17",
+   "runtime_enabled": true,
+   "scope": {
+    "npc": "NPC06",
+    "revision": "v10r5",
+    "manifest_sha256": "958468e58433d2c2e524e9a1b46eef61587a1c3996ed0de99a2d506325518e21",
+    "frames_json_sha256": "3c1adf02071e7387e3786ce26fd1be6b95254bd6feb1f1e75a3f5d30b064747a",
+    "pages": {
+     "arrive-0.webp": "4a970ec780b2e3e4465b5ecdeabb2f30875c9df84be729fa95d4508750840cb8",
+     "arrive-1.webp": "1826de18763af2fa864cab740c29c00640387f59d69c55cdc74aa4cf9ab71980",
+     "stay-0.webp": "34fa25eefcd605d11c242caee82f5f3dc6f679b42499a9913c6412d19dcd43e4",
+     "stay-1.webp": "1ceecac9d0f95318b8cb3160222f35aa9d682e706164be5a3cdacb03c5bff5d2",
+     "stay-2.webp": "c990efe092e64bc564b9b6f90914db9cdf5f3044668833efac6a5a98ec9600ca",
+     "leave-0.webp": "133cb00f9d4fa557eb07ebf062d2c834f8373ae6225debf1933061a0ad75b10a",
+     "leave-1.webp": "c90e1bdf2d9d95c8915fe657e2919e09636aa27a41b194f6f52c5bcf688426d5"
+    },
+    "note": "이 버전·해시에만 적용. 다른 NPC나 다른 판(이전 후보 등), 해시가 다른 파일에는 적용하지 않는다(figures.js USER_EXCEPTIONS·loadClip)."
+   },
+   "runtime_validation": {
+    "frames": "215 seq PNG: bytes and SHA-256 equal to QA/verification_v10r5.json; side pass 48 PNG equal to the reviewed v06 side frames",
+    "segments": {
+     "enter": 48,
+     "settle": 16,
+     "idle": 48,
+     "turn": 40,
+     "start": 15,
+     "exit": 48
+    },
+    "turn_entries": [
+     23,
+     47
+    ],
+    "alpha_round_trip": "identical on every page",
+    "rgb_error_alpha_weighted_max": 1.828,
+    "fps": 24,
+    "fps_basis": "v10r5 패키지 frames.json에는 재생 속도 항목이 없다. 비교 영상 NPC06_v10r5_BG02_comparison.mp4가 24fps이고 v06 렌더러 기본값(walk_clips.json NPC06 v06.fps)도 24라 24fps로 둔다(잠정 근거).",
+    "game_checks": "tests/npc06-flow.mjs (실제 게임 화면 재생·판정·실패 대체); 결과는 test-artifacts/npc06_v10r5/flow.json"
+   }
+  }
+ },
+ "summary": {
+  "cases": 100,
+  "role_cases": 19,
+  "role_visitors": [
+   "V017",
+   "V019",
+   "V020",
+   "V037",
+   "V041",
+   "V045",
+   "V049",
+   "V050",
+   "V051",
+   "V052",
+   "V057",
+   "V060",
+   "V068",
+   "V069",
+   "V070",
+   "V080",
+   "V088",
+   "V097",
+   "V098"
+  ],
+  "role_figures_used": [
+   "NPC02",
+   "NPC04",
+   "NPC05",
+   "NPC06",
+   "NPC07",
+   "NPC08",
+   "NPC09",
+   "NPC10"
+  ],
+  "npc06_sequence_cases": [
+   "V051/A079 (daily, night2:N2_06)",
+   "V052/A077 (daily, night3:N3_06)",
+   "V057/A032 (daily)",
+   "V060/A008 (daily)"
+  ],
+  "legacy_reasons": {
+   "direction_bound": 2,
+   "gesture_knock": 1,
+   "gesture_phone": 21,
+   "gesture_turn": 46,
+   "gesture_wave": 2,
+   "walk_front_rear": 70
+  }
+ },
+ "cases": [
+  {
+   "visitor": "V001",
+   "name": "김서윤",
+   "role": "귀가 주민",
+   "anomaly": "A061",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_01"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V002",
+   "name": "박도현",
+   "role": "귀가 주민",
+   "anomaly": "A028",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V003",
+   "name": "이민재",
+   "role": "귀가 주민",
+   "anomaly": "A052",
+   "runs": [
+    "daily",
+    "night2:N2_01"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V004",
+   "name": "정하린",
+   "role": "귀가 주민",
+   "anomaly": "A051",
+   "runs": [
+    "daily",
+    "night3:N3_01"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V005",
+   "name": "최유진",
+   "role": "귀가 주민",
+   "anomaly": "A022",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V006",
+   "name": "강지호",
+   "role": "귀가 주민",
+   "anomaly": "A090",
+   "runs": [
+    "daily",
+    "night4:N4_01"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V007",
+   "name": "한소희",
+   "role": "귀가 주민",
+   "anomaly": "A059",
+   "runs": [
+    "daily",
+    "night5:N5_01"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V008",
+   "name": "윤재혁",
+   "role": "귀가 주민",
+   "anomaly": "A049",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V009",
+   "name": "임수아",
+   "role": "귀가 주민",
+   "anomaly": "A024",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V010",
+   "name": "오준서",
+   "role": "귀가 주민",
+   "anomaly": "A050",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC01",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V011",
+   "name": "류은채",
+   "role": "가족 방문",
+   "anomaly": "A064",
+   "runs": [
+    "daily",
+    "night2:N2_02"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V012",
+   "name": "송기현",
+   "role": "가족 방문",
+   "anomaly": "A001",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_02"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V013",
+   "name": "장예린",
+   "role": "가족 방문",
+   "anomaly": "A046",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V014",
+   "name": "배현우",
+   "role": "가족 방문",
+   "anomaly": "A068",
+   "runs": [
+    "daily",
+    "night3:N3_02"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V015",
+   "name": "남지안",
+   "role": "가족 방문",
+   "anomaly": "A072",
+   "runs": [
+    "daily",
+    "night4:N4_02"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V016",
+   "name": "조성민",
+   "role": "가족 방문",
+   "anomaly": "A099",
+   "runs": [
+    "daily",
+    "night5:N5_02"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V017",
+   "name": "신다혜",
+   "role": "가족 방문",
+   "anomaly": "A080",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC02",
+   "figure": "NPC02",
+   "kind": "role",
+   "intercom": "still:NPC02",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V018",
+   "name": "문태윤",
+   "role": "가족 방문",
+   "anomaly": "A060",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC02",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V019",
+   "name": "백아린",
+   "role": "가족 방문",
+   "anomaly": "A034",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC02",
+   "figure": "NPC02",
+   "kind": "role",
+   "intercom": "still:NPC02",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V020",
+   "name": "서지훈",
+   "role": "가족 방문",
+   "anomaly": "A035",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC02",
+   "figure": "NPC02",
+   "kind": "role",
+   "intercom": "still:NPC02",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V021",
+   "name": "김서윤",
+   "role": "택배 기사",
+   "anomaly": "A095",
+   "runs": [
+    "daily",
+    "night2:N2_03"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V022",
+   "name": "박도현",
+   "role": "택배 기사",
+   "anomaly": "A016",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V023",
+   "name": "이민재",
+   "role": "택배 기사",
+   "anomaly": "A088",
+   "runs": [
+    "daily",
+    "night3:N3_03"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V024",
+   "name": "정하린",
+   "role": "택배 기사",
+   "anomaly": "A086",
+   "runs": [
+    "daily",
+    "night4:N4_03"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V025",
+   "name": "최유진",
+   "role": "택배 기사",
+   "anomaly": "A071",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_03"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V026",
+   "name": "강지호",
+   "role": "택배 기사",
+   "anomaly": "A062",
+   "runs": [
+    "daily",
+    "night5:N5_03"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V027",
+   "name": "한소희",
+   "role": "택배 기사",
+   "anomaly": "A045",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V028",
+   "name": "윤재혁",
+   "role": "택배 기사",
+   "anomaly": "A054",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V029",
+   "name": "임수아",
+   "role": "택배 기사",
+   "anomaly": "A058",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V030",
+   "name": "오준서",
+   "role": "택배 기사",
+   "anomaly": "A011",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC03",
+   "figure": "visitor-05",
+   "kind": "legacy",
+   "intercom": "still:visitor-05",
+   "cctv": "legacy look 5 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V031",
+   "name": "류은채",
+   "role": "시설 점검",
+   "anomaly": "A040",
+   "runs": [
+    "daily",
+    "night2:N2_04"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "gesture_wave",
+    "stand"
+   ],
+   "missing": [
+    "gesture_wave"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_wave"
+  },
+  {
+   "visitor": "V032",
+   "name": "송기현",
+   "role": "시설 점검",
+   "anomaly": "A069",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V033",
+   "name": "장예린",
+   "role": "시설 점검",
+   "anomaly": "A010",
+   "runs": [
+    "daily",
+    "night3:N3_04"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "gesture_phone"
+   ],
+   "missing": [
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_phone"
+  },
+  {
+   "visitor": "V034",
+   "name": "배현우",
+   "role": "시설 점검",
+   "anomaly": "A044",
+   "runs": [
+    "daily",
+    "night4:N4_04"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V035",
+   "name": "남지안",
+   "role": "시설 점검",
+   "anomaly": "A017",
+   "runs": [
+    "daily",
+    "night5:N5_04"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V036",
+   "name": "조성민",
+   "role": "시설 점검",
+   "anomaly": "A021",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_04"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V037",
+   "name": "신다혜",
+   "role": "시설 점검",
+   "anomaly": "A033",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC04",
+   "figure": "NPC04",
+   "kind": "role",
+   "intercom": "still:NPC04",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V038",
+   "name": "문태윤",
+   "role": "시설 점검",
+   "anomaly": "A092",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V039",
+   "name": "백아린",
+   "role": "시설 점검",
+   "anomaly": "A029",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V040",
+   "name": "서지훈",
+   "role": "시설 점검",
+   "anomaly": "A089",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC04",
+   "figure": "visitor-06",
+   "kind": "legacy",
+   "intercom": "still:visitor-06",
+   "cctv": "legacy look 6 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V041",
+   "name": "김서윤",
+   "role": "돌봄 방문",
+   "anomaly": "A076",
+   "runs": [
+    "daily",
+    "night2:N2_05"
+   ],
+   "npc": "NPC05",
+   "figure": "NPC05",
+   "kind": "role",
+   "intercom": "still:NPC05",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V042",
+   "name": "박도현",
+   "role": "돌봄 방문",
+   "anomaly": "A083",
+   "runs": [
+    "daily",
+    "night3:N3_05"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V043",
+   "name": "이민재",
+   "role": "돌봄 방문",
+   "anomaly": "A023",
+   "runs": [
+    "daily",
+    "night5:N5_05"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V044",
+   "name": "정하린",
+   "role": "돌봄 방문",
+   "anomaly": "A037",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V045",
+   "name": "최유진",
+   "role": "돌봄 방문",
+   "anomaly": "A003",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC05",
+   "figure": "NPC05",
+   "kind": "role",
+   "intercom": "still:NPC05",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V046",
+   "name": "강지호",
+   "role": "돌봄 방문",
+   "anomaly": "A078",
+   "runs": [
+    "daily",
+    "night4:N4_05"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V047",
+   "name": "한소희",
+   "role": "돌봄 방문",
+   "anomaly": "A081",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_05"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V048",
+   "name": "윤재혁",
+   "role": "돌봄 방문",
+   "anomaly": "A066",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC05",
+   "figure": "visitor-07",
+   "kind": "legacy",
+   "intercom": "still:visitor-07",
+   "cctv": "legacy look 7 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V049",
+   "name": "임수아",
+   "role": "돌봄 방문",
+   "anomaly": "A036",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC05",
+   "figure": "NPC05",
+   "kind": "role",
+   "intercom": "still:NPC05",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V050",
+   "name": "오준서",
+   "role": "돌봄 방문",
+   "anomaly": "A009",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC05",
+   "figure": "NPC05",
+   "kind": "role",
+   "intercom": "still:NPC05",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V051",
+   "name": "류은채",
+   "role": "이웃",
+   "anomaly": "A079",
+   "runs": [
+    "daily",
+    "night2:N2_06"
+   ],
+   "npc": "NPC06",
+   "figure": "NPC06",
+   "kind": "role",
+   "intercom": "seq:NPC06_v10r5",
+   "cctv": "role: still + side walk NPC06",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V052",
+   "name": "송기현",
+   "role": "이웃",
+   "anomaly": "A077",
+   "runs": [
+    "daily",
+    "night3:N3_06"
+   ],
+   "npc": "NPC06",
+   "figure": "NPC06",
+   "kind": "role",
+   "intercom": "seq:NPC06_v10r5",
+   "cctv": "role: still + side walk NPC06",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V053",
+   "name": "장예린",
+   "role": "이웃",
+   "anomaly": "A012",
+   "runs": [
+    "daily",
+    "night4:N4_06"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V054",
+   "name": "배현우",
+   "role": "이웃",
+   "anomaly": "A085",
+   "runs": [
+    "daily",
+    "night5:N5_06"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V055",
+   "name": "남지안",
+   "role": "이웃",
+   "anomaly": "A087",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V056",
+   "name": "조성민",
+   "role": "이웃",
+   "anomaly": "A053",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V057",
+   "name": "신다혜",
+   "role": "이웃",
+   "anomaly": "A032",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC06",
+   "figure": "NPC06",
+   "kind": "role",
+   "intercom": "seq:NPC06_v10r5",
+   "cctv": "role: still + side walk NPC06",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V058",
+   "name": "문태윤",
+   "role": "이웃",
+   "anomaly": "A041",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_06"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V059",
+   "name": "백아린",
+   "role": "이웃",
+   "anomaly": "A030",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC06",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V060",
+   "name": "서지훈",
+   "role": "이웃",
+   "anomaly": "A008",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC06",
+   "figure": "NPC06",
+   "kind": "role",
+   "intercom": "seq:NPC06_v10r5",
+   "cctv": "role: still + side walk NPC06",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V061",
+   "name": "김서윤",
+   "role": "음식 배달",
+   "anomaly": "A091",
+   "runs": [
+    "daily",
+    "night3:N3_07"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V062",
+   "name": "박도현",
+   "role": "음식 배달",
+   "anomaly": "A005",
+   "runs": [
+    "daily",
+    "night2:N2_07"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V063",
+   "name": "이민재",
+   "role": "음식 배달",
+   "anomaly": "A094",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_07"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V064",
+   "name": "정하린",
+   "role": "음식 배달",
+   "anomaly": "A006",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_wave"
+   ],
+   "missing": [
+    "gesture_wave"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_wave"
+  },
+  {
+   "visitor": "V065",
+   "name": "최유진",
+   "role": "음식 배달",
+   "anomaly": "A015",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V066",
+   "name": "강지호",
+   "role": "음식 배달",
+   "anomaly": "A042",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V067",
+   "name": "한소희",
+   "role": "음식 배달",
+   "anomaly": "A097",
+   "runs": [
+    "daily",
+    "night4:N4_07"
+   ],
+   "npc": "NPC07",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V068",
+   "name": "윤재혁",
+   "role": "음식 배달",
+   "anomaly": "A063",
+   "runs": [
+    "daily",
+    "night5:N5_07"
+   ],
+   "npc": "NPC07",
+   "figure": "NPC07",
+   "kind": "role",
+   "intercom": "still:NPC07",
+   "cctv": "role: still + side walk NPC07",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V069",
+   "name": "임수아",
+   "role": "음식 배달",
+   "anomaly": "A074",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC07",
+   "figure": "NPC07",
+   "kind": "role",
+   "intercom": "still:NPC07",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V070",
+   "name": "오준서",
+   "role": "음식 배달",
+   "anomaly": "A065",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC07",
+   "figure": "NPC07",
+   "kind": "role",
+   "intercom": "still:NPC07",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V071",
+   "name": "류은채",
+   "role": "차량 동승",
+   "anomaly": "A048",
+   "runs": [
+    "daily",
+    "night2:N2_08"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V072",
+   "name": "송기현",
+   "role": "차량 동승",
+   "anomaly": "A039",
+   "runs": [
+    "daily",
+    "night3:N3_08"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_knock",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_knock"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_knock"
+  },
+  {
+   "visitor": "V073",
+   "name": "장예린",
+   "role": "차량 동승",
+   "anomaly": "A007",
+   "runs": [
+    "daily",
+    "night4:N4_08"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "walk_front_rear"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V074",
+   "name": "배현우",
+   "role": "차량 동승",
+   "anomaly": "A038",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [
+    "direction_bound"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: direction_bound"
+  },
+  {
+   "visitor": "V075",
+   "name": "남지안",
+   "role": "차량 동승",
+   "anomaly": "A057",
+   "runs": [
+    "daily",
+    "night5:N5_08"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V076",
+   "name": "조성민",
+   "role": "차량 동승",
+   "anomaly": "A043",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V077",
+   "name": "신다혜",
+   "role": "차량 동승",
+   "anomaly": "A018",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V078",
+   "name": "문태윤",
+   "role": "차량 동승",
+   "anomaly": "A070",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: gesture_turn"
+  },
+  {
+   "visitor": "V079",
+   "name": "백아린",
+   "role": "차량 동승",
+   "anomaly": "A020",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC08",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V080",
+   "name": "서지훈",
+   "role": "차량 동승",
+   "anomaly": "A031",
+   "runs": [
+    "daily",
+    "night1",
+    "night1:N1_08"
+   ],
+   "npc": "NPC08",
+   "figure": "NPC08",
+   "kind": "role",
+   "intercom": "still:NPC08",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V081",
+   "name": "김서윤",
+   "role": "공공 업무",
+   "anomaly": "A027",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V082",
+   "name": "박도현",
+   "role": "공공 업무",
+   "anomaly": "A026",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V083",
+   "name": "이민재",
+   "role": "공공 업무",
+   "anomaly": "A082",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V084",
+   "name": "정하린",
+   "role": "공공 업무",
+   "anomaly": "A025",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-04",
+   "kind": "legacy",
+   "intercom": "still:visitor-04",
+   "cctv": "legacy look 4 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V085",
+   "name": "최유진",
+   "role": "공공 업무",
+   "anomaly": "A098",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V086",
+   "name": "강지호",
+   "role": "공공 업무",
+   "anomaly": "A075",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [
+    "direction_bound"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: direction_bound"
+  },
+  {
+   "visitor": "V087",
+   "name": "한소희",
+   "role": "공공 업무",
+   "anomaly": "A096",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-03",
+   "kind": "legacy",
+   "intercom": "still:visitor-03",
+   "cctv": "legacy look 3 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V088",
+   "name": "윤재혁",
+   "role": "공공 업무",
+   "anomaly": "A067",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "NPC09",
+   "kind": "role",
+   "intercom": "still:NPC09",
+   "cctv": "role: still + side walk NPC09",
+   "needs": [
+    "stand",
+    "walk_side"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V089",
+   "name": "임수아",
+   "role": "공공 업무",
+   "anomaly": "A004",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-01",
+   "kind": "legacy",
+   "intercom": "still:visitor-01",
+   "cctv": "legacy look 1 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear"
+  },
+  {
+   "visitor": "V090",
+   "name": "오준서",
+   "role": "공공 업무",
+   "anomaly": "A093",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC09",
+   "figure": "visitor-02",
+   "kind": "legacy",
+   "intercom": "still:visitor-02",
+   "cctv": "legacy look 2 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V091",
+   "name": "류은채",
+   "role": "지인",
+   "anomaly": "A055",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V092",
+   "name": "송기현",
+   "role": "지인",
+   "anomaly": "A019",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V093",
+   "name": "장예린",
+   "role": "지인",
+   "anomaly": "A047",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V094",
+   "name": "배현우",
+   "role": "지인",
+   "anomaly": "A014",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V095",
+   "name": "남지안",
+   "role": "지인",
+   "anomaly": "A084",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "gesture_phone",
+    "stand"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_phone"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_phone"
+  },
+  {
+   "visitor": "V096",
+   "name": "조성민",
+   "role": "지인",
+   "anomaly": "A100",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V097",
+   "name": "신다혜",
+   "role": "지인",
+   "anomaly": "A073",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "NPC10",
+   "kind": "role",
+   "intercom": "still:NPC10",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V098",
+   "name": "문태윤",
+   "role": "지인",
+   "anomaly": "A002",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "NPC10",
+   "kind": "role",
+   "intercom": "still:NPC10",
+   "cctv": "role: still",
+   "needs": [
+    "stand"
+   ],
+   "missing": [],
+   "reason": "모든 CCTV 장면을 같은 인물 그림으로 그릴 수 있음"
+  },
+  {
+   "visitor": "V099",
+   "name": "백아린",
+   "role": "지인",
+   "anomaly": "A056",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  },
+  {
+   "visitor": "V100",
+   "name": "서지훈",
+   "role": "지인",
+   "anomaly": "A013",
+   "runs": [
+    "daily"
+   ],
+   "npc": "NPC10",
+   "figure": "visitor-08",
+   "kind": "legacy",
+   "intercom": "still:visitor-08",
+   "cctv": "legacy look 8 (walk/gesture sheets)",
+   "needs": [
+    "walk_front_rear",
+    "stand",
+    "gesture_turn"
+   ],
+   "missing": [
+    "walk_front_rear",
+    "gesture_turn"
+   ],
+   "reason": "이 인물 그림으로 그릴 수 없는 CCTV 장면: walk_front_rear, gesture_turn"
+  }
+ ]
+}

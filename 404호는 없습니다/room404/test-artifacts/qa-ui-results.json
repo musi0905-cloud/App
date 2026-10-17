@@ -2,52 +2,52 @@
  {
   "test": "viewer loads the nine v05 NPCs with their 144 imported frames; every view REVISE in the frame review",
   "status": "PASS",
-  "ms": 812
+  "ms": 714
  },
  {
   "test": "three views and frame step; playback runs once and stops on frame 47 (no wrap)",
   "status": "PASS",
-  "ms": 2595
+  "ms": 2562
  },
  {
   "test": "NPC06 elder rig and the enter/exit gap warning; NPC03 carrying arm listed",
   "status": "PASS",
-  "ms": 121
+  "ms": 172
  },
  {
   "test": "MP4 review frames (opaque composite) with the computed feet and shadows on top",
   "status": "PASS",
-  "ms": 2159
+  "ms": 2064
  },
  {
   "test": "enter -> idle -> exit sequence: NPC06 seam shown on the real frames (front 47 held, then rear 0)",
   "status": "PASS",
-  "ms": 1694
+  "ms": 1634
  },
  {
   "test": "background swap: other backgrounds are marked as not calibrated for the clip",
   "status": "PASS",
-  "ms": 301
+  "ms": 292
  },
  {
   "test": "v06 (render_v06.js): NPC06 enter -> settle -> idle -> turn -> start -> exit on the real frames, frame step, slow playback runs once",
   "status": "PASS",
-  "ms": 5031
+  "ms": 4937
  },
  {
   "test": "v09 / v09r candidates (NPC06 only): BG02 with the renderer shadows, per-part verdicts, frame step, 12 fps half speed, legs and torso zoom; not offered for other NPCs",
   "status": "PASS",
-  "ms": 5943
+  "ms": 5618
  },
  {
   "test": "still stage: enter -> idle -> leave -> gone; occluder hides the figure, shadow darkens the floor",
   "status": "PASS",
-  "ms": 1872
+  "ms": 1776
  },
  {
   "test": "still mode chosen while the frame atlases are still loading opens without an error (race found 2026-10-14)",
   "status": "PASS",
-  "ms": 785
+  "ms": 755
  },
  {
   "test": "zero uncaught JavaScript errors in the QA viewer",

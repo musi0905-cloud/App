@@ -55,7 +55,9 @@ function reduceMotion(){return typeof matchMedia==='function'&&matchMedia('(pref
 // Sprite sheets (all 4x2 cells of 384x512, feet on the same line): side = walking sideways, toward = walking at the camera,
 // away = walking from the camera, gest = wave(0,1) knock(2,3) phone(4,5) look back(6) stand(7).
 export const GESTURE={wave:[0,1],knock:[2,3],phone:[4,5],look:6,stand:7};
-export function actorPlacement(s,phase,look=1){
+// dir -1: a role figure's side walk (assets/clips/side) is drawn as rendered, walking screen-left, so its cross runs
+// right -> left instead of being mirrored (figures.js keeps cases whose clue depends on the direction on the legacy look).
+export function actorPlacement(s,phase,look=1,dir=1){
  const base=LAYOUT[s.location]||LAYOUT.lobby;let x=480,y=base.y,walking=false,facing=1,sheet='gest',cell=GESTURE.stand;
  // A straight walk on the floor: the foot line follows perspective, x follows the foot line so the path stays straight on screen.
  // Pure 1/depth motion barely moves for the first half of a 6 s clip, so it is blended half-and-half with a linear walk: still faster as the figure nears, but visibly moving from the first second.
@@ -63,7 +65,7 @@ export function actorPlacement(s,phase,look=1){
  const opposite=OPPOSITE.has(s.location);
  if(s.action==='enter'||s.mode==='repeat'){const q=s.mode==='repeat'?(phase*2)%1:phase;if(opposite){path(520,base.y,base.farX,base.far,q);sheet='away'}else{path(base.farX,base.far,520,base.y,q);sheet='toward'}}
  if(s.action==='descend'){path(base.farX,base.far,420,base.y);if(s.location==='stairsUp')sheet='toward';else{sheet='side';facing=-1}}
- if(s.action==='cross'){y=base.y-.08*(base.y-base.horizon);x=120+phase*720;walking=true;sheet='side'}
+ if(s.action==='cross'){y=base.y-.08*(base.y-base.horizon);x=dir<0?840-phase*720:120+phase*720;walking=true;sheet='side';if(dir<0)facing=-1}
  if(s.action==='turn'){x=480+Math.sin(phase*Math.PI)*28;cell=phase>.3&&phase<.7?GESTURE.look:GESTURE.stand}
  if(s.action==='wave')cell=GESTURE.wave[Math.floor(phase*8)%2];
  if(s.action==='knock')cell=GESTURE.knock[Math.floor(phase*10)%2];
@@ -98,13 +100,21 @@ export function sceneVideo(s,look,camera='main'){
  if(s.location==='door')return null;
  return AMBIENT[s.location]||null;
 }
-export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=pack.scenes}){
+// Role figure (figure.kind==='role', from figures.js figureFor, the same object the intercom used): standing scenes draw
+// the approved still role figure; a cross plays its side-walk frames, each placed by the root the renderer recorded
+// (side.json root_x) on the walk path, stride locked to the distance walked, contact shadows from the frame data.
+// height: figures keep their own height (height_m / 1.68 m, the replay's reference adult).
+const SIDE='assets/clips/side/';let sideDoc=null;
+function loadSide(){return sideDoc??=fetch(SIDE+'side.json').then(r=>{if(!r.ok)throw Error('side.json '+r.status);return r.json()}).catch(e=>{sideDoc=null;throw e})}
+export function sideFrame(clip,dist,figurePx){const cycle=48*Math.abs(clip.step_px)/clip.figure_px;return Math.floor((dist/figurePx)/cycle*48+1e-9)%48}
+export async function mountReplay(host,{pack,visitor,figure=null,time,date,now=time,scenes=pack.scenes}){
  let disposed=false,raf=0,playing=false,cursor=0,previous=0,camera='main',cutUntil=0,lastIndex=-1;const CUT_MS=320;
  const duration=scenes.length*6,reduced=reduceMotion();
  host.innerHTML=`<div class="replay-heading"><strong>그때 모습 다시 보기 (장면 ${scenes.length}개)</strong><span>${time} 도착 전까지의 녹화 · 지금은 ${now}</span></div><div class="replay-screen"><div class="replay-stage"><video class="replay-video" muted playsinline preload="auto" aria-hidden="true"></video><canvas class="replay-canvas" width="960" height="640" aria-label="사건별 CCTV 재현 장면"></canvas></div><div class="replay-hud"><span class="hud-cam"></span><span class="hud-time"></span><span class="hud-rec" aria-hidden="true">● REC</span><span class="hud-state" hidden></span></div></div><div class="replay-cameras" role="group" aria-label="카메라 바꾸기">${Object.entries(CAMERAS).map(([k,v])=>`<button type="button" data-camera="${k}" aria-pressed="${k==='main'}">${v}</button>`).join('')}</div><p class="replay-caption" aria-live="polite"></p><div class="replay-controls"><button type="button" class="replay-play">재생</button><label>보고 싶은 순간<input class="replay-seek" type="range" min="0" max="${duration-.01}" step="0.01" value="0"></label><output class="replay-position">0 / ${duration}초</output></div><div class="replay-chapters">${scenes.map((s,i)=>`<button type="button" data-chapter="${i}" aria-pressed="${i===0}">${i+1}. ${LOCATIONS[s.location]}<small>${sceneTime(s,time,now)}</small></button>`).join('')}</div><p class="small">번호를 누르면 그 장면으로 가요. 카메라 버튼으로 다른 방향이나 가까이에서 볼 수 있어요.</p>`;
  const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),stage=host.querySelector('.replay-stage'),video=host.querySelector('video'),caption=host.querySelector('.replay-caption'),seek=host.querySelector('input'),play=host.querySelector('.replay-play');
  const hudCam=host.querySelector('.hud-cam'),hudTime=host.querySelector('.hud-time'),hudState=host.querySelector('.hud-state');
- const look=lookFor(visitor),sprite=0,roleProp=ROLE_PROP[visitor.baseRole||visitor.role]||'none';
+ const role=figure?.kind==='role'?figure:null,look=role?null:figure?.look??lookFor(visitor),sprite=0,roleProp=role?'none':ROLE_PROP[visitor.baseRole||visitor.role]||'none',dir=role?-1:1;
+ let roleImage=null,side=null,sidePages=[];
  let images,props,sheets={},centers={},order={},videoSrc=null,videoOk=false;const failed=new Set();
  // Generated frames wobble a few pixels left/right, and the v3 side/away sheets are not drawn in walking order (the v4
  // toward sheets are, so they keep their authored order). Measure each cell once:
@@ -119,10 +129,30 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
  function cycleOrder(spread){const s=spread.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]).map(p=>p[1]);return [s[0],s[2],s[4],s[6],s[7],s[5],s[3],s[1]]}
  const ready=Promise.all([
   Promise.all(Object.values(BACKGROUNDS).map(n=>load(V2+n+'.webp'))),
-  Promise.all([V2+`visitor-0${look}-stand.webp`].map(load)),
+  Promise.all(role?[load(role.figure.file)]:[V2+`visitor-0${look}-stand.webp`].map(load)),
   Promise.all(['hat','umbrella','mask','phone','parcel','glove','bag','cap-reflective','card','flowers','keys','medicine','paper','toolbox'].map(n=>load(V2+'prop-'+n+'.webp').then(im=>[n,im],()=>[n,null]))),
-  Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>load(V2+`visitor-0${look}-${n}.webp`).then(im=>[k,im],()=>[k,null])))
+  role?Promise.resolve([]):Promise.all([['side','walk'],['toward','walk-toward'],['away','walk-away'],['gest','gestures']].map(([k,n])=>load(V2+`visitor-0${look}-${n}.webp`).then(im=>[k,im],()=>[k,null]))),
+  role?.side?loadSide().then(d=>{const c=d.npcs[role.side];if(!c)throw Error('side clip '+role.side);return Promise.all(c.pages.map(p=>load(SIDE+p.file))).then(ims=>{side=c;sidePages=ims;side.scale=d.scale})}).catch(e=>{console.error('[replay] side walk unavailable, the role figure stands instead: '+e.message)}):null
  ]);
+ // Screen height of the role figure for the replay's frame height h (the legacy figure is h*466/512 for 1.68 m).
+ const roleHeight=h=>h*WALK.figure/WALK.h*(role?.figure.height_m||1.68)/1.68;
+ // Distance walked so far along the scene's path, in screen px divided by the figure's screen height (stride lock).
+ function roleWalk(view,phase){const p=Math.max(0,Math.min(1,phase));let prev=actorPlacement(view,0,look,dir),d=0;const steps=64;
+  for(let i=1;i<=steps;i++){const c=actorPlacement(view,p*i/steps,look,dir);d+=Math.hypot(c.x-prev.x,c.y-prev.y)/Math.max(1,(roleHeight(c.h)+roleHeight(prev.h))/2);prev=c}return d}
+ function roleActor(x,bottom,height,{frame=-1,flip=false,shadowOnly=false,filter='none',alpha=1,shadow=true,breath=0}){
+  const H=roleHeight(height);ctx.save();ctx.globalAlpha=alpha;
+  if(frame>=0&&side){const r=side.frames[frame],im=sidePages[r[0]],s=H/side.figure_px,rx=side.root_x[frame],sc=side.scale;
+   if(shadow&&!shadowOnly)for(const sh of side.shadows[frame])shadowAt(x+(sh[0]-rx)*s*(flip?-1:1),bottom+(sh[1]-side.ground_y)*s,sh[2]*s,sh[3]*s,sh[4]*alpha);
+   ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
+   ctx.drawImage(im,r[1],r[2],r[3],r[4],(r[5]-rx)*s,(r[6]-side.ground_y)*s,r[3]/sc*s,r[4]/sc*s)}
+  else{const f=role.figure,k=H/f.height_px;if(shadow&&!shadowOnly)contactShadow(x,bottom,height,alpha);
+   ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);if(breath)ctx.scale(1,1+breath);ctx.drawImage(roleImage,-f.foot[0]*k,-f.foot[1]*k,f.size[0]*k,f.size[1]*k)}
+  ctx.restore()}
+ function shadowAt(x,y,rx,ry,a){ctx.save();ctx.translate(x,y);ctx.scale(1,ry/rx);const g=ctx.createRadialGradient(0,0,0,0,0,rx);g.addColorStop(0,`rgba(0,4,2,${a})`);g.addColorStop(.5,`rgba(0,4,2,${a*.45})`);g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,rx,0,Math.PI*2);ctx.fill();ctx.restore()}
+ // The still picture used for registered-photo boxes and face close-ups: the role figure (cropped to its measured head)
+ // or the legacy stand cell.
+ function photo(x,y,w,h){if(role){const f=role.figure,k=Math.min(w/f.size[0],h/f.size[1]),dw=f.size[0]*k;ctx.drawImage(roleImage,x+(w-dw)/2,y,dw,f.size[1]*k);return {top:y+(role.head?.[1]??0)*k,head:(role.head?.[3]??f.height_px*.13)*k,cx:x+w/2}}
+  ctx.drawImage(images.stand[0],sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,x,y,w,h);return null}
  function background(key){return images.bg[Object.keys(BACKGROUNDS).indexOf(key)]}
  function prop(kind,x,y,w,h,opacity=1){const im=props[kind];if(!im)return;ctx.save();ctx.globalAlpha=opacity;ctx.drawImage(im,x,y,w,h);ctx.restore()}
  // Props are placed relative to the figure's frame height h (walk-frame scale) and its foot point.
@@ -130,6 +160,7 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   const gone=mode==='removeProp'&&['hat','mask','umbrella'].includes(kind);prop(kind,x+dx*h-pw/2+(gone?phase*60:0),y+dy*h+(gone?phase*110:0),pw,ph,gone?1-phase:1)}
  function contactShadow(x,bottom,height,alpha){ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,bottom);ctx.scale(height*.15,height*.032);const g=ctx.createRadialGradient(0,0,0,0,0,1);g.addColorStop(0,'rgba(0,4,2,.5)');g.addColorStop(1,'rgba(0,4,2,0)');ctx.fillStyle=g;ctx.fillRect(-1,-1,2,2);ctx.restore()}
  function actor(x,bottom,height,{alpha=1,flip=false,filter='none',propName='none',mode='normal',phase=0,shadowOnly=false,walk=-1,bob=0,sheet='gest',cell=GESTURE.stand,shadow=true,breath=0}={}){
+  if(role){roleActor(x,bottom,height,{frame:walk,flip,shadowOnly,filter,alpha,shadow,breath});const shown=propName&&propName!=='none'?propName:'none';if(!shadowOnly&&shown!=='none'){ctx.save();ctx.filter=filter;drawProp(shown,x,bottom,height,mode,phase);ctx.restore()}return}
   if(shadow&&!shadowOnly)contactShadow(x,bottom,height,alpha);
   ctx.save();ctx.globalAlpha=alpha;ctx.filter=shadowOnly?'brightness(0) opacity(.7)':filter;ctx.translate(x,bottom);if(flip)ctx.scale(-1,1);
   if(breath)ctx.scale(1,1+breath);
@@ -144,7 +175,8 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   const shown=propName&&propName!=='none'?propName:(walk>=0||cell===GESTURE.stand)?roleProp:'none';
   if(!shadowOnly&&shown!=='none'&&!shownByGesture){ctx.save();ctx.filter=filter;drawProp(shown,x,bottom,height,mode,phase);ctx.restore()}
  }
- function headCrop(x,y,w,h){const im=images.stand[0];ctx.drawImage(im,sprite*STAND.cellW+STAND.cellW*.27,STAND.top,STAND.cellW*.46,STAND.cellH*.2,x,y,w,h)}
+ function headCrop(x,y,w,h){if(role){const [hx,hy,hw,hh]=role.head||[0,0,role.figure.size[0],role.figure.height_px*.13],cx=hx+hw/2,cw=hh*1.05*w/h;ctx.drawImage(roleImage,cx-cw/2,hy-hh*.08,cw,hh*1.25,x,y,w,h);return}
+  const im=images.stand[0];ctx.drawImage(im,sprite*STAND.cellW+STAND.cellW*.27,STAND.top,STAND.cellW*.46,STAND.cellH*.2,x,y,w,h)}
  function setVideo(name,local){
   const want=reduced||!name||failed.has(name)?null:name;
   if(want!==videoSrc){videoSrc=want;videoOk=false;if(want){video.src=V2+'motion/'+want+'.mp4';video.load()}else{video.removeAttribute('src');video.load()}video.hidden=!want}
@@ -161,7 +193,7 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
  }
  function draw(){if(disposed||!images)return;const index=Math.min(scenes.length-1,Math.floor(cursor/6)),s=scenes[index],local=cursor-index*6,phase=local/6,mode=s.mode;
   const place=viewFor(s.location,camera);host.querySelector('[data-camera=top]').hidden=!TOP_VIEW[s.location];
-  const view={...s,location:place},pos=actorPlacement(view,phase,look);
+  const view={...s,location:place},pos=actorPlacement(view,phase,look,dir);
   setVideo(sceneVideo(s,look,camera),local);
   const clipHasActor=false;
   ctx.clearRect(0,0,960,640);
@@ -172,8 +204,10 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   if(videoOk&&videoSrc&&video.readyState>=2&&!video.seeking){try{ctx.drawImage(video,0,0,960,640)}catch{}}
   cameraTransform(view,pos);
   let {x,y,h}=pos;
+  // A role figure whose side walk could not be loaded stays where the walk starts: a still is never slid along a path.
+  if(role&&pos.walking&&!side){const p0=actorPlacement(view,0,look,dir);x=p0.x;y=p0.y;h=p0.h}
   // Every walk paces its stride by the distance travelled on screen (travelPhase), so feet never slide and seeking is exact.
-  const wp=!(pos.walking&&sheets[pos.sheet])?-1:travelPhase(view,phase,look),walk=wp<0?-1:Math.floor(wp),bob=wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
+  const wp=role?(pos.walking&&pos.sheet==='side'&&side?sideFrame(side,roleWalk(view,phase),1):-1):!(pos.walking&&sheets[pos.sheet])?-1:travelPhase(view,phase,look),walk=wp<0?-1:Math.floor(wp),bob=role||wp<0?0:(1+Math.cos(wp/8*Math.PI*2))/2,walkFlip=!role&&walk>=0&&pos.facing<0,sp={sheet:pos.sheet,cell:pos.cell,bob};
   // Standing figures breathe very slightly (period 3 s), so a paused frame still reads as a living person.
   const breath=walk<0?Math.sin(cursor*Math.PI*2/3)*.006:0;
   const filter=actorFilter(place,mode);
@@ -183,8 +217,8 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
    if(['shadow','shadowHold','faceShadow'].includes(mode)){ctx.save();ctx.translate(mode==='shadow'?x:280,y-10);ctx.transform(1,.15,-.6,.25,0,0);actor(0,0,h,{shadowOnly:true,walk,flip:walkFlip,...sp});ctx.restore()}
    if(mode==='footprints'){ctx.save();ctx.globalAlpha=.5;ctx.fillStyle='#1b2420';for(let j=0;j<6;j++){ctx.beginPath();ctx.ellipse(150+j*42,y+10-j*22,11,5,-.3,0,Math.PI*2);ctx.fill()}ctx.restore()}
    if(mode!=='absent'&&mode!=='loading'){
-    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip,breath,...sp});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk:walk<0?-1:(walk+4)%8,flip:walkFlip,breath:-breath,...sp,bob:1-bob})}
-    else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:walkFlip||(pos.facing<0&&pos.sheet==='side'),walk,breath,...sp});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?(Math.abs(960-2*x)<160?x+200:960-x):x+40,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk,shadow:false,breath,...sp})}
+    if(mode==='double'){actor(x-130,y,h,{filter,propName:s.prop,mode,phase,walk,flip:walkFlip,breath,...sp});actor(x+170,y,h,{filter,propName:s.prop,mode,phase,walk:walk<0?-1:role?(walk+24)%48:(walk+4)%8,flip:walkFlip,breath:-breath,...sp,bob:1-bob})}
+    else {actor(x,y,h,{filter,propName:s.prop,mode,phase,flip:!role&&(walkFlip||(pos.facing<0&&pos.sheet==='side')),walk,breath,...sp});if(['reflection','rainDouble'].includes(mode))actor(mode==='reflection'?(Math.abs(960-2*x)<160?x+200:960-x):x+40,y,mode==='reflection'?h*.9:h,{alpha:mode==='reflection'?.35:.42,flip:mode==='reflection'!==walkFlip,filter:mode==='rainDouble'?'blur(5px)':filter,walk,shadow:false,breath,...sp})}
    }
    if((s.action==='wave'||s.action==='knock')&&!sheets.gest)prop('glove',x+h*.14+Math.sin(phase*Math.PI*4)*18,y-h*.8,h*.18,h*.22);
    if(mode==='faceLock'){headCrop(450,140,85,120);ctx.strokeStyle='#e9c46f';ctx.strokeRect(450,140,85,120)}
@@ -195,7 +229,7 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   if(mode==='rain'||mode==='rainDouble'){ctx.save();ctx.strokeStyle='#becbc955';for(let i=0;i<20;i++){const xx=i*51;ctx.beginPath();ctx.moveTo(xx,(phase*640+i*67)%640);ctx.lineTo(xx-15,(phase*640+i*67)%640+70);ctx.stroke()}ctx.restore()}
   if(['card','idMatch','blurCard','hairOld','badge','fingerprint','document'].includes(mode)){
    const boxX=640;ctx.fillStyle='#d8dfd0';ctx.fillRect(boxX,300,300,210);ctx.fillStyle='#14251b';ctx.font='22px sans-serif';ctx.fillText(mode==='document'?'가져온 종이':mode==='fingerprint'?'지문 확인기':'기록과 비교',boxX+15,332,270);
-   if(mode==='idMatch'||mode==='hairOld'){const im=images.stand[0];ctx.save();if(mode==='hairOld')ctx.filter='sepia(.7) contrast(1.15)';ctx.drawImage(im,sprite*STAND.cellW,0,STAND.cellW,STAND.cellH,boxX+15,344,50,145);ctx.restore();if(mode==='hairOld'){ctx.fillStyle='#14251b';ctx.fillRect(boxX+22,344,36,14)}ctx.fillText(visitor.name,boxX+80,385,205);ctx.fillText('등록 사진',boxX+80,425,205)}
+   if(mode==='idMatch'||mode==='hairOld'){ctx.save();if(mode==='hairOld')ctx.filter='sepia(.7) contrast(1.15)';const ph=photo(boxX+15,344,50,145);ctx.restore();if(mode==='hairOld'){ctx.fillStyle='#14251b';if(ph)ctx.fillRect(ph.cx-18,ph.top,36,ph.head*.42);else ctx.fillRect(boxX+22,344,36,14)}ctx.fillText(visitor.name,boxX+80,385,205);ctx.fillText('등록 사진',boxX+80,425,205)}
    else {ctx.save();if(mode==='blurCard')ctx.filter='blur(5px)';ctx.fillText(mode==='fingerprint'?'지문을 읽지 못했어요':mode==='document'?pack.document.field:'출입 카드',boxX+15,380,270);ctx.fillText(visitor.name,boxX+15,425,270);ctx.restore()}
   }
   if(!(videoOk&&videoSrc)||mode!=='loading'){ctx.fillStyle='#07100a16';for(let yLine=0;yLine<640;yLine+=5)ctx.fillRect(0,yLine,960,1)}
@@ -208,7 +242,7 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
   if(cut>0){const k=Math.min(1,cut/CUT_MS);ctx.fillStyle=`rgba(3,8,6,${k*.95})`;ctx.fillRect(0,0,960,640);ctx.fillStyle=`rgba(200,220,200,${k*.5})`;ctx.fillRect(0,320-k*4,960,k*8)}
   hudCam.textContent=`CAM ${String(Object.keys(BACKGROUNDS).indexOf(place)+1).padStart(2,'0')} ${LOCATIONS[place]||VIEW_NAMES[place]} · ${index+1}/${scenes.length}${camera==='main'?'':' · '+CAMERAS[camera].slice(2)}`;
   const recordedDate=mode==='yesterday'?previousDate(date):date;hudTime.textContent=`${recordedDate} ${sceneTime(s,time,now)}:${String(Math.floor(phase*6)).padStart(2,'0')}`;
-  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time,now);canvas.dataset.location=s.location;canvas.dataset.view=camera;canvas.dataset.video=videoSrc&&videoOk?videoSrc:'';canvas.dataset.walkFrame=String(walk);canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
+  canvas.dataset.mode=mode;canvas.dataset.scene=String(index);canvas.dataset.time=sceneTime(s,time,now);canvas.dataset.location=s.location;canvas.dataset.view=camera;canvas.dataset.video=videoSrc&&videoOk?videoSrc:'';canvas.dataset.walkFrame=String(walk);canvas.dataset.figure=role?role.npc+(walk>=0?':side':':still'):'visitor-0'+look;canvas.dataset.count=String(mode==='absent'||mode==='loading'?0:['double','reflection','rainDouble'].includes(mode)?2:1);
   caption.textContent=`장면 ${index+1} · ${s.note}`;seek.value=String(cursor);host.querySelector('output').textContent=`${cursor.toFixed(1)} / ${duration}초`;host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.setAttribute('aria-pressed',String(index===i)));
  }
  function loop(now){if(disposed)return;if(playing){cursor+=previous?(now-previous)/1000:0;if(cursor>=duration-.01){cursor=duration-.01;playing=false;play.textContent='처음부터 재생'}const index=Math.min(scenes.length-1,Math.floor(cursor/6));if(lastIndex>=0&&index!==lastIndex)cutUntil=now+CUT_MS;lastIndex=index}if(playing||cutUntil>now)draw();previous=now;raf=requestAnimationFrame(loop)}
@@ -217,6 +251,6 @@ export async function mountReplay(host,{pack,visitor,time,date,now=time,scenes=p
  host.querySelectorAll('[data-chapter]').forEach((b,i)=>b.onclick=()=>{if(i!==Math.floor(cursor/6)&&!reduced)cutUntil=performance.now()+CUT_MS;cursor=i*6;lastIndex=i;playing=false;play.textContent='재생';draw()});
  host.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{camera=b.dataset.camera;if(camera==='top'&&!TOP_VIEW[scenes[Math.min(scenes.length-1,Math.floor(cursor/6))].location])camera='main';host.querySelectorAll('[data-camera]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw()});
  function visibility(){if(document.hidden){playing=false;play.textContent='재생';video.pause()}}document.addEventListener('visibilitychange',visibility);
- try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);sheets.side??=sheets.toward;sheets.away??=sheets.toward;for(const k of ['side','toward','away','gest'])if(sheets[k])measureCenters(k,sheets[k]);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
+ try{const [bg,stand,propList,sheetList]=await ready;images={bg,stand};if(role)roleImage=stand[0];props=Object.fromEntries(propList);sheets=Object.fromEntries(sheetList);sheets.side??=sheets.toward;sheets.away??=sheets.toward;for(const k of ['side','toward','away','gest'])if(sheets[k])measureCenters(k,sheets[k]);if(!disposed){draw();raf=requestAnimationFrame(loop)}}catch(e){caption.textContent=e.message;play.disabled=true;seek.disabled=true}
  return ()=>{disposed=true;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);video.pause();video.removeAttribute('src');video.load()};
 }
