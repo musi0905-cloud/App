@@ -1,0 +1,57 @@
+name: Build autoclicker
+
+on:
+  push:
+    paths:
+      - "autoclicker/**"
+      - ".github/workflows/autoclicker.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            name: autoclicker-windows.exe
+            built: dist/autoclicker.exe
+          - os: macos-latest
+            name: autoclicker-mac
+            built: dist/autoclicker
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pynput pyinstaller
+      - run: pyinstaller --onefile --name autoclicker autoclicker/autoclicker.py
+      - shell: bash
+        run: mv "${{ matrix.built }}" "${{ matrix.name }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.name }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: out
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: autoclicker-latest
+          name: 오토클릭 (Ctrl+A로 1초에 10회 클릭)
+          target_commitish: ${{ github.sha }}
+          files: out/*
+          body: |
+            - Windows: autoclicker-windows.exe 다운로드 후 실행
+            - Mac: autoclicker-mac 다운로드 후 터미널에서 실행 (손쉬운 사용 권한 필요)
+
+            Ctrl+A = 1초에 10회 클릭, Ctrl+Q = 종료

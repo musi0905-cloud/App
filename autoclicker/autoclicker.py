@@ -1,54 +1,87 @@
-"""1초 동안 10회 클릭하는 오토클릭 프로그램.
+"""오토클릭: Ctrl+A를 누르면 마우스 위치에서 1초 동안 10회 클릭합니다.
 
-사용법:
-    pip install pyautogui
-    python autoclicker.py            # 1초 동안 10회 클릭
-    python autoclicker.py --seconds 5  # 5초 동안 (초당 10회 = 총 50회)
+- Ctrl+A : 클릭 시작 (1초에 10회)
+- Ctrl+Q : 프로그램 종료
 
-실행 후 3초 안에 마우스를 클릭할 위치에 올려두세요.
-중단하려면 마우스를 화면 왼쪽 위 모서리로 빠르게 옮기세요 (pyautogui 비상 정지).
+Ctrl 키를 뗀 뒤에 클릭이 시작됩니다. (Ctrl을 누른 채로 클릭하면
+브라우저에서 새 탭이 열리는 등 Ctrl+클릭으로 처리되기 때문)
 """
 
-import argparse
+import sys
+import threading
 import time
 
-import pyautogui
+from pynput import keyboard, mouse
 
-CLICKS_PER_SECOND = 10
+CLICKS = 10          # 클릭 횟수
+DURATION = 1.0       # 몇 초 동안 클릭할지
 
-pyautogui.PAUSE = 0          # pyautogui 기본 지연(0.1초)을 없애서 간격을 정확하게
-pyautogui.FAILSAFE = True    # 마우스를 왼쪽 위 모서리로 옮기면 중단
+mouse_ctl = mouse.Controller()
+pressed_ctrl = set()
+busy = threading.Lock()
+stop_event = threading.Event()
+
+CTRL_KEYS = {keyboard.Key.ctrl, keyboard.Key.ctrl_l, keyboard.Key.ctrl_r}
+
+
+def is_letter(key, letter):
+    """Ctrl을 누른 상태에서도 글자 키를 정확히 알아보기 위한 검사."""
+    ch = getattr(key, "char", None)
+    vk = getattr(key, "vk", None)
+    ctrl_char = chr(ord(letter) - ord("a") + 1)   # Ctrl+A -> '\x01'
+    if ch in (letter, letter.upper(), ctrl_char):
+        return True
+    return sys.platform == "win32" and vk == ord(letter.upper())
+
+
+def run_clicks():
+    if not busy.acquire(blocking=False):
+        return  # 이미 클릭 중이면 무시
+    try:
+        # Ctrl을 뗄 때까지 기다림 (최대 2초)
+        deadline = time.perf_counter() + 2
+        while pressed_ctrl and time.perf_counter() < deadline:
+            time.sleep(0.01)
+
+        interval = DURATION / CLICKS
+        start = time.perf_counter()
+        for n in range(CLICKS):
+            wait = start + n * interval - time.perf_counter()
+            if wait > 0:
+                time.sleep(wait)
+            mouse_ctl.click(mouse.Button.left)
+        elapsed = time.perf_counter() - start
+        print(f"  완료: {CLICKS}회 클릭 ({elapsed:.2f}초)")
+    finally:
+        busy.release()
+
+
+def on_press(key):
+    if key in CTRL_KEYS:
+        pressed_ctrl.add(key)
+        return
+    if pressed_ctrl and is_letter(key, "a"):
+        print("Ctrl+A 감지 → 클릭 시작!")
+        threading.Thread(target=run_clicks, daemon=True).start()
+    elif pressed_ctrl and is_letter(key, "q"):
+        print("종료합니다.")
+        stop_event.set()
+        return False
+
+
+def on_release(key):
+    pressed_ctrl.discard(key)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="초당 10회 오토클릭")
-    parser.add_argument("--seconds", type=float, default=1.0, help="클릭할 시간(초), 기본 1초")
-    parser.add_argument("--delay", type=int, default=3, help="시작 전 대기 시간(초), 기본 3초")
-    args = parser.parse_args()
-
-    total = round(args.seconds * CLICKS_PER_SECOND)
-    interval = 1.0 / CLICKS_PER_SECOND
-
-    for i in range(args.delay, 0, -1):
-        print(f"{i}초 후 시작... 마우스를 클릭할 위치에 올려두세요")
-        time.sleep(1)
-
-    print(f"클릭 시작! ({args.seconds}초 동안 {total}회)")
-    start = time.perf_counter()
-    try:
-        for n in range(total):
-            # 시작 시각 기준으로 n번째 클릭 시각을 맞춰 오차가 쌓이지 않게 함
-            target = start + n * interval
-            wait = target - time.perf_counter()
-            if wait > 0:
-                time.sleep(wait)
-            pyautogui.click()
-    except pyautogui.FailSafeException:
-        print("비상 정지되었습니다.")
-        return
-
-    elapsed = time.perf_counter() - start
-    print(f"완료: {total}회 클릭, {elapsed:.2f}초 걸림")
+    print("=" * 40)
+    print(" 오토클릭")
+    print(f"  Ctrl+A : {DURATION:g}초 동안 {CLICKS}회 클릭")
+    print("  Ctrl+Q : 종료")
+    print("=" * 40)
+    print("마우스를 클릭할 위치에 두고 Ctrl+A를 누르세요.\n")
+    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+        listener.join()
 
 
 if __name__ == "__main__":
